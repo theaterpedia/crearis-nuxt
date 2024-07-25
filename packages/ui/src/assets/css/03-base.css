@@ -1,0 +1,116 @@
+*,
+::before,
+::after {
+  min-width: 0;
+  box-sizing: border-box;
+  border: 0 solid hsl(var(--border));
+  text-underline-offset: 0.125em;
+  text-underline-offset: round(0.125em, 1px);
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: var(--font);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--headings);
+  font-size: inherit;
+  font-weight: 600;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+blockquote,
+dd,
+dl,
+figure,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+pre {
+  margin: 0;
+}
+
+ol,
+ul,
+menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+strong {
+  font-weight: 600;
+}
+
+hr {
+  width: 100%;
+  border-top-width: 1px;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+[type='button'],
+[type='reset'],
+[type='submit'],
+button {
+  -webkit-appearance: button;
+  appearance: button;
+  background-color: transparent;
+  background-image: none;
+}
+
+[role='button'],
+button {
+  cursor: pointer;
+}
+
+button,
+select {
+  text-transform: none;
+}

@@ -1,0 +1,54 @@
+{
+  "name": "@dasei/ui",
+  "version": "0.1.0",
+  "description": "Vue UI components for dasei.eu.",
+  "homepage": "https://dasei.eu",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theaterpedia/dasei.git",
+    "directory": "packages/ui"
+  },
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./css/*": "./dist/css/*",
+    "./fonts/*": "./dist/fonts/*",
+    "./nuxt": "./dist/nuxt.ts",
+    "./styles": "./dist/css/styles.css"
+  },
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && vue-tsc --project tsconfig.build.json"
+  },
+  "dependencies": {
+    "@nuxt/kit": "^3.12.4",
+    "@vueuse/core": "^10.11.0",
+    "focus-trap": "^7",
+    "vue": "latest",
+    "vue-router": "latest"
+  },
+  "devDependencies": {
+    "@laynezh/vite-plugin-lib-assets": "^0.5.23",
+    "@nuxt/schema": "^3.12.4",
+    "@tsconfig/node20": "^20.1.4",
+    "@types/node": "^20.14.12",
+    "@vitejs/plugin-vue": "^5.1.0",
+    "@vue/tsconfig": "^0.5.1",
+    "nuxt": "^3.12.4",
+    "vite": "^5.3.5",
+    "vite-plugin-lib-inject-css": "^2.1.1",
+    "vite-plugin-static-copy": "^1.0.6",
+    "vue-tsc": "^2.0.29"
+  }
+}

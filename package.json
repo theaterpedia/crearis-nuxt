@@ -1,0 +1,32 @@
+{
+  "name": "dasei",
+  "description": "Das Ei monorepo.",
+  "private": true,
+  "homepage": "https://dasei.eu",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theaterpedia/dasei.git"
+  },
+  "keywords": [
+    "ui",
+    "components",
+    "typescript",
+    "vue",
+    "nuxt"
+  ],
+  "type": "module",
+  "scripts": {
+    "dev:layer": "pnpm --filter=layer dev",
+    "dev:ui": "pnpm --filter=ui dev",
+    "build:layer": "pnpm --filter=layer build",
+    "build:ui": "pnpm --filter=ui build",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3",
+    "prettier-plugin-organize-attributes": "^1.0.0",
+    "prettier-plugin-tailwindcss": "^0.6.5",
+    "vitest": "^2.0.4"
+  },
+  "packageManager": "pnpm@9.4.0"
+}

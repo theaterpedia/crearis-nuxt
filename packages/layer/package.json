@@ -1,0 +1,29 @@
+{
+  "name": "@dasei/layer",
+  "version": "0.1.0",
+  "description": "Nuxt layer for dasei.eu.",
+  "homepage": "https://dasei.eu",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theaterpedia/dasei.git",
+    "directory": "packages/editor"
+  },
+  "files": [],
+  "type": "module",
+  "main": "./nuxt.config.ts",
+  "scripts": {
+    "dev": "nuxi dev .playground",
+    "dev:prepare": "nuxt prepare .playground",
+    "build": "nuxt build .playground"
+  },
+  "dependencies": {
+    "@dasei/ui": "workspace:*",
+    "@nuxtjs/tailwindcss": "^6.12.1"
+  },
+  "devDependencies": {
+    "nuxt": "^3.12.4",
+    "tailwindcss": "^3.4.7",
+    "typescript": "^5.5.4",
+    "vue": "latest"
+  }
+}
