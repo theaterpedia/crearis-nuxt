@@ -1,5 +1,7 @@
 <template>
   <div class="space-y-8 p-8">
-    <Heading class="text-muted-foreground">hi</Heading>
+    <Container is="header">
+      <Heading class="text-muted-foreground">hi from tailwind</Heading>
+    </Container>
   </div>
 </template>
