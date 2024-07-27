@@ -1,0 +1,24 @@
+{
+  "name": "@dasei/home",
+  "version": "0.1.0",
+  "description": "The dasei.eu website.",
+  "homepage": "https://dasei.eu",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theaterpedia/dasei.git",
+    "directory": "apps/home"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@dasei/theme": "workspace:*",
+    "nuxt": "^3.12.4",
+    "vue": "latest"
+  }
+}
