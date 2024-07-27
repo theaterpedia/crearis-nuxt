@@ -14,7 +14,7 @@
 
     <Container is="footer">
       <Heading>Footer-Container</Heading>
-    </Container>    
+    </Container>
   </div>
 </template>
 

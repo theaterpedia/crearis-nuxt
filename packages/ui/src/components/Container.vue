@@ -5,12 +5,13 @@
 </template>
 
 <script lang="ts" setup>
-/* This component controls setting up sections
-it can be used to render a div or section
-it provides props to control things like border, background, flex and parallax-behavior */
-
 import type { PropType } from 'vue'
 
+/*
+ * This component controls setting up sections.
+ * It can be used to render a div or section.
+ * It provides props to control things like border, background, flex, and parallax-behavior.
+ */
 defineProps({
   /**
    * The structure tag to render.
@@ -18,7 +19,7 @@ defineProps({
    * @default 'section'
    */
   is: {
-    type: [Object, String] as PropType<'section' | 'article' | 'header' | 'footer' | 'form' | 'div'>,
+    type: String as PropType<'section' | 'article' | 'header' | 'footer' | 'form' | 'div'>,
     default: 'section',
   },
 })
@@ -32,5 +33,4 @@ defineProps({
 .section :deep() a {
   /* optionally render first and second links inside the slot as cta-buttons: primary and secondary */
 }
-
 </style>
