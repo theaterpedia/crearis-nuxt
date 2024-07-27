@@ -18,10 +18,10 @@ This monorepo contains [Vue](https://vuejs.org) components and [Nuxt](https://nu
 2. Install all dependencies: `pnpm i`
 3. Start the development servers:
    - `pnpm dev:ui`
-   - `pnpm dev:layer`
+   - `pnpm dev:theme`
 4. Build the packages (in the specified order):
    - `pnpm build:ui`
-   - `pnpm build:layer`
+   - `pnpm build:theme`
 
 ## Structure
 
@@ -53,9 +53,9 @@ defineNuxtConfig({
 })
 ```
 
-### 2. `@dasei/layer`
+### 2. `@dasei/theme`
 
-The `@dasei/layer` package is a Nuxt [layer](https://nuxt.com/docs/getting-started/layers) containing Nuxt-ready components and composables for building the [dasei.eu](https://dasei.eu) website.
+The `@dasei/theme` package is a Nuxt [layer](https://nuxt.com/docs/getting-started/layers) containing Nuxt-ready components and composables for building the [dasei.eu](https://dasei.eu) website.
 
 #### Usage
 

@@ -21,7 +21,7 @@ importers:
         specifier: ^2.0.4
         version: 2.0.4(@types/node@20.14.12)(terser@5.31.3)
 
-  packages/layer:
+  packages/theme:
     dependencies:
       '@dasei/ui':
         specifier: workspace:*
