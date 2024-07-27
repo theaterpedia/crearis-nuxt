@@ -62,14 +62,14 @@ The `@dasei/theme` package is a Nuxt [layer](https://nuxt.com/docs/getting-start
 Install the layer in your Nuxt project.
 
 ```bash
-npm i @dasei/layer
+npm i @dasei/theme
 ```
 
 Then, add the dependency in your `nuxt.config.ts` file:
 
 ```ts
 defineNuxtConfig({
-  extends: ['dasei/layer'],
+  extends: ['dasei/theme'],
 })
 ```
 
