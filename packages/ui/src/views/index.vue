@@ -1,6 +1,36 @@
 <template>
   <Box>
-    <Sidebar>sidebar</Sidebar>
+    <Sidebar>
+      <img
+        alt="DAS Ei"
+        src="https://pruvious.com/uploads/logo-dasei.svg"
+        style="display: block; width: 100%; height: auto"
+      />
+
+      <MainMenu
+        :items="[
+          {
+            label: 'Ausbildung Theaterpädagogik',
+            type: 'group',
+            children: [
+              { label: 'Einstiege ins Theaterspiel', link: '#' },
+              { label: 'Grundlagen Theaterpädagogik (BuT)', link: '#' },
+              { label: 'Profil Performance & Interkulturelles Theater', link: '#' },
+            ],
+          },
+          {
+            label: 'Workshops & Projekte',
+            type: 'link',
+            link: '#',
+          },
+          {
+            label: 'Team & Institut',
+            type: 'link',
+            link: '#',
+          },
+        ]"
+      />
+    </Sidebar>
 
     <Main>
       <Parallax
@@ -132,5 +162,5 @@
 </template>
 
 <script lang="ts" setup>
-import { Banner, Box, Button, Container, Footer, Main, Parallax, Prose, Section, Sidebar } from '@/index'
+import { Banner, Box, Button, Container, Footer, Main, MainMenu, Parallax, Prose, Section, Sidebar } from '@/index'
 </script>
