@@ -1,31 +1,30 @@
 :root {
-  --background: 0 0% 100%;
-  --foreground: 324 49% 10%;
+  --background: 0 0% 95%;
+  --foreground: 0 0% 0%;
   --card: 0 0% 100%;
-  --card-foreground: 324 49% 10%;
+  --card-foreground: 0 0% 0%;
   --popover: 0 0% 100%;
-  --popover-foreground: 324 49% 10%;
-  --primary: 324 49% 10%;
-  --primary-foreground: 0 0% 98%;
-  --secondary: 240 4.8% 94%;
-  --secondary-foreground: 324 49% 10%;
-  --muted: 240 4.8% 94%;
-  --muted-foreground: 227 10.6% 49.4%;
-  --accent: 240 4.8% 94%;
-  --accent-foreground: 324 49% 10%;
-  --focus: 240 4.8% 90%;
-  --focus-foreground: 324 49% 10%;
+  --popover-foreground: 0 0% 0%;
+  --primary: 48 100% 50%;
+  --primary-foreground: 0 0% 0%;
+  --secondary: 24 100% 50%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 0 0% 85%;
+  --muted-foreground: 0 0% 20%;
+  --accent: 0 0% 20%;
+  --accent-foreground: 0 0% 100%;
   --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 0 0% 98%;
+  --destructive-foreground: 0 0% 100%;
   --border: 210 8% 90.2%;
   --input: 210 7.41% 89.4%;
-  --ring: 324 49% 10%;
+  --ring: 0 0% 0%;
 
   --radius: 0.5rem;
   --font: 'Roboto', sans-serif;
   --headings: var(--font);
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
   --duration: 150ms;
+  --transition: all var(--duration) var(--ease);
 }
 
 .dark {
@@ -43,8 +42,6 @@
   --muted-foreground: 231 10% 57.4%;
   --accent: 231 16.7% 24%;
   --accent-foreground: 0 0% 98%;
-  --focus: 231 16.7% 28%;
-  --focus-foreground: 0 0% 98%;
   --destructive: 7.41 84.2% 60.4%;
   --destructive-foreground: 0 0% 98%;
   --border: 231 16.7% 24%;
