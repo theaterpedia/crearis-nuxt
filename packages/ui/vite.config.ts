@@ -19,7 +19,7 @@ export default defineConfig({
       formats: ['es'],
     },
     rollupOptions: {
-      external: ['vue'],
+      external: ['@vueuse/core', 'focus-trap', 'swiper', 'vue'],
       output: {
         assetFileNames: 'css/[name][extname]',
         chunkFileNames: 'chunks/[name].[hash].js',

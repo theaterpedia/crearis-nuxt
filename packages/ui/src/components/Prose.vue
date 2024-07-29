@@ -47,6 +47,12 @@
   line-height: 1.2;
 }
 
+.prose :where(h1, h2, h3, .h1, .h2, .h3) :where(small) {
+  font-size: 0.875em;
+  display: block;
+  font-weight: 400;
+}
+
 /**
  * Links
  */
@@ -66,6 +72,7 @@
 
 .prose > * + :where(ul, ol) {
   margin-top: 0.6em;
+  color: hsl(var(--foreground));
 }
 
 .prose :where(ul, ol) :where(ul, ol) {
@@ -95,7 +102,7 @@
  * Spacings
  */
 
-.prose :where(* + *) {
+.prose > :where(* + *) {
   margin-top: 1em;
 }
 

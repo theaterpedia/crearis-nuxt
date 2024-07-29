@@ -109,6 +109,27 @@
               .
             </p>
           </Prose>
+
+          <Slider>
+            <Slide v-for="i in 6">
+              <Prose>
+                <h3>
+                  <small>{{ i }} Praxis, Theorie & Ausbildung bei DAS Ei</small>
+                  <strong>Basistag Theaterpädagogik</strong>
+                </h3>
+                <p>
+                  Am Basistag erlebst Du die grundsätzlichen Zusammenhänge der Theaterpädagogik von DAS Ei konzentriert
+                  und ganz praktisch am eigenen Leib. Du erarbeitest Dir ausgehend von drei Zwischenreflexionen ein
+                  Grundverständnis der Module
+                </p>
+                <ul>
+                  <li>‚Einstiege in’s Theaterspiel‘ (Modul A)</li>
+                  <li>‚Szenische Themenarbeit‘ (Modul B)</li>
+                  <li>‚Pädagogische Regie‘ (Modul C).</li>
+                </ul>
+              </Prose>
+            </Slide>
+          </Slider>
         </Container>
       </Section>
 
@@ -162,5 +183,19 @@
 </template>
 
 <script lang="ts" setup>
-import { Banner, Box, Button, Container, Footer, Main, MainMenu, Parallax, Prose, Section, Sidebar } from '@/index'
+import {
+  Banner,
+  Box,
+  Button,
+  Container,
+  Footer,
+  Main,
+  MainMenu,
+  Parallax,
+  Prose,
+  Section,
+  Sidebar,
+  Slide,
+  Slider,
+} from '@/index'
 </script>

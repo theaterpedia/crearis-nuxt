@@ -26,4 +26,8 @@ defineProps({
   padding-right: 1.75rem; /* 28px */
   padding-left: 1.75rem; /* 28px */
 }
+
+.container > * + * {
+  margin-top: 1.75rem; /* 24px */
+}
 </style>
