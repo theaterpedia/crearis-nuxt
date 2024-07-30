@@ -31,6 +31,6 @@ defineProps({
 }
 
 .container > * + * {
-  margin-top: 1.75rem; /* 24px */
+  margin-top: 1.75rem; /* 28px */
 }
 </style>
