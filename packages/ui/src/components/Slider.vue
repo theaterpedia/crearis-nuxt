@@ -43,6 +43,7 @@ onMounted(() => {
   swiper = new Swiper(root.value!, {
     modules: [Keyboard, Mousewheel, Navigation, Pagination],
     slidesPerView: 'auto',
+    autoHeight: true,
     speed: 400,
     keyboard: {
       enabled: true,
