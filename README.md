@@ -69,7 +69,7 @@ Then, add the dependency in your `nuxt.config.ts` file:
 
 ```ts
 defineNuxtConfig({
-  extends: ['dasei/theme'],
+  extends: ['@crearis-nuxt/theme'],
 })
 ```
 
