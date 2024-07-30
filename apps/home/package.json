@@ -1,11 +1,10 @@
 {
-  "name": "@dasei/home",
+  "name": "@crearis-nuxt/home",
   "version": "0.1.0",
   "description": "The dasei.eu website.",
-  "homepage": "https://dasei.eu",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/theaterpedia/dasei.git",
+    "url": "git+https://github.com/theaterpedia/crearis-nuxt.git",
     "directory": "apps/home"
   },
   "type": "module",
@@ -17,7 +16,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@dasei/theme": "workspace:*",
+    "@crearis-nuxt/theme": "workspace:*",
     "nuxt": "^3.12.4",
     "vue": "latest"
   }

@@ -1,11 +1,9 @@
 {
-  "name": "dasei",
-  "description": "Das Ei monorepo.",
+  "name": "crearis-nuxt",
   "private": true,
-  "homepage": "https://dasei.eu",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/theaterpedia/dasei.git"
+    "url": "git+https://github.com/theaterpedia/crearis-nuxt.git"
   },
   "keywords": [
     "ui",

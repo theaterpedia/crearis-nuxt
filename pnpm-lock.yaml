@@ -23,7 +23,7 @@ importers:
 
   apps/home:
     dependencies:
-      '@dasei/theme':
+      '@crearis-nuxt/theme':
         specifier: workspace:*
         version: link:../../packages/theme
       nuxt:
@@ -35,7 +35,7 @@ importers:
 
   packages/theme:
     dependencies:
-      '@dasei/ui':
+      '@crearis-nuxt/ui':
         specifier: workspace:*
         version: link:../ui
       '@nuxtjs/tailwindcss':

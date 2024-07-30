@@ -1,11 +1,10 @@
 {
-  "name": "@dasei/theme",
+  "name": "@crearis-nuxt/theme",
   "version": "0.1.0",
-  "description": "Nuxt layer for dasei.eu.",
-  "homepage": "https://dasei.eu",
+  "description": "Nuxt layer.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/theaterpedia/dasei.git",
+    "url": "git+https://github.com/theaterpedia/crearis-nuxt.git",
     "directory": "packages/editor"
   },
   "files": [],
@@ -17,7 +16,7 @@
     "build": "nuxt build .playground"
   },
   "dependencies": {
-    "@dasei/ui": "workspace:*",
+    "@crearis-nuxt/ui": "workspace:*",
     "@nuxtjs/tailwindcss": "^6.12.1"
   },
   "devDependencies": {

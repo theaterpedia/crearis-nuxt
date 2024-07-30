@@ -1,7 +1,7 @@
 import { addComponentsDir, addImportsSources, createResolver, defineNuxtModule } from '@nuxt/kit'
 import fs from 'node:fs'
 
-export interface DaseiUINuxtOptions {
+export interface CrearisUINuxtOptions {
   /**
    * Determines whether to import DAS Ei UI styles.
    *
@@ -10,10 +10,10 @@ export interface DaseiUINuxtOptions {
   styles?: boolean
 }
 
-export default defineNuxtModule<DaseiUINuxtOptions>({
+export default defineNuxtModule<CrearisUINuxtOptions>({
   meta: {
-    name: 'Das Ei UI',
-    configKey: 'daseiUI',
+    name: 'Crearis UI',
+    configKey: 'crearisUI',
   },
   defaults: {
     styles: true,
@@ -28,24 +28,24 @@ export default defineNuxtModule<DaseiUINuxtOptions>({
 
     if (fs.existsSync(composables)) {
       addImportsSources({
-        from: '@dasei/ui',
+        from: '@crearis-nuxt/ui',
         imports: fs.readdirSync(composables).map((file) => file.split('.')[0]),
         priority: -1,
       })
     }
 
     if (options.styles) {
-      nuxt.options.css.push('@dasei/ui/styles')
+      nuxt.options.css.push('@crearis-nuxt/ui/styles')
     }
   },
 })
 
 declare module '@nuxt/schema' {
   interface NuxtConfig {
-    daseiUI?: DaseiUINuxtOptions
+    crearisUI?: CrearisUINuxtOptions
   }
 
   interface NuxtOptions {
-    daseiUI?: DaseiUINuxtOptions
+    crearisUI?: CrearisUINuxtOptions
   }
 }
