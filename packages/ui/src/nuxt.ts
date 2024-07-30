@@ -3,7 +3,7 @@ import fs from 'node:fs'
 
 export interface CrearisUINuxtOptions {
   /**
-   * Determines whether to import DAS Ei UI styles.
+   * Determines whether to import Crearis UI styles.
    *
    * @default true
    */
