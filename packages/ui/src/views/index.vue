@@ -55,30 +55,39 @@
 
       <Section>
         <Container>
-          <Prose>
-            <h2><strong>Worum geht´s?</strong></h2>
-            <p class="h3"><strong>Anfangen lernen, Anfänge gestalten lernen!</strong></p>
-            <p>
-              Der Anfang soll einfach sein, so einfach wie nur irgendwie möglich. Dies gilt für Menschen, die mit
-              Theater noch wenig Kontakt hatten. Aber auch wer das halbe Leben mit Theater verbracht hat, wird das kaum
-              anders sehen.
-            </p>
-            <p><strong>Wir sehen zwei Wege für einfache Anfänge:</strong></p>
-            <ul>
-              <li>entweder wir können ‚lebendig erklären‘</li>
-              <li>oder wir lassen es einfach losgehen, möglichst ‚ohne Worte‘</li>
-            </ul>
-            <p>
-              Die Fortbildung 'Einstiege ins Theaterspiel' vermittelt dazu die
-              <strong>grundlegende Didaktik</strong>
-              und
-              <strong>Methodik</strong>
-              . Das 'lebendige Erklären' bezeichnen wir als Szenische Animation und jene Prozesse, wo es einfach losgeht
-              nennen wir
-              <a href="#">Elementare Animation</a>
-              .
-            </p>
-          </Prose>
+          <Columns>
+            <Column>
+              <Prose>
+                <h2><strong>Worum geht´s?</strong></h2>
+                <p class="h3"><strong>Anfangen lernen, Anfänge gestalten lernen!</strong></p>
+                <p>
+                  Der Anfang soll einfach sein, so einfach wie nur irgendwie möglich. Dies gilt für Menschen, die mit
+                  Theater noch wenig Kontakt hatten. Aber auch wer das halbe Leben mit Theater verbracht hat, wird das
+                  kaum anders sehen.
+                </p>
+                <p><strong>Wir sehen zwei Wege für einfache Anfänge:</strong></p>
+                <ul>
+                  <li>entweder wir können ‚lebendig erklären‘</li>
+                  <li>oder wir lassen es einfach losgehen, möglichst ‚ohne Worte‘</li>
+                </ul>
+                <p>
+                  Die Fortbildung 'Einstiege ins Theaterspiel' vermittelt dazu die
+                  <strong>grundlegende Didaktik</strong>
+                  und
+                  <strong>Methodik</strong>
+                  . Das 'lebendige Erklären' bezeichnen wir als Szenische Animation und jene Prozesse, wo es einfach
+                  losgeht nennen wir
+                  <a href="#">Elementare Animation</a>
+                  .
+                </p>
+              </Prose>
+            </Column>
+            <Column width="1/4">
+              <img
+                src="https://24ai.tech/en/wp-content/uploads/sites/3/2023/10/01_product_1_sdelat-kvadratnym-5-scaled.jpg"
+              />
+            </Column>
+          </Columns>
         </Container>
       </Section>
 
@@ -112,22 +121,31 @@
 
           <Slider>
             <Slide v-for="i in 6">
-              <Prose>
-                <h3>
-                  <small>{{ i }} Praxis, Theorie & Ausbildung bei DAS Ei</small>
-                  <strong>Basistag Theaterpädagogik</strong>
-                </h3>
-                <p>
-                  Am Basistag erlebst Du die grundsätzlichen Zusammenhänge der Theaterpädagogik von DAS Ei konzentriert
-                  und ganz praktisch am eigenen Leib. Du erarbeitest Dir ausgehend von drei Zwischenreflexionen ein
-                  Grundverständnis der Module
-                </p>
-                <ul>
-                  <li>‚Einstiege in’s Theaterspiel‘ (Modul A)</li>
-                  <li>‚Szenische Themenarbeit‘ (Modul B)</li>
-                  <li>‚Pädagogische Regie‘ (Modul C).</li>
-                </ul>
-              </Prose>
+              <Columns gap="small">
+                <Column width="1/5">
+                  <img
+                    src="https://24ai.tech/en/wp-content/uploads/sites/3/2023/10/01_product_1_sdelat-kvadratnym-5-scaled.jpg"
+                  />
+                </Column>
+                <Column>
+                  <Prose>
+                    <h3>
+                      <small>{{ i }} Praxis, Theorie & Ausbildung bei DAS Ei</small>
+                      <strong>Basistag Theaterpädagogik</strong>
+                    </h3>
+                    <p>
+                      Am Basistag erlebst Du die grundsätzlichen Zusammenhänge der Theaterpädagogik von DAS Ei
+                      konzentriert und ganz praktisch am eigenen Leib. Du erarbeitest Dir ausgehend von drei
+                      Zwischenreflexionen ein Grundverständnis der Module
+                    </p>
+                    <ul>
+                      <li>‚Einstiege in’s Theaterspiel‘ (Modul A)</li>
+                      <li>‚Szenische Themenarbeit‘ (Modul B)</li>
+                      <li>‚Pädagogische Regie‘ (Modul C).</li>
+                    </ul>
+                  </Prose>
+                </Column>
+              </Columns>
             </Slide>
           </Slider>
         </Container>
@@ -207,6 +225,8 @@ import {
   Banner,
   Box,
   Button,
+  Column,
+  Columns,
   Container,
   Footer,
   Main,
