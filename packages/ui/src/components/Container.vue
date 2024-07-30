@@ -23,6 +23,9 @@ defineProps({
 <style scoped>
 .container {
   width: 100%;
+  max-width: 90rem; /* 1440px */
+  margin-right: auto;
+  margin-left: auto;
   padding-right: 1.75rem; /* 28px */
   padding-left: 1.75rem; /* 28px */
 }

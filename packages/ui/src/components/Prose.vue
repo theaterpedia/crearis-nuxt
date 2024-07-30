@@ -125,4 +125,15 @@
 .prose :where(* + .narrow) {
   margin-top: 0.5em;
 }
+
+/**
+ * Colors
+ */
+.prose :where(.primary) {
+  color: hsl(var(--primary));
+}
+
+.prose :where(.secondary) {
+  color: hsl(var(--secondary));
+}
 </style>
