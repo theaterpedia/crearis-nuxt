@@ -22,7 +22,8 @@
     "build:theme": "pnpm --filter=theme build",
     "build:ui": "pnpm --filter=ui build",
     "build:home": "pnpm --filter=home build",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "postinstall": "pnpm build:ui"
   },
   "devDependencies": {
     "prettier": "^3.3.3",
