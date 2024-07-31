@@ -66,6 +66,9 @@ importers:
       focus-trap:
         specifier: ^7
         version: 7.5.4
+      nanoid:
+        specifier: ^5.0.7
+        version: 5.0.7
       swiper:
         specifier: ^11.1.8
         version: 11.1.8

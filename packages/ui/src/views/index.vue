@@ -174,9 +174,45 @@
               <li>Kursraten für 5 Einheiten A1 – A5: 5 Raten * € 190,00</li>
               <li>Stornofrist bis 10 Tage nach Basistag</li>
             </ul>
-            <h3>Deinen Seminarverlauf planen</h3>
-            <div>form</div>
+            <h3><strong>Deinen Seminarverlauf planen</strong></h3>
           </Prose>
+          <Form submitLabel="Jetzt verbindlich anmelden">
+            <fieldset>
+              <legend>
+                SEMINARVERLAUF WÄHLEN
+                <span>*</span>
+              </legend>
+              <RadioGroup
+                :choices="[
+                  { label: 'München (Tageskurse + Online intensiv)', value: 'muc' },
+                  { label: 'Nürnberg (Tageskurse + Online intensiv)', value: 'nbg' },
+                  { label: 'Burgstallmühle (mit Unterbringung) > Burgstallmühle 1, 91572 Bechhofen', value: 'bgh' },
+                ]"
+                @update:modelValue="console.log"
+                name="location"
+              />
+            </fieldset>
+            <fieldset>
+              <legend>
+                BASISTAG AUSWÄHLEN
+                <span>*</span>
+              </legend>
+              <RadioGroup
+                :choices="[
+                  { label: 'SA., 29. Juli 09:30 – 18:30, München', value: '2023-07-29' },
+                  { label: 'SA., 9. Sept. 09:00 – 18:00, Nürnberg', value: '2023-09-09' },
+                ]"
+                @update:modelValue="console.log"
+                name="date"
+              />
+            </fieldset>
+            <fieldset>
+              <legend>KONTAKTDATEN</legend>
+              <Input label="Email" name="email" required type="email" />
+              <Input label="Tel.-Nummer" name="phone" required type="tel" />
+              <TextArea label="Anmerkungen" name="comment" />
+            </fieldset>
+          </Form>
         </Container>
       </Section>
 
@@ -229,13 +265,17 @@ import {
   Columns,
   Container,
   Footer,
+  Form,
+  Input,
   Main,
   MainMenu,
   Parallax,
   Prose,
+  RadioGroup,
   Section,
   Sidebar,
   Slide,
   Slider,
+  TextArea,
 } from '@/index'
 </script>

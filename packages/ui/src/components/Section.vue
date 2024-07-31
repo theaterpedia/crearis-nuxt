@@ -36,24 +36,23 @@ defineProps({
   z-index: 1;
   padding-top: 1.75rem; /* 28px */
   padding-bottom: 1.75rem; /* 28px */
-  background-color: hsl(var(--background));
-  color: hsl(var(--foreground));
 }
 
 .section-default {
-  --background: var(--card);
-  --foreground: var(--card-foreground);
+  background-color: hsl(var(--card));
+  color: hsl(var(--card-foreground));
 }
 
 .section-muted {
-  --background: var(--muted);
-  --foreground: var(--card-foreground);
+  background-color: hsl(var(--muted));
+  color: hsl(var(--card-foreground));
 }
 
 .section-accent {
-  --background: var(--accent);
   --foreground: var(--accent-foreground);
   --muted-foreground: var(--accent-foreground);
   --link: var(--primary);
+  background-color: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
 }
 </style>
