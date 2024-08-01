@@ -1,35 +1,12 @@
 <template>
   <Box>
-    <Sidebar>
-      <img
-        alt="DAS Ei"
-        src="https://pruvious.com/uploads/logo-dasei.svg"
-        style="display: block; width: 100%; height: auto"
-      />
-
-      <MainMenu
-        :items="[
-          {
-            label: 'Ausbildung Theaterpädagogik',
-            type: 'group',
-            children: [
-              { label: 'Einstiege ins Theaterspiel', link: '#' },
-              { label: 'Grundlagen Theaterpädagogik (BuT)', link: '#' },
-              { label: 'Profil Performance & Interkulturelles Theater', link: '#' },
-            ],
-          },
-          {
-            label: 'Workshops & Projekte',
-            type: 'link',
-            link: '#',
-          },
-          {
-            label: 'Team & Institut',
-            type: 'link',
-            link: '#',
-          },
-        ]"
-      />
+    <Sidebar
+      footerText="30 Jahre Theaterädagogik Bayern"
+      logo="https://pruvious.com/uploads/logo-dasei.svg"
+      logoAlt="DAS Ei"
+      logoSmall="https://pruvious.com/uploads/logo-dasei-small.svg"
+    >
+      <MainMenu v-model:items="mainMenuItems" />
     </Sidebar>
 
     <Main>
@@ -277,5 +254,33 @@ import {
   Slide,
   Slider,
   TextArea,
+  type MainMenuParentItem,
 } from '@/index'
+import { ref, type Ref } from 'vue'
+
+const mainMenuItems: Ref<MainMenuParentItem[]> = ref([
+  {
+    label: 'Ausbildung Theaterpädagogik',
+    children: [
+      { label: 'Einstiege ins Theaterspiel', link: '#' },
+      { label: 'Grundlagen Theaterpädagogik (BuT)', link: '#' },
+      { label: 'Profil Performance & Interkulturelles Theater', link: '#' },
+      {
+        label: 'Aufbaustufe Theaterpädagogogik',
+        children: [
+          { label: 'Item 1', link: '#' },
+          { label: 'Item 2', link: '#' },
+        ],
+      },
+    ],
+  },
+  {
+    label: 'Workshops & Projekte',
+    children: [],
+  },
+  {
+    label: 'Team & Institut',
+    children: [],
+  },
+])
 </script>
