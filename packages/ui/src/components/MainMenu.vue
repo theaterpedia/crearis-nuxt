@@ -5,6 +5,7 @@
         v-for="item in items"
         :item="item"
         :linkComponent="linkComponent"
+        :wrap="wrap"
         @update:item="
           $emit(
             'update:items',
@@ -28,6 +29,16 @@ defineProps({
   items: {
     type: Array as PropType<MainMenuParentItem[]>,
     required: true,
+  },
+
+  /**
+   * Whether to wrap text in the menu items.
+   *
+   * @default false
+   */
+  wrap: {
+    type: Boolean,
+    default: false,
   },
 
   /**

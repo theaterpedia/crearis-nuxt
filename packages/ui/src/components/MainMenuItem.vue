@@ -1,5 +1,9 @@
 <template>
-  <li class="main-menu-item" :class="[`main-menu-item-${level}`]" :style="{ paddingLeft: `${(level - 1) * 1}em` }">
+  <li
+    class="main-menu-item"
+    :class="[`main-menu-item-${level}`, { 'main-menu-item-no-wrap': !wrap }]"
+    :style="{ paddingLeft: `${(level - 1) * 1}em` }"
+  >
     <template v-if="'children' in item">
       <button @click="$emit('update:item', { ...item, expanded: !item.expanded })" class="main-menu-item-button">
         <span>{{ item.label }}</span>
@@ -43,6 +47,7 @@
           :item="child"
           :level="level + 1"
           :linkComponent="linkComponent"
+          :wrap="wrap"
           @update:item="
             $emit('update:item', {
               ...item,
@@ -119,6 +124,16 @@ defineProps({
   },
 
   /**
+   * Whether to wrap text in the menu item.
+   *
+   * @default false
+   */
+  wrap: {
+    type: Boolean,
+    default: false,
+  },
+
+  /**
    * The component to use for rendering links.
    * When using Nuxt, this should be `NuxtLink`.
    *
@@ -155,14 +170,14 @@ defineEmits<{
   margin-right: calc(-0.75em - 0.125em);
   padding-right: calc(1.75rem + 0.125em);
   padding-left: 0.125em;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 }
 
-.main-menu-item-button span,
-.main-menu-item-link span {
+.main-menu-item-no-wrap .main-menu-item-button,
+.main-menu-item-no-wrap .main-menu-item-link,
+.main-menu-item-no-wrap .main-menu-item-button span,
+.main-menu-item-no-wrap .main-menu-item-link span {
   overflow: hidden;
+  white-space: nowrap;
   text-overflow: ellipsis;
 }
 
