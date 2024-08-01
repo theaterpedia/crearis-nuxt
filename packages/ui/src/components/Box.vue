@@ -34,4 +34,10 @@ defineProps({
   max-width: 90rem; /* 1440px */
   margin: 0 auto;
 }
+
+@media (max-width: 1023px) {
+  .box-centered {
+    flex-direction: column;
+  }
+}
 </style>

@@ -93,4 +93,11 @@ watch(
   min-width: 23rem; /* 368px */
   max-width: 40rem; /* 640px */
 }
+
+@media (max-width: 1023px) {
+  .parallax {
+    --offset: 2.75rem; /* 44px */
+    min-height: calc(100vh - var(--offset));
+  }
+}
 </style>
