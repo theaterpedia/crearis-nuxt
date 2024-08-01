@@ -72,7 +72,7 @@
 
 .prose > * + :where(ul, ol) {
   margin-top: 0.6em;
-  color: hsl(var(--foreground));
+  color: hsl(var(--muted-foreground));
 }
 
 .prose :where(ul, ol) :where(ul, ol) {
@@ -130,10 +130,21 @@
  * Colors
  */
 .prose :where(.primary) {
+  --foreground: var(--primary);
   color: hsl(var(--primary));
 }
 
 .prose :where(.secondary) {
+  --foreground: var(--secondary);
   color: hsl(var(--secondary));
+}
+
+.prose :where(.dimmed) {
+  --foreground: var(--dimmed);
+  color: hsl(var(--dimmed));
+}
+
+.prose :where(strong) {
+  color: hsl(var(--foreground));
 }
 </style>
