@@ -145,4 +145,19 @@ onUnmounted(() => {
 .slider-pagination:deep() .swiper-pagination-bullet-active {
   background-color: hsl(var(--primary));
 }
+
+@media (max-width: 1023px) {
+  .slider-navigation {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .container .slider {
+    width: calc(100% + 2rem);
+    margin-right: -1rem;
+    margin-left: -1rem;
+    padding: 0 1rem;
+  }
+}
 </style>

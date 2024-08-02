@@ -33,7 +33,7 @@ defineProps({
   gap: 3.5rem; /* 56px */
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 767px) {
   .columns {
     flex-direction: column;
     gap: 1.75rem; /* 28px */

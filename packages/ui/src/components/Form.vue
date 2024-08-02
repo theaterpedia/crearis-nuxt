@@ -30,7 +30,7 @@ defineProps({
   color: hsl(var(--destructive));
 }
 
-.form > :where(fieldset) + :where(fieldset) {
+.form > :where(fieldset):not(:first-child) {
   margin-top: 1.75rem;
 }
 

@@ -66,7 +66,7 @@ defineProps({
   margin-top: 1.75rem; /* 28px */
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 767px) {
   .column {
     width: 100%;
   }

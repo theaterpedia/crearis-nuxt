@@ -27,4 +27,10 @@
   background-color: hsl(var(--primary));
   pointer-events: auto;
 }
+
+@media (max-width: 1023px) {
+  .slide {
+    padding: 0;
+  }
+}
 </style>

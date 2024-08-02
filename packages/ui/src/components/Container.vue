@@ -33,4 +33,11 @@ defineProps({
 .container > * + * {
   margin-top: 1.75rem; /* 28px */
 }
+
+@media (max-width: 767px) {
+  .container {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+}
 </style>

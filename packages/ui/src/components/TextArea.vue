@@ -210,6 +210,7 @@ onMounted(() => {
 @media (max-width: 767px) {
   .text-area {
     flex-direction: column;
+    gap: 0.25rem;
   }
 
   .text-area-label {

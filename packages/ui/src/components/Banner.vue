@@ -25,6 +25,12 @@ defineProps({
 }
 
 .banner-transparent {
-  background-color: hsl(var(--primary) / 90%);
+  background-color: hsl(var(--primary) / 70%);
+}
+
+@media (max-width: 767px) {
+  .banner {
+    padding: 1rem;
+  }
 }
 </style>

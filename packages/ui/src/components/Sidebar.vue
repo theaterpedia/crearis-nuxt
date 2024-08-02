@@ -18,6 +18,9 @@
           <line x1="4" x2="20" y1="18" y2="18" />
         </svg>
       </button>
+
+      <!-- Placeholder -->
+      <span></span>
     </div>
 
     <div class="sidebar-drawer" :class="{ 'sidebar-drawer-open': isOpen }">
@@ -133,8 +136,8 @@ watch(
   align-items: center;
   width: 100vw;
   height: 2.75rem;
-  padding: 0 1.75rem;
-  background-color: hsl(var(--card));
+  padding: 0 1rem;
+  background-color: hsl(var(--card) / 48%);
   color: hsl(var(--card-foreground));
 }
 
@@ -236,7 +239,7 @@ watch(
 
 @media (max-width: 1023px) {
   .sidebar-mobile-header {
-    position: sticky;
+    position: fixed;
     top: 0;
     display: flex;
   }

@@ -229,6 +229,7 @@ onMounted(() => {
 @media (max-width: 767px) {
   .input {
     flex-direction: column;
+    gap: 0.25rem;
   }
 
   .input-label {

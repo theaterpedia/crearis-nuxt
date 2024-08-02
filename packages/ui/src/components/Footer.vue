@@ -59,4 +59,16 @@ import Container from './Container.vue'
 .footer-inner > :deep() :last-child:not(:first-child) {
   text-align: right;
 }
+
+@media (max-width: 767px) {
+  .footer-inner {
+    flex-direction: column;
+    gap: 1.75rem;
+    padding: 1rem 0;
+  }
+
+  .footer-inner > :deep() :last-child:not(:first-child) {
+    text-align: left;
+  }
+}
 </style>

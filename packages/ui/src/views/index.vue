@@ -10,10 +10,7 @@
     </Sidebar>
 
     <Main>
-      <Parallax
-        backgroundImage="https://res.cloudinary.com/little-papillon/image/upload/c_crop,g_north_west,h_1100,w_1600/c_crop,g_center,h_1500,q_70,r_0,w_1600,y_100/v1594701917/dasei/einstiege_lampe_nora.jpg"
-        placement="above"
-      >
+      <Parallax backgroundImage="https://pruvious.com/uploads/dasei/banner.jpg" placement="above">
         <Banner transparent>
           <Prose>
             <h1>
