@@ -1,27 +1,23 @@
 <template>
   <Prose>
     <component :is="is" class="heading" :class="[hasOverline || hasSubline ? 'twoliner' : 'oneliner',  maxShortCode ? 'flex-box' : '' ]">
-      <template v-if="maxShortCode">
-        <span class="flex-item shortcode">{{ shortcode }}</span>
-      </template> 
-      <div class="maxShortCode ? 'flex-item' : '' ">
-        <template v-if="hasOverline">
-          <span class="tags" v-if="tags">{{ tags }}</span>
-          <span class="separator" v-if="tags && overline"> // </span>
-          <span class="overline">{{ overline  }}</span>
-        </template>
-        <strong>
-          <template v-if="minShortCode">
-            <span class="shortcode">{{ shortcode }}</span>
-          </template>
-          {{ headline }}
-        </strong>
-        <template v-if="hasSubline">
-          <span class="tags" v-if="tags">{{ tags }}</span>
-          <span class="separator" v-if="tags && subline"> // </span>
-          <span class="subline">{{ subline  }}</span>
-        </template>
-      </div>
+      <span class="shortcode-float" v-if="fancyShortCode">{{ shortcode }}</span>
+      <template v-if="hasOverline">
+        <span class="shortcode" v-if="extLineShortCode">{{ shortcode }}  </span>
+        <span class="tags" v-if="tags">{{ tags }}</span>
+        <span class="separator" v-if="tags && overline"> // </span>
+        <span class="overline">{{ overline  }}</span>
+      </template>
+      <strong>
+        <span class="shortcode" v-if="mainLineShortCode">{{ shortcode }}  </span>
+        {{ headline }}
+      </strong>
+      <template v-if="hasSubline">
+        <span class="shortcode" v-if="extLineShortCode">{{ shortcode }}  </span>
+        <span class="tags" v-if="tags">{{ tags }}</span>
+        <span class="separator" v-if="tags && subline"> // </span>
+        <span class="subline">{{ subline  }}</span>
+      </template>
       <!-- slot / not needed anymore? -->
     </component>
   </Prose>
@@ -57,29 +53,36 @@ const props = defineProps({
   },
   shortcode: {
     type: String,
-  },    
+  },  
+  isMobile: { // for development purposes only > has to be removed
+    type: Boolean,
+    default: false,    
+  },     
 })
 
 // TODO: detect mobile
-const isMobile = false
+// const isMobile = false
 
 // TODO: do we need computed here? maybe refactor towards crearis 1.0 once runnung to have less computations
 const hasOverline = ref(props.overline || (!props.subline && props.tags))
 const hasSubline = ref(!hasOverline.value && (props.subline || props.tags))
-const minShortCode = ref(props.shortcode && (isMobile || (!hasOverline.value && !hasSubline.value)))
-const maxShortCode = ref(props.shortcode && !minShortCode.value)
+const mainLineShortCode = ref(props.shortcode && (!hasOverline.value && !hasSubline.value))
+const extLineShortCode = ref(props.shortcode && (props.isMobile && !mainLineShortCode.value))
+const fancyShortCode = ref(props.shortcode && !props.isMobile && (hasOverline.value || hasSubline.value))
 
 </script>
 
 <style scoped>
-.flex-box {
-  display: inline-flex;
-  flex-direction: row;
-  justify-content: flex-start;
+
+.shortcode  {
+  margin-right: 6px;
+  background-color: #999;
 }
 
-.flex-item {
-  flex: none;
+.shortcode-float{
+  font-size: 72px !important;
+  float: left;
+  margin-right: 14px;
 }
 
 .twoliner {
