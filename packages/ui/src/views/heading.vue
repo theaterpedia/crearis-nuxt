@@ -1,8 +1,11 @@
 <template>
   <div class="container">
-    <Heading>Heading 1</Heading>
+    <Heading headline="Heading 1" overline="Overline"></Heading>
+    <Heading headline="Heading 1" subline="Subline"></Heading>
+    <Heading headline="Heading 1" subline="with Subline and Tags" tags="21.7 08:00-20:00"></Heading>
+    <Heading headline="Heading 1" overline="Overline"></Heading>
 
-    <Heading is="h2">Heading 2</Heading>
+    <Heading is="h2" headline="Heading 2"></Heading>
   </div>
 </template>
 
