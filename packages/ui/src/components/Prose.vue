@@ -1,7 +1,7 @@
 <template>
-  <span class="prose">
+  <div class="prose">
     <slot />
-  </span>
+  </div>
 </template>
 
 <style scoped>
