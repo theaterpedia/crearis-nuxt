@@ -1,7 +1,7 @@
 <template>
   <form class="form">
     <slot />
-    <Button class="form-submit-button">{{ submitLabel }}</Button>
+    <Button v-if="submitLabel" class="form-submit-button">{{ submitLabel }}</Button>
   </form>
 </template>
 
@@ -14,7 +14,6 @@ defineProps({
    */
   submitLabel: {
     type: String,
-    required: true,
   },
 })
 </script>
