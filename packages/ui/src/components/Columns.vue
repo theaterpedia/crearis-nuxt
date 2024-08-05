@@ -1,5 +1,5 @@
 <template>
-  <div class="columns" :class="[`columns-${gap}`]">
+  <div class="columns" :class="[`columns-${gap}`, `columns-${align}`]">
     <slot></slot>
   </div>
 </template>
@@ -17,6 +17,16 @@ defineProps({
     type: String as PropType<'small' | 'medium'>,
     default: 'medium',
   },
+
+  /**
+   * The vertical alignment of the columns.
+   *
+   * @default 'top'
+   */
+  align: {
+    type: String as PropType<'top' | 'center' | 'bottom'>,
+    default: 'top',
+  },
 })
 </script>
 
@@ -31,6 +41,18 @@ defineProps({
 
 .columns-medium {
   gap: 3.5rem; /* 56px */
+}
+
+.columns-top {
+  align-items: flex-start;
+}
+
+.columns-center {
+  align-items: center;
+}
+
+.columns-bottom {
+  align-items: flex-end;
 }
 
 @media (max-width: 767px) {

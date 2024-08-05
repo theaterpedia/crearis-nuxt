@@ -10,7 +10,7 @@
     </Sidebar>
 
     <Main>
-      <Parallax backgroundImage="https://pruvious.com/uploads/dasei/banner.jpg" placement="above">
+      <Hero contentType="banner" cover="https://pruvious.com/uploads/dasei/banner.jpg">
         <Banner transparent>
           <Prose>
             <h1>
@@ -25,7 +25,7 @@
             <Button size="small" variant="plain">Jetzt anmelden</Button>
           </Prose>
         </Banner>
-      </Parallax>
+      </Hero>
 
       <Section>
         <Container>
@@ -240,10 +240,10 @@ import {
   Container,
   Footer,
   Form,
+  Hero,
   Input,
   Main,
   MainMenu,
-  Parallax,
   Prose,
   RadioGroup,
   Section,

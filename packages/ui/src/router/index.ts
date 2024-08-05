@@ -5,5 +5,6 @@ export default createRouter({
   routes: [
     { path: '/', component: () => import('../views/index.vue') },
     { path: '/heading', component: () => import('../views/heading.vue') },
+    { path: '/heroes', component: () => import('../views/heroes.vue') },
   ],
 })

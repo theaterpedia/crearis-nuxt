@@ -36,6 +36,7 @@ defineProps({
   z-index: 1;
   padding-top: 1.75rem; /* 28px */
   padding-bottom: 1.75rem; /* 28px */
+  transform: translate3d(0, 0, 0); /* Fixes z-index in Safari */
 }
 
 .section-default {
