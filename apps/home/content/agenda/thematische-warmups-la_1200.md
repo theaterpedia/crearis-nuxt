@@ -9,9 +9,6 @@ start: 2024-10-18
 end: 2024-10-20
 ---
 > [!data-hero] ## **Anfänge verstehen und gestalten** Nürnberg 18. - 20.10.2024 // Fortbildung Thematische Warm-Ups
-<!-- CREARIS_PUBLISH -->
-
-> [!card-event] ## **Anfänge verstehen und gestalten** Nürnberg 18. - 20.10.2024 // Fortbildung Thematische Warm-Ups
 > 
 > [start:: 2024-10-18T09:00]
 > [ende:: 2024-10-20T15:00]
@@ -22,9 +19,9 @@ end: 2024-10-20
 > 
 > ![Warm-Up mit Tüchern](https://dasei.eu/web/image/9077-1ef2855b/thematische_warmups.jpg?height=900)
 > 
+
+<!-- CREARIS_PUBLISH -->
+
 Anfänge sind emotional anstrengend und bedürfen bewusster Gestaltung, um kreative Gruppenprozesse in Gang zu bringen. Das Seminar befasst sich mit den spezifischen Herausforderungen klassischer Anfangssituationen in der Theaterarbeit.
->
-> 
-> [[thematische-warmups-la_1200|Details anschauen]]
 
 Ausgehend von dieser Veranstaltung auch Beratung zum Profil 'Theatrales Lernen', Kurs Z15 Aufbaustufe Theaterpädagogik BuT (2025-2027).
