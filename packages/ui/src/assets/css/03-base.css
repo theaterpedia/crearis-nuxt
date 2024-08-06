@@ -8,13 +8,19 @@
   text-underline-offset: round(0.125em, 1px);
 }
 
+::selection {
+  background-color: hsl(var(--selection, var(--primary)));
+  color: hsl(var(--selection-foreground, var(--primary-foreground)));
+}
+
 body {
   min-height: 100vh;
   margin: 0;
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
   font-family: var(--font);
-  line-height: 1.5;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -35,7 +41,6 @@ h5,
 h6 {
   font-family: var(--headings);
   font-size: inherit;
-  font-weight: 600;
 }
 
 p,
@@ -86,6 +91,7 @@ hr {
   border-top-width: 1px;
 }
 
+fieldset,
 input,
 button,
 textarea,

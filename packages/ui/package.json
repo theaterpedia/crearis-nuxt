@@ -34,6 +34,8 @@
     "@nuxt/kit": "^3.12.4",
     "@vueuse/core": "^10.11.0",
     "focus-trap": "^7",
+    "nanoid": "^5.0.7",
+    "swiper": "^11.1.8",
     "vue": "latest",
     "vue-router": "latest"
   },
