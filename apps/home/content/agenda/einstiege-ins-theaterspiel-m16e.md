@@ -1,29 +1,26 @@
 ---
-id: M16E
-datatype: course
-title: "**Einstiege ins Theaterspiel** _M16E_ ==course== Mue 19.9 - 8.12.2024 // Sonntags & Online"
-cssclasses: 
+id: m16e
+heading: "**Einstiege ins Theaterspiel** _M16E_ ==course== Mue 19.9 - 8.12.2024 // Sonntags & Online"
+description: Weiterbildung Theaterpädagogik - Kurs M16E München 19.9 - 8.12.2024 // Sonntags & Online
+title: Einstiege ins Theaterspiel
+cssclasses:
+  - course
 start: 2024-09-19
 end: 2024-12-08
 ---
 > [!data-hero] ## **Einstiege ins Theaterspiel** M16E Mue 19.9 - 8.12.2024 // Sonntags & Online
 
+<!-- CREARIS_PUBLISH -->
+
 > [!card-event] ## _A0_ ==6.-7.9.2024== Praxis, Theorie & Ausbildung bei DAS Ei **Basistag Theaterpädagogik**
 > 
-> ![Basistag Theaterpädagogik](https://res.cloudinary.com/little-papillon/image/upload/w_400/v1676101506/dasei/700_dasei2022_I8A7903_cvtigl.jpg)
+> [start:: 2024-09-06T18:00]
+> [ende:: 2024-09-07T15:00]
+> [ablauf:: _Fr. 18:00-20:00_  _Sa. 09:00-18:00_  _So. 09:00-15:00_]
+> [ort:: _Hermann-Lingg Str. 2_  _80336 München_]
+> [mit:: _Cornelia Jung_  _Hans Dönitz_]
 > 
-> - **start** 06.09.2024
-> - **ende** 07.09.2024
-> - **agenda** 
-> 	- Fr. 18:00-20:00
-> 	- Sa. 09:00-18:00
-> - **ort** 
-> 	- Hermann Lingg Str. 2
-> 	- 80336 München
-> - **mit**
-> 	- Cornelia Jung
-> 	- Hans Dönitz
-> - **id** A0.00807
+> ![Foto Basistag Theaterpädagogik](https://res.cloudinary.com/little-papillon/image/upload/w_400/v1676101506/dasei/700_dasei2022_I8A7903_cvtigl.jpg)
 > 
 > Am Basistag erlebst Du die grundsätzlichen Zusammenhänge der Theaterpädagogik von DAS Ei konzentriert und ganz praktisch am eigenen Leib. Du erarbeitest Dir ausgehend von drei Zwischenreflexionen ein Grundverständnis der Module
 > - Einstiege in’s Theaterspiel (Modul A)
@@ -34,14 +31,13 @@ end: 2024-12-08
 
 > [!card-event] ## _A1_ ==7.9.2024== Einführung in die Kreisanimation **Am Anfang war der Kreis**
 > 
-> ![Foto Basistag Theaterpädagogik](https://res.cloudinary.com/little-papillon/image/upload/w_400/v1594788813/dasei/am_anfang_war_der_kreis_s9qh5y.jpg)
+> [start:: 2024-09-06T18:00]
+> [ende:: 2024-09-07T15:00]
+> [ablauf:: _Fr. 18:00-20:00_  _Sa. 09:00-18:00_  _So. 09:00-15:00_]
+> [ort:: _Hermann-Lingg Str. 2_  _80336 München_]
+> [mit:: _Cornelia Jung_  _Hans Dönitz_]
 > 
-> - **start** 06.09.2024
-> - **ende** 07.09.2024
-> - **agenda** Fr. 18:00-20:00 online | Sa. 09:00-18:00 | Di. 18:00-21:00 online
-> - **ort** 80336 München, Hermann Lingg Str. 2
-> - **mit** Hans Dönitz
-> - **id** A0.00807
+> ![Foto Basistag Theaterpädagogik](https://res.cloudinary.com/little-papillon/image/upload/w_400/v1594788813/dasei/am_anfang_war_der_kreis_s9qh5y.jpg)
 > 
 Den Einstieg in die elementare Animation bilden die Kreisspiele: Hier kommen Grundregeln und -phänomene von interaktivem Spiel sehr deutlich zum Vorschein. Zunächst beschäftigen wir uns mit den einfachen und offensichtlichen Impulsen entlang der Kreisbahn und quer durch die Kreismitte und lernen dann, zahlreiche Grundanforderungen des Theaterspiels im Kreisspiel zu trainieren.
 
