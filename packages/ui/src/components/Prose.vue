@@ -57,7 +57,7 @@
  * Links
  */
 
-.prose :where(a) {
+.prose :where(:not(:where(h1, h2, h3)[id])) :where(a) {
   color: hsl(var(--link, var(--secondary)));
   text-decoration: underline;
 }
