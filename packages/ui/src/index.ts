@@ -19,5 +19,6 @@ export { default as Sidebar } from './components/Sidebar.vue'
 export { default as Slide } from './components/Slide.vue'
 export { default as Slider } from './components/Slider.vue'
 export { default as TextArea } from './components/TextArea.vue'
+export { default as Timeline } from './components/Timeline.vue'
 
 export { useSidebar } from './composables/useSidebar'
