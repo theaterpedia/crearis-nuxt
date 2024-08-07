@@ -7,14 +7,14 @@ cssclasses:
   - blogpost
 author: Hans Dönitz
 date: 2024-04-20
-blog: Theaterpädagogik und Demokratie
+blog: Theaterpedia
 toc: h2
 hero:
-  - height: 1/2
-  - img-alt: Theaterpedia-Konferenz 2022
-  - img: https://res.cloudinary.com/little-papillon/image/upload/w_400/v1722972083/dasei/theaterpedia_konferenz_ankuendigung_ycgwkv.jpg
-  - img-h: left
-  - effects: darken-medium
+  - height-tmp: 1/2
+  - img-tmp-alt-text: Theaterpedia-Konferenz 2022
+  - img-tmp: https://res.cloudinary.com/little-papillon/image/upload/w_400/v1722972083/dasei/theaterpedia_konferenz_ankuendigung_ycgwkv.jpg
+  - img-tmp-align-y: left
+  - overlay: darken-medium
 ---
 > [!data-hero] ## Programm und Zielsetzung der Launch-Konferenz in Nürnberg **Theaterpedia-Konferenz 21.-24. Nov 2024**
 > 
@@ -23,7 +23,7 @@ hero:
 <!-- CREARIS_PUBLISH -->
 
 > [!sec-tmp|background=accent] ## **Theaterpädagogik digital vernetzen!**
-> Mit einer Konferenz feiern wir den Launch der Website theaterpedia.org nach einer zwei Jahre andauernden Entwicklungsphase. Wir erleben gemeinsam den Start der Regio Nürnberg und der Regio Augsburg, starten Arbeitsgruppen und neue Visionen auf der Internet-Plattform. Wir prüfen die im November 2022 auf der Gründungskonferenz vereinbarten Ziele und Prinzipien und entscheiden die wichtigsten Fragen für die nächsten zwei Jahre.
+> Mit einer Konferenz feiern wir den Launch der Website https://theaterpedia.org nach einer zwei Jahre andauernden Entwicklungsphase. Wir erleben gemeinsam den Start der Regio Nürnberg und der Regio Augsburg, starten Arbeitsgruppen und neue Visionen auf der Internet-Plattform. Wir prüfen die im November 2022 auf der Gründungskonferenz vereinbarten Ziele und Prinzipien und entscheiden die wichtigsten Fragen für die nächsten zwei Jahre.
 > 
 > [[../../agenda/theaterpedia-x1_1133|direkt anmelden]] [Was ist Theaterpedia?](was-ist-theaterpedia-19)[Roadmap](theaterpedia-roadmap-2024-22) [Konferenz 2022](bericht-theaterpedia-konferenz-2022-20)
 > 

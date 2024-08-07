@@ -1,21 +1,22 @@
 ---
-id: 21
-heading: Programm und Zielsetzung der Launch-Konferenz in Nürnberg **Theaterpedia-Konferenz 21.-24. Nov 2024**
-description: Programm und Zielsetzung der Launch-Konferenz in Nürnberg
-title: Theaterpedia-Konferenz 21.-24. Nov 2024
+id: 20
+heading: "**Theaterpedia-Konferenz Nov 2020** ==BERICHT== die Gründung von Theaterpedia, Nov 2022 im Steigerwald"
+description: "BERICHT: die Gründung von Theaterpedia, Nov 2022 im Steigerwald"
+title: "Theaterpedia-Konferenz Nov 2020"
 cssclasses:
   - blogpost
-author: Hans Dönitz
-date: 2024-04-20
-blog: Theaterpädagogik und Demokratie
+author: Cornelia Jung
+date: 2023-01-10
+blog: Theaterpedia
+toc: h2
 hero:
- - height: 1/2
- - img: https://res.cloudinary.com/little-papillon/image/upload/w_400/v1722972083/dasei/theaterpedia_konferenz_ankuendigung_ycgwkv.jpg
- - img-alt: Theaterpedia-Konferenz 2022
- - img-h: left
- - effects: darken-medium
+  - height-tmp: 1/2
+  - img-tmp-alt-text: Theaterpedia-Konferenz 2022
+  - img-tmp: https://res.cloudinary.com/little-papillon/image/upload/w_400/v1722972083/dasei/theaterpedia_konferenz_ankuendigung_ycgwkv.jpg
+  - img-tmp-align-y: left
+  - overlay: darken-medium
 ---
-> [!data-hero] ## Programm und Zielsetzung der Launch-Konferenz in Nürnberg **Theaterpedia-Konferenz 21.-24. Nov 2024**
+> [!data-hero] ## **Theaterpedia-Konferenz Nov 2020** ==BERICHT== die Gründung von Theaterpedia, Nov 2022 im Steigerwald
 > 
 > ![Theaterpedia-Konferenz 2022](https://res.cloudinary.com/little-papillon/image/upload/w_400/v1722972083/dasei/theaterpedia_konferenz_ankuendigung_ycgwkv.jpg)
 
