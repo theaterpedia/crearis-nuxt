@@ -1,6 +1,6 @@
 ---
 id: l4_1207
-heading: "**die Magie der Verwandlung** Nürnberg 6. - 8.12.2024 // Workshop Maskenspiel mit Susanne Carl"
+heading: "**die Magie der Verwandlung** Nürnberg 6. - 8.12.2024  Workshop Maskenspiel mit Susanne Carl"
 description: Workshop Maskenspiel mit Susanne Carl - Nürnberg 6. - 8.12.2024
 title: Die Magie der Verwandlung
 cssclasses:
