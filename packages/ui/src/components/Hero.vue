@@ -4,13 +4,13 @@
       <div
         class="hero-cover-image"
         :style="{
-          backgroundImage: `url(${cover})`,
-          backgroundPositionX: coverAlignX === 'stretch' ? 'left' : coverAlignX === 'cover' ? 'center' : coverAlignX,
-          backgroundPositionY: coverAlignY === 'stretch' ? 'top' : coverAlignY === 'cover' ? 'center' : coverAlignY,
+          backgroundImage: `url(${imgTmp})`,
+          backgroundPositionX: imgTmpAlignX === 'stretch' ? 'left' : imgTmpAlignX === 'cover' ? 'center' : imgTmpAlignX,
+          backgroundPositionY: imgTmpAlignY === 'stretch' ? 'top' : imgTmpAlignY === 'cover' ? 'center' : imgTmpAlignY,
           backgroundSize:
-            coverAlignX === 'cover' || coverAlignY === 'cover'
+            imgTmpAlignX === 'cover' || imgTmpAlignY === 'cover'
               ? 'cover'
-              : `${coverAlignX === 'stretch' ? '100%' : 'auto'} ${coverAlignY === 'stretch' ? '100%' : 'auto'}`,
+              : `${imgTmpAlignX === 'stretch' ? '100%' : 'auto'} ${imgTmpAlignY === 'stretch' ? '100%' : 'auto'}`,
         }"
       ></div>
 
@@ -33,14 +33,14 @@ defineProps({
   /**
    * The URL of the image used as a background.
    */
-  cover: {
+  imgTmp: {
     type: String,
   },
 
   /**
    * Defines the horizontal placement of the background image.
    */
-  coverAlignX: {
+  imgTmpAlignX: {
     type: String as PropType<'left' | 'right' | 'center' | 'stretch' | 'cover'>,
     default: 'center',
   },
@@ -48,7 +48,7 @@ defineProps({
   /**
    * Defines the vertical placement of the background image.
    */
-  coverAlignY: {
+  imgTmpAlignY: {
     type: String as PropType<'top' | 'bottom' | 'center' | 'stretch' | 'cover'>,
     default: 'stretch',
   },

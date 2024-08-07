@@ -3,10 +3,10 @@
     <Main>
       <Hero
         :contentAlignY="contentAlignY"
-        :coverAlignX="coverAlignX"
-        :coverAlignY="coverAlignY"
+        :imgTmpAlignX="imgTmpAlignX"
+        :imgTmpAlignY="imgTmpAlignY"
         contentType="banner"
-        cover="https://pruvious.com/uploads/dasei/banner.jpg"
+        imgTmp="https://pruvious.com/uploads/dasei/banner.jpg"
       >
         <Banner transparent>
           <Prose>
@@ -26,11 +26,11 @@
 
       <Hero
         :contentAlignY="contentAlignY"
-        :coverAlignX="coverAlignX"
-        :coverAlignY="coverAlignY"
+        :imgTmpAlignX="imgTmpAlignX"
+        :imgTmpAlignY="imgTmpAlignY"
         :overlay="overlay"
         contentWidth="full"
-        cover="https://pruvious.com/uploads/dasei/banner.jpg"
+        imgTmp="https://pruvious.com/uploads/dasei/banner.jpg"
       >
         <Columns :align="columnsAlign">
           <Column>
@@ -74,7 +74,7 @@
         <fieldset>
           <legend>COVER ALIGN X</legend>
           <RadioGroup
-            v-model="coverAlignX"
+            v-model="imgTmpAlignX"
             :choices="[
               { label: 'Left', value: 'left' },
               { label: 'Right', value: 'right' },
@@ -82,14 +82,14 @@
               { label: 'Stretch', value: 'stretch' },
               { label: 'Cover', value: 'cover' },
             ]"
-            name="coverAlignX"
+            name="imgTmpAlignX"
           />
         </fieldset>
 
         <fieldset>
           <legend>COVER ALIGN Y</legend>
           <RadioGroup
-            v-model="coverAlignY"
+            v-model="imgTmpAlignY"
             :choices="[
               { label: 'Top', value: 'top' },
               { label: 'Bottom', value: 'bottom' },
@@ -97,7 +97,7 @@
               { label: 'Stretch', value: 'stretch' },
               { label: 'Cover', value: 'cover' },
             ]"
-            name="coverAlignY"
+            name="imgTmpAlignY"
           />
         </fieldset>
 
@@ -144,8 +144,8 @@ const settingsVisible = ref(true)
 const overlay = ref<string>(
   'linear-gradient(70deg, rgb(255, 193, 7) 18%, rgba(255, 255, 255, 0.62) 61%, rgba(255, 255, 255, 0.84) 81%)',
 )
-const coverAlignX = ref<'left' | 'right' | 'center' | 'stretch' | 'cover'>('center')
-const coverAlignY = ref<'top' | 'bottom' | 'center' | 'stretch' | 'cover'>('stretch')
+const imgTmpAlignX = ref<'left' | 'right' | 'center' | 'stretch' | 'cover'>('center')
+const imgTmpAlignY = ref<'top' | 'bottom' | 'center' | 'stretch' | 'cover'>('stretch')
 const contentAlignY = ref<'top' | 'bottom' | 'center'>('bottom')
 const columnsAlign = ref<'top' | 'center' | 'bottom'>('center')
 </script>
