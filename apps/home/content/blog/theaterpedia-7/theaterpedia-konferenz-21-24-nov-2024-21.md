@@ -22,7 +22,7 @@ hero:
 
 <!-- CREARIS_PUBLISH -->
 
-> [!section-page|theme=accent] ## **Theaterpädagogik digital vernetzen!**
+> [!sec-tmp|background=accent] ## **Theaterpädagogik digital vernetzen!**
 > Mit einer Konferenz feiern wir den Launch der Website theaterpedia.org nach einer zwei Jahre andauernden Entwicklungsphase. Wir erleben gemeinsam den Start der Regio Nürnberg und der Regio Augsburg, starten Arbeitsgruppen und neue Visionen auf der Internet-Plattform. Wir prüfen die im November 2022 auf der Gründungskonferenz vereinbarten Ziele und Prinzipien und entscheiden die wichtigsten Fragen für die nächsten zwei Jahre.
 > 
 > [[../../agenda/theaterpedia-x1_1133|direkt anmelden]] [Was ist Theaterpedia?](was-ist-theaterpedia-19)[Roadmap](theaterpedia-roadmap-2024-22) [Konferenz 2022](bericht-theaterpedia-konferenz-2022-20)
@@ -62,7 +62,7 @@ hero:
 
 #### Entscheidungen und Verabredungen
 
-> [!section-page|theme=accent] ## **Maßnahmen und Ziele nach der Konferenz**
+> [!sec-tmp|background=accent] ## **Maßnahmen und Ziele nach der Konferenz**
 > ### Einsetzung von Arbeitsgruppen, z.B.
 ■  "Buchhaltung und Versteuerung" zur Vorbereitung eines Theaterpedia-Buchhaltungsmoduls  
 ■  Theme-Design und Design-Standards der Theaterpädagogik  
