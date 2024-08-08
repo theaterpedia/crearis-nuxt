@@ -10,22 +10,17 @@ icon: 'lucide:info'
   ::container
     ::columns{gap="fit" background="accent"}
       ::column{width="1/4"}
-        ![Alt text](https://24ai.tech/en/wp-content/uploads/sites/3/2023/10/01_product_1_sdelat-kvadratnym-5-scaled.jpg)
+        ![Alt text](https://res.cloudinary.com/little-papillon/image/upload/c_crop,h_798,q_60,w_798,y_40/v1594666955/dasei/geister_mittel_theatrales_lernen.jpg)
       ::
       ::column{padding="medium"}
         ::prose
-          ## **Worum geht´s?**
+          ## Fortbildung "Einstiege ins Theaterspiel" **Orientierungsphase / Modul A?**
 
-          [**Anfangen lernen, Anfänge gestalten lernen!**]{.h3}
-
-          Der Anfang soll einfach sein, so einfach wie nur irgendwie möglich. Dies gilt für Menschen, die mit Theater noch wenig Kontakt hatten. Aber auch wer das halbe Leben mit Theater verbracht hat, wird das kaum anders sehen.
-
-          **Wir sehen zwei Wege für einfache Anfänge:**
-
-          - entweder wir können ‚lebendig erklären‘
-          - oder wir lassen es einfach losgehen, möglichst ‚ohne Worte‘
-
-          Die Fortbildung 'Einstiege ins Theaterspiel' vermittelt dazu die **grundlegende Didaktik** und **Methodik**. Das lebendige Erklären' bezeichnen wir als Szenische Animation und jene Prozesse, wo es einfach losgeht nennen wir [Elementare Animation](#).
+          Am Anfang der Grundlagenbildung steht optimalerweise 'Einstiege in's Theaterspiel'. Die dort vermittelte Methodik ist das Modul A der Grundlagenbildung und Fundament für das weitere Lernen.
+          In etwa zur dritten Einheit der Fortbildung hast Du ein gründliches Beratungsgespräch mit der Ausbildungsleitung. Du bist zu dem Zeitpunkt schon vertraut mit den Abläufen, im Austausch mit anderen Kursteilnehmenden und hast verschiedene Referenten kennengelernt. Und Du hast ein Gefühl, wie sich die Ausbildung in Deinen Alltag integriert. 
+          ::button-tmp{variant="plain"}
+            [Programmdetails anschauen](einstiege)
+          ::
         ::
       ::
     ::
