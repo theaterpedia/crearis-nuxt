@@ -23,12 +23,12 @@
  * Headings
  */
 
-.prose :where(h1, h2, h3, .h1, .h2, .h3) {
+.prose :where(h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6) {
   color: hsl(var(--foreground));
   font-weight: 500;
 }
 
-.prose :where(h1, h2, h3, .h1, .h2, .h3) :where(strong) {
+.prose :where(h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6) :where(strong) {
   display: block;
 }
 
@@ -47,7 +47,22 @@
   line-height: 1.2;
 }
 
-.prose :where(h1, h2, h3, .h1, .h2, .h3) :where(small) {
+.prose :where(h4, .h4) :where(strong) {
+  font-size: 1.2em;
+  line-height: 1.2;
+}
+
+.prose :where(h5, .h5) :where(strong) {
+  font-size: 1em;
+  line-height: 1.2;
+}
+
+.prose :where(h6, .h6) :where(strong) {
+  font-size: 0.875em;
+  line-height: 1.2;
+}
+
+.prose :where(h1, h2, h3, .h1, .h2, .h3, .h4, .h5, .h6) :where(small) {
   font-size: 0.875em;
   display: block;
   font-weight: 400;
@@ -57,7 +72,7 @@
  * Links
  */
 
-.prose :where(:not(:where(h1, h2, h3)[id])) :where(a) {
+.prose :where(:not(:where(h1, h2, h3, h4, h5, h6)[id])) :where(a) {
   color: hsl(var(--link, var(--secondary)));
   text-decoration: underline;
 }
@@ -106,19 +121,21 @@
   margin-top: 1em;
 }
 
-.prose :where(:not(.h1, .h2, .h3) + p) {
+.prose :where(:not(.h1, .h2, .h3, .h4, .h5, .h6) + p) {
   margin-top: 1.8em;
 }
 
-.prose :where(h1, h2, h3, .h1, .h2, .h3) + :where(:not(.h1, .h2, .h3)) {
+.prose :where(h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6) + :where(:not(.h1, .h2, .h3, .h4, .h5, .h6)) {
   margin-top: 1.3em;
 }
 
-.prose :where(:not(.h1, .h2, .h3)) + :where(h1, h2, h3, .h1, .h2, .h3) {
+.prose :where(:not(.h1, .h2, .h3, .h4, .h5, .h6)) + :where(h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6) {
   margin-top: 1.8em;
 }
 
-.prose :where(h1, h2, h3, .h1, .h2, .h3) + :where(h1, h2, h3, .h1, .h2, .h3) {
+.prose
+  :where(h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6)
+  + :where(h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6) {
   margin-top: 0.75rem;
 }
 
