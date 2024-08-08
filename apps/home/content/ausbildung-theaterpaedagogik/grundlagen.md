@@ -18,8 +18,8 @@ icon: 'lucide:info'
 
           Am Anfang der Grundlagenbildung steht optimalerweise 'Einstiege in's Theaterspiel'. Die dort vermittelte Methodik ist das Modul A der Grundlagenbildung und Fundament für das weitere Lernen.
           In etwa zur dritten Einheit der Fortbildung hast Du ein gründliches Beratungsgespräch mit der Ausbildungsleitung. Du bist zu dem Zeitpunkt schon vertraut mit den Abläufen, im Austausch mit anderen Kursteilnehmenden und hast verschiedene Referenten kennengelernt. Und Du hast ein Gefühl, wie sich die Ausbildung in Deinen Alltag integriert. 
-          ::button-tmp{variant="plain"}
-            [Programmdetails anschauen](einstiege)
+          ::button-tmp{variant="plain" to="einstiege"}
+            Programmdetails anschauen
           ::
         ::
       ::
