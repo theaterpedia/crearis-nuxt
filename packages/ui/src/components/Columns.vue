@@ -1,5 +1,5 @@
 <template>
-  <div class="columns" :class="[`columns-${gap}`, `columns-${align}`, background ? `columns-${background}`: '']">
+  <div class="columns" :class="[`columns-${gap}`, `columns-${align}`, { [`columns-${background}`]: background }]">
     <slot></slot>
   </div>
 </template>
@@ -14,7 +14,7 @@ defineProps({
    * @default 'medium'
    */
   gap: {
-    type: String as PropType<'small' | 'medium' | 'fit' >,
+    type: String as PropType<'small' | 'medium' | 'fit'>,
     default: 'medium',
   },
 
@@ -31,12 +31,11 @@ defineProps({
   /**
    * The background color of the columns.
    * This allows to render the columns as a box.
-   * if this is not provided, the columns will be transparent.
-   *
+   * If this is not provided, the columns will be transparent.
    */
-   background: {
+  background: {
     type: String as PropType<'default' | 'muted' | 'accent'>,
-  },  
+  },
 })
 </script>
 
@@ -66,10 +65,6 @@ defineProps({
   --link: var(--primary);
   background-color: hsl(var(--accent));
   color: hsl(var(--accent-foreground));
-}
-
-.columns-fit {
-  gap: 0rem; /* 28px */
 }
 
 .columns-small {
