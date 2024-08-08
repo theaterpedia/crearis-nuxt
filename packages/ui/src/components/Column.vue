@@ -1,5 +1,5 @@
 <template>
-  <div class="column" :class="[`column-${width}`]">
+  <div class="column" :class="[`column-${width}`, padding ? `column-${padding}`:'']">
     <slot></slot>
   </div>
 </template>
@@ -18,12 +18,28 @@ defineProps({
     type: String as PropType<'1/5' | '1/4' | '1/3' | '1/2' | '2/5' | '2/3' | '3/5' | '3/4' | '4/5' | 'auto'>,
     default: 'auto',
   },
+  /**
+   * extra inline-padding for the column.
+   * THis is otional and only needed if gap=nogap is set on the parent columns.
+   *
+   */
+   padding: {
+    type: String as PropType<'small' | 'medium' >
+  },  
 })
 </script>
 
 <style scoped>
 .column-auto {
   flex: 1;
+}
+
+.column-small {
+  padding: 1.75rem; /* 28px */
+}
+
+.column-medium {
+  padding: 3.5rem; /* 56px */
 }
 
 .column-1\/5 {

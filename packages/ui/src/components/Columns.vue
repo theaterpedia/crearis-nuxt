@@ -1,5 +1,5 @@
 <template>
-  <div class="columns" :class="[`columns-${gap}`, `columns-${align}`]">
+  <div class="columns" :class="[`columns-${gap}`, `columns-${align}`, background ? `columns-${background}`: '']">
     <slot></slot>
   </div>
 </template>
@@ -14,7 +14,7 @@ defineProps({
    * @default 'medium'
    */
   gap: {
-    type: String as PropType<'small' | 'medium'>,
+    type: String as PropType<'small' | 'medium' | 'fit' >,
     default: 'medium',
   },
 
@@ -27,12 +27,49 @@ defineProps({
     type: String as PropType<'top' | 'center' | 'bottom'>,
     default: 'top',
   },
+
+  /**
+   * The background color of the columns.
+   * This allows to render the columns as a box.
+   * if this is not provided, the columns will be transparent.
+   *
+   */
+   background: {
+    type: String as PropType<'default' | 'muted' | 'accent'>,
+  },  
 })
 </script>
 
 <style scoped>
 .columns {
   display: flex;
+}
+
+.columns-default {
+  --background: var(--card);
+  --foreground: var(--card-foreground);
+  background-color: hsl(var(--card));
+  color: hsl(var(--card-foreground));
+}
+
+.columns-muted {
+  --background: var(--muted);
+  --foreground: var(--card-foreground);
+  background-color: hsl(var(--muted));
+  color: hsl(var(--card-foreground));
+}
+
+.columns-accent {
+  --background: var(--accent);
+  --foreground: var(--accent-foreground);
+  --muted-foreground: var(--accent-foreground);
+  --link: var(--primary);
+  background-color: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
+}
+
+.columns-fit {
+  gap: 0rem; /* 28px */
 }
 
 .columns-small {
