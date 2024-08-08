@@ -1,6 +1,7 @@
 export { default as Banner } from './components/Banner.vue'
 export { default as Box } from './components/Box.vue'
 export { default as Button } from './components/Button.vue'
+export { default as Catalog } from './components/Catalog.vue'
 export { default as Column } from './components/Column.vue'
 export { default as Columns } from './components/Columns.vue'
 export { default as Container } from './components/Container.vue'
