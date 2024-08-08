@@ -219,7 +219,6 @@
     <ul>
       <li><a href="#">Home</a></li>
       <li><a href="#">Ausbildung</a></li>
-      <li><a href="#">Workshops</a></li>
       <li><a href="#">Institut</a></li>
       <li><a href="#">AGB</a></li>
     </ul>
@@ -270,10 +269,6 @@ const mainMenuItems: Ref<MainMenuParentItem[]> = ref([
         ],
       },
     ],
-  },
-  {
-    label: 'Workshops & Projekte',
-    children: [],
   },
   {
     label: 'Team & Institut',
