@@ -65,7 +65,7 @@ defineProps({
 }
 
 .button-primary:hover {
-  background-color: hsl(var(--primary) / 80%);
+  background-color: hsl(var(--primary) / 70%);
 }
 
 .button-plain {
@@ -74,7 +74,7 @@ defineProps({
 }
 
 .button-plain:hover {
-  background-color: hsl(var(--card-foreground) / 80%);
+  background-color: hsl(var(--card-foreground) / 70%);
 }
 
 .button-small {
