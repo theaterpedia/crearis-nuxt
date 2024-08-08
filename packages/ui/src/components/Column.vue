@@ -1,5 +1,5 @@
 <template>
-  <div class="column" :class="[`column-${width}`, { [`column-inset-${padding}`]: padding }]">
+  <div class="column" :class="[`column-${width}`, `column-${fill ? 'fill' : 'default'}`]">
     <slot></slot>
   </div>
 </template>
@@ -20,11 +20,14 @@ defineProps({
   },
 
   /**
-   * Extra inline-padding for the column.
-   * This is otional and only needed if `gap` is set to `fit` on the parent `Columns`.
+   * Specifies whether to fill the entire column space with a cover image.
+   * This option is only usable with a single child element, which must be an image.
+   *
+   * @default false
    */
-  padding: {
-    type: String as PropType<'small' | 'medium'>,
+  fill: {
+    type: Boolean,
+    default: false,
   },
 })
 </script>
@@ -74,12 +77,31 @@ defineProps({
   margin-top: 1.75rem; /* 28px */
 }
 
-.column-inset-small {
-  padding: 1.75rem; /* 28px */
+.column-default {
+  padding-top: var(--column-padding);
+  padding-bottom: var(--column-padding);
 }
 
-.column-inset-medium {
-  padding: 3.5rem; /* 56px */
+.column-default:first-child {
+  padding-left: var(--column-padding);
+}
+
+.column-default:last-child {
+  padding-right: var(--column-padding);
+}
+
+.column-fill {
+  align-self: stretch;
+}
+
+.column-fill :deep() > p:only-child {
+  height: 100%;
+}
+
+.column-fill :where(img) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 @media (max-width: 767px) {

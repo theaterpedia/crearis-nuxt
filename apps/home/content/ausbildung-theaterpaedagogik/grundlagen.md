@@ -8,11 +8,11 @@ icon: 'lucide:info'
 
 ::sec-tmp
   ::container
-    ::columns{gap="fit" background="accent"}
-      ::column{width="1/4"}
+    ::columns{background="accent"}
+      ::column{width="1/4" fill}
         ![Alt text](https://res.cloudinary.com/little-papillon/image/upload/c_crop,h_798,q_60,w_798,y_40/v1594666955/dasei/geister_mittel_theatrales_lernen.jpg)
       ::
-      ::column{padding="medium"}
+      ::column
         ::prose
           ## Fortbildung "Einstiege ins Theaterspiel" **Orientierungsphase / Modul A?**
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="columns" :class="[`columns-${gap}`, `columns-${align}`, { [`columns-${background}`]: background }]">
+  <div class="columns" :class="[`columns-${gap}`, `columns-${align}`, `columns-${background ?? 'transparent'}`]">
     <slot></slot>
   </div>
 </template>
@@ -14,7 +14,7 @@ defineProps({
    * @default 'medium'
    */
   gap: {
-    type: String as PropType<'small' | 'medium' | 'fit'>,
+    type: String as PropType<'small' | 'medium'>,
     default: 'medium',
   },
 
@@ -41,6 +41,7 @@ defineProps({
 
 <style scoped>
 .columns {
+  --column-padding: 0;
   display: flex;
 }
 
@@ -71,8 +72,16 @@ defineProps({
   gap: 1.75rem; /* 28px */
 }
 
+.columns-small:not(.columns-transparent) {
+  --column-padding: 1.75rem; /* 28px */
+}
+
 .columns-medium {
   gap: 3.5rem; /* 56px */
+}
+
+.columns-medium:not(.columns-transparent) {
+  --column-padding: 3.5rem; /* 56px */
 }
 
 .columns-top {
