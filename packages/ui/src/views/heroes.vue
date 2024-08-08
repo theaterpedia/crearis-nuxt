@@ -3,6 +3,7 @@
     <Main>
       <Hero
         :contentAlignY="contentAlignY"
+        :heightTmp="height"
         :imgTmpAlignX="imgTmpAlignX"
         :imgTmpAlignY="imgTmpAlignY"
         contentType="banner"
@@ -26,6 +27,7 @@
 
       <Hero
         :contentAlignY="contentAlignY"
+        :heightTmp="height"
         :imgTmpAlignX="imgTmpAlignX"
         :imgTmpAlignY="imgTmpAlignY"
         :overlay="overlay"
@@ -71,6 +73,20 @@
 
     <div v-if="settingsVisible" class="settings">
       <Form>
+        <fieldset>
+          <legend>HEIGHT</legend>
+          <RadioGroup
+            v-model="height"
+            :choices="[
+              { label: 'Full', value: 'full' },
+              { label: 'Prominent', value: 'prominent' },
+              { label: 'Medium', value: 'medium' },
+              { label: 'Mini', value: 'mini' },
+            ]"
+            name="height"
+          />
+        </fieldset>
+
         <fieldset>
           <legend>COVER ALIGN X</legend>
           <RadioGroup
@@ -144,6 +160,7 @@ const settingsVisible = ref(true)
 const overlay = ref<string>(
   'linear-gradient(70deg, rgb(255, 193, 7) 18%, rgba(255, 255, 255, 0.62) 61%, rgba(255, 255, 255, 0.84) 81%)',
 )
+const height = ref<'full' | 'prominent' | 'medium' | 'mini'>('full')
 const imgTmpAlignX = ref<'left' | 'right' | 'center' | 'stretch' | 'cover'>('center')
 const imgTmpAlignY = ref<'top' | 'bottom' | 'center' | 'stretch' | 'cover'>('stretch')
 const contentAlignY = ref<'top' | 'bottom' | 'center'>('bottom')

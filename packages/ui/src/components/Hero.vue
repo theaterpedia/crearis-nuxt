@@ -1,5 +1,5 @@
 <template>
-  <div class="hero" :class="[`hero-align-content-${contentAlignY}`]">
+  <div class="hero" :class="[`hero-${heightTmp}`, `hero-align-content-${contentAlignY}`]">
     <div class="hero-cover">
       <div
         class="hero-cover-image"
@@ -30,6 +30,16 @@ import { type PropType } from 'vue'
 import Container from './Container.vue'
 
 defineProps({
+  /**
+   * Defines the height of the hero.
+   *
+   * @default 'full'
+   */
+  heightTmp: {
+    type: String as PropType<'full' | 'prominent' | 'medium' | 'mini'>,
+    default: 'full',
+  },
+
   /**
    * The URL of the image used as a background.
    */
@@ -94,9 +104,24 @@ defineProps({
   position: relative;
   display: flex;
   justify-content: flex-start;
-  min-height: 100vh;
   padding: 6.25rem 0 6.25rem 1rem;
   overflow: clip;
+}
+
+.hero-full {
+  min-height: 100vh;
+}
+
+.hero-prominent {
+  min-height: 75vh;
+}
+
+.hero-medium {
+  min-height: 50vh;
+}
+
+.hero-mini {
+  min-height: 25vh;
 }
 
 .hero-align-content-top {
