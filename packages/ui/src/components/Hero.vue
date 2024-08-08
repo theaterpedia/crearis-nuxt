@@ -152,6 +152,7 @@ defineProps({
   left: 0;
   width: 100%;
   height: 200%;
+  transform: translate3d(0, 0, 0);
 }
 
 .hero-cover-image {
