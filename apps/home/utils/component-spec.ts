@@ -7,7 +7,14 @@ export interface BaseComponentSpec {
   /**
    * Specifies whether the component has slots that can contain other components.
    */
-  isNestable: boolean
+  isParent: boolean
+
+  /**
+   * Specifies whether the component has the #actions-slot that shows links as buttons.
+   */
+  // hasActionSlot?: boolean  
+  // maybe we add this later, at the moment it is all the same
+  // with having the buttons inside the prose-slot
 
   /**
    * The name of the Vue component `prop` that will be used to pass the image URL to the component.
@@ -18,11 +25,11 @@ export interface BaseComponentSpec {
 }
 
 export interface SingletonComponentSpec extends BaseComponentSpec {
-  isNestable: false
+  isParent: false
 }
 
-export interface NestableComponentSpec extends BaseComponentSpec {
-  isNestable: true
+export interface ParentComponentSpec extends BaseComponentSpec {
+  isParent: true
 
   /**
    * Specifies whether the component can contain prose content as a direct child.
@@ -30,7 +37,7 @@ export interface NestableComponentSpec extends BaseComponentSpec {
   allowsProse: boolean
 }
 
-export type ComponentSpec = SingletonComponentSpec | NestableComponentSpec
+export type ComponentSpec = SingletonComponentSpec | ParentComponentSpec
 
 /**
  * A map of component names to their specifications.
@@ -51,74 +58,74 @@ export type ComponentSpec = SingletonComponentSpec | NestableComponentSpec
 export const componentSpecs: Record<string, ComponentSpec> = {
   Banner: {
     isPageComponent: true,
-    isNestable: true,
+    isParent: true,
     allowsProse: true,
   },
   ButtonTmp: {
     isPageComponent: false,
-    isNestable: true,
+    isParent: true,
     allowsProse: false,
+  },
+  Catalog: {
+    isPageComponent: false,
+    isParent: true,
+    allowsProse: true,
   },
   Column: {
     isPageComponent: false,
-    isNestable: true,
+    isParent: true,
     allowsProse: true,
   },
   Columns: {
     isPageComponent: true,
-    isNestable: true,
+    isParent: true,
     allowsProse: false,
-  },
-  Container: {
-    isPageComponent: false,
-    isNestable: true,
-    allowsProse: true,
   },
   FormTmp: {
     isPageComponent: false,
-    isNestable: true,
+    isParent: true,
     allowsProse: true,
   },
   Heading: {
     isPageComponent: false,
-    isNestable: false,
+    isParent: false,
   },
   Hero: {
     isPageComponent: true,
-    isNestable: true,
+    isParent: true,
     allowsProse: true,
     imgProp: 'imgTmp',
   },
   InputTmp: {
     isPageComponent: false,
-    isNestable: false,
+    isParent: false,
   },
   Prose: {
     isPageComponent: false,
-    isNestable: true,
+    isParent: true,
     allowsProse: false,
   },
   RadioGroup: {
     isPageComponent: false,
-    isNestable: false,
-  },
-  SecTmp: {
-    isPageComponent: true,
-    isNestable: true,
-    allowsProse: false,
+    isParent: false,
   },
   Slide: {
     isPageComponent: false,
-    isNestable: true,
+    isParent: true,
     allowsProse: true,
   },
   Slider: {
     isPageComponent: false,
-    isNestable: true,
+    isParent: true,
     allowsProse: false,
   },
   TextAreaTmp: {
     isPageComponent: false,
-    isNestable: false,
+    isParent: false,
   },
+  Timeline: {
+    isPageComponent: true,
+    isParent: true,
+    allowsProse: true,
+  },  
 }

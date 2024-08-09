@@ -1,4 +1,7 @@
 import consola from 'consola';
+import { kebabCase } from 'scule'
+import type { ComponentSpec } from '../../utils/component-spec'
+import { componentSpecs } from '../../utils/component-spec'
 
 export default defineNitroPlugin((nitroApp) => {
   nitroApp.hooks.hook('content:file:beforeParse', (file) => {
@@ -29,33 +32,30 @@ export default defineNitroPlugin((nitroApp) => {
       }
 
       // remove the PUBLISH_KEY and everything above it, except the frontmatter
-
-      // TODO: find the correct regex for frontmatter
       const split = file.body.split(PUBLISH_KEY);
-      consola.log(split);
-      const frontmatter = split[0].match(/---\n(([^---].*)\n)*---/);
-      if (frontmatter) {
-        file.body = frontmatter[0] + '\n' + split[1];
+      let markdown = split[1];
+
+      const fsplitted = split[0].match(/---\n(([^---].*)\n)*---/);
+      const frontmatter = fsplitted ? fsplitted[0] : '';
+
+      if (fsplitted) {
+        file.body = frontmatter + '\n' + split[1];
       } else {
         file.body = split[1];
       }
 
-
       // validate file that no keywords are used that would confuse the parsing-results
       const rkeys = ['\n::', '<prose>', '<section>'];
       for (const key of rkeys) {
-        consola.log(`Checking for reserved keyword: ${key}`);
-        if (file.body.match(key)) {
+        if (markdown.match(key)) {
           consola.error(`File ${file._id} contains reserved keyword: ${key}`);
-          file.body = 'ERROR: Reserved keyword found in file: ' + key;
+          file.body = frontmatter + '\n' + 'ERROR: Reserved keyword found in file: ' + key;
           return;
         };
       };
 
-
       // parse and replace transformation-tokens and at the end process callouts to components
-      const keys = ['tags', 'frontmatter', 'wikilinks', 'mark', 'callouts'];
-      let parsed = file.body;
+      const keys = ['tags', 'frontmatter', 'wikilinks', 'mark', 'embed', 'tab', 'vars', 'callouts'];
 
       for (const key of keys) {
         // main integration-path could follow
@@ -64,12 +64,12 @@ export default defineNitroPlugin((nitroApp) => {
         // for other options, see: https://github.com/awwaiid/thelackthereof/blob/8cd04743a16a9cfad82af3c6dcdb014e6fe8f979/lib/tweakMarkdown.js
         switch (key) {
           case 'tags':
-            // parsed = ??
+            // 
             // see:
             break;
 
           case 'frontmatter':
-            // parsed = parsed.replace(/---\n(.*)\n---/, '')
+            // 
             break;
 
           case 'wikilinks':
@@ -77,17 +77,29 @@ export default defineNitroPlugin((nitroApp) => {
             break;
 
           case 'mark':
-            parsed = parseMarks(parsed);
+            markdown = parseMarks(markdown);
             break;
 
+          case 'embed':
+            // Todo: implement embeds
+            break;
+  
+          case 'tab':
+            // Todo: implement tabs
+            break;
+  
+          case 'vars':
+            // Todo: implement meta-bind inline-vars
+            break;            
+
           case 'callouts':
-            parsed = parseCallouts(parsed);
+            markdown = parseCallouts(markdown);
             break;
         }
       }
       consola.log(`... parsed in ${(Date.now() - start)} milli-seconds!`);
-      consola.log(parsed);
-      file.body = parsed;
+      consola.log(markdown);
+      file.body = frontmatter + '\n' + markdown;
     } catch (err) {
       consola.error('Could not parse file', err);
     }
@@ -198,6 +210,14 @@ function parseCallouts(text: string, level: number = 0) {
   consola.log('Parse callouts on level: ', level);
   consola.log(text);
   let parsed = text;
+
+  for (const [name, spec] of Object.entries(componentSpecs)) {
+    const kebabName = kebabCase(name)
+    
+    if (spec.isPageComponent) {
+
+    }
+  }
 
   // make sure the text ends with a newline to avoid issues with the regex
   if (!text.endsWith('\n')) {
