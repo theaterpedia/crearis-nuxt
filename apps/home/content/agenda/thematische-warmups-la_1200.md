@@ -1,4 +1,5 @@
 ---
+publish: draft
 id: l1_1200
 heading: "**Anfänge verstehen und gestalten** Nürnberg 18. - 20.10.2024 // Fortbildung Thematische Warm-Ups"
 description: Fortbildung Thematische Warm-Ups // Nürnberg 18. - 20.10.2024
@@ -7,6 +8,12 @@ cssclasses:
   - workshop
 start: 2024-10-18
 end: 2024-10-20
+hero:
+  - height-tmp: full
+  - img-tmp-alt-text: Warm-Up mit Tüchern
+  - img-tmp: https://res.cloudinary.com/little-papillon/image/upload/w_400/v1722972081/dasei/thematische_warmups_wfwtzh.jpg
+  - img-tmp-align-y: left
+  - overlay: darken-medium
 ---
 > [!data-hero] ## **Anfänge verstehen und gestalten** Nürnberg 18. - 20.10.2024 // Fortbildung Thematische Warm-Ups
 > 
@@ -17,7 +24,7 @@ end: 2024-10-20
 > [mit:: Cornelia Jung]
 > [gebuehr:: 190]
 > 
-> ![Warm-Up mit Tüchern](https://dasei.eu/web/image/9077-1ef2855b/thematische_warmups.jpg?height=900)
+> ![Warm-Up mit Tüchern](https://res.cloudinary.com/little-papillon/image/upload/w_400/v1722972081/dasei/thematische_warmups_wfwtzh.jpg)
 > 
 
 <!-- CREARIS_PUBLISH -->

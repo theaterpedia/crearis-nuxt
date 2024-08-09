@@ -35,7 +35,7 @@ end: 2024-12-08
 > - Szenische Themenarbeit (Modul B)
 > - Pädagogische Regie (Modul C)
 > 
-> [[../ausbildung-theaterpaedagogik/2.einstiege|Einstiege anschauen 1]] [Einstiege anschauen](https://dasei.eu)
+> [[../ausbildung-theaterpaedagogik/2.einstiege_complex|Einstiege anschauen 1]] [Einstiege anschauen](https://dasei.eu)
 
 
 > [!card-event | id="A0.00807"] ## **Praxis, Theorie & Ausbildung bei DAS Ei**
@@ -50,7 +50,7 @@ end: 2024-12-08
 > - Szenische Themenarbeit (Modul B)
 > - Pädagogische Regie (Modul C)
 > 
-> [[../ausbildung-theaterpaedagogik/2.einstiege|Einstiege anschauen 1]] [Einstiege anschauen](https://dasei.eu)
+> [[../ausbildung-theaterpaedagogik/2.einstiege_complex|Einstiege anschauen 1]] [Einstiege anschauen](https://dasei.eu)
 
 > [!card-event | id="A0.00807"] ## **Praxis, Theorie & Ausbildung bei DAS Ei**
 > 
@@ -61,7 +61,7 @@ end: 2024-12-08
 > - Szenische Themenarbeit (Modul B)
 > - Pädagogische Regie (Modul C)
 > 
-> [[../ausbildung-theaterpaedagogik/2.einstiege|Einstiege anschauen 1]] [Einstiege anschauen](https://dasei.eu)
+> [[../ausbildung-theaterpaedagogik/2.einstiege_complex|Einstiege anschauen 1]] [Einstiege anschauen](https://dasei.eu)
 
 > [!card-event | id="A0.00807"] ## **Praxis, Theorie & Ausbildung bei DAS Ei**
 > 
@@ -76,7 +76,7 @@ end: 2024-12-08
 > - Szenische Themenarbeit (Modul B)
 > - Pädagogische Regie (Modul C)
 > 
-> [[../ausbildung-theaterpaedagogik/2.einstiege|Einstiege anschauen 1]] [Einstiege anschauen](https://dasei.eu)
+> [[../ausbildung-theaterpaedagogik/2.einstiege_complex|Einstiege anschauen 1]] [Einstiege anschauen](https://dasei.eu)
 
 > [!card-event] ## _A0_ ==6.-7.9.2024== Praxis, Theorie & Ausbildung bei DAS Ei **Basistag Theaterpädagogik**
 > 
@@ -87,7 +87,7 @@ end: 2024-12-08
 > - Szenische Themenarbeit (Modul B)
 > - Pädagogische Regie (Modul C)
 > 
-> [[../ausbildung-theaterpaedagogik/2.einstiege|Einstiege anschauen 1]] [Einstiege anschauen](https://dasei.eu)
+> [[../ausbildung-theaterpaedagogik/2.einstiege_complex|Einstiege anschauen 1]] [Einstiege anschauen](https://dasei.eu)
 
 > [!card-event] ## _A0_ ==6.-7.9.2024== Praxis, Theorie & Ausbildung bei DAS Ei **Basistag Theaterpädagogik**
 > 
@@ -109,7 +109,7 @@ end: 2024-12-08
 > - Szenische Themenarbeit (Modul B)
 > - Pädagogische Regie (Modul C)
 > 
-> [[../ausbildung-theaterpaedagogik/2.einstiege|Einstiege anschauen 1]] [Einstiege anschauen](https://dasei.eu)
+> [[../ausbildung-theaterpaedagogik/2.einstiege_complex|Einstiege anschauen 1]] [Einstiege anschauen](https://dasei.eu)
 
 > [!card-event] ## _A0_ ==6.-7.9.2024== Praxis, Theorie & Ausbildung bei DAS Ei **Basistag Theaterpädagogik**
 >
@@ -133,7 +133,7 @@ end: 2024-12-08
 > - Szenische Themenarbeit (Modul B)
 > - Pädagogische Regie (Modul C)
 > 
-> [[../ausbildung-theaterpaedagogik/2.einstiege|Einstiege anschauen 1]] [Einstiege anschauen](https://dasei.eu)
+> [[../ausbildung-theaterpaedagogik/2.einstiege_complex|Einstiege anschauen 1]] [Einstiege anschauen](https://dasei.eu)
 
 > [!card-event] ## _A1_ ==7.9.2024== Einführung in die Kreisanimation **Am Anfang war der Kreis**
 > 

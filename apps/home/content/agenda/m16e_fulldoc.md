@@ -44,7 +44,7 @@ In 6 prägnanten Einheiten wirst Du beide Wege erleben, verstehen und selber a
 > - Szenische Themenarbeit (Modul B)
 > - Pädagogische Regie (Modul C)
 > 
-> [[../ausbildung-theaterpaedagogik/2.einstiege|Einstiege anschauen 1]] [Einstiege anschauen](https://dasei.eu)
+> [[../ausbildung-theaterpaedagogik/2.einstiege_complex|Einstiege anschauen 1]] [Einstiege anschauen](https://dasei.eu)
 
 > [!card-event] ## _A1_ ==7.9.2024== Einführung in die Kreisanimation **Am Anfang war der Kreis**
 > 

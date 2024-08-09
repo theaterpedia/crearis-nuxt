@@ -1,4 +1,5 @@
 ---
+publish: draft
 id: x1_1133
 heading: "**Theaterpädagogik digital vernetzen!** Nürnberg 21.-24. Nov. 2024 // Theaterpedia-Konferenz"
 description: Theaterpedia-Konferenz - Nürnberg 21.-24. Nov. 2024
@@ -7,6 +8,12 @@ cssclasses:
   - conference
 start: 2024-11-21
 end: 2024-11-24
+hero:
+  - height-tmp: full
+  - img-tmp-alt-text: Theaterpedia-Konferenz 2022
+  - img-tmp: https://res.cloudinary.com/little-papillon/image/upload/w_400/v1722972083/dasei/theaterpedia_konferenz_ankuendigung_ycgwkv.jpg
+  - img-tmp-align-y: left
+  - overlay: darken-medium
 ---
 > [!data-hero] ## **Theaterpädagogik digital vernetzen!** Nürnberg 21.-24. Nov. 2024 // Theaterpedia-Konferenz
 > 

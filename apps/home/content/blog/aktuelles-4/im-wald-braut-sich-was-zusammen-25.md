@@ -1,5 +1,6 @@
 ---
-id: "25"
+publish: draft
+id: 25
 heading: "**im Wald braut sich was zusammen** Absolvent:innen aus dem Profil Theatrales Lernen starten in heiße Projektphase"
 description: Absolvent:innen aus dem Profil Theatrales Lernen starten in heiße Projektphasep
 title: im Wald braut sich was zusammen
@@ -7,7 +8,13 @@ cssclasses:
   - blogpost
 author: Cornelia Jung
 date: 2024-06-20
-blog: aktuelles
+blog: Aktuelles
+hero:
+  - height-tmp: full
+  - img-tmp-alt-text: Fachsimpeln im Cafe
+  - img-tmp: https://res.cloudinary.com/little-papillon/image/upload/w_400/v1722971694/dasei/EpisodenHeadbilder_ropdu7.jpg
+  - img-tmp-align-y: left
+  - overlay: darken-medium
 ---
 > [!data-hero] ## **im Wald braut sich was zusammen** Absolvent:innen aus dem Profil Theatrales Lernen starten in heiße Projektphase
 > 

@@ -1,5 +1,6 @@
 ---
-id: "14"
+publish: draft
+id: 14
 heading: "**Gehört werden** Die Erfahrung von Selbstwirksamkeit"
 description: "Episode Theaterpädagogik und Demokratie - Folge 2: Die Erfahrung von Selbstwirksamkeit"
 title: Gehört werden
@@ -8,6 +9,12 @@ cssclasses:
 author: Rosalin Hertrich
 date: 2024-06-20
 blog: Theaterpädagogik und Demokratie
+hero:
+  - height-tmp: full
+  - img-tmp-alt-text: Fachsimpeln im Cafe
+  - img-tmp: https://res.cloudinary.com/little-papillon/image/upload/w_400/v1722971694/dasei/EpisodenHeadbilder_ropdu7.jpg
+  - img-tmp-align-y: left
+  - overlay: darken-medium
 ---
 > [!data-hero] ## ==Folge 2== Die Erfahrung von Selbstwirksamkeit **Gehört werden**
 > 
