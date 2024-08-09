@@ -5,4 +5,5 @@ export default defineNuxtConfig({
   imports: { transform: { exclude: [/\/packages\/ui\//] } },
   modules: ['@nuxt/content', '@nuxt/image'],
   routeRules: { '/': { prerender: true } },
+  nitro: { plugins: [ 'plugins/content.ts',],},  
 })
