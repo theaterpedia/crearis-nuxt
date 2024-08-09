@@ -7,6 +7,9 @@ tmp
 # Node dependencies
 node_modules
 
+# Obsidian-local
+.obsidian
+
 # Misc
 .DS_Store
 
