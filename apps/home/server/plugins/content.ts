@@ -25,22 +25,35 @@ export default defineNitroPlugin((nitroApp) => {
 
       // see #31 for more information on draft handling and publish-config
       if (!file.body.includes(PUBLISH_KEY)) {
-        file.body = "";
+        file.body = "\nNO PUBLISHED FILE on this path\nIf you see this message, please check the file in the Editor and add the " + PUBLISH_KEY + " to the file to publish it.";
       }
 
       // remove the PUBLISH_KEY and everything above it, except the frontmatter
 
       // TODO: find the correct regex for frontmatter
       const split = file.body.split(PUBLISH_KEY);
-      const frontmatter = split[0].match(/---\n(.*)\n---/);
+      consola.log(split);
+      const frontmatter = split[0].match(/---\n(([^---].*)\n)*---/);
       if (frontmatter) {
         file.body = frontmatter[0] + '\n' + split[1];
       } else {
         file.body = split[1];
       }
-      consola.log(file.body);
 
-      // parse and replace transformation-tokens
+
+      // validate file that no keywords are used that would confuse the parsing-results
+      const rkeys = ['\n::', '<prose>', '<section>'];
+      for (const key of rkeys) {
+        consola.log(`Checking for reserved keyword: ${key}`);
+        if (file.body.match(key)) {
+          consola.error(`File ${file._id} contains reserved keyword: ${key}`);
+          file.body = 'ERROR: Reserved keyword found in file: ' + key;
+          return;
+        };
+      };
+
+
+      // parse and replace transformation-tokens and at the end process callouts to components
       const keys = ['tags', 'frontmatter', 'wikilinks', 'mark', 'callouts'];
       let parsed = file.body;
 
@@ -76,7 +89,7 @@ export default defineNitroPlugin((nitroApp) => {
       consola.log(parsed);
       file.body = parsed;
     } catch (err) {
-      console.error('Could not parse file', err);
+      consola.error('Could not parse file', err);
     }
   });
   /* disabled for now
