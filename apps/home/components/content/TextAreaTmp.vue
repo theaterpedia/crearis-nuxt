@@ -1,3 +1,3 @@
 <template>
-  <TextArea />
+  <TextAreaTmp />
 </template>

@@ -1,7 +1,9 @@
 <template>
-  <Container>
-    <ContentSlot />
-  </Container>
+  <Section>
+    <Container>
+      <ContentSlot />
+    </Container>
+  </Section>
 </template>
 
 <script lang="ts" setup>
