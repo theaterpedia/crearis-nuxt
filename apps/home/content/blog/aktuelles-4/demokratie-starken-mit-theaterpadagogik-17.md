@@ -20,7 +20,7 @@ hero:
 > 
 > ![Theaterpedia-Globus](https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_920,h_518,ar_16:9,g_auto/v1676759847/dasei/aus0_home1.jpg)
 
-<!-- CREARIS_PUBLISH -->
+<!-- PUBLISH-FROM-HERE -->
 
 Als Theaterpädagog:in erwirbst du ein breites Repertoire an kreativen Methoden, um mit Menschen in unterschiedlichsten Kontexten, politische Bildungsarbeit zu leisten. Du gibst ihnen eine Stimme, ein Gesicht, einen Raum, eine Bühne! Du arbeitest mit den relevanten Themen deiner Gruppe aktivierend, unmittelbar und inklusiv.   
 Von DAS Ei vergeben wir für 2024-26 drei Stipendien an Personen, die theaterpädagogische Methoden für Demokratieförderung einsetzen möchten: Die Teilnahme an den Modulen B-D Nürnberg wird von DAS Ei voll bezuschusst.

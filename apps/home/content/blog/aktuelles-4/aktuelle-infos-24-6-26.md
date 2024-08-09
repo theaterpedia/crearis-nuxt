@@ -19,7 +19,7 @@ hero:
 > 
 > ![Performance mit Pflanze](https://res.cloudinary.com/little-papillon/image/upload/w_400/v1594670341/dasei/pflanze_u32qtf.jpg)
 
-<!-- CREARIS_PUBLISH -->
+<!-- PUBLISH-FROM-HERE -->
 
 _Episode Theaterpädagogik & Demokratie - Basistage - Praxisprojekt - Offenes Programm_   
 **Viel Freude mit den aktuellen Monatsinfos! Leite gerne die INFOS an Interessierte weiter.**

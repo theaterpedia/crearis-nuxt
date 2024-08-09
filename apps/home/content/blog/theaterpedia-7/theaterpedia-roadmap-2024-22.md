@@ -21,6 +21,6 @@ hero:
 > 
 > ![Theaterpedia: Bausteine](https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_920,h_518,ar_16:9,g_auto/v1682757014/dasei/esther_theaterfabrik.jpg)
 
-<!-- CREARIS_PUBLISH -->
+<!-- PUBLISH-FROM-HERE -->
 
 ## _CONTENT-ERROR_

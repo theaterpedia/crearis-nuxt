@@ -17,16 +17,28 @@ export default defineNitroPlugin((nitroApp) => {
       file.body = '---\nnavigation: false\n---'
     }  */
 
-    // TODO: detect origin of file and apply transformation accordingly
-    const GENERATE_KEY = '<!-- CREARIS_PUBLISH -->';
+    const PUBLISH_KEY = '<!-- PUBLISH-FROM-HERE -->';
 
     try {
       const start = Date.now();
       consola.log(`Transforming Obsidian-file ${file._id} ...`);
 
-      if (!file.body.includes(GENERATE_KEY)) {
-        return console.warn(`Could not find ${GENERATE_KEY} in ${file._id}`);
+      // see #31 for more information on draft handling and publish-config
+      if (!file.body.includes(PUBLISH_KEY)) {
+        file.body = "";
       }
+
+      // remove the PUBLISH_KEY and everything above it, except the frontmatter
+
+      // TODO: find the correct regex for frontmatter
+      const split = file.body.split(PUBLISH_KEY);
+      const frontmatter = split[0].match(/---\n(.*)\n---/);
+      if (frontmatter) {
+        file.body = frontmatter[0] + '\n' + split[1];
+      } else {
+        file.body = split[1];
+      }
+      consola.log(file.body);
 
       // parse and replace transformation-tokens
       const keys = ['tags', 'frontmatter', 'wikilinks', 'mark', 'callouts'];
@@ -387,7 +399,7 @@ function _resolveIcon(path: string = '') {
   }
 }
 
-/* code-groups not needed for no
+/* code-groups not needed for now
 // --- transform code groups ---
 
 function transformCodeGroups(currChildIdx: number, children: ContentNode[] = []) {

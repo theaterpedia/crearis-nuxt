@@ -21,7 +21,7 @@ hero:
 > 
 > ![Theaterpedia-Konferenz 2022](https://res.cloudinary.com/little-papillon/image/upload/w_400/v1722972083/dasei/theaterpedia_konferenz_ankuendigung_ycgwkv.jpg)
 
-<!-- CREARIS_PUBLISH -->
+<!-- PUBLISH-FROM-HERE -->
 
 > [!col-tmp|background=accent] ## **Theaterpädagogik digital vernetzen!**
 > 

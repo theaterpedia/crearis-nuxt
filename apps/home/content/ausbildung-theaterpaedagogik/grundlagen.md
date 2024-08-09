@@ -4,7 +4,7 @@ description: Grundlagen Theaterpädagogik (BuT) + Theaterpädagoge/in (BuT) -- M
 icon: 'lucide:info'
 ---
 
-<!-- CREARIS_PUBLISH -->
+<!-- PUBLISH-FROM-HERE -->
 
 ::sec-tmp
   ::container
