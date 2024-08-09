@@ -1,5 +1,5 @@
 ---
-publish: draft
+draft: true
 id: 20
 heading: "**Theaterpedia-Konferenz Nov 2020** ==BERICHT== die Gründung von Theaterpedia, Nov 2022 im Steigerwald"
 description: "BERICHT: die Gründung von Theaterpedia, Nov 2022 im Steigerwald"

@@ -1,5 +1,5 @@
 ---
-publish: draft
+draft: true
 id: 14
 heading: "**Gehört werden** Die Erfahrung von Selbstwirksamkeit"
 description: "Episode Theaterpädagogik und Demokratie - Folge 2: Die Erfahrung von Selbstwirksamkeit"

@@ -1,5 +1,5 @@
 ---
-publish: draft
+draft: true
 id: 17
 heading: "**Demokratie stärken mit Theaterpädagogik!** 3 Stipendien für die Grundlagenbildung Theaterpädagogik in Nürnberg/Fürth..."
 description: 3 Stipendien für die Grundlagenbildung Theaterpädagogik in Nürnberg/Fürth...

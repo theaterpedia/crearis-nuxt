@@ -1,5 +1,5 @@
 ---
-publish: draft
+draft: true
 id: 26
 heading: "**aktuelle Infos 24.6** der monatliche Newsletter DAS Ei"
 description: der monatliche Newsletter DAS Ei

@@ -1,5 +1,5 @@
 ---
-publish: draft
+draft: true
 id: 22
 heading: "**Theaterpedia: Roadmap 2024**"
 description: Programm und Zielsetzung der Launch-Konferenz in Nürnberg

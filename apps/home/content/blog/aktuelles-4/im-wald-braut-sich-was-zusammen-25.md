@@ -1,5 +1,5 @@
 ---
-publish: draft
+draft: true
 id: 25
 heading: "**im Wald braut sich was zusammen** Absolvent:innen aus dem Profil Theatrales Lernen starten in heiße Projektphase"
 description: Absolvent:innen aus dem Profil Theatrales Lernen starten in heiße Projektphasep

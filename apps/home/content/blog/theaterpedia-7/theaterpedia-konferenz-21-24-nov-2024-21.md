@@ -1,5 +1,5 @@
 ---
-publish: draft
+draft: true
 id: 21
 heading: Programm und Zielsetzung der Launch-Konferenz in Nürnberg 
 description: Programm und Zielsetzung der Launch-Konferenz in Nürnberg
