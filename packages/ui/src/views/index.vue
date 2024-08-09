@@ -10,7 +10,7 @@
     </Sidebar>
 
     <Main>
-      <Hero contentType="banner" cover="https://pruvious.com/uploads/dasei/banner.jpg">
+      <Hero contentType="banner" imgTmp="https://pruvious.com/uploads/dasei/banner.jpg">
         <Banner transparent>
           <Prose>
             <h1>
@@ -219,7 +219,6 @@
     <ul>
       <li><a href="#">Home</a></li>
       <li><a href="#">Ausbildung</a></li>
-      <li><a href="#">Workshops</a></li>
       <li><a href="#">Institut</a></li>
       <li><a href="#">AGB</a></li>
     </ul>
@@ -270,10 +269,6 @@ const mainMenuItems: Ref<MainMenuParentItem[]> = ref([
         ],
       },
     ],
-  },
-  {
-    label: 'Workshops & Projekte',
-    children: [],
   },
   {
     label: 'Team & Institut',

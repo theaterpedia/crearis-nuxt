@@ -1,5 +1,5 @@
 <template>
-  <div class="column" :class="[`column-${width}`]">
+  <div class="column" :class="[`column-${width}`, `column-${fill ? 'fill' : 'default'}`]">
     <slot></slot>
   </div>
 </template>
@@ -17,6 +17,17 @@ defineProps({
   width: {
     type: String as PropType<'1/5' | '1/4' | '1/3' | '1/2' | '2/5' | '2/3' | '3/5' | '3/4' | '4/5' | 'auto'>,
     default: 'auto',
+  },
+
+  /**
+   * Specifies whether to fill the entire column space with a cover image.
+   * This option is only usable with a single child element, which must be an image.
+   *
+   * @default false
+   */
+  fill: {
+    type: Boolean,
+    default: false,
   },
 })
 </script>
@@ -64,6 +75,33 @@ defineProps({
 
 .column > * + * {
   margin-top: 1.75rem; /* 28px */
+}
+
+.column-default {
+  padding-top: var(--column-padding);
+  padding-bottom: var(--column-padding);
+}
+
+.column-default:first-child {
+  padding-left: var(--column-padding);
+}
+
+.column-default:last-child {
+  padding-right: var(--column-padding);
+}
+
+.column-fill {
+  align-self: stretch;
+}
+
+.column-fill :deep() > p:only-child {
+  height: 100%;
+}
+
+.column-fill :where(img) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 @media (max-width: 767px) {

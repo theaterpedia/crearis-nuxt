@@ -1,16 +1,16 @@
 <template>
-  <div class="hero" :class="[`hero-align-content-${contentAlignY}`]">
+  <div class="hero" :class="[`hero-${heightTmp}`, `hero-align-content-${contentAlignY}`]">
     <div class="hero-cover">
       <div
         class="hero-cover-image"
         :style="{
-          backgroundImage: `url(${cover})`,
-          backgroundPositionX: coverAlignX === 'stretch' ? 'left' : coverAlignX === 'cover' ? 'center' : coverAlignX,
-          backgroundPositionY: coverAlignY === 'stretch' ? 'top' : coverAlignY === 'cover' ? 'center' : coverAlignY,
+          backgroundImage: `url(${imgTmp})`,
+          backgroundPositionX: imgTmpAlignX === 'stretch' ? 'left' : imgTmpAlignX === 'cover' ? 'center' : imgTmpAlignX,
+          backgroundPositionY: imgTmpAlignY === 'stretch' ? 'top' : imgTmpAlignY === 'cover' ? 'center' : imgTmpAlignY,
           backgroundSize:
-            coverAlignX === 'cover' || coverAlignY === 'cover'
+            imgTmpAlignX === 'cover' || imgTmpAlignY === 'cover'
               ? 'cover'
-              : `${coverAlignX === 'stretch' ? '100%' : 'auto'} ${coverAlignY === 'stretch' ? '100%' : 'auto'}`,
+              : `${imgTmpAlignX === 'stretch' ? '100%' : 'auto'} ${imgTmpAlignY === 'stretch' ? '100%' : 'auto'}`,
         }"
       ></div>
 
@@ -31,16 +31,26 @@ import Container from './Container.vue'
 
 defineProps({
   /**
+   * Defines the height of the hero.
+   *
+   * @default 'full'
+   */
+  heightTmp: {
+    type: String as PropType<'full' | 'prominent' | 'medium' | 'mini'>,
+    default: 'full',
+  },
+
+  /**
    * The URL of the image used as a background.
    */
-  cover: {
+  imgTmp: {
     type: String,
   },
 
   /**
    * Defines the horizontal placement of the background image.
    */
-  coverAlignX: {
+  imgTmpAlignX: {
     type: String as PropType<'left' | 'right' | 'center' | 'stretch' | 'cover'>,
     default: 'center',
   },
@@ -48,7 +58,7 @@ defineProps({
   /**
    * Defines the vertical placement of the background image.
    */
-  coverAlignY: {
+  imgTmpAlignY: {
     type: String as PropType<'top' | 'bottom' | 'center' | 'stretch' | 'cover'>,
     default: 'stretch',
   },
@@ -94,9 +104,24 @@ defineProps({
   position: relative;
   display: flex;
   justify-content: flex-start;
-  min-height: 100vh;
   padding: 6.25rem 0 6.25rem 1rem;
   overflow: clip;
+}
+
+.hero-full {
+  min-height: 100vh;
+}
+
+.hero-prominent {
+  min-height: 75vh;
+}
+
+.hero-medium {
+  min-height: 50vh;
+}
+
+.hero-mini {
+  min-height: 25vh;
 }
 
 .hero-align-content-top {
@@ -127,6 +152,7 @@ defineProps({
   left: 0;
   width: 100%;
   height: 200%;
+  transform: translate3d(0, 0, 0);
 }
 
 .hero-cover-image {
