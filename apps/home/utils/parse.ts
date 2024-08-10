@@ -190,7 +190,7 @@ function prepareComponents(markdown: string, level: number = 0, isProseOpen: boo
     /* ----------------- Handle opened tags ----------------- */
     // on the doc-root before opening a new pageComponent, close the previously opened sectionProse
     // same if prose was opened
-    if ((level = 0 && spec.isPageComponent) || isProseOpen) {
+    if ((level === 0 && 'isPageComponent' in spec && spec.isPageComponent) || isProseOpen) {
       // set the cursors on this callout
       calloutPos = callout.index;
       calloutLength = callout[0].length;
@@ -209,7 +209,7 @@ function prepareComponents(markdown: string, level: number = 0, isProseOpen: boo
     const lines = sourceBody.split('\n');
 
     // first, if image-prop accepted, we look for an image on the firstline
-    if (spec.imgProp) {
+    if ('imgProp' in spec && spec.imgProp) {
       // get the first line of the callout
       // check if the first line is an image
       // if so, add it to the header
@@ -233,13 +233,13 @@ function prepareComponents(markdown: string, level: number = 0, isProseOpen: boo
     let body = '';
     
     let bodyIndent = indent + 1;
-    if (spec.allowsProse) {
+    if ('allowsProse' in spec && spec.allowsProse) {
       // if the component allows prose, we open a prose-section
       body = `${tag}${secProse}\n`;  //obs: indentation is done in next block
       bodyIndent += 1;
     }
 
-    if (spec.isParent || spec.allowsProse) {
+    if (('isParent' in spec && spec.isParent) || 'allowsProse' in spec && spec.allowsProse ) {
       const newBodyLines = prepareComponentBody(sourceBody, level, spec).split('\n');
       body += '\n' + '  '.repeat(bodyIndent) + newBodyLines.join('\n' + '  '.repeat(bodyIndent));
     }   
@@ -249,7 +249,7 @@ it is mainly handled here, relative to the callout
 sub-components add more indentation to the body, they see their callout as the root
 */
 
-    if (spec.allowsProse) {  // close a prose-section and handle the indentation
+    if ('allowsProse' in spec && spec.allowsProse) {  // close a prose-section and handle the indentation
       bodyIndent -= 1;
       body += '\n' + '  '.repeat(bodyIndent) + `${tag}${secProse}`;
     }
