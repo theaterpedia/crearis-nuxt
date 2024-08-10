@@ -26,6 +26,7 @@ export interface BaseComponentSpec {
 
 export interface SingletonComponentSpec extends BaseComponentSpec {
   isParent: false
+  allowsProse: false
 }
 
 export interface ParentComponentSpec extends BaseComponentSpec {
