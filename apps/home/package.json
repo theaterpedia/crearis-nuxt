@@ -20,6 +20,7 @@
     "@crearis-nuxt/ui": "workspace:*",
     "@nuxt/content": "^2.13.1",
     "@nuxt/image": "^1.7.0",
+    "consola": "^3.2.3",
     "nuxt": "^3.12.4",
     "scule": "^1.3.0",
     "vue": "latest"
