@@ -1,4 +1,7 @@
 import consola from 'consola';
+import { pascalCase, kebabCase } from 'scule'
+import type { ComponentSpec } from './component-spec'
+import { componentSpecs } from './component-spec'
 
 export function parse(markdown: string) {
   // parse and replace transformation-tokens and at the end process callouts to components
@@ -141,7 +144,6 @@ Blah
 ::
 */
 
-// ts-expect-error incompleted types
 function prepareComponents(markdown: string, level: number = 0, isProseOpen: boolean = false) {
   consola.log('prepareComponents on level: ', level);
   consola.log(markdown);
@@ -165,6 +167,8 @@ function prepareComponents(markdown: string, level: number = 0, isProseOpen: boo
   // track the positioning in the source / fragment
   let closeTagPos = 0;
   let openTagPos = 1;
+  let calloutPos = 0;
+  let calloutLength = 0;
 
   // add open-tag to the beginning of the output (we'll check later if it was needed)
   if (level === 0) {
@@ -178,40 +182,24 @@ function prepareComponents(markdown: string, level: number = 0, isProseOpen: boo
   // Main Loop
   for (const callout of callouts) { //header: callout[1] - body: callout[2]
     let closedProse = false;  // tracks if we temporarily closed the prose-section (but should reopen it)
-    const header = parseCalloutHeader(callout[1]); //returns { type: '', title: '', props: {}, attributes: '' }
 
-    /* ----------------- Validation ----------------- */
+    const { header, spec, error, newMarkdown } = getComponentHeader(callout[1], callout[0], markdown);
 
-    const HeaderError = (!header || !header.type || header.type === '') ? 'Could not parse callout-header' : !ensureComponentExists(header.type) ? 'Component not found' : '';
-    if (HeaderError !== '') {
-      consola.error(HeaderError + ' - skipping this callout: \n', callout[0]);
-      // alter the source to prevent entering this to pendingProse later on
-      if (callout[0].length > 7) {
-        // exactly keep the lenght of the callout, but replace the content with a comment
-        markdown = markdown.replace(callout[0], '<!--' + 'X'.repeat(callout[0].length - 7) + '-->'); 
-      } else {
-        markdown = markdown.replace(callout[0], '\n'.repeat(callout[0].length));
-      }
-      continue;
-    }
-
-    // We have a valid header, we assume we'll get a valid component
-    let spec = getSpec(header.type);
-
+    if (newMarkdown) { markdown = newMarkdown }
+    if (error) { continue }
     /* ----------------- Handle opened tags ----------------- */
     // on the doc-root before opening a new pageComponent, close the previously opened sectionProse
     // same if prose was opened
     if ((level = 0 && spec.isPageComponent) || isProseOpen) {
-      // get the beginning of the callout
-      const startPos = callout.index;
-      // get the unprocessed source-content above this callout
-      const pendingProse = markdown.substring(openTagPos, startPos-1);
-      consola.log('pendingProse: ', pendingProse);
+      // set the cursors on this callout
+      calloutPos = callout.index;
+      calloutLength = callout[0].length;
+
       // indent the pendingProse, close the tag and add it to the result, update the lineCounter
-      const indPendingProse = pendingProse.replace(/\n/g, `\n${'  '.repeat(indent)}`);
+      result += processPendingProse(markdown,openTagPos, calloutPos-1, indent);
       indent -= 1;
-      result += indPendingProse + '\n' + '  '.repeat(indent) + tag + '\n\n';
-      closeTagPos = startPos -1;
+      result += '\n' + '  '.repeat(indent) + tag + '\n\n';
+      closeTagPos = calloutPos -1;
       closedProse = true;
     }
     
@@ -278,9 +266,48 @@ sub-components add more indentation to the body, they see their callout as the r
     result += newCallout
   }
 
+  if ((level = 0) || isProseOpen) {
+    const endOfLastCallout = calloutPos + calloutLength;  //if no callout was found, this will be 0
+    // add the unprocessed source-content (prose) until the file-end with correct indentation
+    result += processPendingProse(markdown,endOfLastCallout, markdown.length, indent);
+    indent -= 1;
+    result += '\n' + '  '.repeat(indent) + tag + '\n';
+  }
+  
   // TODO: remove empty sections and empty prose (level 0)
   return result;
 
+}
+
+function getComponentHeader(sourceHeader: string, sourceCallout: string, markdown: string) {
+  const header = parseCalloutHeader(sourceHeader); //returns { type: '', title: '', props: {}, attributes: '' }
+
+  /* ----------------- Validation ----------------- */
+  let newMarkdown = '';
+  const HeaderError = (!header || !header.type || header.type === '') ? 'Could not parse callout-header' : !ensureComponentExists(header.type) ? 'Component not found' : '';
+  if (HeaderError !== '') {
+    consola.error(HeaderError + ' - skipping this callout: \n', sourceCallout);
+    // alter the source to prevent entering this to pendingProse later on
+    if (sourceCallout.length > 7) {
+      // exactly keep the lenght of the callout, but replace the content with a comment
+      newMarkdown = markdown.replace(sourceCallout, '<!--' + 'X'.repeat(sourceCallout.length - 7) + '-->'); 
+    } else {
+      newMarkdown = markdown.replace(sourceCallout, '\n'.repeat(sourceCallout.length));
+    }
+    return { header, spec: {}, error: HeaderError, newMarkdown };
+  } else {
+    const spec = getSpec(header.type);
+    return { header, spec}
+  }
+}
+
+function processPendingProse(markdown: string, fromPos: number, toPos: number, indent: number) {
+  // get the unprocessed source-content above the callout
+  const pendingProse = markdown.substring(fromPos, toPos);
+  consola.log('pendingProse: ', pendingProse);
+  // indent the pendingProse, close the tag and add it to the result, update the lineCounter
+  const indPendingProse = pendingProse.replace(/\n/g, `\n${'  '.repeat(indent)}`);
+  return indPendingProse;
 }
 
 function parseCalloutHeader(header: string) {
@@ -363,11 +390,12 @@ function prepareComponentBody(body: string, level: number, spec: ComponentSpec) 
 
 // ------------------- Helpers -------------------
 function getSpec(name: string): ComponentSpec {
-  return componentSpecs[camelCase(name)]
+  consola.log('component specs: ', componentSpecs[pascalCase(name)]);
+  return componentSpecs[pascalCase(name)]
 }
 
 function ensureComponentExists(name: string): boolean {
-  return componentSpecs[camelCase(name)] != undefined
+  return componentSpecs[pascalCase(name)] != undefined
 }
 
 // ---------------------

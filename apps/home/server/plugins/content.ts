@@ -1,8 +1,5 @@
 import consola from 'consola';
 import { parse } from '~/utils/parse';
-import { kebabCase } from 'scule'
-import type { ComponentSpec } from '../../utils/component-spec'
-import { componentSpecs } from '../../utils/component-spec'
 
 export default defineNitroPlugin((nitroApp) => {
   nitroApp.hooks.hook('content:file:beforeParse', (file) => {
