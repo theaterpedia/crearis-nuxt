@@ -55,7 +55,7 @@ export default defineNitroPlugin((nitroApp) => {
         };
       };
       
-      const parsed = parse(file.body);      
+      markdown = parse(markdown);      
       consola.log(`... parsed in ${(Date.now() - start)} milli-seconds!`);
       consola.log(markdown);
       file.body = frontmatter + '\n' + markdown;
