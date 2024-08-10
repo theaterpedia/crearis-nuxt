@@ -2,6 +2,7 @@ import consola from 'consola';
 import { pascalCase, kebabCase } from 'scule'
 import type { ComponentSpec } from './component-spec'
 import { componentSpecs } from './component-spec'
+const logVerbose = true;
 
 export function parse(markdown: string) {
   // parse and replace transformation-tokens and at the end process callouts to components
@@ -19,6 +20,8 @@ export function parse(markdown: string) {
 
   // list tokes to parse
   const keys = ['tags', 'frontmatter', 'wikilinks', 'mark', 'embed', 'tab', 'vars'];
+
+  if (logVerbose) consola.log('###### Verbose Log #######');
 
   for (const key of keys) {
     // main integration-path could follow
@@ -66,8 +69,7 @@ export function parse(markdown: string) {
 // --- beforeParse ---
 // ts-expect-error incompleted types
 function parseMarks(text: string) {
-  consola.log('Parse marks');
-  consola.log(text);
+  if (logVerbose) consola.log('Parse marks');
   let parsed = text;
 
   // make sure the text ends with a newline to avoid issues with the regex
@@ -89,7 +91,8 @@ function parseMarks(text: string) {
     const fulltag = mark[1];
 
     if (!fulltag) {
-      consola.error('Could not parse mark');
+      consola.error('Could not parse mark', mark[0]);
+      if (logVerbose) consola.log('Could not parse mark here:', marks);
       continue;
     }
 
@@ -145,14 +148,14 @@ Blah
 */
 
 function prepareComponents(markdown: string, level: number = 0, isProseOpen: boolean = false) {
-  consola.log('prepareComponents on level: ', level);
-  consola.log(markdown);
+  if (logVerbose) consola.log('[PARSE] ################ prepareComponents on level: ', level);
+  if (logVerbose) consola.log('(recieved this source-md)\n', markdown);
   let result = '';
   let indent = level + (isProseOpen ? 1 : 0);
 
   // stop execution if nesting-level > 3
   if (level > 5) {
-    consola.error('Component-nesting too deep (max allowed: 5), stopping execution');
+    consola.error('[PARSE] Component-nesting too deep (max allowed: 5), stopping execution');
     return result;
   }
 
@@ -185,8 +188,12 @@ function prepareComponents(markdown: string, level: number = 0, isProseOpen: boo
 
     const { header, spec, error, newMarkdown } = getComponentHeader(callout[1], callout[0], markdown);
 
-    if (newMarkdown) { markdown = newMarkdown }
-    if (error) { continue }
+    if (error) { 
+      consola.error('[PARSE]' + ' - skipping this callout: \n', callout[0]);
+      if (newMarkdown) { markdown = newMarkdown }  //source-markdown must only be altered on errors
+      if (logVerbose) consola.log('\n[PARSE] ################ \n after Callout-Error altered the Source: \n\n ', newMarkdown);
+      continue 
+    }
     /* ----------------- Handle opened tags ----------------- */
     // on the doc-root before opening a new pageComponent, close the previously opened sectionProse
     // same if prose was opened
@@ -275,6 +282,7 @@ sub-components add more indentation to the body, they see their callout as the r
   }
   
   // TODO: remove empty sections and empty prose (level 0)
+  if (logVerbose) consola.log('\n[PARSE] ################ \n(result after Callout-Processing)\n ', result);
   return result;
 
 }
@@ -286,7 +294,6 @@ function getComponentHeader(sourceHeader: string, sourceCallout: string, markdow
   let newMarkdown = '';
   const HeaderError = (!header || !header.type || header.type === '') ? 'Could not parse callout-header' : !ensureComponentExists(header.type) ? 'Component not found' : '';
   if (HeaderError !== '') {
-    consola.error(HeaderError + ' - skipping this callout: \n', sourceCallout);
     // alter the source to prevent entering this to pendingProse later on
     if (sourceCallout.length > 7) {
       // exactly keep the lenght of the callout, but replace the content with a comment
@@ -297,6 +304,7 @@ function getComponentHeader(sourceHeader: string, sourceCallout: string, markdow
     return { header, spec: {}, error: HeaderError, newMarkdown };
   } else {
     const spec = getSpec(header.type);
+    //never return source-markdown here. It must only be altered on errors!!
     return { header, spec}
   }
 }
