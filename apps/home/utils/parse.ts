@@ -278,7 +278,7 @@ sub-components add more indentation to the body, they see their callout as the r
     // add the unprocessed source-content (prose) until the file-end with correct indentation
     result += processPendingProse(markdown,endOfLastCallout, markdown.length, indent);
     indent -= 1;
-    result += '\n' + '  '.repeat(indent) + tag + '\n';
+    result += (result.endsWith('\n') ? '' : '\n') + '  '.repeat(indent) + tag + '\n';
   }
   
   // TODO: remove empty sections and empty prose (level 0)
@@ -295,9 +295,9 @@ function getComponentHeader(sourceHeader: string, sourceCallout: string, markdow
   const HeaderError = (!header || !header.type || header.type === '') ? 'Could not parse callout-header' : !ensureComponentExists(header.type) ? 'Component not found' : '';
   if (HeaderError !== '') {
     // alter the source to prevent entering this to pendingProse later on
-    if (sourceCallout.length > 7) {
+    if (sourceCallout.length > 8) {
       // exactly keep the lenght of the callout, but replace the content with a comment
-      newMarkdown = markdown.replace(sourceCallout, '<!--' + 'X'.repeat(sourceCallout.length - 7) + '-->'); 
+      newMarkdown = markdown.replace(sourceCallout, '<!--' + 'X'.repeat(sourceCallout.length - 8) + '-->\n'); 
     } else {
       newMarkdown = markdown.replace(sourceCallout, '\n'.repeat(sourceCallout.length));
     }
@@ -311,8 +311,9 @@ function getComponentHeader(sourceHeader: string, sourceCallout: string, markdow
 
 function processPendingProse(markdown: string, fromPos: number, toPos: number, indent: number) {
   // get the unprocessed source-content above the callout
-  const pendingProse = markdown.substring(fromPos, toPos);
-  consola.log('pendingProse: ', pendingProse);
+  // if we find '\n' or '\n' with whitespaces at the end of pendingProse remove it
+  const pendingProse = markdown.substring(fromPos, toPos).replace(/\n+$/, '');
+
   // indent the pendingProse, close the tag and add it to the result, update the lineCounter
   let indPendingProse = pendingProse.replace(/\n/g, `\n${'  '.repeat(indent)}`);
   // add indentation to first line as well
