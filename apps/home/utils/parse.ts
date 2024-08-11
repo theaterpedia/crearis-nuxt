@@ -165,7 +165,7 @@ function prepareComponents(markdown: string, level: number = 0, isProseOpen: boo
   // const startsWithCalloutRegex = /> (\[!.*\].*)\n((>+.*\n)*)/g; // regex documented here: https://regexr.com/83ic7 (was: > (\[![^\n\]]*\][^\n]*)\n((>[^\n]*\n)*))
 
   const tag = `::${':'.repeat(level)}`;
-  const secProse = 'SectionProse';
+  const secProse = 'section-prose';
 
   // track the positioning in the source / fragment
   let closeTagPos = 0;
@@ -273,7 +273,7 @@ sub-components add more indentation to the body, they see their callout as the r
     result += newCallout
   }
 
-  if ((level = 0) || isProseOpen) {
+  if (level === 0 || isProseOpen) {
     const endOfLastCallout = calloutPos + calloutLength;  //if no callout was found, this will be 0
     // add the unprocessed source-content (prose) until the file-end with correct indentation
     result += processPendingProse(markdown,endOfLastCallout, markdown.length, indent);
@@ -314,7 +314,9 @@ function processPendingProse(markdown: string, fromPos: number, toPos: number, i
   const pendingProse = markdown.substring(fromPos, toPos);
   consola.log('pendingProse: ', pendingProse);
   // indent the pendingProse, close the tag and add it to the result, update the lineCounter
-  const indPendingProse = pendingProse.replace(/\n/g, `\n${'  '.repeat(indent)}`);
+  let indPendingProse = pendingProse.replace(/\n/g, `\n${'  '.repeat(indent)}`);
+  // add indentation to first line as well
+  if (!indPendingProse.startsWith('\n')) indPendingProse = '  '.repeat(indent) + indPendingProse;  
   return indPendingProse;
 }
 

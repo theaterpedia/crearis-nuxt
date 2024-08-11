@@ -3,6 +3,7 @@ import { dirname, join } from 'path'
 import { fileURLToPath } from 'url'
 import { expect, test } from 'vitest'
 import { parse } from '../../utils/parse'
+import consola from 'consola'
 
 const currentDir = dirname(fileURLToPath(import.meta.url))
 
