@@ -22,6 +22,14 @@ export interface BaseComponentSpec {
    * If the component does not have an image, it is `undefined`.
    */
   imgProp?: string
+  /**
+   * Should we run a component-specific extension prior to the body-transformation within the beforeParse-Hook?
+   */
+  beforeParseExtension?: boolean
+  /**
+   * Should we run a component-specific extension within the afterParse-Hook?
+   */
+  afterParseExtension?: boolean    
 }
 
 export interface SingletonComponentSpec extends BaseComponentSpec {
@@ -55,7 +63,17 @@ export type ComponentSpec = SingletonComponentSpec | ParentComponentSpec
  * }
  * ```
  */
+
+export type ComponentName = keyof typeof componentSpecs
+
+export type AlertComponent = 'abstract' | 'summary' | 'tldr' | 'info' | 'todo' | 'tip' | 'hint' | 'important' | 'success' | 'check' | 'done' | 'question' | 'help' | 'faq' | 'warning' | 'fail' | 'failure' | 'missing' | 'danger' | 'error'  | 'bug' | 'example'  | 'quote' | 'cite'
+
 export const componentSpecs: Record<string, ComponentSpec> = {
+  // ts-expect-error - Hans does not understand why this is an error
+  Alert: {
+    isParent: false,
+    beforeParseExtension: true,
+  },
   Banner: {
     isPageComponent: true,
     isParent: true,
@@ -70,6 +88,7 @@ export const componentSpecs: Record<string, ComponentSpec> = {
     isPageComponent: false,
     isParent: true,
     allowsProse: true,
+    beforeParseExtension: true,
   },
   Column: {
     isPageComponent: false,

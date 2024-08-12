@@ -6,6 +6,6 @@ import { test } from 'vitest'
 
 
 */
-test('-> parse [tokens] mark', () => {
-  testCollectionKey('tokens', 'mark')
+test('-> parse [pages] ausbildung', () => {
+  testCollectionFilter('pages', 'ausbildung')
 })

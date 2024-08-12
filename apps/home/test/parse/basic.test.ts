@@ -6,6 +6,6 @@ import { test } from 'vitest'
 
 
 */
-test('PARSE [basic] basic', () => {
+test('-> parse [basic] basic', () => {
   testCollectionFilter('basic', 'basic')
 })
