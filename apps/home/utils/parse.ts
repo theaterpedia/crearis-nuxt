@@ -12,7 +12,7 @@ const logVerbose = true;
  * with logVerbose = true, it logs all steps of the parsing process via console.log
  * optimized to work in conjunction with vitest/ui
  */
-export function parse(markdown: string) {
+export function parse(markdown: string, fileTitle: string = ''): { result: string, messages: string } {
   // parse and replace transformation-tokens and at the end process callouts to components
 
   // clear whitespace from empty lines
@@ -70,9 +70,9 @@ export function parse(markdown: string) {
 
   const tags:Set<string> = new Set()
 
-  markdown = prepareComponents(markdown, 0, tags);
+  const {result, messages } = createMDC(markdown, 0, 0, true, true, fileTitle);
 
-  return markdown;
+  return {result, messages };
 }
 
 // -------------------
@@ -126,158 +126,162 @@ function parseMarks(text: string) {
  * - detailed Specification, Tasks and Issues are handled within the test-files
  * - verbose-logging to console.log optimized to work in conjunction with vitest/ui
 */
-function prepareComponents(markdown: string, level: number = 0) {
+function createMDC(mdBody: string, level: number = 0, addIndent = 0, openProse: boolean = true, parseCallouts: boolean=true, messageTitle: string = ''): {result: string, messages: string } {
 
-  if (logVerbose) console.log('[PARSE] ################ prepareComponents on level: ', level);
-  if (logVerbose) console.log('(recieved this source-md)\n', markdown);
+  if (logVerbose) console.log('[PARSE] ################ createMDC on level: ', level);
+  if (logVerbose) console.log('(recieved this source-md)\n', mdBody);
   let result = '';
 
-  // stop execution if nesting-level > 3
-  if (level > 5) {
-    consola.error('[PARSE] Component-nesting too deep (max allowed: 5), stopping execution');
-    return result;
+  if (level === 0 && !openProse) {
+    // raise error 'not implemented yet'
+    consola.error('[PARSE] ', 'level === 0 && !openProse is not implemented yet');
+    return { result, messages: 'level === 0 && !openProse is not implemented yet' };
   }
 
-  // define execution-constants
-  // TODO: recheck regex 1 / regex 2 can evtl. be simplified (see lint-warnings)
-  const findCalloutsRegex = /> (\[!.*\].*)\n((>+.*\n)*)/g; // regex documented here: https://regexr.com/83ic7 (was: > (\[![^\n\]]*\][^\n]*)\n((>[^\n]*\n)*))
-  // const startsWithCalloutRegex = /> (\[!.*\].*)\n((>+.*\n)*)/g; // regex documented here: https://regexr.com/83ic7 (was: > (\[![^\n\]]*\][^\n]*)\n((>[^\n]*\n)*))
+  // collect shortened Parsing-Messages for stats-like Summary
+  let messages = '';
 
-  const tag = `::${':'.repeat(level)}`;
+  // stop execution if nesting-level > 3
+  if (level > 4) {
+    messages += 'Component-nesting too deep (max allowed: 4), stopping execution'
+    consola.error('[PARSE] ', messages);
+    return { result, messages };
+  }
+
+  const indent = addIndent + level;
+
+  const mdcTag = `::${':'.repeat(indent)}`;
   const tags = new Set<string>();
 
   // track the positioning in the source / fragment
-  let cursor = 0;
-  let calloutPos = 0;
-  let calloutLength = 0;
+  let calloutCursor = 0;
+
+  const mdLines = mdBody.split('\n');
 
   // add open-tag to the beginning of the output (we'll check later if it was needed)
-  if (level === 0) {
-    tags.add('section-prose');
-    result = `${tag}section-prose\n`;
+  if (level === 0 || openProse) {
+    if (isProseOnTheRoad (mdLines, 0)) {
+      const otag = level === 0 ? 'section-prose' : 'prose';
+      result += '  '.repeat(indent) + `${mdcTag}${otag}\n`;
+      tags.add(otag);
+      messages += `${messageTitle.toUpperCase}: ${mdLines.length} Lines\n`
+    }
   }
 
   // Find all first-level callouts in the source / fragment
-  const callouts = markdown.matchAll(findCalloutsRegex); 
+  while (calloutCursor < mdLines.length) {
+    const line = mdLines[calloutCursor];
+    if (line.startsWith('> [!')) {
+      const callout = findCallout(mdLines, calloutCursor);
 
-  
+      // if we DON'T have a valid callout OR are NOT allowed to parse it, we report a detailed error
+      const comp = callout ? (parseCallouts ? evalCompHeader(callout.header) : { error: `On Level ${level} Callouts found but not allowed`}) : { error: `Callout-signature found ('> [! ...') but seems valid callout`};
+      
+      if (comp.header && comp.spec) { // ELSE: we have errors, skip this callout
+        let { body, lines } = callout;
+        let { type, props, flags } = comp.header;
+        const spec = comp.spec;
 
-  // Main Loop
-  for (const callout of callouts) { //header: callout[1] - body: callout[2]
-    const { header, spec, error, replaceMarkdown } = getComponentHeader(callout[1], callout[0], markdown);
+        if (spec.beforeParseExtension) {
+          // run a component-specific extension
+          // before the body-transformation
+          ({ body, props, flags} = beforeParseExtension(type, body, props, flags));
+        }
+    
+        // first, if image-prop accepted, we look for an image on the firstline
+        if (spec.imgProp) {
+          // get the first line of the callout
+          // check if the first line is an image
+          // if so, add it to the header
+    
+          const bodyLines = body.split('\n');
+          // find images but exclude obsidian-embeds
+          if (bodyLines[0].startsWith('![') && !bodyLines[0].startsWith('![[')) {
+            const [img, ...rest] = body.split('\n');
+            props.set(spec.imgProp,img);
+            body = rest.join('\n');
+          }
+        }
 
-    if (error) { 
-      consola.error('[PARSE]' + ' - skipping this callout: \n', callout[0]);
-      if (replaceMarkdown) { 
-        markdown = replaceMarkdown 
-        if (logVerbose) console.log('\n[PARSE] ################ \n after Callout-Error altered the Source: \n\n ', replaceMarkdown);
-      }  //source-markdown must only be altered on errors
-      continue 
-    }
-    /* ----------------- Handle opened tags ----------------- */
-    // on the doc-root before opening a new pageComponent, close the previously opened sectionProse
-    // same if prose was opened
-    if ((level === 0 && spec?.isPageComponent) || tags.has('prose')) {
-      // set the cursors on this callout
-      calloutPos = callout.index;
-      calloutLength = callout[0].length;
+        // join the props into a string
+        const propstring = Object.entries(props).map(([key, value]) => `${key}="${value}"`).join(' ');
 
-      // indent the pendingProse, close the tag and add it to the result, update the lineCounter
-      result += getPendingProse(markdown, openTagPos, calloutPos-1, tags.size);
-      if ((level === 0 && spec?.isPageComponent)) {
-        tags.delete('section-prose');
+        // ----------- finished header-parsing, now we handle the tags -----------
+
+        // close prose or section-prose if open
+        if (level === 0 || openProse) {
+          const otag = level === 0 ? 'section-prose' : 'prose';
+          if (tags.has(otag)) {
+            tags.delete(otag);
+            result += '  '.repeat(tags.size + indent) + `${mdcTag}\n`;
+          }
+        }
+        // open section-container (eventually close before > should not be needed)
+        if (level === 0 && spec.isPageComponent) {
+          if (tags.has('section-container')) {
+            consola.error('[PARSE] ', 'IMPLEMENTATION-ERROR: closing unspecified section-container');
+            tags.delete('section-container');
+            result += '  '.repeat(tags.size + indent) + `${mdcTag}\n`;
+          }
+          result += '  '.repeat(tags.size + indent) + `${mdcTag}section-container\n`;
+          tags.add('section-container');
+        }
+
+        // print the callout-header to the result
+        result += '  '.repeat(tags.size + indent) + `${mdcTag}${type}{${propstring} ${flags}}\n`;
+        tags.add(type);
+
+        // if we have content in the callout call createMDC recursively
+        if (body) {
+          const { result: calloutResult, messages: calloutMessages } = createMDC(body, level, tags.size, allowsProse(spec), spec.isParent);
+          result += calloutResult;
+          messages += calloutMessages;
+        }
+
+        // ----------- finished body and subcomponents, now we handle the tags -----------
+        result += '  '.repeat(tags.size + level) + `${mdcTag}\n`;  // close the component
+        tags.delete(type);
+        if (level === 0 && spec.isPageComponent) {
+          if (tags.has('section-container')) {
+            tags.delete('section-container');
+            result += '  '.repeat(tags.size + indent) + `${mdcTag}\n`;
+          }
+        }
+
+        // Eventually re-open wrapper for prose 
+        //   code-dulication > see above, open prose or section-prose
+        if ((level === 0 || openProse) && isProseOnTheRoad (mdLines, calloutCursor + lines)) {
+          const otag = level === 0 ? 'section-prose' : 'prose';
+          result += '  '.repeat(tags.size + indent) + `${mdcTag}${otag}\n`;
+          tags.add(otag);
+        }
+
+        // update the cursor
+        calloutCursor += lines;
+
       } else {
-        tags.delete('prose');
+        // if we couldn't find a callout with valid header, we have an error
+        result += '  '.repeat(tags.size + indent) + `<!-- ${comp.error} -->\n`;
+        calloutCursor++;
       }
-      result += '\n' + '  '.repeat(tags.size) + tag + '\n\n';
-      closeTagPos = calloutPos -1;
+    } else {
+      // if the line doesn't start with a callout, add it to the prose
+      result += '  '.repeat(tags.size + indent) + `${line}\n`;
+      calloutCursor++;
     }
-    
-    /* ----------------- parse the callout-body ----------------- */
-    // remove linebreaks at the beginning of the callout and extract the lines
-    let sourceBody = callout[2].replace(/(\n*)./g,'');
-    if (spec?.beforeParseExtension) {
-      // run a component-specific extension
-      // before the body-transformation
-      sourceBody = beforeParseExtension(header.type, sourceBody);
-    }
-
-    // first, if image-prop accepted, we look for an image on the firstline
-    if (spec?.imgProp) {
-      // get the first line of the callout
-      // check if the first line is an image
-      // if so, add it to the header
-
-      const lines = sourceBody.split('\n');
-      // find images but exclude obsidian-embeds
-      if (lines[0].startsWith('![') && !lines[0].startsWith('![[')) {
-        const [img, ...rest] = sourceBody.split('\n');
-        header.props.set(spec.imgProp,img);
-        sourceBody = rest.join('\n');
-      }
-    }
-
-    /*
-    if (spec.actionSlot) {
-      // get the last line of the callout
-      // check if the last line contains links
-      // if so, extract them as action-slot from the body
-    }
-    */
-
-    let body = '';
-    
-    let bodyIndent = indent + 1;
-    if (allowsProse(spec)) {
-      // if the component allows prose, we open a prose-section
-      body = `${tag}${secProse}\n`;  //obs: indentation is done in next block
-      bodyIndent += 1;
-    }
-
-    if ((spec?.isParent) || allowsProse(spec) ) {
-      const sParent = (isParent(spec)) ? true : false;
-      const aProse = (allowsProse(spec)) ? true : false;
-      const newBodyLines = prepareComponentBody(sourceBody, level, sParent, aProse ).split('\n');
-      body += '\n' + '  '.repeat(bodyIndent) + newBodyLines.join('\n' + '  '.repeat(bodyIndent));
-    }   
-
-/* a note on the Indentation:
-it is mainly handled here, relative to the callout
-sub-components add more indentation to the body, they see their callout as the root
-*/
-
-    if (allowsProse(spec)) {  // close a prose-section and handle the indentation
-      bodyIndent -= 1;
-      body += '\n' + '  '.repeat(bodyIndent) + `${tag}${secProse}`;
-    }
-
-    // Prepare the the prose-Reopen if it was closed and adjust the indent (indent adjusted below)
-    const proseReOpenLine = isProseOpen && closedProse ? '\n' + '  '.repeat(indent) + `${tag}${secProse}` : '';
-
-    // join the header.props into a string
-    const props = Object.entries(header.props).map(([key, value]) => `${key}="${value}"`).join(' ');
-
-    // join the parts together, close the tag and reopen the prose
-    const newCallout = '  '.repeat(indent) +`${tag}${header.type}{title=${header.title} ${props} ${header.flags}}\n\n${body}\n\n` + '  '.repeat(indent) + `${tag}\n` + '  '.repeat(indent) + `${proseReOpenLine}` + '\n';
-    indent = isProseOpen && closedProse ? indent + 1 : indent;
-    result += newCallout
   }
-
-  if (level === 0 || isProseOpen) {
-    const endOfLastCallout = calloutPos + calloutLength;  //if no callout was found, this will be 0
-    // add the unprocessed source-content (prose) until the file-end with correct indentation
-    result += processPendingProse(markdown,endOfLastCallout, markdown.length, indent);
-    if (indent > 0) indent -= 1;
-    result += (result.endsWith('\n') ? '' : '\n') + '  '.repeat(indent) + tag + '\n';
-  }
-  
-  // TODO: remove empty sections and empty prose (level 0)
-  if (logVerbose) console.log('\n[PARSE] ################ \n(result after Callout-Processing)\n ', result);
-  return result;
-
+  return {result, messages};
 }
 
-function beforeParseExtension(type: string, sourceBody: string) {
+function isProseOnTheRoad (mdLines: string[], Cursor: number) {
+  // check if we have prose before the next callout in the source / fragment
+  const nextCallout = mdLines.slice(Cursor).findIndex((line: string) => line.startsWith('> [!'));
+  const proseEnd = nextCallout === -1 ? mdLines.length - Cursor : nextCallout -1;
+  const prose = mdLines.slice(Cursor, proseEnd).join('\n');
+  return proseEnd < 1 ? false : prose.replace(/\n/g, '').trim() !== '';
+}
+
+function beforeParseExtension(type: string, sourceBody: string, props: Map<string, string>, flags: string) {
   // run a component-specific extension
   // before the body-transformation
   switch (type) {
@@ -285,45 +289,63 @@ function beforeParseExtension(type: string, sourceBody: string) {
     case 'alert':
       // do something
       consola.warn('Alert-Extension not yet implemented !!!');
-      return sourceBody;
+      return {body: sourceBody, props, flags};
 
     case 'catalog':
       // do something
       consola.warn('Catalog-Extension not yet implemented !!!');
-      return sourceBody;
+      return {body: sourceBody, props, flags};
 
     default:
       // do something
-      return sourceBody;
+      return {body: sourceBody, props, flags};
   }
+}
+
+function findCallout(mdLines: string[], cursor: number) {
+  const header = mdLines[cursor];
+  let body = '';
+  let lines = 0;
+
+  // find the end of the callout
+  for (let i = cursor + 1; i < mdLines.length; i++) {
+    const line = mdLines[i];
+    if (!line.startsWith('>')) {
+      break;
+    }
+    // remove the '>' and eventually whitespace from the beginning of the line and add it to the body
+    body += line.replace(/^> ?/, '') + '\n';
+    lines++;
+  }
+
+  // does the body contain anything else than whitespace?
+  const hasBody = body.replace(/\n/g, '').trim() !== ''
+
+  return {
+    header,
+    body: hasBody ? body : '',
+    lines,
+  };
 }
 
 
 /** 
 @returns { header: { type: '', title: '', props: {}, flags: '' }, spec: ComponentSpec, error: '', replaceMarkdown: '' } 
 */
-function getComponentHeader(sourceHeader: string, sourceCallout: string, markdown: string): { header: { type: string, title: string, props: Map<string, string>, flags: string }, spec?: ComponentSpec, error?: string, replaceMarkdown?: string } {
+function evalCompHeader(sourceHeader: string): { header?: { type: string, props: Map<string, string>, flags: string }, spec?: ComponentSpec, error?: string} {
   const header = parseCalloutHeader(sourceHeader); //returns { type: '', title: '', props: Map(), flags: '' }
 
   /* ----------------- Validation ----------------- */
-  let replaceMarkdown = '';
-  const HeaderError = (!header || !header.type || header.type === '') ? 'Could not parse callout-header' : !ensureComponentExists(header.type) ? 'Component not found' : '';
+  const HeaderError = (!header || !header.type || header.type === '') ? 'Could not parse callout-header' : !ensureComponentExists(header.type) ? 'Component not found: ' + header.type : '';
   if (HeaderError !== '') {
-    // alter the source to prevent entering this to pendingProse later on
-    if (sourceCallout.length > 8) {
-      // exactly keep the lenght of the callout, but replace the content with a comment
-      replaceMarkdown = markdown.replace(sourceCallout, '<!--' + 'X'.repeat(sourceCallout.length - 8) + '-->\n'); 
-    } else {
-      replaceMarkdown = markdown.replace(sourceCallout, '\n'.repeat(sourceCallout.length));
-    }
-    return { header, error: HeaderError, replaceMarkdown };
+    return { error: HeaderError };
   } else {
     const spec = getSpec(header.type);
     if (spec) {
-      return { header: header, spec: spec }; //never return source-markdown here. It must only be altered on errors!!
+      return { header: header, spec: spec }; 
     } else {
       consola.warn('Implementation ERROR!! ?Component not in spec?: ' + header.type)
-      return { header: header, error: 'Implementation ERROR!! ?Component not in spec?: ' + header.type };
+      return { error: 'Implementation ERROR!! ?Component not in spec?: ' + header.type };
     }
   }
 }
@@ -336,20 +358,7 @@ function isParent(spec?: ComponentSpec) {
   return spec ? ('isParent' in spec && spec.isParent) ? true : false: false;
 }
 
-
-function getPendingProse(markdown: string, fromPos: number, toPos: number, indent: number) {
-  // get the unprocessed source-content above the callout
-  // if we find '\n' or '\n' with whitespaces at the end of pendingProse remove it
-  const pendingProse = markdown.substring(fromPos, toPos).replace(/\n+$/, '');
-
-  // indent the pendingProse, close the tag and add it to the result, update the lineCounter
-  let indPendingProse = pendingProse.replace(/\n/g, `\n${'  '.repeat(indent)}`);
-  // add indentation to first line as well
-  if (!indPendingProse.startsWith('\n')) indPendingProse = '  '.repeat(indent) + indPendingProse;  
-  return indPendingProse;
-}
-
-function parseCalloutHeader(header: string): { type: string, title: string, props: Map<string, string>, flags: string } {
+function parseCalloutHeader(header: string): { type: string, props: Map<string, string>, flags: string } {
   // 2a. parse header: type, attributes, title
   // TODO: regex should evtl. be simplified (see lint-warnings)
   // - applies the regex from here: https://regexr.com/83igh
@@ -362,7 +371,7 @@ function parseCalloutHeader(header: string): { type: string, title: string, prop
 
   const match = extractCalloutheaderRegex.exec(header);
   if (!match) {
-    return { type: '', title: '', props: {}, flags: '' };
+    return { type: '', props: new Map(), flags: '' };
   }
   // Variant 1 = Group1 exists
   // G1: type
@@ -388,44 +397,22 @@ function parseCalloutHeader(header: string): { type: string, title: string, prop
     });
 
     if (AlertNames.includes(type)) {
-      propsArray.push({ key: 'AlertType', value: type });
+      propsArray.push({ key: 'alert-type', value: type });
       type = 'alert';
     }
 
+    if (title.length > 0) {
+      propsArray.push({ key: 'title', value: title });
+    }
+
     if (propsArray.length === 0) {
-      return { type, title, props, flags };
+      return { type, props, flags };
     } else {
       props = new Map(propsArray.map((propsArray) => [propsArray.key, propsArray.value]));
-      return { type, title, props, flags };
+      return { type, props, flags };
     } 
   }
-  return { type, title, props: new Map(), flags: '' };
-}
-
-function prepareComponentBody(body: string, level: number, isParent: boolean, allowsProse: boolean = false) {
-  // 2b. parse body
-  // - deletion of '\n> '
-  // - replacement '\n>\n' by '\n\n'
-  // - replacement '>>' by '>'
-  let newBody = body.replace(/\n> /g, '\n').replace(/\n>\n/g, '\n\n').replace(/>>/g, '>');
-  // check if there are nested callouts and apply recursion
-  // - look whether there are '\n>' in the body
-  // - if so, apply recursion
-  if (/> \[/.exec(newBody)) {
-    if (isParent) {
-      newBody = prepareComponents(newBody, level + 1, allowsProse)
-    } else {
-      // remove all nested callouts
-      const findCalloutsRegex = /> (\[!.*\].*)\n((>+.*\n)*)/g;  // same as in prepareComponents
-      const callouts = newBody.matchAll(findCalloutsRegex);
-      for (const callout of callouts) {
-        newBody = newBody.replace(callout[0], '');
-      }
-    }
-  }
-  newBody = newBody.replace(/\n> /g, '\n'); // strip all leftover '>' from the body
-  return newBody;
-
+  return { type, props: new Map(), flags: '' };
 }
 
 

@@ -22,7 +22,7 @@ export default defineNitroPlugin((nitroApp) => {
 
     try {
       const start = Date.now();
-      consola.log(`[NITRO] Transforming Obsidian-file ${file._id} ...`);
+      // consola.log(`[NITRO] Transforming Obsidian-file ${file._id} ...`);
 
       // see #31 for more information on draft handling and publish-config
       if (!file.body.includes(PUBLISH_KEY)) {
@@ -52,9 +52,10 @@ export default defineNitroPlugin((nitroApp) => {
         };
       };
       
-      markdown = parse(markdown);      
-      consola.log(`[NITRO] ... parsed in ${(Date.now() - start)} milli-seconds!`);
-      file.body = frontmatter + '\n' + markdown;
+      const {result, messages} = parse(markdown, file._id);      
+      consola.log(`[NITRO] md parsed (${(Date.now() - start)} ms):\n`,messages);
+    
+      file.body = frontmatter + '\n' + result;
     } catch (err) {
       consola.error('[NITRO] Could not parse file', err);
     }
