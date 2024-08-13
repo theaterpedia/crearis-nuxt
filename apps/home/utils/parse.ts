@@ -130,6 +130,7 @@ function createMDC(mdBody: string, level: number = 0, addIndent = 0, openProse: 
 
   if (logVerbose) console.log('[PARSE] ################ createMDC on level: ', level);
   if (logVerbose) console.log('(recieved this source-md)\n', mdBody);
+  const componentList: string [] = []; // for reporting only
   let result = '';
 
   if (level === 0 && !openProse) {
@@ -181,6 +182,9 @@ function createMDC(mdBody: string, level: number = 0, addIndent = 0, openProse: 
         let { body, lines } = callout;
         let { type, props, flags } = comp.header;
         const spec = comp.spec;
+
+        // report the component to the list of components (messaging)
+        componentList.push('  '.repeat(level) + type);
 
         if (spec.beforeParseExtension) {
           // run a component-specific extension
@@ -270,6 +274,7 @@ function createMDC(mdBody: string, level: number = 0, addIndent = 0, openProse: 
       calloutCursor++;
     }
   }
+  messages += componentList.length > 0 ? `Components found: \n${componentList.join('\n')}\n` : '';
   return {result, messages};
 }
 
@@ -432,7 +437,7 @@ function ensureComponentExists(name: string): boolean {
 }
 
 // ---------------------
-// --- afterParse ---
+// --- afterParse (copy from Nuxt.com docs-parser) ---
 
 // --- transform github alerts ---
 
