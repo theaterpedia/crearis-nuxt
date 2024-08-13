@@ -12,7 +12,7 @@ export function testCollectionKey(variant: string, key: string) {
     if (file.endsWith('.input.md') && file.startsWith(key)) {
       const input = fs.readFileSync(join(currentDir, 'fixtures', variant, file), 'utf-8')
       const output = fs.readFileSync(join(currentDir, 'fixtures', variant, file.replace('.input.md', '.output.md')), 'utf-8')
-      expect(parse(input)).toBe(output)
+      expect(parse(input, 'testfile').result).toBe(output)
     }
   }
 }
@@ -22,7 +22,7 @@ export function testCollectionFilter(variant: string, filter: string) {
     if (file.endsWith('.input.md') && file.includes(filter)) {
       const input = fs.readFileSync(join(currentDir, 'fixtures', variant, file), 'utf-8')
       const output = fs.readFileSync(join(currentDir, 'fixtures', variant, file.replace('.input.md', '.output.md')), 'utf-8')
-      expect(parse(input)).toBe(output)
+      expect(parse(input).result).toBe(output)
     }
   }
 }
@@ -32,7 +32,7 @@ export function testCollection(variant: string) {
     if (file.endsWith('.input.md')) {
       const input = fs.readFileSync(join(currentDir, 'fixtures', variant, file), 'utf-8')
       const output = fs.readFileSync(join(currentDir, 'fixtures', variant, file.replace('.input.md', '.output.md')), 'utf-8')
-      expect(parse(input)).toBe(output)
+      expect(parse(input).result).toBe(output)
     }
   }
 }

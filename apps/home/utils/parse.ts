@@ -307,10 +307,15 @@ function beforeParseExtension(type: string, sourceBody: string, props: Map<strin
   }
 }
 
-function findCallout(mdLines: string[], cursor: number) {
+export function findCallout(mdLines: string[], cursor: number) {
   const header = mdLines[cursor];
   let body = '';
   let lines = 0;
+
+  // if the header is not a callout, return
+  if (!header.startsWith('> [!')) {
+    return;
+  }
 
   // find the end of the callout
   for (let i = cursor + 1; i < mdLines.length; i++) {
@@ -321,6 +326,11 @@ function findCallout(mdLines: string[], cursor: number) {
     // remove the '>' and eventually whitespace from the beginning of the line and add it to the body
     body += line.replace(/^> ?/, '') + '\n';
     lines++;
+  }
+
+  // strip the last newline from the body
+  if (body.endsWith('\n')) {
+    body = body.slice(0, -1);
   }
 
   // does the body contain anything else than whitespace?
