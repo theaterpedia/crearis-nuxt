@@ -12,7 +12,7 @@ export interface BaseComponentSpec {
   /**
    * Specifies whether the component has the #actions-slot that shows links as buttons.
    */
-  // hasActionSlot?: boolean  
+  // hasActionSlot?: boolean
   // maybe we add this later, at the moment it is all the same
   // with having the buttons inside the prose-slot
 
@@ -29,7 +29,7 @@ export interface BaseComponentSpec {
   /**
    * Should we run a component-specific extension within the afterParse-Hook?
    */
-  afterParseExtension?: boolean    
+  afterParseExtension?: boolean
 }
 
 export interface SingletonComponentSpec extends BaseComponentSpec {
@@ -66,7 +66,31 @@ export type ComponentSpec = SingletonComponentSpec | ParentComponentSpec
 
 export type ComponentName = keyof typeof componentSpecs
 
-export type AlertComponent = 'abstract' | 'summary' | 'tldr' | 'info' | 'todo' | 'tip' | 'hint' | 'important' | 'success' | 'check' | 'done' | 'question' | 'help' | 'faq' | 'warning' | 'fail' | 'failure' | 'missing' | 'danger' | 'error'  | 'bug' | 'example'  | 'quote' | 'cite'
+export type AlertComponent =
+  | 'abstract'
+  | 'summary'
+  | 'tldr'
+  | 'info'
+  | 'todo'
+  | 'tip'
+  | 'hint'
+  | 'important'
+  | 'success'
+  | 'check'
+  | 'done'
+  | 'question'
+  | 'help'
+  | 'faq'
+  | 'warning'
+  | 'fail'
+  | 'failure'
+  | 'missing'
+  | 'danger'
+  | 'error'
+  | 'bug'
+  | 'example'
+  | 'quote'
+  | 'cite'
 
 export const componentSpecs: Record<string, ComponentSpec> = {
   // ts-expect-error - Hans does not understand why this is an error
@@ -146,5 +170,5 @@ export const componentSpecs: Record<string, ComponentSpec> = {
     isPageComponent: true,
     isParent: true,
     allowsProse: true,
-  },  
+  },
 }

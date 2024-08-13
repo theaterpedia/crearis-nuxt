@@ -5,10 +5,10 @@
 </template>
 
 <script lang="ts" setup>
-  /*
-   * tasks and todos see #33
-   * for the moment relies on the box.
-   * */
+/*
+ * tasks and todos see #33
+ * for the moment relies on the box.
+ * */
 
 import type { PropType } from 'vue'
 
@@ -22,9 +22,35 @@ defineProps({
     default: 'centered',
   },
   AlertType: {
-    type: String as PropType<'note' | 'abstract' | 'summary' | 'tldr' | 'info' | 'todo' | 'tip' | 'hint' | 'important' | 'success' | 'check' | 'done' | 'question' | 'help' | 'faq' | 'warning' | 'fail' | 'failure' | 'missing' | 'danger' | 'error'  | 'bug' | 'example'  | 'quote' | 'cite'>,
+    type: String as PropType<
+      | 'note'
+      | 'abstract'
+      | 'summary'
+      | 'tldr'
+      | 'info'
+      | 'todo'
+      | 'tip'
+      | 'hint'
+      | 'important'
+      | 'success'
+      | 'check'
+      | 'done'
+      | 'question'
+      | 'help'
+      | 'faq'
+      | 'warning'
+      | 'fail'
+      | 'failure'
+      | 'missing'
+      | 'danger'
+      | 'error'
+      | 'bug'
+      | 'example'
+      | 'quote'
+      | 'cite'
+    >,
     default: 'info',
-  },  
+  },
 })
 </script>
 
