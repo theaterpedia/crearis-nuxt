@@ -1,3 +1,5 @@
+import type MissingComponent from '~/components/content/MissingComponent.vue'
+
 export interface BaseComponentSpec {
   /**
    * Specifies whether the component can be used at the top level of a page's `<main>` content area.
@@ -34,6 +36,7 @@ export interface BaseComponentSpec {
 
 export interface SingletonComponentSpec extends BaseComponentSpec {
   isParent: false
+  allowsProse: boolean
 }
 
 export interface ParentComponentSpec extends BaseComponentSpec {
@@ -97,6 +100,8 @@ export const componentSpecs: Record<string, ComponentSpec> = {
   Alert: {
     isParent: false,
     beforeParseExtension: true,
+    isPageComponent: false,
+    allowsProse: true,
   },
   Banner: {
     isPageComponent: true,
@@ -132,6 +137,7 @@ export const componentSpecs: Record<string, ComponentSpec> = {
   Heading: {
     isPageComponent: false,
     isParent: false,
+    allowsProse: true,
   },
   Hero: {
     isPageComponent: true,
@@ -142,6 +148,12 @@ export const componentSpecs: Record<string, ComponentSpec> = {
   InputTmp: {
     isPageComponent: false,
     isParent: false,
+    allowsProse: false,
+  },
+  MissingComponent: {
+    isPageComponent: true,
+    isParent: false,
+    allowsProse: false,
   },
   Prose: {
     isPageComponent: false,
@@ -151,6 +163,7 @@ export const componentSpecs: Record<string, ComponentSpec> = {
   RadioGroup: {
     isPageComponent: false,
     isParent: false,
+    allowsProse: false,
   },
   Slide: {
     isPageComponent: false,
@@ -165,6 +178,7 @@ export const componentSpecs: Record<string, ComponentSpec> = {
   TextAreaTmp: {
     isPageComponent: false,
     isParent: false,
+    allowsProse: false,
   },
   Timeline: {
     isPageComponent: true,
