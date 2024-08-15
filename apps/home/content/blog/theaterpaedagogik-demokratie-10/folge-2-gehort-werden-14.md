@@ -1,5 +1,5 @@
 ---
-publish: draft
+draft: true
 id: 14
 heading: "**Gehört werden** Die Erfahrung von Selbstwirksamkeit"
 description: "Episode Theaterpädagogik und Demokratie - Folge 2: Die Erfahrung von Selbstwirksamkeit"
@@ -20,7 +20,7 @@ hero:
 > 
 > ![theaterpaedagogisches Fachsimpeln im Cafe](https://res.cloudinary.com/little-papillon/image/upload/w_400/v1722971694/dasei/EpisodenHeadbilder_ropdu7.jpg)
 
-<!-- CREARIS_PUBLISH -->
+<!-- PUBLISH-FROM-HERE -->
 
 ==**In einer Gruppe verhandelt sich Meinung und Weltsicht**==
 

@@ -1,1 +1,7 @@
+*.md
 pnpm-lock.yaml
+.nuxt
+apps/*/dist
+apps/*/.nuxt
+apps/*/node_modules
+**/fixtures

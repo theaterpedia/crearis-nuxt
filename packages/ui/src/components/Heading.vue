@@ -1,22 +1,26 @@
 <template>
   <Prose>
-    <component :is="is" class="heading" :class="[hasOverline || hasSubline ? 'twoliner' : 'oneliner',  fancyShortCode ? 'twocolums' : '' ]">
-      <span class="shortcode-float" v-if="fancyShortCode">{{ shortcode }}</span>
+    <component
+      :is="is"
+      class="heading"
+      :class="[hasOverline || hasSubline ? 'twoliner' : 'oneliner', fancyShortCode ? 'twocolums' : '']"
+    >
+      <span v-if="fancyShortCode" class="shortcode-float">{{ shortcode }}</span>
       <template v-if="hasOverline">
-        <span class="shortcode" v-if="extLineShortCode">{{ shortcode }}  </span>
-        <span class="tags" v-if="tags">{{ tags }}</span>
-        <span class="separator" v-if="tags && overline"> // </span>
-        <span class="overline">{{ overline  }}</span>
+        <span v-if="extLineShortCode" class="shortcode">{{ shortcode }}</span>
+        <span v-if="tags" class="tags">{{ tags }}</span>
+        <span v-if="tags && overline" class="separator">//</span>
+        <span class="overline">{{ overline }}</span>
       </template>
       <strong>
-        <span class="shortcode" v-if="mainLineShortCode">{{ shortcode }}  </span>
+        <span v-if="mainLineShortCode" class="shortcode">{{ shortcode }}</span>
         {{ headline }}
       </strong>
       <template v-if="hasSubline">
-        <span class="shortcode" v-if="extLineShortCode">{{ shortcode }}  </span>
-        <span class="tags" v-if="tags">{{ tags }}</span>
-        <span class="separator" v-if="tags && subline"> // </span>
-        <span class="subline">{{ subline  }}</span>
+        <span v-if="extLineShortCode" class="shortcode">{{ shortcode }}</span>
+        <span v-if="tags" class="tags">{{ tags }}</span>
+        <span v-if="tags && subline" class="separator">//</span>
+        <span class="subline">{{ subline }}</span>
       </template>
       <!-- slot / not needed anymore? -->
     </component>
@@ -24,9 +28,9 @@
 </template>
 
 <script lang="ts" setup>
-import Prose from './Prose.vue';
-import { ref } from 'vue';
-import type { PropType } from 'vue';
+import Prose from './Prose.vue'
+import { ref } from 'vue'
+import type { PropType } from 'vue'
 
 const props = defineProps({
   /**
@@ -41,7 +45,7 @@ const props = defineProps({
   /**
    * The main line of the heading, important for SEO.
    * required
-   */  
+   */
   headline: {
     type: String,
     required: true,
@@ -50,35 +54,36 @@ const props = defineProps({
    * For newspaper-style headings, typicall gives abstract/meta-informaton
    * small font-size
    * If provided, contents of the `subline` will be ignored.
-   */    
+   */
   overline: {
     type: String,
-  },  
+  },
   /**
    * For default headings, extends the headline with additional information
    * Only shows up, if no overline is provided
-   */   
+   */
   subline: {
     type: String,
-  },  
+  },
   /**
    * Tags extend the overline or subline with contextual information like date, time, location
    * if no overline or subline is provided, tags will be shown as overline
-   */    
+   */
   tags: {
     type: String,
   },
   /**
    * A unique shortcode representing the data of this heading, for instance "B1" for an event, "26.7" for a date
    * if no overline or subline is provided, tags will be shown as overline
-   */   
+   */
   shortcode: {
     type: String,
-  },  
-  isMobile: { // for development purposes only > has to be removed
+  },
+  isMobile: {
+    // for development purposes only > has to be removed
     type: Boolean,
-    default: false,    
-  },     
+    default: false,
+  },
 })
 
 // TODO: detect mobile
@@ -87,25 +92,24 @@ const props = defineProps({
 // TODO:  maybe refactor towards crearis 1.0 once runnung to have less computations
 const hasOverline = ref(props.overline || (!props.subline && props.tags))
 const hasSubline = ref(!hasOverline.value && (props.subline || props.tags))
-const mainLineShortCode = ref(props.shortcode && (!hasOverline.value && !hasSubline.value))
-const extLineShortCode = ref(props.shortcode && (props.isMobile && !mainLineShortCode.value))
+const mainLineShortCode = ref(props.shortcode && !hasOverline.value && !hasSubline.value)
+const extLineShortCode = ref(props.shortcode && props.isMobile && !mainLineShortCode.value)
 const fancyShortCode = ref(props.shortcode && !props.isMobile && (hasOverline.value || hasSubline.value))
-
 </script>
 
 <style scoped>
-
-.shortcode  {
+.shortcode {
   margin-right: 0.3em;
   background-color: #999;
   padding: 0em 0.15em;
 }
 
-.shortcode, .shortcode-float{
+.shortcode,
+.shortcode-float {
   font-weight: 800;
 }
 
-.shortcode-float{
+.shortcode-float {
   float: left;
   margin-right: 0.15em;
   line-height: 0.9;
@@ -122,7 +126,7 @@ const fancyShortCode = ref(props.shortcode && !props.isMobile && (hasOverline.va
   font-size: 3.8em;
 }
 
-:where(h3, .h3)  > span.shortcode-float {
+:where(h3, .h3) > span.shortcode-float {
   font-size: 3em;
 }
 
@@ -131,11 +135,9 @@ const fancyShortCode = ref(props.shortcode && !props.isMobile && (hasOverline.va
 }
 
 .twoliner {
-
 }
 
 .oneliner {
-
 }
 
 /* Add your styles here / deactivated

@@ -1,5 +1,5 @@
 <template>
-  <div class="columns" :class="[`columns-${gap}`, `columns-${align}`]">
+  <div class="columns" :class="[`columns-${gap}`, `columns-${align}`, `columns-${background ?? 'transparent'}`]">
     <slot></slot>
   </div>
 </template>
@@ -27,20 +27,61 @@ defineProps({
     type: String as PropType<'top' | 'center' | 'bottom'>,
     default: 'top',
   },
+
+  /**
+   * The background color of the columns.
+   * This allows to render the columns as a box.
+   * If this is not provided, the columns will be transparent.
+   */
+  background: {
+    type: String as PropType<'default' | 'muted' | 'accent'>,
+  },
 })
 </script>
 
 <style scoped>
 .columns {
+  --column-padding: 0;
   display: flex;
+}
+
+.columns-default {
+  --background: var(--card);
+  --foreground: var(--card-foreground);
+  background-color: hsl(var(--card));
+  color: hsl(var(--card-foreground));
+}
+
+.columns-muted {
+  --background: var(--muted);
+  --foreground: var(--card-foreground);
+  background-color: hsl(var(--muted));
+  color: hsl(var(--card-foreground));
+}
+
+.columns-accent {
+  --background: var(--accent);
+  --foreground: var(--accent-foreground);
+  --muted-foreground: var(--accent-foreground);
+  --link: var(--primary);
+  background-color: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
 }
 
 .columns-small {
   gap: 1.75rem; /* 28px */
 }
 
+.columns-small:not(.columns-transparent) {
+  --column-padding: 1.75rem; /* 28px */
+}
+
 .columns-medium {
   gap: 3.5rem; /* 56px */
+}
+
+.columns-medium:not(.columns-transparent) {
+  --column-padding: 3.5rem; /* 56px */
 }
 
 .columns-top {

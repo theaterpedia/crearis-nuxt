@@ -1,0 +1,4 @@
+::section-prose
+  foo
+  
+::

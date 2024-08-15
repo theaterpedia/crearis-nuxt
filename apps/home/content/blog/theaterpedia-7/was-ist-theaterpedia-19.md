@@ -1,5 +1,5 @@
 ---
-publish: draft
+draft: true
 id: 19
 heading: "**Was ist Theaterpedia?** Infrastruktur-Initiative zur digitalen Vernetzung der Theaterpädagogik"
 description: Kurzdarstellung einer Infrastruktur-Initiative zur digitalen Vernetzung der Theaterpädagogik
@@ -21,7 +21,7 @@ hero:
 > 
 > ![Theaterpedia-Globus](https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_920,h_518,ar_16:9,g_auto/v1666847011/pedia_ipsum/core/theaterpedia.jpg)
 
-<!-- CREARIS_PUBLISH -->
+<!-- PUBLISH-FROM-HERE -->
 
 # Was ist Theaterpedia?  
 

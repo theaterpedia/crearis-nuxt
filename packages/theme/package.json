@@ -13,7 +13,8 @@
   "scripts": {
     "dev": "nuxi dev .playground",
     "dev:prepare": "nuxt prepare .playground",
-    "build": "nuxt build .playground"
+    "build": "nuxt build .playground",
+    "postinstall": "pnpm run dev:prepare"
   },
   "dependencies": {
     "@crearis-nuxt/ui": "workspace:*",

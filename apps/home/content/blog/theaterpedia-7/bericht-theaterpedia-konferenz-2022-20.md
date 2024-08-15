@@ -1,5 +1,5 @@
 ---
-publish: draft
+draft: true
 id: 20
 heading: "**Theaterpedia-Konferenz Nov 2020** ==BERICHT== die Gründung von Theaterpedia, Nov 2022 im Steigerwald"
 description: "BERICHT: die Gründung von Theaterpedia, Nov 2022 im Steigerwald"
@@ -20,7 +20,7 @@ hero:
 > 
 > ![Präsentation Gründungskonferenz](https://res.cloudinary.com/little-papillon/image/upload/v1723041787/praesentation_gruendungskonferenz_qjws7i.jpg)
 
-<!-- CREARIS_PUBLISH -->
+<!-- PUBLISH-FROM-HERE -->
 
 Manchmal können wir es erleben: Menschen kommen zusammen, die kaum etwas gemeinsam haben… nur die Verbindung zu einer konkreten Idee. Die jedoch ist stark genug, um sich aufzumachen und sich einzulassen: Vier Tage – irgendwo im nirgendwo – nur wir und die Idee!  
 Ich war zunächst skeptisch: Die Konzepte zu theaterpedia existierten für mich nur als Teil einer Vision von Hans. Oft hörte ich ihn darüber sprechen. Vieles leuchtete mir ein. Manchmal schaltete ich auch einfach ab. Viel zu sehr drängte sich mein Alltagsgeschäft als Theaterpädagogin hinein. Und plötzlich musste anderes bewältigt werden, dringlichere Fragen geklärt werden… und theaterpedia rückte in den Hintergrund, schlummerte als eine „nice to have“-Idee irgendwo im Hinterstübchen.  

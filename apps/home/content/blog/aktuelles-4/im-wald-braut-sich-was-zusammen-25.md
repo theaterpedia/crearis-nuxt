@@ -1,5 +1,5 @@
 ---
-publish: draft
+draft: true
 id: 25
 heading: "**im Wald braut sich was zusammen** Absolvent:innen aus dem Profil Theatrales Lernen starten in heiße Projektphase"
 description: Absolvent:innen aus dem Profil Theatrales Lernen starten in heiße Projektphasep
@@ -19,7 +19,7 @@ hero:
 > [!data-hero] ## **im Wald braut sich was zusammen** Absolvent:innen aus dem Profil Theatrales Lernen starten in heiße Projektphase
 > 
 > ![im Wald braut sich was zusammen (Flyer)](https://dasei.eu/web/image/10365-e9797687/praxisprojekt_theatrales_lernen.jpg?height=800)
-<!-- CREARIS_PUBLISH -->
+<!-- PUBLISH-FROM-HERE -->
 
 Mit viel Engagement und kreativen Ideen sind Tanja Täubner, Sabine Menne, Ingrid Regenstein und Burak Uzun in die Konzeptarbeit eines der wichtigsten Praxiseinsätze ihres Profils eingestiegen und... belohnt worden! Begeistert nahmen Kinder und Lehrkräfte des Nürnberger Paul-Moor-Förderzentrums am Projektauftakt teil und ließen sich von der Spiellust entfachen! 
 

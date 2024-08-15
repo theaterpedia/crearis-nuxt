@@ -1,5 +1,5 @@
 ---
-publish: draft
+draft: true
 ctype: course
 shortcode: m16e
 tag: course
@@ -204,4 +204,4 @@ Wenn Du gelernt hast, die Interaktion der Gruppe im Kreis freizusetzen, entstehe
 > 
 Nichts kann das Ganz-Auf-Sicht-Gestellt-Sein der Bühnensituation besser vorwegnehmen, als ein einfacher 'Raumlauf'; Jene Übung, in der sich Teilnehmer mit einem konkreten 'Geh-Auftrag' kreuz und quer durch den Raum bewegen. Ein gründliches Verstehen des Geschehens ist nicht nur hilfreich, um den Raumlauf ordentlich anleiten zu können, sondern eröffnet immer neue Einblicke auf das Agieren im Bühnenraum.
 
-<!-- CREARIS_PUBLISH -->
+<!-- PUBLISH-FROM-HERE -->

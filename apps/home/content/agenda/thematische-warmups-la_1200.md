@@ -27,7 +27,7 @@ hero:
 > ![Warm-Up mit Tüchern](https://res.cloudinary.com/little-papillon/image/upload/w_400/v1722972081/dasei/thematische_warmups_wfwtzh.jpg)
 > 
 
-<!-- CREARIS_PUBLISH -->
+<!-- PUBLISH-FROM-HERE -->
 
 Anfänge sind emotional anstrengend und bedürfen bewusster Gestaltung, um kreative Gruppenprozesse in Gang zu bringen. Das Seminar befasst sich mit den spezifischen Herausforderungen klassischer Anfangssituationen in der Theaterarbeit.
 

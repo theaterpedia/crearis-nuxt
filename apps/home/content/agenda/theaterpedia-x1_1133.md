@@ -27,6 +27,6 @@ hero:
 > ![Theaterpedia-Konferenz 2022](https://dasei.eu/web/image/9835-8a05292f/theaterpedia_konferenz_ankuendigung.jpg?height=800)
 > 
 
-<!-- CREARIS_PUBLISH -->
+<!-- PUBLISH-FROM-HERE -->
 
 Mit einer Konferenz feiern wir den Launch der Website theaterpedia.org nach einer zwei Jahre andauernden Entwicklungsphase. Wir erleben gemeinsam den Start der Regio Nürnberg und der Regio Augsburg, starten Arbeitsgruppen und neue Visionen auf der Internet-Plattform. Wir prüfen die im November 2022 auf der Gründungskonferenz vereinbarten Ziele und Prinzipien und entscheiden die wichtigsten Fragen für die nächsten zwei Jahre.

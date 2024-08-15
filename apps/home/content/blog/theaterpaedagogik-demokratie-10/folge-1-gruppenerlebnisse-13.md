@@ -1,5 +1,5 @@
 ---
-publish: draft
+draft: true
 id: 13
 heading: ==Folge 1== Sich einlassen und Erfahrungen machen **Gruppenerlebnisse**
 description: "Episode Theaterpädagogik und Demokratie - Folge 1: Sich einlassen und Erfahrungen machen"
@@ -20,7 +20,7 @@ hero:
 > 
 > ![theaterpaedagogisches Fachsimpeln im Cafe](https://res.cloudinary.com/little-papillon/image/upload/w_400/v1722971694/dasei/EpisodenHeadbilder_ropdu7.jpg)
 
-<!-- CREARIS_PUBLISH -->
+<!-- PUBLISH-FROM-HERE -->
 
 ==**was bewegt dich?**==
 

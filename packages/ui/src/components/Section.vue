@@ -40,16 +40,21 @@ defineProps({
 }
 
 .section-default {
+  --background: var(--card);
+  --foreground: var(--card-foreground);
   background-color: hsl(var(--card));
   color: hsl(var(--card-foreground));
 }
 
 .section-muted {
+  --background: var(--muted);
+  --foreground: var(--card-foreground);
   background-color: hsl(var(--muted));
   color: hsl(var(--card-foreground));
 }
 
 .section-accent {
+  --background: var(--accent);
   --foreground: var(--accent-foreground);
   --muted-foreground: var(--accent-foreground);
   --link: var(--primary);
