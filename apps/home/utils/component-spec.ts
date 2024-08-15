@@ -165,6 +165,11 @@ export const componentSpecs: Record<string, ComponentSpec> = {
     isParent: false,
     allowsProse: false,
   },
+  SectionContainer: {
+    isPageComponent: true,
+    isParent: true,
+    allowsProse: true,
+  },
   Slide: {
     isPageComponent: false,
     isParent: true,

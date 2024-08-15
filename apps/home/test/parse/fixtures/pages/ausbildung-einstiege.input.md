@@ -1,32 +1,3 @@
----
-draft: true
-id: 1
-heading: "September - Dezember 2024 // München, Nürnberg **Einstiege ins Theaterspiel**"
-description: "Fortbildung in 6 Wochenenden: Elementare und Szenische Animation"
-title: Einstiege ins Theaterspiel // September - Dezember 2024 // München, Nürnberg
-cssclasses:
-  - product
-hero:
-  - img-tmp-alt-text: Eleanora Allerdings als Lampe
-  - img-tmp: https://res.cloudinary.com/little-papillon/image/upload/v1594701917/dasei/einstiege_lampe_nora.jpg
-  - img-tmp-align-y: top
-hero-content: |
-  # September - Dezember 2024 // München, Nürnberg **Einstiege ins Theaterspiel**
-  **Fortbildung in 6 Wochenenden:**
-  **Elementare und Szenische Animation**
-  [jetzt anmelden](#anmeldung)
-outro:
-  - img-tmp-alt-text: Eleanora Allerdings als Lampe
-  - img-tmp: https://res.cloudinary.com/little-papillon/image/upload/v1594701917/dasei/einstiege_lampe_nora.jpg
-  - img-tmp-align-y: top
-outro-content: |
-  **Du hast noch Fragen? Dann ruf am besten an:**
-  ## Tel. 0911 / 7808476
-  [oder probier mal unsere FAQ]
----
-
-<!-- PUBLISH-FROM-HERE -->
-
 
 ## **WORUM GEHT's?** Anfangen lernen, Anfänge gestalten lernen!
 

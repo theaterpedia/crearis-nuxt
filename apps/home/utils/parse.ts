@@ -193,6 +193,12 @@ function createMDC(
         let { body, lines } = callout!
         let { type, props, flags } = comp.header
         const spec = comp.spec
+        if (level > 0 && spec.isPageComponent) {
+          consola.error('[PARSE] ', 'IMPLEMENTATION-ERROR: page-components not allowed in nested callouts')
+          messages += 'IMPLEMENTATION-ERROR: page-components not allowed in nested callouts\n'
+          Cursor += lines
+          continue
+        }
 
         // report the component to the list of components (messaging)
         componentList.push('  '.repeat(level) + type)
@@ -238,7 +244,7 @@ function createMDC(
         if (comp.error) result += '  '.repeat(tags.size + indent) + `<!-- ${comp.error} -->\n`
 
         // open section-container (eventually close before > should not be needed)
-        if (level === 0 && spec.isPageComponent) {
+        if (level === 0 && spec.isPageComponent && type !== 'section-container') {
           if (tags.has('section-container')) {
             consola.error('[PARSE] ', 'IMPLEMENTATION-ERROR: closing unspecified section-container')
             tags.delete('section-container')

@@ -1,5 +1,5 @@
 <template>
-  <Section>
+  <Section :background="background">
     <Container>
       <ContentSlot />
     </Container>
@@ -7,5 +7,17 @@
 </template>
 
 <script lang="ts" setup>
-import { Container } from '@crearis-nuxt/ui'
+import { Container, Section } from '@crearis-nuxt/ui'
+defineProps({
+
+  /**
+   * The background color of the section.
+   *
+   * @default 'default'
+   */
+  background: {
+    type: String as PropType<'default' | 'muted' | 'accent'>,
+    default: 'default',
+  },
+})
 </script>
