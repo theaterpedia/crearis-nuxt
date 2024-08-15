@@ -9,7 +9,6 @@
 <script lang="ts" setup>
 import { Container, Section } from '@crearis-nuxt/ui'
 defineProps({
-
   /**
    * The background color of the section.
    *

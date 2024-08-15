@@ -18,5 +18,9 @@ Die Fortbildung 'Einstiege ins Theaterspiel' vermittelt dazu die grundlegende D
 > - Tageskurs Okt 2024 bis Juli 2025 (wahlweise Nürnberg oder München)
 > - Intensivprogramm Sept bis Dez 2025 (mit Blockseminar)
 
-
+~~~tabs
+tab: **M16E** Tageskursverlauf
 ![[../agenda/einstiege-ins-theaterspiel-m16e|view="product" background="muted"]]
+tab: **M16B** Blockseminarverlauf
+![[../agenda/m16b|view="product" background="muted"]]
+~~~

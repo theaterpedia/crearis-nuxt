@@ -27,7 +27,7 @@ export function parse(markdown: string, fileTitle: string = ''): { result: strin
   markdown = markdown.replace(/\n{3,}/g, '\n\n')
 
   // list tokes to parse
-  const keys = ['tags', 'frontmatter', 'wikilinks', 'mark', 'embed', 'tab', 'vars']
+  const keys = ['tags', 'frontmatter', 'wikilinks', 'mark', 'tabs', 'dataview', 'vars']
 
   if (logVerbose) console.log('###### Verbose Log #######')
 
@@ -54,12 +54,48 @@ export function parse(markdown: string, fileTitle: string = ''): { result: strin
         markdown = parseMarks(markdown)
         break
 
-      case 'embed':
-        // Todo: implement embeds
+      case 'tabs':
+        // Todo: detect tabs, turn them into callout-syntax
+        /*
+        we don't support tabs in tabs or tabs inside callouts
+        */
+
+        /* INPUT
+        /  ~~~tabs
+        /  tab: **M16E** Tageskursverlauf
+        /  ![[../agenda/einstiege-ins-theaterspiel-m16e|view="product" background="muted"]]
+        /  tab: **M16B** Blockseminarverlauf
+        /  ![[../agenda/m16b|view="product" background="muted"]]
+        /  ~~~
+
+        /* OUTPUT
+        > [!tabs]
+        >> [!tab] **M16E** Tageskursverlauf
+        >>> ![[../agenda/einstiege-ins-theaterspiel-m16e|view="product" background="muted"]]
+        >> [!tab] **M16B** Blockseminarverlauf
+        >>> ![[../agenda/m16b|view="product" background="muted"]]
+        */
+
         break
 
-      case 'tab':
-        // Todo: implement tabs
+      case 'dataview':
+        // Todo: detect embeds, transform the to dataview
+        // have to be on the beginning of the line or inside a callout
+        // in the filename, whitespace or tabs are not allowed
+        // important: we should only process this, if the embed is a .md-file
+
+        /* INPUT 1
+        / ![[../agenda/einstiege-ins-theaterspiel-m16e|type=yaml]]
+        
+        OUTPUT 1
+        > [!data-view | src=../agenda/einstiege-ins-theaterspiel-m16e type=yaml view=product background=muted] */
+
+        /* INPUT 2
+        / >>> ![[../agenda/einstiege-ins-theaterspiel-m16e|type=yaml]]
+        
+        OUTPUT 2
+        >>> [!data-view | src=../agenda/einstiege-ins-theaterspiel-m16e type=yaml view=product background=muted] */
+
         break
 
       case 'vars':

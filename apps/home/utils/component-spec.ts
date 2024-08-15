@@ -129,6 +129,17 @@ export const componentSpecs: Record<string, ComponentSpec> = {
     isParent: true,
     allowsProse: false,
   },
+  DataViewTabs: {
+    isPageComponent: true,
+    isParent: true,
+    allowsProse: false,
+  },
+  // DataView may act as Child of DataViewTabs!!
+  DataView: {
+    isPageComponent: true,
+    isParent: false,
+    allowsProse: false,
+  },
   FormTmp: {
     isPageComponent: false,
     isParent: true,
@@ -165,6 +176,12 @@ export const componentSpecs: Record<string, ComponentSpec> = {
     isParent: false,
     allowsProse: false,
   },
+
+  // TODO: decide on SectionContainer-Functionality
+  // we should decide if we want to build a general spec 'hasSectionContainer'
+  // components with isPageComponent and hasSectionContainer cannot act as childs anyewhere
+  // in the current implementation the parser easily detects this and skips adding the sectionContainer
+  // for instance the EmbedData could have a sectionContainer and thus gain more control over the layout
   SectionContainer: {
     isPageComponent: true,
     isParent: true,
