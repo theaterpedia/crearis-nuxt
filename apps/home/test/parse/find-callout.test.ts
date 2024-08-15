@@ -45,8 +45,8 @@ export function testCallouts_result(variant: string) {
         'utf-8',
       )
       const lines = input.split('\n')
-      if (file.includes('5lines')) {
-        expect(findCallout(lines, 0)?.lines).toBe(5)
+      if (file.includes('6lines')) {
+        expect(findCallout(lines, 0)?.lines).toBe(6)
         expect(findCallout(lines, 0)?.body).toBe(body)
       }
     }

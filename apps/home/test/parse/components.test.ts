@@ -1,39 +1,13 @@
 import { testCollectionFilter, testCollectionKey } from './helpers'
 import { test } from 'vitest'
 
-/*
-TAKES IN:
-> [!agenda|color=primary-dark variant=summary] **Text**
-> Blah
->> [!blank] Column 1
->> - Use another callout for columns
->
->> [!blank] Column 2
->> Need that singular blockquote `>` as separation between columns
-
-RETURNS:
-::agenda
-----
-title: **Text**
-color: primary-dark
-variant: summary
-----
-Blah
-  ::blank
-  ----
-  title: Column 1
-  ----
-  - Use another callout for columns
-  ::
-
-  ::blank
-  ----
-  title: Column 1
-  ----
-  - Use another callout for columns
-  ::
-::
-*/
+/** DESCRIPTION
+ * Here we test these features:
+ * - wrongly named / not existing components
+ * - nesting until level 4
+ * - handling of simple props and flags
+ * - handling of prose inside the component
+ */
 
 test('-> parse [basic] component', () => {
   console.log('testing the logger')

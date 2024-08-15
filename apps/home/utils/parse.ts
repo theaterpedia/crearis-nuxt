@@ -155,31 +155,31 @@ function createMDC(
     return { result, messages }
   }
 
-  const indent = addIndent + level
+  const indent = addIndent + level + (level > 1 ? 1 : 0)
 
   const mdcTag = `::${':'.repeat(indent)}`
   const tags = new Set<string>()
 
   // track the positioning in the source / fragment
-  let calloutCursor = 0
+  let Cursor = 0
 
   const mdLines = mdBody.split('\n')
 
-  // add open-tag to the beginning of the output (we'll check later if it was needed)
+  // add open-tag to the beginning of the output if we await prose
   if (level === 0 || openProse) {
     if (isProseOnTheRoad(mdLines, 0)) {
       const otag = level === 0 ? 'section-prose' : 'prose'
       result += '  '.repeat(indent) + `${mdcTag}${otag}\n`
       tags.add(otag)
-      messages += `${messageTitle.toUpperCase}: ${mdLines.length} Lines\n`
+      if (level === 0) messages += `${messageTitle.toUpperCase}: ${mdLines.length} Lines\n`
     }
   }
 
   // Find all first-level callouts in the source / fragment
-  while (calloutCursor < mdLines.length) {
-    const line = mdLines[calloutCursor]
+  while (Cursor < mdLines.length) {
+    const line = mdLines[Cursor]
     if (line.startsWith('> [!')) {
-      const callout = findCallout(mdLines, calloutCursor)
+      const callout = findCallout(mdLines, Cursor)
 
       // if we DON'T have a valid callout OR are NOT allowed to parse it, we report a detailed error
       const comp = callout
@@ -219,10 +219,10 @@ function createMDC(
           ;({ body, props, flags } = beforeParseExtension(type, body, props, flags))
         }
 
-        // join the props into a string
-        const propstring = Object.entries(props)
-          .map(([key, value]) => `${key}="${value}"`)
-          .join(' ')
+        // concatenate each prop into a string
+        const propsarray = [...props].map(([key, value]) => {
+          return `${key}="${value}"`
+        })
 
         // ----------- finished header-parsing, now we handle the tags -----------
 
@@ -234,6 +234,9 @@ function createMDC(
             result += '  '.repeat(tags.size + indent) + `${mdcTag}\n`
           }
         }
+        // do we have errors?
+        if (comp.error) result += '  '.repeat(tags.size + indent) + `<!-- ${comp.error} -->\n`
+
         // open section-container (eventually close before > should not be needed)
         if (level === 0 && spec.isPageComponent) {
           if (tags.has('section-container')) {
@@ -246,16 +249,22 @@ function createMDC(
         }
 
         // print the callout-header to the result
-        result += '  '.repeat(tags.size + indent) + `${mdcTag}${type}{${propstring} ${flags}}\n`
-        tags.add(type)
+        if (propsarray.length === 0 && flags === '') {
+          result += '  '.repeat(tags.size + indent) + `${mdcTag}${type}\n`
+        } else {
+          result +=
+            '  '.repeat(tags.size + indent) +
+            `${mdcTag}${type}{${propsarray.join(' ')}${propsarray.length > 0 && flags != '' ? ' ' : ''}${flags}}\n`
+        }
+        // we don't execute tags.add(type) here!! > would make too much indentation
 
         // TODO: rename 'body' to 'node'
         // if we have content in the callout call createMDC recursively
         if (body) {
           const { result: calloutResult, messages: calloutMessages } = createMDC(
             body,
-            level,
-            tags.size,
+            level + 1,
+            tags.size, //
             allowsProse(spec),
             spec.isParent,
           )
@@ -264,7 +273,7 @@ function createMDC(
         }
 
         // ----------- finished body and subcomponents, now we handle the tags -----------
-        result += '  '.repeat(tags.size + level) + `${mdcTag}\n` // close the component
+        result += '  '.repeat(tags.size + indent) + `${mdcTag}\n` // close the component
         tags.delete(type)
         if (level === 0 && spec.isPageComponent) {
           if (tags.has('section-container')) {
@@ -275,23 +284,36 @@ function createMDC(
 
         // Eventually re-open wrapper for prose
         //   code-dulication > see above, open prose or section-prose
-        if ((level === 0 || openProse) && isProseOnTheRoad(mdLines, calloutCursor + lines)) {
+        if ((level === 0 || openProse) && isProseOnTheRoad(mdLines, Cursor + lines)) {
           const otag = level === 0 ? 'section-prose' : 'prose'
           result += '  '.repeat(tags.size + indent) + `${mdcTag}${otag}\n`
           tags.add(otag)
         }
 
         // update the cursor
-        calloutCursor += lines
+        Cursor += lines
       } else {
         // if we couldn't find a callout with valid header, we have an error
         result += '  '.repeat(tags.size + indent) + `<!-- ${comp.error} -->\n`
-        calloutCursor++
+        Cursor++
       }
     } else {
       // if the line doesn't start with a callout, add it to the prose
       result += '  '.repeat(tags.size + indent) + `${line}\n`
-      calloutCursor++
+      if (Cursor === mdLines.length - 1) {
+        if (level === 0 || openProse) {
+          if (level === 0 && tags.has('section-prose')) {
+            tags.delete('section-prose')
+            result += '  '.repeat(tags.size + indent) + `${mdcTag}\n`
+          } else if (level > 0 && tags.has('prose')) {
+            tags.delete('prose')
+            result += '  '.repeat(tags.size + indent) + `${mdcTag}\n`
+          }
+        }
+        Cursor++
+      } else {
+        Cursor++
+      }
     }
   }
   messages += componentList.length > 0 ? `Components found: \n${componentList.join('\n')}\n` : ''
@@ -301,7 +323,7 @@ function createMDC(
 function isProseOnTheRoad(mdLines: string[], Cursor: number) {
   // check if we have prose before the next callout in the source / fragment
   const nextCallout = mdLines.slice(Cursor).findIndex((line: string) => line.startsWith('> [!'))
-  const proseEnd = nextCallout === -1 ? mdLines.length - Cursor : nextCallout - 1
+  const proseEnd = nextCallout === -1 ? mdLines.length : nextCallout - 1
   const prose = mdLines.slice(Cursor, proseEnd).join('\n')
   return proseEnd < 1 ? false : prose.replace(/\n/g, '').trim() !== ''
 }
@@ -326,6 +348,13 @@ function beforeParseExtension(type: string, sourceBody: string, props: Map<strin
   }
 }
 
+/**
+ *
+ * @param mdLines
+ * @param cursor
+ * @returns header: string, body: string, lines: number
+ * @description: lines is the number of lines the callout spans including the header
+ */
 export function findCallout(mdLines: string[], cursor: number) {
   const header = mdLines[cursor]
   let body = ''
@@ -334,7 +363,7 @@ export function findCallout(mdLines: string[], cursor: number) {
   // if the header is not a callout, return
   if (!header.startsWith('> [!')) {
     return
-  }
+  } else lines = 1
 
   // find the end of the callout
   for (let i = cursor + 1; i < mdLines.length; i++) {
@@ -377,12 +406,22 @@ function evalCompHeader(sourceHeader: string): {
     !header || !header.type || header.type === ''
       ? 'Could not parse callout-header'
       : !ensureComponentExists(header.type)
-        ? 'Component not found: ' + header.type
+        ? 'Missing Component: ' + header.type
         : ''
-  if (HeaderError !== '') {
+  if (HeaderError !== '' && !HeaderError.startsWith('Missing Component')) {
     return { error: HeaderError }
   } else {
+    if (HeaderError.startsWith('Missing Component')) {
+      const title = header.props.get('title') || ''
+      header.props = new Map()
+      header.props.set('compName', header.type)
+      if (title) header.props.set('title', title)
+      header.type = 'missing-component'
+    }
     const spec = getSpec(header.type)
+    if (spec && HeaderError) {
+      return { header: header, spec: spec, error: HeaderError }
+    }
     if (spec) {
       return { header: header, spec: spec }
     } else {
@@ -450,9 +489,15 @@ function parseCalloutHeader(header: string): { type: string; props: Map<string, 
   // G3: type
   // G4: attributes
   // G5: title
-  let type: string = (match[1] || match[3]).trim()
+  let type: string = match[1] || match[3]
+  if (type) {
+    type = type.trim()
+  }
 
-  const title: string = (match[2] || match[5]).trim()
+  let title: string = match[2] || match[5]
+  if (title) {
+    title = title.trim()
+  }
   const attributes: string = match[4]
   // if attributes exist, build array of key-value pairs
   if (attributes) {
@@ -479,7 +524,7 @@ function parseCalloutHeader(header: string): { type: string; props: Map<string, 
     }
 
     if (propsArray.length === 0) {
-      return { type, props, flags }
+      return { type, props: new Map(), flags }
     } else {
       props = new Map(propsArray.map((propsArray) => [propsArray.key, propsArray.value]))
       return { type, props, flags }

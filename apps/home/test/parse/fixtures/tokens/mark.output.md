@@ -1,3 +1,4 @@
 ::section-prose
-  foo
+  <mark>foo</mark>
+  
 ::
