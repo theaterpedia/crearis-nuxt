@@ -59,23 +59,7 @@ export function parse(markdown: string, fileTitle: string = ''): { result: strin
         break
 
       case 'dataview':
-        // Todo: detect embeds, transform the to dataview
-        // have to be on the beginning of the line or inside a callout
-        // in the filename, whitespace or tabs are not allowed
-        // important: we should only process this, if the embed is a .md-file
-
-        /* INPUT 1
-        / ![[../agenda/einstiege-ins-theaterspiel-m16e|type=yaml]]
-        
-        OUTPUT 1
-        > [!data-view | src=../agenda/einstiege-ins-theaterspiel-m16e type=yaml view=product background=muted] */
-
-        /* INPUT 2
-        / >>> ![[../agenda/einstiege-ins-theaterspiel-m16e|type=yaml]]
-        
-        OUTPUT 2
-        >>> [!data-view | src=../agenda/einstiege-ins-theaterspiel-m16e type=yaml view=product background=muted] */
-
+        markdown = parseDataview(markdown)
         break
 
       case 'vars':
@@ -147,6 +131,8 @@ function parseMarks(text: string) {
 */
 
 /**
+ * Parses `~~~tabs` blocks into Obsidian-style callouts.
+ *
  * @example
  * ```ts
  * const text = `
@@ -185,6 +171,47 @@ function parseTabs(text: string) {
     }
 
     return output.join('\n')
+  })
+}
+
+/*
+ * Parses `![[...]]` blocks into Obsidian-style callouts.
+ *
+ * @example
+ * ```ts
+ * const text = `![[../agenda/einstiege-ins-theaterspiel-m16e|type=yaml]]`
+ * const parsed = parseDataview(text)
+ *
+ * console.log(parsed)
+ * // > [!data-view | src=../agenda/einstiege-ins-theaterspiel-m16e type=yaml view=product background=muted]
+ * ```
+ */
+function parseDataview(text: string) {
+  return text.replace(/^(\s*)(>*)\s*\!\[\[(.*)\]\]\s*$/gm, (_, spaces, gt, content) => {
+    const indent = '  '.repeat(resolveIndent(spaces))
+    const prefix = indent + (gt || '>') + ' '
+    const src = content.split('|')[0].trim()
+    const options = resolveOptions(content.split('|').slice(1).join('|'))
+    const parsedOptions = Object.keys(options).length
+      ? ' ' +
+        Object.entries(options)
+          .map(([k, v]) => `${k}=${v}`)
+          .join(' ')
+      : ''
+
+    console.log(
+      'MOO',
+      'src',
+      src,
+      'options',
+      options,
+      'result',
+      `${prefix}[!data-view | src=${src}${parsedOptions}]`,
+      'original',
+      _,
+    )
+
+    return `${prefix}[!data-view | src=${src}${parsedOptions}]`
   })
 }
 
@@ -930,6 +957,39 @@ function resolveIndent(spaces: string) {
   }
 
   return indent
+}
+
+/**
+ * Resolves a list of options from a string into an object.
+ *
+ * The options string should be space-separated key-value pairs, where the key and value are separated by an equal sign.
+ * If a value is missing, it will be an empty string.
+ *
+ * Default values can be provided as an object, which will be merged with the resolved options.
+ *
+ * @example
+ * ```ts
+ * resolveOptions('foo=bar baz=qux')         // { foo: 'bar', baz: 'qux' }
+ * resolveOptions('foo=bar', { baz: 'qux' }) // { foo: 'bar', baz: 'qux' }
+ * resolveOptions('foo=bar', { foo: 'qux' }) // { foo: 'bar' }
+ * ```
+ */
+function resolveOptions(text: string, defaults: Record<string, string> = {}): Record<string, string> {
+  const options = text
+    .replace(/ +/g, ' ')
+    .split(' ')
+    .map((option) => {
+      const [k, v] = option.split('=')
+      return [k, v || '']
+    })
+
+  for (const [k, v] of Object.entries(defaults)) {
+    if (!options.some(([key]) => key === k)) {
+      options.push([k, v])
+    }
+  }
+
+  return Object.fromEntries(options)
 }
 
 // --- types ---
