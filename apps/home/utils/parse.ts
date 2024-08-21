@@ -1,6 +1,6 @@
 import consola from 'consola'
-import { pascalCase, kebabCase } from 'scule'
-import type { ComponentSpec, ComponentName, AlertComponent } from './component-spec'
+import { pascalCase } from 'scule'
+import type { ComponentSpec } from './component-spec'
 import { componentSpecs } from './component-spec'
 const logVerbose = true
 
@@ -55,27 +55,7 @@ export function parse(markdown: string, fileTitle: string = ''): { result: strin
         break
 
       case 'tabs':
-        // Todo: detect tabs, turn them into callout-syntax
-        /*
-        we don't support tabs in tabs or tabs inside callouts
-        */
-
-        /* INPUT
-        /  ~~~tabs
-        /  tab: **M16E** Tageskursverlauf
-        /  ![[../agenda/einstiege-ins-theaterspiel-m16e|view="product" background="muted"]]
-        /  tab: **M16B** Blockseminarverlauf
-        /  ![[../agenda/m16b|view="product" background="muted"]]
-        /  ~~~
-
-        /* OUTPUT
-        > [!tabs]
-        >> [!tab] **M16E** Tageskursverlauf
-        >>> ![[../agenda/einstiege-ins-theaterspiel-m16e|view="product" background="muted"]]
-        >> [!tab] **M16B** Blockseminarverlauf
-        >>> ![[../agenda/m16b|view="product" background="muted"]]
-        */
-
+        markdown = parseTabs(markdown)
         break
 
       case 'dataview':
@@ -148,6 +128,64 @@ function parseMarks(text: string) {
     parsed = parsed.replace(mark[0], `<mark>${cleantag}</mark>`)
   }
   return parsed
+}
+
+/* INPUT
+/  ~~~tabs
+/  tab: **M16E** Tageskursverlauf
+/  ![[../agenda/einstiege-ins-theaterspiel-m16e|view="product" background="muted"]]
+/  tab: **M16B** Blockseminarverlauf
+/  ![[../agenda/m16b|view="product" background="muted"]]
+/  ~~~
+
+/* OUTPUT
+> [!tabs]
+>> [!tab] **M16E** Tageskursverlauf
+>>> ![[../agenda/einstiege-ins-theaterspiel-m16e|view="product" background="muted"]]
+>> [!tab] **M16B** Blockseminarverlauf
+>>> ![[../agenda/m16b|view="product" background="muted"]]
+*/
+
+/**
+ * @example
+ * ```ts
+ * const text = `
+ * ~~~tabs
+ * tab: **M16E** Tageskursverlauf
+ * ![[../agenda/einstiege-ins-theaterspiel-m16e|view="product" background="muted"]]
+ * tab: **M16B** Blockseminarverlauf
+ * ![[../agenda/m16b|view="product" background="muted"]]
+ * ~~~`
+ *
+ * const parsed = parseTabs(text)
+ *
+ * console.log(parsed)
+ * // > [!tabs]
+ * // >> [!tab] **M16E** Tageskursverlauf
+ * // >>> ![[../agenda/einstiege-ins-theaterspiel-m16e|view="product" background="muted"]]
+ * // >> [!tab] **M16B** Blockseminarverlauf
+ * // >>> ![[../agenda/m16b|view="product" background="muted"]]
+ * ```
+ */
+function parseTabs(text: string) {
+  return text.replace(/^(\s*)~~~tabs\s*\n(.*?)\n\s*~~~\s*$/gms, (_, spaces, content) => {
+    const indent = '  '.repeat(resolveIndent(spaces))
+    const output: string[] = [indent + '> [!tabs]']
+
+    for (const line of content.split('\n')) {
+      const trimmed = line.trim()
+
+      if (trimmed) {
+        if (trimmed.startsWith('tab:')) {
+          output.push(indent + '>> [!tab] ' + trimmed.split(':').slice(1).join(':').trim())
+        } else if (output.length > 1) {
+          output.push(indent + '>>> ' + trimmed)
+        }
+      }
+    }
+
+    return output.join('\n')
+  })
 }
 
 /**
@@ -866,6 +904,32 @@ function _getTextContents(children: ContentNode[] = []): string {
 
 function _emptyASTNode() {
   return { type: 'text', value: '' }
+}
+
+/**
+ * Calculates the indentation level of a given string of spaces.
+ *
+ * This function counts consecutive spaces or tabs to determine the indentation depth.
+ * It treats two consecutive spaces or a single tab as one indentation level.
+ *
+ * @example
+ * ```ts
+ * resolveIndent('    ')   // 2
+ * resolveIndent('  \t  ') // 3
+ * ```
+ */
+function resolveIndent(spaces: string) {
+  let indent = 0
+  let prevChar = ''
+
+  for (const char of spaces) {
+    if ((char === ' ' && prevChar === ' ') || char === '\t') {
+      indent++
+    }
+    prevChar = char
+  }
+
+  return indent
 }
 
 // --- types ---
