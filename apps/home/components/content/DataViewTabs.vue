@@ -2,13 +2,13 @@
   <div>
     <div class="tabs">
       <ul>
-        <li v-for="tab in tabs" key="datatab.src" class="is-active">
+        <li v-for="tab in tabs" key="tab.src" class="is-active">
           <a><Heading v-text="tab.title"></Heading></a>
         </li>
       </ul>
     </div>
     <div class="tab-content">
-      <div v-for="tab in tabs" key="datatab.src" class="tab-pane">
+      <div v-for="tab in tabs" key="tab.src" class="tab-pane">
         <DataView :heading="tab.heading" :src="tab.src" :type="tab.type" :view="tab.view" is-active></DataView>
       </div>
     </div>

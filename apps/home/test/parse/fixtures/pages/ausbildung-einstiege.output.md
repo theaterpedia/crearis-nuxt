@@ -24,7 +24,6 @@
 ::
 
 ::section-container
-  ::data-view{view="product" background="muted" src="../agenda/einstiege-ins-theaterspiel-m16e" type="yaml"}
-  
+  ::data-view{src="../agenda/einstiege-ins-theaterspiel-m16e" view="product" background="muted"}
   ::
 ::
