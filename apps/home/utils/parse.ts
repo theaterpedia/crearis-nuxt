@@ -153,7 +153,7 @@ function parseMarks(text: string) {
 function parseTabs(text: string) {
   return text.replace(/^(\s*)~~~tabs\s*\n(.*?)\n\s*~~~\s*$/gms, (_, spaces, content) => {
     const indent = '  '.repeat(resolveIndent(spaces))
-    var output = '\n::data-view-tabs{tabs: ['
+    var output = `\n::data-view-tabs{:tabs='[`
     var tab: string = ''
 
     for (const line of content.split('\n')) {
@@ -164,18 +164,20 @@ function parseTabs(text: string) {
           tab = trimmed.split(':').slice(1).join(':').trim()
         } else if (output.length > 1) {
           tab = parseDataview(trimmed, true, tab)
+          if (output.endsWith('}')) output += ', ' // add comma if not first tab
           output += tab
         }
       }
     }
-    output += ']}\n::'
+    output += `]'}\n::`
+    console.log('MOO', 'output', output, 'original', _)
 
     return output
   })
 }
 
 /*
- * Parses `![[...]]` blocks into Obsidian-style callouts.
+ * Parses `![[...]]` blocks into Obsidian-style callouts OR into Tabs-Content-Props (JSON)
  *
  * @example
  * ```ts
@@ -189,17 +191,14 @@ function parseTabs(text: string) {
 function parseDataview(text: string, tab: boolean = false, tabtitle: string = '') {
   return text.replace(/^(\s*)(>*)\s*\!\[\[(.*)\]\]\s*$/gm, (_, spaces, gt, content) => {
     const countNewlines = (str: string) => str.match(/\n/g)?.length || 0
-
-    //const indent = '  '.repeat(resolveIndent(spaces))
     const prefix = '\n'.repeat(countNewlines(spaces)) + (gt || '>') + ' '
-    // const prefix = '> ' //will break if we have some kind of nesting combined with embeds = should not happen for now
     const src = content.split('|')[0].trim()
-    const options = resolveOptions(content.split('|').slice(1).join('|'))
+    const options = resolveOptions(content.split('|').slice(1).join('|'), tab ? { heading: tabtitle } : {})
     const parsedOptions = Object.keys(options).length
       ? ' ' +
         Object.entries(options)
-          .map(([k, v]) => (tab ? `${k}="${v}"` : `${k}=${v}`))
-          .join(' ')
+          .map(([k, v]) => (tab ? `"${k}": "${v}"` : `${k}=${v}`))
+          .join(tab ? ', ' : ' ')
       : ''
 
     console.log(
@@ -214,7 +213,7 @@ function parseDataview(text: string, tab: boolean = false, tabtitle: string = ''
       _,
     )
     return tab
-      ? `{title="${tabtitle}" src="${src}"${parsedOptions}}`
+      ? `{"title": "${tabtitle}", "src": "${src}"${parsedOptions.length ? ', ' : ''}${parsedOptions}}`
       : `${prefix}[!data-view | src=${src}${parsedOptions}]`
   })
 }
@@ -993,12 +992,12 @@ function resolveOptions(text: string, defaults: Record<string, string> = {}): Re
     .split(' ')
     .map((option) => {
       const [k, v] = option.split('=')
-      return [k, v.replace(regex, '') || '']
+      return [k, v?.replace(regex, '') || '']
     })
 
   for (const [k, v] of Object.entries(defaults)) {
     if (!options.some(([key]) => key === k)) {
-      options.push([k, v.replace(regex, '')])
+      options.push([k, v?.replace(regex, '')])
     }
   }
 

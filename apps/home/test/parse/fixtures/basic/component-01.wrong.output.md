@@ -11,6 +11,6 @@
 ::
 
 ::section-container
-  ::data-view{src="../agenda/einstiege-ins-theaterspiel-m16e" titel="Einstiege_Ins_Theaterspiel"}
+  ::data-view{src="../agenda/einstiege-ins-theaterspiel-m16e" title="Einstiege_Ins_Theaterspiel"}
   ::
 ::

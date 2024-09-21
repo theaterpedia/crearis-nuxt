@@ -1,5 +1,5 @@
 <template>
-  <Component :data="data" :is="`data-${view}`" :src="src" />
+  <Component :data="data" :is="`data-view-${view}`" :src="src" />
 </template>
 
 <script lang="ts" setup>
