@@ -23,5 +23,5 @@
   :::
 ::
 
-::data-view-tabs{:tabs='[{"title": "**M16E** Tageskursverlauf", "src": "../agenda/einstiege-ins-theaterspiel-m16e",  "view": "product", "background": "muted", "heading": "**M16E** Tageskursverlauf"}, {"title": "**M16B** Blockseminarverlauf", "src": "../agenda/m16b",  "view": "product", "background": "muted", "heading": "**M16B** Blockseminarverlauf"}]'}
+::data-view-tabs{:tabs='[{"title": "**M16E** Tageskursverlauf", "src": "agenda/einstiege-ins-theaterspiel-m16e",  "view": "product", "background": "muted", "heading": "**M16E** Tageskursverlauf"}, {"title": "**M16B** Blockseminarverlauf", "src": "agenda/m16b",  "view": "product", "background": "muted", "heading": "**M16B** Blockseminarverlauf"}]'}
 ::

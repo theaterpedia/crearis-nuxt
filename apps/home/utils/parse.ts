@@ -185,14 +185,17 @@ function parseTabs(text: string) {
  * const parsed = parseDataview(text)
  *
  * console.log(parsed)
- * // > [!data-view | src=../agenda/einstiege-ins-theaterspiel-m16e type=yaml view=product background=muted]
+ * // > [!data-view | src=agenda/einstiege-ins-theaterspiel-m16e type=yaml view=product background=muted]
  * ```
  */
 function parseDataview(text: string, tab: boolean = false, tabtitle: string = '') {
   return text.replace(/^(\s*)(>*)\s*\!\[\[(.*)\]\]\s*$/gm, (_, spaces, gt, content) => {
     const countNewlines = (str: string) => str.match(/\n/g)?.length || 0
     const prefix = '\n'.repeat(countNewlines(spaces)) + (gt || '>') + ' '
-    const src = content.split('|')[0].trim()
+    const src = content
+      .split('|')[0]
+      .replace(/\.\.\//g, '')
+      .trim() // make file-paths absolute
     const options = resolveOptions(content.split('|').slice(1).join('|'), tab ? { heading: tabtitle } : {})
     const parsedOptions = Object.keys(options).length
       ? ' ' +
