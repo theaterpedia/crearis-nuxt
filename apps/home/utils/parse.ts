@@ -146,36 +146,38 @@ function parseMarks(text: string) {
  * const parsed = parseTabs(text)
  *
  * console.log(parsed)
- * // > [!tabs]
- * // >> [!tab] **M16E** Tageskursverlauf
- * // >>> ![[../agenda/einstiege-ins-theaterspiel-m16e|view="product" background="muted"]]
- * // >> [!tab] **M16B** Blockseminarverlauf
- * // >>> ![[../agenda/m16b|view="product" background="muted"]]
+ * ::data-view-tabs{tabs: [{title: '**M16E** Tageskursverlauf', heading: 'M16E', src: '../agenda/einstiege-ins-theaterspiel-m16e', type: 'M16E', view: 'product', background="muted"}, {title: '**M16B** Blockseminarverlauf', heading: 'M16B', src: '../agenda/m16b', type: 'M16B', view: 'product', background="muted"}]}
+ * ::
  * ```
  */
 function parseTabs(text: string) {
   return text.replace(/^(\s*)~~~tabs\s*\n(.*?)\n\s*~~~\s*$/gms, (_, spaces, content) => {
     const indent = '  '.repeat(resolveIndent(spaces))
-    const output: string[] = [indent + '> [!tabs]']
+    var output = `\n::data-view-tabs{:tabs='[`
+    var tab: string = ''
 
     for (const line of content.split('\n')) {
       const trimmed = line.trim()
 
       if (trimmed) {
         if (trimmed.startsWith('tab:')) {
-          output.push(indent + '>> [!tab] ' + trimmed.split(':').slice(1).join(':').trim())
+          tab = trimmed.split(':').slice(1).join(':').trim()
         } else if (output.length > 1) {
-          output.push(indent + '>>> ' + trimmed)
+          tab = parseDataview(trimmed, true, tab)
+          if (output.endsWith('}')) output += ', ' // add comma if not first tab
+          output += tab
         }
       }
     }
+    output += `]'}\n::`
+    console.log('MOO', 'output', output, 'original', _)
 
-    return output.join('\n')
+    return output
   })
 }
 
 /*
- * Parses `![[...]]` blocks into Obsidian-style callouts.
+ * Parses `![[...]]` blocks into Obsidian-style callouts OR into Tabs-Content-Props (JSON)
  *
  * @example
  * ```ts
@@ -186,17 +188,17 @@ function parseTabs(text: string) {
  * // > [!data-view | src=../agenda/einstiege-ins-theaterspiel-m16e type=yaml view=product background=muted]
  * ```
  */
-function parseDataview(text: string) {
+function parseDataview(text: string, tab: boolean = false, tabtitle: string = '') {
   return text.replace(/^(\s*)(>*)\s*\!\[\[(.*)\]\]\s*$/gm, (_, spaces, gt, content) => {
-    const indent = '  '.repeat(resolveIndent(spaces))
-    const prefix = indent + (gt || '>') + ' '
+    const countNewlines = (str: string) => str.match(/\n/g)?.length || 0
+    const prefix = '\n'.repeat(countNewlines(spaces)) + (gt || '>') + ' '
     const src = content.split('|')[0].trim()
-    const options = resolveOptions(content.split('|').slice(1).join('|'))
+    const options = resolveOptions(content.split('|').slice(1).join('|'), tab ? { heading: tabtitle } : {})
     const parsedOptions = Object.keys(options).length
       ? ' ' +
         Object.entries(options)
-          .map(([k, v]) => `${k}=${v}`)
-          .join(' ')
+          .map(([k, v]) => (tab ? `"${k}": "${v}"` : `${k}=${v}`))
+          .join(tab ? ', ' : ' ')
       : ''
 
     console.log(
@@ -210,8 +212,9 @@ function parseDataview(text: string) {
       'original',
       _,
     )
-
-    return `${prefix}[!data-view | src=${src}${parsedOptions}]`
+    return tab
+      ? `{"title": "${tabtitle}", "src": "${src}"${parsedOptions.length ? ', ' : ''}${parsedOptions}}`
+      : `${prefix}[!data-view | src=${src}${parsedOptions}]`
   })
 }
 
@@ -405,21 +408,27 @@ function createMDC(
         Cursor++
       }
     } else {
-      // if the line doesn't start with a callout, add it to the prose
-      result += '  '.repeat(tags.size + indent) + `${line}\n`
-      if (Cursor === mdLines.length - 1) {
-        if (level === 0 || openProse) {
-          if (level === 0 && tags.has('section-prose')) {
-            tags.delete('section-prose')
-            result += '  '.repeat(tags.size + indent) + `${mdcTag}\n`
-          } else if (level > 0 && tags.has('prose')) {
-            tags.delete('prose')
-            result += '  '.repeat(tags.size + indent) + `${mdcTag}\n`
-          }
-        }
+      if (line.startsWith('::')) {
+        // simply add existing MDC-tags to the result
+        result += `${line}\n`
         Cursor++
       } else {
-        Cursor++
+        // if the line doesn't start with a callout, add it to the prose
+        result += '  '.repeat(tags.size + indent) + `${line}\n`
+        if (Cursor === mdLines.length - 1) {
+          if (level === 0 || openProse) {
+            if (level === 0 && tags.has('section-prose')) {
+              tags.delete('section-prose')
+              result += '  '.repeat(tags.size + indent) + `${mdcTag}\n`
+            } else if (level > 0 && tags.has('prose')) {
+              tags.delete('prose')
+              result += '  '.repeat(tags.size + indent) + `${mdcTag}\n`
+            }
+          }
+          Cursor++
+        } else {
+          Cursor++
+        }
       }
     }
   }
@@ -429,7 +438,9 @@ function createMDC(
 
 function isProseOnTheRoad(mdLines: string[], Cursor: number) {
   // check if we have prose before the next callout in the source / fragment
-  const nextCallout = mdLines.slice(Cursor).findIndex((line: string) => line.startsWith('> [!'))
+  const nextCallout = mdLines
+    .slice(Cursor)
+    .findIndex((line: string) => line.startsWith('> [!') || line.startsWith('::'))
   const proseEnd = nextCallout === -1 ? mdLines.length : nextCallout - 1
   const prose = mdLines.slice(Cursor, proseEnd).join('\n')
   return proseEnd < 1 ? false : prose.replace(/\n/g, '').trim() !== ''
@@ -975,17 +986,18 @@ function resolveIndent(spaces: string) {
  * ```
  */
 function resolveOptions(text: string, defaults: Record<string, string> = {}): Record<string, string> {
+  const regex = /[\"\']/g
   const options = text
     .replace(/ +/g, ' ')
     .split(' ')
     .map((option) => {
       const [k, v] = option.split('=')
-      return [k, v || '']
+      return [k, v?.replace(regex, '') || '']
     })
 
   for (const [k, v] of Object.entries(defaults)) {
     if (!options.some(([key]) => key === k)) {
-      options.push([k, v])
+      options.push([k, v?.replace(regex, '')])
     }
   }
 

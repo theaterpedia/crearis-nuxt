@@ -9,8 +9,8 @@
     - Du bist ErzieherIn, KünstlerIn, LehrerIn, SozialpädagogIn
   ::
 ::
-::section-prose
-  
-  ![[../agenda/einstiege-ins-theaterspiel-m16e|einstiege-ins-theaterspiel-m16e]]
-  
+
+::section-container
+  ::data-view{src="../agenda/einstiege-ins-theaterspiel-m16e" title="Einstiege_Ins_Theaterspiel"}
+  ::
 ::
