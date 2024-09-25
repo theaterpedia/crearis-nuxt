@@ -1,6 +1,6 @@
 <template>
   <ContentQuery :path="src" find="one" v-slot="{ data }">
-    <Component :data="data" :is="`data-view-${view}`"/>
+    <Component :heading="heading" :data="data" :is="`data-view-${view}`"/>
   </ContentQuery>
 </template>
 
@@ -41,6 +41,12 @@ defineProps({
     type: String as PropType<'default' | 'muted' | 'accent'>,
     default: 'default',
   },
+  /**
+   * typically undefined (if defined it overwrites the heading-entry of the src)
+   */
+   heading: {
+    type: String as PropType<'default' | 'muted' | 'accent'>,
+  },  
   /**
    *
    *

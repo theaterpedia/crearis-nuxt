@@ -196,7 +196,7 @@ function parseDataview(text: string, tab: boolean = false, tabtitle: string = ''
       .split('|')[0]
       .replace(/\.\.\//g, '')
       .trim() // make file-paths absolute
-    const options = resolveOptions(content.split('|').slice(1).join('|'), tab ? { heading: tabtitle } : {})
+    const options = resolveOptions(content.split('|').slice(1).join('|'))
     const parsedOptions = Object.keys(options).length
       ? ' ' +
         Object.entries(options)

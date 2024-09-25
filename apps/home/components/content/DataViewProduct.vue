@@ -1,7 +1,7 @@
 <template>
   <div class="background">
     <ContentRenderer :value="data">
-      <Heading is="h2" :content="data.heading ? data.heading.toString() : default_heading" v-if="data.heading"></Heading>
+      <Heading is="h2" :content="heading ? heading : data.heading ? data.heading.toString() : default_heading" v-if="data.heading"></Heading>
       
     </ContentRenderer>
   </div>
@@ -29,6 +29,12 @@ defineProps({
     type: String as PropType<'default' | 'muted' | 'accent'>,
     default: 'default',
   },
+  /**
+   * typically undefined (if defined it overwrites the heading-entry of the src)
+   */
+   heading: {
+    type: String as PropType<'default' | 'muted' | 'accent'>,
+  },    
   /**
    *
    *
