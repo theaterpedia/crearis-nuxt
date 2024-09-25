@@ -4,7 +4,7 @@
 
 <script lang="ts" setup>
 /* This belongs to the DataView + DataViewTab component
-- it should not be availabe in the spec
+- it should NOT be availabe in the component-spec
 */
 
 /* Todo: 

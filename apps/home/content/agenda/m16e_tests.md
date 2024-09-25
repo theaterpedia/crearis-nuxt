@@ -1,6 +1,6 @@
 ---
 id: M16E
-heading: "**Einstiege ins Theaterspiel** _M16E_ ==course== Mue 19.9 - 8.12.2024 // Sonntags & Online"
+heading: "_M16E_ **Einstiege ins Theaterspiel** ==course== Mue 19.9 - 8.12.2024 // Sonntags & Online"
 description: Weiterbildung Theaterpädagogik - Kurs M16E München 19.9 - 8.12.2024 // Sonntags & Online
 title: Einstiege ins Theaterspiel
 cssclasses:

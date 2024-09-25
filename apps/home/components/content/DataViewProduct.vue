@@ -1,15 +1,20 @@
 <template>
-  <div class="background"></div>
+  <div class="background">
+    <ContentRenderer :value="data">
+      <Heading is="h2" :content="data.heading ? data.heading.toString() : default_heading" v-if="data.heading"></Heading>
+      
+    </ContentRenderer>
+  </div>
 </template>
 
 <script lang="ts" setup>
 /* This belongs to the DataView + DataViewTab component
-- it should not be availabe in the spec
+- it should NOT be availabe in the component-spec
 */
 
 /* Todo: 
 - create simple product view based on file: /content/agenda/einstiege-ins-theaterspiel-m16e.md  
-- take data it from yaml:items (view:product)
+- take data in from yaml:items (view:product)
 - product is a course > so the product view should be a course view > we take the slider>slides for now
 */
 
@@ -38,9 +43,12 @@ defineProps({
    *
    * @default 'default'
    */
-  src: {
-    type: String,
+  data: {
+    type: Object as PropType<Record<string, unknown>>,
     required: true,
   },
 })
+
+const default_heading = '## Default Heading'
+
 </script>
