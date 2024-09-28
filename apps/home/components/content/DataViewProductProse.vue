@@ -2,21 +2,17 @@
   <div class="background">
     <ContentRenderer :value="data">
       <Heading is="h3" :content="heading ? heading : data.heading ? data.heading.toString() : default_heading" v-if="data.heading"></Heading>
-      <MdBlock htag="h2" :content="data.product?.header" v-if="data.product?.header" />
+      <Prose>
+        {{ content }}
+      </Prose>
     </ContentRenderer>
   </div>
 </template>
 
 <script lang="ts" setup>
-/* This belongs to the DataView + DataViewTab component
-- it should NOT be availabe in the component-spec
+/* This should work but it DOES NOT, see Issue #35
 */
 
-/* Todo: 
-- create simple product view based on file: /content/agenda/einstiege-ins-theaterspiel-m16e.md  
-- take data in from yaml:items (view:product)
-- product is a course > so the product view should be a course view > we take the slider>slides for now
-*/
 
 import { Container, Section } from '@crearis-nuxt/ui'
 import { renderMdProp } from '~/utils/md-renderer'
@@ -57,5 +53,6 @@ const props = defineProps({
 })
 
 const default_heading = '## Default Heading'
+const content = renderMdProp(props.data.product?.header, 'h2')
 
 </script>

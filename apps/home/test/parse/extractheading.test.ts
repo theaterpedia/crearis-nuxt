@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import { extractHeading } from '../../utils/extractHeading'
+import { extractHeading } from '../../utils/md-renderer'
 
 /** DESCRIPTION
 

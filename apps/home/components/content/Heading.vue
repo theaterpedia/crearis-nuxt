@@ -6,7 +6,7 @@
 
 <script lang="ts" setup>
 import { Heading } from '@crearis-nuxt/ui'
-import { extractHeading } from '~/utils/extractHeading';
+import { extractHeading } from '~/utils/md-renderer';
 const props = defineProps({
   /**
    * The heading tag to render.
