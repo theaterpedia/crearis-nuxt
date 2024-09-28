@@ -1,10 +1,9 @@
 <template>
-  <div class="background">
-    <ContentRenderer :value="data">
-      <Heading is="h3" :content="heading ? heading : data.heading ? data.heading.toString() : default_heading" v-if="data.heading"></Heading>
-      <MdBlock htag="h2" :content="data.product?.header" v-if="data.product?.header" />
-    </ContentRenderer>
-  </div>
+  <ContentRenderer :value="data">
+    <Heading is="h3" :content="heading ? heading : data.heading ? data.heading.toString() : default_heading" v-if="data.heading"></Heading>
+    <br>
+    <MdBlock htag="h2" :content="data.product?.header" v-if="data.product?.header" />
+  </ContentRenderer>
 </template>
 
 <script lang="ts" setup>
@@ -18,18 +17,7 @@
 - product is a course > so the product view should be a course view > we take the slider>slides for now
 */
 
-import { Container, Section } from '@crearis-nuxt/ui'
-import { renderMdProp } from '~/utils/md-renderer'
 const props = defineProps({
-  /**
-   * The background color of the section.
-   *
-   * @default 'default'
-   */
-  background: {
-    type: String as PropType<'default' | 'muted' | 'accent'>,
-    default: 'default',
-  },
   /**
    * typically undefined (if defined it overwrites the heading-entry of the src)
    */

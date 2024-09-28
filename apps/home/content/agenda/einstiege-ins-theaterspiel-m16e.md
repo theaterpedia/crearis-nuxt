@@ -60,7 +60,7 @@ details:
    ## 6 Kurseinheiten         
 product:
  header: |
-  ## 6 Kurseinheiten
+  ## 5 Kurseinheiten
   In 6 prägnanten Einheiten wirst Du beide Wege erleben, verstehen und selber anleiten: Du lernst die Methoden, die Leitungshaltung und typische Abläufe. Egal, welche Vorerfahrungen Du mitbringst sind wir sicher, dass Du dabei viel mitnehmen wirst.
  footer: |
   ## September - Dezember 2024 // München, Nürnberg **Einstiege ins Theaterspiel**
@@ -167,6 +167,7 @@ items:
 > - Pädagogische Regie (Modul C)
 > 
 > [[../ausbildung-theaterpaedagogik/2.einstiege_complex|Einstiege anschauen 1]] [Einstiege anschauen](https://dasei.eu)
+
 
 > [!card-event] ## _A1_ ==6.10.2024== Einführung in die Kreisanimation **Am Anfang war der Kreis**
 > 
