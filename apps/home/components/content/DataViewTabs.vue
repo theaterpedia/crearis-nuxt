@@ -12,7 +12,7 @@
 - merge components/content/tabs into this component
 - integrate section + container + background-prop
 - optionally make tab-component obsolete (inject the functionality into dataview-compenents)
-- fix design-issues (Line above shortcode, )
+- fix design-issues (Line above shortcode, <br> after heading)
 */
 
 import DataView from './DataView.vue'
