@@ -137,6 +137,7 @@ const fancyShortCode = ref(props.shortcode && !props.isMobile && (hasOverline.va
 
 .overline {
   font-weight: 300;
+  text-decoration-line: none;
 }
 
 .twoliner {
