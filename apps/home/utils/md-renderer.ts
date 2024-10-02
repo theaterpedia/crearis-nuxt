@@ -56,7 +56,13 @@ export function renderMdProp(content: string, htag: string = 'h3') {
     // check if line is a list
     if (lines[i].startsWith('- ')) {
       // render as list
-      body += `<ul><li>${lines[i].replace('- ', '')}</li></ul>\n`
+      if (!lines[i - 1].startsWith('- ')) {
+        body += `<ul>\n`
+      }
+      body += `<li>${lines[i].replace('- ', '')}</li>\n`
+      if (!lines[i + 1].startsWith('- ')) {
+        body += `</ul>\n`
+      }
     } else {
       // render as paragraph
       body += `<p>${lines[i]}</p>\n`

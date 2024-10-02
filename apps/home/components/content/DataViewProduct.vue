@@ -3,10 +3,30 @@
     <Heading is="h3" :content="heading ? heading : data.heading ? data.heading.toString() : default_heading" v-if="data.heading"></Heading>
     <br>
     <MdBlock htag="h2" :content="data.product?.header" v-if="data.product?.header" />
+    <Slider>
+      <Slide v-for="(item, index) in data.items">
+        <Columns gap="small">
+          <Column width="1/5" v-if="item.image">
+            <img
+              :src="item.image.url"
+            />
+            <p>{{ item.tag }}</p>
+          </Column>
+          <Column>
+            <Heading is="h3" :content="shortcodeTitle(item.shortcode, item.title)" v-if="item.title" />
+            <Prose>
+              <div v-html="renderMdProp(item.body,'h3')" />
+            </Prose>
+          </Column>
+        </Columns>
+      </Slide>
+    </Slider>
   </ContentRenderer>
 </template>
 
 <script lang="ts" setup>
+import { renderMdProp } from '~/utils/md-renderer';
+import MainMenuItem from '../../../../packages/ui/dist/components/MainMenuItem.vue';
 /* This belongs to the DataView + DataViewTab component
 - it should NOT be availabe in the component-spec
 */
@@ -44,6 +64,10 @@ const props = defineProps({
   },
 })
 
+const shortcodeTitle = (shortcode: string | undefined, title: string) => {
+  if (!shortcode) return title
+  return `_${shortcode.toUpperCase()}_ ${title}`
+}
 const default_heading = '## Default Heading'
 
 </script>
