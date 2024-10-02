@@ -1,7 +1,7 @@
 ---
 id: M16E
 datatype: course
-title: "**Einstiege ins Theaterspiel** _M16E_ ==course== Mue 19.9 - 8.12.2024 // Sonntags & Online"
+title: "_M16E_ **Einstiege ins Theaterspiel** ==course== Mue 19.9 - 8.12.2024 // Sonntags & Online"
 cssclasses: 
 start: 2024-09-19
 end: 2024-12-08

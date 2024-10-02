@@ -4,7 +4,7 @@
 
 <script lang="ts" setup>
 /* This belongs to the DataView + DataViewTab component
-- it should not be availabe in the spec
+- it should NOT be availabe in the component-spec
 */
 
 /* Todo: 
@@ -33,6 +33,12 @@ defineProps({
     type: String as PropType<'yaml' | 'md' | 'all'>,
     default: 'yaml',
   },
+  /**
+   * typically undefined (if defined it overwrites the heading-entry of the src)
+   */
+   heading: {
+    type: String as PropType<'default' | 'muted' | 'accent'>,
+  },    
   /**
    *
    *

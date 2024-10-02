@@ -109,6 +109,11 @@ const fancyShortCode = ref(props.shortcode && !props.isMobile && (hasOverline.va
   font-weight: 800;
 }
 
+.separator {
+  margin-right: 0.4em;
+  margin-left: 0.4em;
+}
+
 .shortcode-float {
   float: left;
   margin-right: 0.15em;

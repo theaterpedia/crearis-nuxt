@@ -1,29 +1,19 @@
 <template>
-  <div>
-    <div class="tabs">
-      <ul>
-        <li v-for="tab in tabs" key="tab.src" class="is-active">
-          <a><Heading v-text="tab.title"></Heading></a>
-        </li>
-      </ul>
-    </div>
-    <div class="tab-content">
-      <div v-for="tab in tabs" key="tab.src" class="tab-pane">
-        <DataView :heading="tab.heading" :src="tab.src" :type="tab.type" :view="tab.view" is-active></DataView>
-      </div>
-    </div>
-  </div>
+  <Tabs>
+    <Tab v-for="(tab, index) in tabs" key="tab.src" :active="index === 0" :title="tab.title">
+      <DataView :heading="tab.heading ? tab.heading : null" :src="tab.src" :type="tab.type" :view="tab.view" is-active></DataView>
+    </Tab>
+  </Tabs>
 </template>
 
 <script lang="ts" setup>
 /* Todo: 
-- could use the beforeParseExtension to extract the dataviewtabs from the callout-body and have them available via props
-- we do not need prose-tabs > they are NOT supported in Obsidian quite well
-- setup user-interaction tabs > tab-content
-- transform tabs>li>a>heading to proper html
+- make the content immediately available, fix SSR (first tab only?)
+- merge components/content/tabs into this component
+- integrate section + container + background-prop
+- optionally make tab-component obsolete (inject the functionality into dataview-compenents)
+- fix design-issues (Line above shortcode, <br> after heading)
 */
-
-import { Container, Section } from '@crearis-nuxt/ui'
 
 import DataView from './DataView.vue'
 import type { ExtractPropTypes } from 'vue'

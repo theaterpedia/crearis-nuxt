@@ -1,5 +1,7 @@
 <template>
-  <Component :data="data" :is="`data-view-${view}`" :src="src" />
+  <ContentQuery :path="src" find="one" v-slot="{ data }">
+    <Component :heading="heading" :data="data" :is="`data-view-${view}`"/>
+  </ContentQuery>
 </template>
 
 <script lang="ts" setup>
@@ -40,6 +42,12 @@ defineProps({
     default: 'default',
   },
   /**
+   * typically undefined (if defined it overwrites the heading-entry of the src)
+   */
+  heading: {
+    type: String as PropType<'default' | 'muted' | 'accent'>,
+  },  
+  /**
    *
    *
    * @default 'default'
@@ -47,15 +55,6 @@ defineProps({
   view: {
     type: String as PropType<'product' | 'details'>,
     default: 'product',
-  },
-  /**
-   *
-   *
-   * @default 'default'
-   */
-  data: {
-    type: String as PropType<'yaml' | 'md' | 'all'>,
-    default: 'yaml',
   },
   /**
    *

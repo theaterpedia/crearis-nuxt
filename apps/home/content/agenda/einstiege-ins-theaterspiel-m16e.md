@@ -3,7 +3,7 @@ draft: true
 ctype: course
 shortcode: m16e
 tag: course
-heading: "**Einstiege ins Theaterspiel** _M16E_ ==course== Mue 6.10 - 30.7.2025 // Sonntags & Online"
+heading: "_M16E_ **Einstiege ins Theaterspiel** ==course== Mue 6.10 - 30.7.2025 // Sonntags & Online"
 description: Weiterbildung Theaterpädagogik - Kurs M16E München 6.10.2024 - 30.07.2025 // Sonntags & Online
 title: Einstiege ins Theaterspiel
 start: 2024-10-06
@@ -60,7 +60,7 @@ details:
    ## 6 Kurseinheiten         
 product:
  header: |
-  ## 6 Kurseinheiten
+  ## 5 Kurseinheiten
   In 6 prägnanten Einheiten wirst Du beide Wege erleben, verstehen und selber anleiten: Du lernst die Methoden, die Leitungshaltung und typische Abläufe. Egal, welche Vorerfahrungen Du mitbringst sind wir sicher, dass Du dabei viel mitnehmen wirst.
  footer: |
   ## September - Dezember 2024 // München, Nürnberg **Einstiege ins Theaterspiel**
@@ -69,7 +69,7 @@ items:
   ctype: event
   shortcode: a0
   title: Praxis, Theorie & Ausbildung bei DAS Ei **Basistag Theaterpädagogik**
-  tag: 6.-7.9.2024 
+  tag: SA/SO 6.-7.9.2024 München
   image: 
    url: https://res.cloudinary.com/little-papillon/image/upload/w_400/v1676101506/dasei/700_dasei2022_I8A7903_cvtigl.jpg
    caption: Foto Basistag Theaterpädagogik
@@ -91,7 +91,7 @@ items:
  a1_1178:
   ctype: event
   shortcode: a1
-  tag: 6.10.2024
+  tag: SO 6.10.2024 München
   title: Einführung in die Kreisanimation **Am Anfang war der Kreis**
   image: 
    url: https://res.cloudinary.com/little-papillon/image/upload/w_400/v1594788813/dasei/am_anfang_war_der_kreis_s9qh5y.jpg
@@ -112,7 +112,7 @@ items:
   ctype: event
   shortcode: a2 
   title: Arbeiten mit dem Zwei-Kreise-Modell **die Bühne kommt von selbst**
-  tag: 20.10.2024  
+  tag: SO 20.10.2024 München
   image: 
    url: https://res.cloudinary.com/little-papillon/image/upload/w_400/v1676100503/dasei/377_dasei2022_I8A6515_p6aee7.jpg
    caption: Foto die Bühne kommt von selbst
@@ -132,7 +132,7 @@ items:
   ctype: event
   shortcode: a3
   title: Raumlauf-Animation und Impro-Training **Wege entstehen beim Gehen**
-  tag: 7.-8.12.2024
+  tag: 7.-8.12.2024 München
   image: 
    url: https://res.cloudinary.com/little-papillon/image/upload/w_400/v1676101054/dasei/wege_entstehen_beim_gehen.jpg
    caption: Foto den Fuß setzeen
@@ -157,21 +157,22 @@ items:
 > [ende:: 2024-09-07T15:00]
 > [ablauf:: _Fr. 18:00-20:00_  _Sa. 09:00-18:00_  _So. 09:00-15:00_]
 > [ort:: _Hermann-Lingg Str. 2_  _80336 München_]
-> [mit:: _Cornelia Jung_  _Hans Dönitz_]
+> [mit:: _Cornelia Jung_  _Hans Dönitz_] 
 > 
 > ![Foto Basistag Theaterpädagogik](https://res.cloudinary.com/little-papillon/image/upload/w_400/v1676101506/dasei/700_dasei2022_I8A7903_cvtigl.jpg)
 > 
 > Am Basistag erlebst Du die grundsätzlichen Zusammenhänge der Theaterpädagogik von DAS Ei konzentriert und ganz praktisch am eigenen Leib. Du erarbeitest Dir ausgehend von drei Zwischenreflexionen ein Grundverständnis der Module
-> - Einstiege in’s Theaterspiel (Modul A)
+> - Einstiege in’s Theaterspiel (Modul A) 
 > - Szenische Themenarbeit (Modul B)
-> - Pädagogische Regie (Modul C)
+> - Pädagogische Regie (Modul C) 
 > 
 > [[../ausbildung-theaterpaedagogik/2.einstiege_complex|Einstiege anschauen 1]] [Einstiege anschauen](https://dasei.eu)
+
 
 > [!card-event] ## _A1_ ==6.10.2024== Einführung in die Kreisanimation **Am Anfang war der Kreis**
 > 
 > [start:: 2024-10-06T09:00]
-> [ende:: 2024-10-06T19:00]
+> [ende:: 2024-10-06T19:00] 
 > [ablauf:: _Fr. 18:00-20:00 (online)_  _So. 09:00-19:00_  _Di. 18:00-21:00 (online)_]
 > [ort:: _Hermann-Lingg Str. 2_  _80336 München_]
 > [mit:: Hans Dönitz]
