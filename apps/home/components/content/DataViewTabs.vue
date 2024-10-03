@@ -1,6 +1,6 @@
 <template>
   <Tabs>
-    <Tab v-for="(tab, index) in tabs" key="tab.src" :active="index === 0" :title="tab.title">
+    <Tab v-for="(tab, key, index) in tabs" :key="key" :active="index === 0" :title="tab.title">
       <DataView :heading="tab.heading ? tab.heading : null" :src="tab.src" :type="tab.type" :view="tab.view" is-active></DataView>
     </Tab>
   </Tabs>

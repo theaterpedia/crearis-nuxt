@@ -3,7 +3,7 @@ draft: true
 ctype: course
 shortcode: m16e
 tag: course
-heading: "_M16E_ **Einstiege ins Theaterspiel** ==course== Mue 6.10 - 30.7.2025 // Sonntags & Online"
+heading: "**Einstiege ins Theaterspiel** ==M16E== Mue 6.10 - 30.7.2025 // Sonntags & Online"
 description: Weiterbildung Theaterpädagogik - Kurs M16E München 6.10.2024 - 30.07.2025 // Sonntags & Online
 title: Einstiege ins Theaterspiel
 start: 2024-10-06
@@ -17,10 +17,9 @@ details:
  programm:
   title: Programm & Struktur
   header: |
-   ## Programm & Struktur
+   ## **Programm & Struktur**
    - Stichwort 1
    - Stichwort 2
-
   agenda:
    style: default
   columns:
@@ -49,11 +48,13 @@ details:
    - 14 Tage Widerruf (bei Anmeldungen bis 1. Sept 2024)
    - bis 10 Tage nach Basistag kostenfreies Storno A1-A5
  kontakt:
+  title: Kontaktangaben
   header: |
    ## 6 Kurseinheiten
   footer: |
    ## 6 Kurseinheiten
  agb:
+  title: Anmelden
   header: |
    ## 6 Kurseinheiten
   footer: |
@@ -191,7 +192,7 @@ Den Einstieg in die elementare Animation bilden die Kreisspiele: Hier kommen Gru
 > 
 > ![Foto die Bühne kommt von selbst](https://res.cloudinary.com/little-papillon/image/upload/w_400/v1676100503/dasei/377_dasei2022_I8A6515_p6aee7.jpg)
 > 
-Wenn Du gelernt hast, die Interaktion der Gruppe im Kreis freizusetzen, entstehen fast von selbst 'Bühnenmomente'. Mit dem Zwei-Kreise-Modell lernst Du diese Momente gezielt zu gestalten und verbindest das Theaterpotential einfacher Animationen zu einem bühnenreifen Setting: Der Kreis öffnet sich zum Halbkreis und gibt in der Mitte eine Spielfläche frei.
+Wenn Du gelernt hast, die Interaktion der Gruppe im Kreis freizusetzen, entstehen fast von selbst 'Bühnenmomente'. Mit dem Zwei-Kreise-Modell lernst Du diese Momente gezielt zu gestalten und verbindest das Theaterpotential einfacher Animationen zu einem bühnenreifen Setting: Der Kreis öffnet sich zum Halbkreis und gibt in der Mitte eine Spielfläche frei. 
 
 > [!card-event] ## _A3_ ==7.-8.12.2024== Einführung in Raumlauf-Animation und Didaktik des Improvisationstraining **Wege entstehen beim Gehen**
 > 

@@ -10,23 +10,6 @@
     </Sidebar>
 
     <Main>
-      <Hero contentType="banner" imgTmp="https://pruvious.com/uploads/dasei/banner.jpg">
-        <Banner transparent>
-          <Prose>
-            <h1>
-              Juni – Dezember 2023 // München, Nürnberg
-              <strong>Einstiege ins Theaterspiel</strong>
-            </h1>
-            <p>
-              <strong>Fortbildung in 6 Wochenenden:</strong>
-              <br />
-              <strong>Elementare und Szenische Animation</strong>
-            </p>
-            <Button size="small" variant="plain">Jetzt anmelden</Button>
-          </Prose>
-        </Banner>
-      </Hero>
-
       <slot />
     </Main>
   </Box>
