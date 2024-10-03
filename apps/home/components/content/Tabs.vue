@@ -1,72 +1,58 @@
-<script setup>
-  //taken from: https://fjolt.com/article/vue-reusable-tabs
-    import { ref, onMounted } from 'vue';
-    const props = defineProps([ 'customClass' ]);
-
-    // Defining our reactive `data()` properties
-    let tabContainer = ref(null);
-    let tabHeaders = ref(null);
-    let tabs = ref(null);
-    let activeTabIndex = ref(0);
-
-    const changeTab = (index) => {
-        // Set activeTabIndex item to the index of the element clicked
-        activeTabIndex = index;
-        // Remove any active classes
-        for(let x of [...tabs.value, ...tabHeaders.value]) {
-            x.classList.remove('active')
-        }
-        // Add active classes where appropriate, to the active elements!
-        tabs.value[activeTabIndex].classList.add('active')  
-        tabHeaders.value[activeTabIndex].classList.add('active')  
-    }
-
-    onMounted(() => {
-        tabs.value = [ ...tabContainer.value.querySelectorAll('.tab') ];
-        for(let x of tabs.value) {
-            if(x.classList.contains('active')) {
-                activeTabIndex = tabs.value.indexOf(x);
-            }
-        }
-    });
-</script>
-
 <template>
-  <div id="tabs-container" :class="customClass" ref="tabContainer">
-    <div id="tab-headers">
-    <ul>
-        <!-- this shows all of the titles --> 
-        <li v-for="(tab, index) in tabs" :key="index" :class="activeTabIndex == index ? 'active' : ''" @click="changeTab(index)" ref="tabHeaders">
-          <Heading is="span" :content="tab.title" />
+  <div>
+    <div class="tab-headers">
+      <ul>
+        <li v-for="(tabTitle, i) in tabTitles" @click="activeTab = i" :class="activeTab === i ? 'active' : ''">
+          <Heading :content="tabTitle" is="span" />
         </li>
-    </ul>
+      </ul>
     </div>
-    <!-- this is where the tabs go, in this slot -->
-    <div id="active-tab">
-        <slot></slot>
+
+    <div ref="tabContent" class="tab-content">
+      <slot></slot>
     </div>
   </div>
 </template>
 
+<script lang="ts" setup>
+const activeTab = ref(0)
+const tabTitles = ref<string[]>([])
+const tabContent = ref<HTMLDivElement | null>(null)
+const slots = useSlots()
+
+onMounted(() => {
+  tabTitles.value = [...(slots.default!()[0].children as any)].map((tab: any) => tab.props.title)
+})
+
+watch(activeTab, () => {
+  for (const [i, el] of [...tabContent.value!.children].entries()) {
+    ;(el as HTMLElement).style.display = i === activeTab.value ? 'block' : 'none'
+  }
+})
+</script>
+
 <style>
-#tab-headers ul {
+.tab-headers ul {
   margin: 0;
   padding: 0;
   display: flex;
+  min-height: 3.25rem;
   border-bottom: 2px solid #ddd;
 }
-#tab-headers ul li {
+
+.tab-headers ul li {
   list-style: none;
   padding: 1rem 1.25rem;
   position: relative;
   cursor: pointer;
 }
-#tab-headers ul li.active {
+
+.tab-headers ul li.active {
   color: #008438;
   font-weight: bold;
 }
 
-#tab-headers ul li.active:after {
+.tab-headers ul li.active:after {
   content: '';
   position: absolute;
   bottom: -2px;
@@ -75,11 +61,17 @@
   width: 100%;
   background: #008438;
 }
-#active-tab, #tab-headers {
+
+.tab-content,
+.tab-headers {
   width: 100%;
 }
 
-#active-tab {
+.tab-content {
   padding: 0.75rem;
+}
+
+.tab-content > :not(:first-child) {
+  display: none;
 }
 </style>
