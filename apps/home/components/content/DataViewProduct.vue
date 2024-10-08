@@ -21,10 +21,13 @@
         </Columns>
       </Slide>
     </Slider>
+
+    <ButtonTmp style="margin-top:3em" :to="{path: '/details', props: src, query: {src: src}}">Anmeldung und Konditionen</ButtonTmp>
   </ContentRenderer>
 </template>
 
 <script lang="ts" setup>
+
 import { renderMdProp } from '~/utils/md-renderer';
 import MainMenuItem from '../../../../packages/ui/dist/components/MainMenuItem.vue';
 /* This belongs to the DataView + DataViewTab component
@@ -55,13 +58,18 @@ const props = defineProps({
   },
   /**
    *
-   *
-   * @default 'default'
    */
   data: {
     type: Object as PropType<Record<string, unknown>>,
     required: true,
   },
+  /**
+   *
+   */
+   src: {
+    type: String,
+    required: true,
+  },  
 })
 
 const shortcodeTitle = (shortcode: string | undefined, title: string) => {

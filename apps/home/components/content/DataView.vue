@@ -1,6 +1,6 @@
 <template>
   <ContentQuery :path="src" find="one" v-slot="{ data }">
-    <Component :heading="heading" :data="data" :is="`data-view-${view}`"/>
+    <Component :heading="heading" :src="src" :data="data" :is="`data-view-${view}`"/>
   </ContentQuery>
 </template>
 

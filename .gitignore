@@ -9,6 +9,7 @@ node_modules
 
 # Obsidian-local
 .obsidian
+apps/home/.obsidian
 
 # Misc
 .DS_Store
