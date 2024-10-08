@@ -9,7 +9,7 @@
         <span>{{ item.label }}</span>
 
         <svg
-          v-if="level > 0 && item.expanded"
+          v-if="item.children.length && level > 0 && item.expanded"
           fill="none"
           height="1em"
           stroke="currentColor"
@@ -25,7 +25,7 @@
         </svg>
 
         <svg
-          v-else-if="level > 0"
+          v-else-if="item.children.length && level > 0"
           fill="none"
           height="1em"
           stroke="currentColor"
@@ -44,6 +44,7 @@
       <ul v-if="item.children.length && item.expanded" class="main-menu-item-group">
         <MainMenuItem
           v-for="(child, i) in item.children"
+          :currentPath="currentPath"
           :item="child"
           :level="level + 1"
           :linkComponent="linkComponent"
@@ -65,6 +66,7 @@
       :target="item.link.startsWith('http') ? '_blank' : undefined"
       :to="item.link"
       class="main-menu-item-link"
+      :class="{ 'main-menu-item-link-active': currentPath === item.link }"
     >
       <span>{{ item.label }}</span>
     </component>
@@ -143,6 +145,14 @@ defineProps({
     type: Object as PropType<Component>,
     default: RouterLink,
   },
+
+  /**
+   * The current route path.
+   */
+  currentPath: {
+    type: String,
+    default: '',
+  },
 })
 
 defineEmits<{
@@ -187,6 +197,10 @@ defineEmits<{
   text-align: left;
 }
 
+.main-menu-item-button > svg {
+  flex-shrink: 0;
+}
+
 .main-menu-item-0 > .main-menu-item-button {
   font-weight: 700;
   text-transform: uppercase;
@@ -197,7 +211,8 @@ defineEmits<{
   transition-property: background-color;
 }
 
-.main-menu-item-link:hover {
+.main-menu-item-link:hover,
+.main-menu-item-link-active {
   background-color: hsl(var(--primary));
 }
 </style>
