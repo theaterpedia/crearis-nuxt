@@ -1,6 +1,14 @@
 <template>
   <div>
-    <Heading v-if="heading" :is="htag" :headline="headline" :overline="overline ? overline : ''" :subline="subline ? subline : ''" :tags="tags ? tags : ''" :shortcode="shortcode ? shortcode : ''" />
+    <Heading
+      v-if="heading"
+      :headline="headline"
+      :is="htag"
+      :overline="overline ? overline : ''"
+      :shortcode="shortcode ? shortcode : ''"
+      :subline="subline ? subline : ''"
+      :tags="tags ? tags : ''"
+    />
     <Prose>
       <div v-html="body" />
     </Prose>
@@ -9,7 +17,7 @@
 
 <script lang="ts" setup>
 import { Heading } from '@crearis-nuxt/ui'
-import { extractHeading } from '~/utils/md-renderer';
+import { extractHeading } from '~/utils/md-renderer'
 
 const props = defineProps({
   /**
@@ -24,7 +32,7 @@ const props = defineProps({
   content: {
     type: String,
     required: true,
-  }
+  },
 })
 
 const extractContent = (content: string) => {
@@ -57,5 +65,4 @@ const extractContent = (content: string) => {
 
 const { heading, body } = extractContent(props.content)
 const { headline, overline, subline, tags, shortcode } = extractHeading(heading)
-
 </script>

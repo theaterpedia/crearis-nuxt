@@ -1,7 +1,11 @@
 <template>
   <div class="background">
     <ContentRenderer :value="data">
-      <Heading is="h3" :content="heading ? heading : data.heading ? data.heading.toString() : default_heading" v-if="data.heading"></Heading>
+      <Heading
+        v-if="data.heading"
+        :content="heading ? heading : data.heading ? data.heading.toString() : default_heading"
+        is="h3"
+      ></Heading>
       <Prose>
         {{ content }}
       </Prose>
@@ -11,8 +15,7 @@
 
 <script lang="ts" setup>
 /* This should work but it DOES NOT, see Issue #35
-*/
-
+ */
 
 import { Container, Section } from '@crearis-nuxt/ui'
 import { renderMdProp } from '~/utils/md-renderer'
@@ -29,9 +32,9 @@ const props = defineProps({
   /**
    * typically undefined (if defined it overwrites the heading-entry of the src)
    */
-   heading: {
+  heading: {
     type: String as PropType<'default' | 'muted' | 'accent'>,
-  },    
+  },
   /**
    *
    *
@@ -54,5 +57,4 @@ const props = defineProps({
 
 const default_heading = '## Default Heading'
 const content = renderMdProp(props.data.product?.header, 'h2')
-
 </script>

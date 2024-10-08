@@ -1,35 +1,38 @@
 <template>
   <ContentRenderer :value="data">
-    <Heading is="h3" :content="heading ? heading : data.heading ? data.heading.toString() : default_heading" v-if="data.heading"></Heading>
-    <br>
-    <MdBlock htag="h2" :content="data.product?.header" v-if="data.product?.header" />
+    <Heading
+      v-if="data.heading"
+      :content="heading ? heading : data.heading ? data.heading.toString() : default_heading"
+      is="h3"
+    ></Heading>
+    <br />
+    <MdBlock v-if="data.product?.header" :content="data.product?.header" htag="h2" />
     <Slider>
       <Slide v-for="(item, index) in data.items">
         <Columns gap="small">
-          <Column width="1/5" v-if="item.image">
-            <img
-              :src="item.image.url"
-            />
+          <Column v-if="item.image" width="1/5">
+            <img :src="item.image.url" />
             <p>{{ item.tag }}</p>
           </Column>
           <Column>
-            <Heading is="h3" :content="shortcodeTitle(item.shortcode, item.title)" v-if="item.title" />
+            <Heading v-if="item.title" :content="shortcodeTitle(item.shortcode, item.title)" is="h3" />
             <Prose>
-              <div v-html="renderMdProp(item.body,'h3')" />
+              <div v-html="renderMdProp(item.body, 'h3')" />
             </Prose>
           </Column>
         </Columns>
       </Slide>
     </Slider>
 
-    <ButtonTmp style="margin-top:3em" :to="{path: '/details', props: src, query: {src: src}}">Anmeldung und Konditionen</ButtonTmp>
+    <ButtonTmp :to="{ path: '/details', props: src, query: { src: src } }" style="margin-top: 3em">
+      Anmeldung und Konditionen
+    </ButtonTmp>
   </ContentRenderer>
 </template>
 
 <script lang="ts" setup>
-
-import { renderMdProp } from '~/utils/md-renderer';
-import MainMenuItem from '../../../../packages/ui/dist/components/MainMenuItem.vue';
+import { renderMdProp } from '~/utils/md-renderer'
+import MainMenuItem from '../../../../packages/ui/dist/components/MainMenuItem.vue'
 /* This belongs to the DataView + DataViewTab component
 - it should NOT be availabe in the component-spec
 */
@@ -44,9 +47,9 @@ const props = defineProps({
   /**
    * typically undefined (if defined it overwrites the heading-entry of the src)
    */
-   heading: {
+  heading: {
     type: String as PropType<'default' | 'muted' | 'accent'>,
-  },    
+  },
   /**
    *
    *
@@ -66,10 +69,10 @@ const props = defineProps({
   /**
    *
    */
-   src: {
+  src: {
     type: String,
     required: true,
-  },  
+  },
 })
 
 const shortcodeTitle = (shortcode: string | undefined, title: string) => {
@@ -77,5 +80,4 @@ const shortcodeTitle = (shortcode: string | undefined, title: string) => {
   return `_${shortcode.toUpperCase()}_ ${title}`
 }
 const default_heading = '## Default Heading'
-
 </script>

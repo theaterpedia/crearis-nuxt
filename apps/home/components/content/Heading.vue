@@ -1,12 +1,19 @@
 <template>
-  <Heading :is="is" :headline="headline" :overline="overline ? overline : ''" :subline="subline ? subline : ''" :tags="tags ? tags : ''" :shortcode="shortcode ? shortcode : ''">
+  <Heading
+    :headline="headline"
+    :is="is"
+    :overline="overline ? overline : ''"
+    :shortcode="shortcode ? shortcode : ''"
+    :subline="subline ? subline : ''"
+    :tags="tags ? tags : ''"
+  >
     <ContentSlot />
   </Heading>
 </template>
 
 <script lang="ts" setup>
 import { Heading } from '@crearis-nuxt/ui'
-import { extractHeading } from '~/utils/md-renderer';
+import { extractHeading } from '~/utils/md-renderer'
 const props = defineProps({
   /**
    * The heading tag to render.
@@ -20,9 +27,8 @@ const props = defineProps({
   content: {
     type: String,
     required: true,
-  }
+  },
 })
 
 const { headline, overline, subline, tags, shortcode } = extractHeading(props.content)
-
 </script>

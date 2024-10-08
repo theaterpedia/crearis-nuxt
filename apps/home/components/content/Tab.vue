@@ -17,9 +17,9 @@ defineProps({
   /**
    *
    */
-   title: {
+  title: {
     type: String,
     required: true,
-  },  
+  },
 })
 </script>
