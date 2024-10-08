@@ -10,20 +10,11 @@
     </Sidebar>
 
     <Main>
-      <Hero contentType="banner" imgTmp="https://pruvious.com/uploads/dasei/banner.jpg">
+      <Hero contentType="banner" :imgTmp="image.src" :heightTmp="image.height ? image.height : undefined" :imgTmpAlignY="image.align_y ? image.align_y : undefined">
         <Banner transparent>
-          <Prose>
-            <h1>
-              Juni – Dezember 2023 // München, Nürnberg
-              <strong>Einstiege ins Theaterspiel</strong>
-            </h1>
-            <p>
-              <strong>Fortbildung in 6 Wochenenden:</strong>
-              <br />
-              <strong>Elementare und Szenische Animation</strong>
-            </p>
-            <Button size="small" variant="plain">Jetzt anmelden</Button>
-          </Prose>
+
+          <div v-html="renderMdProp(hero_content, 'h1')" />
+
         </Banner>
       </Hero>
 
@@ -54,9 +45,21 @@
 </template>
 
 <script lang="ts" setup>
+import { renderMdProp } from '~/utils/md-renderer'
 const route = useRoute()
 const mainMenu = useMainMenu()
 const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation())
+const { page } = useContent()
+
+const getObject = (image: []) => {
+  return image.reduce((a, b) => Object.assign(a, b), {})
+}
+
+const image = page.value.image ? getObject(page.value.image) : {src: 'https://pruvious.com/uploads/dasei/banner.jpg', alt: 'DAS Ei'}
+const hero_content = page.value.hero_content ? page.value.hero_content : page.value.title
+
+
+// const image = page.value.image ? page.value.image.src : 'https://pruvious.com/uploads/dasei/banner.jpg'
 
 if (!mainMenu.value.initialized) {
   mainMenu.value.items = navigationToMenu(navigation.value!, route.path)

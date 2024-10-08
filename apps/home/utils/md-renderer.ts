@@ -29,7 +29,7 @@ export function extractHeading(content: string) {
 
 /**
  * @param content (basic markdown)
- * @param hlevel (2-5) represents the heading level if first line is a heading
+ * @param hlevel (1-5) represents the heading level if first line is a heading
  * @returns { headline, overline, subline, tags, shortcode }
  * @description renders multiline or single line markdown content
  * to basic html to be processed by prose, supports only:
