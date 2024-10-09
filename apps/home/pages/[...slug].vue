@@ -3,4 +3,3 @@
     <ContentDoc />
   </NuxtLayout>
 </template>
-

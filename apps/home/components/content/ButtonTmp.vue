@@ -1,5 +1,5 @@
 <template>
-  <Button :is="NuxtLink">
+  <Button :is="is" :variant="variant" :size="size">
     <ContentSlot unwrap="p" />
   </Button>
 </template>
@@ -18,5 +18,24 @@ defineProps({
     type: [Object, String] as PropType<'a' | 'button' | 'span' | Component>,
     default: NuxtLink,
   },
+  /**
+   * The color variant of the button.
+   *
+   * @default 'primary'
+   */
+   variant: {
+    type: String as PropType<'primary' | 'plain'>,
+    default: 'primary',
+  },
+
+  /**
+   * The size of the button.
+   *
+   * @default 'medium'
+   */
+  size: {
+    type: String as PropType<'small' | 'medium'>,
+    default: 'medium',
+  },  
 })
 </script>

@@ -26,7 +26,7 @@ const props = defineProps({
    * @default 'h3'
    */
   htag: {
-    type: [Object, String] as PropType<'h1' | 'h2' | 'h3' | 'span' | 'li'>,
+    type: [Object, String] as PropType<'h1' | 'h2' | 'h3' | 'p' | 'span' | 'li'>,
     default: 'h3',
   },
   content: {
