@@ -10,23 +10,27 @@
     </Sidebar>
 
     <Main>
-      <Hero contentType="banner" imgTmp="https://pruvious.com/uploads/dasei/banner.jpg">
-        <Banner transparent>
-          <Prose>
-            <h1>
-              Juni – Dezember 2023 // München, Nürnberg
-              <strong>Einstiege ins Theaterspiel</strong>
-            </h1>
-            <p>
-              <strong>Fortbildung in 6 Wochenenden:</strong>
-              <br />
-              <strong>Elementare und Szenische Animation</strong>
-            </p>
-            <Button size="small" variant="plain">Jetzt anmelden</Button>
-          </Prose>
-        </Banner>
-      </Hero>
-
+      <slot name="header">
+        <Hero :contentType="hero.content ? hero.content : 'text'" :imgTmp="image.src" :contentAlignY="hero.content_y" :contentWidth="hero.content_width"  :heightTmp="hero.height" :imgTmpAlignX="hero.image_focus_x" :imgTmpAlignY="hero.image_focus_y" v-if="hero">
+          <Component :is="hero.content === 'banner' ? 'Banner' : 'div'" transparent>
+            <Heading is="h1" :content="page.heading ? page.heading : page.title" v-if="page.heading || page.title"></Heading>
+            <br v-if="(page.heading || page.title) && page.teaser"/>
+            <MdBlock :htag="page.heading ? 'h3' : 'h1'" :content="page.teaser" v-if="page.teaser"/>
+            <div v-if="hero.cta || hero.link">
+              <ButtonTmp v-if="hero.cta" :to="hero.cta.link ? hero.cta.link : '#cta'" variant="plain" :size="hero.content_width === 'full' ? 'medium' : 'small' ">
+                {{ hero.cta.title }}
+              </ButtonTmp>
+              <NuxtLink v-if="hero.link" :to="hero.link.link" :style="hero.content_width === 'full' ? 'font-weight:bold' : '' "  style="margin-left:2em;text-decoration:underline">
+                {{ hero.link.title }}
+              </NuxtLink>           
+            </div>
+          </Component>
+        </Hero>
+        <SectionContainer v-else>
+          <Heading is="h1" :content="page.heading ? page.heading : page.title" v-if="page.heading || page.title"></Heading>
+          <MdBlock :htag="page.heading ? 'h3' : 'h1'" :content="page.teaser" v-if="page.teaser"/>
+        </SectionContainer>
+      </slot>
       <slot />
     </Main>
   </Box>
@@ -54,6 +58,12 @@
 </template>
 
 <script lang="ts" setup>
+import { NuxtLink } from '#components'
+const { page } = useContent()
+
+const image = page.value.image ? page.value.image : {src: 'https://pruvious.com/uploads/dasei/banner.jpg', alt: 'DAS Ei'}
+const hero = page.value.hero ? page.value.hero : undefined
+
 const route = useRoute()
 const mainMenu = useMainMenu()
 const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation())
