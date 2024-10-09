@@ -10,7 +10,7 @@
       :tags="tags ? tags : ''"
     />
     <Prose>
-      <div v-html="body" />
+      <div :class="narrow ? 'narrow' : ''" v-html="body" />
     </Prose>
   </div>
 </template>
@@ -33,6 +33,13 @@ const props = defineProps({
     type: String,
     required: true,
   },
+  /**
+   * enable this for minimal spacings.
+   */
+   narrow: {
+    type: Boolean,
+    default: false,
+  },  
 })
 
 const extractContent = (content: string) => {

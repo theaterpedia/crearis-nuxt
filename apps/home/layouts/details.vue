@@ -9,7 +9,7 @@
       <MainMenu v-model:items="mainMenuItems" />
     </Sidebar>
 
-    <Main>
+    <Main style="background-color:white">
       <slot />
     </Main>
   </Box>

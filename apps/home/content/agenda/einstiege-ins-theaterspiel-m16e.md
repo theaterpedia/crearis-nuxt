@@ -3,8 +3,8 @@ draft: true
 ctype: course
 shortcode: m16e
 tag: course
-heading: "**Einstiege ins Theaterspiel** ==M16E== Mue 6.10 - 30.7.2025 // Sonntags & Online"
-description: Weiterbildung Theaterpädagogik - Kurs M16E München 6.10.2024 - 30.07.2025 // Sonntags & Online
+heading: "==Okt 2024 - Juli 2025== Einstiege ins Theaterspiel **Tageskursverlauf München**"
+description: Fortbildung Einstiege ins Theaterspiel // Kurs M16E München 6.10.2024 - 30.07.2025 // Sonntags & Online
 title: Einstiege ins Theaterspiel
 start: 2024-10-06
 ende: 2025-07-30
