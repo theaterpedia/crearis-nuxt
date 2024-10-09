@@ -121,7 +121,7 @@
   margin-top: 1em;
 }
 
-.prose :where(:not(.h1, .h2, .h3, .h4, .h5, .h6) + p) {
+.prose :where(:not(.narrow, .h1, .h2, .h3, .h4, .h5, .h6) + p) {
   margin-top: 1.8em;
 }
 
@@ -139,9 +139,10 @@
   margin-top: 0.75rem;
 }
 
-.prose :where(* + .narrow) {
+.prose :where(* + .narrow, .narrow > p) {
   margin-top: 0.5em;
 }
+
 
 /**
  * Colors

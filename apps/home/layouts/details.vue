@@ -6,10 +6,10 @@
       logoAlt="DAS Ei"
       logoSmall="https://pruvious.com/uploads/logo-dasei-small.svg"
     >
-      <MainMenu v-model:items="mainMenuItems" />
+      <MainMenu v-model:items="mainMenu.items" :currentPath="$route.path" />
     </Sidebar>
 
-    <Main>
+    <Main style="background-color:white">
       <slot />
     </Main>
   </Box>
@@ -37,27 +37,12 @@
 </template>
 
 <script lang="ts" setup>
-import type { MainMenuParentItem } from '@crearis-nuxt/ui'
+const route = useRoute()
+const mainMenu = useMainMenu()
+const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation())
 
-const mainMenuItems: Ref<MainMenuParentItem[]> = ref([
-  {
-    label: 'Ausbildung Theaterpädagogik',
-    children: [
-      { label: 'Einstiege ins Theaterspiel', link: '/ausbildung-theaterpaedagogik/einstiege_complex' },
-      { label: 'Grundlagen Theaterpädagogik (BuT)', link: '#' },
-      { label: 'Profil Performance & Interkulturelles Theater', link: '#' },
-      {
-        label: 'Aufbaustufe Theaterpädagogogik',
-        children: [
-          { label: 'Item 1', link: '#' },
-          { label: 'Item 2', link: '#' },
-        ],
-      },
-    ],
-  },
-  {
-    label: 'Team & Institut',
-    children: [],
-  },
-])
+if (!mainMenu.value.initialized) {
+  mainMenu.value.items = navigationToMenu(navigation.value!, route.path)
+  mainMenu.value.initialized = true
+}
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="banner" :class="{ 'banner-transparent': transparent }">
+  <div :class="{ 'banner': !card, 'banner-transparent': transparent && !card, 'card-transparent': transparent && card, 'card': card,  }">
     <slot />
   </div>
 </template>
@@ -13,6 +13,11 @@ defineProps({
     type: Boolean,
     default: false,
   },
+
+  card: {
+    type: Boolean,
+    default: false,
+  },  
 })
 </script>
 
@@ -24,8 +29,19 @@ defineProps({
   background-color: hsl(var(--primary));
 }
 
+.card {
+  --selection: var(--primary);
+  --selection-foreground: var(--primary-foreground);
+  padding: 1.5rem;
+  background-color: hsl(var(--background));
+}
+
 .banner-transparent {
   background-color: hsl(var(--primary) / 70%);
+}
+
+.card-transparent {
+  background-color: hsl(var(--background) / 70%);
 }
 
 @media (max-width: 767px) {
