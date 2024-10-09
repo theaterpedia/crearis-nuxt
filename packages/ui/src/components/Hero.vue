@@ -1,8 +1,8 @@
 <template>
-  <div class="hero" :class="[`hero-${heightTmp}`, `hero-align-content-${contentAlignY}`]">
+  <div class="hero" :class="[target==='page' ? `hero-${heightTmp}` : 'hero-mini card-hero', `hero-align-content-${contentAlignY}`]">
     <div class="hero-cover">
       <div
-        class="hero-cover-image"
+        :class="target === 'page' ? 'hero-cover-image' : 'static-cover-image'"
         :style="{
           backgroundImage: `url(${imgTmp})`,
           backgroundPositionX: imgTmpAlignX === 'stretch' ? 'left' : imgTmpAlignX === 'cover' ? 'center' : imgTmpAlignX,
@@ -87,6 +87,14 @@ defineProps({
   },
 
   /**
+   * makes hero cards-compatible if set to 'card'.
+   */
+   target: {
+    type: String as PropType<'page' | 'card'>,
+    default: 'page',
+  },
+
+  /**
    * Defines the padding of the content.
    *
    * - `text` - Applies standard padding like in sections.
@@ -124,6 +132,10 @@ defineProps({
   min-height: 25vh;
 }
 
+.card-hero {
+  max-width: 500px;
+}
+
 .hero-align-content-top {
   align-items: flex-start;
 }
@@ -159,6 +171,14 @@ defineProps({
   position: sticky;
   top: 0;
   width: 100%;
+  height: 50%;
+  background-repeat: no-repeat;
+}
+
+.static-cover-image {
+  top: 0;
+  width: 100%;
+  max-width: 500px;
   height: 50%;
   background-repeat: no-repeat;
 }
