@@ -32,6 +32,9 @@
         </SectionContainer>
       </slot>
       <slot />
+      <ButtonTmp id="cta" v-if="details" :to="{ path: '/details', props: route.path, query: { src: route.path } }" style="margin-top: 3em">
+        Anmeldung und Konditionen
+      </ButtonTmp>
     </Main>
   </Box>
 
@@ -63,6 +66,7 @@ const { page } = useContent()
 
 const image = page.value.image ? page.value.image : {src: 'https://pruvious.com/uploads/dasei/banner.jpg', alt: 'DAS Ei'}
 const hero = page.value.hero ? page.value.hero : undefined
+const details = page.value.details ? true : false
 
 const route = useRoute()
 const mainMenu = useMainMenu()

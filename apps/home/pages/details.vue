@@ -1,7 +1,7 @@
 <template>
   <NuxtLayout>
     <ContentQuery v-slot="{ data }" :path="src" find="one">
-      <DataViewDetails :data="data" :src="src" />
+      <DataViewDetails :product="data" :src="src" />
     </ContentQuery>
   </NuxtLayout>
 </template>
@@ -11,6 +11,6 @@ definePageMeta({
   layout: 'details',
 })
 
-const src = 'agenda/einstiege-ins-theaterspiel-m16e'
-//const src = useRoute().query.src
+//ERR 'Calling `useRoute` within middleware may lead to misleading results. Instead, use the (to, from) arguments passed to the middleware to access the new and old routes.'
+const src = useRoute().query.src
 </script>

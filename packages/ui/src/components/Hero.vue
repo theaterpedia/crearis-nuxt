@@ -5,12 +5,14 @@
         :class="target === 'page' ? 'hero-cover-image' : 'static-cover-image'"
         :style="{
           backgroundImage: `url(${imgTmp})`,
-          backgroundPositionX: imgTmpAlignX === 'stretch' ? 'left' : imgTmpAlignX === 'cover' ? 'center' : imgTmpAlignX,
-          backgroundPositionY: imgTmpAlignY === 'stretch' ? 'top' : imgTmpAlignY === 'cover' ? 'center' : imgTmpAlignY,
+          backgroundPositionX: target==='page' ? imgTmpAlignX === 'stretch' ? 'left' : imgTmpAlignX === 'cover' ? 'center' : imgTmpAlignX : 'center',
+          backgroundPositionY: target==='page' ? imgTmpAlignY === 'stretch' ? 'top' : imgTmpAlignY === 'cover' ? 'center' : imgTmpAlignY : 'center',
           backgroundSize:
-            imgTmpAlignX === 'cover' || imgTmpAlignY === 'cover'
-              ? 'cover'
-              : `${imgTmpAlignX === 'stretch' ? '100%' : 'auto'} ${imgTmpAlignY === 'stretch' ? '100%' : 'auto'}`,
+            target==='page'
+              ? imgTmpAlignX === 'cover' || imgTmpAlignY === 'cover'
+                ? 'cover'
+                : `${imgTmpAlignX === 'stretch' ? '100%' : 'auto'} ${imgTmpAlignY === 'stretch' ? '100%' : 'auto'}`
+              : '500px',
         }"
       ></div>
 
