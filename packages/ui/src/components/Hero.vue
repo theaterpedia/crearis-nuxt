@@ -1,14 +1,31 @@
 <template>
-  <div class="hero" :class="[target==='page' ? `hero-${heightTmp}` : 'hero-mini card-hero', `hero-align-content-${contentAlignY}`]">
+  <div
+    class="hero"
+    :class="[target === 'page' ? `hero-${heightTmp}` : 'hero-mini card-hero', `hero-align-content-${contentAlignY}`]"
+  >
     <div class="hero-cover">
       <div
         :class="target === 'page' ? 'hero-cover-image' : 'static-cover-image'"
         :style="{
           backgroundImage: `url(${imgTmp})`,
-          backgroundPositionX: target==='page' ? imgTmpAlignX === 'stretch' ? 'left' : imgTmpAlignX === 'cover' ? 'center' : imgTmpAlignX : 'center',
-          backgroundPositionY: target==='page' ? imgTmpAlignY === 'stretch' ? 'top' : imgTmpAlignY === 'cover' ? 'center' : imgTmpAlignY : 'center',
+          backgroundPositionX:
+            target === 'page'
+              ? imgTmpAlignX === 'stretch'
+                ? 'left'
+                : imgTmpAlignX === 'cover'
+                  ? 'center'
+                  : imgTmpAlignX
+              : 'center',
+          backgroundPositionY:
+            target === 'page'
+              ? imgTmpAlignY === 'stretch'
+                ? 'top'
+                : imgTmpAlignY === 'cover'
+                  ? 'center'
+                  : imgTmpAlignY
+              : 'center',
           backgroundSize:
-            target==='page'
+            target === 'page'
               ? imgTmpAlignX === 'cover' || imgTmpAlignY === 'cover'
                 ? 'cover'
                 : `${imgTmpAlignX === 'stretch' ? '100%' : 'auto'} ${imgTmpAlignY === 'stretch' ? '100%' : 'auto'}`
@@ -91,7 +108,7 @@ defineProps({
   /**
    * makes hero cards-compatible if set to 'card'.
    */
-   target: {
+  target: {
     type: String as PropType<'page' | 'card'>,
     default: 'page',
   },

@@ -1,5 +1,5 @@
 <template>
-  <Button :is="is" :variant="variant" :size="size">
+  <Button :is="is" :size="size" :variant="variant">
     <ContentSlot unwrap="p" />
   </Button>
 </template>
@@ -23,7 +23,7 @@ defineProps({
    *
    * @default 'primary'
    */
-   variant: {
+  variant: {
     type: String as PropType<'primary' | 'plain'>,
     default: 'primary',
   },
@@ -36,6 +36,6 @@ defineProps({
   size: {
     type: String as PropType<'small' | 'medium'>,
     default: 'medium',
-  },  
+  },
 })
 </script>

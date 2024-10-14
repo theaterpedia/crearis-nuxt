@@ -143,7 +143,6 @@
   margin-top: 0.5em;
 }
 
-
 /**
  * Colors
  */

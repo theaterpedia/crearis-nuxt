@@ -1,5 +1,12 @@
 <template>
-  <div :class="{ 'banner': !card, 'banner-transparent': transparent && !card, 'card-transparent': transparent && card, 'card': card,  }">
+  <div
+    :class="{
+      'banner': !card,
+      'banner-transparent': transparent && !card,
+      'card-transparent': transparent && card,
+      'card': card,
+    }"
+  >
     <slot />
   </div>
 </template>
@@ -17,7 +24,7 @@ defineProps({
   card: {
     type: Boolean,
     default: false,
-  },  
+  },
 })
 </script>
 

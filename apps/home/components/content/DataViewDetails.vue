@@ -8,7 +8,7 @@
       ></Heading>
     </SectionContainer>
 
-    <Tabs style="margin-top:1.5em">
+    <Tabs style="margin-top: 1.5em">
       <Tab
         v-for="(tab, key, index) in product.details"
         :active="index === 0"
@@ -17,13 +17,28 @@
       >
         <Columns gap="medium">
           <Column>
-            <ContentQuery :path="product.meta_product ? getRootPath(product.root) : src" find="one" v-slot="{ data }">
+            <ContentQuery v-slot="{ data }" :path="product.meta_product ? getRootPath(product.root) : src" find="one">
               <ContentRenderer :value="data">
-                <Hero contentType="banner" target="card" :contentType="data.hero.content ? data.hero.content : 'text'" :imgTmp="data.image.src" :contentAlignY="data.hero.content_y" :contentWidth="data.hero.content_width"  :heightTmp="data.hero.height" :imgTmpAlignX="data.hero.image_focus_x" :imgTmpAlignY="data.hero.image_focus_y" v-if="data.hero">
+                <Hero
+                  v-if="data.hero"
+                  :contentAlignY="data.hero.content_y"
+                  :contentType="data.hero.content ? data.hero.content : 'text'"
+                  :contentWidth="data.hero.content_width"
+                  :heightTmp="data.hero.height"
+                  :imgTmp="data.image.src"
+                  :imgTmpAlignX="data.hero.image_focus_x"
+                  :imgTmpAlignY="data.hero.image_focus_y"
+                  contentType="banner"
+                  target="card"
+                >
                   <Banner card transparent>
-                    <Heading is="h3" :content="data.heading ? data.heading : data.title" v-if="data.heading || data.title"></Heading>
-                    <br v-if="(data.heading || data.page.title) && data.teaser"/>
-                    <MdBlock :htag="data.heading ? 'h3' : 'h1'" :content="data.teaser" v-if="data.teaser"/>
+                    <Heading
+                      v-if="data.heading || data.title"
+                      :content="data.heading ? data.heading : data.title"
+                      is="h3"
+                    ></Heading>
+                    <br v-if="(data.heading || data.page.title) && data.teaser" />
+                    <MdBlock v-if="data.teaser" :content="data.teaser" :htag="data.heading ? 'h3' : 'h1'" />
                   </Banner>
                 </Hero>
               </ContentRenderer>
@@ -34,19 +49,19 @@
               :key="index"
             >
               <Heading v-if="item.title" :content="shortcodeTitle(item.shortcode, item.title)" is="h3" />
-              <columns gap="small">                
-                <column width="2/5" style="line-height:1.62em">
-                  <p>{{ item.tag }}</p>               
+              <columns gap="small">
+                <column width="2/5" style="line-height: 1.62em">
+                  <p>{{ item.tag }}</p>
                 </column>
                 <column>
-                  <MdBlock style="margin-top:-0.3em" narrow htag="h3" :content="item.ablauf"/>
+                  <MdBlock :content="item.ablauf" htag="h3" narrow style="margin-top: -0.3em" />
                 </column>
               </columns>
             </SectionContainer>
           </Column>
           <Column class="checkout-card">
             <h2>Checkout</h2>
-          </Column>        
+          </Column>
         </Columns>
       </Tab>
     </Tabs>
@@ -54,7 +69,7 @@
 </template>
 
 <script lang="ts" setup>
-import { Hero } from '#components';
+import { Hero } from '#components'
 /* This belongs to the DataView + DataViewTab component
 - it should NOT be availabe in the component-spec
 */
@@ -98,11 +113,12 @@ const getRootPath = (root: string | undefined) => {
   if (root.startsWith('/')) return root
   return `/ausbildung-theaterpaedagogik/${root}`
 }
-
 </script>
 
 <style scoped>
 .checkout-card {
-  box-shadow: 0px 4px 6px 1px rgba(0, 0, 0, 0.10), 0px 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0px 4px 6px 1px rgba(0, 0, 0, 0.1),
+    0px 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 </style>

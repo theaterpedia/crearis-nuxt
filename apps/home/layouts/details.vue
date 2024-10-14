@@ -9,7 +9,7 @@
       <MainMenu v-model:items="mainMenu.items" :currentPath="$route.path" />
     </Sidebar>
 
-    <Main style="background-color:white">
+    <Main style="background-color: white">
       <slot />
     </Main>
   </Box>
