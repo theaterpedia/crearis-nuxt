@@ -3,7 +3,6 @@
     <ul>
       <MainMenuItem
         v-for="item in items"
-        :currentPath="currentPath"
         :item="item"
         :linkComponent="linkComponent"
         :wrap="wrap"
@@ -51,14 +50,6 @@ defineProps({
   linkComponent: {
     type: Object as PropType<Component>,
     default: RouterLink,
-  },
-
-  /**
-   * The current route path.
-   */
-  currentPath: {
-    type: String,
-    default: '',
   },
 })
 

@@ -6,7 +6,7 @@
       logoAlt="DAS Ei"
       logoSmall="https://pruvious.com/uploads/logo-dasei-small.svg"
     >
-      <MainMenu v-model:items="mainMenu.items" :currentPath="$route.path" />
+      <MainMenu v-model:items="mainMenu.items" />
     </Sidebar>
 
     <Main>
@@ -104,10 +104,4 @@ const details = page.value.details ? true : false
 
 const route = useRoute()
 const mainMenu = useMainMenu()
-const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation())
-
-if (!mainMenu.value.initialized) {
-  mainMenu.value.items = navigationToMenu(navigation.value!, route.path)
-  mainMenu.value.initialized = true
-}
 </script>
