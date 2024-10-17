@@ -44,7 +44,6 @@
       <ul v-if="item.children.length && item.expanded" class="main-menu-item-group">
         <MainMenuItem
           v-for="(child, i) in item.children"
-          :currentPath="currentPath"
           :item="child"
           :level="level + 1"
           :linkComponent="linkComponent"
@@ -66,7 +65,7 @@
       :target="item.link.startsWith('http') ? '_blank' : undefined"
       :to="item.link"
       class="main-menu-item-link"
-      :class="{ 'main-menu-item-link-active': currentPath === item.link }"
+      :class="{ 'main-menu-item-link-active': item.active }"
     >
       <span>{{ item.label }}</span>
     </component>
@@ -106,6 +105,13 @@ export interface MainMenuLinkItem {
    * The URL (path) to navigate to when the menu item is clicked.
    */
   link: string
+
+  /**
+   * Whether the menu item is active.
+   *
+   * @default false
+   */
+  active?: boolean
 }
 
 defineProps({
@@ -144,14 +150,6 @@ defineProps({
   linkComponent: {
     type: Object as PropType<Component>,
     default: RouterLink,
-  },
-
-  /**
-   * The current route path.
-   */
-  currentPath: {
-    type: String,
-    default: '',
   },
 })
 
