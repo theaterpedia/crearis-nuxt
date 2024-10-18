@@ -8,15 +8,14 @@
           :imgTmpAlignY="data.hero?.image_focus_y"
           target="card"
           class="c-hero"
-        >
-        </CardHero>
+        ></CardHero>
         <Heading
           v-if="heading || data.heading || data.title"
           :content="heading ? heading : data.heading ? data.heading : data.title"
           is="h4"
           class="heading"
         />
-      </NuxtLink>      
+      </NuxtLink>
     </div>
   </ContentRenderer>
 </template>
@@ -75,8 +74,6 @@ const default_heading = '## Default Heading'
   padding: 0.5rem 1rem;
 }
 
-
-
 .column-auto {
   flex: 1;
 }
@@ -111,5 +108,4 @@ const default_heading = '## Default Heading'
   height: 100%;
   object-fit: cover;
 }
-
 </style>

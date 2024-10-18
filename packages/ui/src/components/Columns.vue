@@ -1,5 +1,13 @@
 <template>
-  <div class="columns" :class="[`columns-${gap}`, `columns-${align}`, `columns-${background ?? 'transparent'}`, `${wrap ? 'columns-wrap' : ''}`]">
+  <div
+    class="columns"
+    :class="[
+      `columns-${gap}`,
+      `columns-${align}`,
+      `columns-${background ?? 'transparent'}`,
+      `${wrap ? 'columns-wrap' : ''}`,
+    ]"
+  >
     <slot></slot>
   </div>
 </template>
@@ -116,5 +124,4 @@ defineProps({
     gap: 1.75rem; /* 28px */
   }
 }
-
 </style>

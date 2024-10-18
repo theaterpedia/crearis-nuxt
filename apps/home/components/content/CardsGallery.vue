@@ -2,10 +2,10 @@
   <div>
     <slot />
     <br v-if="$slots.default" />
-    <ContentList v-slot="{ list }" :query="query" >
-      <Columns wrap gap="small">
+    <ContentList v-slot="{ list }" :query="query">
+      <Columns gap="small" wrap>
         <template v-for="page in list" :key="page.path">
-          <Component :data="page" :is="`card-${card_suffix}`"/>
+          <Component :data="page" :is="`card-${card_suffix}`" />
         </template>
       </Columns>
     </ContentList>
@@ -22,8 +22,7 @@ can be a PageComponent Only on Level 0 (we might implement it as a TabComponent 
 - register on component registry
 */
 
-
-const props=defineProps({
+const props = defineProps({
   /**
    * typically undefined (if defined it overwrites the heading-entry of the src)
    */
@@ -39,7 +38,7 @@ const props=defineProps({
   is: {
     type: [Object, String] as PropType<'h2' | 'h3' | 'span'>,
     default: 'h3',
-  },  
+  },
   /**
    *
    *
@@ -66,7 +65,7 @@ const props=defineProps({
   large: {
     type: Boolean,
     default: false,
-  },    
+  },
   /**
    *
    */
@@ -87,6 +86,10 @@ const getPath = (folder: 'agenda' | 'blog' | string | undefined) => {
 import type { QueryBuilderParams } from '@nuxt/content'
 //const where = props.preset === 'agenda' ? [{ start: { $gt: 2024-10-17 }, eventtype: { $eq: 'course' } }] : [{ layout: 'article' }]
 const where = props.preset === 'agenda' ? [{ ctype: { $ne: 'course' } }] : []
-const query: QueryBuilderParams = { path: getPath(folder), where: where, limit: props.max_items, sort: props.preset === 'agenda' ? [{ start: -1 }] :  [] }
-
+const query: QueryBuilderParams = {
+  path: getPath(folder),
+  where: where,
+  limit: props.max_items,
+  sort: props.preset === 'agenda' ? [{ start: -1 }] : [],
+}
 </script>

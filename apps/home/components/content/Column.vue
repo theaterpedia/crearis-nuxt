@@ -1,5 +1,5 @@
 <template>
-  <Column :fill="fill==='true'">
+  <Column :fill="fill === 'true'">
     <ContentSlot />
   </Column>
 </template>
@@ -13,10 +13,9 @@ defineProps({
    *
    * @default 'false'
    */
-   fill: {
+  fill: {
     type: String as PropType<'false' | 'true'>,
     default: 'false',
   },
 })
-
 </script>

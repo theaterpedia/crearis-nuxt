@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="hero"
-    :class="['card-hero', `card-hero-${heightTmp}`, `hero-align-content-${contentAlignY}`]"
-  >
+  <div class="hero" :class="['card-hero', `card-hero-${heightTmp}`, `hero-align-content-${contentAlignY}`]">
     <div class="hero-cover">
       <div
         class="static-cover-image"
@@ -82,8 +79,6 @@ defineProps({
     type: String as PropType<'top' | 'bottom' | 'center'>,
     default: 'bottom',
   },
-
-
 
   /**
    * Defines the padding of the content.

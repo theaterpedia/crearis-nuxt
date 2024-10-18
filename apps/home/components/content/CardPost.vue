@@ -2,8 +2,13 @@
   <ContentRenderer :value="data">
     <div class="card">
       <NuxtLink :to="data._path">
-        <div class="tagline" style="display: flex; flex-direction: row; justify-content: space-between; padding-inline: 1rem; ">
-          <span style="line-height: 1rem; padding-top: 0.1em; font-size: 0.9em">{{ data.tagline ? data.tagline : '' }}</span>
+        <div
+          class="tagline"
+          style="display: flex; flex-direction: row; justify-content: space-between; padding-inline: 1rem"
+        >
+          <span style="line-height: 1rem; padding-top: 0.1em; font-size: 0.9em">
+            {{ data.tagline ? data.tagline : '' }}
+          </span>
           <span v-if="data.blog" style="line-height: 1rem; padding-top: 0.1em; font-size: 0.9em">{{ data.blog }}</span>
         </div>
         <CardHero
@@ -11,8 +16,8 @@
           :imgTmpAlignX="data.hero?.image_focus_x"
           :imgTmpAlignY="data.hero?.image_focus_y"
           :overlay="overlay"
-          target="card"
           heightTmp="prominent"
+          target="card"
           class="c-hero"
         >
           <Heading
@@ -20,7 +25,7 @@
             :content="heading ? heading : data.heading ? data.heading : data.title"
             is="h4"
             class="heading"
-          />        
+          />
         </CardHero>
       </NuxtLink>
     </div>
@@ -44,7 +49,7 @@ const props = defineProps({
   bottom: {
     type: Boolean,
     required: false,
-  },  
+  },
   /**
    *
    */
@@ -87,8 +92,6 @@ const default_heading = '## Default Heading'
   padding: 0.5rem 1rem;
 }
 
-
-
 .column-auto {
   flex: 1;
 }
@@ -123,5 +126,4 @@ const default_heading = '## Default Heading'
   height: 100%;
   object-fit: cover;
 }
-
 </style>
