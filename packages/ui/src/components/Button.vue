@@ -27,7 +27,7 @@ defineProps({
    * @default 'primary'
    */
   variant: {
-    type: String as PropType<'primary' | 'plain'>,
+    type: String as PropType<'primary' | 'plain' | 'link'>,
     default: 'primary',
   },
 
@@ -75,6 +75,14 @@ defineProps({
 
 .button-plain:hover {
   background-color: hsl(var(--card-foreground) / 70%);
+}
+
+.button-link {
+  color: hsl(var(--primary));
+}
+
+.button-link:hover {
+  background-color: hsl(var(--card-foreground) / 30%);
 }
 
 .button-small {
