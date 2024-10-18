@@ -1,6 +1,6 @@
 <template>
-  <SectionContainer :background="background">
-    <MdBlock v-if="header" :content="header" :htag="is" />
+  <div>
+    <slot />
     <ContentList v-slot="{ list }" :query="query" >
       <Columns wrap gap="small">
         <template v-for="page in list" :key="page.path">
@@ -8,7 +8,7 @@
         </template>
       </Columns>
     </ContentList>
-  </SectionContainer>
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -94,7 +94,7 @@ const getPath = (folder: 'agenda' | 'blog' | string | undefined) => {
 
 import type { QueryBuilderParams } from '@nuxt/content'
 //const where = props.preset === 'agenda' ? [{ start: { $gt: 2024-10-17 }, eventtype: { $eq: 'course' } }] : [{ layout: 'article' }]
-const where = props.preset === 'agenda' ? [{ ctype: { $ne: 'course' } }] : [{ layout: 'article' }]
-const query: QueryBuilderParams = { path: getPath(folder), where: where, limit: props.max_items, sort: props.preset === 'agenda' ? [{ start: -1 }] :  [{ published_date: -1 }] }
+const where = props.preset === 'agenda' ? [{ ctype: { $ne: 'course' } }] : []
+const query: QueryBuilderParams = { path: getPath(folder), where: where, limit: props.max_items, sort: props.preset === 'agenda' ? [{ start: -1 }] :  [] }
 
 </script>

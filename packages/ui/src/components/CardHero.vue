@@ -1,7 +1,7 @@
 <template>
   <div
     class="hero"
-    :class="['hero-mini card-hero', `hero-align-content-${contentAlignY}`]"
+    :class="['card-hero', `card-hero-${heightTmp}`, `hero-align-content-${contentAlignY}`]"
   >
     <div class="hero-cover">
       <div
@@ -10,7 +10,7 @@
           backgroundImage: `url(${imgTmp})`,
           backgroundPositionX: 'center',
           backgroundPositionY: 'center',
-          backgroundSize: '340px',
+          backgroundSize: '21rem',
         }"
       ></div>
 
@@ -108,24 +108,24 @@ const target = 'card'
   overflow: clip;
 }
 
-.hero-full {
-  min-height: 100vh;
+.card-hero-full {
+  min-height: 21rem;
 }
 
-.hero-prominent {
-  min-height: 75vh;
+.card-hero-prominent {
+  min-height: 14rem;
 }
 
-.hero-medium {
-  min-height: 50vh;
+.card-hero-medium {
+  min-height: 10.5rem;
 }
 
-.hero-mini {
-  min-height: 170px;
+.card-hero-mini {
+  min-height: 7rem;
 }
 
 .card-hero {
-  max-width: 340px;
+  max-width: 21rem; /* 336px */
 }
 
 .hero-align-content-top {
@@ -149,18 +149,10 @@ const target = 'card'
   transform: translate3d(0, 0, 0);
 }
 
-.hero-cover-image {
-  position: sticky;
-  top: 0;
-  width: 100%;
-  height: 50%;
-  background-repeat: no-repeat;
-}
-
 .static-cover-image {
   top: 0;
   width: 100%;
-  max-width: 340px;
+  max-width: 21rem;
   height: 50%;
   background-repeat: no-repeat;
 }
@@ -178,8 +170,8 @@ const target = 'card'
 }
 
 .hero-content-short {
-  min-width: 340px; /* 368px */
-  max-width: 340px; /* 800px */
+  min-width: 21rem; /* 368px */
+  max-width: 21rem; /* 800px */
 }
 
 .hero-content-full {

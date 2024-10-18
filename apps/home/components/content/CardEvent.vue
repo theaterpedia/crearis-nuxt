@@ -11,8 +11,8 @@
         >
         </CardHero>
         <Heading
-          v-if="data.heading || data.title"
-          :content="data.heading ? data.heading : data.title"
+          v-if="heading || data.heading || data.title"
+          :content="heading ? heading : data.heading ? data.heading : data.title"
           is="h4"
           class="heading"
         />
@@ -29,7 +29,7 @@ const props = defineProps({
    * typically undefined (if defined it overwrites the heading-entry of the src)
    */
   heading: {
-    type: String as PropType<'default' | 'muted' | 'accent'>,
+    type: String,
   },
   /**
    *
@@ -49,9 +49,9 @@ const default_heading = '## Default Heading'
 
 <style scoped>
 .card {
-  min-width: 340px; /* 368px */
-  max-width: 340px; /* 800px */
-  width: 340px;
+  min-width: 21rem; /* 336px */
+  max-width: 21rem;
+  width: 21rem;
   box-shadow:
     0px 4px 6px 1px rgba(0, 0, 0, 0.1),
     0px 2px 4px -1px rgba(0, 0, 0, 0.06);
