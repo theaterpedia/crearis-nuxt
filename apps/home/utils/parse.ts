@@ -357,7 +357,10 @@ function createMDC(
             tags.delete('section-container')
             result += '  '.repeat(tags.size + indent) + `${mdcTag}\n`
           }
-          result += '  '.repeat(tags.size + indent) + `${mdcTag}section-container\n`
+          // if prop background is set, we might need to add it to the section
+          const section_background = props.has('background') ? `{background="${props.get('background')}"}` : ''
+
+          result += '  '.repeat(tags.size + indent) + `${mdcTag}section-container${section_background}\n`
           tags.add('section-container')
         }
 
