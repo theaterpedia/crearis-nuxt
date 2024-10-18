@@ -1,6 +1,7 @@
 <template>
   <div>
     <slot />
+    <br v-if="$slots.default" />
     <ContentList v-slot="{ list }" :query="query" >
       <Columns wrap gap="small">
         <template v-for="page in list" :key="page.path">
