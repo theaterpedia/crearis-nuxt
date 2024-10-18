@@ -106,7 +106,7 @@ defineProps({
   align-items: flex-end;
 }
 
-.columns-cards {
+.columns-wrap {
   flex-wrap: wrap;
 }
 
