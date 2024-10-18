@@ -1,5 +1,13 @@
 <template>
-  <div class="columns" :class="[`columns-${gap}`, `columns-${align}`, `columns-${background ?? 'transparent'}`]">
+  <div
+    class="columns"
+    :class="[
+      `columns-${gap}`,
+      `columns-${align}`,
+      `columns-${background ?? 'transparent'}`,
+      `${wrap ? 'columns-wrap' : ''}`,
+    ]"
+  >
     <slot></slot>
   </div>
 </template>
@@ -26,6 +34,16 @@ defineProps({
   align: {
     type: String as PropType<'top' | 'center' | 'bottom'>,
     default: 'top',
+  },
+
+  /**
+   * The vertical alignment of the columns.
+   *
+   * @default false
+   */
+  wrap: {
+    type: Boolean,
+    default: false,
   },
 
   /**
@@ -94,6 +112,10 @@ defineProps({
 
 .columns-bottom {
   align-items: flex-end;
+}
+
+.columns-wrap {
+  flex-wrap: wrap;
 }
 
 @media (max-width: 767px) {

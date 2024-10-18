@@ -1,20 +1,22 @@
 ---
 draft: true
 id: 13
-heading: ==Folge 1== Sich einlassen und Erfahrungen machen **Gruppenerlebnisse**
+heading: Sich einlassen und Erfahrungen machen **Gruppenerlebnisse**  
 description: "Episode Theaterpädagogik und Demokratie - Folge 1: Sich einlassen und Erfahrungen machen"
 title: Gruppenerlebnisse
 cssclasses:
   - blogpost
 author: Rosalin Hertrich
+tagline: Folge 1
 date: 2024-04-20
-blog: Theaterpädagogik und Demokratie
+blog: Theaterpädagogik & Demokratie
+image:
+  alt: Fachsimpeln im Cafe
+  src: https://res.cloudinary.com/little-papillon/image/upload/w_650,h_450/v1722971694/dasei/EpisodenHeadbilder_ropdu7.jpg
 hero:
-  - height-tmp: full
-  - img-tmp-alt-text: Fachsimpeln im Cafe
-  - img-tmp: https://res.cloudinary.com/little-papillon/image/upload/w_400/v1722971694/dasei/EpisodenHeadbilder_ropdu7.jpg
-  - img-tmp-align-y: left
-  - overlay: darken-medium
+  height: full
+  img_tmp_align_y: left
+  content_y: top
 ---
 > [!data-hero] ## ==Folge 1== Sich einlassen und Erfahrungen machen **Gruppenerlebnisse**
 > 

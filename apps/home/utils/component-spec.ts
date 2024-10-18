@@ -113,6 +113,11 @@ export const componentSpecs: Record<string, ComponentSpec> = {
     isParent: true,
     allowsProse: false,
   },
+  CardsGallery: {
+    isPageComponent: true,
+    isParent: true,
+    allowsProse: true,
+  },
   Catalog: {
     isPageComponent: false,
     isParent: true,

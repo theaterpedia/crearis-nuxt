@@ -25,7 +25,7 @@
                   :contentType="data.hero.content ? data.hero.content : 'text'"
                   :contentWidth="data.hero.content_width"
                   :heightTmp="data.hero.height"
-                  :imgTmp="data.image.src"
+                  :imgTmp="data.image?.src"
                   :imgTmpAlignX="data.hero.image_focus_x"
                   :imgTmpAlignY="data.hero.image_focus_y"
                   contentType="banner"
