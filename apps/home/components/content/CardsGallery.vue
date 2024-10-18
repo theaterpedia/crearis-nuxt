@@ -25,15 +25,6 @@ can be a PageComponent Only on Level 0 (we might implement it as a TabComponent 
 
 const props=defineProps({
   /**
-   * The background color of the section.
-   *
-   * @default 'default'
-   */
-  background: {
-    type: String as PropType<'default' | 'muted' | 'accent'>,
-    default: 'default',
-  },
-  /**
    * typically undefined (if defined it overwrites the heading-entry of the src)
    */
   header: {

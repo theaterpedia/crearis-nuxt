@@ -332,6 +332,10 @@ function createMDC(
           ;({ body, props, flags } = beforeParseExtension(type, body, props, flags))
         }
 
+        // if prop sectioncolor is set, drop it from the props and set we might need to add it to the section
+        const sectionstyle = props.has('sectionstyle') ? `{background="${props.get('sectionstyle')}"}` : ''
+        if (sectionstyle) props.delete('sectionstyle')
+
         // concatenate each prop into a string
         const propsarray = [...props].map(([key, value]) => {
           return `${key}="${value}"`
@@ -357,10 +361,8 @@ function createMDC(
             tags.delete('section-container')
             result += '  '.repeat(tags.size + indent) + `${mdcTag}\n`
           }
-          // if prop background is set, we might need to add it to the section
-          const section_background = props.has('background') ? `{background="${props.get('background')}"}` : ''
 
-          result += '  '.repeat(tags.size + indent) + `${mdcTag}section-container${section_background}\n`
+          result += '  '.repeat(tags.size + indent) + `${mdcTag}section-container${sectionstyle}\n`
           tags.add('section-container')
         }
 
