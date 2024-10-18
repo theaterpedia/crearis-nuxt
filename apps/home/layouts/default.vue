@@ -17,11 +17,12 @@
           :contentType="hero.content ? hero.content : 'text'"
           :contentWidth="hero.content_width"
           :heightTmp="hero.height"
+          :gradient="hero.gradient"
           :imgTmp="image.src"
           :imgTmpAlignX="hero.image_focus_x"
           :imgTmpAlignY="hero.image_focus_y"
         >
-          <Component :is="hero.content === 'banner' ? 'Banner' : 'div'" transparent>
+          <Component :is="hero.content === 'banner' ? 'Banner' : 'div'" transparent :card="hero.content === 'banner' && page._path?.startsWith('/agenda')">
             <Heading
               v-if="page.heading || page.title"
               :content="page.heading ? page.heading : page.title"
