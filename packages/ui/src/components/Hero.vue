@@ -31,9 +31,9 @@
                 : `${imgTmpAlignX === 'stretch' ? '100%' : 'auto'} ${imgTmpAlignY === 'stretch' ? '100%' : 'auto'}`
               : '500px',
         }"
-      ></div>
-
-      <div v-if="overlay" class="hero-cover-overlay" :style="{ background: overlay }"></div>
+      >
+        <div v-if="overlay" class="hero-cover-overlay" :style="{ background: overlay }"></div>
+      </div>
     </div>
 
     <div class="hero-content" :class="[`hero-content-${contentWidth}`, `hero-content-${contentType}`]">
@@ -205,13 +205,23 @@ defineProps({
 .hero-cover-overlay {
   position: absolute;
   top: 0;
+  right: 0;
+  bottom: 0;
   left: 0;
-  width: 100%;
-  height: 50%;
 }
 
 .hero-content {
   position: relative;
+}
+
+.hero-align-content-top .hero-content {
+  position: sticky;
+  top: 6.25rem;
+}
+
+.hero-align-content-bottom .hero-content {
+  position: sticky;
+  bottom: 6.25rem;
 }
 
 .hero-content-short {
