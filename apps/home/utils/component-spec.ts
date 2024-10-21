@@ -121,8 +121,8 @@ export const componentSpecs: Record<string, ComponentSpec> = {
   Catalog: {
     isPageComponent: false,
     isParent: true,
-    allowsProse: true,
     beforeParseExtension: true,
+    allowsProse: true,
   },
   Column: {
     isPageComponent: false,

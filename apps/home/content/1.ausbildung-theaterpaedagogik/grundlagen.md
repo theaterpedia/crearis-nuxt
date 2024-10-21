@@ -4,14 +4,15 @@ description: Grundlagen Theaterpädagogik (BuT) + Theaterpädagoge/in (BuT) // M
 icon: 'lucide:info'
 heading: 3 Module | 2 Inszenierungen | 1 Praxisprojekt **GRUNDLAGEN THEATERPÄDAGOGIK (BuT)** 
 teaser: |
-  München: Sept 2024-Juli 2026  |  Nürnberg: 2024-Juli 2026
+  München: Sept 2024-Juli 2026 | Nürnberg: 2024-Juli 2026
 cssclasses:
   - workshop
 start: 2024-12-06
 ende: 2024-12-08
 hero:
   height: medium
-  gradient: left-top
+  gradient_type: left-top
+  gradient_depth: 0.70
   image_focus_y: top
   image_focus_x: center
   content_y: top
@@ -70,4 +71,22 @@ image:
 >>> [!button-tmp|variant=plain to=einstiege]
 >>> Programmdetails anschauen
 
-mpoch
+> [!section-container|background=muted]
+> ### **Kursverläufe**
+
+> [!columns|gap=small sectionstyle=muted]
+>> [!column|width=1/3]
+>> #### 4 Kursverläufe München & Nürnberg
+>>
+>>> [!catalog]
+>>> - **Kurs M16E - Sonntags + Online** 10 UE
+>>> - **Kurs M16B - Blockprogramm** 110 UE
+>>> - **Kurs N16E - Samstags + Online** 220 UE
+>>> - **Kurs N16B - Blockprogramm** 160 UE
+>
+>> [!catalog]
+>> #### **München Tageskurs Juli 2024-Juli 2026**
+>> - **Kurs M16E - Sonntags + Online** 10 UE
+>> - **Kurs M16B - Blockprogramm** 110 UE
+>> - **Kurs N16E - Samstags + Online** 220 UE
+>> - **Kurs N16B - Blockprogramm** 160 UE

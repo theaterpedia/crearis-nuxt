@@ -5,17 +5,20 @@
 </template>
 
 <style scoped>
-.catalog :deep() > ul > li {
+.catalog :deep() > .prose > ul > li {
   display: flex;
   align-items: flex-end;
   white-space: nowrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.catalog :deep() > ul > li + li {
+.catalog :deep() > .prose > ul > li + li {
   margin-top: 0.25rem;
 }
 
-.catalog :deep() > ul > li > :where(strong, mark):first-child {
+.catalog :deep() > .prose > ul > li > :where(strong, mark):first-child {
   flex: 1;
   display: flex;
   align-items: center;
@@ -23,7 +26,7 @@
   font-weight: 400;
 }
 
-.catalog :deep() > ul > li > strong:first-child::after {
+.catalog :deep() > .prose > ul > li > strong:first-child::after {
   content: '';
   flex: 1;
   display: block;
@@ -33,11 +36,11 @@
   background-color: hsl(var(--border));
 }
 
-.catalog :deep() > ul > li > mark:first-child {
+.catalog .prose :deep() > ul > li > mark:first-child {
   margin-top: 0.5rem;
 }
 
-.catalog :deep() > ul > li svg {
+.catalog :deep() > .prose > ul > li svg {
   font-size: 1.5em;
 }
 </style>
