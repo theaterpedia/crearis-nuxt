@@ -1,3 +1,7 @@
+---
+navigation: false
+---
+
 # Impressum und Disclaimer
 
 ## Für:DAS Ei - Theaterpädagogisches Institut Bayern e.V.

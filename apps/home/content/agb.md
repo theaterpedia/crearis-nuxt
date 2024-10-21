@@ -1,3 +1,7 @@
+---
+navigation: false
+---
+
 # Allgemeine Geschäftsbedingungen
 
 ## §1 Allgemeine Geschäftsbedingungen
