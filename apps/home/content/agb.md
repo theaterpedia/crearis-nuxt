@@ -2,6 +2,8 @@
 navigation: false
 ---
 
+<!-- PUBLISH-FROM-HERE -->
+
 # Allgemeine Geschäftsbedingungen
 
 ## §1 Allgemeine Geschäftsbedingungen
