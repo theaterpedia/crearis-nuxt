@@ -14,7 +14,7 @@ start: 2024-12-06
 ende: 2024-12-08
 hero:
   height: prominent
-  gradient: left-top
+  gradient_type: left-top
   image_focus_y: top
   image_focus_x: center
   content_y: top
@@ -29,12 +29,6 @@ image:
 
 
 <!-- PUBLISH-FROM-HERE -->
-
-# **Homepage DASEi**
-
-dies ist noch ein neuer Eintrag
-März 2022 bis Juli 2024
-März 2022 bis Juli 2023
 
 > [!cards-gallery|sectionstyle=muted is=h2]
 > ## **Workshops & Projekte**

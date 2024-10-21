@@ -1,5 +1,5 @@
 <template>
-  <Hero :overlay="getoverlay(gradient)">
+  <Hero :overlay="getoverlay(gradient_type, gradient_depth)">
     <ContentSlot />
   </Hero>
 </template>
@@ -14,13 +14,22 @@ const props = defineProps({
    *
    * @default 'none'
    */
-  gradient: {
+  gradient_type: {
     type: String as PropType<'top' | 'left-top' | 'left' | 'left-bottom' | 'bottom' | 'none' | 'full'>,
     default: 'none',
   },
+  /**
+   * Defines the intensity of the gradient 0.00-1.00.
+   *
+   * @default 1.00
+   */
+  gradient_depth: {
+    type: Number,
+    default: 0.8,
+  },
 })
 
-const getoverlay = (gradient: string) => {
+const getoverlay = (gradient: string, depth: number) => {
   const deg =
     gradient && gradient !== 'none'
       ? gradient == 'left'
@@ -39,7 +48,7 @@ const getoverlay = (gradient: string) => {
       : ''
   return gradient && gradient !== 'none'
     ? gradient !== 'full'
-      ? `linear-gradient(${deg}, rgb(255, 193, 7) 18%, rgba(255, 255, 255, 0.62) 50%, rgba(255, 255, 255, 0.10) 81%)`
+      ? `linear-gradient(${deg}, rgba(255, 193, 7, ${depth}) 18%, rgba(255, 255, 255, 0.62) 50%, rgba(255, 255, 255, 0.10) 81%)`
       : ''
     : ''
 }
