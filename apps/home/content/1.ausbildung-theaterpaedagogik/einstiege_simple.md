@@ -49,4 +49,4 @@ Die Fortbildung 'Einstiege ins Theaterspiel' vermittelt dazu die grundlegende D
 > - Intensivprogramm Sept bis Dez 2025 (mit Blockseminar)
 
 
-![[../agenda/einstiege-ins-theaterspiel-m16e|view="product"]]
+![[../agenda/409.einstiege-ins-theaterspiel-m16e|view="product"]]

@@ -12,7 +12,9 @@ Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Des
 
 #### Wie erfassen wir Ihre Daten?
 Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen, z.B. indem Sie das Kontaktformular ausfüllen.
-<br/>
+
+<br>
+
 Andere Daten werden automatisch beim Besuch der Website durch unsere IT-Systeme erfasst. Das sind vor allem technische Daten (z.B. Internetbrowser, Betriebssystem oder Uhrzeit des Seitenaufrufs). Die Erfassung dieser Daten erfolgt automatisch, sobald Sie unsere Website betreten.
 
 #### Wofür nutzen wir Ihre Daten?
