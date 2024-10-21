@@ -22,6 +22,10 @@ export function refreshMainMenu(activeRoute: RouteLocation | string) {
     children: item.children ? navigationToMenuItems(item.children, activeRoute) : [],
     expanded: path.startsWith(`${item._path}/`),
   }))
+
+  if (mainMenu.items.every(({ expanded }) => !expanded)) {
+    mainMenu.items[0].expanded = true
+  }
 }
 
 function navigationToMenuItems(
