@@ -49,7 +49,6 @@ Genderthematiken, Vorurteile, Diversität, Machtfragen oder Diskriminierung lass
 
 Neben den “stehenden Verfahren”, die u.a. von Augusto Boal, Jacob Moreno und Ingo Scheller übernommen und weiterentwickelt wurden, entwickeln wir bei DAS Ei auch den neuen Ansatz “Bewegte Themenarbeit”, der Themen durch Bewegungserkundung erfahrbar macht. Dieser Ansatz ist von somatischen Methoden beeinflusst, die das Zusammenspiel von Körper und Geist zentral stellen und epistemologisches Potential haben, daher Wissen generieren. Inspirationsquellen für embodiment durch Körperarbeit und Bewegung sind Deep Democracy[^4] und Body Mind Centering[^5].  
 
-==**Verweise**==
 
 [^1]: Schwebezustände ist ein phänomenologischer Begriff, den wir bei DAS Ei seit einigen Jahren als didaktischen Begriff verwenden. Darunter fassen wir aufgeladene (Theaterpädagogische) Erfahrungsräume, die transformatorische Potentiale bieten, jedoch eine liminale Phase vor der Reflexion beschreiben. Es geht um aufgerüttelte Zustände bei Teilnehmenden, die sich in Lern- und Erfahrungsprozessen befinden. _“Mit seiner unendlichen Vielfalt an Transformationen, mit seiner Neuordnung der Sinne, seiner Schaffung energetischer Felder und anderer ‘Zwischenräume’ formuliert das Theater ein neues kulturelles Wissen, das derzeit noch nicht diskursiv zur Verfügung steht. Es ist ein performatives Wissen, das nicht sprachlich übermittelt, sondern nur am eigenen Leibe erfahren werden kann.”_ (Erika Fischer Lichte nach Pinkert, 316)
 
@@ -62,6 +61,7 @@ Neben den “stehenden Verfahren”, die u.a. von Augusto Boal, Jacob Moreno und
 [^5]: vgl. [https://www.bodymindcentering.com](https://www.bodymindcentering.com)
 
 ==**Quellen**==
+
 Gabriele Brandstätter (2012/13). Ästhetische Erfahrung. (https://www.kubi-online.de/artikel/aesthetische-erfahrung)
 Ute Pinkert (2005). Transformationen des Alltags. Theaterprojekte der Berliner Lehrstückpraxis und Live Art bei Forced Entertainment. Modelle, Konzepte und Verfahren kultureller Bildung.
 Richard Schechner (1990): Theateranthropoloie: Spiel und Ritual im Vergleich. Reinbek.
