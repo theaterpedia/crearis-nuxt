@@ -111,3 +111,49 @@ const details = page.value.details ? true : false
 const route = useRoute()
 const mainMenu = useMainMenu()
 </script>
+
+<style scoped>
+
+:deep() .footnotes { /* merged from ui/section + section-muted + ui/container */
+  position: relative;
+  z-index: 1;
+  padding-top: 1.75rem; /* 28px */
+  padding-bottom: 1.75rem; /* 28px */
+  transform: translate3d(0, 0, 0); /* Fixes z-index in Safari */
+  --background: var(--muted);
+  --foreground: var(--card-foreground);
+  background-color: hsl(var(--muted));
+  color: hsl(var(--card-foreground));  
+  width: 100%;
+  max-width: 90rem; /* 1440px */
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 1.75rem; /* 28px */
+  padding-left: 1.75rem; /* 28px */  
+}
+
+:deep() .footnotes > ol { /* merged from ui/section + section-muted + ui/container */
+  list-style: decimal;
+  font-size: 0.9em;
+  margin-bottom: 0.5rem;
+  max-width: 52rem; /* from prose */
+}
+
+:deep() .footnotes > ol > li { /* merged from ui/section + section-muted + ui/container */
+  list-style: decimal;
+  font-size: 0.92em;
+  margin-bottom: 0.5rem;
+}
+
+:deep() .footnotes > ol { /* merged from ui/section + section-muted + ui/container */
+  margin-left: 1.6rem;
+}
+
+@media (max-width: 767px) {
+  :deep() .footnotes {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+}
+
+</style>
