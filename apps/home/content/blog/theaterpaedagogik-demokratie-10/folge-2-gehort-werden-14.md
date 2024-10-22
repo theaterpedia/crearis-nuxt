@@ -9,12 +9,13 @@ cssclasses:
 author: Rosalin Hertrich
 date: 2024-06-20
 blog: Theaterpädagogik und Demokratie
+image:
+  alt: Fachsimpeln im Cafe
+  src: https://res.cloudinary.com/little-papillon/image/upload/w_400/v1722971694/dasei/EpisodenHeadbilder_ropdu7.jpg
 hero:
-  - height-tmp: full
-  - img-tmp-alt-text: Fachsimpeln im Cafe
-  - img-tmp: https://res.cloudinary.com/little-papillon/image/upload/w_400/v1722971694/dasei/EpisodenHeadbilder_ropdu7.jpg
-  - img-tmp-align-y: left
-  - overlay: darken-medium
+  height: full
+  img_tmp_align_y: center
+  content_y: top
 ---
 > [!data-hero] ## ==Folge 2== Die Erfahrung von Selbstwirksamkeit **Gehört werden**
 > 

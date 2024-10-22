@@ -10,12 +10,13 @@ author: Hans Dönitz
 date: 2024-04-20
 blog: Theaterpedia
 toc: h2
+image:
+  alt: Theaterpedia-Konferenz 2022
+  src: https://res.cloudinary.com/little-papillon/image/upload/w_400/v1722972083/dasei/theaterpedia_konferenz_ankuendigung_ycgwkv.jpg
 hero:
-  - height-tmp: medium
-  - img-tmp-alt-text: Theaterpedia-Konferenz 2022
-  - img-tmp: https://res.cloudinary.com/little-papillon/image/upload/w_400/v1722972083/dasei/theaterpedia_konferenz_ankuendigung_ycgwkv.jpg
-  - img-tmp-align-y: left
-  - overlay: darken-medium
+  height: medium
+  img_tmp_align_y: center
+  content_y: top
 ---
 > [!data-hero] ## Programm und Zielsetzung der Launch-Konferenz in Nürnberg **Theaterpedia-Konferenz 21.-24. Nov 2024**
 > 
