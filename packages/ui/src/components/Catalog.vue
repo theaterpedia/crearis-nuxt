@@ -5,7 +5,7 @@
 </template>
 
 <style scoped>
-.catalog :deep() > .prose > ul > li {
+.catalog :deep() > .prose > ul > li:has(strong) {
   display: flex;
   align-items: flex-end;
   white-space: nowrap;

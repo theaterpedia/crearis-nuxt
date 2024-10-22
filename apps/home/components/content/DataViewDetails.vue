@@ -60,7 +60,19 @@
             </SectionContainer>
           </Column>
           <Column class="checkout-card">
-            <h2>Checkout</h2>
+            <template v-if="tab.title==='Programm & Struktur' || tab.title==='Kosten & Konditionen'">
+              <Heading v-if="tab.header" :content="tab.header" is="h3" />
+              <div v-if="tab.info">
+                <template v-for="(column, index) in tab.info" :key="index">
+                  <CatBlock :content="column" htag="h4" style="padding-bottom:1rem" />
+                </template>
+              </div>
+            </template>
+            <template v-else>
+              <h2>
+                Checkout-Step '{{  tab.title }}' noch nicht implementiert!!
+              </h2>
+            </template>
           </Column>
         </Columns>
       </Tab>
@@ -117,6 +129,8 @@ const getRootPath = (root: string | undefined) => {
 
 <style scoped>
 .checkout-card {
+  margin-top: 3rem;
+  padding: 1rem;
   box-shadow:
     0px 4px 6px 1px rgba(0, 0, 0, 0.1),
     0px 2px 4px -1px rgba(0, 0, 0, 0.06);
