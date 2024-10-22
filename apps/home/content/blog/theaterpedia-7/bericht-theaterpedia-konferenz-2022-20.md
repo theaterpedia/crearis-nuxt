@@ -9,12 +9,13 @@ cssclasses:
 author: Cornelia Jung
 date: 2023-01-10
 blog: Theaterpedia
+image:
+  alt: Präsentation Gründungskonferenz
+  src: https://res.cloudinary.com/little-papillon/image/upload/v1723041787/praesentation_gruendungskonferenz_qjws7i.jpg
 hero:
-  - height-tmp: medium
-  - img-tmp-alt-text: Präsentation Gründungskonferenz
-  - img-tmp: https://res.cloudinary.com/little-papillon/image/upload/v1723041787/praesentation_gruendungskonferenz_qjws7i.jpg
-  - img-tmp-align-y: left
-  - overlay: darken-medium
+  height: medium
+  img_tmp_align_y: center
+  content_y: top
 ---
 > [!data-hero] ## **Theaterpedia-Konferenz Nov 2022** ==BERICHT== die Gründung von Theaterpedia, Nov 2022 im Steigerwald
 > 

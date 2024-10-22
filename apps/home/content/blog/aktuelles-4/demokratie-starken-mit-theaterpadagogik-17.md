@@ -9,12 +9,14 @@ cssclasses:
 author: Hans Dönitz
 date: 2024-02-20
 blog: Aktuelles
+image:
+  alt: Theaterpedia-Globus
+  src: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_920,h_518,ar_16:9,g_auto/v1676759847/dasei/aus0_home1.jpg
 hero:
-  - height-tmp: medium
-  - img-tmp-alt-text: Theaterpedia-Globus
-  - img-tmp: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_920,h_518,ar_16:9,g_auto/v1676759847/dasei/aus0_home1.jpg
-  - img-tmp-align-y: left
-  - overlay: darken-medium
+  height: full  
+  gradient_type: top  
+  img_tmp_align_y: left
+  content_y: top 
 ---
 > [!data-hero] ## **Demokratie stärken mit Theaterpädagogik!** 3 Stipendien für die Grundlagenbildung Theaterpädagogik in Nürnberg/Fürth...
 > 

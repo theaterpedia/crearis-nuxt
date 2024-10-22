@@ -7,14 +7,15 @@ title: im Wald braut sich was zusammen
 cssclasses:
   - blogpost
 author: Cornelia Jung
-date: 2024-06-20
+date: 2024-06-25
 blog: Aktuelles
+image:
+  alt: Projekt-Plakat
+  src: https://res.cloudinary.com/little-papillon/image/upload/v1722971934/dasei/praxisprojekt_theatrales_lernen_qarm8x.jpg
 hero:
-  - height-tmp: full
-  - img-tmp-alt-text: Fachsimpeln im Cafe
-  - img-tmp: https://res.cloudinary.com/little-papillon/image/upload/w_400/v1722971694/dasei/EpisodenHeadbilder_ropdu7.jpg
-  - img-tmp-align-y: left
-  - overlay: darken-medium
+  height: full
+  img_tmp_align_y: right
+  content_y: top
 ---
 > [!data-hero] ## **im Wald braut sich was zusammen** Absolvent:innen aus dem Profil Theatrales Lernen starten in heiße Projektphase
 > 
