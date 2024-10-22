@@ -129,6 +129,7 @@ const getRootPath = (root: string | undefined) => {
 
 <style scoped>
 .checkout-card {
+  margin-top: 3rem;
   padding: 1rem;
   box-shadow:
     0px 4px 6px 1px rgba(0, 0, 0, 0.1),
