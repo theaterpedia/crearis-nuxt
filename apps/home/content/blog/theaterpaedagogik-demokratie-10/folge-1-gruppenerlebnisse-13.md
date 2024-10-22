@@ -16,11 +16,11 @@ image:
 hero:
   height: full
   img_tmp_align_y: left
-  content_y: top
+  content_y: center
 ---
 > [!data-hero] ## ==Folge 1== Sich einlassen und Erfahrungen machen **Gruppenerlebnisse**
 > 
-> ![theaterpaedagogisches Fachsimpeln im Cafe](https://res.cloudinary.com/little-papillon/image/upload/w_400/v1722971694/dasei/EpisodenHeadbilder_ropdu7.jpg)
+> ![theaterpaedagogisches Fachsimpeln im Cafe](https://res.cloudinary.com/little-papillon/image/upload/v1722974733/dasei/GruppenErfahrungen_wrindx.jpg)
 
 <!-- PUBLISH-FROM-HERE -->
 
