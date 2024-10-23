@@ -62,6 +62,7 @@
   line-height: 1.2;
 }
 
+/* .small to be used from outside via slot */
 .prose :where(h1, h2, h3, .h1, .h2, .h3, .h4, .h5, .h6) :where(small) {
   font-size: 0.875em;
   display: block;
