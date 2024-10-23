@@ -25,7 +25,9 @@
 
     <div class="sidebar-drawer" :class="{ 'sidebar-drawer-open': isOpen }">
       <div class="sidebar-top">
-        <img :alt="logoAlt" :src="logoSmall" class="sidebar-logo-small" />
+        <RouterLink to="/">
+          <img :alt="logoAlt" :src="logoSmall" class="sidebar-logo-small" />
+        </RouterLink>
 
         <div class="sidebar-search">
           <svg
@@ -66,7 +68,9 @@
         </button>
       </div>
 
-      <img :alt="logoAlt" :src="logo" class="sidebar-logo" />
+      <RouterLink to="/">
+        <img :alt="logoAlt" :src="logo" class="sidebar-logo" />
+      </RouterLink>
 
       <slot />
 
