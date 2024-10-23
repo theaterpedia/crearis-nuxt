@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   extends: ['@crearis-nuxt/theme'],
   imports: { transform: { exclude: [/\/packages\/ui\//] } },
-  modules: ['@nuxt/content', '@nuxt/image'],
+  modules: ['@nuxt/content', '@nuxt/image', 'nuxt-viewport'],
   routeRules: { '/': { prerender: true } },
   nitro: { plugins: ['plugins/content.ts'] },
 })
