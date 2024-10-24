@@ -84,6 +84,7 @@
 <script lang="ts" setup>
 import { onKeyStroke } from '@vueuse/core'
 import { watch } from 'vue'
+import { useRoute } from 'vue-router'
 import { useSidebar } from '../composables/useSidebar'
 
 defineProps({
@@ -110,6 +111,7 @@ defineProps({
 })
 
 const { isOpen } = useSidebar()
+const route = useRoute()
 
 let stopKeyListener: () => void | undefined
 
@@ -125,6 +127,13 @@ watch(
     }
   },
   { immediate: true },
+)
+
+watch(
+  () => route.fullPath,
+  () => {
+    isOpen.value = false
+  },
 )
 </script>
 
