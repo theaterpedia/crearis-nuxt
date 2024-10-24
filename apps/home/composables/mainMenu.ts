@@ -20,7 +20,7 @@ export function refreshMainMenu(activeRoute: RouteLocation | string) {
   mainMenu.items = navigation.map((item) => ({
     label: item.title,
     children: item.children ? navigationToMenuItems(item.children, activeRoute) : [],
-    expanded: path.startsWith(`${item._path}/`),
+    expanded: path === item._path || path.startsWith(`${item._path}/`),
   }))
 
   if (mainMenu.items.every(({ expanded }) => !expanded)) {
@@ -39,7 +39,7 @@ function navigationToMenuItems(
       ? {
           label: item.title,
           children: item.children ? navigationToMenuItems(item.children, activeRoute) : [],
-          expanded: path.startsWith(`${item._path}/`),
+          expanded: path === item._path || path.startsWith(`${item._path}/`),
         }
       : {
           label: item.title,
