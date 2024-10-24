@@ -1,5 +1,5 @@
 {
-  "name": "crearis-nuxt",
+  "name": "crearis",
   "private": true,
   "repository": {
     "type": "git",
@@ -15,9 +15,11 @@
   "type": "module",
   "scripts": {
     "dev:theme": "pnpm --filter=theme dev",
+    "dev:portal": "pnpm --filter=portal dev",
     "dev:ui": "pnpm --filter=ui dev",
     "dev:home": "pnpm --filter=home dev",
     "build:theme": "pnpm --filter=theme build",
+    "build:portal": "pnpm --filter=portal build",
     "build:ui": "pnpm --filter=ui build",
     "build:home": "pnpm --filter=home build",
     "format": "prettier --write .",

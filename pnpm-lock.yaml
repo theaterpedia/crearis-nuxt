@@ -29,10 +29,10 @@ importers:
 
   apps/home:
     dependencies:
-      '@crearis-nuxt/theme':
+      '@crearis/theme':
         specifier: workspace:*
         version: link:../../packages/theme
-      '@crearis-nuxt/ui':
+      '@crearis/ui':
         specifier: workspace:*
         version: link:../../packages/ui
       '@nuxt/content':
@@ -59,7 +59,7 @@ importers:
 
   packages/theme:
     dependencies:
-      '@crearis-nuxt/ui':
+      '@crearis/ui':
         specifier: workspace:*
         version: link:../ui
       '@nuxtjs/tailwindcss':

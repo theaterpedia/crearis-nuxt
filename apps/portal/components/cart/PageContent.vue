@@ -1,32 +1,29 @@
 <template>
   <div v-if="cart?.order?.websiteOrderLine?.length > 0" class="pb-20">
-    <div class="lg:grid lg:grid-cols-12 md:gap-x-6" data-testid="cart-page-content">
+    <div data-testid="cart-page-content" class="md:gap-x-6 lg:grid lg:grid-cols-12">
       <div class="col-span-7 mb-10 lg:mb-0">
         <div v-for="orderLine in cart.order?.orderLines" :key="orderLine?.id">
           <CartCollectedProductCard :order-line="orderLine" />
         </div>
       </div>
 
-      <UiOrderSummary :cart="cart" class="col-span-5 md:sticky md:top-20 h-fit">
-        <NuxtLink to="/checkout">
-          <SfButton size="lg" class="w-full mb-4 md:mb-0">
-            {{ $t('goToCheckout') }}
-          </SfButton>
-        </NuxtLink>
+      <UiOrderSummary :cart="cart" class="col-span-5 h-fit md:sticky md:top-20">
+        <ButtonTmp is="NuxtLink" size="medium" to="/checkout" class="mb-4 w-full md:mb-0">
+          {{ $t('goToCheckout') }}
+        </ButtonTmp>
       </UiOrderSummary>
     </div>
   </div>
-  <div v-else class="flex items-center justify-center flex-col pt-24 pb-32" data-testid="cart-page-content">
-    <NuxtImg src="/images/empty-cart.svg" :alt="$t('emptyCartImgAlt')" width="192" height="192" loading="lazy" />
+  <div v-else data-testid="cart-page-content" class="flex flex-col items-center justify-center pb-32 pt-24">
+    <NuxtImg :alt="$t('emptyCartImgAlt')" height="192" loading="lazy" src="/images/empty-cart.svg" width="192" />
     <h2 class="mt-8">{{ $t('emptyCart') }}</h2>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { SfButton, SfIconArrowBack } from '@crearis/vue';
+import ButtonTmp from '../../components/ButtonTmp.vue'
 
-const { cart, loadCart } = useCart();
+const { cart, loadCart } = useCart()
 
-await loadCart();
-
+await loadCart()
 </script>

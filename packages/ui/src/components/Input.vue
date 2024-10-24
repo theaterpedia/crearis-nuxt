@@ -26,6 +26,7 @@
 
       <p v-if="error" class="input-error">{{ error }}</p>
     </div>
+    <slot name="suffix" />
   </div>
 </template>
 

@@ -1,36 +1,37 @@
-<script setup lang="ts">
-import { SfButton, SfIconTune, useDisclosure, SfLoaderCircular } from '@crearis/vue';
-import type { Product } from '@crearis/data-main/graphql';
+<script lang="ts" setup>
+import { SfIconTune, useDisclosure } from '@crearis/vue'
+import type { Product } from '@crearis/data/graphql'
+import ButtonTmp from '../../components/ButtonTmp.vue'
 
-const route = useRoute();
+const route = useRoute()
 const breadcrumbs = [
   { name: 'Home', link: '/' },
   { name: 'Category', link: `Category/${route.params.id}` },
-];
+]
 
-const { isOpen, open, close } = useDisclosure();
+const { isOpen, open, close } = useDisclosure()
 const { loadProductTemplateList, organizedAttributes, loading, productTemplateList, totalItems, categories } =
-  useProductTemplateList(String(route.fullPath));
-const { getRegularPrice, getSpecialPrice } = useProductAttributes();
-const { getFacetsFromURL } = useUiHelpers();
+  useProductTemplateList(String(route.fullPath))
+const { getRegularPrice, getSpecialPrice } = useProductAttributes()
+const { getFacetsFromURL } = useUiHelpers()
 
-const maxVisiblePages = ref(1);
-const setMaxVisiblePages = (isWide: boolean) => (maxVisiblePages.value = isWide ? 5 : 1);
+const maxVisiblePages = ref(1)
+const setMaxVisiblePages = (isWide: boolean) => (maxVisiblePages.value = isWide ? 5 : 1)
 
-watch(isWideScreen, (value) => setMaxVisiblePages(value));
+watch(isWideScreen, (value) => setMaxVisiblePages(value))
 watch(isTabletScreen, (value) => {
   if (value && isOpen.value) {
-    close();
+    close()
   }
-});
+})
 
 watch(
   () => route,
   async () => {
-    await loadProductTemplateList(getFacetsFromURL(route.query));
+    await loadProductTemplateList(getFacetsFromURL(route.query))
   },
   { deep: true, immediate: true },
-);
+)
 
 const pagination = computed(() => ({
   currentPage: route?.query?.page ? Number(route.query.page) : 1,
@@ -38,12 +39,11 @@ const pagination = computed(() => ({
   totalItems: totalItems.value,
   itemsPerPage: 12,
   pageOptions: [5, 12, 15, 20],
-}));
+}))
 
 onMounted(() => {
-  setMaxVisiblePages(isWideScreen.value);
-});
-
+  setMaxVisiblePages(isWideScreen.value)
+})
 </script>
 
 <template>
@@ -52,60 +52,60 @@ onMounted(() => {
     <RenderContent :content="component.fields.content" />
   </! -->
   <NuxtLayout :breadcrumbs="breadcrumbs">
-    <NarrowContainer>
-      <h1 class="font-bold typography-headline-3 md:typography-headline-2 mb-10">All products</h1>
+    <SectionContainer>
+      <h1 class="typography-headline-3 md:typography-headline-2 mb-10 font-bold">All products</h1>
       <div class="grid grid-cols-12 lg:gap-x-6">
         <div class="col-span-12 lg:col-span-4 xl:col-span-3">
-          <CategoryFilterSidebar class="hidden lg:block" :attributes="organizedAttributes" :categories="categories" />
+          <CategoryFilterSidebar :attributes="organizedAttributes" :categories="categories" class="hidden lg:block" />
           <LazyCategoryMobileSidebar :is-open="isOpen" @close="close">
             <template #default>
               <CategoryFilterSidebar
-                class="block lg:hidden"
                 :attributes="organizedAttributes"
                 :categories="categories"
                 @close="close"
+                class="block lg:hidden"
               />
             </template>
           </LazyCategoryMobileSidebar>
         </div>
         <div class="col-span-12 lg:col-span-8 xl:col-span-9">
           <template v-if="!loading">
-            <div class="flex justify-between items-center mb-6">
-              <span class="font-bold font-headings md:text-lg">{{ totalItems }} Products </span>
-              <SfButton variant="tertiary" class="lg:hidden whitespace-nowrap" @click="open">
+            <div class="mb-6 flex items-center justify-between">
+              <span class="font-headings font-bold md:text-lg">{{ totalItems }} Products</span>
+              <ButtonTmp @click="open" variant="tertiary" class="whitespace-nowrap lg:hidden">
                 <template #prefix>
                   <SfIconTune />
                 </template>
                 Filter
-              </SfButton>
+              </ButtonTmp>
             </div>
             <section
               v-if="productTemplateList.length > 0"
-              class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5 mt-8"
+              class="mt-8 grid grid-cols-2 gap-5 md:grid-cols-3 xl:grid-cols-4"
             >
               <LazyUiProductCard
                 v-for="productTemplate in productTemplateList"
+                :first-variant="productTemplate.firstVariant as Product"
+                :image-alt="productTemplate?.name || ''"
+                :image-url="$getImage(String(productTemplate.image), 370, 370, String(productTemplate.imageFilename))"
                 :key="productTemplate.id"
                 :name="productTemplate?.name || ''"
-                loading="eager"
-                :first-variant="productTemplate.firstVariant as Product"              
-                :slug="mountUrlSlugForProductVariant((productTemplate.firstVariant || productTemplate) as Product)"
-                :image-url="$getImage(String(productTemplate.image), 370, 370, String(productTemplate.imageFilename))"
-                :image-alt="productTemplate?.name || ''"
-                :regular-price="getRegularPrice(productTemplate.firstVariant as Product) || 250"
-                :special-price="getSpecialPrice(productTemplate.firstVariant as Product)"
+                :rating="Number(4)"
                 :rating-count="123"
-                :rating="Number(4)"           
+                :regular-price="getRegularPrice(productTemplate.firstVariant as Product) || 250"
+                :slug="mountUrlSlugForProductVariant((productTemplate.firstVariant || productTemplate) as Product)"
+                :special-price="getSpecialPrice(productTemplate.firstVariant as Product)"
+                loading="eager"
               />
             </section>
             <CategoryEmptyState v-else />
             <LazyUiPagination
               v-if="pagination.totalPages > 1"
-              class="mt-5"
               :current-page="pagination.currentPage"
-              :total-items="pagination.totalItems"
-              :page-size="pagination.itemsPerPage"
               :max-visible-pages="maxVisiblePages"
+              :page-size="pagination.itemsPerPage"
+              :total-items="pagination.totalItems"
+              class="mt-5"
             />
           </template>
           <template v-else>
@@ -113,7 +113,7 @@ onMounted(() => {
           </template>
         </div>
       </div>
-    </NarrowContainer>
+    </SectionContainer>
   </NuxtLayout>
   <!-- ContentDoc / -->
 </template>

@@ -1,11 +1,10 @@
-<script setup lang="ts">
-import { SfLink, SfIconSell, SfIconRemove, SfIconRemoveShoppingCart } from '@crearis/vue';
-
+<script lang="ts" setup>
 // #TODO: 0.5.4 ambiguous indirect export: OrderLine
-import type { OrderLine } from '@crearis/data-main/graphql';
-import type { PropType } from 'vue';
+import type { OrderLine } from '@crearis/data/graphql'
+import type { PropType } from 'vue'
+import ButtonTmp from '../../components/ButtonTmp.vue'
 
-const NuxtLink = resolveComponent('NuxtLink');
+const NuxtLink = resolveComponent('NuxtLink')
 
 defineProps({
   orderLine: {
@@ -13,73 +12,73 @@ defineProps({
     type: Object as PropType<OrderLine>,
     required: true,
   },
-});
+})
 
-const { updateItemQuantity, removeItemFromCart } = useCart();
+const { updateItemQuantity, removeItemFromCart } = useCart()
 </script>
 
 <template>
   <div
-    class="relative flex first:border-t border-b-[1px] border-neutral-200 hover:shadow-lg min-w-[320px] p-4 last:mb-0"
     data-testid="cart-product-card"
+    class="relative flex min-w-[320px] border-b-[1px] border-neutral-200 p-4 first:border-t last:mb-0 hover:shadow-lg"
   >
-    <div class="relative overflow-hidden rounded-md w-[100px] sm:w-[176px]">
-      <SfLink :to="mountUrlSlugForProductVariant(orderLine.product as Product)" :tag="NuxtLink">
+    <div class="relative w-[100px] overflow-hidden rounded-md sm:w-[176px]">
+      <ButtonTmp :is="NuxtLink" :to="mountUrlSlugForProductVariant(orderLine.product as Product)" type="link">
         <NuxtImg
-          class="w-full h-auto border rounded-md border-neutral-200"
-          :src="$getImage(String(orderLine.product?.image), 370, 370, String(orderLine.product?.imageFilename))"
           :alt="orderLine.product?.imageFilename ?? ''"
-          width="300"
+          :src="$getImage(String(orderLine.product?.image), 370, 370, String(orderLine.product?.imageFilename))"
+          format="webp"
           height="300"
           loading="lazy"
-          format="webp"
+          width="300"
+          class="h-auto w-full rounded-md border border-neutral-200"
         />
-      </SfLink>
-      <div class="absolute top-0 left-0 text-white bg-secondary-600 py-1 pl-1.5 pr-2 text-xs font-medium">
+      </ButtonTmp>
+      <div class="bg-secondary-600 absolute left-0 top-0 py-1 pl-1.5 pr-2 text-xs font-medium text-white">
         <SfIconSell size="xs" class="mr-1" />
         {{ $t('sale') }}
       </div>
     </div>
-    <div class="flex flex-col pl-4 min-w-[180px] flex-1">
+    <div class="flex min-w-[180px] flex-1 flex-col pl-4">
       <div class="flex justify-between">
-        <SfLink
-          :tag="NuxtLink"
+        <ButtonTmp
+          :is="NuxtLink"
           :to="mountUrlSlugForProductVariant(orderLine.product as Product)"
-          variant="secondary"
-          class="no-underline typography-text-sm sm:typography-text-lg cursor-pointer"
+          type="plain"
+          class="typography-text-sm sm:typography-text-lg cursor-pointer no-underline"
         >
           {{ orderLine.product?.name }}
-        </SfLink>
-        <SfIconRemoveShoppingCart class="cursor-pointer" @click="removeItemFromCart(orderLine.id)" />
+        </ButtonTmp>
+        <SfIconRemoveShoppingCart @click="removeItemFromCart(orderLine.id)" class="cursor-pointer" />
       </div>
       <div class="my-2 sm:mb-0">
-        <ul class="text-xs font-normal leading-5 sm:typography-text-sm text-neutral-700">
+        <ul class="sm:typography-text-sm text-xs font-normal leading-5 text-neutral-700">
           <li v-for="attribute in orderLine.product?.variantAttributeValues" :key="attribute.id">
             <span class="mr-1">{{ attribute.attribute?.name }}:</span>
             <span class="font-medium">{{ attribute.name }}</span>
           </li>
         </ul>
       </div>
-      <div class="items-start sm:items-center sm:mt-auto flex flex-col sm:flex-row">
+      <div class="flex flex-col items-start sm:mt-auto sm:flex-row sm:items-center">
         <span
           v-if="orderLine.priceSubtotal"
-          class="text-secondary-700 sm:order-1 font-bold typography-text-sm sm:typography-text-lg sm:ml-auto"
+          class="text-secondary-700 typography-text-sm sm:typography-text-lg font-bold sm:order-1 sm:ml-auto"
         >
           ${{ orderLine.priceSubtotal }}
-          <span class="text-neutral-500 ml-2 line-through typography-text-xs sm:typography-text-sm font-normal">
+          <span class="typography-text-xs sm:typography-text-sm ml-2 font-normal text-neutral-500 line-through">
             ${{ orderLine.product?.combinationInfo?.list_price * orderLine.quantity }}
           </span>
         </span>
-        <span v-else class="font-bold sm:ml-auto sm:order-1 typography-text-sm sm:typography-text-lg">
+        <span v-else class="typography-text-sm sm:typography-text-lg font-bold sm:order-1 sm:ml-auto">
           ${{ orderLine.priceTotal }}
         </span>
         <UiQuantitySelector
           v-model="orderLine.quantity"
-          :min-value="1"
           :max-value="Number(orderLine.product?.qty)"
+          :min-value="1"
           :value="Number(orderLine.quantity)"
-          class="mt-4 sm:mt-0"
           @update:model-value="updateItemQuantity(orderLine.id, $event)"
+          class="mt-4 sm:mt-0"
         />
       </div>
     </div>

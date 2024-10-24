@@ -1,11 +1,11 @@
 <template>
-  <UiDivider class="w-screen -mx-4 md:col-span-3 md:w-auto md:mx-0" />
+  <UiDivider class="-mx-4 w-screen md:col-span-3 md:mx-0 md:w-auto" />
   <div v-for="address in billingAddresses" :key="address.id">
     <AccountProfileData
-      class="col-span-3"
-      :header="$t('account.accountSettings.billingDetails.billingAddress')"
       :button-text="$t('account.accountSettings.billingDetails.edit')"
+      :header="$t('account.accountSettings.billingDetails.billingAddress')"
       @on-click="open"
+      class="col-span-3"
     >
       <p>
         {{ address?.name }}
@@ -17,38 +17,39 @@
         {{ address?.zip }}
       </p>
     </AccountProfileData>
-    <UiDivider class="w-screen -mx-4 md:col-span-3 md:w-auto md:mx-0" />
+    <UiDivider class="-mx-4 w-screen md:col-span-3 md:mx-0 md:w-auto" />
     <UiOverlay v-if="isOpen" :visible="isOpen">
       <SfModal
         v-model="isOpen"
-        tag="section"
-        role="dialog"
-        class="h-full w-full overflow-auto md:w-[600px] md:h-fit"
         aria-labelledby="address-modal-title"
+        role="dialog"
+        tag="section"
+        class="h-full w-full overflow-auto md:h-fit md:w-[600px]"
       >
         <header>
-          <SfButton square variant="tertiary" class="absolute right-2 top-2" @click="close">
+          <ButtonTmp @click="close" square variant="tertiary" class="absolute right-2 top-2">
             <SfIconClose />
-          </SfButton>
-          <h3 id="address-modal-title" class="text-neutral-900 text-lg md:text-2xl font-bold mb-4">
+          </ButtonTmp>
+          <h3 id="address-modal-title" class="mb-4 text-lg font-bold text-neutral-900 md:text-2xl">
             {{ $t('account.accountSettings.billingDetails.billingAddress') }}
           </h3>
         </header>
-        <FormAddAddress :saved-address="address" type="billingAddress" @on-save="close" @on-close="close" />
+        <FormAddAddress :saved-address="address" @on-close="close" @on-save="close" type="billingAddress" />
       </SfModal>
     </UiOverlay>
   </div>
 </template>
 
-<script setup lang="ts">
-import { SfButton, SfIconClose, SfModal, useDisclosure } from '@crearis/vue';
-import type { AddressEnum } from '@crearis/data-main/graphql';
+<script lang="ts" setup>
+import { SfIconClose, SfModal, useDisclosure } from '@crearis/vue'
+import ButtonTmp from '../../components/ButtonTmp.vue'
+import type { AddressEnum } from '@crearis/data/graphql'
 
 definePageMeta({
   layout: 'account',
-});
-const { isOpen, open, close } = useDisclosure();
-const { billingAddresses, loadAddressesByType } = useAddresses();
+})
+const { isOpen, open, close } = useDisclosure()
+const { billingAddresses, loadAddressesByType } = useAddresses()
 
-await loadAddressesByType(AddressEnum.Billing);
+await loadAddressesByType(AddressEnum.Billing)
 </script>

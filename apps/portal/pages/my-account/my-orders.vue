@@ -1,69 +1,67 @@
 <template>
-  <UiDivider class="w-screen -mx-4 md:col-span-3 md:w-auto md:mx-0" />
-  <h2 class="hidden md:block typography-headline-4 font-bold mx-4 capitalize">
+  <UiDivider class="-mx-4 w-screen md:col-span-3 md:mx-0 md:w-auto" />
+  <h2 class="typography-headline-4 mx-4 hidden font-bold capitalize md:block">
     {{ $t('account.ordersAndReturns.myOrders') }}
   </h2>
-  <div v-if="!data" class="col-span-3 text-center mt-8">
+  <div v-if="!data" class="col-span-3 mt-8 text-center">
     <NuxtImg
-      src="/images/empty-cart.svg"
       :alt="$t('account.ordersAndReturns.noOrdersAltText')"
-      width="192"
       height="192"
-      class="mx-auto"
       loading="lazy"
+      src="/images/empty-cart.svg"
+      width="192"
+      class="mx-auto"
     />
-    <h3 class="typography-headline-3 font-bold mb-4 mt-6">
+    <h3 class="typography-headline-3 mb-4 mt-6 font-bold">
       {{ $t('account.ordersAndReturns.noOrders') }}
     </h3>
-    <SfButton variant="secondary" class="!ring-neutral-200"> {{ $t('account.ordersAndReturns.continue') }}</SfButton>
+    <ButtonTmp variant="plain" class="!ring-neutral-200">{{ $t('account.ordersAndReturns.continue') }}</ButtonTmp>
   </div>
   <div v-else class="col-span-3">
-    <ul v-for="{ id, date, paymentAmount, status } in data" :key="id" class="md:hidden my-4 last-of-type:mb-0">
+    <ul v-for="{ id, date, paymentAmount, status } in data" :key="id" class="my-4 last-of-type:mb-0 md:hidden">
       <li>
-        <p class="block typography-text-sm font-medium">
+        <p class="typography-text-sm block font-medium">
           {{ $t('account.ordersAndReturns.orderId') }}
         </p>
-        <span class="block typography-text-sm mb-2">{{ id }}</span>
+        <span class="typography-text-sm mb-2 block">{{ id }}</span>
       </li>
       <li>
-        <p class="block typography-text-sm font-medium">
+        <p class="typography-text-sm block font-medium">
           {{ $t('account.ordersAndReturns.orderDate') }}
         </p>
-        <span class="block typography-text-sm mb-2">{{ date }}</span>
+        <span class="typography-text-sm mb-2 block">{{ date }}</span>
       </li>
       <li>
-        <p class="block typography-text-sm font-medium">
+        <p class="typography-text-sm block font-medium">
           {{ $t('account.ordersAndReturns.amount') }}
         </p>
-        <span class="block typography-text-sm mb-2">${{ paymentAmount }}</span>
+        <span class="typography-text-sm mb-2 block">${{ paymentAmount }}</span>
       </li>
-      <li class="flex flex-wrap items-center mb-2">
-        <p class="block typography-text-sm -mb-1.5 font-medium flex-[100%]">
+      <li class="mb-2 flex flex-wrap items-center">
+        <p class="typography-text-sm -mb-1.5 block flex-[100%] font-medium">
           {{ $t('account.ordersAndReturns.status') }}
         </p>
-        <span class="block typography-text-sm flex-1">{{ status }}</span>
-        <SfButton :tag="NuxtLink" size="sm" variant="tertiary" :to="`'/my-account/my-orders/'${id}`">
-          {{ $t('account.ordersAndReturns.details') }}</SfButton
-        >
+        <span class="typography-text-sm block flex-1">{{ status }}</span>
+        <SfButton :tag="NuxtLink" :to="`'/my-account/my-orders/'${id}`" size="sm" variant="tertiary">
+          {{ $t('account.ordersAndReturns.details') }}
+        </SfButton>
       </li>
-      <UiDivider class="w-screen -mx-4 md:col-span-3 md:w-auto md:mx-0" />
+      <UiDivider class="-mx-4 w-screen md:col-span-3 md:mx-0 md:w-auto" />
     </ul>
-    <table class="hidden md:block text-left typography-text-sm mx-4">
-      <caption class="hidden">
-        List of orders
-      </caption>
+    <table class="typography-text-sm mx-4 hidden text-left md:block">
+      <caption class="hidden">List of orders</caption>
       <thead class="border-b-2 border-neutral-200">
         <tr>
           <th class="py-4 pr-4 font-medium">
             {{ $t('account.ordersAndReturns.orderId') }}
           </th>
-          <th class="py-4 px-4 font-medium lg:whitespace-nowrap">
+          <th class="px-4 py-4 font-medium lg:whitespace-nowrap">
             {{ $t('account.ordersAndReturns.orderDate') }}
           </th>
-          <th class="py-4 px-4 font-medium">
+          <th class="px-4 py-4 font-medium">
             {{ $t('account.ordersAndReturns.amount') }}
           </th>
-          <th class="py-4 px-4 font-medium">
+          <th class="px-4 py-4 font-medium">
             {{ $t('account.ordersAndReturns.status') }}
           </th>
           <th class="py-4 pl-4"></th>
@@ -77,10 +75,10 @@
           <td :class="['p-4', { 'text-negative-700': status === 'Cancelled' }]">
             {{ status }}
           </td>
-          <td class="py-1.5 pl-4 text-right w-full">
+          <td class="w-full py-1.5 pl-4 text-right">
             <SfButton :tag="NuxtLink" size="sm" variant="tertiary">
-              {{ $t('account.ordersAndReturns.details') }}</SfButton
-            >
+              {{ $t('account.ordersAndReturns.details') }}
+            </SfButton>
           </td>
         </tr>
       </tbody>
@@ -88,12 +86,12 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import { SfButton } from '@crearis/vue';
+<script lang="ts" setup>
+import ButtonTmp from '../../components/ButtonTmp.vue'
 
 definePageMeta({
   layout: 'account',
-});
+})
 
 const data = ref([
   {
@@ -120,7 +118,7 @@ const data = ref([
     paymentAmount: '295.87',
     status: 'Cancelled',
   },
-]);
+])
 
-const NuxtLink = resolveComponent('NuxtLink');
+const NuxtLink = resolveComponent('NuxtLink')
 </script>

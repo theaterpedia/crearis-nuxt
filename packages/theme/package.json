@@ -1,6 +1,6 @@
 {
-  "name": "@crearis-nuxt/theme",
-  "version": "0.1.0",
+  "name": "@crearis/theme",
+  "version": "0.7.0",
   "description": "Nuxt layer.",
   "repository": {
     "type": "git",
@@ -17,7 +17,7 @@
     "postinstall": "pnpm run dev:prepare"
   },
   "dependencies": {
-    "@crearis-nuxt/ui": "workspace:*",
+    "@crearis/ui": "workspace:*",
     "@nuxtjs/tailwindcss": "^6.12.1"
   },
   "devDependencies": {

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { defineLayout } from '#pruvious'
 
 defineLayout({
@@ -15,11 +15,11 @@ const NuxtLink = resolveComponent('NuxtLink')
 <template>
   <UiNavbarTop />
   <main data-testid="checkout-layout">
-    <NarrowContainer>
-      <div class="px-4 md:px-0 mb-20">
+    <SectionContainer>
+      <div class="mb-20 px-4 md:px-0">
         <slot />
       </div>
-    </NarrowContainer>
+    </SectionContainer>
   </main>
-  <UiFooter />
+  <Footer />
 </template>

@@ -1,6 +1,6 @@
 {
-  "name": "@crearis-nuxt/ui",
-  "version": "0.1.0",
+  "name": "@crearis/ui",
+  "version": "0.7.0",
   "description": "Vue UI components.",
   "repository": {
     "type": "git",

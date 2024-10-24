@@ -1,7 +1,7 @@
 import { defineCollection } from '#pruvious'
 import { pageLikeCollection } from '#pruvious/standard'
 import { uniqueValidator } from '#pruvious/server'
-import { EventEditMode } from '@crearis/data-main/graphql'
+import { EventEditMode } from '@crearis/data/graphql'
 
 export default defineCollection(
   pageLikeCollection({

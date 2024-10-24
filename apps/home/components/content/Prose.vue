@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-import { Prose } from '@crearis-nuxt/ui'
+import { Prose } from '@crearis/ui'
 import { useNuxtApp } from '#app'
 const { $viewport } = useNuxtApp()
 </script>

@@ -9,7 +9,6 @@ export default defineNuxtPlugin(async (nuxtApp) => {
     format: combine(timestamp(), prettyPrint()),
     transports: [new transports.Console()],
   })
-
   ;(process as any).winstonLog = loggerWinston
 
   return {

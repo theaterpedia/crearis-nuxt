@@ -1,39 +1,39 @@
 <template>
   <NuxtLayout name="auth">
-    <div class="mx-auto text-center rounded-md border border-neutral-200 p-4 md:p-6 mt-2">
+    <div class="mx-auto mt-2 rounded-md border border-neutral-200 p-4 text-center md:p-6">
       <NuxtImg
-        src="/images/email-sent.png"
         :alt="$t('auth.resetPassword.emailSent')"
-        width="192"
         height="192"
+        src="/images/email-sent.png"
+        width="192"
         class="mx-auto mb-6"
       />
       <h1 class="typography-headline-3 font-bold">{{ $t('auth.resetPassword.heading') }}</h1>
       <i18n-t
-        tag="p"
         keypath="auth.resetPassword.thankYou"
-        class="bg-neutral-100 text-left border border-neutral-200 p-4 rounded-md my-4"
+        tag="p"
+        class="my-4 rounded-md border border-neutral-200 bg-neutral-100 p-4 text-left"
       >
         <span class="font-medium">{{ email }}</span>
       </i18n-t>
-      <SfButton
+      <ButtonTmp
+        :is="NuxtLink"
         :to="paths.authResetPassword"
-        :tag="NuxtLink"
-        variant="tertiary"
         data-testid="reset-password-page-reset-button"
+        variant="tertiary"
       >
         {{ $t('auth.resetPassword.anotherEmail') }}
-      </SfButton>
+      </ButtonTmp>
     </div>
   </NuxtLayout>
 </template>
-<script setup lang="ts">
-import { SfButton } from '@crearis/vue';
+<script lang="ts" setup>
+import ButtonTmp from '../components/ButtonTmp.vue'
 
 definePageMeta({
   layout: false,
-});
+})
 
-const email = ref('hieronim.anonim@gmail.com');
-const NuxtLink = resolveComponent('NuxtLink');
+const email = ref('hieronim.anonim@gmail.com')
+const NuxtLink = resolveComponent('NuxtLink')
 </script>

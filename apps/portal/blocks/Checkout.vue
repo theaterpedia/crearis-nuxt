@@ -1,7 +1,6 @@
 <script setup>
-import { SfButton } from '@crearis/vue';
 import { defineBlock, repeaterField, textSubfield, linkSubfield, imageSubfield } from '#pruvious'
-import checkoutContent from '~/components/checkoutContent.vue';
+import checkoutContent from '~/components/checkoutContent.vue'
 
 defineBlock({
   icon: 'Pencil',
@@ -9,11 +8,9 @@ defineBlock({
 })
 
 // eslint-disable-next-line vue/define-macros-order
-defineProps({
- 
-})
+defineProps({})
 
-const NuxtLink = resolveComponent('NuxtLink');
+const NuxtLink = resolveComponent('NuxtLink')
 </script>
 
 <template>

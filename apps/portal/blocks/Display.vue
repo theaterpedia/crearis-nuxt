@@ -1,5 +1,5 @@
 <script setup>
-import { SfButton } from '@crearis/vue';
+import ButtonTmp from '../components/ButtonTmp.vue'
 import { defineBlock, repeaterField, textSubfield, linkSubfield, imageSubfield } from '#pruvious'
 
 defineBlock({
@@ -18,7 +18,7 @@ defineProps({
       buttonLink: linkSubfield({
         required: false,
         placeholder: 'Enter url',
-      }), 
+      }),
       image: imageSubfield({
         minWidth: 700,
         sources: [
@@ -27,54 +27,54 @@ defineProps({
           { format: 'webp', width: 700, resize: 'cover' },
           { format: 'jpeg', width: 700, resize: 'cover' },
         ],
-      }),      
+      }),
     },
     addLabel: 'Add card',
-  }),  
+  }),
 })
 
-const NuxtLink = resolveComponent('NuxtLink');
+const NuxtLink = resolveComponent('NuxtLink')
 </script>
 
 <template>
   <SectionContainer>
-    <div class="flex flex-col md:flex-row flex-wrap gap-6 mb-10" data-testid="display">
+    <div data-testid="display" class="mb-10 flex flex-col flex-wrap gap-6 md:flex-row">
       <div
         v-for="card in cards"
         :key="card.headline"
-        class="relative flex md:max-w-screen-3xl md:[&:not(:first-of-type)]:flex-1 md:first-of-type:w-full first:bg-secondary-200 last:bg-warning-200 even:bg-negative-200"
+        class="md:max-w-screen-3xl first:bg-secondary-200 last:bg-warning-200 even:bg-negative-200 relative flex md:first-of-type:w-full md:[&:not(:first-of-type)]:flex-1"
       >
         <div
           :class="[
-            'flex overflow-hidden grow flex-col',
+            'flex grow flex-col overflow-hidden',
             {
               'flex-col-reverse': card.reverse,
               'md:flex-row-reverse': card.reverse,
             },
           ]"
         >
-          <div class="flex flex-1 flex-col justify-center items-center md:items-start p-6 lg:p-10 max-w-1/2">
-            <p class="uppercase typography-text-xs block font-bold tracking-widest">
+          <div class="max-w-1/2 flex flex-1 flex-col items-center justify-center p-6 md:items-start lg:p-10">
+            <p class="typography-text-xs block font-bold uppercase tracking-widest">
               {{ card.overline }}
             </p>
-            <h2 class="mb-4 mt-2 font-bold typography-headline-3">
+            <h2 class="typography-headline-3 mb-4 mt-2 font-bold">
               {{ card.headline }}
             </h2>
-            <p class="typography-text-base block text-center md:text-left mb-4">
+            <p class="typography-text-base mb-4 block text-center md:text-left">
               {{ card.description }}
             </p>
-            <SfButton class="!bg-black text-white" :tag="NuxtLink" :to="card.buttonlink">
+            <ButtonTmp :is="NuxtLink" :to="card.buttonlink" class="!bg-black text-white">
               {{ card.buttonText }}
-            </SfButton>
+            </ButtonTmp>
           </div>
           <PruviousPicture
-              :image="card.image"
-              :lazy="true"
-              :alt="card.headline"
-              class="w-full md:w-1/2 self-end object-contain flex-1"
-              width="300"
-              height="300"            
-            />
+            :alt="card.headline"
+            :image="card.image"
+            :lazy="true"
+            height="300"
+            width="300"
+            class="w-full flex-1 self-end object-contain md:w-1/2"
+          />
         </div>
       </div>
     </div>

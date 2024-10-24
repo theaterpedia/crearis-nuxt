@@ -5,5 +5,5 @@
 </template>
 
 <script lang="ts" setup>
-import { Slider } from '@crearis-nuxt/ui'
+import { Slider } from '@crearis/ui'
 </script>

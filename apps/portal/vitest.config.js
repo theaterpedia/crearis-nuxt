@@ -10,8 +10,7 @@ export default defineVitestConfig({
     include: ['./tests/**/?(*.)+(spec|test).[jt]s'],
     onConsoleLog: (log) => {
       // Silence logs coming from vue <Suspense> is experimental, and stdout | unknown component before it
-      if (log.includes('<Suspense'))
-        return false
+      if (log.includes('<Suspense')) return false
       return log
     },
   },

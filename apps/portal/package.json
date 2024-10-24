@@ -1,7 +1,7 @@
 {
-  "name": "home",
+  "name": "portal",
   "type": "module",
-  "version": "0.0.4",
+  "version": "0.7.0",
   "private": true,
   "author": "hans.doenitz@dasei.eu",
   "license": "MIT",
@@ -13,12 +13,7 @@
     "lint:fix": "eslint . --fix",
     "lint:vsf": "nuxt typecheck && eslint --ext .vue,.js,.ts .",
     "lint:fix_vsf": "eslint --ext .vue,.js,.ts . --fix",
-    "preview": "nuxi preview",
-    "test": "vitest run",
-    "test:watch": "vitest --ui",
-    "test:coverage": "vitest run --coverage",
-    "test:cypress": "cypress run",
-    "test:cypress-dev": "cypress open --e2e"
+    "preview": "nuxi preview"
   },
   "dependencies": {
     "@apollo/client": "^3.8.6",
@@ -35,15 +30,14 @@
     "nuxt-lazy-hydrate": "^1.0.0",
     "pruvious": "^3.11.6",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "vue-toastification": "2.0.0-rc.5"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.6.3",
-    "@crearis/data-main": "*",
-    "@crearis/theme-main": "*",
+    "@crearis/theme": "workspace:*",
+    "@crearis/ui": "workspace:*",
+    "@crearis/data": "workspace:*",
     "@crearis/typography": "^0.0.8",
-    "@crearis/vue": "^0.0.8",
     "@graphql-codegen/cli": "^4.0.1",
     "@graphql-codegen/client-preset": "^4.0.1",
     "@graphql-codegen/typescript": "^4.0.1",

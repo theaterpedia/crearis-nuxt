@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-import { Hero } from '@crearis-nuxt/ui'
+import { Hero } from '@crearis/ui'
 import { type PropType } from 'vue'
 
 const props = defineProps({

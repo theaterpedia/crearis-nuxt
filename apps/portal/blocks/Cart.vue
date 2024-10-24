@@ -1,5 +1,4 @@
 <script setup>
-import { SfButton } from '@crearis/vue';
 import { defineBlock, repeaterField, textSubfield, linkSubfield, imageSubfield } from '#pruvious'
 
 defineBlock({
@@ -8,11 +7,9 @@ defineBlock({
 })
 
 // eslint-disable-next-line vue/define-macros-order
-defineProps({
+defineProps({})
 
-})
-
-const NuxtLink = resolveComponent('NuxtLink');
+const NuxtLink = resolveComponent('NuxtLink')
 </script>
 
 <template>

@@ -1,4 +1,4 @@
-import type { VariantPrice } from '@crearis/data-main/types/product'
+import type { VariantPrice } from '@crearis/data/types/product'
 
 export const useProductAttributes: any = () => {
   const getRegularPrice = (firstVariant: VariantPrice) => {

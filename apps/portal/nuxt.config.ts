@@ -2,30 +2,72 @@ import { fileURLToPath } from 'node:url'
 import { dirname } from 'node:path'
 
 const currentDir = dirname(fileURLToPath(import.meta.url))
-const isRootDir = !(currentDir.endsWith('apps/home'))
+const isRootDir = !currentDir.endsWith('apps/portal')
 
 export default defineNuxtConfig({
-  extends: [
-    '@crearis/theme-main',
-    '@crearis/data-main',
+  compatibilityDate: '2024-04-03',
+  devtools: { enabled: true },
+  extends: ['@crearis/theme', '@crearis/data'],
+  imports: { transform: { exclude: [/\/packages\/ui\//] } },
+  modules: [
+    '@nuxt/content',
+    '@nuxt/image',
+    'nuxt-viewport',
+    'nuxt-lazy-hydrate',
+    '@vue-storefront/nuxt',
+    '@nuxtjs/i18n',
   ],
-
+  routeRules: { '/': { prerender: true } },
   typescript: {
     typeCheck: false,
   },
 
-  i18n: {
-    // if you are using custom path, default
-    vueI18n: isRootDir ? './node_modules/@crearis/theme-main/i18n.config.ts' : '../../node_modules/@crearis/theme-main/i18n.config.ts',
+  runtimeConfig: {
+    // for getImages plugin
+    public: {
+      odooBaseUrl: '',
+    },
   },
 
-  modules: ['@nuxt/test-utils', 'nuxt-module-eslint-config'],
+  image: {
+    dir: '../../node_modules/@crearis/theme/public',
+    screens: {
+      '4xl': 1920,
+      '3xl': 1536,
+      '2xl': 1366,
+      'xl': 1280,
+      'lg': 1024,
+      'md': 768,
+      'sm': 640,
+      'xs': 376,
+      '2xs': 360,
+    },
+    providers: {
+      odooProvider: {
+        name: 'odooProvider',
+        provider: '@crearis/data/providers/odoo-provider.ts',
+      },
+    },
+  },
 
-  eslintConfig: {
-    setup: false, // <---
+  i18n: {
+    locales: [
+      {
+        code: 'en',
+        file: 'en.json',
+      },
+      {
+        code: 'de',
+        file: 'de.json',
+      },
+    ],
+    lazy: true,
+    langDir: './lang',
+    defaultLocale: 'de',
   },
 
   nitro: {
+    plugins: ['plugins/content.ts'],
     prerender: {
       ignore: [
         '/product/',
@@ -47,14 +89,6 @@ export default defineNuxtConfig({
         '/login',
         '/signup',
       ],
-    },
-  },
-  // #TODO _05 enable-full-nitro-prerender
-  // #TODO _05 html-validation modules: ['nuxt-hydration', '@nuxtjs/html-validator'],
-  devtools: {
-    enabled: true,
-    timeline: {
-      enabled: true,
     },
   },
 })

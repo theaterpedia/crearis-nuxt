@@ -24,7 +24,7 @@ defineProps({
    * @default 'primary'
    */
   variant: {
-    type: String as PropType<'primary' | 'plain'>,
+    type: String as PropType<'primary' | 'plain' | 'link'>,
     default: 'primary',
   },
 

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { SfButton } from '@crearis/vue'
 import { defineBlock, imageField, linkField, textField, editorField, switchField } from '#pruvious'
 
@@ -8,13 +8,13 @@ defineBlock({ icon: 'Mouse' })
 defineProps({
   showText: switchField({
     default: false,
-  }), 
+  }),
   fullWidth: switchField({
     default: false,
-  }),  
+  }),
   minHeight: switchField({
     default: false,
-  }),      
+  }),
   image: imageField({
     minWidth: 1400,
     sources: [
@@ -50,37 +50,43 @@ const NuxtLink = resolveComponent('NuxtLink')
 </script>
 
 <template>
-    <div :class="minHeight ? '': 'min-h-[600px]'"   class="md:flex md:justify-center max-w-screen-3xl mx-auto">
-      <div :class="fullWidth ? '': 'md:basis-2/4 '" class="flex flex-col justify-center md:items-stretch md:overflow-hidden">
-        <!-- #TODO _06 Re-Enable Images -->
-        <NuxtLink :to="imageButtonLink" class="relative">
-          <PruviousPicture
-            :image="image"
-            :lazy="true"
-          />
-        </NuxtLink>
-      </div>
-      <div v-show="showText" class="p-4 md:p-10 md:flex md:flex-col md:justify-center md:items-start md:basis-2/4">
-        <p class="typography-text-xs md:typography-text-sm font-bold tracking-widest text-neutral-500 uppercase">
-          {{ overline }}
-        </p>
-        <h1 class="typography-headline-2 md:typography-headline-1 md:leading-[67.5px] font-bold mt-2 mb-4">
-          {{ title }}
-        </h1>
-        <!-- #TODO _05 Reference-Implement Prose with UiHero
+  <div class="max-w-screen-3xl mx-auto md:flex md:justify-center" :class="minHeight ? '' : 'min-h-[600px]'">
+    <div
+      class="flex flex-col justify-center md:items-stretch md:overflow-hidden"
+      :class="fullWidth ? '' : 'md:basis-2/4'"
+    >
+      <!-- #TODO _06 Re-Enable Images -->
+      <NuxtLink :to="imageButtonLink" class="relative">
+        <PruviousPicture :image="image" :lazy="true" />
+      </NuxtLink>
+    </div>
+    <div v-show="showText" class="p-4 md:flex md:basis-2/4 md:flex-col md:items-start md:justify-center md:p-10">
+      <p class="typography-text-xs md:typography-text-sm font-bold uppercase tracking-widest text-neutral-500">
+        {{ overline }}
+      </p>
+      <h1 class="typography-headline-2 md:typography-headline-1 mb-4 mt-2 font-bold md:leading-[67.5px]">
+        {{ title }}
+      </h1>
+      <!-- #TODO _05 Reference-Implement Prose with UiHero
           - unwrap the slot ...
         -->
-        <div>
-          <slot>
-            <PruviousHTML :v-show="text" :html="text" class="max-w-content prose" />
-          </slot>
-        </div>
-        <div class="flex flex-col md:flex-row gap-4 mt-6">
-          <SfButton :v-show="secondaryButtonLink !== ''" size="lg" :tag="NuxtLink" :to="secondaryButtonLink" class="bg-white" variant="secondary">
-            {{ secondaryButtonText }}
-          </SfButton>
-        </div>
+      <div>
+        <slot>
+          <PruviousHTML :html="text" :v-show="text" class="max-w-content prose" />
+        </slot>
+      </div>
+      <div class="mt-6 flex flex-col gap-4 md:flex-row">
+        <SfButton
+          :tag="NuxtLink"
+          :to="secondaryButtonLink"
+          :v-show="secondaryButtonLink !== ''"
+          size="lg"
+          variant="secondary"
+          class="bg-white"
+        >
+          {{ secondaryButtonText }}
+        </SfButton>
       </div>
     </div>
-
+  </div>
 </template>
