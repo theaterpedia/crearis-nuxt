@@ -25,7 +25,8 @@
     "format": "prettier --write .",
     "postinstall": "pnpm build:ui",
     "test": "vitest",
-    "testui": "vitest --ui"
+    "testui": "vitest --ui",
+    "codegen": "pnpm --filter=data codegen"
   },
   "devDependencies": {
     "@vitest/ui": "^2.0.5",
@@ -35,5 +36,8 @@
     "vite": "^5.3.5",
     "vitest": "^2.0.5"
   },
-  "packageManager": "pnpm@9.4.0"
+  "packageManager": "pnpm@9.4.0",
+  "resolutions": {
+    "consola": "^3.0.0"
+  }
 }
