@@ -31,7 +31,7 @@
     "release": "release-it",
     "test:deactivated": "vitest run",
     "codegen": "graphql-codegen",
-    "predev": "yarn codegen"
+    "predev": "pnpm codegen"
   },
   "dependencies": {
     "@vue-storefront/nuxt": "~3.0.0",

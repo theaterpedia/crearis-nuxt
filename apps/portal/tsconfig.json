@@ -1,0 +1,7 @@
+{
+  // https://nuxt.com/docs/guide/concepts/typescript
+  "extends": "./.nuxt/tsconfig.json",
+  "compilerOptions": {
+    "types": ["vitest/globals", "@vitest/expect", "@vite-pwa/nuxt", "@vue-storefront/sdk"]
+  }
+}
