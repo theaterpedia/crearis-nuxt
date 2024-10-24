@@ -1,0 +1,21 @@
+export default `
+    id
+    addressType
+    name
+    street
+    street2
+    city
+    zip
+    state
+    {
+      id
+      name
+    }
+    country
+    {
+      id
+      name
+    }
+    email
+    phone
+`;
