@@ -1,3 +1,3 @@
 export default defineEventHandler(async (event) => {
-  return process.env;
-});
+  return process.env
+})

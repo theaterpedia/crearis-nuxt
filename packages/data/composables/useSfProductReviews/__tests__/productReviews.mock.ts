@@ -1,4 +1,4 @@
-import type { SfProductReview } from '@vue-storefront/unified-data-model';
+import type { SfProductReview } from '@vue-storefront/unified-data-model'
 
 export const mockProductReviews: SfProductReview[] = [
   {
@@ -17,4 +17,4 @@ export const mockProductReviews: SfProductReview[] = [
     title: 'Great product!',
     createdAt: '2022-03-01T09:30:00.000Z',
   },
-];
+]

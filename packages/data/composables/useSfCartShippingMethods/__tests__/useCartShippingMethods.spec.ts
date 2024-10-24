@@ -1,11 +1,11 @@
-import { useSfCartShippingMethods } from '../useSfCartShippingMethods';
+import { useSfCartShippingMethods } from '../useSfCartShippingMethods'
 
 describe('useSfCartShippingMethods', () => {
   it('should return shipping methods', async () => {
-    const { getSfShippingMethods, data } = useSfCartShippingMethods();
+    const { getSfShippingMethods, data } = useSfCartShippingMethods()
 
-    await getSfShippingMethods();
+    await getSfShippingMethods()
 
-    expect(data.value).not.toBeUndefined();
-  });
-});
+    expect(data.value).not.toBeUndefined()
+  })
+})

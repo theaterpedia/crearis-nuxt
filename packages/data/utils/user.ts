@@ -4,16 +4,12 @@ import { nanoid } from 'nanoid'
 
 /**
  * Ensure that a user exists in the Pruvious database.
- * 
+ *
  * @returns The user record.
  * @throws An error if the user could not be created.
  */
 export async function ensureUser(email: string) {
-  let user = await query('users')
-    .selectAll()
-    .where('email', email)
-    .populate()
-    .first()
+  let user = await query('users').selectAll().where('email', email).populate().first()
 
   if (!user) {
     const createResult = await query('users')

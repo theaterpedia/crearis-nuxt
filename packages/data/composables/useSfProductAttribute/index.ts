@@ -1,1 +1,1 @@
-export * from './useSfProductAttribute';
+export * from './useSfProductAttribute'

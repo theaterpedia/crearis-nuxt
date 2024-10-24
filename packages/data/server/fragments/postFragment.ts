@@ -21,4 +21,4 @@ export default `
   metaTitle
   metaKeywords
   metaDescription
-`;
+`

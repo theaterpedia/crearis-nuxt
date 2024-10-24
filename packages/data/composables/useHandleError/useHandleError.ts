@@ -1,10 +1,10 @@
-import type { UseHandleError, ErrorParams } from '../../composables/useHandleError/types';
+import type { UseHandleError, ErrorParams } from '../../composables/useHandleError/types'
 
 const defaultError: ErrorParams = {
   status: 500,
   message: 'An error occurred',
   statusMessage: 'An error occurred',
-};
+}
 
 /**
  * @description Composable for handling errors.
@@ -21,6 +21,6 @@ export const useHandleError: UseHandleError = (error) => {
       message: error.message ?? defaultError.message,
       statusMessage: error.message ?? defaultError.statusMessage,
       fatal: true,
-    });
+    })
   }
-};
+}

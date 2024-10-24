@@ -1,11 +1,11 @@
-import { useSfCart } from '../useSfCart';
+import { useSfCart } from '../useSfCart'
 
 describe('useSfCart', () => {
   it('should return account data', async () => {
-    const { fetchCart, data } = useSfCart();
+    const { fetchCart, data } = useSfCart()
 
-    await fetchCart();
+    await fetchCart()
 
-    expect(data.value).not.toBeUndefined();
-  });
-});
+    expect(data.value).not.toBeUndefined()
+  })
+})

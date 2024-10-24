@@ -37,17 +37,15 @@
     "@vue-storefront/nuxt": "~3.0.0",
     "@vue-storefront/sdk": "^1.1.2",
     "@crearis/crearis-boilerplate-sdk": "~0.0.11",
-
     "vue-toastification": "2.0.0-rc.5",
     "pruvious": "^3.11.6",
     "redis": "^4.6.12",
     "@azure/msal-node": "^2.7.0",
-
     "@erpgap/odoo-sdk": "^0.6.1",
     "@erpgap/odoo-sdk-api-client": "^0.6.1",
-    "@apollo/client": "^3.8.6", 
+    "@apollo/client": "^3.8.6",
     "graphql": "^16.8.1",
-    "graphql-request": "^6.1.0"     
+    "graphql-request": "^6.1.0"
   },
   "devDependencies": {
     "@nuxtjs/i18n": "^8.1.1",

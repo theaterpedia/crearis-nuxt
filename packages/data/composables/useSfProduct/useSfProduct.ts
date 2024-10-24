@@ -1,5 +1,5 @@
-import { toRefs } from '@vueuse/shared';
-import type { UseProductReturn, UseProductState, FetchProduct } from './types';
+import { toRefs } from '@vueuse/shared'
+import type { UseProductReturn, UseProductState, FetchProduct } from './types'
 
 /**
  * @description Composable managing product data
@@ -12,7 +12,7 @@ export const useSfProduct: UseProductReturn = (slug) => {
   const state = useState<UseProductState>(`useSfProduct-${slug}`, () => ({
     data: null,
     loading: false,
-  }));
+  }))
 
   /** Function for fetching product data
    * @param {string} slug Product slug
@@ -27,11 +27,11 @@ export const useSfProduct: UseProductReturn = (slug) => {
     // state.value.data = data.value;
     // state.value.loading = false;
     // return data;
-    return {};
-  };
+    return {}
+  }
 
   return {
     fetchProduct,
     ...toRefs(state.value),
-  };
-};
+  }
+}

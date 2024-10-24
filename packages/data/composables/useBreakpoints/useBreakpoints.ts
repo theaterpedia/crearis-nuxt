@@ -1,4 +1,4 @@
-import { createSharedComposable, syncRefs, useBreakpoints as useBreakpointsVueUse } from '@vueuse/core';
+import { createSharedComposable, syncRefs, useBreakpoints as useBreakpointsVueUse } from '@vueuse/core'
 
 /**
  * @description Composable that prepares breakpoints-dependent refs
@@ -10,18 +10,18 @@ export const useBreakpoints = createSharedComposable(() => {
   const breakpoints = useBreakpointsVueUse({
     tablet: '768px',
     desktop: '1024px',
-  });
+  })
 
-  const isTablet = ref(true);
-  const isDesktop = ref(false);
+  const isTablet = ref(true)
+  const isDesktop = ref(false)
 
   onMounted(() => {
-    syncRefs(breakpoints.greaterOrEqual('tablet'), isTablet);
-    syncRefs(breakpoints.greaterOrEqual('desktop'), isDesktop);
-  });
+    syncRefs(breakpoints.greaterOrEqual('tablet'), isTablet)
+    syncRefs(breakpoints.greaterOrEqual('desktop'), isDesktop)
+  })
 
   return {
     isTablet,
     isDesktop,
-  };
-});
+  }
+})

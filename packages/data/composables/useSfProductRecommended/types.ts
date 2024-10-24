@@ -1,17 +1,17 @@
-import type { Ref } from 'vue';
-import type { SfProduct, Maybe } from '@vue-storefront/unified-data-model';
+import type { Ref } from 'vue'
+import type { SfProduct, Maybe } from '@vue-storefront/unified-data-model'
 
 export interface UseProductRecommendedState {
-  data: Maybe<SfProduct[]>;
-  loading: boolean;
+  data: Maybe<SfProduct[]>
+  loading: boolean
 }
 
-export type FetchProductRecommended = (slug: string) => Promise<Ref<Maybe<SfProduct[]>>>;
+export type FetchProductRecommended = (slug: string) => Promise<Ref<Maybe<SfProduct[]>>>
 
 export interface UseSfProductRecommended {
-  data: Readonly<Ref<UseProductRecommendedState['data']>>;
-  loading: Readonly<Ref<boolean>>;
-  fetchProductRecommended: FetchProductRecommended;
+  data: Readonly<Ref<UseProductRecommendedState['data']>>
+  loading: Readonly<Ref<boolean>>
+  fetchProductRecommended: FetchProductRecommended
 }
 
-export type UseProductRecommendedReturn = (slug: string) => UseSfProductRecommended;
+export type UseProductRecommendedReturn = (slug: string) => UseSfProductRecommended

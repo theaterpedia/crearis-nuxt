@@ -5,13 +5,13 @@ export default defineNuxtRouteMiddleware(async () => {
     const { getRawToken, removeToken, setToken, useAuth } = await import('#pruvious/client')
     const cookie = useCookie('odoo-user') as Ref<{ id: number }>
     const auth = useAuth()
-    
+
     if (!cookie.value?.id) {
       removeToken()
     } else if (!getRawToken()) {
       setToken(await createToken({ userId: cookie.value.id }))
     }
-    
+
     auth.value.userId = cookie.value?.id ?? null
     auth.value.isLoggedIn = !!cookie.value?.id
   }
@@ -69,5 +69,5 @@ async function sign(data: string) {
 }
 
 function encodeBase64Url(data: string) {
-  return btoa(data).replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '');
+  return btoa(data).replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '')
 }

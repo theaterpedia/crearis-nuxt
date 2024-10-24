@@ -8,8 +8,8 @@ export default defineEventHandler(async (event) => {
     return __(event, 'pruvious-server', 'Unauthorized due to either invalid credentials or missing authentication')
   }
 
-  const api: Endpoints = event.context.apolloClient.api;
-  await api.mutation({ mutationName: 'LogoutMutation' } as any, null as any);
+  const api: Endpoints = event.context.apolloClient.api
+  await api.mutation({ mutationName: 'LogoutMutation' } as any, null as any)
 
   deleteCookie(event, 'session_id')
   deleteCookie(event, 'odoo-user')

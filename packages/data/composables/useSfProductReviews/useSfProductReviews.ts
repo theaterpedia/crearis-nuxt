@@ -1,9 +1,5 @@
-import { toRefs } from '@vueuse/shared';
-import type {
-  UseSfProductReviews,
-  UseProductReviewsState,
-  FetchProductReviews,
-} from './types';
+import { toRefs } from '@vueuse/shared'
+import type { UseSfProductReviews, UseProductReviewsState, FetchProductReviews } from './types'
 
 /**
  * @description Composable managing product reviews data
@@ -16,7 +12,7 @@ export const useSfProductReviews: UseSfProductReviews = (slug) => {
   const state = useState<UseProductReviewsState>(`useSfProductReviews-${slug}`, () => ({
     data: null,
     loading: false,
-  }));
+  }))
 
   /** Function for fetching product reviews data
    * @param {string} slug Product slug
@@ -25,7 +21,6 @@ export const useSfProductReviews: UseSfProductReviews = (slug) => {
    */
   // #TODO _05 reactivate with odoo
   const fetchProductReviews: FetchProductReviews = async (slug) => {
-
     /*
     state.value.loading = true;
     const { data, error } = await useAsyncData(() => useSdk().commerce.getProductReviews({ slug }));
@@ -33,11 +28,11 @@ export const useSfProductReviews: UseSfProductReviews = (slug) => {
     state.value.data = data.value;
     state.value.loading = false;
     return data; */
-    return {};
-  };
+    return {}
+  }
 
   return {
     fetchProductReviews,
     ...toRefs(state.value),
-  };
-};
+  }
+}

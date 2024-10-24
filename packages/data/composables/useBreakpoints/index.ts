@@ -1,1 +1,1 @@
-export * from './useBreakpoints';
+export * from './useBreakpoints'

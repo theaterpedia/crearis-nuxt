@@ -5,7 +5,7 @@ export default defineCollection(
   pageLikeCollection({
     name: 'episodes',
     pathPrefix: 'episodes',
-    allowedLayouts: ['episode'],    
+    allowedLayouts: ['episode'],
     additionalFields: {
       footerBorder: {
         type: 'switch',
@@ -17,7 +17,7 @@ export default defineCollection(
         type: 'text',
         options: {
           placeholder: 'Titel eingeben',
-        }
+        },
       },
       videoLink: {
         type: 'link',
@@ -25,7 +25,7 @@ export default defineCollection(
           required: true,
           placeholder: 'Link eingeben',
         },
-      },    
+      },
     },
     additionalPublicPagesFields: ['footerBorder', 'videoTitle', 'videoLink'],
   }),

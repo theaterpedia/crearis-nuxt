@@ -55,13 +55,16 @@ export async function logError(code: LogCode, message: string) {
 async function log(code: LogCode, message: string, type: 'info' | 'warning' | 'error') {
   try {
     const client = await redisLogClient()
-  
-    await client.rPush('logs', JSON.stringify({
-      domainCode: process.env.NUXT_DOMAIN_CODE,
-      logCode: code,
-      loggedAt: Date.now(),
-      type,
-      message,
-    }))
+
+    await client.rPush(
+      'logs',
+      JSON.stringify({
+        domainCode: process.env.NUXT_DOMAIN_CODE,
+        logCode: code,
+        loggedAt: Date.now(),
+        type,
+        message,
+      }),
+    )
   } catch {}
 }

@@ -1,9 +1,9 @@
-import { toRefs } from '@vueuse/shared';
+import { toRefs } from '@vueuse/shared'
 import type {
   UseCustomerAddressReturn,
   UseCustomerAddressState,
   FetchCustomerAddress,
-} from '../../composables/useCustomerAddress/types';
+} from '../../composables/useCustomerAddress/types'
 
 /**
  * @description Composable managing address data
@@ -15,14 +15,14 @@ export const useCustomerAddress: UseCustomerAddressReturn = () => {
   const state = useState<UseCustomerAddressState>(`useCustomerAddress`, () => ({
     data: null,
     loading: false,
-  }));
+  }))
 
   /** Function for fetching address data
    * @example
    * fetchCustomerAddress();
    */
   const fetchCustomerAddress: FetchCustomerAddress = async () => {
-    state.value.loading = true;
+    state.value.loading = true
     const { data, error } = await useAsyncData(() =>
       Promise.resolve({
         firstName: 'Hieronim',
@@ -36,15 +36,15 @@ export const useCustomerAddress: UseCustomerAddressReturn = () => {
         state: 'NY',
         titleCode: '',
       }),
-    );
-    useHandleError(error.value);
-    state.value.data = data.value;
-    state.value.loading = false;
-    return data;
-  };
+    )
+    useHandleError(error.value)
+    state.value.data = data.value
+    state.value.loading = false
+    return data
+  }
 
   return {
     fetchCustomerAddress,
     ...toRefs(state.value),
-  };
-};
+  }
+}

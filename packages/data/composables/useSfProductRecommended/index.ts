@@ -1,1 +1,1 @@
-export * from './useSfProductRecommended';
+export * from './useSfProductRecommended'

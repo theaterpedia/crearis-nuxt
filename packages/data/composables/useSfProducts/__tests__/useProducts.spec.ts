@@ -1,11 +1,11 @@
-import { useSfProducts } from '../useSfProducts';
+import { useSfProducts } from '../useSfProducts'
 
 describe('useSfProducts', () => {
   it('should return products', async () => {
-    const { fetchProducts, data } = useSfProducts();
+    const { fetchProducts, data } = useSfProducts()
 
-    await fetchProducts();
+    await fetchProducts()
 
-    expect(data.value).not.toBeUndefined();
-  });
-});
+    expect(data.value).not.toBeUndefined()
+  })
+})

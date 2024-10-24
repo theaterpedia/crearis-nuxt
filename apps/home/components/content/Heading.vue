@@ -6,7 +6,15 @@
     :shortcode="shortcode ? shortcode : ''"
     :subline="subline ? subline : ''"
     :tags="tags ? tags : ''"
-    :style = "$viewport.isLessThan('tablet') ? is==='h1' ? 'font-size: 0.75em;' : (is==='h2' ? 'font-size: 0.825em;' : 'font-size: 0.875em;') : ''"
+    :style="
+      $viewport.isLessThan('tablet')
+        ? is === 'h1'
+          ? 'font-size: 0.75em;'
+          : is === 'h2'
+            ? 'font-size: 0.825em;'
+            : 'font-size: 0.875em;'
+        : ''
+    "
   >
     <ContentSlot />
   </Heading>
@@ -36,4 +44,3 @@ const { $viewport } = useNuxtApp()
 
 const { headline, overline, subline, tags, shortcode } = extractHeading(props.content)
 </script>
-

@@ -1,16 +1,16 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import type { AttributeValue, Product, ProductResponse, QueryProductArgs } from '../graphql';
-import { QueryName } from '../server/queries';
-import { useProductAttributes } from './useProductAttributes';
+import type { AttributeValue, Product, ProductResponse, QueryProductArgs } from '../graphql'
+import { QueryName } from '../server/queries'
+import { useProductAttributes } from './useProductAttributes'
 
-const { getRegularPrice, getSpecialPrice } = useProductAttributes();
+const { getRegularPrice, getSpecialPrice } = useProductAttributes()
 export const useProductTemplate = (slug: string) => {
-  const { $sdk } = useNuxtApp();
+  const { $sdk } = useNuxtApp()
 
-  const loadingProductTemplate = ref(false);
-  const productTemplate = useState<Product>(`product-${slug}`, () => ({}) as Product);
+  const loadingProductTemplate = ref(false)
+  const productTemplate = useState<Product>(`product-${slug}`, () => ({}) as Product)
 
-  const withBase = (filepath: string | null) => `https://dev.dasei.eu/${filepath}`;
+  const withBase = (filepath: string | null) => `https://dev.dasei.eu/${filepath}`
 
   const images = computed(() => {
     return [
@@ -19,37 +19,37 @@ export const useProductTemplate = (slug: string) => {
         imageThumbSrc: withBase(productTemplate?.value?.image),
         alt: productTemplate?.value?.name,
       },
-    ];
-  });
+    ]
+  })
 
   const specialPrice = computed(() => {
     if (!productTemplate.value?.firstVariant) {
-      return;
+      return
     }
-    return getSpecialPrice(productTemplate.value?.firstVariant);
-  });
+    return getSpecialPrice(productTemplate.value?.firstVariant)
+  })
 
   const regularPrice = computed(() => {
     if (!productTemplate.value?.firstVariant) {
-      return;
+      return
     }
-    return getRegularPrice(productTemplate.value?.firstVariant);
-  });
+    return getRegularPrice(productTemplate.value?.firstVariant)
+  })
 
   const loadProductTemplate = async (params: QueryProductArgs) => {
     if (productTemplate.value?.id) {
-      return;
+      return
     }
-    loadingProductTemplate.value = true;
+    loadingProductTemplate.value = true
     const { data } = await $sdk().odoo.query<QueryProductArgs, ProductResponse>(
       { queryName: QueryName.GetProductTemplateQuery },
       params,
-    );
+    )
 
-    loadingProductTemplate.value = false;
+    loadingProductTemplate.value = false
 
-    productTemplate.value = (data?.value?.product as Product) || {};
-  };
+    productTemplate.value = (data?.value?.product as Product) || {}
+  }
 
   const getAllSizes = computed(() => {
     return productTemplate?.value?.attributeValues
@@ -57,8 +57,8 @@ export const useProductTemplate = (slug: string) => {
       ?.map((item: AttributeValue) => ({
         value: item.id,
         label: item.name,
-      }));
-  });
+      }))
+  })
 
   const getAllColors = computed(() => {
     return productTemplate?.value?.attributeValues
@@ -66,8 +66,8 @@ export const useProductTemplate = (slug: string) => {
       ?.map((item: AttributeValue) => ({
         value: item.id,
         label: item.name,
-      }));
-  });
+      }))
+  })
 
   const getAllMaterials = computed(() => {
     return productTemplate?.value?.attributeValues
@@ -75,8 +75,8 @@ export const useProductTemplate = (slug: string) => {
       ?.map((item: AttributeValue) => ({
         value: item.id,
         label: item.name,
-      }));
-  });
+      }))
+  })
 
   return {
     loadingProductTemplate,
@@ -88,5 +88,5 @@ export const useProductTemplate = (slug: string) => {
     getAllColors,
     getAllMaterials,
     getAllSizes,
-  };
-};
+  }
+}

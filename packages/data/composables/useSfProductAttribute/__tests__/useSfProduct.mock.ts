@@ -1,4 +1,4 @@
-import type { SfProduct } from '@vue-storefront/unified-data-model';
+import type { SfProduct } from '@vue-storefront/unified-data-model'
 
 export const mockProduct: SfProduct = {
   id: '1',
@@ -27,5 +27,5 @@ export const mockProduct: SfProduct = {
   primaryImage: null,
   gallery: [],
   variants: [],
-  quantityLimit: 1
-};
+  quantityLimit: 1,
+}

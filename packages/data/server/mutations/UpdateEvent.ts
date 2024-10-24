@@ -1,5 +1,5 @@
-import { gql } from '@apollo/client/core';
-import eventFragment from '../fragments/eventFragment';
+import { gql } from '@apollo/client/core'
+import eventFragment from '../fragments/eventFragment'
 
 export default gql`
     mutation UpdateEvent($event: UpdateEventInput!) {
@@ -7,4 +7,4 @@ export default gql`
             ${eventFragment}
         }
     }
-`;
+`

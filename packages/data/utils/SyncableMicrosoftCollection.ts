@@ -1,6 +1,6 @@
-import { query } from "#pruvious/server"
-import { logError, logInfo } from "./logger"
-import { getMSToken } from "./msal"
+import { query } from '#pruvious/server'
+import { logError, logInfo } from './logger'
+import { getMSToken } from './msal'
 
 export class SyncableMicrosoftCollection {
   constructor(protected collection: 'taxonomies') {}
@@ -8,50 +8,50 @@ export class SyncableMicrosoftCollection {
   /**
    * Sync records from Microsoft to Pruvious.
    * Records are modified in Pruvious to match the Microsoft records.
-   * 
+   *
    * - Create records that do not exist in Pruvious.
    * - Update records that are outdated in Pruvious.
    * - Delete records that do not exist in `msRecords` by comparing the `msId`.
    */
   async syncFromMicrosoft() {
-    try { 
+    try {
       const token = await getMSToken()
       const url = `https://graph.microsoft.com/v1.0/sites/${process.env[`NUXT_MS_${this.collection.toUpperCase()}_SITE_ID`]}/lists/${process.env[`NUXT_MS_${this.collection.toUpperCase()}_LIST_ID`]}/items?$select=${this.getSelectedMicrosoftFields()}`
-      const { value: msRecords } = await $fetch<any>(url, { headers: { Authorization: `Bearer ${token}` }})
+      const { value: msRecords } = await $fetch<any>(url, { headers: { Authorization: `Bearer ${token}` } })
       const result: CollectionSyncResult = { created: [], updated: [], errors: {} }
 
       // Delete Pruvious records that are not in Microsoft
       await (query as any)(this.collection)
-        .whereNotIn('msId', msRecords.map((msRecord: any) => msRecord.id))
+        .whereNotIn(
+          'msId',
+          msRecords.map((msRecord: any) => msRecord.id),
+        )
         .delete()
-  
-      for (const msRecord of msRecords) {  
+
+      for (const msRecord of msRecords) {
         // Find matching record in Pruvious
-        let record = await (query as any)(this.collection)
-          .selectAll()
-          .where('msId', msRecord.id)
-          .first()
-    
+        let record = await (query as any)(this.collection).selectAll().where('msId', msRecord.id).first()
+
         // Update Pruvious record if it is outdated
         if (record && record.lastModifiedDateTime < new Date(msRecord.lastModifiedDateTime).getTime()) {
           const qr = await (query as any)(this.collection)
             .selectAll()
             .where('id', record.id)
             .update(await this.mapMicrosoftToPruviousFields(msRecord))
-    
+
           if (qr.success) {
             result.updated.push(qr.records[0])
           } else {
             result.errors[`update:${msRecord.id}`] = qr.message ?? qr.errors
           }
         }
-        
+
         // Create record if it does not exist in Pruvious
         if (!record) {
           const qr = await (query as any)(this.collection)
             .select(['id'])
             .create(await this.mapMicrosoftToPruviousFields(msRecord))
-    
+
           if (qr.success) {
             result.created.push(qr.record)
           } else {
@@ -63,20 +63,20 @@ export class SyncableMicrosoftCollection {
       const logMessage = [
         `Synced collection '${this.collection}' from Microsoft to Pruvious.`,
         '',
-        JSON.stringify(result, null, 2)
+        JSON.stringify(result, null, 2),
       ]
-  
+
       if (Object.keys(result.errors).length) {
         await logError('ms-sync', logMessage.join('\n'))
       } else {
         await logInfo('ms-sync', logMessage.join('\n'))
       }
-  
+
       return result
     } catch (e: any) {
       await logError(
         'ms-sync',
-        `Unexpected error syncing collection '${this.collection}' from Microsoft to Pruvious: ${e.message}`
+        `Unexpected error syncing collection '${this.collection}' from Microsoft to Pruvious: ${e.message}`,
       )
       throw e
     }

@@ -1,2 +1,2 @@
-export * from './useSfProduct';
-export * from './types';
+export * from './useSfProduct'
+export * from './types'

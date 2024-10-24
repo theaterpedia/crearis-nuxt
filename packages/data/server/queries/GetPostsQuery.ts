@@ -1,5 +1,5 @@
-import { gql } from '@apollo/client/core';
-import postFragment from '../fragments/postFragment';
+import { gql } from '@apollo/client/core'
+import postFragment from '../fragments/postFragment'
 
 export default gql`
 query(
@@ -22,4 +22,4 @@ query(
     }
   }
 }
-`;
+`

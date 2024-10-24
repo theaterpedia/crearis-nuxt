@@ -1,1 +1,1 @@
-export * from './useHandleError';
+export * from './useHandleError'

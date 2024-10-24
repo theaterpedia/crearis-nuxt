@@ -1,9 +1,5 @@
-import { toRefs } from '@vueuse/shared';
-import type {
-  UseSfCartShippingMethodsState,
-  UseSfCartShippingMethodsReturn,
-  GetSfShippingMethods,
-} from './types';
+import { toRefs } from '@vueuse/shared'
+import type { UseSfCartShippingMethodsState, UseSfCartShippingMethodsReturn, GetSfShippingMethods } from './types'
 
 /**
  * @description Composable for getting shipping methods.
@@ -15,7 +11,7 @@ export const useSfCartShippingMethods: UseSfCartShippingMethodsReturn = () => {
   const state = useState<UseSfCartShippingMethodsState>('useSfCartShippingMethods', () => ({
     data: null,
     loading: false,
-  }));
+  }))
 
   /**
    * @description Function for fetching shipping methods.
@@ -30,11 +26,11 @@ export const useSfCartShippingMethods: UseSfCartShippingMethodsReturn = () => {
     // useHandleError(error.value);
     // state.value.data = data.value;
     // state.value.loading = false;
-    return {};
-  };
+    return {}
+  }
 
   return {
     getSfShippingMethods,
     ...toRefs(state.value),
-  };
-};
+  }
+}

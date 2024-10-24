@@ -13,12 +13,20 @@ import {
 } from '#pruvious/server'
 import { type Endpoints } from '@erpgap/odoo-sdk-api-client'
 // @ts-ignore
-import { createApiClient } from '@erpgap/odoo-sdk-api-client/server';
-import { appendResponseHeader, defineEventHandler, getRequestHost, getRequestIP, parseCookies, setCookie, setResponseStatus } from 'h3'
+import { createApiClient } from '@erpgap/odoo-sdk-api-client/server'
+import {
+  appendResponseHeader,
+  defineEventHandler,
+  getRequestHost,
+  getRequestIP,
+  parseCookies,
+  setCookie,
+  setResponseStatus,
+} from 'h3'
 import { type Partner } from '../../graphql'
-import { Queries } from '../../server/queries';
-import { Mutations } from '../../server/mutations';
-import { ensureUser } from '../../utils/user';
+import { Queries } from '../../server/queries'
+import { Mutations } from '../../server/mutations'
+import { ensureUser } from '../../utils/user'
 
 export default defineEventHandler(async (event) => {
   const api: Endpoints = event.context.apolloClient.api
@@ -46,7 +54,7 @@ export default defineEventHandler(async (event) => {
   }
 
   const response = await api.mutation<any, any>({ mutationName: 'LoginMutation' } as any, { email, password } as any)
- 
+
   if (response.errors?.length || !response.data?.cookie) {
     setResponseStatus(event, 400)
     return response?.errors?.[0].message || 'Error while logging in'
@@ -57,21 +65,29 @@ export default defineEventHandler(async (event) => {
     queries: { ...Queries, ...Mutations },
     headers: {
       'REAL-IP': getRequestIP(event) || '',
-      Cookie: response.data.cookie,
+      'Cookie': response.data.cookie,
       'resquest-host': getRequestHost(event),
     },
   })
 
   const userData = await newClient.api.query<any, { partner: Partner }>({ queryName: 'LoadUserQuery' } as any, null)
-  
+
   if (!userData?.data?.partner) {
     setResponseStatus(event, 400)
     return 'Error while fetching user data'
   }
 
   if (response.data?.cookie) {
-    appendResponseHeader(event, 'Set-cookie', response.data?.cookie + '; odoo-user=' + encodeURIComponent(JSON.stringify(userData.data.partner)))
-    appendResponseHeader(event, 'Set-cookie', 'odoo-user=' + encodeURIComponent(JSON.stringify(userData.data.partner)) + '; Path=/')
+    appendResponseHeader(
+      event,
+      'Set-cookie',
+      response.data?.cookie + '; odoo-user=' + encodeURIComponent(JSON.stringify(userData.data.partner)),
+    )
+    appendResponseHeader(
+      event,
+      'Set-cookie',
+      'odoo-user=' + encodeURIComponent(JSON.stringify(userData.data.partner)) + '; Path=/',
+    )
   } else {
     setResponseStatus(event, 400)
     return 'Unable to set cookie'

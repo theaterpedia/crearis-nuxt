@@ -21,4 +21,4 @@ export default `
     organizer {id, name, email, phone}
     location {id, name, street, street2, city, zip, state {id, name}, country {id, name}}
     ticketInstructions
-`;
+`

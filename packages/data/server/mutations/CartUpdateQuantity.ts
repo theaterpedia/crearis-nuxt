@@ -1,5 +1,5 @@
-import gql from 'graphql-tag';
-import orderFragment from '../fragments/orderFragment';
+import gql from 'graphql-tag'
+import orderFragment from '../fragments/orderFragment'
 
 export default gql`
   mutation($lineId: Int!, $quantity: Int!) {
@@ -7,4 +7,4 @@ export default gql`
       ${orderFragment}
     }
   }
-`;
+`

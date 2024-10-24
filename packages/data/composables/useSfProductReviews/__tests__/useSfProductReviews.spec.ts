@@ -1,12 +1,12 @@
-import { useSfProductReviews } from '..';
+import { useSfProductReviews } from '..'
 
 describe('useSfProductReview', () => {
   it('should return product reviews', async () => {
-    const slug = 'athletic-mens-walking-sneakers';
-    const { data, fetchProductReviews } = useSfProductReviews(slug);
+    const slug = 'athletic-mens-walking-sneakers'
+    const { data, fetchProductReviews } = useSfProductReviews(slug)
 
-    await fetchProductReviews(slug);
+    await fetchProductReviews(slug)
 
-    expect(data.value).toEqual(mockProductReviews);
-  });
-});
+    expect(data.value).toEqual(mockProductReviews)
+  })
+})

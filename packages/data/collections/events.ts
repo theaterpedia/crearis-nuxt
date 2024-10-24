@@ -26,7 +26,7 @@ export default defineCollection(
         type: 'number',
         options: {
           min: 1,
-          required: true
+          required: true,
         },
         additional: {
           protected: true,
@@ -50,7 +50,7 @@ export default defineCollection(
       },
       dateBegin: {
         type: 'date-time',
-        options: {}
+        options: {},
       },
       dateEnd: {
         type: 'date-time',

@@ -1,9 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import { defineNuxtConfig } from 'nuxt/config';
+import { defineNuxtConfig } from 'nuxt/config'
 
 // we want different behaviour if the package name is data-dev or theme-dev or studio-dev
 const pkgName = process.env.npm_package_name
-const isDevDir = (pkgName === 'data-dev' || pkgName === 'theme-dev' || pkgName === 'studio-dev')
+const isDevDir = pkgName === 'data-dev' || pkgName === 'theme-dev' || pkgName === 'studio-dev'
 
 export default defineNuxtConfig({
   typescript: {
@@ -13,7 +13,9 @@ export default defineNuxtConfig({
     dirs: ['composables/**', 'utils/**'],
   },
   // we don't want pruvious in dev mode when we are working on the boilerplate from vsf or odoogap
-  modules: isDevDir ? [ '@vite-pwa/nuxt', '@vue-storefront/nuxt' ] : [ '@vite-pwa/nuxt', '@vue-storefront/nuxt', 'pruvious'  ],
+  modules: isDevDir
+    ? ['@vite-pwa/nuxt', '@vue-storefront/nuxt']
+    : ['@vite-pwa/nuxt', '@vue-storefront/nuxt', 'pruvious'],
   nitro: {
     prerender: {
       crawlLinks: false,
@@ -51,19 +53,19 @@ export default defineNuxtConfig({
       '@vue/apollo-composable',
       '@vue/apollo-option',
       'ts-invariant',
-      '@erpgap/odoo-sdk-api-client'
-    ]
+      '@erpgap/odoo-sdk-api-client',
+    ],
   },
   runtimeConfig: {
     redis: {
-      host: "localhost",
+      host: 'localhost',
       port: 6379,
     },
     redisLogUrl: 'redis://127.0.0.1:6379/2',
     // see: ThemeConfig
     public: {
-      odooBaseImageUrl: "",
-      odooBaseUrl: "",
+      odooBaseImageUrl: '',
+      odooBaseUrl: '',
     },
   },
   routeRules: {
@@ -76,7 +78,7 @@ export default defineNuxtConfig({
     "/favicon.ico": {
       headers: { "cache-control": "public, max-age=31536000, immutable" },
     }, */
-  },   
+  },
   pwa: {
     registerType: 'autoUpdate',
     workbox: {
@@ -154,4 +156,4 @@ export default defineNuxtConfig({
       },
     },
   },
-});
+})

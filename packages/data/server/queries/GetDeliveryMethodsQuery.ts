@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client/core';
+import { gql } from '@apollo/client/core'
 
 export default gql`
   query {
@@ -10,4 +10,4 @@ export default gql`
       imageFilename
     }
   }
-`;
+`

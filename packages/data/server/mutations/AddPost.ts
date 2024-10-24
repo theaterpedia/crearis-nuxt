@@ -1,5 +1,5 @@
-import { gql } from '@apollo/client/core';
-import postFragment from '../fragments/postFragment';
+import { gql } from '@apollo/client/core'
+import postFragment from '../fragments/postFragment'
 
 export default gql`
     mutation AddPost($post: AddBlogPostInput!) {
@@ -7,4 +7,4 @@ export default gql`
             ${postFragment}
         }
     }
-`;
+`

@@ -4,7 +4,7 @@
     v-pruvious-tooltip="{ content: 'Sync Microsoft collections', offset: [0, 13] }"
     @click="sync()"
     type="button"
-    class="flex h-8 w-8 transition hocus:text-primary-700"
+    class="hocus:text-primary-700 flex h-8 w-8 transition"
   >
     <svg
       fill="none"
@@ -29,7 +29,7 @@
 </template>
 
 <script lang="ts" setup>
-import { isObject } from '#pruvious';
+import { isObject } from '#pruvious'
 import { getRawToken, useUser } from '#pruvious/client'
 import { pruviousToasterShow } from '#pruvious/dashboard'
 
@@ -41,7 +41,7 @@ async function sync() {
     headers: {
       Authorization: `Bearer ${getRawToken()}`,
     },
-    onResponseError: ({ response }) => pruviousToasterShow({ message: response._data, type: 'error' })
+    onResponseError: ({ response }) => pruviousToasterShow({ message: response._data, type: 'error' }),
   }).catch(() => null)
 
   if (isObject(response)) {

@@ -1,5 +1,5 @@
 import { defineEventHandler } from 'h3'
-import { SyncableMicrosoftCollection } from '../../utils/SyncableMicrosoftCollection';
+import { SyncableMicrosoftCollection } from '../../utils/SyncableMicrosoftCollection'
 
 export default defineEventHandler((event) => {
   if (!event.context.auth.isLoggedIn) {

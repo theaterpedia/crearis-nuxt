@@ -6,13 +6,13 @@
   </NuxtLayout>
 </template>
 
-<script setup lang="ts">
-usePageTitle();
+<script lang="ts" setup>
+usePageTitle()
 
-const bodyClass = ref('');
+const bodyClass = ref('')
 
 onMounted(() => {
   // Need this class for cypress testing
-  bodyClass.value = 'hydrated';
-});
+  bodyClass.value = 'hydrated'
+})
 </script>

@@ -1,11 +1,11 @@
-import { useCustomerOrders } from '../../composables/useCustomerOrders/useCustomerOrders';
+import { useCustomerOrders } from '../../composables/useCustomerOrders/useCustomerOrders'
 
 describe('useCustomerOrders', () => {
   it('should return customer orders data', async () => {
-    const { fetchCustomerOrders, data } = useCustomerOrders();
+    const { fetchCustomerOrders, data } = useCustomerOrders()
 
-    await fetchCustomerOrders();
+    await fetchCustomerOrders()
 
-    expect(data.value).not.toBeUndefined();
-  });
-});
+    expect(data.value).not.toBeUndefined()
+  })
+})

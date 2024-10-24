@@ -1,4 +1,4 @@
-import type { FetchProducts, UseProductsReturn, UseProductsState } from './types';
+import type { FetchProducts, UseProductsReturn, UseProductsState } from './types'
 
 /**
  * @description Composable for managing products.
@@ -10,7 +10,7 @@ export const useSfProducts: UseProductsReturn = () => {
   const state = useState<UseProductsState>('products', () => ({
     data: null,
     loading: false,
-  }));
+  }))
 
   /**
    * @description Function for fetching products.
@@ -19,7 +19,6 @@ export const useSfProducts: UseProductsReturn = () => {
    */
   // #TODO _05 reactivate with odoo
   const fetchProducts: FetchProducts = async () => {
-
     /*
     state.value.loading = true;
     const { data, error } = await useAsyncData(useSdk().commerce.getProducts);
@@ -27,11 +26,11 @@ export const useSfProducts: UseProductsReturn = () => {
     state.value.data = data.value;
     state.value.loading = false;
     return data;*/
-    return {};
-  };
+    return {}
+  }
 
   return {
     fetchProducts,
     ...toRefs(state.value),
-  };
-};
+  }
+}

@@ -1,9 +1,5 @@
-import { toRefs } from '@vueuse/shared';
-import type {
-  UseProductRecommendedReturn,
-  UseProductRecommendedState,
-  FetchProductRecommended,
-} from './types';
+import { toRefs } from '@vueuse/shared'
+import type { UseProductRecommendedReturn, UseProductRecommendedState, FetchProductRecommended } from './types'
 
 /**
  * Composable for getting recommended products data
@@ -13,7 +9,7 @@ export const useSfProductRecommended: UseProductRecommendedReturn = (slug) => {
   const state = useState<UseProductRecommendedState>(`useSfProductRecommended-${slug}`, () => ({
     data: null,
     loading: false,
-  }));
+  }))
 
   /** Function for fetching product recommended data
    * @param {string} slug Product slug
@@ -22,7 +18,6 @@ export const useSfProductRecommended: UseProductRecommendedReturn = (slug) => {
    */
   // #TODO _05 reactivate with odoo
   const fetchProductRecommended: FetchProductRecommended = async (slug) => {
-
     /* state.value.loading = true;
     const { data, error } = await useAsyncData(() => useSdk().commerce.getProductRecommended({ slug }));
     useHandleError(error.value);
@@ -30,11 +25,11 @@ export const useSfProductRecommended: UseProductRecommendedReturn = (slug) => {
     state.value.loading = false;
     return data; */
 
-    return {};
-  };
+    return {}
+  }
 
   return {
     fetchProductRecommended,
     ...toRefs(state.value),
-  };
-};
+  }
+}

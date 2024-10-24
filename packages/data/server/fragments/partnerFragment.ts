@@ -18,4 +18,4 @@ partner{
     email
     phone
   }
-`;
+`

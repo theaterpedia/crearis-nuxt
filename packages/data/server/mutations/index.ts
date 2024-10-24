@@ -1,21 +1,21 @@
-import { DocumentNode } from '@apollo/client';
-import LoginMutation from './LoginMutation';
-import LogoutMutation from './LogoutMutation';
-import CreateNewAccountMutation from './CreateNewAccountMutation';
-import SendResetPasswordMutation from './SendResetPasswordMutation';
-import UpdatePasswordMutation from './UpdatePasswordMutation';
-import ChangePasswordMutation from './ChangePasswordMutation';
-import CartAddItem from './CartAddItem';
-import CartUpdateQuantity from './CartUpdateQuantity';
-import CartRemoveItem from './CartRemoveItem';
-import RegisterUserMutation from './RegisterUserMutation';
-import UpdateMyAccountMutation from './UpdateMyAccountMutation';
-import WishlistAddItem from './WishlistAddItem';
-import WishlistRemoveItem from './WishlistRemoveItem';
-import AddAddress from './AddAddress';
-import UpdateAddress from './UpdateAddress';
-import CreateUpdatePartner from './CreateUpdatePartner';
-import UpdatePost from './UpdatePost';
+import { DocumentNode } from '@apollo/client'
+import LoginMutation from './LoginMutation'
+import LogoutMutation from './LogoutMutation'
+import CreateNewAccountMutation from './CreateNewAccountMutation'
+import SendResetPasswordMutation from './SendResetPasswordMutation'
+import UpdatePasswordMutation from './UpdatePasswordMutation'
+import ChangePasswordMutation from './ChangePasswordMutation'
+import CartAddItem from './CartAddItem'
+import CartUpdateQuantity from './CartUpdateQuantity'
+import CartRemoveItem from './CartRemoveItem'
+import RegisterUserMutation from './RegisterUserMutation'
+import UpdateMyAccountMutation from './UpdateMyAccountMutation'
+import WishlistAddItem from './WishlistAddItem'
+import WishlistRemoveItem from './WishlistRemoveItem'
+import AddAddress from './AddAddress'
+import UpdateAddress from './UpdateAddress'
+import CreateUpdatePartner from './CreateUpdatePartner'
+import UpdatePost from './UpdatePost'
 
 enum MutationName {
   LoginMutation = 'LoginMutation',
@@ -55,6 +55,6 @@ const Mutations: Record<MutationName, DocumentNode> = {
   UpdateAddress,
   CreateUpdatePartner,
   UpdatePost,
-};
+}
 
-export { Mutations, MutationName };
+export { Mutations, MutationName }

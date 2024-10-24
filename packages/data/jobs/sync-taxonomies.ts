@@ -1,5 +1,5 @@
-import { defineJob } from "#pruvious"
-import { SyncableMicrosoftCollection } from "../utils/SyncableMicrosoftCollection"
+import { defineJob } from '#pruvious'
+import { SyncableMicrosoftCollection } from '../utils/SyncableMicrosoftCollection'
 
 export default defineJob({
   name: 'sync-taxonomies',
