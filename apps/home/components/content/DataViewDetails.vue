@@ -15,7 +15,7 @@
         :key="key"
         :title="tab.title ? tab.title : key"
       >
-        <Columns gap="medium">
+        <Columns gap="medium" stackReverse>
           <Column>
             <ContentQuery v-slot="{ data }" :path="product.meta_product ? getRootPath(product.root) : src" find="one">
               <ContentRenderer :value="data">
