@@ -11,8 +11,8 @@ tagline: Folge 1
 date: 2024-04-20
 blog: Theaterpädagogik & Demokratie
 image:
-  alt: Fachsimpeln im Cafe
-  src: https://res.cloudinary.com/little-papillon/image/upload/w_650,h_450/v1722971694/dasei/EpisodenHeadbilder_ropdu7.jpg
+  alt: der Zauber der Gruppendynamik
+  src: https://res.cloudinary.com/little-papillon/image/upload/v1722974733/dasei/GruppenErfahrungen_wrindx.jpg
 hero:
   height: full
   img_tmp_align_y: left

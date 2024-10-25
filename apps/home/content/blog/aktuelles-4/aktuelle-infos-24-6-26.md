@@ -9,11 +9,14 @@ cssclasses:
 author: Rosalin Hertrich
 date: 2024-06-26
 blog: Aktuelles
+image:
+  alt: Performance mit Pflanze
+  src: https://res.cloudinary.com/little-papillon/image/upload/w_400/v1594670341/dasei/pflanze_u32qtf.jpg
 hero:
-  - img-tmp-alt-text: Performance mit Pflanze
-  - img-tmp: https://res.cloudinary.com/little-papillon/image/upload/w_400/v1594670341/dasei/pflanze_u32qtf.jpg
-  - img-tmp-align-y: left
-  - overlay: darken-medium
+  height: medium  
+  gradient_type: bottom  
+  img_tmp_align_y: left
+  content_y: bottom  
 ---
 > [!data-hero] ## **aktuelle Infos 24.6** der monatliche Newsletter DAS Ei
 > 

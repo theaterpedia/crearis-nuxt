@@ -5,7 +5,8 @@
       `columns-${gap}`,
       `columns-${align}`,
       `columns-${background ?? 'transparent'}`,
-      `${wrap ? 'columns-wrap' : ''}`,
+      wrap ? 'columns-wrap' : null,
+      stackReverse ? 'columns-stack-reverse' : null,
     ]"
   >
     <slot></slot>
@@ -37,11 +38,19 @@ defineProps({
   },
 
   /**
-   * The vertical alignment of the columns.
+   * Whether to wrap the columns.
    *
    * @default false
    */
   wrap: {
+    type: Boolean,
+    default: false,
+  },
+
+  /**
+   * Specifies whether to reverse the stacking order of the column on smaller screens.
+   */
+  stackReverse: {
     type: Boolean,
     default: false,
   },
@@ -122,6 +131,10 @@ defineProps({
   .columns {
     flex-direction: column;
     gap: 1.75rem; /* 28px */
+  }
+
+  .columns-stack-reverse {
+    flex-direction: column-reverse;
   }
 }
 </style>

@@ -25,7 +25,9 @@
 
     <div class="sidebar-drawer" :class="{ 'sidebar-drawer-open': isOpen }">
       <div class="sidebar-top">
-        <img :alt="logoAlt" :src="logoSmall" class="sidebar-logo-small" />
+        <RouterLink to="/">
+          <img :alt="logoAlt" :src="logoSmall" class="sidebar-logo-small" />
+        </RouterLink>
 
         <div class="sidebar-search">
           <svg
@@ -66,7 +68,9 @@
         </button>
       </div>
 
-      <img :alt="logoAlt" :src="logo" class="sidebar-logo" />
+      <RouterLink to="/">
+        <img :alt="logoAlt" :src="logo" class="sidebar-logo" />
+      </RouterLink>
 
       <slot />
 
@@ -80,6 +84,7 @@
 <script lang="ts" setup>
 import { onKeyStroke } from '@vueuse/core'
 import { watch } from 'vue'
+import { useRoute } from 'vue-router'
 import { useSidebar } from '../composables/useSidebar'
 
 defineProps({
@@ -106,6 +111,7 @@ defineProps({
 })
 
 const { isOpen } = useSidebar()
+const route = useRoute()
 
 let stopKeyListener: () => void | undefined
 
@@ -121,6 +127,13 @@ watch(
     }
   },
   { immediate: true },
+)
+
+watch(
+  () => route.fullPath,
+  () => {
+    isOpen.value = false
+  },
 )
 </script>
 
