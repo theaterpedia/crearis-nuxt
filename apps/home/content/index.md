@@ -2,7 +2,6 @@
 navigation: false
 title: DAS Ei - Theaterpädagogisches Institut Bayern e.V.
 description: Ausbildung Theaterpädagogik (BuT), Fortbildung und Vernetzung in Nürnberg, München, Bayern
-icon: 'lucide:info'
 heading: mit Theater Grenzen bewegen **AUSBILDUNG THEATERPÄDAGOGIK** 
 teaser: |
   **Grundlagen Theaterpädagogik (BuT) 2024-2026**
