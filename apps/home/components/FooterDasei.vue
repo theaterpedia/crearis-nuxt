@@ -3,10 +3,10 @@
     <p>© 2024 DAS Ei</p>
 
     <ul>
-      <li><NuxtLink to="impressum">Impressum</NuxtLink></li>
-      <li><NuxtLink to="kontakt">Kontakt</NuxtLink></li>
-      <li><NuxtLink to="datenschutz">Datenschutzererklärung</NuxtLink></li>
-      <li><NuxtLink to="agb">AGB</NuxtLink></li>
+      <li><NuxtLink to="/impressum">Impressum</NuxtLink></li>
+      <li><NuxtLink to="/kontakt">Kontakt</NuxtLink></li>
+      <li><NuxtLink to="/datenschutz">Datenschutzererklärung</NuxtLink></li>
+      <li><NuxtLink to="/agb">AGB</NuxtLink></li>
     </ul>
 
     <ul>
