@@ -16,10 +16,10 @@
   "scripts": {
     "dev:theme": "pnpm --filter=theme dev",
     "dev:ui": "pnpm --filter=ui dev",
-    "dev:home": "pnpm --filter=home dev",
+    "dev": "pnpm --filter=home dev",
     "build:theme": "pnpm --filter=theme build",
     "build:ui": "pnpm --filter=ui build",
-    "build:home": "pnpm --filter=home build",
+    "build": "pnpm --filter=home build",
     "format": "prettier --write .",
     "postinstall": "pnpm build:ui",
     "test": "vitest",
