@@ -16,6 +16,7 @@
   "scripts": {
     "dev:theme": "pnpm --filter=theme dev",
     "dev:ui": "pnpm --filter=ui dev",
+    "generate": "pnpm --filter=home generate",
     "dev": "pnpm --filter=home dev",
     "build:theme": "pnpm --filter=theme build",
     "build:ui": "pnpm --filter=ui build",
