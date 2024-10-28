@@ -38,7 +38,7 @@
                 <div class="mb-2 mt-4 inline-flex items-center">
                   <SfRating :max="5" :value="4" size="xs" />
                   <SfCounter size="xs" class="ml-1">26</SfCounter>
-                  <SfLink href="#" variant="secondary" class="ml-2 text-xs text-neutral-500">26 reviews</SfLink>
+                  <ButtonTmp to="#" variant="link" class="ml-2 text-xs text-neutral-500">26 reviews</ButtonTmp>
                 </div>
                 <p data-testid="product-description" class="typography-text-sm mb-4 font-normal">
                   {{ productVariant?.description }}

@@ -69,7 +69,7 @@ onMounted(() => {
           </LazyCategoryMobileSidebar>
         </div>
         <div class="col-span-12 lg:col-span-8 xl:col-span-9">
-          <template v-if="!loading">
+          <!-- template v-if="!loading">
             <div class="mb-6 flex items-center justify-between">
               <span class="font-headings font-bold md:text-lg">{{ totalItems }} Products</span>
               <ButtonTmp @click="open" variant="tertiary" class="whitespace-nowrap lg:hidden">
@@ -107,8 +107,8 @@ onMounted(() => {
               :total-items="pagination.totalItems"
               class="mt-5"
             />
-          </template>
-          <template v-else>
+          </!-->
+          <template>
             <div class="w-full text-center">Loading Products...</div>
           </template>
         </div>
