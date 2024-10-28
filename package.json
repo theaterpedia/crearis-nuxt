@@ -26,6 +26,7 @@
     "lint:portal": "pnpm --filter=portal lint",
     "format": "prettier --write .",
     "postinstall": "pnpm build:ui && pnpm codegen",
+    "preview": "pnpm --filter=portal preview",
     "test": "vitest",
     "testui": "vitest --ui",
     "codegen": "pnpm --filter=data codegen"

@@ -7,7 +7,7 @@
   "license": "MIT",
   "main": "./nuxt.config.ts",
   "scripts": {
-    "build": "nuxi build --log-level=verbose",
+    "build": "nuxi build",
     "dev": "pruvious dev",
     "lint": "nuxt typecheck && eslint .",
     "lint:fix": "eslint . --fix",
