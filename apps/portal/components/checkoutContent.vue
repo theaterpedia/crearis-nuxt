@@ -115,20 +115,20 @@
         <p class="mt-4 pb-4 text-center text-sm md:pb-0">
           <i18n-t keypath="termsInfo" scope="global">
             <template #terms>
-              <SfLink
-                href="#"
-                class="outline-secondary-600 rounded focus:outline focus:outline-2 focus:outline-offset-2"
+              <ButtonTmp
+                to="#"
+                variant="link"
               >
                 {{ $t('termsAndConditions') }}
-              </SfLink>
+              </ButtonTmp>
             </template>
             <template #privacyPolicy>
-              <SfLink
-                href="#"
-                class="outline-secondary-600 rounded focus:outline focus:outline-2 focus:outline-offset-2"
+              <ButtonTmp
+                to="#"
+                variant="link"
               >
                 {{ $t('privacyPolicy') }}
-              </SfLink>
+              </ButtonTmp>
             </template>
           </i18n-t>
         </p>
@@ -147,10 +147,10 @@ import {
   SfIconBlock,
   SfListItem,
   SfRadio,
-  SfLink,
 } from '@crearis/vue'
 import { useDeliveryMethod } from '@crearis/data/composables/useDeliveryMethod'
 import { AddressEnum } from '@crearis/data/graphql'
+import { ButtonTmp } from '../../components/ButtonTmp.vue'
 
 const NuxtLink = resolveComponent('NuxtLink')
 const { isOpen, open, close } = useDisclosure()

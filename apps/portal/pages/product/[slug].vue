@@ -4,9 +4,9 @@
       <NuxtErrorBoundary>
         <div class="grid-areas-product-page grid-cols-product-page gap-x-6 md:grid">
           <section class="grid-in-left-top md:h-full xl:max-h-[700px]">
-            <NuxtLazyHydrate when-idle>
+            <!-- NuxtLazyHydrate when-idle>
               <UiGallery :images="getImages" />
-            </NuxtLazyHydrate>
+            </!-->
           </section>
 
           <section class="grid-in-right mb-10 md:mb-0">
@@ -236,7 +236,7 @@
         </section>
         <template #error="{ error }">
           <div>
-            <NuxtImg :alt="$t('emptyStateAltText')" height="300" src="/images/something-went-wrong.svg" width="300" />
+            <!-- NuxtImg :alt="$t('emptyStateAltText')" height="300" src="/images/something-went-wrong.svg" width="300" / !-->
             <p class="mt-8 font-medium">{{ $t('emptyStateText') }}</p>
           </div>
         </template>

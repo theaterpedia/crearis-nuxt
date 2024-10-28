@@ -1,6 +1,7 @@
 <script lang="ts" setup>
-import { SfButton, SfDropdown, SfIconMoreHoriz, SfLink } from '@crearis/vue'
+import { SfButton, SfDropdown, SfIconMoreHoriz } from '@crearis/vue'
 import { defineBlock, repeaterField, textSubfield } from '#pruvious'
+import { ButtonTmp } from '../../components/ButtonTmp.vue'
 
 defineBlock({
   icon: 'Pencil',
@@ -60,14 +61,13 @@ const NuxtLink = resolveComponent('NuxtLink')
               </template>
               <ol data-testid="breadcrumbs-dropdown" class="rounded-md border-neutral-100 bg-white px-4 py-2 shadow-md">
                 <li v-for="item in breadcrumbs" :key="item.name" class="py-2 last-of-type:hidden">
-                  <SfLink
-                    :tag="NuxtLink"
+                  <ButtonTmp
+                    :is="NuxtLink"
                     :to="item.link"
-                    variant="secondary"
-                    class="outline-secondary-600 whitespace-nowrap leading-5 text-inherit no-underline hover:underline active:underline"
+                    variant="link"
                   >
                     {{ item.name }}
-                  </SfLink>
+                  </ButtonTmp>
                 </li>
               </ol>
             </SfDropdown>
@@ -78,15 +78,14 @@ const NuxtLink = resolveComponent('NuxtLink')
           :key="item.name"
           class="peer hidden items-center text-neutral-500 last-of-type:flex last-of-type:font-medium last-of-type:text-neutral-900 last-of-type:before:font-normal last-of-type:before:text-neutral-500 peer-[:nth-of-type(even)]:before:px-2 peer-[:nth-of-type(even)]:before:leading-5 peer-[:nth-of-type(even)]:before:content-['/'] sm:flex"
         >
-          <SfLink
+          <ButtonTmp
             v-if="index < breadcrumbs.length - 1"
-            :tag="NuxtLink"
+            :is="NuxtLink"
             :to="item.link"
-            variant="secondary"
-            class="outline-secondary-600 whitespace-nowrap leading-5 text-inherit no-underline hover:underline active:underline"
+            variant="link"
           >
             {{ item.name }}
-          </SfLink>
+          </ButtonTmp>
           <span v-else>
             {{ item.name }}
           </span>
