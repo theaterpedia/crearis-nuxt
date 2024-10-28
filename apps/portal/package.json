@@ -17,6 +17,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@azure/msal-node": "^2.7.0",
     "@apollo/client": "^3.8.6",
     "@crearis/crearis-boilerplate-sdk": "~0.0.11",
     "@erpgap/odoo-sdk": "^0.7.0",

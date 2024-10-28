@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import type {
+  Category,
+  CategoryListResponse,
+  CategoryResponse,
   QueryCategoriesArgs,
   QueryCategoryArgs,
-  CategoryListResponse,
-  Category,
-  CategoryResponse,
 } from '../graphql'
 import { QueryName } from '../server/queries'
 

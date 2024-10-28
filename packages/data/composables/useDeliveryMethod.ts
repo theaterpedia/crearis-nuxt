@@ -1,4 +1,4 @@
-import type { ShippingMethod, DeliveryMethodListResponse } from '../graphql'
+import type { DeliveryMethodListResponse, ShippingMethod } from '../graphql'
 import { QueryName } from '../server/queries'
 
 export const useDeliveryMethod = () => {

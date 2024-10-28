@@ -1,10 +1,10 @@
 import { AddressEnum } from '../graphql'
 
 import type {
+  AddAddressInput,
   AddressesResponse,
   Partner,
   QueryAddressesArgs,
-  AddAddressInput,
   MutationAddAddressArgs,
   UpdateAddressInput,
   MutationUpdateAddressArgs,
