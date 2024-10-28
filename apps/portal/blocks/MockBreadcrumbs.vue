@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { SfButton, SfDropdown, SfIconMoreHoriz } from '@crearis/vue'
 import { defineBlock, repeaterField, textSubfield } from '#pruvious'
-import { ButtonTmp } from '../../components/ButtonTmp.vue'
+import { ButtonTmp } from '../components/ButtonTmp.vue'
 
 defineBlock({
   icon: 'Pencil',
