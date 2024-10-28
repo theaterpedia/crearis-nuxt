@@ -68,6 +68,9 @@ importers:
       '@apollo/client':
         specifier: ^3.8.6
         version: 3.11.8(graphql-ws@5.16.0(graphql@16.9.0))(graphql@16.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@azure/msal-node':
+        specifier: ^2.7.0
+        version: 2.15.0
       '@crearis/crearis-boilerplate-sdk':
         specifier: ~0.0.11
         version: 0.0.11(encoding@0.1.13)
