@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { SfButton } from '@crearis/vue'
 import { defineBlock, imageField, linkField, textField, editorField, switchField } from '#pruvious'
 
 defineBlock({ icon: 'Mouse' })
@@ -76,16 +75,16 @@ const NuxtLink = resolveComponent('NuxtLink')
         </slot>
       </div>
       <div class="mt-6 flex flex-col gap-4 md:flex-row">
-        <SfButton
-          :tag="NuxtLink"
+        <ButtonTmp
+          :is="NuxtLink"
           :to="secondaryButtonLink"
           :v-show="secondaryButtonLink !== ''"
           size="lg"
-          variant="secondary"
+          variant="plain"
           class="bg-white"
         >
           {{ secondaryButtonText }}
-        </SfButton>
+        </ButtonTmp>
       </div>
     </div>
   </div>

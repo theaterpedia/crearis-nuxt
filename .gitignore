@@ -3,6 +3,7 @@
 .output
 dist
 tmp
+.ssh.ts
 
 # Node dependencies
 node_modules

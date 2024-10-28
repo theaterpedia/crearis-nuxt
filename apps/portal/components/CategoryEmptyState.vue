@@ -10,6 +10,6 @@
 </template>
 
 <script lang="ts" setup>
-import ButtonTmp from '../components/ButtonTmp.vue'
+
 const NuxtLink = resolveComponent('NuxtLink')
 </script>

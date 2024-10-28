@@ -23,7 +23,7 @@
 </template>
 
 <script lang="ts" setup>
-import ButtonTmp from '../components/ButtonTmp.vue'
+
 
 definePageMeta({
   layout: false,

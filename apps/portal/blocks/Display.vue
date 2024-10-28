@@ -1,5 +1,4 @@
 <script setup>
-import ButtonTmp from '../components/ButtonTmp.vue'
 import { defineBlock, repeaterField, textSubfield, linkSubfield, imageSubfield } from '#pruvious'
 
 defineBlock({

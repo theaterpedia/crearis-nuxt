@@ -89,7 +89,7 @@
     "vue": "^3.4.0",
     "vue-slider-component": "4.1.0-beta.7",
     "vue-router": "^4.2.0",
-    "vue-tsc": "^1.8.27"
+    "vue-tsc": "^2.1.8"
   },
   "overrides": {
     "react-json-view": {

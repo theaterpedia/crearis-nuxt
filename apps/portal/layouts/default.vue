@@ -2,7 +2,7 @@
 // this has to stand on top of the file, see: https://pruvious.com/docs/layouts
 import type { DefaultLayoutProps } from './types'
 import { defineLayout } from '#pruvious'
-import ButtonTmp from '../components/ButtonTmp.vue'
+
 import { useDisclosure, SfIconSearch } from '@crearis/vue'
 
 defineLayout({

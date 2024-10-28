@@ -39,7 +39,7 @@
 
 <script lang="ts" setup>
 import { SfCheckbox, SfLoaderCircular } from '@crearis/vue'
-import ButtonTmp from '../components/ButtonTmp.vue'
+
 
 definePageMeta({
   layout: false,

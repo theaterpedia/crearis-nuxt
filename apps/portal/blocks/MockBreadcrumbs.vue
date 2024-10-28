@@ -1,7 +1,6 @@
 <script lang="ts" setup>
-import { SfButton, SfDropdown, SfIconMoreHoriz } from '@crearis/vue'
+import { SfDropdown, SfIconMoreHoriz } from '@crearis/vue'
 import { defineBlock, repeaterField, textSubfield } from '#pruvious'
-import { ButtonTmp } from '../components/ButtonTmp.vue'
 
 defineBlock({
   icon: 'Pencil',
@@ -43,7 +42,7 @@ const NuxtLink = resolveComponent('NuxtLink')
               strategy="absolute"
             >
               <template #trigger>
-                <SfButton
+                <ButtonTmp
                   :aria-label="$t('breadcrumbsDropdownText')"
                   @click="toggle"
                   data-testid="breadcrumbs-dropdown-button"
@@ -57,7 +56,7 @@ const NuxtLink = resolveComponent('NuxtLink')
                       class="hover:text-primary-700 active:text-primary-800 text-neutral-500 active:bg-transparent"
                     />
                   </template>
-                </SfButton>
+                </ButtonTmp>
               </template>
               <ol data-testid="breadcrumbs-dropdown" class="rounded-md border-neutral-100 bg-white px-4 py-2 shadow-md">
                 <li v-for="item in breadcrumbs" :key="item.name" class="py-2 last-of-type:hidden">

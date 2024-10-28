@@ -22,8 +22,10 @@
     "build:portal": "pnpm --filter=portal build",
     "build:ui": "pnpm --filter=ui build",
     "build:home": "pnpm --filter=home build",
+    "build": "pnpm --filter=portal build",
+    "lint:portal": "pnpm --filter=portal lint",
     "format": "prettier --write .",
-    "postinstall": "pnpm build:ui",
+    "postinstall": "pnpm build:ui && pnpm codegen",
     "test": "vitest",
     "testui": "vitest --ui",
     "codegen": "pnpm --filter=data codegen"
@@ -31,6 +33,7 @@
   "devDependencies": {
     "@vitest/ui": "^2.0.5",
     "prettier": "^3.3.3",
+    "pruvious": "3.13.2",
     "prettier-plugin-organize-attributes": "^1.0.0",
     "prettier-plugin-tailwindcss": "^0.6.5",
     "vite": "^5.3.5",

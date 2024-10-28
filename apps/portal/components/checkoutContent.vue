@@ -12,9 +12,9 @@
             <h2 class="mb-4 text-lg font-bold text-neutral-900">
               {{ $t('contactInfo.heading') }}
             </h2>
-            <SfButton v-if="partnerData?.email" @click="open" size="sm" variant="tertiary">
+            <ButtonTmp v-if="partnerData?.email" @click="open" size="sm" variant="tertiary">
               {{ $t('contactInfo.edit') }}
-            </SfButton>
+            </ButtonTmp>
           </div>
           <div v-if="partnerData?.email" class="mt-2 md:w-[520px]">
             <p>{{ partnerData.name }}</p>
@@ -22,9 +22,9 @@
           </div>
           <div v-else class="w-full md:max-w-[520px]">
             <p>{{ $t('contactInfo.description') }}</p>
-            <SfButton @click="open" variant="secondary" class="mt-4 w-full md:w-auto">
+            <ButtonTmp @click="open" variant="plain" class="mt-4 w-full md:w-auto">
               {{ $t('contactInfo.add') }}
-            </SfButton>
+            </ButtonTmp>
           </div>
 
           <SfModal
@@ -35,9 +35,9 @@
             class="z-50 h-full w-full overflow-auto md:h-fit md:w-[600px]"
           >
             <header>
-              <SfButton @click="close" square variant="tertiary" class="absolute right-2 top-2">
+              <ButtonTmp @click="close" square variant="tertiary" class="absolute right-2 top-2">
                 <SfIconClose />
-              </SfButton>
+              </ButtonTmp>
               <h3 id="contact-modal-title" class="mb-4 text-lg font-bold text-neutral-900 md:text-2xl">
                 {{ $t('contactInfo.heading') }}
               </h3>
@@ -109,9 +109,9 @@
         <UiDivider class="-mx-4 mb-10 w-screen md:mx-0 md:w-auto" />
       </div>
       <UiOrderSummary class="col-span-5 h-fit md:sticky md:top-20">
-        <SfButton :tag="NuxtLink" size="lg" to="/checkout" class="mb-4 w-full md:mb-0">
+        <ButtonTmp :tag="NuxtLink" size="lg" to="/checkout" class="mb-4 w-full md:mb-0">
           {{ $t('placeOrder') }}
-        </SfButton>
+        </ButtonTmp>
         <p class="mt-4 pb-4 text-center text-sm md:pb-0">
           <i18n-t keypath="termsInfo" scope="global">
             <template #terms>
@@ -150,7 +150,6 @@ import {
 } from '@crearis/vue'
 import { useDeliveryMethod } from '@crearis/data/composables/useDeliveryMethod'
 import { AddressEnum } from '@crearis/data/graphql'
-import { ButtonTmp } from '../../components/ButtonTmp.vue'
 
 const NuxtLink = resolveComponent('NuxtLink')
 const { isOpen, open, close } = useDisclosure()
