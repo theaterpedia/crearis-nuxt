@@ -18,11 +18,11 @@ defineProps<DefaultLayoutProps>()
 
 const { isOpen: isAccountDropdownOpen, toggle: accountDropdownToggle } = useDisclosure()
 const { isOpen: isSearchModalOpen, open: searchModalOpen, close: searchModalClose } = useDisclosure()
-const { fetchCart, data: cart } = useSfCart()
-const { fetchCustomer, data: account } = useCustomer()
+// const { fetchCart, data: cart } = useSfCart()
+// const { fetchCustomer, data: account } = useCustomer()
 
-fetchCart()
-fetchCustomer()
+// fetchCart()
+// fetchCustomer()
 usePageTitle()
 
 const cartLineItemsCount = computed(

@@ -33,11 +33,6 @@ export default defineNuxtConfig({
       },
     },    */
   },
-  vsf: {
-    middleware: {
-      apiUrl: 'http://localhost:3000',
-    },
-  },
   vite: {
     optimizeDeps: {
       include: ['lodash-es'],
@@ -81,7 +76,7 @@ export default defineNuxtConfig({
     registerType: 'autoUpdate',
     workbox: {
       navigateFallback: null,
-      globPatterns: ['**/*.{js,json,css,html,ico,svg,png,webp,ico,woff,woff2,ttf,eit,otf}', 'icons/*'],
+      globPatterns: ['**/*.{js,json,css,html,ico,svg,png,webp,ico,woff,woff2,ttf,eit,otf}'],
       globIgnores: ['manifest**.webmanifest'],
       additionalManifestEntries: [
         {
