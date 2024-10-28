@@ -3,6 +3,7 @@
 import type { DefaultLayoutProps } from './types'
 import { defineLayout } from '#pruvious'
 import ButtonTmp from '../components/ButtonTmp.vue'
+import { useDisclosure, SfIconSearch } from '@crearis/vue'
 
 defineLayout({
   label: 'default',
@@ -14,9 +15,6 @@ defineLayout({
     'MockBreadcrumbs',
     'MockLogo',
     'Hero',
-    'Link',
-    'Container',
-    'Image',
     'Prose',
     'Video',
   ],
@@ -28,8 +26,6 @@ defineLayout({
     'MockBreadcrumbs',
     'MockLogo',
     'Hero',
-    'Container',
-    'Image',
     'Prose',
     'Video',
   ],
@@ -40,16 +36,16 @@ defineProps<DefaultLayoutProps>()
 
 const { isOpen: isAccountDropdownOpen, toggle: accountDropdownToggle } = useDisclosure()
 const { isOpen: isSearchModalOpen, open: searchModalOpen, close: searchModalClose } = useDisclosure()
-const { loadCart, cartItemCount } = useCart()
-const { user, loadUser, logout } = useUser()
+const { fetchCart, data: cart } = useSfCart()
+const { fetchCustomer, data: account } = useCustomer()
 
-const cartLineItemsCount = computed(cartItemCount)
+fetchCart()
+fetchCustomer()
+usePageTitle()
 
-const logoutAndToggle = async () => {
-  await logout()
-  accountDropdownToggle()
-}
-
+const cartLineItemsCount = computed(
+  () => cart.value?.lineItems.reduce((total, { quantity }) => total + quantity, 0) ?? 0,
+)
 const accountDropdown = [
   {
     label: 'account.heading',
@@ -69,26 +65,19 @@ const accountDropdown = [
   },
 ]
 const NuxtLink = resolveComponent('NuxtLink')
-
-loadUser()
-loadCart()
-usePageTitle()
 </script>
 
 <template>
   <UiNavbarTop extended filled>
     <nav class="hidden md:flex md:flex-row md:flex-nowrap">
-      <NuxtLazyHydrate when-visible>
-        <ButtonTmp v-show="cartLineItemsCount > 0" :is="NuxtLink" :to="paths.cart"></ButtonTmp>
-      </NuxtLazyHydrate>
-      <NuxtLazyHydrate when-visible></NuxtLazyHydrate>
-    </nav>
+        <NuxtLazyHydrate when-visible>
+          <ButtonTmp v-show="cartLineItemsCount > 0" :is="NuxtLink" :to="paths.cart"></ButtonTmp>
+        </NuxtLazyHydrate>
+      </nav>     
     <ButtonTmp @click="searchModalOpen">
       <SfIconSearch />
     </ButtonTmp>
-  </UiNavbarTop>
-  <SectionContainer v-if="breadcrumbs"></SectionContainer>
-
+  </UiNavbarTop>  
   <main>
     <slot />
   </main>
@@ -97,6 +86,5 @@ usePageTitle()
   </NuxtLazyHydrate>
   <NuxtLazyHydrate when-visible>
     <Footer />
-  </NuxtLazyHydrate>
-  <NuxtLazyHydrate when-idle></NuxtLazyHydrate>
+  </NuxtLazyHydrate>  
 </template>

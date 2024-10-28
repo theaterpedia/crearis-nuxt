@@ -67,7 +67,6 @@
 
 <script lang="ts" setup>
 import { SfIconClose, SfModal, useDisclosure } from '@crearis/vue'
-import ButtonTmp from '../../components/ButtonTmp.vue'
 import { unrefElement } from '@vueuse/core'
 
 definePageMeta({

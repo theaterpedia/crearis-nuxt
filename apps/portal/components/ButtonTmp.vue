@@ -1,7 +1,7 @@
 <template>
   <Button :is="is" :size="size" :variant="variant">
-    <Slot name="prefix" />
-    <Slot />
+    <slot name="prefix" />
+    <slot />
   </Button>
 </template>
 

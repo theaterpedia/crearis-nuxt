@@ -10,7 +10,7 @@ export default defineNuxtConfig({
   extends: ['@crearis/theme', '@crearis/data'],
   imports: { transform: { exclude: [/\/packages\/ui\//] } },
   modules: [
-    '@nuxt/content',
+    // '@nuxt/content',
     '@nuxt/image',
     'nuxt-viewport',
     'nuxt-lazy-hydrate',
@@ -27,6 +27,10 @@ export default defineNuxtConfig({
     public: {
       odooBaseUrl: '',
     },
+  },
+
+  build: {
+    transpile: ['vue-sonner'],
   },
 
   image: {

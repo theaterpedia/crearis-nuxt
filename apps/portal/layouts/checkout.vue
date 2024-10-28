@@ -22,4 +22,5 @@ const NuxtLink = resolveComponent('NuxtLink')
     </SectionContainer>
   </main>
   <Footer />
+  <Toaster position="top-right" />
 </template>

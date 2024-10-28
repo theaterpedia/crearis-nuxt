@@ -3,6 +3,7 @@
 import type { DefaultLayoutProps } from './types'
 import { defineLayout } from '#pruvious'
 import ButtonTmp from '../components/ButtonTmp.vue'
+import { useDisclosure } from '@crearis/vue'
 
 defineLayout({
   label: 'account',
@@ -76,4 +77,5 @@ const NuxtLink = resolveComponent('NuxtLink')
     <Footer />
   </NuxtLazyHydrate>
   <NuxtLazyHydrate when-idle></NuxtLazyHydrate>
+  <Toaster position="top-right" />
 </template>
