@@ -1,62 +1,62 @@
 <script lang="ts" setup>
-import { SfScrollable } from '@crearis/vue'
-import { ref } from 'vue'
+import { SfScrollable } from '@crearis/vue';
+import { ref } from 'vue';
 
 const props = defineProps({
   images: {
     type: Array,
     default: [],
   },
-})
+});
 
-const thumbsRef = ref<HTMLElement>()
-const activeIndex = ref(0)
-const images = computed<any[]>(() => props.images)
+const thumbsRef = ref<HTMLElement>();
+const activeIndex = ref(0);
+const images = computed<any[]>(() => props.images);
 </script>
 
 <template>
-  <div class="relative flex aspect-[4/3] max-h-[600px] w-full">
+  <div class="relative flex w-full max-h-[600px] aspect-[4/3]">
     <SfScrollable
+      ref="thumbsRef"
+      class="items-center w-full [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+      direction="vertical"
       :active-index="activeIndex"
       buttons-placement="none"
-      direction="vertical"
-      ref="thumbsRef"
-      class="w-full items-center [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
     >
       <button
         v-for="({ imageThumbSrc, alt }, index) in images"
-        :aria-current="activeIndex === 0"
-        :aria-label="alt"
         :key="`${alt}-${index}-thumbnail`"
         type="button"
-        class="focus-visible:outline-offset border-primary-700 relative mx-4 shrink-0 flex-grow cursor-pointer snap-start border-b-4 pb-1 transition-colors focus-visible:outline md:h-auto md:w-[78px] md:flex-grow-0"
+        :aria-label="alt"
+        :aria-current="activeIndex === 0"
+        class="md:w-[78px] md:h-auto relative shrink-0 pb-1 mx-4 border-b-4 snap-start cursor-pointer focus-visible:outline focus-visible:outline-offset transition-colors flex-grow md:flex-grow-0 border-primary-700"
       >
-        <NuxtImg :alt="alt" :src="imageThumbSrc" height="78" provider="odooProvider" width="78" class="object-cover" />
+        <NuxtImg provider="odooProvider" :alt="alt" class="object-cover" width="78" height="78" :src="imageThumbSrc" />
       </button>
     </SfScrollable>
     <SfScrollable
+      class="w-full h-full snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
       :active-index="activeIndex"
-      :drag="{ containerWidth: true }"
-      buttons-placement="none"
       direction="vertical"
-      is-active-index-centered
       wrapper-class="h-full m-auto"
-      class="h-full w-full snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      is-active-index-centered
+      buttons-placement="none"
+      :drag="{ containerWidth: true }"
     >
       <div
         v-for="({ imageSrc, alt }, index) in images"
         :key="`${alt}-${index}`"
-        class="flex h-full shrink-0 grow basis-full snap-center justify-center"
+        class="flex justify-center h-full basis-full shrink-0 grow snap-center"
       >
         <NuxtImg
-          :alt="alt"
-          :aria-hidden="activeIndex !== index"
-          :aria-label="alt"
-          :height="505"
-          :src="imageSrc"
-          :width="380"
           provider="odooProvider"
-          class="h-full w-auto object-cover"
+          :width="380"
+          :height="505"
+          :aria-label="alt"
+          :aria-hidden="activeIndex !== index"
+          class="object-cover w-auto h-full"
+          :alt="alt"
+          :src="imageSrc"
         />
       </div>
     </SfScrollable>

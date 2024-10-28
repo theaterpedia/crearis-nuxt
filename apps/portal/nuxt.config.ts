@@ -21,13 +21,6 @@ export default defineNuxtConfig({
     typeCheck: false,
   },
 
-  runtimeConfig: {
-    // for getImages plugin
-    public: {
-      odooBaseUrl: '',
-    },
-  },
-
   build: {
     transpile: ['vue-sonner'],
   },
@@ -50,6 +43,18 @@ export default defineNuxtConfig({
         name: 'odooProvider',
         provider: '@crearis/data/providers/odoo-provider.ts',
       },
+    },
+  }, 
+
+  runtimeConfig: {
+    shouldByPassCacheQueryNames: ['LoadCartQuery', 'WishlistLoadQuery', 'GetAddressesQuery'],
+    public: {
+      odooBaseImageUrl: '',
+      odooBaseUrl: '',
+      currencySymbol: '',
+      currencySeparator: '',
+      currencyDecimal: '',
+      currencyPrecision: '',
     },
   },
 
