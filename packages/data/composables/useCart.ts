@@ -12,9 +12,8 @@ import type {
 import { MutationName } from '../server/mutations'
 import { QueryName } from '../server/queries'
 
-const { $toast } = useNuxtApp()
-
 export const useCart = () => {
+  const { $toast } = useNuxtApp()
   const { $sdk } = useNuxtApp()
   const cartCounter = useCookie<number>('cart-counter')
   const cart = useState<Cart>('cart', () => ({}) as Cart)

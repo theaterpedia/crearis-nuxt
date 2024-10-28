@@ -14,9 +14,8 @@ import type {
 import { MutationName } from '../server/mutations'
 import { QueryName } from '../server/queries'
 
-const { $toast } = useNuxtApp()
-
 export const useUser = () => {
+  const { $toast } = useNuxtApp()
   const { $sdk } = useNuxtApp()
   const router = useRouter()
   const userCookie = useCookie<Partner | null>('odoo-user')
