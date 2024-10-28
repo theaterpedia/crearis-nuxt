@@ -23,7 +23,7 @@ export const useSfCart: UseCartReturn = () => {
     state.value.loading = true
     // #TODO _05 reactivate with odoo
     try {
-      // const { data, error } = await useAsyncData<SfCart>(() => useSdk().commerce.getCart());
+      // const { data, error } = await useAsyncData<SfCart>(() => $sdk().commerce.getCart());
       // useHandleError(error.value);
       // state.value.data = data.value;
       return {}

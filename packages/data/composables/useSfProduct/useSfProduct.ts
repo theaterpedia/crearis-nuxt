@@ -22,7 +22,7 @@ export const useSfProduct: UseProductReturn = (slug) => {
   // #TODO _05 reactivate with odoo
   const fetchProduct: FetchProduct = async (slug) => {
     // state.value.loading = true;
-    // const { data, error } = await useAsyncData(() => useSdk().commerce.getProduct({ slug }));
+    // const { data, error } = await useAsyncData(() => $sdk().commerce.getProduct({ slug }));
     // useHandleError(error.value);
     // state.value.data = data.value;
     // state.value.loading = false;

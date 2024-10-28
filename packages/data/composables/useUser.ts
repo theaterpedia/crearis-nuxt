@@ -17,7 +17,7 @@ import { QueryName } from '../server/queries'
 const { $toast } = useNuxtApp()
 
 export const useUser = () => {
-  const { useSdk } = useNuxtApp()
+  const { $sdk } = useNuxtApp()
   const router = useRouter()
   const userCookie = useCookie<Partner | null>('odoo-user')
   const user = useState<Partner>('user', () => ({}) as Partner)
@@ -28,7 +28,7 @@ export const useUser = () => {
   const loadUser = async () => {
     loading.value = true
 
-    const { data } = await useSdk().odoo.queryNoCache<null, LoadUserQueryResponse>({
+    const { data } = await $sdk().odoo.queryNoCache<null, LoadUserQueryResponse>({
       queryName: QueryName.LoadUserQuery,
     })
 
@@ -41,12 +41,12 @@ export const useUser = () => {
   const logout = async () => {
     userCookie.value = null
     user.value = {} as Partner
-    await useSdk().odoo.mutation<null, null>({ mutationName: MutationName.LogoutMutation })
+    await $sdk().odoo.mutation<null, null>({ mutationName: MutationName.LogoutMutation })
   }
 
   const signup = async (params: MutationRegisterArgs) => {
     loading.value = true
-    const { data, error } = await useSdk().odoo.mutation<MutationRegisterArgs, RegisterUserResponse>(
+    const { data, error } = await $sdk().odoo.mutation<MutationRegisterArgs, RegisterUserResponse>(
       {
         mutationName: MutationName.RegisterUserMutation,
       },
@@ -64,7 +64,7 @@ export const useUser = () => {
 
   const login = async (params: MutationLoginArgs) => {
     loading.value = true
-    const { data, error } = await useSdk().odoo.mutation<MutationLoginArgs, LoadUserQueryResponse>(
+    const { data, error } = await $sdk().odoo.mutation<MutationLoginArgs, LoadUserQueryResponse>(
       { mutationName: MutationName.LoginMutation },
       { ...params },
     )
@@ -79,7 +79,7 @@ export const useUser = () => {
 
   const resetPassword = async (params: MutationResetPasswordArgs) => {
     loading.value = true
-    const { error } = await useSdk().odoo.mutation<MutationResetPasswordArgs, ResetPasswordResponse>(
+    const { error } = await $sdk().odoo.mutation<MutationResetPasswordArgs, ResetPasswordResponse>(
       { mutationName: MutationName.SendResetPasswordMutation },
       { ...params },
     )
@@ -100,7 +100,7 @@ export const useUser = () => {
 
   const updateAccount = async (params: MutationUpdateMyAccountArgs) => {
     loading.value = true
-    const { data, error } = await useSdk().odoo.mutation<MutationUpdateMyAccountArgs, UpdateMyAccountResponse>(
+    const { data, error } = await $sdk().odoo.mutation<MutationUpdateMyAccountArgs, UpdateMyAccountResponse>(
       { mutationName: MutationName.UpdateMyAccountMutation },
       { ...params },
     )
@@ -114,7 +114,7 @@ export const useUser = () => {
 
   const updatePassword = async (params: MutationUpdatePasswordArgs) => {
     loading.value = true
-    const { data, error } = await useSdk().odoo.mutation<MutationUpdatePasswordArgs, UpdatePasswordResponse>(
+    const { data, error } = await $sdk().odoo.mutation<MutationUpdatePasswordArgs, UpdatePasswordResponse>(
       { mutationName: MutationName.UpdatePasswordMutation },
       params,
     )

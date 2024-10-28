@@ -3,14 +3,14 @@ import type { AttributeValue, Product, ProductVariantResponse, QueryProductVaria
 import { QueryName } from '../server/queries'
 
 export const useProductVariant = (slugWithCombinationIds: string) => {
-  const { useSdk } = useNuxtApp()
+  const { $sdk } = useNuxtApp()
 
   const loadingProductVariant = ref(false)
   const productVariant = useState<Product>(`product-${slugWithCombinationIds}`, () => ({}) as Product)
 
   const loadProductVariant = async (params: QueryProductVariantArgs) => {
     loadingProductVariant.value = true
-    const { data } = await useSdk().odoo.query<QueryProductVariantArgs, ProductVariantResponse>(
+    const { data } = await $sdk().odoo.query<QueryProductVariantArgs, ProductVariantResponse>(
       { queryName: QueryName.GetProductVariantQuery },
       params,
     )

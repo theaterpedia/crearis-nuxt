@@ -11,14 +11,14 @@ import { MutationName } from '../server/mutations'
 import { QueryName } from '../server/queries'
 
 export const useWishlist = () => {
-  const { useSdk } = useNuxtApp()
+  const { $sdk } = useNuxtApp()
   const loading = ref(false)
 
   const wishlist = useState<WishlistData>('wishlist', () => ({}) as WishlistData)
 
   const loadWishlist = async () => {
     loading.value = true
-    const { data } = await useSdk().odoo.queryNoCache<MutationWishlistAddItemArgs, WishlistLoadResponse>({
+    const { data } = await $sdk().odoo.queryNoCache<MutationWishlistAddItemArgs, WishlistLoadResponse>({
       queryName: QueryName.WishlistLoadQuery,
     })
     loading.value = false
@@ -28,7 +28,7 @@ export const useWishlist = () => {
 
   const wishlistAddItem = async (productId: number) => {
     loading.value = true
-    const { data } = await useSdk().odoo.mutation<MutationWishlistAddItemArgs, WishlistAddItemResponse>(
+    const { data } = await $sdk().odoo.mutation<MutationWishlistAddItemArgs, WishlistAddItemResponse>(
       { mutationName: MutationName.WishlistAddItem },
       { productId },
     )
@@ -49,7 +49,7 @@ export const useWishlist = () => {
     }
 
     loading.value = true
-    const { data } = await useSdk().odoo.mutation<MutationWishlistRemoveItemArgs, WishlistRemoveItemResponse>(
+    const { data } = await $sdk().odoo.mutation<MutationWishlistRemoveItemArgs, WishlistRemoveItemResponse>(
       { mutationName: MutationName.WishlistRemoveItem },
       { wishId: wishlistItem.id },
     )

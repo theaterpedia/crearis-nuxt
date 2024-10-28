@@ -23,7 +23,7 @@ export const useCustomer: UseCustomerReturn = () => {
 
   const fetchCustomer: FetchCustomer = async () => {
     // state.value.loading = true;
-    // const { data, error } = await useAsyncData(() => useSdk().commerce.getCustomer());
+    // const { data, error } = await useAsyncData(() => $sdk().commerce.getCustomer());
     // useHandleError(error.value);
     // state.value.data = data.value;
     // state.value.loading = false;

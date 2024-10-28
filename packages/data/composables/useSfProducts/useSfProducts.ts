@@ -21,7 +21,7 @@ export const useSfProducts: UseProductsReturn = () => {
   const fetchProducts: FetchProducts = async () => {
     /*
     state.value.loading = true;
-    const { data, error } = await useAsyncData(useSdk().commerce.getProducts);
+    const { data, error } = await useAsyncData($sdk().commerce.getProducts);
     useHandleError(error.value);
     state.value.data = data.value;
     state.value.loading = false;

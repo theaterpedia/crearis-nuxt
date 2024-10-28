@@ -14,7 +14,6 @@ export default defineNuxtConfig({
     '@nuxt/image',
     'nuxt-viewport',
     'nuxt-lazy-hydrate',
-    '@vue-storefront/nuxt',
     '@nuxtjs/i18n',
   ],
   routeRules: { '/': { prerender: true } },

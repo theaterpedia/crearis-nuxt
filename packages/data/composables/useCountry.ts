@@ -2,7 +2,7 @@ import type { Country, QueryCountriesArgs, CountryListResponse } from '../graphq
 import { QueryName } from '../server/queries'
 
 export const useCountry = () => {
-  const { useSdk } = useNuxtApp()
+  const { $sdk } = useNuxtApp()
 
   const loading = ref(false)
   const countries = useState<Country[]>('countries', () => [])
@@ -14,7 +14,7 @@ export const useCountry = () => {
     loading.value = true
     try {
       const { data } = await useAsyncData('country-list', async () => {
-        const { data } = await useSdk().odoo.query<QueryCountriesArgs, CountryListResponse>({
+        const { data } = await $sdk().odoo.query<QueryCountriesArgs, CountryListResponse>({
           queryName: QueryName.GetCountriesQuery,
         })
         return data.value

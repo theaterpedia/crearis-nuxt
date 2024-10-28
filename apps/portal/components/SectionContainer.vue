@@ -1,7 +1,7 @@
 <template>
   <Section :background="background">
     <Container>
-      <ContentSlot />
+      <slot />
     </Container>
   </Section>
 </template>

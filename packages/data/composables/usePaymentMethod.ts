@@ -2,7 +2,7 @@ import { PaymentAcquirer, PaymentMethodListResponse } from '../graphql'
 import { QueryName } from '../server/queries'
 
 export const usePaymentMethod = () => {
-  const { useSdk } = useNuxtApp()
+  const { $sdk } = useNuxtApp()
 
   const loading = ref(false)
   const paymentMethods = useState<PaymentAcquirer[]>('payment-method', () => [])
@@ -11,7 +11,7 @@ export const usePaymentMethod = () => {
     loading.value = true
     try {
       const { data } = await useAsyncData('payment-methods', async () => {
-        const { data } = await useSdk().odoo.query<any, PaymentMethodListResponse>({
+        const { data } = await $sdk().odoo.query<any, PaymentMethodListResponse>({
           queryName: QueryName.GetPaymentMethodsQuery,
         })
         return data.value

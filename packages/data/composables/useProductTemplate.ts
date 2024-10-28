@@ -5,7 +5,7 @@ import { useProductAttributes } from './useProductAttributes'
 
 const { getRegularPrice, getSpecialPrice } = useProductAttributes()
 export const useProductTemplate = (slug: string) => {
-  const { useSdk } = useNuxtApp()
+  const { $sdk } = useNuxtApp()
 
   const loadingProductTemplate = ref(false)
   const productTemplate = useState<Product>(`product-${slug}`, () => ({}) as Product)
@@ -41,7 +41,7 @@ export const useProductTemplate = (slug: string) => {
       return
     }
     loadingProductTemplate.value = true
-    const { data } = await useSdk().odoo.query<QueryProductArgs, ProductResponse>(
+    const { data } = await $sdk().odoo.query<QueryProductArgs, ProductResponse>(
       { queryName: QueryName.GetProductTemplateQuery },
       params,
     )

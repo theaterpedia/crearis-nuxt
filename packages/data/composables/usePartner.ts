@@ -2,7 +2,7 @@ import type { Partner, MutationCreateUpdatePartnerArgs, PartnerResponse } from '
 import { MutationName } from '../server/mutations'
 
 export const usePartner = () => {
-  const { useSdk } = useNuxtApp()
+  const { $sdk } = useNuxtApp()
 
   const loading = ref(false)
   const partner = useState<Partner>('partner', () => ({}) as Partner)
@@ -11,7 +11,7 @@ export const usePartner = () => {
     loading.value = true
     try {
       const { data } = await useAsyncData('update-partner', async () => {
-        const { data } = await useSdk().odoo.query<MutationCreateUpdatePartnerArgs, PartnerResponse>(
+        const { data } = await $sdk().odoo.query<MutationCreateUpdatePartnerArgs, PartnerResponse>(
           { queryName: MutationName.CreateUpdatePartner },
           params,
         )

@@ -3,7 +3,7 @@ import type { AttributeValue, Category, Product, ProductTemplateListResponse, Qu
 import { QueryName } from '../server/queries'
 
 export const useProductTemplateList = (stateIndex: string) => {
-  const { useSdk } = useNuxtApp()
+  const { $sdk } = useNuxtApp()
 
   const loading = ref(false)
   const totalItems = useState<number>(`total-items${stateIndex}`, () => 0)
@@ -15,7 +15,7 @@ export const useProductTemplateList = (stateIndex: string) => {
     if (productTemplateList.value.length > 0) return
 
     loading.value = true
-    const { data } = await useSdk().odoo.query<QueryProductsArgs, ProductTemplateListResponse>(
+    const { data } = await $sdk().odoo.query<QueryProductsArgs, ProductTemplateListResponse>(
       { queryName: QueryName.GetProductTemplateListQuery },
       params,
     )

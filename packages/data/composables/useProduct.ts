@@ -101,7 +101,7 @@ export const useProduct = (slug?: string) => {
     loading.value = true
     try {
       const { data } = await useAsyncData(`product-${slug}`, async () => {
-        const { data } = await useSdk().odoo.query<QueryProductArgs, ProductResponse>(
+        const { data } = await $sdk().odoo.query<QueryProductArgs, ProductResponse>(
           { queryName: QueryName.GetProduct },
           params,
         )
