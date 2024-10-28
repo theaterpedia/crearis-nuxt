@@ -1,4 +1,3 @@
-import { useToast } from 'vue-toastification'
 import type {
   LoadUserQueryResponse,
   MutationLoginArgs,
@@ -15,13 +14,13 @@ import type {
 import { MutationName } from '../server/mutations'
 import { QueryName } from '../server/queries'
 
+const { $toast } = useNuxtApp()
+
 export const useUser = () => {
-  const { $sdk } = useNuxtApp()
+  const { useSdk } = useNuxtApp()
   const router = useRouter()
   const userCookie = useCookie<Partner | null>('odoo-user')
   const user = useState<Partner>('user', () => ({}) as Partner)
-
-  const toast = useToast()
 
   const loading = ref(false)
   const resetEmail = useCookie<string>('reset-email')
@@ -29,7 +28,9 @@ export const useUser = () => {
   const loadUser = async () => {
     loading.value = true
 
-    const { data } = await $sdk().odoo.queryNoCache<null, LoadUserQueryResponse>({ queryName: QueryName.LoadUserQuery })
+    const { data } = await useSdk().odoo.queryNoCache<null, LoadUserQueryResponse>({
+      queryName: QueryName.LoadUserQuery,
+    })
 
     userCookie.value = data.value?.partner
     user.value = data.value?.partner
@@ -40,12 +41,12 @@ export const useUser = () => {
   const logout = async () => {
     userCookie.value = null
     user.value = {} as Partner
-    await $sdk().odoo.mutation<null, null>({ mutationName: MutationName.LogoutMutation })
+    await useSdk().odoo.mutation<null, null>({ mutationName: MutationName.LogoutMutation })
   }
 
   const signup = async (params: MutationRegisterArgs) => {
     loading.value = true
-    const { data, error } = await $sdk().odoo.mutation<MutationRegisterArgs, RegisterUserResponse>(
+    const { data, error } = await useSdk().odoo.mutation<MutationRegisterArgs, RegisterUserResponse>(
       {
         mutationName: MutationName.RegisterUserMutation,
       },
@@ -54,7 +55,7 @@ export const useUser = () => {
     loading.value = false
 
     if (error.value) {
-      toast.error(error.value?.data?.message)
+      $toast.error(error.value?.data?.message)
       return
     }
 
@@ -63,12 +64,12 @@ export const useUser = () => {
 
   const login = async (params: MutationLoginArgs) => {
     loading.value = true
-    const { data, error } = await $sdk().odoo.mutation<MutationLoginArgs, LoadUserQueryResponse>(
+    const { data, error } = await useSdk().odoo.mutation<MutationLoginArgs, LoadUserQueryResponse>(
       { mutationName: MutationName.LoginMutation },
       { ...params },
     )
     if (error.value) {
-      toast.error(error.value?.data?.message)
+      $toast.error(error.value?.data?.message)
       return
     }
 
@@ -78,12 +79,12 @@ export const useUser = () => {
 
   const resetPassword = async (params: MutationResetPasswordArgs) => {
     loading.value = true
-    const { error } = await $sdk().odoo.mutation<MutationResetPasswordArgs, ResetPasswordResponse>(
+    const { error } = await useSdk().odoo.mutation<MutationResetPasswordArgs, ResetPasswordResponse>(
       { mutationName: MutationName.SendResetPasswordMutation },
       { ...params },
     )
     if (error.value) {
-      toast.error(error.value?.data?.message)
+      $toast.error(error.value?.data?.message)
       return
     }
 
@@ -99,12 +100,12 @@ export const useUser = () => {
 
   const updateAccount = async (params: MutationUpdateMyAccountArgs) => {
     loading.value = true
-    const { data, error } = await $sdk().odoo.mutation<MutationUpdateMyAccountArgs, UpdateMyAccountResponse>(
+    const { data, error } = await useSdk().odoo.mutation<MutationUpdateMyAccountArgs, UpdateMyAccountResponse>(
       { mutationName: MutationName.UpdateMyAccountMutation },
       { ...params },
     )
     if (error.value) {
-      toast.error(error.value?.data?.message)
+      $toast.error(error.value?.data?.message)
       return
     }
 
@@ -113,16 +114,16 @@ export const useUser = () => {
 
   const updatePassword = async (params: MutationUpdatePasswordArgs) => {
     loading.value = true
-    const { data, error } = await $sdk().odoo.mutation<MutationUpdatePasswordArgs, UpdatePasswordResponse>(
+    const { data, error } = await useSdk().odoo.mutation<MutationUpdatePasswordArgs, UpdatePasswordResponse>(
       { mutationName: MutationName.UpdatePasswordMutation },
       params,
     )
     if (error.value) {
-      toast.error(error.value?.data?.message)
+      $toast.error(error.value?.data?.message)
       return
     }
 
-    toast.success('Password updated successfully')
+    $toast.success('Password updated successfully')
   }
 
   return {

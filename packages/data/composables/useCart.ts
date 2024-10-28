@@ -11,19 +11,19 @@ import type {
 
 import { MutationName } from '../server/mutations'
 import { QueryName } from '../server/queries'
-import { useToast } from 'vue-toastification'
+
+const { $toast } = useNuxtApp()
 
 export const useCart = () => {
-  const { $sdk } = useNuxtApp()
+  const { useSdk } = useNuxtApp()
   const cartCounter = useCookie<number>('cart-counter')
-  const toast = useToast()
   const cart = useState<Cart>('cart', () => ({}) as Cart)
 
   const loading = ref(false)
 
   const loadCart = async () => {
     loading.value = true
-    const { data } = await $sdk().odoo.queryNoCache<null, CartResponse>({ queryName: QueryName.LoadCartQuery })
+    const { data } = await useSdk().odoo.queryNoCache<null, CartResponse>({ queryName: QueryName.LoadCartQuery })
     loading.value = false
 
     cart.value = data.value.cart
@@ -33,37 +33,37 @@ export const useCart = () => {
   const cartAdd = async (productId: number, quantity: number) => {
     loading.value = true
 
-    const { data, error } = await $sdk().odoo.mutation<MutationCartAddItemArgs, CartAddItemResponse>(
+    const { data, error } = await useSdk().odoo.mutation<MutationCartAddItemArgs, CartAddItemResponse>(
       { mutationName: MutationName.CartAddItem },
       { productId, quantity },
     )
     loading.value = false
 
     if (error.value) {
-      return toast.error(error.value.data.message)
+      return $toast.error(error.value.data.message)
     }
 
     cart.value = data.value.cartAddItem
     cartCounter.value = Number(cart.value?.order?.orderLines?.length)
 
-    toast.success('Product has been added to cart')
+    $toast.success('Product has been added to cart')
   }
 
   const updateItemQuantity = async (lineId: number, quantity: number) => {
     loading.value = true
-    const { data, error } = await $sdk().odoo.mutation<MutationCartUpdateItemArgs, CartUpdateItemResponse>(
+    const { data, error } = await useSdk().odoo.mutation<MutationCartUpdateItemArgs, CartUpdateItemResponse>(
       { mutationName: MutationName.CartUpdateQuantity },
       { lineId, quantity: Number(quantity) },
     )
     loading.value = false
 
     if (error.value) {
-      return toast.error(error.value.data.message)
+      return $toast.error(error.value.data.message)
     }
 
     cart.value = data.value.cartUpdateItem
     cartCounter.value = Number(cart.value?.order?.orderLines?.length)
-    toast.success('Product updated successfully')
+    $toast.success('Product updated successfully')
   }
 
   const cartItemCount = () => {
@@ -72,19 +72,19 @@ export const useCart = () => {
 
   const removeItemFromCart = async (lineId: number) => {
     loading.value = true
-    const { data, error } = await $sdk().odoo.mutation<MutationCartRemoveItemArgs, CartRemoveItemResponse>(
+    const { data, error } = await useSdk().odoo.mutation<MutationCartRemoveItemArgs, CartRemoveItemResponse>(
       { mutationName: MutationName.CartRemoveItem },
       { lineId },
     )
     loading.value = false
 
     if (error.value) {
-      return toast.error(error.value.data.message)
+      return $toast.error(error.value.data.message)
     }
 
     cart.value = data.value.cartRemoveItem
     cartCounter.value = Number(cart.value?.order?.orderLines?.length)
-    toast.success('Product removed successfully')
+    $toast.success('Product removed successfully')
   }
 
   return {
