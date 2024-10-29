@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 // this has to stand on top of the file, see: https://pruvious.com/docs/layouts
-import type { DefaultLayoutProps } from './types'
 import { defineLayout } from '#pruvious'
 
 import { useDisclosure } from '@crearis/vue'
@@ -12,9 +11,6 @@ defineLayout({
   // @ts-expect-error #TODO _05 remove once components are created
   allowedRootBlocks: ['Cart', 'Checkout', 'MockImageSection', 'MockBreadcrumbs', 'Link', 'Container', 'Image', 'Prose'],
 })
-
-// eslint-disable-next-line vue/define-macros-order
-defineProps<DefaultLayoutProps>()
 
 const { isOpen: isAccountDropdownOpen, toggle: accountDropdownToggle } = useDisclosure()
 const { isOpen: isSearchModalOpen, open: searchModalOpen, close: searchModalClose } = useDisclosure()
