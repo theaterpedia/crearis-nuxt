@@ -1,5 +1,3 @@
 <template>
-  <div>
-    PageContent
-  </div>
+  <div>PageContent</div>
 </template>

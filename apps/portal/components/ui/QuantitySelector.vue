@@ -1,5 +1,3 @@
 <template>
-  <div>
-    QuantitySelector
-  </div>
+  <div>QuantitySelector</div>
 </template>

@@ -1,5 +1,3 @@
 <template>
-  <div>
-    PAGINATION
-  </div>
+  <div>PAGINATION</div>
 </template>

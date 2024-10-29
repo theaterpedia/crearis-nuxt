@@ -1,6 +1,3 @@
 <template>
-  <div>
-    FormsName
-  </div>
+  <div>FormsName</div>
 </template>
-

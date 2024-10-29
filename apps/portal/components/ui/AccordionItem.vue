@@ -1,6 +1,3 @@
 <template>
-  <div>
-    AccordionItem
-  </div>
+  <div>AccordionItem</div>
 </template>
-

@@ -1,10 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import type {
-  Product,
-  ProductResponse,
-  ProductTemplateListResponse,
-  QueryProductArgs,
-} from '../graphql'
+import type { Product, ProductResponse, ProductTemplateListResponse, QueryProductArgs } from '../graphql'
 import { QueryName } from '../server/queries'
 import { useProductAttributes } from './useProductAttributes'
 

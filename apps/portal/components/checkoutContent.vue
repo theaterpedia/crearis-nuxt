@@ -1,6 +1,3 @@
 <template>
-  <div>
-    CheckoutContent
-  </div>
+  <div>CheckoutContent</div>
 </template>
-

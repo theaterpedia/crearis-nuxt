@@ -1,5 +1,3 @@
 <template>
-  <div>
-    Product card
-  </div>
+  <div>Product card</div>
 </template>

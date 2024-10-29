@@ -60,11 +60,7 @@ const NuxtLink = resolveComponent('NuxtLink')
               </template>
               <ol data-testid="breadcrumbs-dropdown" class="rounded-md border-neutral-100 bg-white px-4 py-2 shadow-md">
                 <li v-for="item in breadcrumbs" :key="item.name" class="py-2 last-of-type:hidden">
-                  <ButtonTmp
-                    :is="NuxtLink"
-                    :to="item.link"
-                    variant="link"
-                  >
+                  <ButtonTmp :is="NuxtLink" :to="item.link" variant="link">
                     {{ item.name }}
                   </ButtonTmp>
                 </li>
@@ -77,12 +73,7 @@ const NuxtLink = resolveComponent('NuxtLink')
           :key="item.name"
           class="peer hidden items-center text-neutral-500 last-of-type:flex last-of-type:font-medium last-of-type:text-neutral-900 last-of-type:before:font-normal last-of-type:before:text-neutral-500 peer-[:nth-of-type(even)]:before:px-2 peer-[:nth-of-type(even)]:before:leading-5 peer-[:nth-of-type(even)]:before:content-['/'] sm:flex"
         >
-          <ButtonTmp
-            v-if="index < breadcrumbs.length - 1"
-            :is="NuxtLink"
-            :to="item.link"
-            variant="link"
-          >
+          <ButtonTmp v-if="index < breadcrumbs.length - 1" :is="NuxtLink" :to="item.link" variant="link">
             {{ item.name }}
           </ButtonTmp>
           <span v-else>

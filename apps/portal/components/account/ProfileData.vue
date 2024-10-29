@@ -1,6 +1,3 @@
 <template>
-  <div>
-    ProfileData
-  </div>
+  <div>ProfileData</div>
 </template>
-

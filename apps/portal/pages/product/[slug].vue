@@ -2,9 +2,7 @@
   <NuxtLayout :breadcrumbs="breadcrumbs" name="default">
     <SectionContainer>
       <NuxtErrorBoundary>
-        <div>
-          Product
-        </div>
+        <div>Product</div>
       </NuxtErrorBoundary>
     </SectionContainer>
   </NuxtLayout>

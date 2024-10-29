@@ -1,5 +1,3 @@
 <template>
-  <div>
-    FormsPasswort
-  </div>
+  <div>FormsPasswort</div>
 </template>

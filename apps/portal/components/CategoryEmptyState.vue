@@ -10,6 +10,5 @@
 </template>
 
 <script lang="ts" setup>
-
 const NuxtLink = resolveComponent('NuxtLink')
 </script>

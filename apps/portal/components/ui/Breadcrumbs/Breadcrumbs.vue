@@ -1,5 +1,3 @@
 <template>
-  <div>
-    BreadCrumbs
-  </div>
+  <div>BreadCrumbs</div>
 </template>

@@ -1,5 +1,3 @@
 <template>
-  <div>
-    MobileSidebar
-  </div>
+  <div>MobileSidebar</div>
 </template>

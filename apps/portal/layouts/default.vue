@@ -65,14 +65,14 @@ const NuxtLink = resolveComponent('NuxtLink')
 <template>
   <UiNavbarTop extended filled>
     <nav class="hidden md:flex md:flex-row md:flex-nowrap">
-        <NuxtLazyHydrate when-visible>
-          <ButtonTmp v-show="cartLineItemsCount > 0" :is="NuxtLink" :to="paths.cart"></ButtonTmp>
-        </NuxtLazyHydrate>
-      </nav>     
+      <NuxtLazyHydrate when-visible>
+        <ButtonTmp v-show="cartLineItemsCount > 0" :is="NuxtLink" :to="paths.cart"></ButtonTmp>
+      </NuxtLazyHydrate>
+    </nav>
     <ButtonTmp @click="searchModalOpen">
       <SfIconSearch />
     </ButtonTmp>
-  </UiNavbarTop>  
+  </UiNavbarTop>
   <main>
     <slot />
   </main>
@@ -81,5 +81,5 @@ const NuxtLink = resolveComponent('NuxtLink')
   </NuxtLazyHydrate>
   <NuxtLazyHydrate when-visible>
     <Footer />
-  </NuxtLazyHydrate>  
+  </NuxtLazyHydrate>
 </template>
