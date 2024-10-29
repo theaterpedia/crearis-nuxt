@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-// this has to stand on top of the file, see: https://pruvious.com/docs/layouts
-import type { DefaultLayoutProps } from './types'
 import { defineLayout } from '#pruvious'
 
 import { useDisclosure, SfIconSearch } from '@crearis/vue'
@@ -30,9 +28,6 @@ defineLayout({
     'Video',
   ],
 })
-
-// eslint-disable-next-line vue/define-macros-order
-defineProps<DefaultLayoutProps>()
 
 const { isOpen: isAccountDropdownOpen, toggle: accountDropdownToggle } = useDisclosure()
 const { isOpen: isSearchModalOpen, open: searchModalOpen, close: searchModalClose } = useDisclosure()
