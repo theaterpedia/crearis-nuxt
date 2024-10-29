@@ -1,19 +1,19 @@
+import type { AsyncData } from 'nuxt/app'
+import type { H3Error } from 'h3'
 import type {
   AttributeValue,
   Cart,
   Category,
+  Country,
   Partner,
+  Post,
   Product,
   ProductVariant,
-  WishlistData,
-  Country,
-  Post,
   ShippingMethod,
+  WishlistData,
 } from './gql/graphql'
-import { H3Error } from 'h3'
-import { _AsyncData } from 'nuxt/dist/app/composables/asyncData'
 
-export type CategoryListResponse = _AsyncData<
+export type CategoryListResponse = AsyncData<
   {
     categories: {
       categories: Category[]
@@ -23,14 +23,14 @@ export type CategoryListResponse = _AsyncData<
   H3Error
 >
 
-export type CategoryResponse = _AsyncData<
+export type CategoryResponse = AsyncData<
   {
     category: Category
   },
   H3Error
 >
 
-export type ProductTemplateListResponse = _AsyncData<
+export type ProductTemplateListResponse = AsyncData<
   {
     products: {
       attributeValues: AttributeValue[]
@@ -43,76 +43,76 @@ export type ProductTemplateListResponse = _AsyncData<
   H3Error
 >
 
-export type ProductResponse = _AsyncData<
+export type ProductResponse = AsyncData<
   {
     product: Product
   },
   H3Error
 >
 
-export type ProductVariantResponse = _AsyncData<
+export type ProductVariantResponse = AsyncData<
   {
     productVariant: ProductVariant
   },
   H3Error
 >
 
-export type WishlistLoadResponse = _AsyncData<
+export type WishlistLoadResponse = AsyncData<
   {
     wishlistItems: WishlistData
   },
   H3Error
 >
 
-export type WishlistAddItemResponse = _AsyncData<
+export type WishlistAddItemResponse = AsyncData<
   {
     wishlistAddItem: WishlistData
   },
   H3Error
 >
 
-export type WishlistRemoveItemResponse = _AsyncData<
+export type WishlistRemoveItemResponse = AsyncData<
   {
     wishlistRemoveItem: WishlistData
   },
   H3Error
 >
 
-export type CartResponse = _AsyncData<
+export type CartResponse = AsyncData<
   {
     cart: Cart
   },
   H3Error
 >
 
-export type CartAddItemResponse = _AsyncData<
+export type CartAddItemResponse = AsyncData<
   {
     cartAddItem: Cart
   },
   H3Error
 >
-export type CartUpdateItemResponse = _AsyncData<
+export type CartUpdateItemResponse = AsyncData<
   {
     cartUpdateItem: Cart
   },
   H3Error
 >
 
-export type CartRemoveItemResponse = _AsyncData<
+export type CartRemoveItemResponse = AsyncData<
   {
     cartRemoveItem: Cart
   },
   H3Error
 >
 
-export type LoadUserQueryResponse = _AsyncData<
+export type LoadUserQueryResponse = AsyncData<
   {
     partner: Partner
   },
   H3Error
 >
 
-export type RegisterUserResponse = _AsyncData<
+export type RegisterUserResponse = AsyncData<
   {
     id: number
     name: string
@@ -122,14 +122,14 @@ export type RegisterUserResponse = _AsyncData<
   H3Error
 >
 
-export type LoginUserResponse = _AsyncData<
+export type LoginUserResponse = AsyncData<
   {
     partner: Partner
   },
   H3Error
 >
 
-export type ResetPasswordResponse = _AsyncData<
+export type ResetPasswordResponse = AsyncData<
   {
     id: number
     name: string
@@ -138,36 +138,36 @@ export type ResetPasswordResponse = _AsyncData<
   H3Error
 >
 
-export type PartnerResponse = _AsyncData<Partner, H3Error>
+export type PartnerResponse = AsyncData<Partner, H3Error>
 
-export type AddressesResponse = _AsyncData<
+export type AddressesResponse = AsyncData<
   {
     addresses: Partner[]
   },
   H3Error
 >
-export type AddAddressResponse = _AsyncData<
+export type AddAddressResponse = AsyncData<
   {
     addAddress: Partner
   },
   H3Error
 >
 
-export type UpdatePostResponse = _AsyncData<
+export type UpdatePostResponse = AsyncData<
   {
     updatePost: Post
   },
   H3Error
 >
 
-export type AddPostResponse = _AsyncData<
+export type AddPostResponse = AsyncData<
   {
     addPost: Post
   },
   H3Error
 >
 
-export type UpdatePasswordResponse = _AsyncData<
+export type UpdatePasswordResponse = AsyncData<
   {
     updatePassword: {
       id: number
@@ -176,28 +176,28 @@ export type UpdatePasswordResponse = _AsyncData<
   H3Error
 >
 
-export type UpdateMyAccountResponse = _AsyncData<
+export type UpdateMyAccountResponse = AsyncData<
   {
     updateMyAccount: Partner
   },
   H3Error
 >
 
-export type CreateUpdatePartnerResponse = _AsyncData<
+export type CreateUpdatePartnerResponse = AsyncData<
   {
     createUpdatePartner: Partner
   },
   H3Error
 >
 
-export type UpdateAddressResponse = _AsyncData<
+export type UpdateAddressResponse = AsyncData<
   {
     updateAddress: Partner
   },
   H3Error
 >
 
-export type CountryListResponse = _AsyncData<
+export type CountryListResponse = AsyncData<
   {
     countries: {
       countries: Country[]
@@ -207,14 +207,14 @@ export type CountryListResponse = _AsyncData<
   H3Error
 >
 
-export type DeliveryMethodListResponse = _AsyncData<
+export type DeliveryMethodListResponse = AsyncData<
   {
     deliveryMethods: ShippingMethod[]
   },
   H3Error
 >
 
-export type PaymentMethodListResponse = _AsyncData<
+export type PaymentMethodListResponse = AsyncData<
   {
     paymentAcquirers: PaymentAcquirer[]
   },

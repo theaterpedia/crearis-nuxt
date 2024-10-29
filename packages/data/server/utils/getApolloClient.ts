@@ -1,4 +1,6 @@
-import { createApiClient, MiddlewareConfig } from '@erpgap/odoo-sdk-api-client/server'
+import type { MiddlewareConfig } from '@erpgap/odoo-sdk-api-client/server'
+// @ts-ignore
+import { createApiClient } from '@erpgap/odoo-sdk-api-client/server'
 
 class ApolloClientConnection {
   private static _instance: any

@@ -1,4 +1,4 @@
-import { DocumentNode } from 'graphql/language'
+import type { DocumentNode } from 'graphql/language'
 import LoadUserQuery from './LoadUserQuery'
 import GetProductVariantQuery from './GetProductVariantQuery'
 import StockLotsQuery from './StockLotsQuery'

@@ -1,6 +1,6 @@
-import { getModuleOption } from '#pruvious/server'
 import parser from 'accept-language-parser'
 import { defineEventHandler, getHeader } from 'h3'
+import { getModuleOption } from '#pruvious/server'
 
 export default defineEventHandler((event) => {
   const options = getModuleOption('language')

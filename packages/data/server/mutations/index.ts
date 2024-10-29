@@ -1,4 +1,4 @@
-import { DocumentNode } from '@apollo/client'
+import type { DocumentNode } from '@apollo/client'
 import LoginMutation from './LoginMutation'
 import LogoutMutation from './LogoutMutation'
 import CreateNewAccountMutation from './CreateNewAccountMutation'

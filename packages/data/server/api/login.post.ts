@@ -1,3 +1,19 @@
+import type { Endpoints } from '@erpgap/odoo-sdk-api-client'
+// @ts-ignore
+import { createApiClient } from '@erpgap/odoo-sdk-api-client/server'
+import {
+  appendResponseHeader,
+  defineEventHandler,
+  getRequestHost,
+  getRequestIP,
+  parseCookies,
+  setCookie,
+  setResponseStatus,
+} from 'h3'
+import type { Partner } from '../../graphql'
+import { Queries } from '../../server/queries'
+import { Mutations } from '../../server/mutations'
+import { ensureUser } from '../../utils/user'
 import { catchFirstErrorMessage, isKeyOf, isObject } from '#pruvious'
 import {
   __,
@@ -11,22 +27,6 @@ import {
   stringSanitizer,
   stringValidator,
 } from '#pruvious/server'
-import { type Endpoints } from '@erpgap/odoo-sdk-api-client'
-// @ts-ignore
-import { createApiClient } from '@erpgap/odoo-sdk-api-client/server'
-import {
-  appendResponseHeader,
-  defineEventHandler,
-  getRequestHost,
-  getRequestIP,
-  parseCookies,
-  setCookie,
-  setResponseStatus,
-} from 'h3'
-import { type Partner } from '../../graphql'
-import { Queries } from '../../server/queries'
-import { Mutations } from '../../server/mutations'
-import { ensureUser } from '../../utils/user'
 
 export default defineEventHandler(async (event) => {
   const api: Endpoints = event.context.apolloClient.api

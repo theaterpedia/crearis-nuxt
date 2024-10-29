@@ -1,7 +1,7 @@
-import { query } from '#pruvious/server'
-import { type Endpoints } from '@erpgap/odoo-sdk-api-client'
+import type { Endpoints } from '@erpgap/odoo-sdk-api-client'
 import { defineEventHandler, getCookie } from 'h3'
-import { type Partner } from '../../graphql'
+import type { Partner } from '../../graphql'
+import { query } from '#pruvious/server'
 
 export default defineEventHandler(async (event) => {
   const api: Endpoints = event.context.apolloClient.api
