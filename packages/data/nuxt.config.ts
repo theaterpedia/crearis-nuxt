@@ -2,8 +2,7 @@
 import { defineNuxtConfig } from 'nuxt/config'
 
 // we want different behaviour if the package name is data-dev or theme-dev or studio-dev
-const pkgName = process.env.npm_package_name
-const isDevDir = pkgName === 'data-dev' || pkgName === 'theme-dev' || pkgName === 'studio-dev'
+const isDevDir = false
 
 export default defineNuxtConfig({
   typescript: {
@@ -63,7 +62,7 @@ export default defineNuxtConfig({
   },
   routeRules: {
     // #TODO: Check whether odoogap-config is working
-    /* 
+    /*
     "/": { swr: true },
     "/icons/**": {
       headers: { "cache-control": "public, max-age=31536000, immutable" },

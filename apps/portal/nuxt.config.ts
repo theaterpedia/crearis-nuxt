@@ -16,7 +16,7 @@ export default defineNuxtConfig({
     'nuxt-lazy-hydrate',
     '@nuxtjs/i18n',
   ],
-  routeRules: { '/': { prerender: true }, '/isr_no_ttl': { isr: true } },
+  routeRules: { '/': { prerender: true }, '*': { isr: true } },
 
   typescript: {
     typeCheck: false,
@@ -76,7 +76,7 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    /* plugins: ['plugins/content.ts'], */
+    plugins: ['plugins/content.ts'],
     prerender: {
       ignore: [
         '/product/',

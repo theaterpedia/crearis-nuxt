@@ -29,14 +29,17 @@
     "access": "public"
   },
   "scripts": {
+    "dev": "nuxi dev .playground",
+    "dev:prepare": "nuxt prepare .playground",
+    "build": "nuxt build .playground",
+    "postinstall": "pnpm run codegen && pnpm run dev:prepare",
     "lint": "nuxt typecheck && eslint .",
     "lint:fix": "nuxt typecheck && eslint . --fix",
     "lint:vsf": "nuxt typecheck && eslint --ext .vue,.js,.ts .",
     "lint:fix_vsf": "eslint --ext .vue,.js,.ts . --fix",
     "release": "release-it",
     "test:deactivated": "vitest run",
-    "codegen": "graphql-codegen",
-    "predev": "pnpm codegen"
+    "codegen": "graphql-codegen"
   },
   "dependencies": {
     "@vue-storefront/sdk": "^2.0.0",
