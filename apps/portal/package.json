@@ -32,6 +32,7 @@
   },
   "devDependencies": {
     "magicast": "^0.3.4",
+    "cssnano": "^7.0.0",
     "@crearis/theme": "workspace:*",
     "@crearis/ui": "workspace:*",
     "@crearis/data": "workspace:*",

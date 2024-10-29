@@ -16,7 +16,7 @@ export default defineNuxtConfig({
     'nuxt-lazy-hydrate',
     '@nuxtjs/i18n',
   ],
-  routeRules: { '/': { prerender: true }, '*': { isr: true } },
+  routeRules: { '/': { prerender: false } },
 
   // TODO: Remove this workaround (may cause issues with vitest?)
   hooks: {
@@ -24,6 +24,17 @@ export default defineNuxtConfig({
       // @see https://github.com/nuxt/cli/issues/169#issuecomment-1729300497
       // Workaround for https://github.com/nuxt/cli/issues/169
       process.exit(0)
+    },
+  },
+
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+      cssnano:
+        process.env.NODE_ENV === 'production'
+          ? { preset: ['default', { discardComments: { removeAll: true } }] }
+          : false, // disable cssnano when not in production
     },
   },
 
