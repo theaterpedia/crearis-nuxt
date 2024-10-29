@@ -6,7 +6,6 @@ defineBlock({
   label: 'Cart',
 })
 
-// eslint-disable-next-line vue/define-macros-order
 defineProps({})
 
 const NuxtLink = resolveComponent('NuxtLink')

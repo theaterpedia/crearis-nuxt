@@ -7,7 +7,6 @@ defineBlock({
   label: 'Breadcrumbs',
 })
 
-// eslint-disable-next-line vue/define-macros-order
 defineProps({
   breadcrumbs: repeaterField({
     subfields: {

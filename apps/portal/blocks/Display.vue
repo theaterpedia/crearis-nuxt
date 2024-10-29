@@ -6,7 +6,6 @@ defineBlock({
   label: 'Display',
 })
 
-// eslint-disable-next-line vue/define-macros-order
 defineProps({
   cards: repeaterField({
     subfields: {

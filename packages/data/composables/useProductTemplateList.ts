@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+
 import type { AttributeValue, Category, Product, ProductTemplateListResponse, QueryProductsArgs } from '../graphql'
 import { QueryName } from '../server/queries'
 

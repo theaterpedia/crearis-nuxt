@@ -33,13 +33,13 @@
     "codegen": "pnpm --filter=data codegen"
   },
   "devDependencies": {
-    "@vitest/ui": "^2.0.5",
+    "@vitest/ui": "^2.1.4",
     "prettier": "^3.3.3",
     "pruvious": "3.13.2",
     "prettier-plugin-organize-attributes": "^1.0.0",
     "prettier-plugin-tailwindcss": "^0.6.5",
     "vite": "^5.3.5",
-    "vitest": "^2.0.5"
+    "vitest": "^2.1.4"
   },
   "packageManager": "pnpm@9.4.0",
   "resolutions": {

@@ -3,7 +3,6 @@ import { defineBlock, imageField, linkField, textField, editorField, switchField
 
 defineBlock({ icon: 'Mouse' })
 
-// eslint-disable-next-line vue/define-macros-order
 defineProps({
   showText: switchField({
     default: false,

@@ -5,7 +5,6 @@ defineBlock({
   icon: 'Video',
 })
 
-// eslint-disable-next-line vue/define-macros-order
 defineProps({
   image: imageField({
     required: true,

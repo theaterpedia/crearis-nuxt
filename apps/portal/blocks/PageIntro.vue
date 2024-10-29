@@ -5,7 +5,6 @@ defineBlock({
   icon: 'H1',
 })
 
-// eslint-disable-next-line vue/define-macros-order
 defineProps({
   title: textField({ required: true }),
   kicker: textField(),

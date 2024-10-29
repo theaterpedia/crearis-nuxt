@@ -5,7 +5,6 @@ defineBlock({
   icon: 'Pencil',
 })
 
-// eslint-disable-next-line vue/define-macros-order
 defineProps({
   text: editorField({
     required: true,
