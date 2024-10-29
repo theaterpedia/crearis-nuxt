@@ -41,15 +41,15 @@
   },
   "devDependencies": {
     "@laynezh/vite-plugin-lib-assets": "^0.5.23",
-    "@nuxt/schema": "^3.12.4",
+    "@nuxt/schema": "^3.13.2",
     "@tsconfig/node20": "^20.1.4",
     "@types/node": "^20.14.12",
     "@vitejs/plugin-vue": "^5.1.0",
     "@vue/tsconfig": "^0.5.1",
-    "nuxt": "^3.12.4",
+    "nuxt": "^3.13.2",
     "vite": "^5.3.5",
     "vite-plugin-lib-inject-css": "^2.1.1",
     "vite-plugin-static-copy": "^1.0.6",
-    "vue-tsc": "^2.0.29"
+    "vue-tsc": "^2.1.6"
   }
 }
