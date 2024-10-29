@@ -12,7 +12,6 @@ export default defineNuxtConfig({
   modules: [
     // '@nuxt/content',
     '@nuxt/image',
-    'nuxt-viewport',
     'nuxt-lazy-hydrate',
     '@nuxtjs/i18n',
   ],
