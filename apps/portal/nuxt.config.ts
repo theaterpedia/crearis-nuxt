@@ -16,7 +16,8 @@ export default defineNuxtConfig({
     'nuxt-lazy-hydrate',
     '@nuxtjs/i18n',
   ],
-  routeRules: { '/': { prerender: true } },
+  routeRules: { '/': { prerender: true }, '/isr_no_ttl': { isr: true } },
+
   typescript: {
     typeCheck: false,
   },
@@ -44,7 +45,7 @@ export default defineNuxtConfig({
         provider: '@crearis/data/providers/odoo-provider.ts',
       },
     },
-  }, 
+  },
 
   runtimeConfig: {
     shouldByPassCacheQueryNames: ['LoadCartQuery', 'WishlistLoadQuery', 'GetAddressesQuery'],
@@ -75,7 +76,7 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    plugins: ['plugins/content.ts'],
+    /* plugins: ['plugins/content.ts'], */
     prerender: {
       ignore: [
         '/product/',
