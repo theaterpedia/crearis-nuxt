@@ -14,6 +14,7 @@
   ],
   "type": "module",
   "scripts": {
+    "start": "node apps/portal/.output/server/index.mjs",
     "dev:theme": "pnpm --filter=theme dev",
     "dev:portal": "pnpm --filter=portal dev",
     "dev:ui": "pnpm --filter=ui dev",
@@ -25,7 +26,7 @@
     "build": "pnpm --filter=portal build",
     "lint:portal": "pnpm --filter=portal lint",
     "format": "prettier --write .",
-    "postinstall": "pnpm build:ui && pnpm codegen",
+    "postinstall": "pnpm build:ui && pnpm codegen && pnpm --filter=portal postinstall",
     "preview": "pnpm --filter=portal preview",
     "test": "vitest",
     "testui": "vitest --ui",
