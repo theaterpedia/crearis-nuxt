@@ -4,7 +4,7 @@ import { defineLayout } from '#pruvious'
 import { useDisclosure, SfIconSearch } from '@crearis/vue'
 
 defineLayout({
-  label: 'default',
+  label: 'default-copy',
   // @ts-expect-error #TODO _05 remove once components are created
   allowedBlocks: [
     'ProductSlider',
