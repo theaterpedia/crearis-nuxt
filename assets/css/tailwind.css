@@ -1,3 +1,38 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer components {
+  .narrow-container {
+    @apply xxl:px-0 mx-auto max-w-[1336px] px-4 md:px-6 xl:px-8;
+  }
+  .scrollbar-hidden {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      @apply /* for Chrome, Safari, and Opera */ hidden;
+    }
+  }
+  .grid-areas-product-page {
+    grid-template-areas:
+      'left-top right'
+      'left-bottom right';
+  }
+  .grid-cols-product-page {
+    grid-template-columns: minmax(56%, 500px) auto;
+  }
+  .grid-in-right {
+    grid-area: right;
+  }
+  .grid-in-left-bottom {
+    grid-area: left-bottom;
+  }
+  .top-index {
+    z-index: 10 !important;
+  }
+}
