@@ -1,8 +1,24 @@
-# Build outputs
-.nuxt
+# dev/build outputs
 .output
+.data
+.nuxt
+.nitro
+.cache
 dist
 tmp
+
+# Pruvious dev/build outputs
+.autoload.sql
+.pruvious
+.ssh.*
+/.uploads
+/public/uploads
+pruvious.db
+pruvious.db-journal
+
+# Logs
+logs
+*.log
 
 # Node dependencies
 node_modules
@@ -13,6 +29,8 @@ apps/home/.obsidian
 
 # Misc
 .DS_Store
+.fleet
+.idea
 
 # Local env files
 .env
