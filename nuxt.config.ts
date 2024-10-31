@@ -15,6 +15,9 @@ export default defineNuxtConfig({
   build: {
     transpile: ['tslib', '@apollo/client', '@apollo/client/core', '@crearis/odoo-sdk-api-client', 'vue-toastification'],
   },
+  tailwindcss: {
+    viewer: false,
+  },  
 
   // sets the keys of the .env file that will be exposed to the client side
   runtimeConfig: {

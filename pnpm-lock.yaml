@@ -59,6 +59,9 @@ importers:
       vue-router:
         specifier: ^4.4.5
         version: 4.4.5(vue@3.5.12(typescript@5.5.4))
+      vue-slider-component:
+        specifier: 4.1.0-beta.7
+        version: 4.1.0-beta.7
       vue-toastification:
         specifier: next
         version: 2.0.0-rc.5(vue@3.5.12(typescript@5.5.4))
