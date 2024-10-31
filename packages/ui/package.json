@@ -28,7 +28,8 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && vue-tsc --project tsconfig.build.json"
+    "build": "vite build && vue-tsc --project tsconfig.build.json",
+    "postinstall": "pnpm run build"
   },
   "dependencies": {
     "@nuxt/kit": "^3.13.2",
