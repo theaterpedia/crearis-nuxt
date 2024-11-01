@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { SfButton } from "@crearis/vue";
+import { SfButton, SfIconShoppingCart } from "@crearis/vue";
 
 const NuxtLink = resolveComponent("NuxtLink");
 
@@ -16,10 +16,7 @@ const { isAuthenticated } = useAuth();
     square
   >
     <template #prefix>
-      <Icon
-        :name="isAuthenticated ? 'ion:person' : 'ion:person-outline'"
-        size="22px"
-      />
+      <SfIconShoppingCart />
     </template>
   </SfButton>
   <!-- 

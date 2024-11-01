@@ -25,7 +25,7 @@ watch(
 </script>
 <template>
   <label class="md:col-span-3">
-    <UiFormLabel>{{ $t("form.stateLabel") }}</UiFormLabel>
+    <UiFormLabel>form.stateLabel</UiFormLabel>
     <CustomSfSelect
       v-model="model"
       name="state"
@@ -33,7 +33,7 @@ watch(
       required
     >
       <option key="placeholder" :value="null">
-        {{ $t("form.selectPlaceholder") }}
+        form.selectPlaceholder
       </option>
       <option v-for="state in states" :value="state?.id">
         {{ state.name }}

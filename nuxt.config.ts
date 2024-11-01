@@ -5,7 +5,6 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/google-fonts',
     'nuxt-lazy-hydrate',
-    '@nuxt/icon',
     '@nuxt/image',
     '@nuxtjs/i18n',
     '@nuxtjs/tailwindcss',
@@ -22,25 +21,17 @@ export default defineNuxtConfig({
     },
   },
   build: {
-    transpile: ['tslib', '@apollo/client', '@apollo/client/core', '@crearis/odoo-sdk-api-client', 'vue-toastification'],
+    transpile: [
+      'tslib',
+      '@apollo/client',
+      '@nuxtjs/i18n',
+      '@apollo/client/core',
+      '@crearis/odoo-sdk-api-client',
+      'vue-toastification',
+    ],
   },
   tailwindcss: {
     viewer: false,
-  },
-  i18n: {
-    locales: [
-      {
-        code: 'en',
-        file: 'en.json',
-      },
-      {
-        code: 'de',
-        file: 'de.json',
-      },
-    ],
-    lazy: true,
-    langDir: 'lang',
-    defaultLocale: 'de',
   },
 
   // sets the keys of the .env file that will be exposed to the client side
@@ -85,5 +76,21 @@ export default defineNuxtConfig({
         auth: false,
       },
     },
+  },
+  i18n: {
+    locales: [
+      {
+        code: 'en',
+        file: 'en.json',
+      },
+      {
+        code: 'de',
+        file: 'de.json',
+      },
+    ],
+    strategy: 'no_prefix',
+    lazy: true,
+    langDir: 'lang',
+    defaultLocale: 'de',
   },
 })

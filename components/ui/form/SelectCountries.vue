@@ -8,7 +8,7 @@ const model = defineModel({ default: 0 });
 </script>
 <template>
   <label class="md:col-span-3">
-    <UiFormLabel>{{ $t("form.countryLabel") }}</UiFormLabel>
+    <UiFormLabel>form.countryLabel</UiFormLabel>
     <CustomSfSelect
       v-model="model"
       name="country"
@@ -16,7 +16,7 @@ const model = defineModel({ default: 0 });
       required
     >
       <option key="placeholder" :value="null">
-        {{ $t("form.selectPlaceholder") }}
+        form.selectPlaceholder
       </option>
       <option
         v-for="country in countries?.countries"

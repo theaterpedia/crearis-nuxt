@@ -42,7 +42,7 @@ const NuxtLink = resolveComponent('NuxtLink')
             >
               <template #trigger>
                 <ButtonTmp
-                  :aria-label="$t('breadcrumbsDropdownText')"
+                  aria-label=breadcrumbsDropdownText
                   @click="toggle"
                   data-testid="breadcrumbs-dropdown-button"
                   square

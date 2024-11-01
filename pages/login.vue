@@ -6,12 +6,15 @@ import {
   SfInput,
   SfLoaderCircular,
 } from "@crearis/vue";
+import { useI18n } from "#imports"
 
 definePageMeta({
   layout: false,
 });
 
-const { login, loading } = useAuth();
+const { t } = useI18n();
+
+const { login, loading, logout, isAuthenticated } = useAuth();
 
 const email = ref("");
 const password = ref("");
@@ -22,17 +25,21 @@ const handleLogin = async () => {
   await login({ email: email.value, password: password.value });
 };
 
+const handleLogout = async () => {
+  await logout()
+}
+
 const NuxtLink = resolveComponent("NuxtLink");
 </script>
 
 <template>
-  <NuxtLayout name="auth" :heading="$t('auth.login.heading')">
+  <NuxtLayout name="auth" heading="auth.login.heading">
     <form
       class="border-neutral-200 md:border flex flex-col gap-4 md:p-6 rounded-md"
       @submit.prevent="handleLogin"
     >
       <label>
-        <UiFormLabel>{{ $t("form.emailLabel") }}</UiFormLabel>
+        <UiFormLabel>form.emailLabel</UiFormLabel>
         <SfInput
           v-model="email"
           name="email"
@@ -43,7 +50,7 @@ const NuxtLink = resolveComponent("NuxtLink");
       </label>
 
       <label>
-        <UiFormLabel>{{ $t("form.passwordLabel") }}</UiFormLabel>
+        <UiFormLabel>form.passwordLabel</UiFormLabel>
         <UiFormPasswordInput
           v-model="password"
           name="password"
@@ -54,7 +61,7 @@ const NuxtLink = resolveComponent("NuxtLink");
 
       <label class="mt-2 flex items-center gap-2">
         <SfCheckbox v-model="rememberMe" name="rememberMe" />
-        {{ $t("auth.login.rememberMeLabel") }}
+        auth.login.rememberMeLabel
       </label>
 
       <SfButton type="submit" class="mt-2" :disabled="isLoading">
@@ -64,16 +71,25 @@ const NuxtLink = resolveComponent("NuxtLink");
           size="base"
         />
         <span v-else>
-          {{ $t("auth.login.submitLabel") }}
+          auth.login.submitLabel
         </span>
       </SfButton>
-      <SfButton
+    <SfButton
+        :tag="NuxtLink"
+        v-show="isAuthenticated"
+        @click="handleLogout()"
+        variant="tertiary"
+        data-testid="logout-page-reset-button"
+      >
+        Logout
+    </SfButton>
+    <SfButton
         :tag="NuxtLink"
         to="/reset-password"
         variant="tertiary"
         data-testid="login-page-reset-button"
       >
-        {{ $t("auth.login.forgotPasswordLabel") }}
+        auth.login.forgotPasswordLabel
       </SfButton>
     </form>
 

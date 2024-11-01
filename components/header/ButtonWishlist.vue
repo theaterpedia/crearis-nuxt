@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { SfButton, SfBadge } from "@crearis/vue";
+import { SfButton, SfBadge, SfIconShoppingCart } from "@crearis/vue";
 
 const { toggleWishlistSideBar } = useWishlistUiState();
 const { loadWishlist, wishlistTotalItems } = useWishlist();
@@ -22,10 +22,7 @@ onMounted(async () => {
     @click="handleOpenWishListSidebar"
   >
     <template #prefix>
-      <Icon
-        :name="wishlistTotalItems > 0 ? 'mdi:heart' : 'mdi:heart-outline'"
-        size="22px"
-      />
+      <SfIconShoppingCart />
       <SfBadge
         :content="wishlistTotalItems"
         class="outline outline-primary-700 bg-white !text-neutral-900 group-hover:outline-primary-800 group-active:outline-primary-900 flex justify-center"

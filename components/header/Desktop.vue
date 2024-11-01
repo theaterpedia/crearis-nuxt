@@ -4,6 +4,8 @@ import {
   SfDrawer,
   SfInput,
   SfListItem,
+  SfIconShoppingCart,
+  SfIconSearch,
   useDisclosure,
   useTrapFocus,
 } from "@crearis/vue";
@@ -73,7 +75,7 @@ onClickOutside(menuRef, () => {
           @click="toggle()"
         >
           <template #suffix>
-            <Icon name="ion:chevron-down-sharp" />
+            <SfIconShoppingCart />
           </template>
           <span class="hidden md:inline-flex whitespace-nowrap px-2"
             >Browse products</span
@@ -150,11 +152,7 @@ onClickOutside(menuRef, () => {
                       class="lg:absolute lg:right-0 lg:top-0 hover:bg-white active:bg-white"
                       @click="close()"
                     >
-                      <Icon
-                        name="ion:close"
-                        class="text-neutral-500"
-                        size="20px"
-                      />
+                      <SfIconSearch />
                     </SfButton>
                   </div>
                 </SfDrawer>
@@ -187,7 +185,7 @@ onClickOutside(menuRef, () => {
                   type="submit"
                   class="rounded-l-none hover:bg-transparent active:bg-transparent"
                 >
-                  <Icon name="ion:search" size="20px" />
+                  <SfIconSearch />
                 </SfButton>
               </span>
             </template>
