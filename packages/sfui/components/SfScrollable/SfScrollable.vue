@@ -10,18 +10,10 @@ import {
 } from '../../utils';
 
 import {
-  SfIconChevronLeft,
-  SfIconChevronRight,
-} from '../SfIcons';
-
-import {
   useScrollable,
 } from '../../composables/useScrollable';
 
 
-import {
-  SfButton,
-} from '../SfButton';
 
 import {
   SfScrollableDirection,
@@ -32,7 +24,7 @@ import {
   type SfScrollableOnNextData,
   type SfScrollableOnDragEndData,
   type ScrollableOptions,
-} from '../../composables/useScrollable';
+} from '../../utils/ScrollableTypes';
 
 const props = defineProps({
   tag: {

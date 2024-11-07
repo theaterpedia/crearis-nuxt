@@ -11,7 +11,6 @@ const sizeClasses = {
 <script lang="ts" setup>
 import { computed, toRefs, type PropType } from 'vue';
 import { clamp, roundToNearest } from '@storefront-ui/shared';
-import { SfIconStarFilled, SfIconStar, SfIconStarHalf } from '../SfIcons';
 import { SfRatingSize } from './types';
 
 const props = defineProps({

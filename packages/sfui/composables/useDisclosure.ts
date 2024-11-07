@@ -1,6 +1,6 @@
 import { syncRefs } from '@vueuse/core'
 import { ref, isRef, unref } from 'vue'
-import type { UseDisclosureOptions } from './types'
+import type { UseDisclosureOptions } from '../utils/DisclosureTypes'
 
 export function useDisclosure({ initialValue = false }: UseDisclosureOptions = {}) {
   const isOpen = ref<boolean>(unref(initialValue))

@@ -1,8 +1,9 @@
 import { unrefElement } from '@vueuse/core'
-import { CheckOptions, FocusableElement, tabbable, TabbableOptions } from 'tabbable'
+import { tabbable } from 'tabbable'
+import type { CheckOptions, FocusableElement, TabbableOptions } from 'tabbable'
 import { type Ref, ref, watch } from 'vue'
 import { focusNext, focusPrev, isTab, isTabAndShift } from '@storefront-ui/shared'
-import { waitForNextRender } from '../../utils'
+import { waitForNextRender } from '../utils'
 
 export enum InitialFocusType {
   autofocus = 'autofocus',

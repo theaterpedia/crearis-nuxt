@@ -1,8 +1,8 @@
 import { computed, unref } from 'vue'
 import { onClickOutside, onKeyStroke, type MaybeElementRef, type MaybeComputedRef } from '@vueuse/core'
 import { flip, offset, shift } from '@floating-ui/vue'
-import { type UseDropdownOptions } from './types'
-import { type usePopover } from '../../composables/usePopover'
+import { type UseDropdownOptions } from '../utils/DropdownTypes'
+import { usePopover } from './usePopover'
 
 export function useDropdown(options: UseDropdownOptions) {
   const { onClose, placement = 'bottom', middleware, isOpen, ...popoverOptions } = options

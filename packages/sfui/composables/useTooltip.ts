@@ -1,8 +1,8 @@
 import { ref, unref, computed } from 'vue'
 import { arrow, flip, offset, shift, type ReferenceElement, type Side } from '@floating-ui/vue'
-import { type UseTooltipOptions } from './types'
-import { type usePopover } from '../usePopover'
-import { type useDisclosure } from '../useDisclosure'
+import { type UseTooltipOptions } from '../utils/TooltipTypes'
+import { type usePopover } from './usePopover'
+import { type useDisclosure } from './useDisclosure'
 
 export function useTooltip<ReferenceEl extends ReferenceElement = ReferenceElement>(
   options?: UseTooltipOptions<ReferenceEl>,

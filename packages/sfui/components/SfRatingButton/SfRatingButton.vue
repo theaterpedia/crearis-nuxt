@@ -1,10 +1,5 @@
 <script lang="ts" setup>
 import { type PropType, computed, ref, toRefs } from 'vue';
-import {
-  SfIconStar,
-  SfIconStarFilled,
-  SfIconSize,
-} from '../SfIcons';
 
 import {
   SfRatingButtonSize,

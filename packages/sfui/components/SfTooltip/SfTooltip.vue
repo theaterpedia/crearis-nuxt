@@ -2,7 +2,7 @@
 import { type PropType, toRefs } from 'vue';
 import type { Middleware } from '@floating-ui/vue';
 import { useTooltip } from '../../composables/useTooltip';
-import { type SfPopoverPlacement, type SfPopoverStrategy } from '../../composables/usePopover';
+import { type SfPopoverPlacement, type SfPopoverStrategy } from '../../utils/PopoverTypes';
 
 const props = defineProps({
   placement: {

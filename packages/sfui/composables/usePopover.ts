@@ -1,6 +1,6 @@
 import { autoUpdate, type FloatingElement, useFloating, type ReferenceElement } from '@floating-ui/vue'
 import { ref, computed } from 'vue'
-import { SfPopoverPlacement, SfPopoverStrategy, type UsePopoverOptions } from './types'
+import { SfPopoverPlacement, SfPopoverStrategy, type UsePopoverOptions } from '../utils/PopoverTypes'
 
 export function usePopover<ReferenceEl extends ReferenceElement = ReferenceElement>(
   options: UsePopoverOptions<ReferenceEl>,

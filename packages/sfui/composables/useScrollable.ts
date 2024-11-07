@@ -1,4 +1,4 @@
-import { type UseScrollableOptions, Scrollable } from './types'
+import { type UseScrollableOptions, Scrollable } from '../utils/ScrollableTypes'
 import { type ComputedRef, ref, watch, computed } from 'vue'
 import { noop, unrefElement } from '@vueuse/core'
 

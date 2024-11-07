@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { type PropType, toRefs } from 'vue';
 import type { Middleware } from '@floating-ui/vue';
-import { type SfPopoverPlacement, type SfPopoverStrategy } from '../../composables/usePopover';
+import { type SfPopoverPlacement, type SfPopoverStrategy } from '../../utils/PopoverTypes';
 import { useDropdown } from '../../composables/useDropdown';
 
 const props = defineProps({
