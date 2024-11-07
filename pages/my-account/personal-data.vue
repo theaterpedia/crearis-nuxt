@@ -54,6 +54,12 @@ onMounted(async () => {
 });
 </script>
 <template>
+  <TmpConstruction>
+    <h1>
+      Under Construction
+    </h1>
+  </TmpConstruction>
+  <h1>{{ $t("account.accountSettings.personalData.title") }}</h1>
   <UiDivider class="w-screen -mx-4 md:col-span-3 md:w-auto md:mx-0" />
   <AccountProfileData
     class="col-span-3"

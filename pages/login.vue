@@ -34,6 +34,11 @@ const NuxtLink = resolveComponent("NuxtLink");
 
 <template>
   <NuxtLayout name="auth" heading="auth.login.heading">
+    <TmpConstruction warning>
+      <p>
+        Under Construction - Under Construction - Under Construction - Under Construction - Under Construction - Under Construction - Under Construction
+      </p>
+    </TmpConstruction>
     <form
       class="border-neutral-200 md:border flex flex-col gap-4 md:p-6 rounded-md"
       @submit.prevent="handleLogin"
