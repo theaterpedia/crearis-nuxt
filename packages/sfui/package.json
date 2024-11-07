@@ -1,34 +1,11 @@
 {
   "name": "@crearis/sfui",
   "version": "0.0.9",
-  "description": "a variant of @storefront-ui/vue with some customizations",
+  "description": "reduced main parts of @storefront-ui/vue into a nuxt-layer",
   "license": "MIT",
   "type": "module",
   "main": "./nuxt.config.ts",
-  "sideEffects": false,
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs.js"
-    },
-    "./tailwind-config": {
-      "types": "./dist/tailwind-config.d.ts",
-      "import": "./dist/tailwind-config.mjs",
-      "require": "./dist/tailwind-config.cjs.js"
-    },
-    "./*": "./*"
-  },
-  "typesVersions": {
-    "*": {
-      "tailwind-config": [
-        "dist/tailwind-config"
-      ]
-    }
-  },
-  "source": "index.ts",
   "scripts": {
-    "build": "vite build",
     "dev": "nuxi dev .playground",
     "dev:prepare": "nuxt prepare .playground",
     "postinstall": "pnpm run dev:prepare"
@@ -43,11 +20,7 @@
     "tabbable": "^6.1.1"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5.1.0",
     "prettier": "^3.3.0",
-    "vite": "^5.4.0",
-    "vite-plugin-dts": "^4.0.0",
-    "vite-tsconfig-paths": "^5.0.0",
     "vue-tsc": "^2.0.2",
     "@crearis/sfui-ts-config": "workspace:*"
   },
