@@ -101,15 +101,6 @@
 </template>
 
 <script setup>
-import {
-  SfIconBase,
-  SfIconPerson,
-  SfIconShoppingCart,
-  SfListItem,
-  SfButton,
-  SfIconArrowBack,
-  SfIconChevronRight,
-} from "@crearis/vue";
 
 import { defineLayout } from '#pruvious'
 

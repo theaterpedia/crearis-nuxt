@@ -3,6 +3,8 @@
   "version": "0.0.9",
   "description": "a variant of @storefront-ui/vue with some customizations",
   "license": "MIT",
+  "type": "module",
+  "main": "./nuxt.config.ts",
   "sideEffects": false,
   "exports": {
     ".": {
@@ -25,18 +27,16 @@
     }
   },
   "source": "index.ts",
-  "main": "dist/index.cjs.js",
-  "types": "dist/index.d.ts",
   "scripts": {
     "build": "vite build",
-    "prettier": "prettier --log-level warn --no-error-on-unmatched-pattern \"{components,shared,composables}/**/*.{ts,vue}\""
+    "dev": "nuxi dev .playground",
+    "dev:prepare": "nuxt prepare .playground",
+    "postinstall": "pnpm run dev:prepare"
   },
-  "files": [
-    "dist"
-  ],
   "dependencies": {
     "@crearis/tailwind-config": "workspace:*",
     "@floating-ui/vue": "^1.1.0",
+    "@nuxtjs/tailwindcss": "^6.12.1",
     "@storefront-ui/shared": "^2.5.0",
     "@vueuse/core": "^10.9.0",
     "jw-paginate": "^1.0.4",

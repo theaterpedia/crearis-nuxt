@@ -9,7 +9,5 @@
 </template>
 
 <script lang="ts" setup>
-import { SfInput, SfIconVisibility, SfIconVisibilityOff } from '@crearis/vue';
-
 const isPasswordVisible = ref<boolean>();
 </script>

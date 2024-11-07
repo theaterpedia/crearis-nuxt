@@ -5,8 +5,8 @@ export default {
 </script>
 <script lang="ts" setup>
 import { type PropType, computed } from 'vue';
-import { SfSelectSize } from '@storefront-ui/vue';
-import { SfIconExpandMore } from '@storefront-ui/vue';
+import { SfSelectSize } from './types';
+import { SfIconExpandMore } from '../SfIcons';
 import { useDisclosure } from '../../composables/useDisclosure';
 import { useFocusVisible } from '../../composables/useFocusVisible';
 

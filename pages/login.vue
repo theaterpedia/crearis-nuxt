@@ -1,11 +1,4 @@
 <script setup lang="ts">
-import {
-  SfButton,
-  SfLink,
-  SfCheckbox,
-  SfInput,
-  SfLoaderCircular,
-} from "@crearis/vue";
 import { useI18n } from "#imports"
 
 definePageMeta({

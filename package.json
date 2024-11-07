@@ -17,7 +17,8 @@
     "start": "node .output/server/index.mjs ",
     "build": "nuxt build --log-level=verbose",
     "codegen": "graphql-codegen",
-    "prepare": "nuxt prepare",
+    "prepare:main": "nuxt prepare",
+    "prepare": "pnpm prepare:main",
     "dev": "pruvious dev",
     "dev:theme": "pnpm --filter=theme dev",
     "dev:ui": "pnpm --filter=ui dev",
@@ -33,8 +34,8 @@
   "dependencies": {
     "@apollo/client": "^3.8.6",
     "@azure/msal-node": "^2.7.0",
-    "@crearis/typography": "^0.0.8",
-    "@crearis/vue": "^0.0.8",
+    "@crearis/sfui": "workspace:*",
+    "@crearis/tailwind-config": "workspace:*",
     "@nuxt/image": "^1.8.1",
     "@vue-storefront/sdk": "^2.0.0",
     "@vueuse/core": "^11.0.0",
@@ -63,6 +64,7 @@
     "prettier": "^3.3.3",
     "prettier-plugin-organize-attributes": "^1.0.0",
     "prettier-plugin-tailwindcss": "^0.6.5",
+    "tw-colors": "^3.3.1",
     "vite": "^5.3.5",
     "vitest": "^2.1.2"
   },

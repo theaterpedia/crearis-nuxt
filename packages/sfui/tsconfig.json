@@ -1,5 +1,5 @@
 {
-  "extends": "@crearis/sfui-ts-config",
+  "extends": "./.playground/.nuxt/tsconfig.json",
   "compilerOptions": {
     "outDir": "./dist",
     "strict": true,
@@ -20,7 +20,7 @@
       "vite/client"
     ],
     "paths": {
-      "@storefront-ui/vue": ["./index.ts"]
+      "@crearis/sfui": ["./index.ts"]
     }
   },
   "include": [

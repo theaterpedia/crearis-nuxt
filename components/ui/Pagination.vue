@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { SfButton, SfIconChevronLeft, SfIconChevronRight, usePagination } from '@crearis/vue';
 
 const route = useRoute();
 const router = useRouter();

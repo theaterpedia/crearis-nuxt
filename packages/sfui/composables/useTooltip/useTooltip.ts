@@ -1,6 +1,8 @@
-import { ref, unref, computed } from 'vue';
-import { arrow, flip, offset, shift, type ReferenceElement, type Side } from '@floating-ui/vue';
-import { type UseTooltipOptions, usePopover, useDisclosure } from '@storefront-ui/vue';
+import { ref, unref, computed } from 'vue'
+import { arrow, flip, offset, shift, type ReferenceElement, type Side } from '@floating-ui/vue'
+import { type UseTooltipOptions } from './types'
+import { type usePopover } from '../usePopover'
+import { type useDisclosure } from '../useDisclosure'
 
 export function useTooltip<ReferenceEl extends ReferenceElement = ReferenceElement>(
   options?: UseTooltipOptions<ReferenceEl>,
@@ -11,9 +13,9 @@ export function useTooltip<ReferenceEl extends ReferenceElement = ReferenceEleme
     middleware,
     arrowSize = '6px',
     ...popoverOptions
-  } = options || {};
-  const arrowRef = ref<HTMLElement>();
-  const { isOpen, open, close, toggle } = useDisclosure();
+  } = options || {}
+  const arrowRef = ref<HTMLElement>()
+  const { isOpen, open, close, toggle } = useDisclosure()
 
   const {
     style: floatingStyle,
@@ -27,12 +29,12 @@ export function useTooltip<ReferenceEl extends ReferenceElement = ReferenceEleme
     strategy,
     middleware: computed(() => [...(unref(middleware) || [offset(8), shift(), flip()]), arrow({ element: arrowRef })]),
     ...popoverOptions,
-  });
+  })
 
   function arrowStyle() {
     if (middlewareData.value.arrow) {
-      const { x: arrowX, y: arrowY } = middlewareData.value.arrow;
-      const basePlacement = unref(placement).split('-')[0] as Side;
+      const { x: arrowX, y: arrowY } = middlewareData.value.arrow
+      const basePlacement = unref(placement).split('-')[0] as Side
       return {
         position: 'absolute' as const,
         width: arrowSize,
@@ -45,26 +47,26 @@ export function useTooltip<ReferenceEl extends ReferenceElement = ReferenceEleme
           bottom: 'top',
           left: 'right',
         }[basePlacement]]: `calc(${arrowSize} / -2)`,
-      };
+      }
     }
-    return {};
+    return {}
   }
 
   const triggerProps = computed(() => ({
     ref: referenceRef,
     onMouseenter: open,
     onMouseleave: close,
-  }));
+  }))
 
   const tooltipProps = computed(() => ({
     ref: floatingRef,
     style: floatingStyle.value,
-  }));
+  }))
 
   const arrowProps = computed(() => ({
     ref: arrowRef,
     style: arrowStyle(),
-  }));
+  }))
 
   return {
     referenceRef,
@@ -81,5 +83,5 @@ export function useTooltip<ReferenceEl extends ReferenceElement = ReferenceEleme
     triggerProps,
     tooltipProps,
     arrowProps,
-  };
+  }
 }

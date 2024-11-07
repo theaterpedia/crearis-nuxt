@@ -14,7 +14,7 @@ const logoClass = 'text-content'
 
 <template>
   <div :class="props.padding ? '' : 'pl-2 md:pl-4 lg:pl-6 xl:pl-8 ' + 'logoClass font-semibold dark:bg-black'">
-    <h2 v-show="extended" :class="props.logoSize === 'default' ? 'font-mona invisible sm:visible text-sm tracking-tight lg:text-lg xl:tracking-tighter xl:text-2xl 2xl:tracking-wide 2xl:text-2xl' : props.logoSize === 'sm' ? 'invisible lg:visible text-sm lg:tracking-tight xl:text-lg' : 'tracking-wider text-xs sm:text-base lg:text-2xl 2xl:text-4xl 2xl:tracking-tight'">
+    <h2 v-show="extended" :class="props.logoSize === 'default' ? 'font-mona invisible sm:visible text-sm tracking-tight lg:text-lg xl:tracking-tighter xl:text-2xl 2xl:tracking-wide 2xl:text-2xl' : props.logoSize === 'sm' ? 'font-mona invisible lg:visible text-sm lg:tracking-tight xl:text-lg' : 'font-mona tracking-wider text-xs sm:text-base lg:text-2xl 2xl:text-4xl 2xl:tracking-tight'">
       <slot>
         <span :class="props.filled ? 'text-primary-400' : 'text-primary-700'">Lehrstücke</span><span :class="props.filled ? '': 'text-primary-700'"> für die Schule</span>
       </slot>

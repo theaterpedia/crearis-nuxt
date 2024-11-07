@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { SfRating, SfCounter, SfButton, SfIconShoppingCart, SfIconFavorite, SfIconFavoriteFilled } from '@crearis/vue'
 import type { Product } from '~/graphql'
 
 defineProps({

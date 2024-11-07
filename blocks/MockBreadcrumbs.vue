@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { SfDropdown, SfIconMoreHoriz } from '@crearis/vue'
 import { defineBlock, repeaterField, textSubfield } from '#pruvious'
 
 defineBlock({

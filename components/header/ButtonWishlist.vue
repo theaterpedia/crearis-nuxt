@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { SfButton, SfBadge, SfIconShoppingCart } from "@crearis/vue";
 
 const { toggleWishlistSideBar } = useWishlistUiState();
 const { loadWishlist, wishlistTotalItems } = useWishlist();

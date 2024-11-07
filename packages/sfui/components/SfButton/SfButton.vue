@@ -12,7 +12,7 @@ export const variantClasses = {
 <script lang="ts" setup>
 import { type PropType, type ConcreteComponent, computed, toRefs } from 'vue';
 import { SfButtonSize, SfButtonVariant } from './types';
-import { useAttrsRef } from '../../shared';
+import { useAttrsRef } from '../../utils';
 
 const props = defineProps({
   size: {

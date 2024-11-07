@@ -1,15 +1,16 @@
 import defaultTheme from 'tailwindcss/defaultTheme'
 import { tailwindConfig } from '@crearis/tailwind-config'
+import sfTypography from '@crearis/typography'
 
 /** @type {import('tailwindcss').Config} */
 export default {
-  presets: [tailwindConfig], 
-  content: ['blocks/**/*.vue'],
+  presets: [tailwindConfig],
+  plugins: [sfTypography],  
+  content: ['blocks/**/*.vue', 'node_modules/@crearis/sfui/**/*.{js,mjs}'],
   theme: {
     extend: {
       fontFamily: {
         sans: ['Lato', ...defaultTheme.fontFamily.sans],
-        mona: ['Mona-Neon', ...defaultTheme.fontFamily.serif],
         heading: ['Poppins', ...defaultTheme.fontFamily.mono],
       },
       screens: {

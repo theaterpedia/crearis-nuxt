@@ -36,7 +36,6 @@
 </template>
 
 <script lang="ts" setup>
-import { SfCheckbox, SfLoaderCircular } from '@crearis/vue'
 import { defineBlock } from '#pruvious'
 
 defineBlock({

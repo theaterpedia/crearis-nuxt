@@ -20,7 +20,6 @@
   </form>
 </template>
 <script lang="ts" setup>
-import { SfButton, SfInput } from '@crearis/vue';
 
 type FormContactInformationProps = {
   name?: string;

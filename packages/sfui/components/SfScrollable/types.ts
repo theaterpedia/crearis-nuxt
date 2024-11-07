@@ -1,5 +1,5 @@
-import { type UseScrollableOptions } from '@storefront-ui/vue';
+import { type UseScrollableOptions } from '../../composables/useScrollable'
 
 export interface SfScrollableProps extends UseScrollableOptions {
-  floating?: boolean;
+  floating?: boolean
 }

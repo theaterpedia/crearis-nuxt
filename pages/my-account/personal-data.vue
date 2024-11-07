@@ -1,10 +1,4 @@
 <script setup lang="ts">
-import {
-  SfButton,
-  SfIconClose,
-  SfModal,
-  useDisclosure,
-} from "@crearis/vue";
 import { unrefElement } from "@vueuse/core";
 
 const { t } = useI18n();

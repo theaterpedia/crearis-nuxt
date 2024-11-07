@@ -1,14 +1,5 @@
 <script lang="ts" setup>
-import {
-  SfButton,
-  SfDrawer,
-  SfInput,
-  SfListItem,
-  SfIconShoppingCart,
-  SfIconSearch,
-  useDisclosure,
-  useTrapFocus,
-} from "@crearis/vue";
+
 import { onClickOutside } from "@vueuse/core";
 import type { Category } from "~/graphql";
 

@@ -1,6 +1,6 @@
-import { autoUpdate, type FloatingElement, useFloating, type ReferenceElement } from '@floating-ui/vue';
-import { ref, computed } from 'vue';
-import { SfPopoverPlacement, SfPopoverStrategy, type UsePopoverOptions } from '@storefront-ui/vue';
+import { autoUpdate, type FloatingElement, useFloating, type ReferenceElement } from '@floating-ui/vue'
+import { ref, computed } from 'vue'
+import { SfPopoverPlacement, SfPopoverStrategy, type UsePopoverOptions } from './types'
 
 export function usePopover<ReferenceEl extends ReferenceElement = ReferenceElement>(
   options: UsePopoverOptions<ReferenceEl>,
@@ -12,7 +12,7 @@ export function usePopover<ReferenceEl extends ReferenceElement = ReferenceEleme
     middleware,
     placement: initialPlacement = SfPopoverPlacement.bottom,
     strategy: initialStrategy = SfPopoverStrategy.absolute,
-  } = options;
+  } = options
 
   const { strategy, x, y, middlewareData, placement } = useFloating<ReferenceEl>(referenceRef, floatingRef, {
     strategy: initialStrategy,
@@ -20,15 +20,15 @@ export function usePopover<ReferenceEl extends ReferenceElement = ReferenceEleme
     open: isOpen,
     middleware,
     whileElementsMounted: autoUpdate,
-  });
+  })
 
   const style = computed(() => {
     return {
       position: strategy.value,
       top: `${y.value ?? 0}px`,
       left: `${x.value ?? 0}px`,
-    };
-  });
+    }
+  })
 
-  return { referenceRef, floatingRef, style, middlewareData, placement };
+  return { referenceRef, floatingRef, style, middlewareData, placement }
 }

@@ -1,13 +1,6 @@
 <script setup lang="ts">
 import { useWindowScroll } from '@vueuse/core'
 import { useDark, useToggle } from '@vueuse/core'
-import * as SfIcons from '@crearis/vue';
-
-import {
-  SfButton,
-  SfIconCircle,
-  SfIconExpandMore,
-} from '@crearis/vue'
 
 const props = defineProps<{
   filled?: boolean,

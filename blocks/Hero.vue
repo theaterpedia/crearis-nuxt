@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { SfButton } from '@crearis/vue'
 import { defineBlock, imageField, linkField, textField } from '#pruvious'
 
 defineBlock({ icon: 'Mouse' })

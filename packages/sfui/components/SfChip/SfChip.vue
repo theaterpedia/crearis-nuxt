@@ -7,7 +7,7 @@ const sizeClasses = {
 <script lang="ts" setup>
 import { type PropType, type InputHTMLAttributes } from 'vue';
 import { toRefs, computed } from 'vue';
-import { useSlotsRef, useId } from '../../shared';
+import { useSlotsRef, useId } from '../../utils';
 import { SfChipSize } from './types';
 
 const props = defineProps({

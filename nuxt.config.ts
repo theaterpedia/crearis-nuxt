@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-10-30',
+  extends: ['./packages/sfui'],
   devtools: { enabled: true },
   modules: [
     '@nuxtjs/google-fonts',
@@ -30,9 +31,6 @@ export default defineNuxtConfig({
       'vue-toastification',
     ],
   },
-  tailwindcss: {
-    viewer: false,
-  },
 
   // sets the keys of the .env file that will be exposed to the client side
   runtimeConfig: {
@@ -50,6 +48,10 @@ export default defineNuxtConfig({
   // fix for err: [nuxt] A composable that requires access to the Nuxt instance was called outside of a plugin, Nuxt hook, Nuxt middleware, or Vue setup function."
   experimental: {
     asyncContext: true,
+  },
+  tailwindcss: {
+    viewer: false,
+    cssPath: '~/assets/css/tailwind.css',
   },
   pruvious: {
     api: {

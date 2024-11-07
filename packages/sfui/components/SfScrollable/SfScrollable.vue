@@ -7,7 +7,7 @@ export default {
 import { computed, toRefs, type PropType, type ConcreteComponent, reactive } from 'vue';
 import {
   ClassProp,
-} from '../../shared';
+} from '../../utils';
 
 import {
   SfIconChevronLeft,

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ClassProp } from '../../shared';
+import { ClassProp } from '../../utils';
 
 defineProps({
   modelValue: {

@@ -5,12 +5,6 @@ export default {
 </script>
 <script lang="ts" setup>
 import { type PropType, computed } from "vue";
-import {
-  SfSelectSize,
-  SfIconExpandMore,
-  useFocusVisible,
-  useDisclosure,
-} from "@crearis/vue";
 
 const props = defineProps({
   size: {

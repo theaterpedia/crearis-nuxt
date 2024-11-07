@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { SfButton, SfIconShoppingCart } from "@crearis/vue";
 
 const NuxtLink = resolveComponent("NuxtLink");
 

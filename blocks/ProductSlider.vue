@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { SfScrollable } from '@crearis/vue'
 import { defineBlock, textField } from '#pruvious'
 import type { Product } from '../graphql'
 
