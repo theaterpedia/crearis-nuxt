@@ -1,46 +1,45 @@
 <script lang="ts" setup>
-
-const NuxtLink = resolveComponent("NuxtLink");
-const { loadCart, totalItemsInCart } = useCart();
+const NuxtLink = resolveComponent('NuxtLink')
+const { loadCart, totalItemsInCart } = useCart()
 
 onMounted(async () => {
-  await loadCart(true);
-});
+  await loadCart(true)
+})
 </script>
 
 <template>
   <ClientOnly>
     <SfButton
-      class="group relative text-white hover:text-white active:text-white hover:bg-primary-800 active:bg-primary-900 rounded-md"
       :tag="NuxtLink"
+      square
       to="/cart"
       variant="tertiary"
-      square
+      class="group relative rounded-md text-white hover:bg-primary-800 hover:text-white active:bg-primary-900 active:text-white"
     >
       <template #prefix>
         <SfIconShoppingCart />
         <SfBadge
           :content="totalItemsInCart"
-          class="outline outline-primary-700 bg-white !text-neutral-900 group-hover:outline-primary-800 group-active:outline-primary-900 flex justify-center"
           data-testid="cart-badge"
+          class="flex justify-center bg-white !text-neutral-900 outline outline-primary-700 group-hover:outline-primary-800 group-active:outline-primary-900"
         />
       </template>
     </SfButton>
 
     <template #fallback>
       <SfButton
-        class="group relative text-white hover:text-white active:text-white hover:bg-primary-800 active:bg-primary-900 rounded-md"
         :tag="NuxtLink"
+        square
         to="/cart"
         variant="tertiary"
-        square
+        class="group relative rounded-md text-white hover:bg-primary-800 hover:text-white active:bg-primary-900 active:text-white"
       >
         <template #prefix>
           <SfIconShoppingCart />
           <SfBadge
             :content="0"
-            class="outline outline-primary-700 bg-white !text-neutral-900 group-hover:outline-primary-800 group-active:outline-primary-900 flex justify-center"
             data-testid="cart-badge"
+            class="flex justify-center bg-white !text-neutral-900 outline outline-primary-700 group-hover:outline-primary-800 group-active:outline-primary-900"
           />
         </template>
       </SfButton>

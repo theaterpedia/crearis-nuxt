@@ -12,7 +12,7 @@
   "form": {
     "firstNameLabel": "Vorname",
     "lastNameLabel": "Nachname",
-    "NameLabel": "Name",    
+    "NameLabel": "Name",
     "phoneLabel": "Phone",
     "countryLabel": "Country",
     "streetNameLabel": "Street",
@@ -170,7 +170,7 @@
         "trackOrders": "Veranstaltungsmanagement",
         "returns": "Stornierung & Abmeldung",
         "myCart": "Mein Warenkorb",
-        "checkout": "Bezahlen"     
+        "checkout": "Bezahlen"
       }
     },
     "help": {
@@ -181,7 +181,7 @@
         "feedback": "Feedback",
         "contact": "Kontakt",
         "login": "Login & Registrierung",
-        "resetPassword": "Reset password"        
+        "resetPassword": "Reset password"
       }
     },
     "services": {

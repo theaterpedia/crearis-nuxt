@@ -1,3 +1,3 @@
-let id = -1;
+let id = -1
 /* eslint-disable-next-line no-plusplus */
-export const useId = () => String(++id);
+export const useId = () => String(++id)

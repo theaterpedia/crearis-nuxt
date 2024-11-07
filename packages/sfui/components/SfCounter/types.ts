@@ -1,1 +1,1 @@
-export { SfCounterSize } from '@storefront-ui/shared';
+export { SfCounterSize } from '@storefront-ui/shared'

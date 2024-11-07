@@ -1,1 +1,1 @@
-export { SfButtonSize, SfButtonVariant } from '@storefront-ui/shared';
+export { SfButtonSize, SfButtonVariant } from '@storefront-ui/shared'

@@ -3,7 +3,7 @@ import { tailwindConfig } from '@crearis/tailwind-config'
 
 // #DOCU _07 Theming with tw-colors
 // https://github.com/L-Blondy/tw-colors
-const { createThemes } = require('tw-colors');
+const { createThemes } = require('tw-colors')
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -68,7 +68,7 @@ export default {
         60: '60',
         80: '60',
         100: '100',
-      },      
+      },
       spacing: {
         23: '5.75rem',
       },

@@ -1,5 +1,5 @@
 <template>
-  <Prose :style = "$viewport.isLessThan('tablet') ? 'font-size: 0.875em;' : ''">
+  <Prose :style="$viewport.isLessThan('tablet') ? 'font-size: 0.875em;' : ''">
     <ContentSlot />
   </Prose>
 </template>

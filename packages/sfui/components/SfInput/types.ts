@@ -1,1 +1,1 @@
-export { SfInputSize } from '@storefront-ui/shared';
+export { SfInputSize } from '@storefront-ui/shared'

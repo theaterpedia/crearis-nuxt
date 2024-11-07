@@ -1,16 +1,16 @@
 <template>
   <div
     v-if="visible"
-    class="w-full h-full top-0 bottom-0 left-0 right-0 bg-neutral-500/50 fixed z-50"
     data-testid="overlay"
+    class="fixed bottom-0 left-0 right-0 top-0 z-50 h-full w-full bg-neutral-500/50"
   >
     <slot />
   </div>
 </template>
 <script lang="ts" setup>
 export interface OverlayProps {
-  visible?: boolean;
+  visible?: boolean
 }
 
-defineProps<OverlayProps>();
+defineProps<OverlayProps>()
 </script>

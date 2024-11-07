@@ -23,7 +23,7 @@ const logoClass = 'text-content'
         props.logoSize === 'default'
           ? 'font-mona text-xl sm:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl'
           : props.logoSize === 'sm'
-            ? 'font-mona text-md sm:text-lg md:text-xl lg:text-2xl xl:text-3xl'
+            ? 'text-md font-mona sm:text-lg md:text-xl lg:text-2xl xl:text-3xl'
             : 'font-mona text-3xl sm:text-4xl lg:text-5xl 2xl:text-6xl'
       "
     >

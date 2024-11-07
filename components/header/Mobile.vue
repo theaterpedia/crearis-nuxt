@@ -1,51 +1,48 @@
 <script lang="ts" setup>
+import { onClickOutside } from '@vueuse/core'
+import type { Category } from '~/graphql'
 
-import { onClickOutside } from "@vueuse/core";
-import type { Category } from "~/graphql";
+const { isOpen, toggle, close } = useDisclosure()
+const { searchModalToggle } = useSearch()
 
-const { isOpen, toggle, close } = useDisclosure();
-const { searchModalToggle } = useSearch();
+const NuxtLink = resolveComponent('NuxtLink')
 
-const NuxtLink = resolveComponent("NuxtLink");
-
-const menuRef = ref();
-const drawerRef = ref();
-const searchRef = ref();
-const showSearchClerkRef = ref();
+const menuRef = ref()
+const drawerRef = ref()
+const searchRef = ref()
+const showSearchClerkRef = ref()
 
 useTrapFocus(drawerRef, {
   activeState: isOpen,
   arrowKeysUpDown: true,
-  initialFocus: "container",
-});
+  initialFocus: 'container',
+})
 
 onClickOutside(menuRef, () => {
-  close();
-});
+  close()
+})
 
 onClickOutside(searchRef, () => {
-  showSearchClerkRef.value = false;
-});
+  showSearchClerkRef.value = false
+})
 
-const filteredCategories = inject<Category[]>("filteredTopCategories");
+const filteredCategories = inject<Category[]>('filteredTopCategories')
 
 const bannerDetails = {
-  image: "/images/watch.png",
-  title: "New in designer watches",
-};
+  image: '/images/watch.png',
+  title: 'New in designer watches',
+}
 </script>
 
 <template>
   <header
     ref="menuRef"
     :class="[
-      'text-white h-14 md:h-20 flex z-50 md:sticky md:top-0 md:shadow-md flex-wrap md:flex-nowrap w-full py-2 md:py-5 border-0 bg-primary-700 border-neutral-200 md:z-10',
+      'z-50 flex h-14 w-full flex-wrap border-0 border-neutral-200 bg-primary-700 py-2 text-white md:sticky md:top-0 md:z-10 md:h-20 md:flex-nowrap md:py-5 md:shadow-md',
     ]"
   >
-    <div
-      class="flex items-center justify-between lg:justify-start h-full w-full narrow-container"
-    >
-      <NuxtLink to="/" aria-label="Sf Homepage" class="h-6 md:h-7 -mt-1.5">
+    <div class="narrow-container flex h-full w-full items-center justify-between lg:justify-start">
+      <NuxtLink aria-label="Sf Homepage" to="/" class="-mt-1.5 h-6 md:h-7">
         <VsfLogo />
       </NuxtLink>
       <nav>
@@ -53,37 +50,29 @@ const bannerDetails = {
           <li role="none">
             <transition
               enter-active-class="transform transition duration-500 ease-in-out"
-              leave-active-class="transform transition duration-500 ease-in-out"
               enter-from-class="-translate-x-full md:translate-x-0 md:opacity-0"
               enter-to-class="translate-x-0 md:translate-x-0 md:opacity-100"
+              leave-active-class="transform transition duration-500 ease-in-out"
               leave-from-class="translate-x-0 md:opacity-100"
               leave-to-class="-translate-x-full md:translate-x-0 md:opacity-0"
             >
               <SfDrawer
-                ref="drawerRef"
                 v-model="isOpen"
                 disable-click-away
                 placement="top"
-                class="bg-white p-0 max-h-screen overflow-y-auto lg:!absolute lg:!top-[5rem] max-w-full lg:p-6 top-index"
+                ref="drawerRef"
+                class="top-index max-h-screen max-w-full overflow-y-auto bg-white p-0 lg:!absolute lg:!top-[5rem] lg:p-6"
               >
-                <div
-                  class="grid grid-cols-1 lg:gap-x-6 lg:grid-cols-3 lg:narrow-container lg:relative"
-                >
-                  <div
-                    class="sticky top-0 flex items-center justify-between py-2 px-4 bg-primary-700 w-full"
-                  >
-                    <div
-                      class="flex items-center typography-text-lg font-medium text-white"
-                    >
-                      Browse products
-                    </div>
+                <div class="lg:narrow-container grid grid-cols-1 lg:relative lg:grid-cols-3 lg:gap-x-6">
+                  <div class="sticky top-0 flex w-full items-center justify-between bg-primary-700 px-4 py-2">
+                    <div class="typography-text-lg flex items-center font-medium text-white">Browse products</div>
                     <SfButton
-                      square
-                      variant="tertiary"
-                      aria-label="Close navigation menu"
-                      class="text-white ml-2"
                       @click="close()"
                       @keydown.enter.space="close()"
+                      aria-label="Close navigation menu"
+                      square
+                      variant="tertiary"
+                      class="ml-2 text-white"
                     >
                       <SfIconClose />
                     </SfButton>
@@ -91,26 +80,23 @@ const bannerDetails = {
                   <div
                     v-for="{ name, childs } in filteredCategories"
                     :key="name"
-                    class="[&:nth-child(2)]:pt-0 pt-6 md:pt-0 text-black"
+                    class="pt-6 text-black md:pt-0 [&:nth-child(2)]:pt-0"
                   >
                     <h2
                       role="presentation"
-                      class="typography-text-base font-medium text-neutral-900 whitespace-nowrap p-4 lg:py-1.5"
+                      class="typography-text-base whitespace-nowrap p-4 font-medium text-neutral-900 lg:py-1.5"
                     >
                       {{ name }}
                     </h2>
                     <hr class="mb-3.5" />
                     <ul>
-                      <li
-                        v-for="{ name, slug, childs: subcategory } in childs"
-                        :key="name"
-                      >
+                      <li v-for="{ name, slug, childs: subcategory } in childs" :key="name">
                         <SfListItem
                           v-if="subcategory !== null"
-                          tag="a"
                           :href="slug"
-                          size="sm"
                           role="none"
+                          size="sm"
+                          tag="a"
                           class="typography-text-base lg:typography-text-sm py-4 lg:py-1.5"
                         >
                           {{ name }}
@@ -119,16 +105,10 @@ const bannerDetails = {
                     </ul>
                   </div>
                   <div
-                    class="flex flex-col items-center justify-center bg-neutral-100 lg:rounded-md border-neutral-300 overflow-hidden grow"
+                    class="flex grow flex-col items-center justify-center overflow-hidden border-neutral-300 bg-neutral-100 lg:rounded-md"
                   >
-                    <NuxtImg
-                      :src="bannerDetails.image"
-                      :alt="bannerDetails.title"
-                      class="object-contain"
-                    />
-                    <p
-                      class="mb-4 mt-4 px-4 text-center text-black typography-text-base font-medium"
-                    >
+                    <NuxtImg :alt="bannerDetails.title" :src="bannerDetails.image" class="object-contain" />
+                    <p class="typography-text-base mb-4 mt-4 px-4 text-center font-medium text-black">
                       {{ bannerDetails.title }}
                     </p>
                   </div>
@@ -141,21 +121,21 @@ const bannerDetails = {
 
       <div class="flex justify-end">
         <SfButton
-          variant="tertiary"
-          class="relative text-white hover:text-white active:text-white hover:bg-primary-800 active:bg-primary-900 rounded-md"
-          square
           @click="searchModalToggle"
+          square
+          variant="tertiary"
+          class="relative rounded-md text-white hover:bg-primary-800 hover:text-white active:bg-primary-900 active:text-white"
         >
           <SfIconSearch />
         </SfButton>
         <SfButton
-          class="block text-white font-body bg-transparent hover:bg-primary-800 hover:text-white active:bg-primary-900 active:text-white self-end"
-          type="button"
-          :aria-haspopup="true"
           :aria-expanded="isOpen"
-          variant="tertiary"
-          square
+          :aria-haspopup="true"
           @click="toggle()"
+          square
+          type="button"
+          variant="tertiary"
+          class="block self-end bg-transparent font-body text-white hover:bg-primary-800 hover:text-white active:bg-primary-900 active:text-white"
         >
           <SfIconMenu class="text-white" />
         </SfButton>

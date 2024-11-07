@@ -4,12 +4,12 @@ const variantClasses = {
     'text-primary-700 underline hover:text-primary-800 active:text-primary-900 focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm',
   [SfLinkVariant.secondary]:
     'underline hover:text-primary-800 active:text-primary-900 focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm',
-};
+}
 </script>
 
 <script lang="ts" setup>
-import type { PropType, ConcreteComponent } from 'vue';
-import { SfLinkVariant } from './types';
+import type { PropType, ConcreteComponent } from 'vue'
+import { SfLinkVariant } from './types'
 
 defineProps({
   tag: {
@@ -20,14 +20,14 @@ defineProps({
     type: String as PropType<`${SfLinkVariant}`>,
     default: SfLinkVariant.primary,
   },
-});
+})
 </script>
 
 <template>
   <component
     :is="tag"
-    :class="['focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm', variantClasses[variant]]"
     data-testid="link"
+    :class="['focus-visible:rounded-sm focus-visible:outline focus-visible:outline-offset', variantClasses[variant]]"
   >
     <slot />
   </component>

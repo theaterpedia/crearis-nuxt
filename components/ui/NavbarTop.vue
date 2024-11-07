@@ -1,17 +1,17 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { useWindowScroll } from '@vueuse/core'
 import { useDark, useToggle } from '@vueuse/core'
 
 const props = defineProps<{
-  filled?: boolean,
-  extended?: boolean,
+  filled?: boolean
+  extended?: boolean
 }>()
 
 const navigation = [
-  { title: 'home', _path: "/" },
-  { title: 'Workshops', _path: "/info/1" },
-  { title: 'Projekte', _path: "/info/2" },
-  { title: 'Supervision', _path: "/info/3" },
+  { title: 'home', _path: '/' },
+  { title: 'Workshops', _path: '/info/1' },
+  { title: 'Projekte', _path: '/info/2' },
+  { title: 'Supervision', _path: '/info/3' },
 ]
 
 const isDark = useDark()
@@ -24,46 +24,56 @@ const y = useWindowScroll().y
 
 // const topbar = ref(!props.extended && y.value > 80)
 // console.log('topbar', topbar)
-
 </script>
 
 <template>
   <header
-    class="h-14 flex z-50 md:sticky md:pt-2.5" :class="[
-      { 'dark:bg-black md:h-28 md:-top-12 max-w-screen-3xl mx-auto md:px-6 lg:px-10 md:mt-6 lg:mt-10': y <= scrollBreak && props.extended },
-      { 'md:h-20 md:-top-4 md:shadow-md': y > scrollBreak || !props.extended },
-      { 'bg-primary-700 text-white': filled &&  (y > scrollBreak || !props.extended ) },
-      { 'bg-white text-[#02C652] border-b border-neutral-200': (!filled || y <= scrollBreak && props.extended) },
-    ]"
     data-testid="navbar-top"
+    class="z-50 flex h-14 md:sticky md:pt-2.5"
+    :class="[
+      {
+        'max-w-screen-3xl mx-auto md:-top-12 md:mt-6 md:h-28 md:px-6 lg:mt-10 lg:px-10 dark:bg-black':
+          y <= scrollBreak && props.extended,
+      },
+      { 'md:-top-4 md:h-20 md:shadow-md': y > scrollBreak || !props.extended },
+      { 'bg-primary-700 text-white': filled && (y > scrollBreak || !props.extended) },
+      { 'border-b border-neutral-200 bg-white text-[#02C652]': !filled || (y <= scrollBreak && props.extended) },
+    ]"
   >
     <div
-      class="flex gap-[clamp(1rem,3vw,3rem)] items-center w-full md:h-[60px] max-w-screen-3xl py-6 px-4 md:px-6 lg:px-10 mx-auto sticky top-0 justify-between md:justify-normal"
+      class="max-w-screen-3xl sticky top-0 mx-auto flex w-full items-center justify-between gap-[clamp(1rem,3vw,3rem)] px-4 py-6 md:h-[60px] md:justify-normal md:px-6 lg:px-10"
     >
-      <NuxtLink :to="paths.home" aria-label="Sf Homepage" class="h-6 md:h-7 -mt-1.5 md:basis-2/4">
-        <UiLogo :filled=props.filled :extended="y <= scrollBreak && props.extended" :logoSize="y <= scrollBreak && props.extended ? 'lg' : 'default'"/>
-      </NuxtLink>  
+      <NuxtLink :to="paths.home" aria-label="Sf Homepage" class="-mt-1.5 h-6 md:h-7 md:basis-2/4">
+        <UiLogo
+          :extended="y <= scrollBreak && props.extended"
+          :filled="props.filled"
+          :logoSize="y <= scrollBreak && props.extended ? 'lg' : 'default'"
+        />
+      </NuxtLink>
       <!-- Links Section -->
       <div
-         class="md:basis-2/4  text-lg items-center justify-between justify-items-start md:justify-items-center md:flex md:pt-2 left-0 top-16 px-5 md:px-10 py-3 md:py-0 border-t md:border-t-0"
-         :class="[
-          { 'text-white': (filled && !(y <= scrollBreak && props.extended)) },
-          { 'text-primary-700 dark:text-primary-200': !filled || y <= scrollBreak && props.extended },
-         ]" 
+        class="left-0 top-16 items-center justify-between justify-items-start border-t px-5 py-3 text-lg md:flex md:basis-2/4 md:justify-items-center md:border-t-0 md:px-10 md:py-0 md:pt-2"
+        :class="[
+          { 'text-white': filled && !(y <= scrollBreak && props.extended) },
+          { 'text-primary-700 dark:text-primary-200': !filled || (y <= scrollBreak && props.extended) },
+        ]"
       >
         <NuxtLink
           v-for="link of navigation"
-          v-show="link.title !== 'home' && link.title !== 'Dev' "
+          v-show="link.title !== 'home' && link.title !== 'Dev'"
           :key="link._path"
           :to="link._path"
-          class="flex font-semibold lg:text-2xl active:text-secondary-700 hover:text-secondary-700 cursor-pointer transition-colors duration-300"
+          class="flex cursor-pointer font-semibold transition-colors duration-300 hover:text-secondary-700 active:text-secondary-700 lg:text-2xl"
         >
           {{ link.title }}
         </NuxtLink>
         <slot />
-        <SfButton @click="toggleDark()" class="text-primary-700 bg-primary-200 dark:text-primary-200 dark:bg-primary-700">
+        <SfButton
+          @click="toggleDark()"
+          class="bg-primary-200 text-primary-700 dark:bg-primary-700 dark:text-primary-200"
+        >
           <SfIconCircle />
-        </SfButton>          
+        </SfButton>
       </div>
     </div>
   </header>

@@ -5,13 +5,13 @@ const sizeClasses = {
   [SfRatingSize.base]: 'text-base',
   [SfRatingSize.lg]: 'text-lg',
   [SfRatingSize.xl]: 'text-xl',
-};
+}
 </script>
 
 <script lang="ts" setup>
-import { computed, toRefs, type PropType } from 'vue';
-import { clamp, roundToNearest } from '@storefront-ui/shared';
-import { SfRatingSize } from './types';
+import { computed, toRefs, type PropType } from 'vue'
+import { clamp, roundToNearest } from '@storefront-ui/shared'
+import { SfRatingSize } from './types'
 
 const props = defineProps({
   size: {
@@ -34,27 +34,27 @@ const props = defineProps({
     type: String,
     default: undefined,
   },
-});
-const { value, max, halfIncrement, ariaLabel } = toRefs(props);
+})
+const { value, max, halfIncrement, ariaLabel } = toRefs(props)
 
-const precision = computed(() => (halfIncrement.value ? 0.5 : 1));
-const ratingValue = computed(() => clamp(roundToNearest(value.value, precision.value), 0, max.value));
-const partiallyFilled = computed(() => Number(!Number.isInteger(ratingValue.value)));
-const filled = computed(() => Math.ceil(ratingValue.value - partiallyFilled.value));
-const empty = computed(() => max.value - filled.value - partiallyFilled.value);
-const label = computed(() => ariaLabel?.value ?? `${value.value} out of ${max.value}`);
+const precision = computed(() => (halfIncrement.value ? 0.5 : 1))
+const ratingValue = computed(() => clamp(roundToNearest(value.value, precision.value), 0, max.value))
+const partiallyFilled = computed(() => Number(!Number.isInteger(ratingValue.value)))
+const filled = computed(() => Math.ceil(ratingValue.value - partiallyFilled.value))
+const empty = computed(() => max.value - filled.value - partiallyFilled.value)
+const label = computed(() => ariaLabel?.value ?? `${value.value} out of ${max.value}`)
 </script>
 
 <template>
   <span
-    role="img"
     :ariaLabel="label"
     :title="label"
-    :class="['inline-flex items-center text-warning-500', sizeClasses[size]]"
     data-testid="rating"
+    role="img"
+    :class="['inline-flex items-center text-warning-500', sizeClasses[size]]"
   >
-    <SfIconStarFilled v-for="index in filled" :key="index" aria-hidden="true" class="w-[1.5em] h-[1.5em]" />
-    <SfIconStarHalf v-if="partiallyFilled" aria-hidden="true" class="w-[1.5em] h-[1.5em]" />
-    <SfIconStar v-for="index in empty" :key="index" aria-hidden="true" class="text-disabled-500 w-[1.5em] h-[1.5em]" />
+    <SfIconStarFilled v-for="index in filled" :key="index" aria-hidden="true" class="h-[1.5em] w-[1.5em]" />
+    <SfIconStarHalf v-if="partiallyFilled" aria-hidden="true" class="h-[1.5em] w-[1.5em]" />
+    <SfIconStar v-for="index in empty" :key="index" aria-hidden="true" class="h-[1.5em] w-[1.5em] text-disabled-500" />
   </span>
 </template>

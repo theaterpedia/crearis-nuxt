@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ClassProp } from '../../utils';
+import { ClassProp } from '../../utils'
 
 defineProps({
   modelValue: {
@@ -7,11 +7,11 @@ defineProps({
     default: false,
   },
   summaryClass: ClassProp,
-});
+})
 
 defineEmits<{
-  (event: 'update:modelValue', open: boolean): void;
-}>();
+  (event: 'update:modelValue', open: boolean): void
+}>()
 </script>
 
 <!-- eslint-disable vuejs-accessibility/no-static-element-interactions -->
@@ -19,11 +19,11 @@ defineEmits<{
 <template>
   <details :open="modelValue" data-testid="accordion-item">
     <summary
+      @click.prevent="$emit('update:modelValue', !modelValue)"
       :class="[
         summaryClass,
-        'list-none [&::-webkit-details-marker]:hidden cursor-pointer focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm',
+        'cursor-pointer list-none focus-visible:rounded-sm focus-visible:outline focus-visible:outline-offset [&::-webkit-details-marker]:hidden',
       ]"
-      @click.prevent="$emit('update:modelValue', !modelValue)"
     >
       <slot name="summary" />
     </summary>

@@ -1,1 +1,1 @@
-export { SfRatingSize } from '@storefront-ui/shared';
+export { SfRatingSize } from '@storefront-ui/shared'

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { type PropType, type ConcreteComponent, ref, toRefs, computed } from 'vue';
-import { onClickOutside } from '@vueuse/core';
-import { SfDrawerPlacement } from './types';
+import { type PropType, type ConcreteComponent, ref, toRefs, computed } from 'vue'
+import { onClickOutside } from '@vueuse/core'
+import { SfDrawerPlacement } from './types'
 
 const props = defineProps({
   modelValue: {
@@ -24,43 +24,43 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
-});
+})
 
-const { disableClickAway, disableEsc, placement } = toRefs(props);
+const { disableClickAway, disableEsc, placement } = toRefs(props)
 const emit = defineEmits<{
-  (event: 'update:modelValue', isOpen: boolean): void;
-}>();
+  (event: 'update:modelValue', isOpen: boolean): void
+}>()
 
-const drawerRef = ref();
+const drawerRef = ref()
 
 onClickOutside(drawerRef, () => {
-  if (disableClickAway.value) return;
-  emit('update:modelValue', false);
-});
+  if (disableClickAway.value) return
+  emit('update:modelValue', false)
+})
 
 const onEscKeyDown = () => {
-  if (disableEsc.value) return;
-  emit('update:modelValue', false);
-};
+  if (disableEsc.value) return
+  emit('update:modelValue', false)
+}
 
 const placementClasses = computed(() => ({
   'left-0': placement.value !== SfDrawerPlacement.right,
   'right-0': placement.value !== SfDrawerPlacement.left,
   'top-0': placement.value !== SfDrawerPlacement.bottom,
   'bottom-0': placement.value !== SfDrawerPlacement.top,
-}));
+}))
 </script>
 
 <template>
   <component
-    :is="tag"
     v-if="modelValue"
+    :is="tag"
+    @keydown.esc="onEscKeyDown"
+    data-testid="drawer"
     ref="drawerRef"
+    tabindex="-1"
     class="fixed"
     :class="placementClasses"
-    data-testid="drawer"
-    tabindex="-1"
-    @keydown.esc="onEscKeyDown"
   >
     <slot />
   </component>

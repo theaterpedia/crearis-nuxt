@@ -9,13 +9,13 @@ import {
   type SfScrollableOnScrollData,
   type SfScrollableOnPrevData,
   type SfScrollableOnNextData,
-} from '@storefront-ui/shared';
+} from '@storefront-ui/shared'
 
 export type UseScrollableOptions = Prettify<
   ScrollableOptions & {
-    activeIndex?: number;
+    activeIndex?: number
   }
->;
+>
 
 export {
   type ScrollableOptions,
@@ -27,4 +27,4 @@ export {
   Scrollable,
   SfScrollableDirection,
   SfScrollableButtonsPlacement,
-};
+}

@@ -1,7 +1,6 @@
-<script setup lang="ts">
-
-const route = useRoute();
-const router = useRouter();
+<script lang="ts" setup>
+const route = useRoute()
+const router = useRouter()
 
 const props = defineProps({
   currentPage: {
@@ -20,7 +19,7 @@ const props = defineProps({
     type: Number,
     required: true,
   },
-});
+})
 
 const pagination = computed<any>(() =>
   reactive(
@@ -31,35 +30,35 @@ const pagination = computed<any>(() =>
       maxPages: props?.maxVisiblePages,
     }),
   ),
-);
+)
 
 const setParams = (filter: any) => {
-  router.push({ query: { ...route.query, ...filter } });
-};
+  router.push({ query: { ...route.query, ...filter } })
+}
 
 onMounted(() => {
-  pagination.value?.setPage(route.query.page ? Number(route.query.page) : 1);
-});
+  pagination.value?.setPage(route.query.page ? Number(route.query.page) : 1)
+})
 </script>
 
 <template>
   <nav
-    class="flex justify-between items-end border-t border-neutral-200"
-    role="navigation"
     aria-label="pagination"
     data-testid="pagination"
+    role="navigation"
+    class="flex items-end justify-between border-t border-neutral-200"
   >
     <SfButton
-      type="button"
-      size="lg"
-      aria-label="Go to previous page"
       :disabled="pagination.selectedPage <= 1"
+      @click="
+        pagination.prev()
+        setParams({ ['page']: pagination.selectedPage })
+      "
+      aria-label="Go to previous page"
+      size="lg"
+      type="button"
       variant="tertiary"
       class="gap-3"
-      @click="
-        pagination.prev();
-        setParams({ ['page']: pagination.selectedPage });
-      "
     >
       <template #prefix>
         <SfIconChevronLeft />
@@ -70,42 +69,42 @@ onMounted(() => {
       <li v-if="!pagination.pages.includes(1)">
         <div
           :class="[
-            'flex pt-1 border-t-4 border-transparent',
+            'flex border-t-4 border-transparent pt-1',
             {
-              'font-medium border-t-4 !border-primary-500': pagination.selectedPage === 1,
+              'border-t-4 !border-primary-500 font-medium': pagination.selectedPage === 1,
             },
           ]"
         >
           <button
-            type="button"
-            class="px-4 py-3 md:w-12 rounded-md text-neutral-500 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900"
             :aria-current="pagination.selectedPage === 1"
             @click="
-              pagination.setPage(1);
-              setParams({ ['page']: 1 });
+              pagination.setPage(1)
+              setParams({ ['page']: 1 })
             "
+            type="button"
+            class="rounded-md px-4 py-3 text-neutral-500 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900 md:w-12"
           >
             1
           </button>
         </div>
       </li>
       <li v-if="pagination.startPage > 2">
-        <div class="flex pt-1 border-t-4 border-transparent">
-          <button type="button" disabled aria-hidden="true" class="px-4 py-3 md:w-12 rounded-md text-neutral-500">
+        <div class="flex border-t-4 border-transparent pt-1">
+          <button aria-hidden="true" disabled type="button" class="rounded-md px-4 py-3 text-neutral-500 md:w-12">
             ...
           </button>
         </div>
       </li>
       <li v-if="maxVisiblePages === 1 && pagination.selectedPage === pagination.totalPages">
-        <div class="flex pt-1 border-t-4 border-transparent">
+        <div class="flex border-t-4 border-transparent pt-1">
           <button
-            type="button"
-            class="px-4 py-3 md:w-12 rounded-md text-neutral-500 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900"
             :aria-current="pagination.endPage - 1 === pagination.selectedPage"
             @click="
-              pagination.setPage(pagination.endPage - 1);
-              setParams({ ['page']: pagination.selectedPage });
+              pagination.setPage(pagination.endPage - 1)
+              setParams({ ['page']: pagination.selectedPage })
             "
+            type="button"
+            class="rounded-md px-4 py-3 text-neutral-500 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900 md:w-12"
           >
             {{ pagination.endPage - 1 }}
           </button>
@@ -114,48 +113,48 @@ onMounted(() => {
       <li v-for="page in pagination.pages" :key="`page-${page}`">
         <div
           :class="[
-            'flex pt-1 border-t-4 border-transparent',
+            'flex border-t-4 border-transparent pt-1',
             {
-              'font-medium border-t-4 !border-primary-700': pagination.selectedPage === page,
+              'border-t-4 !border-primary-700 font-medium': pagination.selectedPage === page,
             },
           ]"
         >
           <button
+            :aria-current="pagination.selectedPage === page"
+            @click="
+              pagination.setPage(page)
+              setParams({ ['page']: page })
+            "
             type="button"
             :class="[
-              'px-4 py-3 md:w-12 text-neutral-500 rounded-md hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900',
+              'rounded-md px-4 py-3 text-neutral-500 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900 md:w-12',
               {
                 '!text-neutral-900 hover:!text-primary-800 active:!text-primary-900': pagination.selectedPage === page,
               },
             ]"
-            :aria-current="pagination.selectedPage === page"
-            @click="
-              pagination.setPage(page);
-              setParams({ ['page']: page });
-            "
           >
             {{ page }}
           </button>
         </div>
       </li>
       <li v-if="maxVisiblePages === 1 && pagination.selectedPage === 1">
-        <div class="flex pt-1 border-t-4 border-transparent">
+        <div class="flex border-t-4 border-transparent pt-1">
           <button
-            type="button"
-            class="px-4 py-3 md:w-12 rounded-md text-neutral-500 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900"
-            aria-label="Second page"
             @click="
-              pagination.setPage(2);
-              setParams({ ['page']: 2 });
+              pagination.setPage(2)
+              setParams({ ['page']: 2 })
             "
+            aria-label="Second page"
+            type="button"
+            class="rounded-md px-4 py-3 text-neutral-500 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900 md:w-12"
           >
             2
           </button>
         </div>
       </li>
       <li v-if="pagination.endPage < pagination.totalPages - 1">
-        <div class="flex pt-1 border-t-4 border-transparent">
-          <button type="button" disabled aria-hidden="true" class="px-4 py-3 md:w-12 rounded-md text-neutral-500">
+        <div class="flex border-t-4 border-transparent pt-1">
+          <button aria-hidden="true" disabled type="button" class="rounded-md px-4 py-3 text-neutral-500 md:w-12">
             ...
           </button>
         </div>
@@ -163,20 +162,20 @@ onMounted(() => {
       <li v-if="!pagination.pages.includes(pagination.totalPages)">
         <div
           :class="[
-            'flex pt-1 border-t-4 border-transparent',
+            'flex border-t-4 border-transparent pt-1',
             {
-              'font-medium border-t-4 !border-primary-500': pagination.selectedPage === pagination.totalPages,
+              'border-t-4 !border-primary-500 font-medium': pagination.selectedPage === pagination.totalPages,
             },
           ]"
         >
           <button
-            type="button"
-            class="px-4 py-3 md:w-12 rounded-md text-neutral-500 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900"
             :aria-current="pagination.totalPages === pagination.selectedPage"
             @click="
-              pagination.setPage(pagination.totalPages);
-              setParams({ ['page']: pagination.totalPages });
+              pagination.setPage(pagination.totalPages)
+              setParams({ ['page']: pagination.totalPages })
             "
+            type="button"
+            class="rounded-md px-4 py-3 text-neutral-500 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900 md:w-12"
           >
             {{ pagination.totalPages }}
           </button>
@@ -184,16 +183,16 @@ onMounted(() => {
       </li>
     </ul>
     <SfButton
-      type="button"
-      size="lg"
-      aria-label="Go to next page"
       :disabled="pagination.selectedPage >= pagination.totalPages"
+      @click="
+        pagination.next()
+        setParams({ ['page']: pagination.selectedPage })
+      "
+      aria-label="Go to next page"
+      size="lg"
+      type="button"
       variant="tertiary"
       class="gap-3"
-      @click="
-        pagination.next();
-        setParams({ ['page']: pagination.selectedPage });
-      "
     >
       <span class="hidden sm:inline-flex">Next</span>
       <template #suffix>

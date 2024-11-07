@@ -1,31 +1,30 @@
 <script lang="ts" setup>
-
-const { toggleWishlistSideBar } = useWishlistUiState();
-const { loadWishlist, wishlistTotalItems } = useWishlist();
+const { toggleWishlistSideBar } = useWishlistUiState()
+const { loadWishlist, wishlistTotalItems } = useWishlist()
 
 const handleOpenWishListSidebar = async () => {
-  toggleWishlistSideBar();
-  await loadWishlist();
-};
+  toggleWishlistSideBar()
+  await loadWishlist()
+}
 
 onMounted(async () => {
-  await loadWishlist();
-});
+  await loadWishlist()
+})
 </script>
 <template>
   <SfButton
-    class="group relative text-white hover:text-white active:text-white hover:bg-primary-800 active:bg-primary-900 mr-1 -ml-0.5 rounded-md"
+    @click="handleOpenWishListSidebar"
+    square
     type="button"
     variant="tertiary"
-    square
-    @click="handleOpenWishListSidebar"
+    class="group relative -ml-0.5 mr-1 rounded-md text-white hover:bg-primary-800 hover:text-white active:bg-primary-900 active:text-white"
   >
     <template #prefix>
       <SfIconShoppingCart />
       <SfBadge
         :content="wishlistTotalItems"
-        class="outline outline-primary-700 bg-white !text-neutral-900 group-hover:outline-primary-800 group-active:outline-primary-900 flex justify-center"
         data-testid="wishlist-badge"
+        class="flex justify-center bg-white !text-neutral-900 outline outline-primary-700 group-hover:outline-primary-800 group-active:outline-primary-900"
       />
     </template>
   </SfButton>

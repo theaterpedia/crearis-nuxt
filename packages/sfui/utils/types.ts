@@ -1,3 +1,3 @@
-import { ConcreteComponent } from 'vue';
+import { ConcreteComponent } from 'vue'
 
-export type TagOrComponent = string | ConcreteComponent;
+export type TagOrComponent = string | ConcreteComponent

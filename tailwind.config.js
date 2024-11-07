@@ -3,7 +3,7 @@ import { tailwindConfig } from '@crearis/tailwind-config'
 
 /** @type {import('tailwindcss').Config} */
 export default {
-  presets: [tailwindConfig], 
+  presets: [tailwindConfig],
   content: ['blocks/**/*.vue'],
   theme: {
     extend: {
@@ -24,7 +24,7 @@ export default {
         60: '60',
         80: '60',
         100: '100',
-      },      
+      },
       spacing: {
         23: '5.75rem',
       },

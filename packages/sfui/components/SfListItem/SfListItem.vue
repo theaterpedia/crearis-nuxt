@@ -3,12 +3,12 @@ export const sizeClasses = {
   [SfListItemSize.sm]: 'text-sm px-4 py-1',
   [SfListItemSize.base]: 'px-4 py-2',
   [SfListItemSize.lg]: 'p-4',
-};
+}
 </script>
 
-<script setup lang="ts">
-import { type PropType, type ConcreteComponent } from 'vue';
-import { SfListItemSize } from './types';
+<script lang="ts" setup>
+import { type PropType, type ConcreteComponent } from 'vue'
+import { SfListItemSize } from './types'
 
 defineProps({
   size: {
@@ -31,27 +31,27 @@ defineProps({
     type: String,
     default: 'span',
   },
-});
+})
 </script>
 
 <template>
   <component
-    :is="tag || 'li'"
-    :class="[
-      'inline-flex items-center gap-2 w-full hover:bg-neutral-100 active:bg-neutral-200 cursor-pointer focus-visible:outline focus-visible:outline-offset focus-visible:relative focus-visible:z-10',
-      sizeClasses[size],
-      { 'cursor-not-allowed pointer-events-none text-disabled-900': disabled, 'font-medium': selected },
-    ]"
     :disabled="disabled"
+    :is="tag || 'li'"
     data-testid="list-item"
+    :class="[
+      'inline-flex w-full cursor-pointer items-center gap-2 hover:bg-neutral-100 focus-visible:relative focus-visible:z-10 focus-visible:outline focus-visible:outline-offset active:bg-neutral-200',
+      sizeClasses[size],
+      { 'pointer-events-none cursor-not-allowed text-disabled-900': disabled, 'font-medium': selected },
+    ]"
   >
-    <component :is="childrenTag" v-if="$slots.prefix" :class="disabled ? 'text-disabled-500' : 'text-neutral-500'">
+    <component v-if="$slots.prefix" :is="childrenTag" :class="disabled ? 'text-disabled-500' : 'text-neutral-500'">
       <slot name="prefix" />
     </component>
-    <component :is="childrenTag" class="flex flex-col w-full min-w-0">
+    <component :is="childrenTag" class="flex w-full min-w-0 flex-col">
       <slot />
     </component>
-    <component :is="childrenTag" v-if="$slots.suffix" :class="disabled ? 'text-disabled-500' : 'text-neutral-500'">
+    <component v-if="$slots.suffix" :is="childrenTag" :class="disabled ? 'text-disabled-500' : 'text-neutral-500'">
       <slot name="suffix" />
     </component>
   </component>

@@ -1,36 +1,36 @@
-<script setup lang="ts">
-const model = defineModel();
+<script lang="ts" setup>
+const model = defineModel()
 
-const emit = defineEmits(["is-field-valid"]);
+const emit = defineEmits(['is-field-valid'])
 
-const showError = ref(false);
+const showError = ref(false)
 
 const clearError = () => {
-  showError.value = false;
-};
+  showError.value = false
+}
 
 const validateEmail = () => {
-  const isValid = /^\S+@\S+\.\S+$/.test(String(model.value));
-  showError.value = !isValid;
-  emit("is-field-valid", isValid);
-};
+  const isValid = /^\S+@\S+\.\S+$/.test(String(model.value))
+  showError.value = !isValid
+  emit('is-field-valid', isValid)
+}
 
 watch(model, () => {
-  validateEmail();
-});
+  validateEmail()
+})
 </script>
 <template>
   <div class="relative w-full">
     <span
-      class="flex items-center gap-2 px-4 bg-white rounded-md ring-1 text-neutral-500 hover:ring-primary-700 focus-within:caret-primary-700 active:caret-primary-700 active:ring-primary-700 active:ring-2 focus-within:ring-primary-700 focus-within:ring-2 ring-neutral-200 h-[48px] w-full"
+      class="flex h-[48px] w-full items-center gap-2 rounded-md bg-white px-4 text-neutral-500 ring-1 ring-neutral-200 focus-within:caret-primary-700 focus-within:ring-2 focus-within:ring-primary-700 hover:ring-primary-700 active:caret-primary-700 active:ring-2 active:ring-primary-700"
     >
       <input
         v-bind="$attrs"
         v-model="model"
-        type="text"
-        placeholder="Please type your email"
-        class="w-full text-base outline-none appearance-none text-neutral-900 disabled:cursor-not-allowed disabled:bg-transparent read-only:bg-transparent"
         @input="clearError"
+        placeholder="Please type your email"
+        type="text"
+        class="w-full appearance-none text-base text-neutral-900 outline-none read-only:bg-transparent disabled:cursor-not-allowed disabled:bg-transparent"
       />
     </span>
   </div>

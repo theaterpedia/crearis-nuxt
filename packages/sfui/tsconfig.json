@@ -16,16 +16,11 @@
     "incremental": true,
     "jsx": "preserve",
     "baseUrl": ".",
-    "types": [
-      "vite/client"
-    ],
+    "types": ["vite/client"],
     "paths": {
       "@crearis/sfui": ["./index.ts"]
     }
   },
-  "include": [
-    "**/*.ts",
-    "**/*.vue"
-  ],
+  "include": ["**/*.ts", "**/*.vue"],
   "exclude": ["./dist/**/*"]
 }

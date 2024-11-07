@@ -1,1 +1,1 @@
-export { SfLinkVariant } from '@storefront-ui/shared';
+export { SfLinkVariant } from '@storefront-ui/shared'

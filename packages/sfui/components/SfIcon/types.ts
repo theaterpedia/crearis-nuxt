@@ -1,1 +1,1 @@
-export { SfIconSize } from '@storefront-ui/shared';
+export { SfIconSize } from '@storefront-ui/shared'

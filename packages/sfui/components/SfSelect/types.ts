@@ -1,1 +1,1 @@
-export { SfSelectSize } from '@storefront-ui/shared';
+export { SfSelectSize } from '@storefront-ui/shared'

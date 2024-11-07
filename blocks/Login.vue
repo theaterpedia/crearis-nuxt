@@ -17,13 +17,11 @@
 
     <ButtonTmp :disabled="isLoading" type="submit" class="mt-2">
       <SfLoaderCircular v-if="isLoading" size="base" class="flex items-center justify-center" />
-      <span v-else>
-        auth.login.submitLabel
-      </span>
+      <span v-else>auth.login.submitLabel</span>
     </ButtonTmp>
     <ButtonTmp :is="NuxtLink" :to="paths.authResetPassword" data-testid="login-page-reset-button" variant="tertiary">
       auth.login.forgotPasswordLabel
-    </ButtonTmp>  
+    </ButtonTmp>
   </form>
 
   <UiAlert variant="neutral" class="typography-text-base mt-6 w-full !justify-start p-4 md:p-6">

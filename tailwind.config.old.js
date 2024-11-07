@@ -5,7 +5,7 @@ import sfTypography from '@crearis/typography'
 /** @type {import('tailwindcss').Config} */
 export default {
   presets: [tailwindConfig],
-  plugins: [sfTypography],  
+  plugins: [sfTypography],
   content: ['blocks/**/*.vue', 'node_modules/@crearis/sfui/**/*.{js,mjs}'],
   theme: {
     extend: {
@@ -25,7 +25,7 @@ export default {
         60: '60',
         80: '60',
         100: '100',
-      },      
+      },
       spacing: {
         23: '5.75rem',
       },

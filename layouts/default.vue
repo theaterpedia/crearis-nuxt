@@ -24,7 +24,6 @@ defineLayout({
     'Video',
   ],
 })
-
 </script>
 
 <template>

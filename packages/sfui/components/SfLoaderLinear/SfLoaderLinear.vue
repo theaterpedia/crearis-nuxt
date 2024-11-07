@@ -9,12 +9,12 @@ const sizeClasses = {
   [SfLoaderSize['2xl']]: 'h-14',
   [SfLoaderSize['3xl']]: 'h-24',
   [SfLoaderSize['4xl']]: 'h-48',
-};
+}
 </script>
 
 <script lang="ts" setup>
-import { type PropType } from 'vue';
-import { SfLoaderLinearSize, SfLoaderSize } from './types';
+import { type PropType } from 'vue'
+import { SfLoaderLinearSize, SfLoaderSize } from './types'
 
 defineProps({
   size: {
@@ -25,15 +25,15 @@ defineProps({
     type: String,
     default: 'loading',
   },
-});
+})
 </script>
 
 <template>
   <span
-    class="relative inline-block overflow-hidden bg-neutral-300 text-primary-700 after:absolute after:w-2.5 after:h-full after:animate-line after:bg-current after:block"
-    :class="sizeClasses[size]"
-    aria-live="polite"
     :aria-label="ariaLabel"
+    aria-live="polite"
     data-testid="loader-linear"
+    class="relative inline-block overflow-hidden bg-neutral-300 text-primary-700 after:absolute after:block after:h-full after:w-2.5 after:animate-line after:bg-current"
+    :class="sizeClasses[size]"
   />
 </template>

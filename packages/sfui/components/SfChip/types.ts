@@ -1,1 +1,1 @@
-export { SfChipSize } from '@storefront-ui/shared';
+export { SfChipSize } from '@storefront-ui/shared'

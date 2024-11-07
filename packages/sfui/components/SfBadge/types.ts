@@ -1,1 +1,1 @@
-export { SfBadgePlacement, SfBadgeVariant } from '@storefront-ui/shared';
+export { SfBadgePlacement, SfBadgeVariant } from '@storefront-ui/shared'

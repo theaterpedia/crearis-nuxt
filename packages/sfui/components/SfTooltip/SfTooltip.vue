@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { type PropType, toRefs } from 'vue';
-import type { Middleware } from '@floating-ui/vue';
-import { useTooltip } from '../../composables/useTooltip';
-import { type SfPopoverPlacement, type SfPopoverStrategy } from '../../utils/PopoverTypes';
+import { type PropType, toRefs } from 'vue'
+import type { Middleware } from '@floating-ui/vue'
+import { useTooltip } from '../../composables/useTooltip'
+import { type SfPopoverPlacement, type SfPopoverStrategy } from '../../utils/PopoverTypes'
 
 const props = defineProps({
   placement: {
@@ -25,22 +25,22 @@ const props = defineProps({
     type: String,
     required: true,
   },
-});
+})
 
-const { placement, middleware, strategy } = toRefs(props);
-const { isOpen, triggerProps, tooltipProps, arrowProps } = useTooltip({ placement, middleware, strategy });
+const { placement, middleware, strategy } = toRefs(props)
+const { isOpen, triggerProps, tooltipProps, arrowProps } = useTooltip({ placement, middleware, strategy })
 </script>
 <template>
-  <span data-testid="tooltip" v-bind="triggerProps">
+  <span v-bind="triggerProps" data-testid="tooltip">
     <slot />
     <div
       v-if="label && isOpen"
-      role="tooltip"
-      class="bg-black px-2 py-1.5 rounded-md text-white text-xs w-max max-w-[360px] drop-shadow"
       v-bind="tooltipProps"
+      role="tooltip"
+      class="w-max max-w-[360px] rounded-md bg-black px-2 py-1.5 text-xs text-white drop-shadow"
     >
       {{ label }}
-      <span v-if="showArrow" v-bind="arrowProps" class="bg-black rotate-45" />
+      <span v-if="showArrow" v-bind="arrowProps" class="rotate-45 bg-black" />
     </div>
   </span>
 </template>

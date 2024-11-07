@@ -1,3 +1,3 @@
-import { SfProgressSize } from '@storefront-ui/shared';
+import { SfProgressSize } from '@storefront-ui/shared'
 
-export { SfProgressSize };
+export { SfProgressSize }

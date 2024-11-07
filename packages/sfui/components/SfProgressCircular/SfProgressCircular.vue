@@ -8,7 +8,7 @@ const sizeClasses = {
   [SfProgressSize['2xl']]: 'h-14 w-14 ring-[3px]',
   [SfProgressSize['3xl']]: 'h-24 w-24 ring-4',
   [SfProgressSize['4xl']]: 'h-48 w-48 ring-8',
-};
+}
 const strokeSizeClass = {
   [SfProgressSize.xs]: 'stroke-[10px]',
   [SfProgressSize.sm]: 'stroke-[8px]',
@@ -18,12 +18,12 @@ const strokeSizeClass = {
   [SfProgressSize['2xl']]: 'stroke-[3px]',
   [SfProgressSize['3xl']]: 'stroke-2',
   [SfProgressSize['4xl']]: 'stroke-2',
-};
+}
 </script>
 
 <script lang="ts" setup>
-import { computed, toRefs, type PropType } from 'vue';
-import { SfProgressSize } from './types';
+import { computed, toRefs, type PropType } from 'vue'
+import { SfProgressSize } from './types'
 
 const props = defineProps({
   value: {
@@ -38,31 +38,31 @@ const props = defineProps({
     type: String,
     default: 'Progress element',
   },
-});
-const { value } = toRefs(props);
+})
+const { value } = toRefs(props)
 
-const strokeDasharray = computed(() => `${(value.value / 100) * 151}, 150`);
+const strokeDasharray = computed(() => `${(value.value / 100) * 151}, 150`)
 </script>
 
 <template>
   <svg
-    role="progressbar"
-    aria-valuemin="0"
-    aria-valuemax="100"
-    :aria-valuenow="value"
     :aria-label="ariaLabel"
-    class="inline-block ring-inset ring-neutral-300 text-primary-700 rounded-full transition-[stroke-dasharray] ease-in-out duration-500 text-sm"
-    :class="sizeClasses[size]"
-    viewBox="25 25 50 50"
+    :aria-valuenow="value"
     :stroke-dasharray="strokeDasharray"
+    aria-valuemax="100"
+    aria-valuemin="0"
     data-testid="progress"
+    role="progressbar"
+    viewBox="25 25 50 50"
+    class="inline-block rounded-full text-sm text-primary-700 ring-inset ring-neutral-300 transition-[stroke-dasharray] duration-500 ease-in-out"
+    :class="sizeClasses[size]"
   >
     <circle
-      :class="strokeSizeClass[size]"
-      class="origin-bottom-right -rotate-90 stroke-current fill-none"
       cx="50"
       cy="50"
       r="24"
+      class="origin-bottom-right -rotate-90 fill-none stroke-current"
+      :class="strokeSizeClass[size]"
     />
     <slot />
   </svg>

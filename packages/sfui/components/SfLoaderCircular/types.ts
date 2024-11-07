@@ -1,3 +1,3 @@
-import { SfLoaderSize } from '@storefront-ui/shared';
+import { SfLoaderSize } from '@storefront-ui/shared'
 
-export { SfLoaderSize };
+export { SfLoaderSize }

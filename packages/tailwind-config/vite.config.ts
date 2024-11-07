@@ -1,8 +1,8 @@
 // vite.config.js
-import path from 'path';
-import { defineConfig } from 'vite';
-import dts from 'vite-plugin-dts';
-import pkg from './package.json';
+import path from 'path'
+import { defineConfig } from 'vite'
+import dts from 'vite-plugin-dts'
+import pkg from './package.json'
 
 export default defineConfig({
   plugins: [
@@ -14,7 +14,7 @@ export default defineConfig({
     lib: {
       entry: path.resolve(__dirname, 'index.ts'),
       name: 'storefront-ui-tailwind-config',
-      fileName: (format) => format === 'es' ? `index.mjs` : `index.${format}.js`,
+      fileName: (format) => (format === 'es' ? `index.mjs` : `index.${format}.js`),
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled into your library
@@ -24,4 +24,4 @@ export default defineConfig({
       ),
     },
   },
-});
+})

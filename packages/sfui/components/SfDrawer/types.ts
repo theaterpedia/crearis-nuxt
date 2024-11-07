@@ -1,1 +1,1 @@
-export { SfDrawerPlacement } from '@storefront-ui/shared';
+export { SfDrawerPlacement } from '@storefront-ui/shared'

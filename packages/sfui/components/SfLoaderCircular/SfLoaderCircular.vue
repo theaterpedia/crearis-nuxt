@@ -8,7 +8,7 @@ const sizeClasses = {
   [SfLoaderSize['2xl']]: 'h-14 w-14 ring-[3px]',
   [SfLoaderSize['3xl']]: 'h-24 w-24 ring-4',
   [SfLoaderSize['4xl']]: 'h-48 w-48 ring-8',
-};
+}
 const strokeSizeClass = {
   [SfLoaderSize.xs]: 'stroke-[10px]',
   [SfLoaderSize.sm]: 'stroke-[8px]',
@@ -18,12 +18,12 @@ const strokeSizeClass = {
   [SfLoaderSize['2xl']]: 'stroke-[3px]',
   [SfLoaderSize['3xl']]: 'stroke-2',
   [SfLoaderSize['4xl']]: 'stroke-2',
-};
+}
 </script>
 
 <script lang="ts" setup>
-import { type PropType } from 'vue';
-import { SfLoaderSize } from './types';
+import { type PropType } from 'vue'
+import { SfLoaderSize } from './types'
 
 defineProps({
   size: {
@@ -34,24 +34,24 @@ defineProps({
     type: String,
     default: 'loading',
   },
-});
+})
 </script>
 
 <template>
   <svg
-    class="inline-block rounded-full ring-inset ring-neutral-300 text-primary-700 animate-spin-slow"
-    :class="sizeClasses[size]"
-    viewBox="25 25 50 50"
-    aria-live="polite"
     :aria-label="ariaLabel"
+    aria-live="polite"
     data-testid="loader-circular"
+    viewBox="25 25 50 50"
+    class="inline-block animate-spin-slow rounded-full text-primary-700 ring-inset ring-neutral-300"
+    :class="sizeClasses[size]"
   >
     <circle
-      :class="strokeSizeClass[size]"
-      class="stroke-current stroke-2 fill-none animate-stroke-loader-circular"
       cx="50"
       cy="50"
       r="24"
+      class="animate-stroke-loader-circular fill-none stroke-current stroke-2"
+      :class="strokeSizeClass[size]"
     />
   </svg>
 </template>

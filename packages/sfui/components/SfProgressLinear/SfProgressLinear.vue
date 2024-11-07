@@ -9,12 +9,12 @@ const sizeClasses = {
   [SfProgressSize['2xl']]: 'h-14',
   [SfProgressSize['3xl']]: 'h-24',
   [SfProgressSize['4xl']]: 'h-48',
-};
+}
 </script>
 
 <script lang="ts" setup>
-import { type PropType } from 'vue';
-import { SfProgressSize, SfProgressLinearSize } from './types';
+import { type PropType } from 'vue'
+import { SfProgressSize, SfProgressLinearSize } from './types'
 
 defineProps({
   value: {
@@ -29,16 +29,16 @@ defineProps({
     type: String,
     default: 'Progress element',
   },
-});
+})
 </script>
 
 <template>
   <progress
-    data-testid="progress-linear"
-    max="100"
-    class="bg-neutral-300 text-primary-700 [&::-webkit-progress-bar]:bg-inherit [&::-webkit-progress-value]:bg-current [&::-webkit-progress-value]:transition-[width] [&::-webkit-progress-value]:ease-in-out [&::-webkit-progress-value]:duration-200 [&::-moz-progress-bar]:bg-current"
-    :class="sizeClasses[size]"
     :aria-label="ariaLabel"
     :value="value"
+    data-testid="progress-linear"
+    max="100"
+    class="bg-neutral-300 text-primary-700 [&::-moz-progress-bar]:bg-current [&::-webkit-progress-bar]:bg-inherit [&::-webkit-progress-value]:bg-current [&::-webkit-progress-value]:transition-[width] [&::-webkit-progress-value]:duration-200 [&::-webkit-progress-value]:ease-in-out"
+    :class="sizeClasses[size]"
   />
 </template>

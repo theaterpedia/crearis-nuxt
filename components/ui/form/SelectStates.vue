@@ -1,40 +1,33 @@
-<script setup lang="ts">
-import { useStateList } from "~/domains/core/composable/useStateList";
-import CustomSfSelect from "./CustomSfSelect.vue";
+<script lang="ts" setup>
+import { useStateList } from '~/domains/core/composable/useStateList'
+import CustomSfSelect from './CustomSfSelect.vue'
 
 const props = defineProps({
   countryId: {
     type: Number,
     default: 0,
   },
-});
+})
 
-const model = defineModel({ default: 0 });
+const model = defineModel({ default: 0 })
 
-const { loadStates, states } = useStateList(props.countryId);
+const { loadStates, states } = useStateList(props.countryId)
 
 watch(
   () => props.countryId,
   () => {
     if (props.countryId > 0) {
-      loadStates();
+      loadStates()
     }
   },
-  { immediate: true }
-);
+  { immediate: true },
+)
 </script>
 <template>
   <label class="md:col-span-3">
     <UiFormLabel>form.stateLabel</UiFormLabel>
-    <CustomSfSelect
-      v-model="model"
-      name="state"
-      autocomplete="state-name"
-      required
-    >
-      <option key="placeholder" :value="null">
-        form.selectPlaceholder
-      </option>
+    <CustomSfSelect v-model="model" autocomplete="state-name" name="state" required>
+      <option :value="null" key="placeholder">form.selectPlaceholder</option>
       <option v-for="state in states" :value="state?.id">
         {{ state.name }}
       </option>

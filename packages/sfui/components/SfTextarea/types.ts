@@ -1,1 +1,1 @@
-export { SfTextareaSize } from '@storefront-ui/shared';
+export { SfTextareaSize } from '@storefront-ui/shared'

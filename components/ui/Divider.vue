@@ -1,3 +1,3 @@
 <template>
-  <hr class="w-full h-px bg-neutral-200" data-testid="divider">
+  <hr data-testid="divider" class="h-px w-full bg-neutral-200" />
 </template>

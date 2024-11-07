@@ -1,5 +1,5 @@
-import type { MaybeRef } from '@vueuse/shared';
+import type { MaybeRef } from '@vueuse/shared'
 
 export interface UseDisclosureOptions {
-  initialValue?: MaybeRef<boolean>;
+  initialValue?: MaybeRef<boolean>
 }

@@ -10,7 +10,6 @@
       :tags="tags ? tags : ''"
     />
     <Catalog v-html="body" />
-    
   </div>
 </template>
 
@@ -73,7 +72,8 @@ const { heading, body } = extractContent(props.content)
 const { headline, overline, subline, tags, shortcode } = extractHeading(heading)
 </script>
 
-<style scoped> /* cloned (WITHOUT '> prose' ) from packages/ui/src/components/Catalog.vue */
+<style scoped>
+/* cloned (WITHOUT '> prose' ) from packages/ui/src/components/Catalog.vue */
 .catalog :deep() > ul > li:has(strong) {
   display: flex;
   align-items: flex-end;
@@ -86,7 +86,6 @@ const { headline, overline, subline, tags, shortcode } = extractHeading(heading)
 .catalog :deep() {
   max-width: 28em; /* 448px */
 }
-
 
 @media (max-width: 420px) {
   .catalog :deep() {

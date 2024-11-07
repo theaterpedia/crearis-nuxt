@@ -1,29 +1,29 @@
-<script setup lang="ts">
-import { unrefElement } from "@vueuse/core";
+<script lang="ts" setup>
+import { unrefElement } from '@vueuse/core'
 
-const { t } = useI18n();
+const { t } = useI18n()
 
 definePageMeta({
-  layout: "account",
-  middleware: ["auth-check"],
-});
-const { isOpen, open, close } = useDisclosure();
-const { loadUser, user, updatePartner, updatePassword } = useAuth();
-const lastActiveElement = ref();
-const modalElement = ref();
-const openedForm = ref("");
+  layout: 'account',
+  middleware: ['auth-check'],
+})
+const { isOpen, open, close } = useDisclosure()
+const { loadUser, user, updatePartner, updatePassword } = useAuth()
+const lastActiveElement = ref()
+const modalElement = ref()
+const openedForm = ref('')
 const openModal = async (modalName: string) => {
-  openedForm.value = modalName;
-  lastActiveElement.value = document.activeElement;
-  open();
-  await nextTick();
-  unrefElement(modalElement).focus();
-};
+  openedForm.value = modalName
+  lastActiveElement.value = document.activeElement
+  open()
+  await nextTick()
+  unrefElement(modalElement).focus()
+}
 
 const closeModal = () => {
-  close();
-  lastActiveElement.value.focus();
-};
+  close()
+  lastActiveElement.value.focus()
+}
 
 const saveNewContactInfo = async (userData: any) => {
   await updatePartner({
@@ -31,86 +31,75 @@ const saveNewContactInfo = async (userData: any) => {
     email: userData?.email ? userData?.email : user.value?.email,
     name: userData?.fullName ? userData.fullName : user.value?.name,
     subscribeNewsletter: userData?.subscribeNewsletter,
-  });
-  closeModal();
-};
+  })
+  closeModal()
+}
 
 const saveNewPassword = async (passwords: any) => {
   if (passwords.firstNewPassword === passwords.secondNewPassword) {
     await updatePassword({
       currentPassword: passwords.oldPassword,
       newPassword: passwords.firstNewPassword,
-    });
+    })
   }
-};
+}
 onMounted(async () => {
-  await loadUser(true);
-});
+  await loadUser(true)
+})
 </script>
 <template>
   <TmpConstruction>
-    <h1>
-      Under Construction
-    </h1>
+    <h1>Under Construction</h1>
   </TmpConstruction>
-  <h1>{{ $t("account.accountSettings.personalData.title") }}</h1>
-  <UiDivider class="w-screen -mx-4 md:col-span-3 md:w-auto md:mx-0" />
+  <h1>{{ $t('account.accountSettings.personalData.title') }}</h1>
+  <UiDivider class="-mx-4 w-screen md:col-span-3 md:mx-0 md:w-auto" />
   <AccountProfileData
-    class="col-span-3"
-    :header="$t('account.accountSettings.personalData.contactInformation')"
     :button-text="$t('account.accountSettings.personalData.edit')"
+    :header="$t('account.accountSettings.personalData.contactInformation')"
     @on-click="openModal('contactInformation')"
+    class="col-span-3"
   >
     <p>{{ user?.name }}</p>
     <p>{{ user?.email }}</p>
   </AccountProfileData>
-  <UiDivider class="w-screen -mx-4 md:col-span-3 md:w-auto md:mx-0" />
+  <UiDivider class="-mx-4 w-screen md:col-span-3 md:mx-0 md:w-auto" />
   <AccountProfileData
-    class="col-span-3"
-    :header="$t('account.accountSettings.personalData.yourPassword')"
     :button-text="$t('account.accountSettings.personalData.change')"
+    :header="$t('account.accountSettings.personalData.yourPassword')"
     @on-click="openModal('passwordChange')"
+    class="col-span-3"
   >
     ******
   </AccountProfileData>
-  <UiDivider class="w-screen -mx-4 md:col-span-3 md:w-auto md:mx-0" />
+  <UiDivider class="-mx-4 w-screen md:col-span-3 md:mx-0 md:w-auto" />
   <UiOverlay v-if="isOpen" :visible="isOpen">
     <SfModal
-      ref="modalElement"
       v-model="isOpen"
-      tag="section"
-      role="dialog"
-      class="h-full w-full overflow-auto md:w-[600px] md:h-fit"
       aria-labelledby="address-modal-title"
+      ref="modalElement"
+      role="dialog"
+      tag="section"
+      class="h-full w-full overflow-auto md:h-fit md:w-[600px]"
     >
       <header>
-        <SfButton
-          type="button"
-          square
-          variant="tertiary"
-          class="absolute right-2 top-2"
-          @click="closeModal"
-        >
+        <SfButton @click="closeModal" square type="button" variant="tertiary" class="absolute right-2 top-2">
           <SfIconClose />
         </SfButton>
-        <h3
-          id="address-modal-title"
-          class="text-neutral-900 text-lg md:text-2xl font-bold mb-6"
-        >
+        <h3 id="address-modal-title" class="mb-6 text-lg font-bold text-neutral-900 md:text-2xl">
           {{ $t(`account.accountSettings.personalData.${openedForm}`) }}
         </h3>
       </header>
       <AccountContactInformation
         v-if="openedForm === 'contactInformation'"
-        :full-name="user?.name"
         :email="user?.email"
-        @on-save="saveNewContactInfo"
+        :full-name="user?.name"
         @on-cancel="closeModal"
+        @on-save="saveNewContactInfo"
       />
       <AccountFormPassword
         v-else-if="openedForm === 'passwordChange'"
-        @on-save="saveNewPassword"
         @on-cancel="closeModal"
+        @on-save="saveNewPassword"
       />
     </SfModal>
   </UiOverlay>

@@ -1,10 +1,10 @@
-import { MaybeRef } from '@vueuse/core';
+import { MaybeRef } from '@vueuse/core'
 
 export interface FocusVisibleProps {
-  isTextInput?: MaybeRef<boolean>;
-  autoFocus?: boolean;
+  isTextInput?: MaybeRef<boolean>
+  autoFocus?: boolean
 }
 
 export interface FocusVisibleResult {
-  isFocusVisible: MaybeRef<boolean>;
+  isFocusVisible: MaybeRef<boolean>
 }
