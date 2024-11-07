@@ -16,14 +16,14 @@ html {
 }
 
 @font-face {
-  font-family: Monaspace;
+  font-family: Mona-Neon;
   src: url('./Monaspace/MonaspaceNeon-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: Monaspace;
+  font-family: Mona-Neon;
   src: url('./Monaspace/MonaspaceNeon-Bold.woff') format('woff');
   font-weight: 700;
   font-style: normal;

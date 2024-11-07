@@ -10,5 +10,6 @@
 </template>
 
 <script lang="ts" setup>
+import { SfIconsSfIconVisibility, SfIconsSfIconVisibilityOff } from '#components';
 const isPasswordVisible = ref<boolean>();
 </script>

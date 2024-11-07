@@ -9,6 +9,6 @@ export default defineNuxtConfig({
   modules: ['@crearis-nuxt/ui/nuxt', '@nuxtjs/tailwindcss'],
   tailwindcss: {
     viewer: false,
-    cssPath: join(currentDir, './assets/css/index.css'),
+    cssPath: join(currentDir, './assets/css/tailwind.css'),
   },
 })
