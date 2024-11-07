@@ -8,9 +8,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Lato', ...defaultTheme.fontFamily.sans],
+        sans: ['Roboto', ...defaultTheme.fontFamily.sans], // Pruvious: Lato
         mona: ['Mona-Neon', ...defaultTheme.fontFamily.serif],
-        heading: ['Poppins', ...defaultTheme.fontFamily.mono],
+        heading: ['Mona-Neon', ...defaultTheme.fontFamily.mono], // Pruvious: Poppins
       },
       screens: {
         xxl: '1440px',

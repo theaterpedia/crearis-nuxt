@@ -7,8 +7,8 @@
   "main": "./nuxt.config.ts",
   "scripts": {
     "dev": "nuxi dev .playground",
-    "dev:prepare": "nuxt prepare .playground",
-    "postinstall": "pnpm run dev:prepare"
+    "prepare": "nuxt prepare .playground",
+    "postinstall": "pnpm run prepare"
   },
   "dependencies": {
     "@crearis/tailwind-config": "workspace:*",
