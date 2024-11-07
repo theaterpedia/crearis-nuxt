@@ -33,7 +33,6 @@ export default {
     },
     fontFamily: {
       sans: 'var(--font)',
-      mona: ['Mona-Neon', ...fontFamily.serif],
     },
     ringColor: {
       DEFAULT: 'hsl(var(--ring))',
