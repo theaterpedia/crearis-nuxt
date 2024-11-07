@@ -8,6 +8,7 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   modules: ['@crearis-nuxt/ui/nuxt', '@nuxtjs/tailwindcss'],
   tailwindcss: {
+    viewer: false,
     cssPath: join(currentDir, './assets/css/index.css'),
   },
 })

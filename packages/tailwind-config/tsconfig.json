@@ -1,0 +1,14 @@
+{
+  "extends": "@crearis/sfui-ts-config",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "sourceMap": true,
+    "noEmit": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "baseUrl": ".",
+    "types": ["vite/client"]
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["./dist/**/*"]
+}

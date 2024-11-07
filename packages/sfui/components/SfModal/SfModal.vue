@@ -1,0 +1,62 @@
+<script setup lang="ts">
+import { ref, toRefs, type PropType, type ConcreteComponent } from 'vue';
+import { onClickOutside } from '@vueuse/core';
+import { useTrapFocus } from '../../composables/useTrapFocus';
+
+const props = defineProps({
+  modelValue: {
+    type: Boolean,
+    default: false,
+  },
+  tag: {
+    type: [String, Object] as PropType<string | ConcreteComponent>,
+    default: '',
+  },
+  disableClickAway: {
+    type: Boolean,
+    default: false,
+  },
+  disableEsc: {
+    type: Boolean,
+    default: false,
+  },
+});
+const { disableClickAway, disableEsc, modelValue } = toRefs(props);
+const emit = defineEmits<{
+  (event: 'update:modelValue', isOpen: boolean): void;
+}>();
+
+const modalRef = ref<HTMLElement>();
+
+onClickOutside(modalRef, () => {
+  if (disableClickAway.value) return;
+  emit('update:modelValue', false);
+});
+
+const onEscKeyDown = () => {
+  if (disableEsc.value) return;
+  emit('update:modelValue', false);
+};
+
+useTrapFocus(modalRef, {
+  trapTabs: true,
+  activeState: modelValue,
+  initialFocus: false,
+  initialFocusContainerFallback: true,
+});
+</script>
+
+<template>
+  <component
+    :is="tag || 'div'"
+    v-if="modelValue"
+    ref="modalRef"
+    aria-modal="true"
+    data-testid="modal"
+    tabindex="-1"
+    class="fixed inset-0 w-fit h-fit m-auto p-6 pt-10 lg:p-10 border border-neutral-100 bg-white shadow-xl rounded-xl outline-none"
+    @keydown.esc="onEscKeyDown"
+  >
+    <slot />
+  </component>
+</template>
