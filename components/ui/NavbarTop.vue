@@ -62,7 +62,7 @@ const y = useWindowScroll().y
         </NuxtLink>
         <slot />
         <SfButton @click="toggleDark()" class="text-primary-700 bg-primary-200 dark:text-primary-200 dark:bg-primary-700">
-          <component :is="SfIcons['SfIconCircle']" />
+          <SfIconCircle />
         </SfButton>          
       </div>
     </div>
