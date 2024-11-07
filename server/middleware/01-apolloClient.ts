@@ -1,7 +1,7 @@
 import { createApiClient } from '../../packages/odoo-sdk-api-client/src/index.server'
-// import { MiddlewareConfig } from "@crearis/odoo-sdk-api-client/server";
+// import { MiddlewareConfig } from "@crearis-nuxt/odoo-sdk-api-client/server";
 
-import type { MiddlewareConfig } from '@crearis/odoo-sdk-api-client'
+import type { MiddlewareConfig } from '@crearis-nuxt/odoo-sdk-api-client'
 import { Mutations } from '../mutations'
 import { Queries } from '../queries'
 

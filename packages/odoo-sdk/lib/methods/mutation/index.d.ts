@@ -1,4 +1,4 @@
-import { MutationMetadataParams } from '@crearis/odoo-sdk-api-client'
+import { MutationMetadataParams } from '@crearis-nuxt/odoo-sdk-api-client'
 /**
  * Make the query
  *

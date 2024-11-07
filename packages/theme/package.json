@@ -20,7 +20,7 @@
     "@nuxtjs/tailwindcss": "^6.12.1"
   },
   "devDependencies": {
-    "nuxt": "^3.13.2",
+    "nuxt": "3.13.2",
     "tailwindcss": "^3.4.7",
     "typescript": "^5.5.4",
     "vue": "latest"

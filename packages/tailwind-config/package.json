@@ -1,5 +1,5 @@
 {
-  "name": "@crearis/tailwind-config",
+  "name": "@crearis-nuxt/tailwind-config",
   "version": "0.0.9",
   "description": "Variant of Storefront UI Tailwind config",
   "license": "MIT",
@@ -33,7 +33,7 @@
     "typescript": "^5.5.4",
     "vite": "^5.4.0",
     "vite-plugin-dts": "^4.0.0",
-    "@crearis/sfui-ts-config": "workspace:*"
+    "@crearis-nuxt/sfui-ts-config": "workspace:*"
   },
   "dependencies": {
     "tailwindcss": "^3.4.0",

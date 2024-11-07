@@ -1,5 +1,5 @@
 import defaultTheme from 'tailwindcss/defaultTheme'
-import { tailwindConfig } from '@crearis/tailwind-config'
+import { tailwindConfig } from '@crearis-nuxt/tailwind-config'
 
 // #DOCU _07 Theming with tw-colors
 // https://github.com/L-Blondy/tw-colors
@@ -8,7 +8,7 @@ const { createThemes } = require('tw-colors')
 /** @type {import('tailwindcss').Config} */
 export default {
   presets: [tailwindConfig],
-  content: ['blocks/**/*.vue', 'node_modules/@crearis/sfui/**/*.{js,mjs}'],
+  content: ['blocks/**/*.vue', 'node_modules/@crearis-nuxt/sfui/**/*.{js,mjs}'],
   theme: {
     borderColor: ({ theme }) => ({
       DEFAULT: theme('colors.border'),

@@ -1,4 +1,4 @@
-import { Endpoints } from '@crearis/odoo-sdk-api-client'
+import { Endpoints } from '@crearis-nuxt/odoo-sdk-api-client'
 import { H3Event } from 'h3'
 
 export const getCached = cachedFunction(

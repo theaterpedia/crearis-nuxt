@@ -1,4 +1,4 @@
-import type { Endpoints } from '@crearis/odoo-sdk-api-client'
+import type { Endpoints } from '@crearis-nuxt/odoo-sdk-api-client'
 
 import {
   appendResponseHeader,

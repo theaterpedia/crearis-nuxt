@@ -1,7 +1,7 @@
 import { defineNuxtPlugin } from '#app'
 import { initSDK, buildModule } from '@vue-storefront/sdk'
-import type { OdooModuleType } from '@crearis/odoo-sdk'
-import { OdooModule } from '@crearis/odoo-sdk'
+import type { OdooModuleType } from '@crearis-nuxt/odoo-sdk'
+import { OdooModule } from '@crearis-nuxt/odoo-sdk'
 
 export default defineNuxtPlugin(async () => {
   const config = useRuntimeConfig()

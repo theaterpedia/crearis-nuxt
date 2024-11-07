@@ -1,12 +1,12 @@
 import defaultTheme from 'tailwindcss/defaultTheme'
-import { tailwindConfig } from '@crearis/tailwind-config'
-import sfTypography from '@crearis/typography'
+import { tailwindConfig } from '@crearis-nuxt/tailwind-config'
+import sfTypography from '@crearis-nuxt/typography'
 
 /** @type {import('tailwindcss').Config} */
 export default {
   presets: [tailwindConfig],
   plugins: [sfTypography],
-  content: ['blocks/**/*.vue', 'node_modules/@crearis/sfui/**/*.{js,mjs}'],
+  content: ['blocks/**/*.vue', 'node_modules/@crearis-nuxt/sfui/**/*.{js,mjs}'],
   theme: {
     extend: {
       fontFamily: {

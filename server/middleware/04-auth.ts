@@ -1,4 +1,4 @@
-import type { Endpoints } from '@crearis/odoo-sdk-api-client'
+import type { Endpoints } from '@crearis-nuxt/odoo-sdk-api-client'
 import { defineEventHandler, getCookie } from 'h3'
 import type { Partner } from '../../graphql'
 import { query } from '#pruvious/server'
