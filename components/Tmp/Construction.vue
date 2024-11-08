@@ -5,7 +5,7 @@
       <div>
         <div class="flex mb-2">
           <Logo logoSize="sm" />
-          <strong class="ml-2 font-mona text-md sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">{{ extension }}</strong>
+          <strong class="ml-2 font-mono text-md sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">{{ extension }}</strong>
         </div>
         <slot />
       </div>
@@ -25,7 +25,7 @@ const props = defineProps({
 
 <style scoped>
 .warning {
-  margin-right: 1.5em;
+  margin-right: 1em;
   height: 6em;
   width: 5em;
   min-width: 5em;

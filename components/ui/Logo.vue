@@ -16,7 +16,7 @@ const logoClass = 'text-content'
       v-show="extended"
       :class="
         props.logoSize === 'default'
-          ? 'invisible font-mona text-sm tracking-tight sm:visible lg:text-lg xl:text-2xl xl:tracking-tighter 2xl:text-2xl 2xl:tracking-wide'
+          ? 'invisible font-mono text-sm tracking-tight sm:visible lg:text-lg xl:text-2xl xl:tracking-tighter 2xl:text-2xl 2xl:tracking-wide'
           : props.logoSize === 'sm'
             ? 'invisible text-sm lg:visible lg:tracking-tight xl:text-lg'
             : 'text-xs tracking-wider sm:text-base lg:text-2xl 2xl:text-4xl 2xl:tracking-tight'
@@ -28,10 +28,10 @@ const logoClass = 'text-content'
     <h1
       :class="
         props.logoSize === 'default'
-          ? 'font-mona text-xl sm:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl'
+          ? 'font-mono text-xl sm:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl'
           : props.logoSize === 'sm'
-            ? 'text-md font-mona sm:text-lg md:text-xl lg:text-2xl xl:text-3xl'
-            : 'font-mona text-3xl sm:text-4xl lg:text-5xl 2xl:text-6xl'
+            ? 'text-md font-mono sm:text-lg md:text-xl lg:text-2xl xl:text-3xl'
+            : 'font-mono text-3xl sm:text-4xl lg:text-5xl 2xl:text-6xl'
       "
     >
       <span
