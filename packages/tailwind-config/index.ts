@@ -9,6 +9,129 @@ export const tailwindConfig: Config = {
     hoverOnlyWhenSupported: true,
   },
   theme: {
+    typography: ({ theme }: ThemeConfig) => ({
+      'display-1': {
+        fontSize: theme('fontSize.6xl'),
+        fontFamily: theme('fontFamily.headings'),
+        lineHeight: '1.125',
+      }, 
+      'display-2': {
+        fontSize: theme('fontSize.4xl'),
+        fontFamily: theme('fontFamily.headings'),
+        lineHeight: '1.125',
+      }, 
+      'display-3': {
+        fontSize: theme('fontSize.2xl'),
+        fontFamily: theme('fontFamily.headings'),
+        lineHeight: '1.125',
+      },
+      'headline-1': {
+        fontSize: theme('fontSize.6xl'),
+        fontFamily: theme('fontFamily.headings'),
+        lineHeight: '1.125',
+      }, 
+      'headline-2': {
+        fontSize: theme('fontSize.4xl'),
+        fontFamily: theme('fontFamily.headings'),
+        lineHeight: '1.125',
+      }, 
+      'headline-3': {
+        fontSize: theme('fontSize.2xl'),
+        fontFamily: theme('fontFamily.headings'),
+        lineHeight: '1.125',
+      },                 
+      'headline-4': {
+        fontSize: theme('fontSize.lg'),
+        fontFamily: theme('fontFamily.headings'),
+        lineHeight: '1.125',
+      },
+      'headline-5': {
+        fontSize: theme('fontSize.base'),
+        fontFamily: theme('fontFamily.headings'),
+        lineHeight: '1.125',
+      }, 
+      'headline-6': {
+        fontSize: theme('fontSize.sm'),
+        fontFamily: theme('fontFamily.headings'),
+        lineHeight: '1.125',
+      }, 
+      'text-xl': {
+        fontSize: theme('fontSize.xl'),
+        lineHeight: '1.4',
+      }, 
+      'text-lg': {
+        fontSize: theme('fontSize.lg'),
+        lineHeight: '1.4',
+      },       
+      'text-base': {
+        fontSize: theme('fontSize.base'),
+        lineHeight: '1.4',
+      },
+      'text-sm': {
+        fontSize: theme('fontSize.sm'),
+        lineHeight: '1.4',
+      },
+      'text-xs': {
+        fontSize: theme('fontSize.xs'),
+        lineHeight: '1.4',
+      }, 
+      'button-lg': {
+        fontSize: theme('fontSize.lg'),
+        lineHeight: '1.4',
+      },       
+      'button-base': {
+        fontSize: theme('fontSize.base'),
+        lineHeight: '1.4',
+      },
+      'button-sm': {
+        fontSize: theme('fontSize.sm'),
+        lineHeight: '1.4',
+      },
+      'label-lg': {
+        fontSize: theme('fontSize.lg'),
+        lineHeight: '1.4',
+      },       
+      'label-base': {
+        fontSize: theme('fontSize.base'),
+        lineHeight: '1.4',
+      },
+      'label-sm': {
+        fontSize: theme('fontSize.sm'),
+        lineHeight: '1.4',
+      },                                         
+      'error-lg': {
+        fontSize: theme('fontSize.lg'),
+        lineHeight: '1.4',
+      },       
+      'error-base': {
+        fontSize: theme('fontSize.base'),
+        lineHeight: '1.4',
+      },
+      'error-sm': {
+        fontSize: theme('fontSize.sm'),
+        lineHeight: '1.4',
+      }, 
+      'error-xs': {
+        fontSize: theme('fontSize.xs'),
+        lineHeight: '1.4',
+      },
+      'hint-lg': {
+        fontSize: theme('fontSize.lg'),
+        lineHeight: '1.4',
+      },       
+      'hint-base': {
+        fontSize: theme('fontSize.base'),
+        lineHeight: '1.4',
+      },
+      'hint-sm': {
+        fontSize: theme('fontSize.sm'),
+        lineHeight: '1.4',
+      }, 
+      'hint-xs': {
+        fontSize: theme('fontSize.xs'),
+        lineHeight: '1.4',
+      }     
+    }), 
     extend: {
       outlineColor: ({ theme }) => ({
         DEFAULT: theme('colors.secondary.600'),
