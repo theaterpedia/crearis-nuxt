@@ -1,13 +1,13 @@
 <template>
   <form @submit.prevent="handleLogin" class="flex flex-col gap-4 rounded-md border-neutral-200 md:border md:p-6">
     <label>
-      <FormLabel>form.emailLabel</FormLabel>
+      <UiFormLabel>form.emailLabel</UiFormLabel>
       <Input v-model="email" autocomplete="email" name="email" required type="email" />
     </label>
 
     <label>
-      <FormLabel>form.passwordLabel</FormLabel>
-      <FormPasswordInput v-model="password" autocomplete="current-password" name="password" required />
+      <UiFormLabel>form.passwordLabel</UiFormLabel>
+      <UiFormPasswordInput v-model="password" autocomplete="current-password" name="password" required />
     </label>
 
     <label class="mt-2 flex items-center gap-2">

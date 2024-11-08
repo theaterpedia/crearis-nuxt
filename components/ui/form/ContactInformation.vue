@@ -1,12 +1,12 @@
 <template>
   <form @submit.prevent="$emit('on-save', contactInfo)" data-testid="contact-information-form">
     <label>
-      <FormLabel>contactInfo.name</FormLabel>
+      <UiFormLabel>contactInfo.name</UiFormLabel>
       <SfInput v-model="contactInfo.name" name="name" required type="text" />
     </label>
     <div class="mt-4"></div>
     <label>
-      <FormLabel>contactInfo.email</FormLabel>
+      <UiFormLabel>contactInfo.email</UiFormLabel>
       <SfInput v-model="contactInfo.email" name="email" required type="email" />
     </label>
     <div class="mt-4 flex flex-col-reverse md:flex-row md:justify-end">

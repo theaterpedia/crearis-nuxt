@@ -96,7 +96,7 @@ onMounted(async () => {
         @on-cancel="closeModal"
         @on-save="saveNewContactInfo"
       />
-      <AccountFormPassword
+      <AccountUiFormPassword
         v-else-if="openedForm === 'passwordChange'"
         @on-cancel="closeModal"
         @on-save="saveNewPassword"
