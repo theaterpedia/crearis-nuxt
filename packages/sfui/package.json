@@ -18,7 +18,8 @@
     "@vueuse/core": "^10.9.0",
     "jw-paginate": "^1.0.4",
     "tabbable": "^6.1.1",
-    "nuxt": "3.13.2"
+    "nuxt": "3.13.2",
+    "nitropack": "2.9.7"
   },
   "devDependencies": {
     "prettier": "^3.3.0",
