@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true })
 
 var axios = require('axios')
-var hash = require('object-hash')
+var hash = require('ohash')
 
 function _interopDefaultLegacy(e) {
   return e && typeof e === 'object' && 'default' in e ? e : { default: e }
