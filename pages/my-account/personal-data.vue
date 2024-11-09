@@ -8,7 +8,7 @@ definePageMeta({
   middleware: ['auth-check'],
 })
 const { isOpen, open, close } = useDisclosure()
-const { loadUser, user, updatePartner, updatePassword } = useAuth()
+const { user, updatePartner, updatePassword } = useAuth()
 const lastActiveElement = ref()
 const modalElement = ref()
 const openedForm = ref('')
@@ -43,9 +43,7 @@ const saveNewPassword = async (passwords: any) => {
     })
   }
 }
-onMounted(async () => {
-  await loadUser(true)
-})
+
 </script>
 <template>
   <TmpConstruction>

@@ -11,7 +11,7 @@ import { QueryName } from '~/server/queries'
 
 export const useWishlist = () => {
   const { $sdk } = useNuxtApp()
-  const wishlistCounter = useCookie<number>('wishlist-counter')
+  const wishlistCounter = useCookie<number>('wishlist-counter', { sameSite: 'strict' })
   const loading = ref(false)
   const wishlist = useState<WishlistData>('wishlist', () => ({}) as WishlistData)
 
