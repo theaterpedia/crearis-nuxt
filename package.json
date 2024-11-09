@@ -35,10 +35,12 @@
   "dependencies": {
     "@apollo/client": "^3.8.6",
     "@azure/msal-node": "^2.7.0",
+    "@crearis-nuxt/odoo-sdk": "workspace:*",
+    "@crearis-nuxt/odoo-sdk-api-client": "workspace:*",
     "@crearis-nuxt/sfui": "workspace:*",
     "@crearis-nuxt/tailwind-config": "workspace:*",
     "@nuxt/kit": "3.13.2",
-    "@nuxt/image": "^1.8.1",
+    "@nuxt/image": "1.7.0",
     "@vue-storefront/sdk": "^2.0.0",
     "@vueuse/core": "^11.0.0",
     "currency.js": "^2.0.4",
@@ -60,7 +62,6 @@
     "vue-slider-component": "4.1.0-beta.7",
     "vue-toastification": "next",
     "@floating-ui/vue": "^1.1.0",
-    "@nuxtjs/tailwindcss": "^6.12.1",
     "@storefront-ui/shared": "^2.5.0",
     "jw-paginate": "^1.0.4",
     "tabbable": "^6.1.1"
