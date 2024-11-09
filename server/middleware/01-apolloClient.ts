@@ -1,4 +1,4 @@
-import { createApiClient } from '../../packages/odoo-sdk-api-client/src/index.server'
+import { createApiClient } from '@crearis/odoo-sdk-api-client/src/index.server'
 // import { MiddlewareConfig } from "@crearis/odoo-sdk-api-client/server";
 
 import type { MiddlewareConfig } from '@crearis/odoo-sdk-api-client'

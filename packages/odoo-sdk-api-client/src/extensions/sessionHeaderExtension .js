@@ -1,11 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { ApiClientExtension } from '@vue-storefront/middleware'
-import type { Request, Response } from 'express'
 import requestIp from 'request-ip'
 
-const sessionHeaderExtension: ApiClientExtension = {
+const sessionHeaderExtension = {
   name: 'sessionHeaderExtension ',
-  hooks: (req: Request, res: Response) => {
+  hooks: (req, res) => {
     return {
       beforeCreate: ({ configuration }) => {
         const clientIp = requestIp.getClientIp(req)
@@ -19,8 +17,8 @@ const sessionHeaderExtension: ApiClientExtension = {
       },
       beforeCall: ({ configuration, callName, args }) => args,
       afterCall: ({ configuration, callName, response }) => {
-        if ((response as any)?.data?.cookie) {
-          res.setHeader('Set-cookie', (response as any)?.data?.cookie)
+        if ((response)?.data?.cookie) {
+          res.setHeader('Set-cookie', (response)?.data?.cookie)
         }
 
         return response

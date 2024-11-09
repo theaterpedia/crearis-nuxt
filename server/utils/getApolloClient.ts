@@ -1,6 +1,6 @@
 import type { MiddlewareConfig } from '@crearis/odoo-sdk-api-client'
 // @ts-ignore
-import { createApiClient } from '../../packages/odoo-sdk-api-client/src/index.server'
+import { createApiClient } from '@crearis/odoo-sdk-api-client/src/index.server'
 
 class ApolloClientConnection {
   private static _instance: any

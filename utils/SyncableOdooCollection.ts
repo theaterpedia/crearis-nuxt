@@ -3,7 +3,7 @@ import { query } from '#pruvious/server'
 import { ensureUser } from './user'
 import type { MiddlewareConfig } from '@crearis/odoo-sdk-api-client'
 // @ts-ignore
-import { createApiClient } from '../packages/odoo-sdk-api-client/src/index.server'
+import { createApiClient } from '@crearis/odoo-sdk-api-client/src/index.server'
 import { type Endpoints } from '@crearis/odoo-sdk-api-client'
 import { nanoid } from 'nanoid'
 import { Queries } from '../server/queries'

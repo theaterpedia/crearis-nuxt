@@ -1,10 +1,9 @@
-import { Endpoints, OdooIntegrationContext, MutationMetadataParams } from '../../types'
 import consola from 'consola'
 
-export const mutation: Endpoints['mutation'] = async <ApiParams, ApiResponseType>(
-  context: OdooIntegrationContext,
-  metadata: MutationMetadataParams,
-  params?: ApiParams,
+export const mutation = async (
+  context,
+  metadata,
+  params,
 ) => {
   if (!metadata || !metadata.mutationName) {
     const msg = 'Developer Error: mutationName is required'
@@ -26,7 +25,7 @@ export const mutation: Endpoints['mutation'] = async <ApiParams, ApiResponseType
     throw msg
   }
 
-  const response = await context.client.mutate<ApiResponseType, ApiParams>({
+  const response = await context.client.mutate({
     variables: params,
     mutation,
     fetchPolicy: 'no-cache',

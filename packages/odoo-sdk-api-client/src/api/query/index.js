@@ -1,10 +1,9 @@
-import { Endpoints, OdooIntegrationContext, QueryMetadataParams } from '../../types'
 import consola from 'consola'
 
-export const query: Endpoints['query'] = async <ApiParams, ApiResponseType>(
-  context: OdooIntegrationContext,
-  metadata: QueryMetadataParams,
-  params?: ApiParams,
+export const query = async (
+  context,
+  metadata,
+  params,
 ) => {
   if (!metadata || !metadata.queryName) {
     const msg = 'Developer Error: queryName is required'
@@ -26,7 +25,7 @@ export const query: Endpoints['query'] = async <ApiParams, ApiResponseType>(
     throw msg
   }
 
-  const response = await context.client.query<ApiResponseType, ApiParams>({
+  const response = await context.client.query({
     variables: params,
     query,
     fetchPolicy: 'no-cache',

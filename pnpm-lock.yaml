@@ -15,11 +15,11 @@ importers:
         specifier: ^2.7.0
         version: 2.16.0
       '@crearis/odoo-sdk':
-        specifier: 0.7.5
-        version: 0.7.5(graphql-ws@5.16.0(graphql@16.9.0))(graphql@16.9.0)(react@18.3.1)
+        specifier: ^0.7.9
+        version: 0.7.9(graphql-ws@5.16.0(graphql@16.9.0))(graphql@16.9.0)(react@18.3.1)
       '@crearis/odoo-sdk-api-client':
-        specifier: 0.7.2
-        version: 0.7.2(encoding@0.1.13)(graphql-ws@5.16.0(graphql@16.9.0))(graphql@16.9.0)(react@18.3.1)
+        specifier: ^0.7.9
+        version: 0.7.9(encoding@0.1.13)(graphql-ws@5.16.0(graphql@16.9.0))(graphql@16.9.0)(react@18.3.1)
       '@crearis/sfui':
         specifier: workspace:*
         version: link:packages/sfui
@@ -56,9 +56,15 @@ importers:
       graphql-request:
         specifier: ^6.1.0
         version: 6.1.0(encoding@0.1.13)(graphql@16.9.0)
+      jsonwebtoken:
+        specifier: ^9.0.2
+        version: 9.0.2
       jw-paginate:
         specifier: ^1.0.4
         version: 1.0.4
+      nanoid:
+        specifier: ^5.0.0
+        version: 5.0.8
       nitropack:
         specifier: 2.9.7
         version: 2.9.7(encoding@0.1.13)(magicast@0.2.11)
@@ -71,6 +77,9 @@ importers:
       nuxt-lodash:
         specifier: ^2.5.3
         version: 2.5.3(magicast@0.2.11)(rollup@4.24.4)
+      object-hash:
+        specifier: ^3.0.0
+        version: 3.0.0
       prettier:
         specifier: ^3.3.0
         version: 3.3.3
@@ -173,8 +182,8 @@ importers:
         version: 1.4.1
     devDependencies:
       '@crearis/odoo-sdk-api-client':
-        specifier: workspace:*
-        version: link:../odoo-sdk-api-client
+        specifier: ^0.7.9
+        version: 0.7.9(encoding@0.1.13)(graphql-ws@5.16.0(graphql@16.9.0))(graphql@16.9.0)(react@18.3.1)
       '@rollup/plugin-babel':
         specifier: ^6.0.3
         version: 6.0.4(@babel/core@7.26.0)(@types/babel__core@7.20.5)(rollup@4.24.4)
@@ -1030,12 +1039,12 @@ packages:
     resolution: {integrity: sha512-Ir+AOibqzrIsL6ajt3Rz3LskB7OiMVHqltZmspbW/TJuTVuyOMirVqAkjfY6JISiLHgyNqicAC8AyHHGzNd/dA==}
     engines: {node: '>=0.1.90'}
 
-  '@crearis/odoo-sdk-api-client@0.7.2':
-    resolution: {integrity: sha512-5DAlWj+klJyEdYR2BsIMInyH5rb36yYRaykvnjtZyDEITkVAXcag0jvcP7A3Lp5Dc34470dGJu72d47KXIFIkw==}
+  '@crearis/odoo-sdk-api-client@0.7.9':
+    resolution: {integrity: sha512-dOjx22rRTgr5HaKtazw6bZSy74vVnv2RVTVuAMXYw3xnUxdj4IDYSs5qW5xaLHxONiaAeEjv4A/SaomY//iWBQ==}
     engines: {node: '>=16.x'}
 
-  '@crearis/odoo-sdk@0.7.5':
-    resolution: {integrity: sha512-0+xaRGMvgDZwKRkG3VGK0t8WWToNZI7mEkU49QTRGbEUPEzHchz2/63CygHoOG4tAJXHOhe1lGMu+Z2i55BYkw==}
+  '@crearis/odoo-sdk@0.7.9':
+    resolution: {integrity: sha512-Xc66YPELrSuEIGnC8iWDolX6O9NnqzTwgJnSPtLUa1FNF9+fcaaysiic1M2LC2wczTAQspR84ac8iFRoce6JOA==}
     engines: {node: '>=16.x'}
 
   '@csstools/selector-resolve-nested@1.1.0':
@@ -9688,7 +9697,7 @@ snapshots:
 
   '@colors/colors@1.6.0': {}
 
-  '@crearis/odoo-sdk-api-client@0.7.2(encoding@0.1.13)(graphql-ws@5.16.0(graphql@16.9.0))(graphql@16.9.0)(react@18.3.1)':
+  '@crearis/odoo-sdk-api-client@0.7.9(encoding@0.1.13)(graphql-ws@5.16.0(graphql@16.9.0))(graphql@16.9.0)(react@18.3.1)':
     dependencies:
       '@apollo/client': 3.11.9(graphql-ws@5.16.0(graphql@16.9.0))(graphql@16.9.0)(react@18.3.1)
       '@vue-storefront/middleware': 3.5.1
@@ -9710,7 +9719,7 @@ snapshots:
       - subscriptions-transport-ws
       - supports-color
 
-  '@crearis/odoo-sdk@0.7.5(graphql-ws@5.16.0(graphql@16.9.0))(graphql@16.9.0)(react@18.3.1)':
+  '@crearis/odoo-sdk@0.7.9(graphql-ws@5.16.0(graphql@16.9.0))(graphql@16.9.0)(react@18.3.1)':
     dependencies:
       '@apollo/client': 3.11.9(graphql-ws@5.16.0(graphql@16.9.0))(graphql@16.9.0)(react@18.3.1)
       axios: 1.7.7

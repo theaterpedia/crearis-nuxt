@@ -1,6 +1,6 @@
 {
   "name": "@crearis/odoo-sdk",
-  "version": "0.7.5",
+  "version": "0.7.9",
   "private": false,
   "main": "lib/index.cjs.js",
   "module": "lib/index.es.js",
@@ -21,7 +21,7 @@
     "object-hash": "^3.0.0"
   },
   "devDependencies": {
-    "@crearis/odoo-sdk-api-client": "workspace:*",
+    "@crearis/odoo-sdk-api-client": "^0.7.9",
     "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-replace": "^6.0.0",
     "@vue-storefront/sdk": "^2.0.0",
