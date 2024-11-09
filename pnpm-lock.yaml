@@ -14,9 +14,6 @@ importers:
       '@azure/msal-node':
         specifier: ^2.7.0
         version: 2.16.0
-      '@nuxt/image':
-        specifier: 1.7.0
-        version: 1.7.0(ioredis@5.4.1)(magicast@0.2.11)(rollup@4.24.4)
       '@nuxt/kit':
         specifier: 3.13.2
         version: 3.13.2(magicast@0.2.11)(rollup@4.24.4)
@@ -50,9 +47,6 @@ importers:
       nuxt:
         specifier: 3.13.2
         version: 3.13.2(@parcel/watcher@2.5.0)(@types/node@20.17.6)(encoding@0.1.13)(eslint@8.57.1)(ioredis@5.4.1)(magicast@0.2.11)(optionator@0.9.4)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3)(vite@5.4.10(@types/node@20.17.6)(terser@5.36.0))(vue-tsc@2.1.10(typescript@5.6.3))
-      nuxt-lazy-hydrate:
-        specifier: ^1.0.0
-        version: 1.0.0(magicast@0.2.11)(rollup@4.24.4)(vue@3.5.12(typescript@5.6.3))
       nuxt-lodash:
         specifier: ^2.5.3
         version: 2.5.3(magicast@0.2.11)(rollup@4.24.4)
@@ -2119,10 +2113,6 @@ packages:
     hasBin: true
     peerDependencies:
       vite: '*'
-
-  '@nuxt/image@1.7.0':
-    resolution: {integrity: sha512-zSj32bLgbV9AvLkLX0pF52J5KBfSyj0eSIdpXCtTJATSZlqgcJigoCvmabC1nbcMIp0SZ29Bu9+acQpGTQKz+g==}
-    engines: {node: ^14.16.0 || >=16.11.0}
 
   '@nuxt/image@1.8.1':
     resolution: {integrity: sha512-qNj7OCNsoGcutGOo1R2PYp4tQ/6uD77aSakyDoVAmLSRJBmhFTnT2+gIqVD95JMmkSHgYhmSX4gGxnaQK/t1cw==}
@@ -6263,9 +6253,6 @@ packages:
     engines: {node: ^16.10.0 || >=18.0.0}
     hasBin: true
 
-  nuxt-lazy-hydrate@1.0.0:
-    resolution: {integrity: sha512-NJE4wXIud+ihI4B+m5046/hh1wORZni5L9ybCytTO+5FL/PaAS5SBr7boDduTwIjzT2u09p1vVo6yLVzjogljA==}
-
   nuxt-lodash@2.5.3:
     resolution: {integrity: sha512-LCJ40tGQTHkfk8rQoGqtb0mFgRVt8U+pc3S352DsI39yF3olqgxlsm28wdJMIcWHuxLgf5X+DwxmZhrAHXNS5g==}
 
@@ -8355,12 +8342,6 @@ packages:
     hasBin: true
     peerDependencies:
       typescript: '>=5.0.0'
-
-  vue3-lazy-hydration@1.2.1:
-    resolution: {integrity: sha512-0KEU+t1ZcOFomf2xhpKPMU2XBdZDVyVjvkxcXAJRpZ818Om4MMhKxbrmIK6hZ+NZOyoRAgMHl/N1zFZJuQoSJA==}
-    engines: {node: '>=14.6'}
-    peerDependencies:
-      vue: '>=3.0.0'
 
   vue@3.5.12:
     resolution: {integrity: sha512-CLVZtXtn2ItBIi/zHZ0Sg1Xkb7+PU32bJJ8Bmy7ts3jxXTcbfsEfBivFYYWz1Hur+lalqGAh65Coin0r+HRUfg==}
@@ -10966,39 +10947,6 @@ snapshots:
       - supports-color
       - utf-8-validate
       - vue
-      - webpack-sources
-
-  '@nuxt/image@1.7.0(ioredis@5.4.1)(magicast@0.2.11)(rollup@4.24.4)':
-    dependencies:
-      '@nuxt/kit': 3.13.2(magicast@0.2.11)(rollup@4.24.4)
-      consola: 3.2.3
-      defu: 6.1.4
-      h3: 1.13.0
-      image-meta: 0.2.1
-      node-fetch-native: 1.6.4
-      ohash: 1.1.4
-      pathe: 1.1.2
-      std-env: 3.7.0
-      ufo: 1.5.4
-    optionalDependencies:
-      ipx: 2.1.0(ioredis@5.4.1)
-    transitivePeerDependencies:
-      - '@azure/app-configuration'
-      - '@azure/cosmos'
-      - '@azure/data-tables'
-      - '@azure/identity'
-      - '@azure/keyvault-secrets'
-      - '@azure/storage-blob'
-      - '@capacitor/preferences'
-      - '@netlify/blobs'
-      - '@planetscale/database'
-      - '@upstash/redis'
-      - '@vercel/kv'
-      - idb-keyval
-      - ioredis
-      - magicast
-      - rollup
-      - supports-color
       - webpack-sources
 
   '@nuxt/image@1.8.1(ioredis@5.4.1)(magicast@0.3.5)(rollup@4.24.4)':
@@ -16731,17 +16679,6 @@ snapshots:
 
   nuxi@3.15.0: {}
 
-  nuxt-lazy-hydrate@1.0.0(magicast@0.2.11)(rollup@4.24.4)(vue@3.5.12(typescript@5.6.3)):
-    dependencies:
-      '@nuxt/kit': 3.13.2(magicast@0.2.11)(rollup@4.24.4)
-      vue3-lazy-hydration: 1.2.1(vue@3.5.12(typescript@5.6.3))
-    transitivePeerDependencies:
-      - magicast
-      - rollup
-      - supports-color
-      - vue
-      - webpack-sources
-
   nuxt-lodash@2.5.3(magicast@0.2.11)(rollup@4.24.4):
     dependencies:
       '@nuxt/kit': 3.13.2(magicast@0.2.11)(rollup@4.24.4)
@@ -19420,10 +19357,6 @@ snapshots:
       '@vue/language-core': 2.1.10(typescript@5.6.3)
       semver: 7.6.3
       typescript: 5.6.3
-
-  vue3-lazy-hydration@1.2.1(vue@3.5.12(typescript@5.6.3)):
-    dependencies:
-      vue: 3.5.12(typescript@5.6.3)
 
   vue@3.5.12(typescript@5.6.3):
     dependencies:
