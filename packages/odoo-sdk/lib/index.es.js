@@ -1,5 +1,5 @@
 import axios from 'axios'
-import hash from 'ohash'
+import hash from 'object-hash'
 
 const axiosInstance = axios.create()
 axiosInstance.defaults.withCredentials = true

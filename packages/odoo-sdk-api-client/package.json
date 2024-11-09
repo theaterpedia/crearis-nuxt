@@ -16,9 +16,7 @@
   "scripts": {
     "build": "rimraf lib server && rollup -c",
     "dev": "rollup -c -w",
-    "prepublish": "pnpm build",
-    "npmpublish": "npm publish --access public",
-    "publish": "pnpm run npmpublish"
+    "prepublish": "pnpm build"
   },
   "dependencies": {
     "@apollo/client": "^3.9.9",
