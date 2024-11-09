@@ -27,7 +27,7 @@ export default defineNuxtConfig({
       '@apollo/client',
       '@nuxtjs/i18n',
       '@apollo/client/core',
-      '@crearis-nuxt/odoo-sdk-api-client',
+      '@crearis/odoo-sdk-api-client',
       'vue-toastification',
     ],
   },

@@ -3,5 +3,5 @@
 </template>
 
 <script lang="ts" setup>
-import { RadioGroup } from '@crearis-nuxt/ui'
+import { RadioGroup } from '@crearis/ui'
 </script>

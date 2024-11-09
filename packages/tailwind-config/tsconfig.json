@@ -1,5 +1,5 @@
 {
-  "extends": "@crearis-nuxt/sfui-ts-config",
+  "extends": "@crearis/sfui-ts-config",
   "compilerOptions": {
     "outDir": "./dist",
     "sourceMap": true,

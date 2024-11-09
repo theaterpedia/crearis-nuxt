@@ -1,4 +1,4 @@
-import { QueryMetadataParams } from '@crearis-nuxt/odoo-sdk-api-client'
+import { QueryMetadataParams } from '@crearis/odoo-sdk-api-client'
 /**
  * Make the query
  *

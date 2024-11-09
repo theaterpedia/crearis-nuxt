@@ -1,5 +1,5 @@
 import defaultTheme from 'tailwindcss/defaultTheme'
-import { tailwindConfig } from '@crearis-nuxt/tailwind-config'
+import { tailwindConfig } from '@crearis/tailwind-config'
 
 /** @type {import('tailwindcss').Config} */
 export default {

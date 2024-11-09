@@ -1,4 +1,4 @@
-import type { MainMenuLinkItem, MainMenuParentItem } from '@crearis-nuxt/ui'
+import type { MainMenuLinkItem, MainMenuParentItem } from '@crearis/ui'
 import type { NavItem } from '@nuxt/content'
 import type { RouteLocation } from 'vue-router'
 
@@ -9,7 +9,7 @@ export const useMainMenu = () =>
   }))
 
 /**
- * Transforms the Nuxt Content navigation into `@crearis-nuxt/ui` main menu items.
+ * Transforms the Nuxt Content navigation into `@crearis/ui` main menu items.
  * It also sets the `expanded` and `active` properties based on the `activeRoute`.
  */
 export function refreshMainMenu(activeRoute: RouteLocation | string) {

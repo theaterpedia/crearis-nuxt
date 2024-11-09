@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts" setup>
-import { Heading } from '@crearis-nuxt/ui'
+import { Heading } from '@crearis/ui'
 import { extractHeading } from '~/utils/md-renderer'
 
 const props = defineProps({

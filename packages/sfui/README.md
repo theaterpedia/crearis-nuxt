@@ -1,4 +1,4 @@
-# @crearis-nuxt/vue
+# @crearis/vue
 
 Variant of the Storefront-ui design system components for vue.
 

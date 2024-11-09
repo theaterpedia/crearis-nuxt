@@ -1,5 +1,5 @@
 {
-  "name": "crearis-nuxt",
+  "name": "crearis",
   "private": true,
   "repository": {
     "type": "git",
@@ -35,10 +35,10 @@
   "dependencies": {
     "@apollo/client": "^3.8.6",
     "@azure/msal-node": "^2.7.0",
-    "@crearis-nuxt/odoo-sdk": "workspace:*",
-    "@crearis-nuxt/odoo-sdk-api-client": "workspace:*",
-    "@crearis-nuxt/sfui": "workspace:*",
-    "@crearis-nuxt/tailwind-config": "workspace:*",
+    "@crearis/odoo-sdk": "workspace:*",
+    "@crearis/odoo-sdk-api-client": "workspace:*",
+    "@crearis/sfui": "workspace:*",
+    "@crearis/tailwind-config": "workspace:*",
     "@nuxt/kit": "3.13.2",
     "@nuxt/image": "1.7.0",
     "@vue-storefront/sdk": "^2.0.0",

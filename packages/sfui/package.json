@@ -1,5 +1,5 @@
 {
-  "name": "@crearis-nuxt/sfui",
+  "name": "@crearis/sfui",
   "version": "0.0.9",
   "description": "reduced main parts of @storefront-ui/vue into a nuxt-layer",
   "license": "MIT",
@@ -11,7 +11,7 @@
     "postinstall": "pnpm run prepare"
   },
   "dependencies": {
-    "@crearis-nuxt/tailwind-config": "workspace:*",
+    "@crearis/tailwind-config": "workspace:*",
     "@floating-ui/vue": "^1.1.0",
     "@nuxtjs/tailwindcss": "^6.12.1",
     "@storefront-ui/shared": "^2.5.0",
@@ -23,7 +23,7 @@
   "devDependencies": {
     "prettier": "^3.3.0",
     "vue-tsc": "^2.0.2",
-    "@crearis-nuxt/sfui-ts-config": "workspace:*"
+    "@crearis/sfui-ts-config": "workspace:*"
   },
   "peerDependencies": {
     "vue": "^3.2.47"

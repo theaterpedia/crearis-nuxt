@@ -1,5 +1,5 @@
 {
-  "name": "@crearis-nuxt/odoo-sdk-api-client",
+  "name": "@crearis/odoo-sdk-api-client",
   "description": "clone of @erpga/odoo-sdk-api-client",
   "version": "0.7.2",
   "private": false,
