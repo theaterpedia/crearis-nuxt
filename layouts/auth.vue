@@ -1,11 +1,5 @@
 <script lang="ts" setup>
-import { defineLayout } from '#pruvious'
 
-defineLayout({
-  label: 'auth',
-  allowedBlocks: ['Login', 'Subnavigation'],
-  allowedRootBlocks: ['Login', 'Subnavigation'],
-})
 
 defineProps<{
   heading: string

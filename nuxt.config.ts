@@ -8,7 +8,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxtjs/i18n',
     '@nuxtjs/tailwindcss',
-    'pruvious',
+    /* 'pruvious', */
   ],
   googleFonts: {
     families: {
@@ -52,7 +52,7 @@ export default defineNuxtConfig({
     viewer: false,
     cssPath: '~/assets/css/tailwind.css',
   },
-  pruvious: {
+  /* pruvious: {
     api: {
       routes: {
         'login.post': false,
@@ -77,7 +77,7 @@ export default defineNuxtConfig({
         auth: false,
       },
     },
-  },
+  }, */
   i18n: {
     locales: [
       {

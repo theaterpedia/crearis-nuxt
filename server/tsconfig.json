@@ -1,7 +1,0 @@
-{
-  "extends": "../.nuxt/tsconfig.server.json",
-  "compilerOptions": {
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true
-  }
-}

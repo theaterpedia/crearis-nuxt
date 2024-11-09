@@ -25,7 +25,7 @@ const handleLogout = async () => {
 </script>
 
 <template>
-  <NuxtLayout heading="Login" name="auth">
+  <NuxtLayout heading="Home" name="auth">
     <form @submit.prevent="handleLogin" class="flex flex-col gap-4 bg-green-100 md:border md:p-20">
       <label>
         <UiFormLabel>form.emailLabel</UiFormLabel>
