@@ -93,12 +93,6 @@ export default defineEventHandler(async (event) => {
   // end new code
 
   if (response.data.cookie) {
-    appendResponseHeader(event, 
-      'Set-cookie', 
-      response.data?.cookie + 
-        '; odoo-user=' + encodeURIComponent(JSON.stringify(response.data.login.partner)) +
-        '; SameSite=Strict',
-    )
     appendResponseHeader(
       event, 
       'Set-cookie', 

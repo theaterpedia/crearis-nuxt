@@ -4,16 +4,20 @@ import type { Partner } from '../../graphql'
 import { query } from '#pruvious/server'
 
 export default defineEventHandler(async (event) => {
-  const api: Endpoints = event.context.apolloClient.api
-  const cookie = getCookie(event, 'session_id')
+  // const api: Endpoints = event.context.apolloClient.api
+  // const cookie = getCookie(event, 'session_id')
+
+  const cookie = getCookie(event, 'odoo-user')
+  // const response = await api.query<any, { partner: Partner }>({ queryName: 'LoadUserQuery' } as any, null as any)
 
   if (cookie) {
-    const response = await api.query<any, { partner: Partner }>({ queryName: 'LoadUserQuery' } as any, null as any)
+    //extract the user from the cookie
+    const partner = JSON.parse(cookie) as Partner
 
-    if (response.data?.partner) {
+    if (partner.email) {
       const user = await query('users')
         .deselect({ password: true })
-        .where('email', response.data.partner.email)
+        .where('email', partner.email)
         .populate()
         .first()
 
