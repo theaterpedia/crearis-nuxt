@@ -14,7 +14,7 @@ import { useToast } from 'vue-toastification'
 
 export const useCart = () => {
   const { $sdk } = useNuxtApp()
-  const cartCounter = useCookie<number>('cart-counter')
+  const cartCounter = useCookie<number>('cart-counter', { sameSite: 'strict' })
   const toast = useToast()
   const cart = useState<Cart>('cart', () => ({}) as Cart)
 

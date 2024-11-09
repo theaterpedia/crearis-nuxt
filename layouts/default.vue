@@ -1,8 +1,6 @@
 <script lang="ts" setup>
 import { defineLayout } from '#pruvious'
 
-import { useDisclosure, SfIconSearch } from '@crearis/vue'
-
 defineLayout({
   label: 'default',
   allowedBlocks: [
@@ -26,12 +24,11 @@ defineLayout({
     'Video',
   ],
 })
-
-const NuxtLink = resolveComponent('NuxtLink')
 </script>
 
 <template>
   <Header class="mt-12" />
+  <TheHeader />
 
   <div class="my-23 space-y-23">
     <!-- Our page blocks will be rendered here -->

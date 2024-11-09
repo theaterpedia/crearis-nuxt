@@ -85,11 +85,16 @@ const getPath = (folder: 'agenda' | 'blog' | string | undefined) => {
 
 import type { QueryBuilderParams } from '@nuxt/content'
 //const where = props.preset === 'agenda' ? [{ start: { $gt: 2024-10-17 }, eventtype: { $eq: 'course' } }] : [{ layout: 'article' }]
-const where = props.preset === 'agenda' ? [{ _path: { $ne: '/agenda/_dir' }, ctype: { $ne: 'course' } }] : props.preset === 'blog' ? [{ _path: { $ne: '/blog/_dir' }}] : []
+const where =
+  props.preset === 'agenda'
+    ? [{ _path: { $ne: '/agenda/_dir' }, ctype: { $ne: 'course' } }]
+    : props.preset === 'blog'
+      ? [{ _path: { $ne: '/blog/_dir' } }]
+      : []
 const query: QueryBuilderParams = {
   path: getPath(folder),
   where: where,
   limit: props.max_items,
-  sort: props.preset === 'agenda' ? [{ start: 1 }] : props.preset === 'blog'? [{ date: -1 }] : [],
+  sort: props.preset === 'agenda' ? [{ start: 1 }] : props.preset === 'blog' ? [{ date: -1 }] : [],
 }
 </script>

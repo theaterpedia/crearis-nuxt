@@ -2,6 +2,7 @@
   "name": "@crearis/odoo-sdk-api-client",
   "description": "clone of @erpga/odoo-sdk-api-client",
   "version": "0.7.2",
+  "type": "module",
   "private": false,
   "sideEffects": false,
   "server": "server/index.js",
@@ -40,6 +41,7 @@
     "src/**/*"
   ],
   "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
     "access": "public"
   }
 }

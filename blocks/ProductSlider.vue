@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { SfScrollable } from '@crearis/vue'
 import { defineBlock, textField } from '#pruvious'
 import type { Product } from '../graphql'
 
@@ -30,7 +29,7 @@ await loadProductTemplateList({ pageSize: numOfProducts })
     <div class="container">
       <p class="typography-text-lg my-4">
         {{ overline }}
-      </p>      
+      </p>
       <h2 v-if="headline" class="typography-headline-3 md:typography-headline-2 mb-6 text-center font-bold">
         {{ headline }}
       </h2>
@@ -111,4 +110,3 @@ await loadProductTemplateList({ pageSize: numOfProducts })
   color: hsl(var(--accent-foreground));
 }
 </style>
-

@@ -60,18 +60,16 @@
             </SectionContainer>
           </Column>
           <Column class="checkout-card">
-            <template v-if="tab.title==='Programm & Struktur' || tab.title==='Kosten & Konditionen'">
+            <template v-if="tab.title === 'Programm & Struktur' || tab.title === 'Kosten & Konditionen'">
               <Heading v-if="tab.header" :content="tab.header" is="h3" />
               <div v-if="tab.info">
                 <template v-for="(column, index) in tab.info" :key="index">
-                  <CatBlock :content="column" htag="h4" style="padding-bottom:1rem" />
+                  <CatBlock :content="column" htag="h4" style="padding-bottom: 1rem" />
                 </template>
               </div>
             </template>
             <template v-else>
-              <h2>
-                Checkout-Step '{{  tab.title }}' noch nicht implementiert!!
-              </h2>
+              <h2>Checkout-Step '{{ tab.title }}' noch nicht implementiert!!</h2>
             </template>
           </Column>
         </Columns>

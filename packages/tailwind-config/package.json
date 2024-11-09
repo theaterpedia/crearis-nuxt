@@ -1,0 +1,49 @@
+{
+  "name": "@crearis/tailwind-config",
+  "version": "0.0.9",
+  "description": "Variant of Storefront UI Tailwind config",
+  "license": "MIT",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.umd.js"
+    },
+    "./*": "./*"
+  },
+  "source": "index.ts",
+  "main": "dist/index.mjs",
+  "unpkg": "dist/index.umd.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "dev-only": "vite build --watch",
+    "build:tailwind-config": "vite build"
+  },
+  "homepage": "https://docs.storefrontui.io/v2/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theaterpedia/crearis-ui.git",
+    "directory": "packages/config/tailwind-crearis"
+  },
+  "bugs": {
+    "url": "https://github.com/theaterpedia/crearis-ui/issues"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4",
+    "vite": "^5.4.0",
+    "vite-plugin-dts": "^4.0.0",
+    "@crearis/sfui-ts-config": "workspace:*"
+  },
+  "dependencies": {
+    "tailwindcss": "^3.4.0",
+    "@mertasan/tailwindcss-variables": "^2.5.2",
+    "@storefront-ui/tw-plugin-peer-next": "2.3.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ]
+}

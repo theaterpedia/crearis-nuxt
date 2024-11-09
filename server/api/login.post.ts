@@ -9,7 +9,7 @@ import {
   setCookie,
   setResponseStatus,
 } from 'h3'
-import type { Partner } from '../../graphql'
+import type { LoginUserResponse, MutationLoginArgs, Partner } from '../../graphql'
 import { Queries } from '../../server/queries'
 import { Mutations } from '../../server/mutations'
 import { ensureUser } from '../../utils/user'
@@ -52,7 +52,11 @@ export default defineEventHandler(async (event) => {
     return errors
   }
 
-  const response = await api.mutation<any, any>({ mutationName: 'LoginMutation' } as any, { email, password } as any)
+  /* const response = await api.mutation<any, any>({ mutationName: 'LoginMutation' } as any, { email, password } as any) */
+  const response = await api.mutation<MutationLoginArgs, LoginUserResponse>(
+    { mutationName: 'LoginMutation' } as any,
+    { email, password } as any,
+  )
 
   if (response.errors?.length || !response.data?.cookie) {
     setResponseStatus(event, 400)
@@ -60,6 +64,7 @@ export default defineEventHandler(async (event) => {
   }
 
   /*
+  FIRST CODE FROM 3/2024, was deactivated 4/2024
   const newClient = createApiClient({
     odooGraphqlUrl: `${process.env.NUXT_PUBLIC_ODOO_BASE_URL}graphql/vsf`,
     queries: { ...Queries, ...Mutations },
@@ -71,23 +76,30 @@ export default defineEventHandler(async (event) => {
   })
     */
 
+  /* old code from 4/2024 > This code does not work anymore, because the 'loadUserQuery' is deleted from the API (new UserProfileQuery not active yet)
   const userData = await api.query<any, { partner: Partner }>({ queryName: 'LoadUserQuery' } as any, null)
 
   if (!userData?.data?.partner) {
     setResponseStatus(event, 400)
     return 'Error while fetching user data'
   }
+  */
 
-  if (response.data?.cookie) {
+  // new code 11/2024
+  if (!response.data.login?.partner) {
+    setResponseStatus(event, 400)
+    return 'Error while fetching user data'
+  }
+  // end new code
+
+  if (response.data.cookie) {
     appendResponseHeader(
-      event,
-      'Set-cookie',
-      response.data?.cookie + '; odoo-user=' + encodeURIComponent(JSON.stringify(userData.data.partner)),
-    )
-    appendResponseHeader(
-      event,
-      'Set-cookie',
-      'odoo-user=' + encodeURIComponent(JSON.stringify(userData.data.partner)) + '; Path=/',
+      event, 
+      'Set-cookie', 
+      'odoo-user=' + encodeURIComponent(JSON.stringify(response.data.login.partner)) + 
+        '; Path=/' + 
+        /* '; expires=' + new Date(Date.now() + 108000000).toUTCString() + */
+        '; SameSite=Strict',
     )
   } else {
     setResponseStatus(event, 400)

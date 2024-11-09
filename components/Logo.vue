@@ -1,20 +1,48 @@
+<script lang="ts" setup>
+const props = defineProps({
+  filled: { type: Boolean, default: false },
+  padding: { type: Boolean, default: true },
+  extended: { type: Boolean, default: false },
+  logoSize: { type: String, default: 'default' }, // sm, lg
+})
+
+// const colorMode = useColorMode()
+// const logoClass = computed(() => colorMode.preference === 'theaterpedia-light' ? 'text-content' : 'text-content')
+const logoClass = 'text-content'
+</script>
+
 <template>
-  <svg fill="none" height="40" viewBox="0 0 40 40" width="40" xmlns="http://www.w3.org/2000/svg">
-    <path
-      d="M32.0608 35.9556C36.884 32.3041 40 26.5159 40 20C40 13.8167 37.194 8.28885 32.786 4.6202C33.8193 6.49511 34.336 8.57807 34.336 10.8691C34.336 13.6739 33.5312 16.2312 31.9215 18.541C30.3521 20.8096 27.9175 22.3564 24.6177 23.1813L32.0608 35.9556Z"
-      fill="currentColor"
-    />
-    <path
-      d="M5 6.77089C1.88818 10.2966 0 14.9278 0 20C0 25.0722 1.88818 29.7035 5 33.2291V6.77089Z"
-      fill="currentColor"
-    />
-    <path
-      d="M11.8813 38.2835C14.3623 39.3869 17.1096 40 20 40C22.0013 40 23.9339 39.7061 25.757 39.159L17.1328 23.8H11.8813V38.2835Z"
-      fill="currentColor"
-    />
-    <path
-      d="M19.4869 18.1698H11.8813V3.75397H19.4869C22.1026 3.75397 24.0543 4.3933 25.3421 5.67195C26.6298 6.90937 27.2736 8.64174 27.2736 10.8691C27.2736 13.0964 26.6097 14.87 25.2817 16.1899C23.994 17.5098 22.0624 18.1698 19.4869 18.1698Z"
-      fill="currentColor"
-    />
-  </svg>
+  <div :class="props.padding ? '' : 'pl-2 md:pl-4 lg:pl-6 xl:pl-8 ' + 'logoClass font-semibold dark:bg-black'">
+    <h2
+      v-show="extended"
+      :class="
+        props.logoSize === 'default'
+          ? 'invisible font-mono text-sm tracking-tight sm:visible lg:text-lg xl:text-2xl xl:tracking-tighter 2xl:text-2xl 2xl:tracking-wide'
+          : props.logoSize === 'sm'
+            ? 'invisible font-mono text-sm lg:visible lg:tracking-tight xl:text-lg'
+            : 'font-mono text-xs tracking-wider sm:text-base lg:text-2xl 2xl:text-4xl 2xl:tracking-tight'
+      "
+    >
+      <slot>
+        <span :class="props.filled ? 'text-primary-400' : 'text-primary-700'">Lehrstücke</span>
+        <span :class="props.filled ? '' : 'text-primary-700'">für die Schule</span>
+      </slot>
+    </h2>
+    <h1
+      :class="
+        props.logoSize === 'default'
+          ? 'font-mono text-xl sm:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl'
+          : props.logoSize === 'sm'
+            ? 'text-md font-mono sm:text-lg md:text-xl lg:text-2xl xl:text-3xl'
+            : 'font-@crearis-mono text-3xl sm:text-4xl lg:text-5xl 2xl:text-6xl'
+      "
+    >
+      <span
+        :class="props.filled === true && props.extended === false ? 'text-white dark:text-black' : 'text-primary-700'"
+      >
+        Theater
+      </span>
+      <span style="margin-left: -0.6em" :class="filled && !extended ? 'text-secondary-400' : 'text-secondary-700'">pedia</span>
+    </h1>
+  </div>
 </template>

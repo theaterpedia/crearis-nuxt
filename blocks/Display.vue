@@ -40,7 +40,7 @@ const NuxtLink = resolveComponent('NuxtLink')
       <div
         v-for="card in cards"
         :key="card.headline"
-        class="md:max-w-screen-3xl first:bg-secondary-200 last:bg-warning-200 even:bg-negative-200 relative flex md:first-of-type:w-full md:[&:not(:first-of-type)]:flex-1"
+        class="md:max-w-screen-3xl relative flex first:bg-secondary-200 last:bg-warning-200 even:bg-negative-200 md:first-of-type:w-full md:[&:not(:first-of-type)]:flex-1"
       >
         <div
           :class="[

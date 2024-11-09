@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { SfIconArrowBack } from '@crearis/vue'
 import { defineBlock, textField, linkField } from '#pruvious'
 
 defineBlock({
