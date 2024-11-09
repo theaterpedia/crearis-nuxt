@@ -1,18 +1,5 @@
 import type { Endpoints } from '@crearis/odoo-sdk-api-client'
 
-import {
-  appendResponseHeader,
-  defineEventHandler,
-  getRequestHost,
-  getRequestIP,
-  parseCookies,
-  setCookie,
-  setResponseStatus,
-} from 'h3'
-import type { LoginUserResponse, MutationLoginArgs, Partner } from '../../graphql'
-import { Queries } from '../../server/queries'
-import { Mutations } from '../../server/mutations'
-import { ensureUser } from '../../utils/user'
 import { catchFirstErrorMessage, isKeyOf, isObject } from '#pruvious'
 import {
   __,
@@ -26,6 +13,13 @@ import {
   stringSanitizer,
   stringValidator,
 } from '#pruvious/server'
+import {
+  appendResponseHeader,
+  defineEventHandler,
+  setResponseStatus
+} from 'h3'
+import type { LoginUserResponse, MutationLoginArgs } from '../../graphql'
+import { ensureUser } from '../../utils/user'
 
 export default defineEventHandler(async (event) => {
   const api: Endpoints = event.context.apolloClient.api
@@ -94,14 +88,12 @@ export default defineEventHandler(async (event) => {
 
   if (response.data.cookie) {
     appendResponseHeader(
-      event,
-      'Set-cookie',
-      response.data.cookie + '; odoo-user=' + encodeURIComponent(JSON.stringify(response.data.login.partner)), //was: userData.data.partner
-    )
-    appendResponseHeader(
-      event,
-      'Set-cookie',
-      'odoo-user=' + encodeURIComponent(JSON.stringify(response.data.login.partner)) + '; Path=/', //was: userData.data.partner
+      event, 
+      'Set-cookie', 
+      'odoo-user=' + encodeURIComponent(JSON.stringify(response.data.login.partner)) + 
+      '; Path=/' + 
+      '; expires=' + new Date(Date.now() + 108000000).toUTCString() + 
+      '; SameSite=Strict'
     )
   } else {
     setResponseStatus(event, 400)
