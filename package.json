@@ -35,8 +35,8 @@
   "dependencies": {
     "@apollo/client": "^3.8.6",
     "@azure/msal-node": "^2.7.0",
-    "@crearis-nuxt/odoo-sdk": "workspace:*",
-    "@crearis-nuxt/odoo-sdk-api-client": "workspace:*",
+    "@erpgap/odoo-sdk": "0.7.2",
+    "@erpgap/odoo-sdk-api-client": "0.7.2",
     "@crearis-nuxt/sfui": "workspace:*",
     "@crearis-nuxt/tailwind-config": "workspace:*",
     "@nuxt/kit": "3.13.2",
@@ -51,7 +51,6 @@
     "c12": "1.11.2",
     "nuxt-lazy-hydrate": "^1.0.0",
     "nuxt-lodash": "^2.5.3",
-    "ohash": "^1.1.4",
     "prettier": "^3.3.0",
     "prettier-plugin-organize-attributes": "^1.0.0",
     "prettier-plugin-tailwindcss": "^0.6.5",

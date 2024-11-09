@@ -1,4 +1,4 @@
-import type { MiddlewareConfig } from '@crearis-nuxt/odoo-sdk-api-client'
+import type { MiddlewareConfig } from '@erpgap/odoo-sdk-api-client'
 // @ts-ignore
 import { createApiClient } from '../../packages/odoo-sdk-api-client/src/index.server'
 

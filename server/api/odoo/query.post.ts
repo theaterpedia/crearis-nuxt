@@ -1,5 +1,5 @@
 import { ApolloError } from '@apollo/client'
-import { Endpoints } from '@crearis-nuxt/odoo-sdk-api-client'
+import { Endpoints } from '@erpgap/odoo-sdk-api-client'
 
 export default defineCachedEventHandler(
   async (event) => {
