@@ -93,15 +93,19 @@ export default defineEventHandler(async (event) => {
   // end new code
 
   if (response.data.cookie) {
-    appendResponseHeader(
-      event,
-      'Set-cookie',
-      response.data.cookie + '; odoo-user=' + encodeURIComponent(JSON.stringify(response.data.login.partner)), //was: userData.data.partner
+    appendResponseHeader(event, 
+      'Set-cookie', 
+      response.data?.cookie + 
+        '; odoo-user=' + encodeURIComponent(JSON.stringify(response.data.login.partner)) +
+        '; SameSite=Strict',
     )
     appendResponseHeader(
-      event,
-      'Set-cookie',
-      'odoo-user=' + encodeURIComponent(JSON.stringify(response.data.login.partner)) + '; Path=/', //was: userData.data.partner
+      event, 
+      'Set-cookie', 
+      'odoo-user=' + encodeURIComponent(JSON.stringify(response.data.login.partner)) + 
+        '; Path=/' + 
+        /* '; expires=' + new Date(Date.now() + 108000000).toUTCString() + */
+        '; SameSite=Strict',
     )
   } else {
     setResponseStatus(event, 400)

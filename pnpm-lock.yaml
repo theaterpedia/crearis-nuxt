@@ -18,8 +18,8 @@ importers:
         specifier: 0.7.5
         version: 0.7.5(graphql-ws@5.16.0(graphql@16.9.0))(graphql@16.9.0)(react@18.3.1)
       '@crearis/odoo-sdk-api-client':
-        specifier: 0.7.2
-        version: 0.7.2(encoding@0.1.13)(graphql-ws@5.16.0(graphql@16.9.0))(graphql@16.9.0)(react@18.3.1)
+        specifier: workspace:*
+        version: link:packages/odoo-sdk-api-client
       '@crearis/sfui':
         specifier: workspace:*
         version: link:packages/sfui
@@ -56,6 +56,9 @@ importers:
       graphql-request:
         specifier: ^6.1.0
         version: 6.1.0(encoding@0.1.13)(graphql@16.9.0)
+      jsonwebtoken:
+        specifier: ^9.0.2
+        version: 9.0.2
       jw-paginate:
         specifier: ^1.0.4
         version: 1.0.4
@@ -1029,10 +1032,6 @@ packages:
   '@colors/colors@1.6.0':
     resolution: {integrity: sha512-Ir+AOibqzrIsL6ajt3Rz3LskB7OiMVHqltZmspbW/TJuTVuyOMirVqAkjfY6JISiLHgyNqicAC8AyHHGzNd/dA==}
     engines: {node: '>=0.1.90'}
-
-  '@crearis/odoo-sdk-api-client@0.7.2':
-    resolution: {integrity: sha512-5DAlWj+klJyEdYR2BsIMInyH5rb36yYRaykvnjtZyDEITkVAXcag0jvcP7A3Lp5Dc34470dGJu72d47KXIFIkw==}
-    engines: {node: '>=16.x'}
 
   '@crearis/odoo-sdk@0.7.5':
     resolution: {integrity: sha512-0+xaRGMvgDZwKRkG3VGK0t8WWToNZI7mEkU49QTRGbEUPEzHchz2/63CygHoOG4tAJXHOhe1lGMu+Z2i55BYkw==}
@@ -9687,28 +9686,6 @@ snapshots:
       mime: 3.0.0
 
   '@colors/colors@1.6.0': {}
-
-  '@crearis/odoo-sdk-api-client@0.7.2(encoding@0.1.13)(graphql-ws@5.16.0(graphql@16.9.0))(graphql@16.9.0)(react@18.3.1)':
-    dependencies:
-      '@apollo/client': 3.11.9(graphql-ws@5.16.0(graphql@16.9.0))(graphql@16.9.0)(react@18.3.1)
-      '@vue-storefront/middleware': 3.5.1
-      axios: 1.7.7
-      consola: 3.2.3
-      cross-fetch: 4.0.0(encoding@0.1.13)
-      https-proxy-agent: 7.0.5(supports-color@9.4.0)
-      node-fetch: 3.3.2
-      request-ip: 3.3.0
-      winston: 3.16.0
-    transitivePeerDependencies:
-      - '@types/react'
-      - debug
-      - encoding
-      - graphql
-      - graphql-ws
-      - react
-      - react-dom
-      - subscriptions-transport-ws
-      - supports-color
 
   '@crearis/odoo-sdk@0.7.5(graphql-ws@5.16.0(graphql@16.9.0))(graphql@16.9.0)(react@18.3.1)':
     dependencies:

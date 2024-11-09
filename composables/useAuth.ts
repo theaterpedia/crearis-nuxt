@@ -22,7 +22,7 @@ import { QueryName } from '~/server/queries'
 export const useAuth = () => {
   const { $sdk } = useNuxtApp()
   const router = useRouter()
-  const userCookie = useCookie<any | null>('odoo-user', { maxAge: 3600 * 30 })
+  const userCookie = useCookie<any | null>('odoo-user', { maxAge: 3600 * 30, sameSite: 'strict' })
   const user = useState<Partner>('user', () => ({}) as Partner)
 
   const toast = useToast()
@@ -30,6 +30,7 @@ export const useAuth = () => {
   const loading = ref(false)
   const resetEmail = useCookie<string>('reset-email')
 
+  /* deprecated > use login-response instead
   const loadUser = async (withoutCache: boolean = false) => {
     loading.value = true
 
@@ -43,7 +44,7 @@ export const useAuth = () => {
     user.value = data.value?.partner
 
     loading.value = false
-  }
+  } */
 
   const updatePartner = async (params: MutationCreateUpdatePartnerArgs) => {
     loading.value = true
@@ -176,7 +177,6 @@ export const useAuth = () => {
     loading,
     successResetEmail,
     updatePassword,
-    loadUser,
     updatePartner,
   }
 }
