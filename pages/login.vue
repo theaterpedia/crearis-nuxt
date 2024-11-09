@@ -1,10 +1,6 @@
 <script lang="ts" setup>
 import { useI18n } from '#imports'
 
-definePageMeta({
-  layout: false,
-})
-
 const { t } = useI18n()
 
 const { login, loading, logout, isAuthenticated } = useAuth()
