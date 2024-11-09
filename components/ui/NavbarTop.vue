@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { useWindowScroll } from '@vueuse/core'
 import { useDark, useToggle } from '@vueuse/core'
+import { NuxtLink } from '#components'
 
 const props = defineProps<{
   filled?: boolean
@@ -16,8 +17,6 @@ const navigation = [
 
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
-
-const NuxtLink = resolveComponent('NuxtLink')
 
 const scrollBreak = 80
 const y = useWindowScroll().y
@@ -70,9 +69,9 @@ const y = useWindowScroll().y
         <slot />
         <SfButton
           @click="toggleDark()"
-          class="bg-primary-200 text-primary-700 dark:bg-primary-700 dark:text-primary-200"
+          class="bg-green-800 text-primary-700 dark:bg-primary-700 dark:text-primary-200"
         >
-          <SfIconCircle />
+          <SfIconCircle/>
         </SfButton>
       </div>
     </div>

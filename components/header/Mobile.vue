@@ -1,11 +1,10 @@
 <script lang="ts" setup>
 import { onClickOutside } from '@vueuse/core'
 import type { Category } from '~/graphql'
+import { NuxtLink } from '#components'
 
 const { isOpen, toggle, close } = useDisclosure()
 const { searchModalToggle } = useSearch()
-
-const NuxtLink = resolveComponent('NuxtLink')
 
 const menuRef = ref()
 const drawerRef = ref()

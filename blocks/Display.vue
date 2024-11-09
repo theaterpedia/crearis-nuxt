@@ -1,5 +1,6 @@
 <script setup>
 import { defineBlock, repeaterField, textSubfield, linkSubfield, imageSubfield } from '#pruvious'
+import { NuxtLink } from '#components'
 
 defineBlock({
   icon: 'Pencil',
@@ -31,7 +32,6 @@ defineProps({
   }),
 })
 
-const NuxtLink = resolveComponent('NuxtLink')
 </script>
 
 <template>

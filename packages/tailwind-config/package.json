@@ -18,7 +18,8 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "dev-only": "vite build --watch",
-    "build:tailwind-config": "vite build"
+    "build:tailwind-config": "vite build",
+    "postinstall": "pnpm build:tailwind-config"
   },
   "homepage": "https://docs.storefrontui.io/v2/",
   "repository": {
@@ -32,8 +33,7 @@
   "devDependencies": {
     "typescript": "^5.5.4",
     "vite": "^5.4.0",
-    "vite-plugin-dts": "^4.0.0",
-    "@crearis-nuxt/sfui-ts-config": "workspace:*"
+    "vite-plugin-dts": "^4.0.0"
   },
   "dependencies": {
     "tailwindcss": "^3.4.0",

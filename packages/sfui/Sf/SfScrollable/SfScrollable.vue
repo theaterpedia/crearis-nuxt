@@ -5,7 +5,7 @@ export default {
 </script>
 <script lang="ts" setup>
 import { computed, toRefs, type PropType, type ConcreteComponent, reactive } from 'vue'
-import { ClassProp } from '../../utils'
+import { ClassProp } from '../../../utils'
 
 import { useScrollable } from '../../composables/useScrollable'
 

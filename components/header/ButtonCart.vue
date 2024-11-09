@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const NuxtLink = resolveComponent('NuxtLink')
+import { NuxtLink } from '#components'
 const { loadCart, totalItemsInCart } = useCart()
 
 onMounted(async () => {

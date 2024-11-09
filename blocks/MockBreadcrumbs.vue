@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { defineBlock, repeaterField, textSubfield } from '#pruvious'
+import { NuxtLink } from '#components'
 
 defineBlock({
   icon: 'Pencil',
@@ -24,7 +25,6 @@ function toggle() {
   dropdownOpened.value = !dropdownOpened.value
 }
 
-const NuxtLink = resolveComponent('NuxtLink')
 </script>
 
 <template>

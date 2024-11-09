@@ -1,9 +1,9 @@
 import defaultTheme from 'tailwindcss/defaultTheme'
-import { tailwindConfig } from '@crearis-nuxt/tailwind-config'
+// import { tailwindConfig } from '@crearis-nuxt/tailwind-config'
 
 /** @type {import('tailwindcss').Config} */
 export default {
-  presets: [tailwindConfig],
+  // presets: [tailwindConfig],
   content: ['blocks/**/*.vue'],
   theme: {
     extend: {

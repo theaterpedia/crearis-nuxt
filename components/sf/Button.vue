@@ -11,8 +11,9 @@ export const variantClasses = {
 
 <script lang="ts" setup>
 import { type PropType, type ConcreteComponent, computed, toRefs } from 'vue'
-import { SfButtonSize, SfButtonVariant } from './types'
-import { useAttrsRef } from '../../utils'
+import { SfButtonSize, SfButtonVariant } from '@storefront-ui/shared'
+import { useAttrsRef } from '../../utils/reactiveContext'
+import { NuxtLink } from '#components'
 
 const props = defineProps({
   size: {
@@ -33,7 +34,7 @@ const props = defineProps({
   },
   tag: {
     type: [String, Object] as PropType<string | ConcreteComponent>,
-    default: undefined,
+    default: NuxtLink,
   },
 })
 

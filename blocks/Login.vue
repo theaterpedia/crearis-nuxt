@@ -35,6 +35,7 @@
 
 <script lang="ts" setup>
 import { defineBlock } from '#pruvious'
+import { NuxtLink } from '#components'
 
 defineBlock({
   icon: 'Pencil',
@@ -52,5 +53,4 @@ const handleLogin = async () => {
   await login({ email: email.value, password: password.value })
 }
 
-const NuxtLink = resolveComponent('NuxtLink')
 </script>

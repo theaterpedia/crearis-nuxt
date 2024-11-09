@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { useI18n } from '#imports'
+import { NuxtLink } from '#components'
 
 definePageMeta({
   layout: false,
@@ -21,8 +22,6 @@ const handleLogin = async () => {
 const handleLogout = async () => {
   await logout()
 }
-
-const NuxtLink = resolveComponent('NuxtLink')
 </script>
 
 <template>
@@ -55,24 +54,14 @@ const NuxtLink = resolveComponent('NuxtLink')
       </SfButton>
       <SfButton
         v-show="isAuthenticated"
-        :tag="NuxtLink"
         @click="handleLogout()"
-        data-testid="logout-page-reset-button"
         variant="tertiary"
       >
         Logout
       </SfButton>
-      <SfButton :tag="NuxtLink" data-testid="login-page-reset-button" to="/reset-password" variant="tertiary">
-        auth.login.forgotPasswordLabel
-      </SfButton>
     </form>
 
     <UiAlert variant="neutral" class="typography-text-base mt-6 w-full !justify-start p-4 md:p-6">
-      <i18n-t keypath="auth.login.createAccountBanner" tag="span">
-        <SfLink :tag="NuxtLink" data-testid="login-page-signup-button" to="signup" variant="primary">
-          {{ $t('auth.login.createAccountLinkLabel') }}
-        </SfLink>
-      </i18n-t>
     </UiAlert>
   </NuxtLayout>
 </template>

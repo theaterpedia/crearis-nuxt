@@ -10,8 +10,6 @@ defineLayout({
 defineProps<{
   heading: string
 }>()
-
-const NuxtLink = resolveComponent('NuxtLink')
 </script>
 
 <template>

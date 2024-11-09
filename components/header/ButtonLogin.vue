@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const NuxtLink = resolveComponent('NuxtLink')
+import { NuxtLink } from '#components'
 
 const { isAuthenticated } = useAuth()
 </script>

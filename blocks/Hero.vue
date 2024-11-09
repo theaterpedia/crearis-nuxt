@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { defineBlock, imageField, linkField, textField } from '#pruvious'
+import { NuxtLink } from '#components'
 
 defineBlock({ icon: 'Mouse' })
 
@@ -39,7 +40,7 @@ defineProps({
   }),
 })
 
-const NuxtLink = resolveComponent('NuxtLink')
+
 </script>
 
 <template>

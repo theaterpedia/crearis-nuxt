@@ -1,5 +1,4 @@
 {
-  "extends": "@crearis-nuxt/sfui-ts-config",
   "compilerOptions": {
     "outDir": "./dist",
     "sourceMap": true,
@@ -7,7 +6,22 @@
     "target": "ESNext",
     "module": "ESNext",
     "baseUrl": ".",
-    "types": ["vite/client"]
+    "types": ["vite/client"],
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "composite": false,
+    "declaration": true,
+    "declarationMap": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "inlineSources": false,
+    "isolatedModules": true,
+    "moduleResolution": "node",
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "preserveWatchOutput": true,
+    "skipLibCheck": true,
+    "strict": true,   
+    "resolveJsonModule": true, 
   },
   "include": ["**/*.ts"],
   "exclude": ["./dist/**/*"]

@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { onClickOutside } from '@vueuse/core'
 import type { Category } from '~/graphql'
+import { NuxtLink } from '#components'
 
 const { isOpen, toggle, close } = useDisclosure()
 
@@ -20,7 +21,6 @@ const {
 } = useSearch(formSearchTemplateRef)
 
 const router = useRouter()
-const NuxtLink = resolveComponent('NuxtLink')
 const filteredCategories = inject<Category[]>('filteredTopCategories')
 
 const goTo = (slug: string) => {

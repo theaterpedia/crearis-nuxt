@@ -14,12 +14,6 @@ importers:
       '@azure/msal-node':
         specifier: ^2.7.0
         version: 2.16.0
-      '@crearis-nuxt/sfui':
-        specifier: workspace:*
-        version: link:packages/sfui
-      '@crearis-nuxt/tailwind-config':
-        specifier: workspace:*
-        version: link:packages/tailwind-config
       '@floating-ui/vue':
         specifier: ^1.1.0
         version: 1.1.5(vue@3.5.12(typescript@5.6.3))
@@ -53,9 +47,6 @@ importers:
       graphql-request:
         specifier: ^6.1.0
         version: 6.1.0(encoding@0.1.13)(graphql@16.9.0)
-      jw-paginate:
-        specifier: ^1.0.4
-        version: 1.0.4
       nitropack:
         specifier: 2.9.7
         version: 2.9.7(encoding@0.1.13)(magicast@0.2.11)
@@ -86,9 +77,6 @@ importers:
       react:
         specifier: ^18.2.0
         version: 18.3.1
-      tabbable:
-        specifier: ^6.1.1
-        version: 6.2.0
       vue:
         specifier: ^3.5.8
         version: 3.5.12(typescript@5.6.3)
@@ -289,9 +277,6 @@ importers:
         specifier: ^3.4.0
         version: 3.4.14
     devDependencies:
-      '@crearis-nuxt/sfui-ts-config':
-        specifier: workspace:*
-        version: link:../typescript-sfui
       typescript:
         specifier: ^5.5.4
         version: 5.6.3

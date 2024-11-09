@@ -89,6 +89,7 @@
 
 <script setup>
 import { defineLayout } from '#pruvious'
+import { NuxtLink } from '#components'
 
 defineLayout({
   label: 'account',
@@ -97,8 +98,6 @@ defineLayout({
 })
 
 const { t } = useI18n()
-
-const NuxtLink = resolveComponent('NuxtLink')
 const router = useRouter()
 const { logout } = useAuth()
 const sections = [
