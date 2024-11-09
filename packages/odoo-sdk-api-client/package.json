@@ -2,6 +2,7 @@
   "name": "@crearis/odoo-sdk-api-client",
   "description": "clone of @erpga/odoo-sdk-api-client",
   "version": "0.7.2",
+  "type": "module",
   "private": false,
   "sideEffects": false,
   "server": "server/index.js",
@@ -15,7 +16,9 @@
   "scripts": {
     "build": "rimraf lib server && rollup -c",
     "dev": "rollup -c -w",
-    "prepublish": "pnpm build"
+    "prepublish": "pnpm build",
+    "npmpublish": "npm publish --access public",
+    "publish": "pnpm run npmpublish"
   },
   "dependencies": {
     "@apollo/client": "^3.9.9",
@@ -40,6 +43,7 @@
     "src/**/*"
   ],
   "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
     "access": "public"
   }
 }

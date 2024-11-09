@@ -2,6 +2,7 @@
   "name": "@crearis/odoo-sdk",
   "version": "0.7.2",
   "private": false,
+  "type": "module",
   "main": "lib/index.cjs.js",
   "module": "lib/index.es.js",
   "types": "lib/index.d.ts",
@@ -12,7 +13,9 @@
     "build": "rimraf lib && rollup -c",
     "dev": "rimraf lib && rollup -c -w",
     "lint": "eslint . --ext .ts",
-    "prepublish": "pnpm build"
+    "prepublish": "pnpm build",
+    "npmpublish": "npm publish --access public",
+    "publish": "pnpm run npmpublish"
   },
   "dependencies": {
     "@apollo/client": "^3.7.16",
@@ -34,6 +37,7 @@
     "node": ">=16.x"
   },
   "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
     "access": "public"
   }
 }
