@@ -1,10 +1,6 @@
 import consola from 'consola'
 
-export const mutation = async (
-  context,
-  metadata,
-  params,
-) => {
+export const mutation = async (context, metadata, params) => {
   if (!metadata || !metadata.mutationName) {
     const msg = 'Developer Error: mutationName is required'
     consola.error(msg)

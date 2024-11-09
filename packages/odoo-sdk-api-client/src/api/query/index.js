@@ -1,10 +1,6 @@
 import consola from 'consola'
 
-export const query = async (
-  context,
-  metadata,
-  params,
-) => {
+export const query = async (context, metadata, params) => {
   if (!metadata || !metadata.queryName) {
     const msg = 'Developer Error: queryName is required'
     consola.error(msg)

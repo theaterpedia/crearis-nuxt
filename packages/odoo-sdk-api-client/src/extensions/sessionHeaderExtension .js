@@ -17,8 +17,8 @@ const sessionHeaderExtension = {
       },
       beforeCall: ({ configuration, callName, args }) => args,
       afterCall: ({ configuration, callName, response }) => {
-        if ((response)?.data?.cookie) {
-          res.setHeader('Set-cookie', (response)?.data?.cookie)
+        if (response?.data?.cookie) {
+          res.setHeader('Set-cookie', response?.data?.cookie)
         }
 
         return response

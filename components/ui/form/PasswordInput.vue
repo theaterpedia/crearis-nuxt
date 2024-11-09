@@ -1,7 +1,7 @@
 <template>
   <SfInput :type="isPasswordVisible ? 'text' : 'password'">
     <template #suffix>
-      <button type="button" @click="isPasswordVisible = !isPasswordVisible">
+      <button @click="isPasswordVisible = !isPasswordVisible" type="button">
         <component :is="isPasswordVisible ? SfIconVisibilityOff : SfIconVisibility" />
       </button>
     </template>
@@ -9,8 +9,8 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
-import { SfInput, SfIconVisibility, SfIconVisibilityOff } from '#components';
+import { ref } from 'vue'
+import { SfInput, SfIconVisibility, SfIconVisibilityOff } from '#components'
 
-const isPasswordVisible = ref<boolean>();
+const isPasswordVisible = ref<boolean>()
 </script>
