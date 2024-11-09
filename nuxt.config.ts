@@ -4,11 +4,8 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
     '@nuxtjs/google-fonts',
-    'nuxt-lazy-hydrate',
-    '@nuxt/image',
     '@nuxtjs/i18n',
     '@nuxtjs/tailwindcss',
-    /* 'pruvious', */
   ],
   googleFonts: {
     families: {
