@@ -50,7 +50,7 @@ export default defineNuxtConfig({
     asyncContext: true,
   },
   tailwindcss: {
-    viewer: false,
+    viewer: true,
     cssPath: '~/assets/css/tailwind.css',
   },
   pruvious: {
