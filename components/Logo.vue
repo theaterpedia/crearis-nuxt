@@ -13,6 +13,7 @@ const logoClass = 'text-content'
 
 <template>
   <div :class="props.padding ? '' : 'pl-2 md:pl-4 lg:pl-6 xl:pl-8 ' + 'logoClass font-semibold dark:bg-black'">
+    <h2 class="headline-2">Headline 2</h2>
     <h2
       v-show="extended"
       :class="

@@ -1,3 +1,4 @@
+import plugin from 'tailwindcss'
 import defaultTheme from 'tailwindcss/defaultTheme'
 import { tailwindConfig } from '@crearis/tailwind-config'
 
@@ -30,5 +31,29 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function({ addUtilities, addComponents, theme }) {
+      addUtilities({
+        '.headline-2': {
+          fontSize: theme('fontSize.6xl'),
+          fontFamily: theme('fontFamily.headings'),
+          lineHeight: '1.125',
+        },
+        '.btn-hans-2': {
+          padding: '2.5rem 2.5rem',
+          borderRadius: '.25rem',
+          fontWeight: '900',
+          'font-size': '3rem'
+        },         
+      }),
+      addComponents({
+        '.btn-hans': {
+          padding: '2.5rem 2.5rem',
+          borderRadius: '.25rem',
+          fontWeight: '900',
+          'font-size': '3rem'
+        },        
+      })
+    })
+  ],
 }
