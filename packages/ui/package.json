@@ -27,7 +27,7 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --port 3001",
     "build": "vite build && vue-tsc --project tsconfig.build.json"
   },
   "dependencies": {
