@@ -81,12 +81,21 @@
 <script lang="ts" setup>
 import { NuxtLink } from '#components'
 
-const image = { src: 'https://pruvious.com/uploads/dasei/banner.jpg', alt: 'DAS Ei' }
+const image = { src: 'https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_1440,h_900,g_auto/v1666847011/pedia_ipsum/core/theaterpedia.jpg', alt: 'DAS Ei' }
 const page = { heading: 'test heading', title: 'test title', teaser: 'test teaser', _path: '/dasei' }
 const content = '_A1_ Headline for Heading - **Test for Teaser**'
-const hero = undefined
 const details = false
 const isSideNav: Boolean = false
+
+const hero = {
+  height: 'prominent',
+  image_focus_y: 'center',
+  image_focus_x: 'center',
+  content: 'banner',
+  content_y: 'center',
+  content_width: 'full',
+  cta: {title: 'jetzt anmelden'}
+}
 
 const route = useRoute()
 const mainMenu = useMainMenu()

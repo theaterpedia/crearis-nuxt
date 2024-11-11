@@ -1,7 +1,7 @@
 <template>
   <div
     class="hero"
-    :class="[target === 'page' ? `hero-${heightTmp}` : 'hero-mini card-hero', `hero-align-content-${contentAlignY}`]"
+    :class="[target === 'page' ? `hero-${heightTmp}` : 'hero-mini card-hero', `hero-align-content-${contentAlignY}`, bottomline ? 'hero-bottomline' : '']"
   >
     <div class="hero-cover">
       <div
@@ -90,6 +90,14 @@ defineProps({
   },
 
   /**
+   * deactivates the bottom-line.
+   */
+   bottomline: {
+    type: Boolean,
+    default: false,
+  },
+
+  /**
    * Defines the width of the content.
    */
   contentWidth: {
@@ -167,7 +175,7 @@ defineProps({
   align-items: flex-end;
 }
 
-.hero::after {
+.hero-bottomline::after {
   content: '';
   position: absolute;
   right: 0;
@@ -176,6 +184,7 @@ defineProps({
   height: 1rem;
   background-color: hsl(var(--primary));
 }
+
 
 .hero-cover {
   position: absolute;
