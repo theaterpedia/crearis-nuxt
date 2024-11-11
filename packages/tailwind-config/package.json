@@ -18,7 +18,8 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "dev-only": "vite build --watch",
-    "build:tailwind-config": "vite build"
+    "build": "vite build",
+    "postinstall": "pnpm build"
   },
   "homepage": "https://docs.storefrontui.io/v2/",
   "repository": {
