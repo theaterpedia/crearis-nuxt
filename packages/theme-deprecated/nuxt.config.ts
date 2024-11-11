@@ -12,4 +12,3 @@ export default defineNuxtConfig({
     cssPath: join(currentDir, './assets/css/tailwind.css'),
   },
 })
-
