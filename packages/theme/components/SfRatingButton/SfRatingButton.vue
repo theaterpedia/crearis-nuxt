@@ -90,13 +90,13 @@ const handleHoverOut = () => {
           v-if="isIconFilled(ratingValue)"
           :size="iconSize[size]"
           role="none"
-          class="cursor-pointer text-primary-700 peer-focus-visible:outline peer-disabled:cursor-default peer-disabled:text-disabled-500"
+          class="text-primary-700 peer-disabled:text-disabled-500 cursor-pointer peer-focus-visible:outline peer-disabled:cursor-default"
         />
         <SfIconStar
           v-else
           :size="iconSize[size]"
           role="none"
-          class="cursor-pointer text-neutral-500 peer-focus-visible:outline peer-disabled:cursor-default peer-disabled:text-disabled-500"
+          class="peer-disabled:text-disabled-500 cursor-pointer text-neutral-500 peer-focus-visible:outline peer-disabled:cursor-default"
         />
       </slot>
     </label>

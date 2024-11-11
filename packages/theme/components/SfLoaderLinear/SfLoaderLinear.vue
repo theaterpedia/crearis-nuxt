@@ -33,7 +33,7 @@ defineProps({
     :aria-label="ariaLabel"
     aria-live="polite"
     data-testid="loader-linear"
-    class="relative inline-block overflow-hidden bg-neutral-300 text-primary-700 after:absolute after:block after:h-full after:w-2.5 after:animate-line after:bg-current"
+    class="text-primary-700 after:animate-line relative inline-block overflow-hidden bg-neutral-300 after:absolute after:block after:h-full after:w-2.5 after:bg-current"
     :class="sizeClasses[size]"
   />
 </template>

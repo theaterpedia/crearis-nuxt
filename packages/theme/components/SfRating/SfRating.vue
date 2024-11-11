@@ -51,10 +51,10 @@ const label = computed(() => ariaLabel?.value ?? `${value.value} out of ${max.va
     :title="label"
     data-testid="rating"
     role="img"
-    :class="['inline-flex items-center text-warning-500', sizeClasses[size]]"
+    :class="['text-warning-500 inline-flex items-center', sizeClasses[size]]"
   >
     <SfIconStarFilled v-for="index in filled" :key="index" aria-hidden="true" class="h-[1.5em] w-[1.5em]" />
     <SfIconStarHalf v-if="partiallyFilled" aria-hidden="true" class="h-[1.5em] w-[1.5em]" />
-    <SfIconStar v-for="index in empty" :key="index" aria-hidden="true" class="h-[1.5em] w-[1.5em] text-disabled-500" />
+    <SfIconStar v-for="index in empty" :key="index" aria-hidden="true" class="text-disabled-500 h-[1.5em] w-[1.5em]" />
   </span>
 </template>

@@ -1,9 +1,7 @@
 <script lang="ts" setup>
-
 definePageMeta({
   layout: false,
 })
-
 
 const { login, loading, logout, isAuthenticated } = useAuth()
 
@@ -44,7 +42,7 @@ const NuxtLink = resolveComponent('NuxtLink')
 
       <label class="mt-2 flex items-center gap-2">
         <SfCheckbox v-model="rememberMe" name="rememberMe" />
-        
+
         remember Me
       </label>
 
@@ -67,11 +65,9 @@ const NuxtLink = resolveComponent('NuxtLink')
     </form>
 
     <UiAlert variant="neutral" class="typography-text-base mt-6 w-full !justify-start p-4 md:p-6">
-      <i18n-t keypath="auth.login.createAccountBanner" tag="span">
-        <SfLink :tag="NuxtLink" data-testid="login-page-signup-button" to="signup" variant="primary">
-          create Account
-        </SfLink>
-      </i18n-t>
+      <SfLink :tag="NuxtLink" data-testid="login-page-signup-button" to="signup" variant="primary">
+        create Account
+      </SfLink>
     </UiAlert>
   </NuxtLayout>
 </template>

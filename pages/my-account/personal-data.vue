@@ -43,7 +43,6 @@ const saveNewPassword = async (passwords: any) => {
     })
   }
 }
-
 </script>
 <template>
   <TmpConstruction>

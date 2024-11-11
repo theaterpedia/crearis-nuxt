@@ -15,11 +15,7 @@ export default defineEventHandler(async (event) => {
     const partner = JSON.parse(cookie) as Partner
 
     if (partner.email) {
-      const user = await query('users')
-        .deselect({ password: true })
-        .where('email', partner.email)
-        .populate()
-        .first()
+      const user = await query('users').deselect({ password: true }).where('email', partner.email).populate().first()
 
       event.context.auth = user ? { isLoggedIn: true, user } : { isLoggedIn: false, user }
     } else {

@@ -63,7 +63,7 @@ const y = useWindowScroll().y
           v-show="link.title !== 'home' && link.title !== 'Dev'"
           :key="link._path"
           :to="link._path"
-          class="flex cursor-pointer font-semibold transition-colors duration-300 hover:text-secondary-700 active:text-secondary-700 lg:text-2xl"
+          class="hover:text-secondary-700 active:text-secondary-700 flex cursor-pointer font-semibold transition-colors duration-300 lg:text-2xl"
         >
           {{ link.title }}
         </NuxtLink>

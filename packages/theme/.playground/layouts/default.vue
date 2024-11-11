@@ -1,16 +1,20 @@
 <script lang="ts" setup>
+const heading: string = 'Heading-Prop (Layout)'
 
-
+const NuxtLink = resolveComponent('NuxtLink')
 </script>
 
 <template>
-  <Header class="mt-12" />
-  <TheHeader />
-
-  <div class="my-23 space-y-23">
-    <!-- Our page blocks will be rendered here -->
+  <UiNavbarTop />
+  <main
+    :class="[
+      'mx-auto px-4 pb-20 pt-4 md:mt-4 md:px-0',
+      { 'md:mb-8': heading },
+      heading ? 'md:max-w-[630px]' : 'md:max-w-[677px]',
+    ]"
+  >
+    <h1 v-if="heading" class="typography-headline-3 md:typography-headline-2 mb-10 font-bold">{{ heading }}</h1>
     <slot />
-  </div>
-
-  <Footer class="mb-23" />
+  </main>
+  <Footer />
 </template>

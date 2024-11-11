@@ -94,10 +94,11 @@ export default defineEventHandler(async (event) => {
 
   if (response.data.cookie) {
     appendResponseHeader(
-      event, 
-      'Set-cookie', 
-      'odoo-user=' + encodeURIComponent(JSON.stringify(response.data.login.partner)) + 
-        '; Path=/' + 
+      event,
+      'Set-cookie',
+      'odoo-user=' +
+        encodeURIComponent(JSON.stringify(response.data.login.partner)) +
+        '; Path=/' +
         /* '; expires=' + new Date(Date.now() + 108000000).toUTCString() + */
         '; SameSite=Strict',
     )

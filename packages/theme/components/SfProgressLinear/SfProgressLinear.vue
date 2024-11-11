@@ -38,7 +38,7 @@ defineProps({
     :value="value"
     data-testid="progress-linear"
     max="100"
-    class="bg-neutral-300 text-primary-700 [&::-moz-progress-bar]:bg-current [&::-webkit-progress-bar]:bg-inherit [&::-webkit-progress-value]:bg-current [&::-webkit-progress-value]:transition-[width] [&::-webkit-progress-value]:duration-200 [&::-webkit-progress-value]:ease-in-out"
+    class="text-primary-700 bg-neutral-300 [&::-moz-progress-bar]:bg-current [&::-webkit-progress-bar]:bg-inherit [&::-webkit-progress-value]:bg-current [&::-webkit-progress-value]:transition-[width] [&::-webkit-progress-value]:duration-200 [&::-webkit-progress-value]:ease-in-out"
     :class="sizeClasses[size]"
   />
 </template>

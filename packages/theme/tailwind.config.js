@@ -28,7 +28,7 @@ export default {
       spacing: {
         23: '5.75rem',
       },
-    },    
+    },
     borderColor: ({ theme }) => ({
       DEFAULT: theme('colors.border'),
       ...theme('colors'),

@@ -22,7 +22,7 @@ defineEmits<{
       @click.prevent="$emit('update:modelValue', !modelValue)"
       :class="[
         summaryClass,
-        'cursor-pointer list-none focus-visible:rounded-sm focus-visible:outline focus-visible:outline-offset [&::-webkit-details-marker]:hidden',
+        'focus-visible:outline-offset cursor-pointer list-none focus-visible:rounded-sm focus-visible:outline [&::-webkit-details-marker]:hidden',
       ]"
     >
       <slot name="summary" />

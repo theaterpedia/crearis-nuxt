@@ -47,7 +47,7 @@ onClickOutside(menuRef, () => {
     />
     <header
       ref="menuRef"
-      class="z-50 flex h-14 w-full flex-wrap border-0 border-neutral-200 bg-primary-700 py-2 text-white md:sticky md:top-0 md:z-10 md:h-20 md:flex-nowrap md:py-5 md:shadow-md"
+      class="bg-primary-700 z-50 flex h-14 w-full flex-wrap border-0 border-neutral-200 py-2 text-white md:sticky md:top-0 md:z-10 md:h-20 md:flex-nowrap md:py-5 md:shadow-md"
     >
       <div class="jfustify-between narrow-container flex h-full w-full items-center lg:justify-start">
         <NuxtLink aria-label="Sf Homepage" to="/" class="-mt-1.5 h-6 md:h-7">
@@ -60,7 +60,7 @@ onClickOutside(menuRef, () => {
           square
           type="button"
           variant="tertiary"
-          class="ml-6 hidden bg-transparent font-body text-white hover:bg-primary-800 hover:text-white active:bg-primary-900 active:text-white lg:flex"
+          class="font-body hover:bg-primary-800 active:bg-primary-900 ml-6 hidden bg-transparent text-white hover:text-white active:text-white lg:flex"
         >
           <template #suffix>
             <SfIconShoppingCart />

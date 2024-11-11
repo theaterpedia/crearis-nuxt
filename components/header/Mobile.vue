@@ -38,7 +38,7 @@ const bannerDetails = {
   <header
     ref="menuRef"
     :class="[
-      'z-50 flex h-14 w-full flex-wrap border-0 border-neutral-200 bg-primary-700 py-2 text-white md:sticky md:top-0 md:z-10 md:h-20 md:flex-nowrap md:py-5 md:shadow-md',
+      'bg-primary-700 z-50 flex h-14 w-full flex-wrap border-0 border-neutral-200 py-2 text-white md:sticky md:top-0 md:z-10 md:h-20 md:flex-nowrap md:py-5 md:shadow-md',
     ]"
   >
     <div class="narrow-container flex h-full w-full items-center justify-between lg:justify-start">
@@ -64,7 +64,7 @@ const bannerDetails = {
                 class="top-index max-h-screen max-w-full overflow-y-auto bg-white p-0 lg:!absolute lg:!top-[5rem] lg:p-6"
               >
                 <div class="lg:narrow-container grid grid-cols-1 lg:relative lg:grid-cols-3 lg:gap-x-6">
-                  <div class="sticky top-0 flex w-full items-center justify-between bg-primary-700 px-4 py-2">
+                  <div class="bg-primary-700 sticky top-0 flex w-full items-center justify-between px-4 py-2">
                     <div class="typography-text-lg flex items-center font-medium text-white">Browse products</div>
                     <SfButton
                       @click="close()"
@@ -124,7 +124,7 @@ const bannerDetails = {
           @click="searchModalToggle"
           square
           variant="tertiary"
-          class="relative rounded-md text-white hover:bg-primary-800 hover:text-white active:bg-primary-900 active:text-white"
+          class="hover:bg-primary-800 active:bg-primary-900 relative rounded-md text-white hover:text-white active:text-white"
         >
           <SfIconSearch />
         </SfButton>
@@ -135,7 +135,7 @@ const bannerDetails = {
           square
           type="button"
           variant="tertiary"
-          class="block self-end bg-transparent font-body text-white hover:bg-primary-800 hover:text-white active:bg-primary-900 active:text-white"
+          class="font-body hover:bg-primary-800 active:bg-primary-900 block self-end bg-transparent text-white hover:text-white active:text-white"
         >
           <SfIconMenu class="text-white" />
         </SfButton>

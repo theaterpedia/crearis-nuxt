@@ -36,7 +36,7 @@ const displayValue = computed(() => {
   <span
     data-testid="badge"
     :class="[
-      'absolute block rounded-xl bg-secondary-700 px-1 py-0.5 text-[8px] font-medium leading-[8px] text-white',
+      'bg-secondary-700 absolute block rounded-xl px-1 py-0.5 text-[8px] font-medium leading-[8px] text-white',
       {
         'min-h-[12px] min-w-[12px]': !isDot,
         'h-[10px] w-[10px]': isDot,

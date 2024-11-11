@@ -63,11 +63,11 @@ const inputValue = computed({
     :is="wrapperTag"
     data-testid="input"
     :class="[
-      'flex items-center gap-2 rounded-md bg-white px-4 text-neutral-500 ring-1 focus-within:caret-primary-700 focus-within:ring-2 focus-within:ring-primary-700 hover:ring-primary-700 active:caret-primary-700 active:ring-2 active:ring-primary-700',
+      'focus-within:caret-primary-700 focus-within:ring-primary-700 hover:ring-primary-700 active:caret-primary-700 active:ring-primary-700 flex items-center gap-2 rounded-md bg-white px-4 text-neutral-500 ring-1 focus-within:ring-2 active:ring-2',
       {
-        'ring-2 ring-negative-700': invalid,
+        'ring-negative-700 ring-2': invalid,
         'ring-1 ring-neutral-200': !invalid,
-        'focus-within:outline focus-within:outline-offset': isFocusVisible,
+        'focus-within:outline-offset focus-within:outline': isFocusVisible,
       },
       getSizeClasses[size],
       wrapperClass,

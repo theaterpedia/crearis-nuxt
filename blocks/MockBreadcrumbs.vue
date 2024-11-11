@@ -29,7 +29,7 @@ const NuxtLink = resolveComponent('NuxtLink')
 
 <template>
   <NarrowContainer>
-    <nav data-testid="breadcrumbs" class="inline-flex items-center font-body text-sm font-normal">
+    <nav data-testid="breadcrumbs" class="font-body inline-flex items-center text-sm font-normal">
       <ol class="group flex w-auto leading-none md:flex-wrap">
         <li class="z-10 flex items-center text-neutral-500 sm:hidden">
           <NuxtLazyHydrate :on-interaction="['click', 'touchstart']">
@@ -46,12 +46,12 @@ const NuxtLink = resolveComponent('NuxtLink')
                   data-testid="breadcrumbs-dropdown-button"
                   square
                   variant="tertiary"
-                  class="relative h-5 w-5 rounded-sm !p-0 outline-secondary-600 hover:bg-transparent active:bg-transparent"
+                  class="outline-secondary-600 relative h-5 w-5 rounded-sm !p-0 hover:bg-transparent active:bg-transparent"
                 >
                   <template #prefix>
                     <SfIconMoreHoriz
                       size="sm"
-                      class="text-neutral-500 hover:text-primary-700 active:bg-transparent active:text-primary-800"
+                      class="hover:text-primary-700 active:text-primary-800 text-neutral-500 active:bg-transparent"
                     />
                   </template>
                 </ButtonTmp>

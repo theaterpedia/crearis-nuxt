@@ -43,7 +43,7 @@ defineProps({
     aria-live="polite"
     data-testid="loader-circular"
     viewBox="25 25 50 50"
-    class="inline-block animate-spin-slow rounded-full text-primary-700 ring-inset ring-neutral-300"
+    class="animate-spin-slow text-primary-700 inline-block rounded-full ring-inset ring-neutral-300"
     :class="sizeClasses[size]"
   >
     <circle

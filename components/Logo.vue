@@ -42,7 +42,9 @@ const logoClass = 'text-content'
       >
         Theater
       </span>
-      <span style="margin-left: -0.6em" :class="filled && !extended ? 'text-secondary-400' : 'text-secondary-700'">pedia</span>
+      <span :class="filled && !extended ? 'text-secondary-400' : 'text-secondary-700'" style="margin-left: -0.6em">
+        pedia
+      </span>
     </h1>
   </div>
 </template>

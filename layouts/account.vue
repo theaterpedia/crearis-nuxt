@@ -43,7 +43,7 @@
                 :tag="NuxtLink"
                 :to="link"
                 :class="[
-                  'rounded-md px-0 !text-neutral-900 first-of-type:py-4 active:bg-primary-100 md:px-4 md:first-of-type:px-4 md:first-of-type:py-2',
+                  'active:bg-primary-100 rounded-md px-0 !text-neutral-900 first-of-type:py-4 md:px-4 md:first-of-type:px-4 md:first-of-type:py-2',
                   {
                     'bg-primary-100 font-medium': router.currentRoute.value.path === link,
                   },
@@ -64,7 +64,7 @@
             <SfListItem
               :tag="NuxtLink"
               @click="handleLogout"
-              class="mt-4 rounded-md py-4 !text-neutral-900 active:bg-primary-100 md:py-2"
+              class="active:bg-primary-100 mt-4 rounded-md py-4 !text-neutral-900 md:py-2"
             >
               <template #prefix><SfIconBase /></template>
               {{ $t('account.logout') }}

@@ -67,7 +67,7 @@ const type = computed(
     :type="type"
     data-testid="button"
     :class="[
-      'inline-flex items-center justify-center rounded-md text-base font-medium focus-visible:outline focus-visible:outline-offset disabled:cursor-not-allowed disabled:bg-disabled-300 disabled:text-disabled-500 disabled:shadow-none disabled:ring-0',
+      'focus-visible:outline-offset disabled:bg-disabled-300 disabled:text-disabled-500 inline-flex items-center justify-center rounded-md text-base font-medium focus-visible:outline disabled:cursor-not-allowed disabled:shadow-none disabled:ring-0',
       sizeClasses,
       variantClasses[variant],
     ]"

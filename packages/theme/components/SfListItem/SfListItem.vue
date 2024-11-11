@@ -40,9 +40,9 @@ defineProps({
     :is="tag || 'li'"
     data-testid="list-item"
     :class="[
-      'inline-flex w-full cursor-pointer items-center gap-2 hover:bg-neutral-100 focus-visible:relative focus-visible:z-10 focus-visible:outline focus-visible:outline-offset active:bg-neutral-200',
+      'focus-visible:outline-offset inline-flex w-full cursor-pointer items-center gap-2 hover:bg-neutral-100 focus-visible:relative focus-visible:z-10 focus-visible:outline active:bg-neutral-200',
       sizeClasses[size],
-      { 'pointer-events-none cursor-not-allowed text-disabled-900': disabled, 'font-medium': selected },
+      { 'text-disabled-900 pointer-events-none cursor-not-allowed': disabled, 'font-medium': selected },
     ]"
   >
     <component v-if="$slots.prefix" :is="childrenTag" :class="disabled ? 'text-disabled-500' : 'text-neutral-500'">

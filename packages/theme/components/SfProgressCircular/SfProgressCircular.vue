@@ -54,7 +54,7 @@ const strokeDasharray = computed(() => `${(value.value / 100) * 151}, 150`)
     data-testid="progress"
     role="progressbar"
     viewBox="25 25 50 50"
-    class="inline-block rounded-full text-sm text-primary-700 ring-inset ring-neutral-300 transition-[stroke-dasharray] duration-500 ease-in-out"
+    class="text-primary-700 inline-block rounded-full text-sm ring-inset ring-neutral-300 transition-[stroke-dasharray] duration-500 ease-in-out"
     :class="sizeClasses[size]"
   >
     <circle

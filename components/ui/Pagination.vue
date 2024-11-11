@@ -71,7 +71,7 @@ onMounted(() => {
           :class="[
             'flex border-t-4 border-transparent pt-1',
             {
-              'border-t-4 !border-primary-500 font-medium': pagination.selectedPage === 1,
+              '!border-primary-500 border-t-4 font-medium': pagination.selectedPage === 1,
             },
           ]"
         >
@@ -82,7 +82,7 @@ onMounted(() => {
               setParams({ ['page']: 1 })
             "
             type="button"
-            class="rounded-md px-4 py-3 text-neutral-500 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900 md:w-12"
+            class="hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900 rounded-md px-4 py-3 text-neutral-500 md:w-12"
           >
             1
           </button>
@@ -104,7 +104,7 @@ onMounted(() => {
               setParams({ ['page']: pagination.selectedPage })
             "
             type="button"
-            class="rounded-md px-4 py-3 text-neutral-500 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900 md:w-12"
+            class="hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900 rounded-md px-4 py-3 text-neutral-500 md:w-12"
           >
             {{ pagination.endPage - 1 }}
           </button>
@@ -115,7 +115,7 @@ onMounted(() => {
           :class="[
             'flex border-t-4 border-transparent pt-1',
             {
-              'border-t-4 !border-primary-700 font-medium': pagination.selectedPage === page,
+              '!border-primary-700 border-t-4 font-medium': pagination.selectedPage === page,
             },
           ]"
         >
@@ -127,9 +127,9 @@ onMounted(() => {
             "
             type="button"
             :class="[
-              'rounded-md px-4 py-3 text-neutral-500 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900 md:w-12',
+              'hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900 rounded-md px-4 py-3 text-neutral-500 md:w-12',
               {
-                '!text-neutral-900 hover:!text-primary-800 active:!text-primary-900': pagination.selectedPage === page,
+                'hover:!text-primary-800 active:!text-primary-900 !text-neutral-900': pagination.selectedPage === page,
               },
             ]"
           >
@@ -146,7 +146,7 @@ onMounted(() => {
             "
             aria-label="Second page"
             type="button"
-            class="rounded-md px-4 py-3 text-neutral-500 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900 md:w-12"
+            class="hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900 rounded-md px-4 py-3 text-neutral-500 md:w-12"
           >
             2
           </button>
@@ -164,7 +164,7 @@ onMounted(() => {
           :class="[
             'flex border-t-4 border-transparent pt-1',
             {
-              'border-t-4 !border-primary-500 font-medium': pagination.selectedPage === pagination.totalPages,
+              '!border-primary-500 border-t-4 font-medium': pagination.selectedPage === pagination.totalPages,
             },
           ]"
         >
@@ -175,7 +175,7 @@ onMounted(() => {
               setParams({ ['page']: pagination.totalPages })
             "
             type="button"
-            class="rounded-md px-4 py-3 text-neutral-500 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900 md:w-12"
+            class="hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900 rounded-md px-4 py-3 text-neutral-500 md:w-12"
           >
             {{ pagination.totalPages }}
           </button>

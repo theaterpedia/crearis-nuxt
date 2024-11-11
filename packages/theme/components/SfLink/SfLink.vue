@@ -27,7 +27,7 @@ defineProps({
   <component
     :is="tag"
     data-testid="link"
-    :class="['focus-visible:rounded-sm focus-visible:outline focus-visible:outline-offset', variantClasses[variant]]"
+    :class="['focus-visible:outline-offset focus-visible:rounded-sm focus-visible:outline', variantClasses[variant]]"
   >
     <slot />
   </component>

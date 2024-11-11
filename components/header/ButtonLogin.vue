@@ -11,7 +11,7 @@ const { isAuthenticated } = useAuth()
     :to="isAuthenticated ? '/my-account/personal-data' : '/login'"
     square
     variant="tertiary"
-    class="-ml-0.5 mr-1 rounded-md text-white hover:bg-primary-800 hover:text-white active:bg-primary-900 active:text-white"
+    class="hover:bg-primary-800 active:bg-primary-900 -ml-0.5 mr-1 rounded-md text-white hover:text-white active:text-white"
   >
     <template #prefix>
       <SfIconShoppingCart />

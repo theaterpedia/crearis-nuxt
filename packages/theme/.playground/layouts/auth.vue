@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-
-
 defineProps<{
   heading: string
 }>()

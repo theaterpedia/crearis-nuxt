@@ -64,7 +64,7 @@ const paddingForSize = computed(() => {
     :for="inputId"
     data-testid="chip"
     :class="[
-      'inline-flex cursor-pointer items-center justify-center rounded-full outline-offset-2 outline-secondary-600 ring-1 ring-inset ring-neutral-200 transition duration-300 hover:bg-primary-100 active:bg-primary-200 peer-next-checked:ring-2 peer-next-checked:ring-primary-700 peer-next-checked:hover:ring-primary-700 peer-next-checked:active:ring-primary-700 peer-next-hover:ring-primary-200 peer-next-focus-visible:outline peer-next-active:ring-primary-300 peer-next-disabled:cursor-not-allowed peer-next-disabled:bg-disabled-100 peer-next-disabled:opacity-50 peer-next-disabled:ring-1 peer-next-disabled:ring-disabled-200 peer-next-disabled:hover:ring-disabled-200',
+      'outline-secondary-600 hover:bg-primary-100 active:bg-primary-200 peer-next-checked:ring-2 peer-next-checked:ring-primary-700 peer-next-checked:hover:ring-primary-700 peer-next-checked:active:ring-primary-700 peer-next-hover:ring-primary-200 peer-next-focus-visible:outline peer-next-active:ring-primary-300 peer-next-disabled:cursor-not-allowed peer-next-disabled:bg-disabled-100 peer-next-disabled:opacity-50 peer-next-disabled:ring-1 peer-next-disabled:ring-disabled-200 peer-next-disabled:hover:ring-disabled-200 inline-flex cursor-pointer items-center justify-center rounded-full outline-offset-2 ring-1 ring-inset ring-neutral-200 transition duration-300',
       sizeClasses[size],
       paddingForSize,
     ]"
