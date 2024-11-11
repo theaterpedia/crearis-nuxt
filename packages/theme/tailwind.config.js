@@ -8,7 +8,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Roboto', ...defaultTheme.fontFamily.sans], // Pruvious: Lato
+        body: ['MonaspaceNeon', ...defaultTheme.fontFamily.sans], // Pruvious: Lato
+        sans: ['MonaspaceNeon', ...defaultTheme.fontFamily.sans], // Pruvious: Lato
         mono: ['MonaspaceNeon', ...defaultTheme.fontFamily.serif],
         headings: ['MonaspaceNeon', ...defaultTheme.fontFamily.mono], // Pruvious: Poppins
       },

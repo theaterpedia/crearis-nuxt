@@ -1,6 +1,14 @@
 <template>
-  <Box>
+  <Component :is="isSideNav ? 'Box' : 'div'">
+    <UiNavbarTop v-show="!isSideNav">
+      <NuxtLink to="/theaterpedia">Theaterpedia</NuxtLink>
+      <NuxtLink to="/dasei">DASEi</NuxtLink>
+      <NuxtLink to="/pruvious">Pruvious</NuxtLink>
+      <NuxtLink to="/vsf">VSF</NuxtLink>
+      <NuxtLink to="/laempel">Lämpel</NuxtLink>
+    </UiNavbarTop>
     <Sidebar
+      v-show="isSideNav"
       footerText="30 Jahre Theaterädagogik Bayern"
       logo="https://pruvious.com/uploads/logo-dasei.svg"
       logoAlt="DAS Ei"
@@ -73,7 +81,7 @@
         Anmeldung und Konditionen
       </ButtonTmp>
     </Main>
-  </Box>
+  </Component>
 </template>
 
 <script lang="ts" setup>
@@ -84,6 +92,7 @@ const page = { heading: 'test heading', title: 'test title', teaser: 'test tease
 const content = '## headline for heading \nTest for Teaser'
 const hero = undefined
 const details = false
+const isSideNav: Boolean = false
 
 const route = useRoute()
 const mainMenu = useMainMenu()

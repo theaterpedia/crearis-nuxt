@@ -5,9 +5,9 @@
   --card-foreground: 0 0% 0%;
   --popover: 0 0% 100%;
   --popover-foreground: 0 0% 0%;
-  --primary: 48 100% 50%;
+  --primary: 56 100% 50%;
   --primary-foreground: 0 0% 0%;
-  --secondary: 24 100% 50%;
+  --secondary: 84 81% 44%;
   --secondary-foreground: 0 0% 100%;
   --muted: 0 0% 85%;
   --muted-foreground: 0 0% 20%;
@@ -21,7 +21,7 @@
   --ring: 0 0% 0%;
 
   --radius: 0.5rem;
-  --font: 'Roboto', sans-serif;
+  --font: 'MonaspaceNeon', mono;
   --headings: var(--font);
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
   --duration: 150ms;

@@ -1,5 +1,6 @@
 <template>
   <Heading
+    class="bg-primary"
     :headline="headline"
     :is="is"
     :overline="overline ? overline : ''"
