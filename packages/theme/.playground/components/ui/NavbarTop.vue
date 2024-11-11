@@ -9,9 +9,9 @@ const props = defineProps<{
 
 const navigation = [
   { title: 'home', _path: '/' },
-  { title: 'Workshops', _path: '/info/1' },
-  { title: 'Projekte', _path: '/info/2' },
-  { title: 'Supervision', _path: '/info/3' },
+  { title: 'Login', _path: '/login' },
+  { title: 'Projekte', _path: '#' },
+  { title: 'Supervision', _path: '#' },
 ]
 
 const isDark = useDark()

@@ -21,7 +21,13 @@ const {
 
 const router = useRouter()
 const NuxtLink = resolveComponent('NuxtLink')
-const filteredCategories = inject<Category[]>('filteredTopCategories')
+const filteredCategories = {
+  categories: [
+    {
+      id: 1,
+      name: 'Watches',
+      childs: []
+        }]}
 
 const goTo = (slug: string) => {
   close()

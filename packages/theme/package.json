@@ -17,6 +17,7 @@
     "postinstall": "pnpm run prepare"
   },
   "dependencies": {
+    "vue-toastification": "next",
     "@crearis/ui": "workspace:*",
     "@crearis/tailwind-config": "workspace:*",
     "@floating-ui/vue": "^1.1.0",
