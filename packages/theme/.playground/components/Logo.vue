@@ -24,8 +24,8 @@ const logoClass = 'text-content'
       "
     >
       <slot>
-        <span :class="props.filled ? 'text-primary-400' : 'text-primary-700'">Lehrstücke</span>
-        <span :class="props.filled ? '' : 'text-primary-700'">für die Schule</span>
+        <span :class="props.filled ? 'text-primary-400' : 'text-primary-400'">Lehrstücke</span>
+        <span :class="props.filled ? '' : 'text-primary-400'">für die Schule</span>
       </slot>
     </h2>
     <h1
@@ -38,11 +38,11 @@ const logoClass = 'text-content'
       "
     >
       <span
-        :class="props.filled === true && props.extended === false ? 'text-white dark:text-black' : 'text-primary-700'"
+        :class="props.filled === true && props.extended === false ? 'text-primary-400' : 'text-primary-400'"
       >
         Theater
       </span>
-      <span :class="filled && !extended ? 'text-secondary-400' : 'text-secondary-700'" style="margin-left: -0.6em">
+      <span :class="filled && !extended ? 'text-secondary-400' : 'text-secondary-400'" style="margin-left: -0.6em">
         pedia
       </span>
     </h1>

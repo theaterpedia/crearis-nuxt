@@ -6,6 +6,27 @@ export default {
   presets: [tailwindConfig],
   content: ['blocks/**/*.vue'],
   theme: {
+    variables: {
+      DEFAULT: {
+        colors: {
+          primary: {
+            '400': '255 238 0',
+          },
+          secondary: {
+            '50': '245 243 255',
+            '100': '237 233 254',
+            '200': '221 214 254',
+            '300': '196 181 253',
+            '400': '130 203 21',
+            '500': '135 92 246',
+            '600': '111 64 236',
+            '700': '97 49 221',
+            '800': '83 30 211',
+            '900': '68 21 178',
+          },
+        }
+      }
+    },
     extend: {
       fontFamily: {
         body: ['MonaspaceNeon', ...defaultTheme.fontFamily.sans], // Pruvious: Lato

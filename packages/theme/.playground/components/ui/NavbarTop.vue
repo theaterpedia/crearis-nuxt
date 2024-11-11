@@ -29,7 +29,7 @@ const y = useWindowScroll().y
 <template>
   <header
     data-testid="navbar-top"
-    class="z-50 flex h-14 md:sticky md:pt-2.5"
+    class="bg-accent z-50 flex h-14 md:sticky md:pt-2.5"
     :class="[
       {
         'max-w-screen-3xl mx-auto md:-top-12 md:mt-6 md:h-28 md:px-6 lg:mt-10 lg:px-10 dark:bg-black':
@@ -55,7 +55,7 @@ const y = useWindowScroll().y
         class="left-0 top-16 items-center justify-between justify-items-start border-t px-5 py-3 text-lg md:flex md:basis-2/4 md:justify-items-center md:border-t-0 md:px-10 md:py-0 md:pt-2"
         :class="[
           { 'text-white': filled && !(y <= scrollBreak && props.extended) },
-          { 'text-primary-700 dark:text-primary-200': !filled || (y <= scrollBreak && props.extended) },
+          { 'text-primary-400 dark:text-primary-400': !filled || (y <= scrollBreak && props.extended) },
         ]"
       >
         <NuxtLink
@@ -69,7 +69,7 @@ const y = useWindowScroll().y
         <slot />
         <SfButton
           @click="toggleDark()"
-          class="bg-primary-200 text-primary-700 dark:bg-primary-700 dark:text-primary-200"
+          class="bg-primary-200 text-primary-400 dark:bg-primary-700 dark:text-primary-400"
         >
           <SfIconCircle />
         </SfButton>
