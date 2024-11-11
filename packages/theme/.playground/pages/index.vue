@@ -1,6 +1,8 @@
 <script lang="ts" setup></script>
 <template>
-  <h1>Home</h1>
-  <p>Under Construction</p>
-  <PlLayouts />
+    <div>
+        <h1>Choose Layout-Strategy</h1>
+        <p>in the Playground we monitor and evaluate 4 different layout strategies</p>
+        <PlLayouts />
+    </div>
 </template>

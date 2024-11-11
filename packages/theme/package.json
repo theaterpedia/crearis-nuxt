@@ -17,7 +17,9 @@
     "postinstall": "pnpm run prepare"
   },
   "dependencies": {
+    "nuxt-viewport": "^2.2.0",
     "vue-toastification": "next",
+    "@nuxt/content": "^2.13.0",
     "@crearis/ui": "workspace:*",
     "@crearis/tailwind-config": "workspace:*",
     "@floating-ui/vue": "^1.1.0",
