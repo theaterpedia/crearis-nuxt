@@ -20,12 +20,12 @@ importers:
       '@crearis/odoo-sdk-api-client':
         specifier: workspace:*
         version: link:packages/odoo-sdk-api-client
-      '@crearis/sfui':
-        specifier: workspace:*
-        version: link:packages/sfui
       '@crearis/tailwind-config':
         specifier: workspace:*
         version: link:packages/tailwind-config
+      '@crearis/theme':
+        specifier: workspace:*
+        version: link:packages/theme-deprecated
       '@floating-ui/vue':
         specifier: ^1.1.0
         version: 1.1.5(vue@3.5.12(typescript@5.6.3))
@@ -134,7 +134,7 @@ importers:
     dependencies:
       '@crearis/theme':
         specifier: workspace:*
-        version: link:../../packages/theme
+        version: link:../../packages/theme-deprecated
       '@crearis/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -243,46 +243,6 @@ importers:
         specifier: ^5.1.6
         version: 5.6.3
 
-  packages/sfui:
-    dependencies:
-      '@crearis/tailwind-config':
-        specifier: workspace:*
-        version: link:../tailwind-config
-      '@floating-ui/vue':
-        specifier: ^1.1.0
-        version: 1.1.5(vue@3.5.12(typescript@5.6.3))
-      '@nuxtjs/tailwindcss':
-        specifier: ^6.12.1
-        version: 6.12.2(magicast@0.3.5)(rollup@4.24.4)
-      '@storefront-ui/shared':
-        specifier: ^2.5.0
-        version: 2.5.1
-      '@vueuse/core':
-        specifier: ^10.9.0
-        version: 10.11.1(vue@3.5.12(typescript@5.6.3))
-      jw-paginate:
-        specifier: ^1.0.4
-        version: 1.0.4
-      nuxt:
-        specifier: 3.13.2
-        version: 3.13.2(@parcel/watcher@2.5.0)(@types/node@20.17.6)(encoding@0.1.13)(eslint@8.57.1)(ioredis@5.4.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3)(vite@5.4.10(@types/node@20.17.6)(terser@5.36.0))(vue-tsc@2.1.10(typescript@5.6.3))
-      tabbable:
-        specifier: ^6.1.1
-        version: 6.2.0
-      vue:
-        specifier: ^3.2.47
-        version: 3.5.12(typescript@5.6.3)
-    devDependencies:
-      '@crearis/sfui-ts-config':
-        specifier: workspace:*
-        version: link:../typescript-sfui
-      prettier:
-        specifier: ^3.3.0
-        version: 3.3.3
-      vue-tsc:
-        specifier: ^2.0.2
-        version: 2.1.10(typescript@5.6.3)
-
   packages/tailwind-config:
     dependencies:
       '@mertasan/tailwindcss-variables':
@@ -310,12 +270,61 @@ importers:
 
   packages/theme:
     dependencies:
+      '@crearis/tailwind-config':
+        specifier: workspace:*
+        version: link:../tailwind-config
+      '@crearis/ui':
+        specifier: workspace:*
+        version: link:../ui
+      '@floating-ui/vue':
+        specifier: ^1.1.0
+        version: 1.1.5(vue@3.5.12(typescript@5.6.3))
+      '@nuxtjs/tailwindcss':
+        specifier: ^6.12.1
+        version: 6.12.2(magicast@0.3.5)(rollup@4.24.4)
+      '@storefront-ui/shared':
+        specifier: ^2.5.0
+        version: 2.5.1
+      '@vueuse/core':
+        specifier: ^10.9.0
+        version: 10.11.1(vue@3.5.12(typescript@5.6.3))
+      jw-paginate:
+        specifier: ^1.0.4
+        version: 1.0.4
+      nuxt:
+        specifier: 3.13.2
+        version: 3.13.2(@parcel/watcher@2.5.0)(@types/node@20.17.6)(encoding@0.1.13)(eslint@8.57.1)(ioredis@5.4.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3)(vite@5.4.10(@types/node@20.17.6)(terser@5.36.0))(vue-tsc@2.1.10(typescript@5.6.3))
+      tabbable:
+        specifier: ^6.1.1
+        version: 6.2.0
+    devDependencies:
+      '@crearis/sfui-ts-config':
+        specifier: workspace:*
+        version: link:../typescript-sfui
+      prettier:
+        specifier: ^3.3.0
+        version: 3.3.3
+      tailwindcss:
+        specifier: ^3.4.7
+        version: 3.4.14
+      typescript:
+        specifier: ^5.5.4
+        version: 5.6.3
+      vue:
+        specifier: latest
+        version: 3.5.12(typescript@5.6.3)
+      vue-tsc:
+        specifier: ^2.0.2
+        version: 2.1.10(typescript@5.6.3)
+
+  packages/theme-deprecated:
+    dependencies:
       '@crearis/ui':
         specifier: workspace:*
         version: link:../ui
       '@nuxtjs/tailwindcss':
         specifier: ^6.12.1
-        version: 6.12.2(magicast@0.3.5)(rollup@4.24.4)
+        version: 6.12.1(magicast@0.3.5)(rollup@4.24.4)
     devDependencies:
       nuxt:
         specifier: 3.13.2
@@ -11508,6 +11517,27 @@ snapshots:
   '@nuxtjs/tailwindcss@6.12.1(magicast@0.2.11)(rollup@4.24.4)':
     dependencies:
       '@nuxt/kit': 3.13.2(magicast@0.2.11)(rollup@4.24.4)
+      autoprefixer: 10.4.20(postcss@8.4.47)
+      consola: 3.2.3
+      defu: 6.1.4
+      h3: 1.13.0
+      pathe: 1.1.2
+      postcss: 8.4.47
+      postcss-nesting: 12.1.5(postcss@8.4.47)
+      tailwind-config-viewer: 2.0.4(tailwindcss@3.4.14)
+      tailwindcss: 3.4.14
+      ufo: 1.5.4
+      unctx: 2.3.1
+    transitivePeerDependencies:
+      - magicast
+      - rollup
+      - supports-color
+      - ts-node
+      - webpack-sources
+
+  '@nuxtjs/tailwindcss@6.12.1(magicast@0.3.5)(rollup@4.24.4)':
+    dependencies:
+      '@nuxt/kit': 3.13.2(magicast@0.3.5)(rollup@4.24.4)
       autoprefixer: 10.4.20(postcss@8.4.47)
       consola: 3.2.3
       defu: 6.1.4
