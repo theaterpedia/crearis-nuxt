@@ -13,13 +13,7 @@
             <h1 v-if="currentPath === link">{{ label }}</h1>
           </div>
         </div>
-        <SfButton
-          :is="NuxtLink"
-          size="sm"
-          to="/my-account"
-          variant="tertiary"
-          class="flex whitespace-nowrap md:hidden"
-        >
+        <SfButton :is="NuxtLink" size="sm" to="/my-account" variant="tertiary" class="flex whitespace-nowrap md:hidden">
           <template #prefix>
             <SfIconArrowBack />
           </template>

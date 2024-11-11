@@ -1,5 +1,5 @@
 <template>
-  <component :is="is" class="section" :class="[`section-${background}`]">
+  <component :is="is" class="section" :class="[`section-${background}`, overlap ? 'overlap' : '']">
     <slot />
   </component>
 </template>
@@ -26,6 +26,15 @@ defineProps({
   background: {
     type: String as PropType<'default' | 'muted' | 'accent'>,
     default: 'default',
+  },
+  /**
+   * adds padding to the bottom
+   *
+   * @default false
+   */
+  overlap: {
+    type: Boolean,
+    default: false,
   },
 })
 </script>
@@ -60,5 +69,9 @@ defineProps({
   --link: var(--primary);
   background-color: hsl(var(--accent));
   color: hsl(var(--accent-foreground));
+}
+
+.overlap {
+  padding-bottom: 2.75rem; /* 44px */
 }
 </style>

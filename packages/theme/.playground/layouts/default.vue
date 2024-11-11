@@ -1,11 +1,8 @@
 <template>
   <Component :is="isSideNav ? 'Box' : 'div'">
     <UiNavbarTop v-show="!isSideNav">
-      <NuxtLink to="/theaterpedia">Theaterpedia</NuxtLink>
-      <NuxtLink to="/dasei">DASEi</NuxtLink>
-      <NuxtLink to="/pruvious">Pruvious</NuxtLink>
-      <NuxtLink to="/vsf">VSF</NuxtLink>
-      <NuxtLink to="/laempel">Lämpel</NuxtLink>
+      <NuxtLink to="/konferenz">Konferenz</NuxtLink>
+      <NuxtLink to="/sondierung">Sondierung</NuxtLink>
     </UiNavbarTop>
     <Sidebar
       v-show="isSideNav"
@@ -64,10 +61,7 @@
           </Component>
         </Hero>
         <SectionContainer v-else>
-          <Heading
-            :content="content"
-            is="h1"
-          ></Heading>
+          <Heading :content="content" is="h1"></Heading>
           <MdBlock v-if="page.teaser" :content="page.teaser" :htag="page.heading ? 'h3' : 'h1'" />
         </SectionContainer>
       </slot>
@@ -89,7 +83,7 @@ import { NuxtLink } from '#components'
 
 const image = { src: 'https://pruvious.com/uploads/dasei/banner.jpg', alt: 'DAS Ei' }
 const page = { heading: 'test heading', title: 'test title', teaser: 'test teaser', _path: '/dasei' }
-const content = '## headline for heading \nTest for Teaser'
+const content = '_A1_ Headline for Heading - **Test for Teaser**'
 const hero = undefined
 const details = false
 const isSideNav: Boolean = false

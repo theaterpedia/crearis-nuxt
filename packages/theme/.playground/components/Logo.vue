@@ -37,9 +37,7 @@ const logoClass = 'text-content'
             : 'font-@crearis-mono text-3xl sm:text-4xl lg:text-5xl 2xl:text-6xl'
       "
     >
-      <span
-        :class="props.filled === true && props.extended === false ? 'text-primary-400' : 'text-primary-400'"
-      >
+      <span :class="props.filled === true && props.extended === false ? 'text-primary-400' : 'text-primary-400'">
         Theater
       </span>
       <span :class="filled && !extended ? 'text-secondary-400' : 'text-secondary-400'" style="margin-left: -0.6em">

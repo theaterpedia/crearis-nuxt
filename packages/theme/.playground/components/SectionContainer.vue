@@ -1,5 +1,5 @@
 <template>
-  <Section :background="background">
+  <Section :background="background" :overlap="overlap">
     <Container>
       <slot />
     </Container>
@@ -17,6 +17,15 @@ defineProps({
   background: {
     type: String as PropType<'default' | 'muted' | 'accent'>,
     default: 'default',
+  },
+  /**
+   * The background color of the section.
+   *
+   * @default false
+   */
+  overlap: {
+    type: Boolean,
+    default: false,
   },
 })
 </script>

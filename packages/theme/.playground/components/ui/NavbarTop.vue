@@ -7,12 +7,7 @@ const props = defineProps<{
   extended?: boolean
 }>()
 
-const navigation = [
-  { title: 'home', _path: '/' },
-  { title: 'Login', _path: '/login' },
-  { title: 'Projekte', _path: '#' },
-  { title: 'Supervision', _path: '#' },
-]
+const navigation = [{ title: 'home', _path: '/' }]
 
 const isDark = useDark()
 const toggleDark = useToggle(isDark)

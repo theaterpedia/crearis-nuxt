@@ -56,10 +56,7 @@
           </Component>
         </Hero>
         <SectionContainer v-else>
-          <Heading
-            :content="content"
-            is="h1"
-          ></Heading>
+          <Heading :content="content" is="h1"></Heading>
           <MdBlock v-if="page.teaser" :content="page.teaser" :htag="page.heading ? 'h3' : 'h1'" />
         </SectionContainer>
       </slot>

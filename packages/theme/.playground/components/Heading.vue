@@ -1,12 +1,12 @@
 <template>
   <Heading
-    class="bg-primary"
     :headline="headline"
     :is="is"
     :overline="overline ? overline : ''"
     :shortcode="shortcode ? shortcode : ''"
     :subline="subline ? subline : ''"
     :tags="tags ? tags : ''"
+    class="bg-primary"
     :style="
       $viewport.isLessThan('tablet')
         ? is === 'h1'
