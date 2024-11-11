@@ -1,15 +1,12 @@
 <script lang="ts" setup>
-definePageMeta({
-  layout: 'laempel',
-})
 </script>
 
 <template>
     <div>
         <SectionContainer>
             <Prose>
-                <h1>Layout-Strategy 'Lämpel'</h1>
-                <p>based on Theaterpedia 2022 > full-width-layout</p>
+                <h1>Layout-Strategy 'Theaterpedia'</h1>
+                <p>extend the 'dasei'-theme 2024 > top-navigation</p>
             </Prose>
         </SectionContainer>
         <PlLayouts />
