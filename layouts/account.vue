@@ -14,7 +14,7 @@
           </div>
         </div>
         <SfButton
-          :tag="NuxtLink"
+          :is="NuxtLink"
           size="sm"
           to="/my-account"
           variant="tertiary"
@@ -40,7 +40,7 @@
             </SfListItem>
             <li v-for="{ label, link } in subsections" :key="label">
               <SfListItem
-                :tag="NuxtLink"
+                :is="NuxtLink"
                 :to="link"
                 :class="[
                   'active:bg-primary-100 rounded-md px-0 !text-neutral-900 first-of-type:py-4 md:px-4 md:first-of-type:px-4 md:first-of-type:py-2',
@@ -62,7 +62,7 @@
           <UiDivider />
           <ul>
             <SfListItem
-              :tag="NuxtLink"
+              :is="NuxtLink"
               @click="handleLogout"
               class="active:bg-primary-100 mt-4 rounded-md py-4 !text-neutral-900 md:py-2"
             >

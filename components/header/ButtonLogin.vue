@@ -7,7 +7,7 @@ const { isAuthenticated } = useAuth()
 <template>
   <!-- <ClientOnly> -->
   <SfButton
-    :tag="NuxtLink"
+    :is="NuxtLink"
     :to="isAuthenticated ? '/my-account/personal-data' : '/login'"
     square
     variant="tertiary"

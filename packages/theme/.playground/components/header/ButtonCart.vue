@@ -10,7 +10,7 @@ onMounted(async () => {
 <template>
   <ClientOnly>
     <SfButton
-      :tag="NuxtLink"
+      :is="NuxtLink"
       square
       to="/cart"
       variant="tertiary"
@@ -28,7 +28,7 @@ onMounted(async () => {
 
     <template #fallback>
       <SfButton
-        :tag="NuxtLink"
+        :is="NuxtLink"
         square
         to="/cart"
         variant="tertiary"

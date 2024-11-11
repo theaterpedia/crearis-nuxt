@@ -31,13 +31,13 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
-  tag: {
+  is: {
     type: [String, Object] as PropType<string | ConcreteComponent>,
     default: undefined,
   },
 })
 
-const { size, tag, square } = toRefs(props)
+const { size, is, square } = toRefs(props)
 
 const sizeClasses = computed(() => {
   switch (size.value) {
@@ -49,13 +49,13 @@ const sizeClasses = computed(() => {
       return [square.value ? 'p-2' : 'py-2 leading-6 px-4', 'gap-2']
   }
 })
-const tagWithDefaults = computed(() => tag?.value || 'button')
+const isWithDefaults = computed(() => is?.value || 'button')
 
 const attrs = useAttrsRef()
 const type = computed(
   () =>
     attrs.value.type ??
-    (typeof tagWithDefaults.value === 'string' && tagWithDefaults.value.toLowerCase() === 'button'
+    (typeof isWithDefaults.value === 'string' && isWithDefaults.value.toLowerCase() === 'button'
       ? 'button'
       : undefined),
 )
@@ -63,7 +63,7 @@ const type = computed(
 <template>
   <component
     :disabled="disabled"
-    :is="tagWithDefaults"
+    :is="isWithDefaults"
     :type="type"
     data-testid="button"
     :class="[
