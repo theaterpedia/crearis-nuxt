@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-10-30',
-  extends: ['./packages/sfui'],
+  extends: ['./packages/theme'],
   devtools: { enabled: true },
   modules: [
     '@nuxtjs/google-fonts',
