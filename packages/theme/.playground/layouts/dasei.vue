@@ -74,8 +74,6 @@
       </ButtonTmp>
     </Main>
   </Box>
-
-  <FooterDasei />
 </template>
 
 <script lang="ts" setup>

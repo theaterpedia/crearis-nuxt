@@ -6,8 +6,12 @@ definePageMeta({
 
 <template>
   <div>
-    <h1>Layout-Strategy Pruvious</h1>
-    <p>Following the Pruvious-Tutorial</p>
+    <SectionContainer>
+      <Prose>
+        <h1>Layout-Strategy Pruvious</h1>
+        <p>Following the Pruvious-Tutorial</p>
+      </Prose>
+    </SectionContainer>
     <PlLayouts />
   </div>
 </template>

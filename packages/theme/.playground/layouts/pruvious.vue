@@ -7,6 +7,4 @@
     <!-- Our page blocks will be rendered here -->
     <slot />
   </div>
-
-  <Footer class="mb-23" />
 </template>
