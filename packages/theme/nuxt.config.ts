@@ -11,5 +11,7 @@ export default defineNuxtConfig({
     viewer: false,
     cssPath: join(currentDir, './assets/css/tailwind.css'),
   },
+  experimental: {
+    asyncContext: true,
+  },
 })
-
