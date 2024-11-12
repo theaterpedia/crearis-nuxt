@@ -34,14 +34,14 @@ const y = ref(useWindowScroll().y)
           y <= scrollBreak && props.extended,
       },
       { 'md:-top-4 md:h-20': y > scrollBreak || !props.extended },
-      { 'bg-[#02C652] text-white': filled && (y > scrollBreak || !props.extended) },
+      { 'bg-muted-base text-white': filled && (y > scrollBreak || !props.extended) },
       { 'bg-white text-[#02C652]': !filled || (y <= scrollBreak && props.extended) },
       ]"
     >
     <div
-      class="max-w-screen-3xl sticky top-0 mx-auto flex w-full items-center justify-between gap-[clamp(1rem,3vw,3rem)] px-4 py-6 md:h-[60px] md:justify-normal md:px-6 lg:px-10"
+      class="max-w-screen-3xl sticky top-0 mx-auto flex w-full items-center justify-between gap-[clamp(1rem,3vw,3rem)] sm:px-4 py-6 md:h-[60px] md:justify-normal md:px-6 lg:px-10"
     >
-      <LogoSearch :extended="y <= scrollBreak && props.extended" :filled="filled" :hideLogo="hideLogo" :hideSearch="hideSearch" class="flex-grow"/>
+      <Logo logoSize="sm" :extended="y <= scrollBreak && props.extended" :filled="filled" :hideLogo="hideLogo" :hideSearch="hideSearch" class="flex-grow"/>
       <!-- Links Section -->
       <nav aria-label="SF Navigation" class="hidden flex-nowrap items-center justify-end gap-x-4 md:ml-10 lg:flex"
         :class="[

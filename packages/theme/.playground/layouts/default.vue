@@ -34,7 +34,7 @@
             transparent
           >
             <template v-if="isLanding">
-              <LogoSearch extended />
+              <Logo extended />
             </template>
             <template v-else>
               <Heading
@@ -88,6 +88,7 @@ import { NuxtLink } from '#components'
 import { ref } from 'vue'
 import { useWindowScroll } from '@vueuse/core'
 import { useDark, useToggle } from '@vueuse/core'
+import LogoOld from '../components/LogoOld.vue';
 
 
 const image = { src: 'https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_1440,h_900,g_auto/v1666847011/pedia_ipsum/core/theaterpedia.jpg', alt: 'DAS Ei' }
@@ -107,7 +108,7 @@ const hero = {
   cta: {title: 'jetzt anmelden'}
 }
 
-const scrollBreak = hero ? hero.height === 'full' || hero.height === 'prominent' ? 600 : 400 : 80
+const scrollBreak = hero ? hero.height === 'full' || hero.height === 'prominent' ? 400 : 250 : 80
 const y = ref(useWindowScroll().y)
 
 const route = useRoute()

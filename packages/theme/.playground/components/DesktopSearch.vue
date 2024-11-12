@@ -19,7 +19,7 @@ const {
       @submit.prevent
       ref="formSearchTemplateRef"
       role="search"
-      class="relative mt-2 pb-2 md:ml-10 md:mt-0 md:pb-0 lg:flex"
+      class="relative lg:flex"
     >
       <SfInput
         v-model="searchInputValue"

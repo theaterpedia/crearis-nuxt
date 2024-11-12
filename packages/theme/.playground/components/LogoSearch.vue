@@ -13,13 +13,13 @@ const props = defineProps<{
 
 <template>
   <div class="flex">
-    <NuxtLink v-show="!hideLogo" :to="paths.home" aria-label="Sf Homepage" class="max-w-96 -mt-1.5 h-6 md:h-7 md:basis-2/4">
+    <NuxtLink v-show="!hideLogo" :to="paths.home" aria-label="Sf Homepage" class="flex-auto -mt-1.5 h-6 md:h-7 md:basis-2/4">
         <Logo
           :extended="extended"
           :filled="props.filled"
           :logoSize="extended ? 'lg' : 'default'"
         />
       </NuxtLink>
-      <Component v-show="!hideSearch" :is="DesktopSearch" style="box-shadow: var(--theme-shadow);" class="flex-grow"/>
+      <Component v-show="!hideSearch" :is="DesktopSearch" style="box-shadow: var(--theme-shadow);" class="flex-grow max-w-lg"/>
   </div>
 </template>
