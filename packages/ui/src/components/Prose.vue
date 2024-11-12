@@ -74,7 +74,7 @@
  */
 
 .prose :where(:not(:where(h1, h2, h3, h4, h5, h6)[id])) :where(a) {
-  color: hsl(var(--link, var(--secondary)));
+  color: hsl(var(--link, var(--secondary-base)));
   text-decoration: underline;
 }
 
@@ -149,12 +149,12 @@
  */
 .prose :where(.primary) {
   --foreground: var(--primary);
-  color: hsl(var(--primary));
+  color: hsl(var(--primary-base));
 }
 
 .prose :where(.secondary) {
   --foreground: var(--secondary);
-  color: hsl(var(--secondary));
+  color: hsl(var(--secondary-base));
 }
 
 .prose :where(.dimmed) {

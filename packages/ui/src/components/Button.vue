@@ -60,17 +60,17 @@ defineProps({
 }
 
 .button-primary {
-  background-color: hsl(var(--primary));
+  background-color: hsl(var(--primary-base));
   color: hsl(var(--primary-foreground));
 }
 
 .button-primary:hover {
-  background-color: hsl(var(--primary) / 70%);
+  background-color: hsl(var(--primary-base) / 70%);
 }
 
 .button-plain {
   background-color: hsl(var(--card-foreground));
-  color: hsl(var(--card));
+  color: hsl(var(--card-base));
 }
 
 .button-plain:hover {

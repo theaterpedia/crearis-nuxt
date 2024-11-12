@@ -174,7 +174,7 @@ onMounted(() => {
 .input-required .input-label label::after {
   content: '*';
   margin-left: 0.25em;
-  color: hsl(var(--destructive));
+  color: hsl(var(--destructive-base));
 }
 
 .input-group {
@@ -200,8 +200,8 @@ onMounted(() => {
 }
 
 .input-has-error .input-control {
-  --ring: var(--destructive);
-  border-color: hsl(var(--destructive));
+  --ring: var(--destructive-base);
+  border-color: hsl(var(--destructive-base));
 }
 
 .input-control:focus {
@@ -222,7 +222,7 @@ onMounted(() => {
 .input-error {
   margin-top: 0.375rem;
   font-size: 0.875em;
-  color: hsl(var(--destructive));
+  color: hsl(var(--destructive-base));
   font-weight: 500;
 }
 

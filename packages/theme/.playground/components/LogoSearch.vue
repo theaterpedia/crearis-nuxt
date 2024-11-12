@@ -20,6 +20,6 @@ const props = defineProps<{
           :logoSize="extended ? 'lg' : 'default'"
         />
       </NuxtLink>
-      <Component :is="DesktopSearch" class="flex-grow"/>
+      <Component v-show="!hideSearch" :is="DesktopSearch" style="box-shadow: var(--theme-shadow);" class="flex-grow"/>
   </div>
 </template>

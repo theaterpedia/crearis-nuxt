@@ -73,25 +73,25 @@ defineProps({
 }
 
 .columns-default {
-  --background: var(--card);
+  --background: var(--card-base);
   --foreground: var(--card-foreground);
-  background-color: hsl(var(--card));
+  background-color: hsl(var(--card-base));
   color: hsl(var(--card-foreground));
 }
 
 .columns-muted {
-  --background: var(--muted);
+  --background: var(--muted-base);
   --foreground: var(--card-foreground);
-  background-color: hsl(var(--muted));
+  background-color: hsl(var(--muted-base));
   color: hsl(var(--card-foreground));
 }
 
 .columns-accent {
-  --background: var(--accent);
+  --background: var(--accent-base);
   --foreground: var(--accent-foreground);
   --muted-foreground: var(--accent-foreground);
-  --link: var(--primary);
-  background-color: hsl(var(--accent));
+  --link: var(--primary-base);
+  background-color: hsl(var(--accent-base));
   color: hsl(var(--accent-foreground));
 }
 

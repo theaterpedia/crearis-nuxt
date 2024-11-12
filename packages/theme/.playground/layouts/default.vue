@@ -33,7 +33,10 @@
             :is="hero.content === 'banner' ? 'Banner' : 'div'"
             transparent
           >
-            <slot name="herocontent">
+            <template v-if="isLanding">
+              <LogoSearch extended />
+            </template>
+            <template v-else>
               <Heading
               v-if="page.heading || page.title"
               :content="page.heading ? page.heading : page.title"
@@ -59,7 +62,7 @@
                   {{ hero.link.title }}
                 </NuxtLink>
               </div>
-            </slot>
+            </template>
           </Component>
         </Hero>
         <SectionContainer v-else>
@@ -92,6 +95,7 @@ const page = { heading: 'test heading', title: 'test title', teaser: 'test tease
 const content = '_A1_ Headline for Heading - **Test for Teaser**'
 const details = false
 const isSideNav: Boolean = false
+const isLanding: Boolean = true
 
 const hero = {
   height: 'prominent',
@@ -118,9 +122,9 @@ const mainMenu = useMainMenu()
   padding-top: 1.75rem; /* 28px */
   padding-bottom: 1.75rem; /* 28px */
   transform: translate3d(0, 0, 0); /* Fixes z-index in Safari */
-  --background: var(--muted);
+  --background: var(--muted-base);
   --foreground: var(--card-foreground);
-  background-color: hsl(var(--muted));
+  background-color: hsl(var(--muted-base));
   color: hsl(var(--card-foreground));
   width: 100%;
   max-width: 90rem; /* 1440px */

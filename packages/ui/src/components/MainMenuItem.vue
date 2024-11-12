@@ -211,6 +211,6 @@ defineEmits<{
 
 .main-menu-item-link:hover,
 .main-menu-item-link-active {
-  background-color: hsl(var(--primary));
+  background-color: hsl(var(--primary-base));
 }
 </style>

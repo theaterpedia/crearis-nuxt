@@ -183,7 +183,7 @@ const columnsAlign = ref<'top' | 'center' | 'bottom'>('center')
   max-width: calc(100% - 1rem);
   max-height: calc(100% - 1rem);
   overflow-y: auto;
-  background-color: hsl(var(--card) / 70%);
+  background-color: hsl(var(--card-base) / 70%);
   border: 1px solid hsl(var(--border));
   border-radius: var(--radius);
   color: hsl(var(--card-foreground));

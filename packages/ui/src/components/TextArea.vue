@@ -153,7 +153,7 @@ onMounted(() => {
 .text-area-required .text-area-label label::after {
   content: '*';
   margin-left: 0.25em;
-  color: hsl(var(--destructive));
+  color: hsl(var(--destructive-base));
 }
 
 .text-area-group {
@@ -181,8 +181,8 @@ onMounted(() => {
 }
 
 .text-area-has-error .text-area-control {
-  --ring: var(--destructive);
-  border-color: hsl(var(--destructive));
+  --ring: var(--destructive-base);
+  border-color: hsl(var(--destructive-base));
 }
 
 .text-area-control:focus {
@@ -203,7 +203,7 @@ onMounted(() => {
 .text-area-error {
   margin-top: 0.375rem;
   font-size: 0.875em;
-  color: hsl(var(--destructive));
+  color: hsl(var(--destructive-base));
   font-weight: 500;
 }
 

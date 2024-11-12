@@ -68,28 +68,33 @@ const { headline, overline, subline, tags, shortcode } = props.heading ? extract
 </script>
 
 <style scoped>
+  .theme-shadow {
+      box-shadow: var(--theme-shadow);
+    }
+
   .column-1\/5 {
     width: 20%;
-  }
-
-  .theme-shadow {
-    box-shadow: var(--theme-shadow);
+    min-width: 12rem; /* 192px */
   }
 
   .column-1\/3 {
     width: calc(1 / 3 * 100%);
+    min-width: 18rem; /* 288px */
   }
 
   .column-1\/2 {
     width: 50%;
+    min-width: 21.5rem; /* 344px */
   }
 
   .column-3\/5 {
     width: 60%;
+    min-width: 21.5rem; /* 344px */
   }
 
   .column-4\/5 {
     width: 80%;
+    min-width: 21.5rem; /* 344px */
   }
 
   .rotate-left {

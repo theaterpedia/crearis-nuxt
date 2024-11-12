@@ -30,14 +30,14 @@ defineProps({
 
 <style scoped>
 .banner {
-  --selection: var(--secondary);
+  --selection: var(--secondary-base);
   --selection-foreground: var(--secondary-foreground);
   padding: 1.5rem;
-  background-color: hsl(var(--primary));
+  background-color: hsl(var(--primary-base));
 }
 
 .card {
-  --selection: var(--primary);
+  --selection: var(--primary-base);
   --selection-foreground: var(--primary-foreground);
   padding: 1.5rem;
   background-color: hsl(var(--background));

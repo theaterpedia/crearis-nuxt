@@ -8,11 +8,11 @@
 
 <style scoped>
 .slide {
-  --background: var(--primary);
+  --background: var(--primary-base);
   --foreground: var(--primary-foreground);
   --muted-foreground: var(--primary-foreground);
   --link: var(--primary-foreground);
-  --selection: var(--secondary);
+  --selection: var(--secondary-base);
   --selection-foreground: var(--secondary-foreground);
   width: 100%;
   padding: 0 4.5rem;

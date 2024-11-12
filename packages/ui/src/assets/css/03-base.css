@@ -9,7 +9,7 @@
 }
 
 ::selection {
-  background-color: hsl(var(--selection, var(--primary)));
+  background-color: hsl(var(--selection, var(--primary-base)));
   color: hsl(var(--selection-foreground, var(--primary-foreground)));
 }
 

@@ -182,7 +182,7 @@ defineProps({
   bottom: 0;
   left: 0;
   height: 1rem;
-  background-color: hsl(var(--primary));
+  background-color: hsl(var(--primary-base));
 }
 
 

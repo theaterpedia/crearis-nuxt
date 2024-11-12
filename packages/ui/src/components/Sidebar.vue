@@ -150,7 +150,7 @@ watch(
   width: 100vw;
   height: 2.75rem;
   padding: 0 1rem;
-  background-color: hsl(var(--card) / 48%);
+  background-color: hsl(var(--card-base) / 48%);
   color: hsl(var(--card-foreground));
 }
 

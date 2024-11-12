@@ -159,8 +159,8 @@ input:checked + .radio-group-control::after {
 }
 
 .radio-group-has-error .radio-group-control {
-  --ring: var(--destructive);
-  border-color: hsl(var(--destructive));
+  --ring: var(--destructive-base);
+  border-color: hsl(var(--destructive-base));
 }
 
 input:focus + .radio-group-control {
@@ -177,7 +177,7 @@ input:disabled + .radio-group-control {
 .radio-group-error {
   margin-left: 1.5rem;
   font-size: 0.875em;
-  color: hsl(var(--destructive));
+  color: hsl(var(--destructive-base));
   font-weight: 500;
 }
 </style>
