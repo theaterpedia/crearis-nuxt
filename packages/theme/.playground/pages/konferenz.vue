@@ -109,6 +109,24 @@ import { Columns } from '@crearis/ui'
           </Prose>
         </PostIt>                
       </Columns>
+      <Columns class="flex-row-reverse">
+        <PostIt rotation="right" width="1/5" is="h4" heading="Theaterpedia-Konferenz 21.-24. Nov 2024">
+          <Prose>
+            <p>
+              Jeder Theaterpädagoge benötigt heute eine eigene Webpräsenz, die idealerweise mit Datenbanken kompatibel ist, um Inhalte effektiv teilen und verbreiten zu können.
+            </p>
+            <a href="#">>>> bin dabei <<<</a>                               
+          </Prose>
+        </PostIt>
+        <PostIt rotation="left" width="1/5" is="h4" heading="Theaterpedia-Konferenz 21.-24. Nov 2024">
+          <Prose>
+            <p>
+              Eine gut gestaltete, vernetzte Website ermöglicht es, Projekte und Veranstaltungen sichtbar zu machen und die eigene Arbeit einem breiteren Publikum zugänglich zu machen.
+            </p>
+            <a href="#">>>> bin dabei <<<</a>                               
+          </Prose>
+        </PostIt>              
+      </Columns>
     </SectionContainer>
     <PlLayouts />
   </div>

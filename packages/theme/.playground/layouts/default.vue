@@ -1,8 +1,8 @@
 <template>
   <Component :is="isSideNav ? 'Box' : 'div'">
-    <UiNavbarTop v-show="!isSideNav">
-      <NuxtLink to="/konferenz">Konferenz</NuxtLink>
-      <NuxtLink to="/sondierung">Sondierung</NuxtLink>
+    <UiNavbarTop v-show="!isSideNav" :filled="y > scrollBreak" :hideSearch="y <= scrollBreak" :hideLogo="y <= scrollBreak">
+      <NuxtLink to="/konferenz" class="flex-1">Konferenz</NuxtLink>
+      <NuxtLink to="/sondierung" class="flex-1">Sondierung</NuxtLink>
     </UiNavbarTop>
     <Sidebar
       v-show="isSideNav"
@@ -33,31 +33,33 @@
             :is="hero.content === 'banner' ? 'Banner' : 'div'"
             transparent
           >
-            <Heading
+            <slot name="herocontent">
+              <Heading
               v-if="page.heading || page.title"
               :content="page.heading ? page.heading : page.title"
               is="h1"
-            ></Heading>
-            <br v-if="(page.heading || page.title) && page.teaser" />
-            <MdBlock v-if="page.teaser" :content="page.teaser" :htag="page.heading ? 'h3' : 'h1'" />
-            <div v-if="hero.cta || hero.link">
-              <ButtonTmp
-                v-if="hero.cta"
-                :size="hero.content_width === 'full' ? 'medium' : 'small'"
-                :to="hero.cta.link ? hero.cta.link : '#cta'"
-                variant="plain"
-              >
-                {{ hero.cta.title }}
-              </ButtonTmp>
-              <NuxtLink
-                v-if="hero.link"
-                :to="hero.link.link"
-                style="margin-left: 2em; text-decoration: underline"
-                :style="hero.content_width === 'full' ? 'font-weight:bold' : ''"
-              >
-                {{ hero.link.title }}
-              </NuxtLink>
-            </div>
+              ></Heading>
+              <br v-if="(page.heading || page.title) && page.teaser" />
+              <MdBlock v-if="page.teaser" :content="page.teaser" :htag="page.heading ? 'h3' : 'h1'" />
+              <div v-if="hero.cta || hero.link">
+                <ButtonTmp
+                  v-if="hero.cta"
+                  :size="hero.content_width === 'full' ? 'medium' : 'small'"
+                  :to="hero.cta.link ? hero.cta.link : '#cta'"
+                  variant="plain"
+                >
+                  {{ hero.cta.title }}
+                </ButtonTmp>
+                <NuxtLink
+                  v-if="hero.link"
+                  :to="hero.link.link"
+                  style="margin-left: 2em; text-decoration: underline"
+                  :style="hero.content_width === 'full' ? 'font-weight:bold' : ''"
+                >
+                  {{ hero.link.title }}
+                </NuxtLink>
+              </div>
+            </slot>
           </Component>
         </Hero>
         <SectionContainer v-else>
@@ -80,6 +82,10 @@
 
 <script lang="ts" setup>
 import { NuxtLink } from '#components'
+import { ref } from 'vue'
+import { useWindowScroll } from '@vueuse/core'
+import { useDark, useToggle } from '@vueuse/core'
+
 
 const image = { src: 'https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_1440,h_900,g_auto/v1666847011/pedia_ipsum/core/theaterpedia.jpg', alt: 'DAS Ei' }
 const page = { heading: 'test heading', title: 'test title', teaser: 'test teaser', _path: '/dasei' }
@@ -96,6 +102,9 @@ const hero = {
   content_width: 'full',
   cta: {title: 'jetzt anmelden'}
 }
+
+const scrollBreak = hero ? hero.height === 'full' || hero.height === 'prominent' ? 600 : 400 : 80
+const y = ref(useWindowScroll().y)
 
 const route = useRoute()
 const mainMenu = useMainMenu()

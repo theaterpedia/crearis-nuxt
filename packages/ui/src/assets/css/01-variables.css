@@ -20,6 +20,7 @@
   --input: 0 0% 75%;
   --ring: 0 0% 0%;
 
+  --theme-shadow: 0.4rem 0.4rem 0.3rem hsla(110, 15%, 0%, 0.5);
   --radius: 0.5rem;
   --font: 'MonaspaceNeon', mono;
   --headings: var(--font);

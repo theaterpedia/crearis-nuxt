@@ -1,5 +1,5 @@
 <template>
-  <div :style="width === '1/3' || width === '1/5' ? 'font-size: 0.8em;' : '' " class="p-6 column" :class="[`column-${width}`, `rotate-${rotation}`, `bg-${color}-400` ]">
+  <div :style="width === '1/3' || width === '1/5' ? 'font-size: 0.8em;' : '' " class="p-6 column theme-shadow" :class="[`column-${width}`, `rotate-${rotation}`, `bg-${color}-400` ]">
     <Heading
       v-if="heading"
       :headline="headline"
@@ -70,6 +70,10 @@ const { headline, overline, subline, tags, shortcode } = props.heading ? extract
 <style scoped>
   .column-1\/5 {
     width: 20%;
+  }
+
+  .theme-shadow {
+    box-shadow: var(--theme-shadow);
   }
 
   .column-1\/3 {

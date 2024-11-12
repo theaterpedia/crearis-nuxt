@@ -1,10 +1,14 @@
 <script lang="ts" setup>
 import { useWindowScroll } from '@vueuse/core'
 import { useDark, useToggle } from '@vueuse/core'
+import { Container } from '@crearis/ui'
+import { ref }  from 'vue'
 
 const props = defineProps<{
   filled?: boolean
   extended?: boolean
+  hideLogo?: boolean
+  hideSearch?: boolean
 }>()
 
 const navigation = [{ title: 'home', _path: '/' }]
@@ -15,43 +19,35 @@ const toggleDark = useToggle(isDark)
 const NuxtLink = resolveComponent('NuxtLink')
 
 const scrollBreak = 80
-const y = useWindowScroll().y
+const y = ref(useWindowScroll().y)
 
 // const topbar = ref(!props.extended && y.value > 80)
 // console.log('topbar', topbar)
 </script>
 
 <template>
-  <header
-    data-testid="navbar-top"
-    class="bg-accent z-50 flex h-14 md:sticky md:pt-2.5"
-    :class="[
+  <Container is="header"
+      class="h-14 flex z-50 fixed md:pt-2.5 inset-x-0 top-0 jfustify-between items-center lg:justify-start"
+      :class="[
       {
         'max-w-screen-3xl mx-auto md:-top-12 md:mt-6 md:h-28 md:px-6 lg:mt-10 lg:px-10 dark:bg-black':
           y <= scrollBreak && props.extended,
       },
-      { 'md:-top-4 md:h-20 md:shadow-md': y > scrollBreak || !props.extended },
-      { 'bg-primary-700 text-white': filled && (y > scrollBreak || !props.extended) },
-      { 'border-b border-neutral-200 bg-white text-[#02C652]': !filled || (y <= scrollBreak && props.extended) },
-    ]"
-  >
+      { 'md:-top-4 md:h-20': y > scrollBreak || !props.extended },
+      { 'bg-[#02C652] text-white': filled && (y > scrollBreak || !props.extended) },
+      { 'bg-white text-[#02C652]': !filled || (y <= scrollBreak && props.extended) },
+      ]"
+    >
     <div
       class="max-w-screen-3xl sticky top-0 mx-auto flex w-full items-center justify-between gap-[clamp(1rem,3vw,3rem)] px-4 py-6 md:h-[60px] md:justify-normal md:px-6 lg:px-10"
     >
-      <NuxtLink :to="paths.home" aria-label="Sf Homepage" class="-mt-1.5 h-6 md:h-7 md:basis-2/4">
-        <Logo
-          :extended="y <= scrollBreak && props.extended"
-          :filled="props.filled"
-          :logoSize="y <= scrollBreak && props.extended ? 'lg' : 'default'"
-        />
-      </NuxtLink>
+      <LogoSearch :extended="y <= scrollBreak && props.extended" :filled="filled" :hideLogo="hideLogo" :hideSearch="hideSearch" class="flex-grow"/>
       <!-- Links Section -->
-      <div
-        class="left-0 top-16 items-center justify-between justify-items-start border-t px-5 py-3 text-lg md:flex md:basis-2/4 md:justify-items-center md:border-t-0 md:px-10 md:py-0 md:pt-2"
+      <nav aria-label="SF Navigation" class="hidden flex-nowrap items-center justify-end gap-x-4 md:ml-10 lg:flex"
         :class="[
-          { 'text-white': filled && !(y <= scrollBreak && props.extended) },
-          { 'text-primary-400 dark:text-primary-400': !filled || (y <= scrollBreak && props.extended) },
-        ]"
+            { 'text-white': filled && !(y <= scrollBreak && props.extended) },
+            { 'text-primary-400 dark:text-primary-400': !filled || (y <= scrollBreak && props.extended) },
+          ]"
       >
         <NuxtLink
           v-for="link of navigation"
@@ -68,7 +64,7 @@ const y = useWindowScroll().y
         >
           <SfIconCircle />
         </SfButton>
-      </div>
+      </nav>
     </div>
-  </header>
+  </Container>
 </template>
