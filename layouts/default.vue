@@ -38,7 +38,7 @@
             :is="page?.fields.inBanner ? 'Banner' : 'div'"
             transparent
           >
-            <template v-if="route.path === '/seiten/test'">
+            <template v-if="route.path === '/'">
               <Logo extended />
             </template>
             <template v-else>
