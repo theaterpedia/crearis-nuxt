@@ -3,7 +3,7 @@ import { defineBlock, repeaterField, textSubfield } from '#pruvious'
 
 defineBlock({
   icon: 'Pencil',
-  label: 'Breadcrumbs',
+  label: 'A: Breadcrumbs',
 })
 
 defineProps({

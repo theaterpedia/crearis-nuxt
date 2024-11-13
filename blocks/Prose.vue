@@ -3,6 +3,7 @@ import { defineBlock, editorField } from '#pruvious'
 
 defineBlock({
   icon: 'Pencil',
+  label: 'B: Freitext',
 })
 
 defineProps({
@@ -14,7 +15,7 @@ defineProps({
 </script>
 
 <template>
-  <NarrowContainer class="content-block">
-    <PruviousHTML :html="text" class="max-w-content prose" />
-  </NarrowContainer>
+  <Prose>
+    <PruviousHTML :html="text"/>
+  </Prose>
 </template>
