@@ -1,11 +1,5 @@
 <template>
   <PostIt :color="color" :rotation="rotation" :width="width">
-    <Heading
-      v-if="title"
-      :content="title"
-      :is="`h${level ? level : 4}`"
-      class="bg-primary-base theme-shadow ml-[-2.75rem] max-w-[44rem] py-2 pl-11"
-    />
     <Prose>
       <PruviousHTML :html="text" />
     </Prose>
@@ -23,19 +17,7 @@ defineBlock({
 defineProps({
   text: editorField({
     required: true,
-    toolbar: ['bold', 'italic', 'link', 'heading2', 'heading3', 'paragraph', 'link', 'bulletList'],
-  }),
-  title: textField({
-    placeholder: 'Heading: _ID_ overline **HEADLINE** subline',
-    label: 'Heading (optional)',
-    required: false,
-  }),
-  level: numberField({
-    label: 'Überschrifts-Ebene',
-    placeholder: '4',
-    default: 4,
-    min: 3,
-    max: 4,
+    toolbar: ['bold', 'italic', 'link', 'heading3', 'heading4', 'paragraph', 'link', 'bulletList'],
   }),
   color: selectField({
     choices: {

@@ -26,9 +26,10 @@ defineProps({
 </script>
 
 <template>
-  <component :is="pageBlock ? 'Container' : 'div'">
-    <Prose>
+  <div>
+    <SectionContainer v-if="pageBlock">
       <PruviousImage :image="image" />
-    </Prose>
-  </component>
+    </SectionContainer>
+    <PruviousImage v-else :image="image" />
+  </div>  
 </template>

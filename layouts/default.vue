@@ -86,7 +86,7 @@ import { usePage } from '#pruvious/client'
 defineLayout({
   label: 'default',
   allowedBlocks: [
-    'VarColumns',
+    'PageColumns',
     'VarConstruction',
     'VarImage',
     'VarProse',

@@ -5,11 +5,11 @@ import { Columns } from '@crearis/ui'
 
 defineBlock({
   icon: 'Pencil',
-  label: 'B/C: Spalten',
+  label: 'B: Spalten',
   slots: {
     default: {
       label: 'Blocks', // Displayed in the dashboard
-      allowedChildBlocks: ['VarProse', 'Column', 'Video'],
+      allowedChildBlocks: ['VarProse', 'SubColumn', 'VarVideo', 'VarImage'],
     },
   },
 })

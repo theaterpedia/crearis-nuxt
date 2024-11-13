@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { defineBlock, editorField, checkboxField } from '#pruvious'
-import { Container } from '#components'
 
 defineBlock({
   icon: 'Pencil',
@@ -20,9 +19,14 @@ defineProps({
 </script>
 
 <template>
-  <component :is="pageBlock ? 'Container' : 'div'">
-    <Prose>
-      <PruviousHTML :html="text" class="text-base" />
+  <div>
+    <SectionContainer v-if="pageBlock">
+      <Prose>
+        <PruviousHTML :html="text" class="text-base" />
+      </Prose>
+    </SectionContainer>
+    <Prose v-else>
+      <PruviousHTML :html="text" class="text-sm" />
     </Prose>
-  </component>
+  </div>
 </template>

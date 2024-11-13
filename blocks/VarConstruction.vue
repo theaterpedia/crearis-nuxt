@@ -1,10 +1,22 @@
 <template>
   <div class="construction">
-    <div class="content mt-4 flex">
+    <SectionContainer v-if="pageBlock">
       <div v-if="warning" class="warning"></div>
       <div>
         <div class="mb-2 flex">
-          <Logo logoSize="sm" />
+          <Logo logoSize="sm" hideSearch/>
+          <strong class="text-md ml-2 font-mono sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">{{ extension }}</strong>
+        </div>
+        <p v-if="text">
+          {{ text }}
+        </p>
+      </div>      
+    </SectionContainer>
+    <div v-else class="content mt-4 flex">
+      <div v-if="warning" class="warning"></div>
+      <div>
+        <div class="mb-2 flex">
+          <Logo logoSize="sm" hideSearch/>
           <strong class="text-md ml-2 font-mono sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">{{ extension }}</strong>
         </div>
         <p v-if="text">
@@ -12,7 +24,7 @@
         </p>
       </div>
     </div>
-  </div>
+  </div>  
 </template>
 
 <script lang="ts" setup>
