@@ -51,6 +51,7 @@
     "c12": "1.11.2",
     "nuxt-lazy-hydrate": "^1.0.0",
     "nuxt-lodash": "^2.5.3",
+    "nuxt-viewport": "^2.2.0",
     "prettier": "^3.3.0",
     "prettier-plugin-organize-attributes": "^1.0.0",
     "prettier-plugin-tailwindcss": "^0.6.5",
