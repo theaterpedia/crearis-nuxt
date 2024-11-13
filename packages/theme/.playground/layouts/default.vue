@@ -43,11 +43,11 @@
             </template>
             <template v-else>
               <Heading
-                v-if="page.heading || page.title"
-                :content="page.heading ? page.heading : page.title"
+                v-if="page?.fields.heading || page?.fields.title"
+                :content="page?.fields.heading ? page?.fields.heading : page?.fields.title"
                 is="h1"
               ></Heading>
-              <br v-if="(page.heading || page.title) && page.teaser" />
+              <br v-if="(page.heading || page?.fields.title) && page.teaser" />
               <MdBlock v-if="page.teaser" :content="page.teaser" :htag="page.heading ? 'h3' : 'h1'" />
               <div v-if="hero.cta || hero.link">
                 <ButtonTmp

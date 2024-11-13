@@ -7,20 +7,39 @@
           <Logo logoSize="sm" />
           <strong class="text-md ml-2 font-mono sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">{{ extension }}</strong>
         </div>
-        <slot />
+        <p v-if="text">
+          {{ text }}
+        </p>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { defineBlock, textField, checkboxField, textAreaField } from '#pruvious'
+
+defineBlock({
+  icon: 'H3',
+  label: 'A/B: Construction',
+})
+
+defineProps({
+  warning: checkboxField({
+    label: 'Baustelle-Icon',
+    default: true,
+  }),
+  text: textAreaField({
+    placeholder: 'Beschreibungstext eingeben',
+    required: false,
+  }),  
+  extension: textField({
+    placeholder: 'Beta-Phase',
+    required: true,
+  }),  
+})
 // css-background see https://www.svgbackgrounds.com/how-to-add-svgs-with-css-background-image/
 // image taken from https://publicdomainvectors.org/en/free-clipart/Brick-wall-picture/71978.html
 
-const props = defineProps({
-  extension: { type: String, default: 'Beta-Phase' },
-  warning: { type: Boolean, default: false },
-})
 </script>
 
 <style scoped>

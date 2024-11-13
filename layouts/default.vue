@@ -22,16 +22,16 @@
     <Main class="tl:px-8 ph:px-6 mx-auto max-w-screen-2xl px-12">
       <slot name="header">
         <Hero
-          v-if="page?.fields.imgTmp"
+          v-if="showHero"
           :contentAlignY="page?.fields.contentAlignY"
           :contentType="page?.fields.phoneBanner ? 'banner' : 'text'"
           :contentWidth="page?.fields.contentWidth"
           :gradient_depth="page?.fields.gradientDepth"
           :gradient_type="page?.fields.gradientType"
           :heightTmp="page?.fields.heightTmp"
-          :imgTmp="page?.fields.imgTmp"
-          :imgTmpAlignX="page?.fields.imgTmpAlignX"
-          :imgTmpAlignY="page?.fields.imgTmpAlignY"
+          :imgTmp="imgTmp"
+          :imgTmpAlignX="imgTmpAlignX"
+          :imgTmpAlignY="imgTmpAlignY"
         >
           <Component
             :card="page?.fields.phoneBanner && false"
@@ -42,9 +42,9 @@
               <Logo extended />
             </template>
             <template v-else>
-              <Heading v-if="page?.fields.heading" :content="page?.fields.heading" is="h1"></Heading>
-              <br v-if="page?.fields.heading && page?.fields.teaser" />
-              <MdBlock v-if="page?.fields.teaser" :content="page?.fields.teaser" htag="h3" />
+              <Heading v-if="heading" :content="heading" is="h1"></Heading>
+              <br v-if="heading && teaser" />
+              <MdBlock v-if="teaser" :content="teaser" htag="h3" />
               <div v-if="page?.fields.cta">
                 <ButtonTmp
                   v-if="page?.fields.cta"
@@ -67,8 +67,8 @@
           </Component>
         </Hero>
         <SectionContainer v-else>
-          <Heading :content="page?.fields.heading" is="h1"></Heading>
-          <MdBlock v-if="page?.fields.teaser" :content="page?.fields.teaser" htag="h3" />
+          <Heading :content="heading" is="h1"></Heading>
+          <MdBlock v-if="teaser" :content="teaser" htag="h3" />
         </SectionContainer>
       </slot>
       <slot />
@@ -107,9 +107,13 @@ defineLayout({
 const page = unref(usePage())
 // const { blogLandingPage } = await getCollectionData('settings')
 
+const heading = page?.fields.heading ? page?.fields.heading : 'Overline **Headline**'
+const teaser = page?.fields.teaser ? page?.fields.teaser : 'Teasertext'
+const imgTmp = page?.fields.imgTmp ? page?.fields.imgTmp : 'Teasertext'
+
 const isSideNav: Boolean = false
 
-const showHero = page?.fields.heading && page?.fields.imgTmp
+const showHero = heading && imgTmp
 
 const scrollBreak = showHero
   ? page?.fields.heightTmp === 'full' || page?.fields.heightTmp === 'prominent'

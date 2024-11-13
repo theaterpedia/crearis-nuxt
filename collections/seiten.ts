@@ -31,16 +31,17 @@ export default defineCollection(
       inBanner: {
         type: 'checkbox',
         options: {
-          label: 'Abgrenzungslinie',
-          description: 'Abgrenzungslinie im Page-Hero anzeigen',
+          label: 'als Banner',
+          description: 'Inhalte in Banner-Card',
           default: false,
         },
       },
       heightTmp: {
         type: 'select',
         options: {
-          choices: { top: 'top', bottom: 'bottom', center: 'center' },
-          label: 'Content: V-Fokus',
+          choices: { full: 'full', prominent: 'prominent', medium: 'medium', mini: 'mini' },
+          default: 'prominent',
+          label: 'Header Höhe',
         },
       },
       contentAlignY: {
@@ -60,9 +61,9 @@ export default defineCollection(
       imgTmpAlignX: {
         type: 'select',
         options: {
-          choices: { full: 'full', prominent: 'prominent', medium: 'medium', mini: 'mini' },
-          default: 'prominent',
-          label: 'Höhe',
+          choices: { left: 'left', right: 'right', center: 'center', stretch: 'stretch', cover: 'cover' },
+          default: 'center',
+          label: 'Bild: H-Fokus',
         },
       },
       imgTmpAlignY: {
@@ -78,8 +79,9 @@ export default defineCollection(
         options: {
           default: 0.8,
           min: 0,
+          decimals: 2,
           max: 1,
-          label: 'Abdecken: Intensität (0-1)',
+          label: 'Abdecken: Intensität (0.00-1.00)',
         },
       },
       gradientType: {
