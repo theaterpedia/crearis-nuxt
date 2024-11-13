@@ -8,7 +8,7 @@
     :imgTmp="imgTmp"
     :imgTmpAlignX="imgTmpAlignX"
     :imgTmpAlignY="imgTmpAlignY"
-    :overlay="getoverlay(gradient_type, gradient_depth)"
+    :overlay="getoverlay(gradient_type, gradientDepth)"
   >
     <component :is="banner ? 'Banner' : 'div'" :transparent="isTransparent">
       <slot />
@@ -24,7 +24,7 @@ import { defineBlock, checkboxField, textField, selectField, numberField } from 
 defineBlock({
   icon: 'H2',
   label: 'B: Section',
-  gradient_type: selectField({
+  gradientType: selectField({
     choices: {
       top: 'top',
       leftTop: 'left-top',
@@ -36,7 +36,7 @@ defineBlock({
     },
     label: 'Abdecken: Fokus',
   }),
-  gradient_depth: numberField({
+  gradientDepth: numberField({
     default: 0.8,
     min: 0,
     max: 1,

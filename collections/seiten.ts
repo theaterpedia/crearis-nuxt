@@ -73,7 +73,7 @@ export default defineCollection(
           label: 'Bild: V-Fokus',
         },
       },
-      gradient_depth: {
+      gradientDepth: {
         type: 'number',
         options: {
           default: 0.8,
@@ -82,7 +82,7 @@ export default defineCollection(
           label: 'Abdecken: Intensität (0-1)',
         },
       },
-      gradient_type: {
+      gradientType: {
         type: 'select',
         options: {
           choices: {
