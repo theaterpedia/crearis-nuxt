@@ -86,22 +86,38 @@ import { usePage } from '#pruvious/client'
 defineLayout({
   label: 'default',
   allowedBlocks: [
-    'PageColumns',
-    'VarConstruction',
-    'VarImage',
-    'VarProse',
-    'VarVideo',
     'HeaderCtaImage',
     'HeaderScroll',
     'HeaderText',
+    'PageColumns',    
     'PageDisplay',
     'PageLogin',
     'PageSection',
     'PageSlider',
     'PageSubnavigation',
+    'VarConstruction',
+    'VarImage',
+    'VarProse',
+    'VarVideo',
+    'SubColumns',
+    'SubColumn',
+    'SubPostIt'
   ],
-  /* allowedRootBlocks: [
-  ], */
+  allowedRootBlocks: [
+    'HeaderCtaImage',
+    'HeaderScroll',
+    'HeaderText',
+    'PageColumns',    
+    'PageDisplay',
+    'PageLogin',
+    'PageSection',
+    'PageSlider',
+    'PageSubnavigation',
+    'VarConstruction',
+    'VarImage',
+    'VarProse',
+    'VarVideo',    
+  ],
 })
 
 const page = unref(usePage())

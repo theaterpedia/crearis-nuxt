@@ -4,7 +4,7 @@ import { Columns } from '@crearis/ui'
 
 defineBlock({
   icon: 'Pencil',
-  label: 'B: Spalten',
+  label: 'C: Spalten',
   slots: {
     default: {
       label: 'Blocks', // Displayed in the dashboard
@@ -12,12 +12,11 @@ defineBlock({
     },
   },
 })
+
 </script>
 
 <template>
-  <SectionContainer>
-    <Columns>
-      <slot />
-    </Columns>
-  </SectionContainer>
+  <Columns>
+    <slot />
+  </Columns>
 </template>

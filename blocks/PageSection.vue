@@ -23,7 +23,7 @@ defineBlock({
   slots: {
     default: {
       label: 'Blocks', // Displayed in the dashboard
-      allowedChildBlocks: ['VarProse', 'PageColumns', 'VarVideo', 'VarImage'],
+      allowedChildBlocks: ['SubColumns', 'VarProse', 'VarVideo', 'VarImage'],
     },
   },
 })
