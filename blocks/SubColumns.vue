@@ -12,7 +12,6 @@ defineBlock({
     },
   },
 })
-
 </script>
 
 <template>

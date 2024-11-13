@@ -89,7 +89,7 @@ defineLayout({
     'HeaderCtaImage',
     'HeaderScroll',
     'HeaderText',
-    'PageColumns',    
+    'PageColumns',
     'PageDisplay',
     'PageLogin',
     'PageSection',
@@ -101,13 +101,13 @@ defineLayout({
     'VarVideo',
     'SubColumns',
     'SubColumn',
-    'SubPostIt'
+    'SubPostIt',
   ],
   allowedRootBlocks: [
     'HeaderCtaImage',
     'HeaderScroll',
     'HeaderText',
-    'PageColumns',    
+    'PageColumns',
     'PageDisplay',
     'PageLogin',
     'PageSection',
@@ -116,7 +116,7 @@ defineLayout({
     'VarConstruction',
     'VarImage',
     'VarProse',
-    'VarVideo',    
+    'VarVideo',
   ],
 })
 

@@ -31,5 +31,5 @@ defineProps({
       <PruviousImage :image="image" />
     </SectionContainer>
     <PruviousImage v-else :image="image" />
-  </div>  
+  </div>
 </template>
