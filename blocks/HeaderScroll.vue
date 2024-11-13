@@ -23,7 +23,7 @@ import { defineBlock, checkboxField, textField, selectField, numberField } from 
 
 defineBlock({
   icon: 'H2',
-  label: 'B: Section',
+  label: 'A: Scroll-Header',
   gradientType: selectField({
     choices: {
       top: 'top',
@@ -88,7 +88,7 @@ defineBlock({
   slots: {
     default: {
       label: 'Blocks', // Displayed in the dashboard
-      allowedChildBlocks: ['FlexProse', 'FlexColumns', 'FlexVideo', 'FlexImage'],
+      allowedChildBlocks: ['VarProse', 'VarColumns', 'VarVideo', 'VarImage'],
     },
   },
 })

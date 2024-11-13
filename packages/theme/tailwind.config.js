@@ -4,7 +4,7 @@ import { tailwindConfig } from '@crearis/tailwind-config'
 /** @type {import('tailwindcss').Config} */
 export default {
   presets: [tailwindConfig],
-  content: ['blocks/**/*.vue','components/**/*.vue'],
+  content: ['blocks/**/*.vue', 'components/**/*.vue'],
   theme: {
     variables: {
       DEFAULT: {

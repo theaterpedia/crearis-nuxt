@@ -86,11 +86,11 @@ import { usePage } from '#pruvious/client'
 defineLayout({
   label: 'default',
   allowedBlocks: [
-    'FlexColumns',
-    'FlexConstruction',
-    'FlexImage',
-    'FlexProse',
-    'FlexVideo',
+    'VarColumns',
+    'VarConstruction',
+    'VarImage',
+    'VarProse',
+    'VarVideo',
     'HeaderCtaImage',
     'HeaderScroll',
     'HeaderText',

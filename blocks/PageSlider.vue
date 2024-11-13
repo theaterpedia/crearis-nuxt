@@ -4,7 +4,7 @@ import type { Product } from '../graphql'
 
 defineBlock({
   icon: 'Pencil',
-  label: 'C: Slider',
+  label: 'B: Slider',
 })
 
 defineProps({

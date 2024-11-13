@@ -22,7 +22,7 @@ defineProps({
 <template>
   <component :is="pageBlock ? 'Container' : 'div'">
     <Prose>
-      <PruviousHTML :html="text" />
+      <PruviousHTML :html="text" class="text-base" />
     </Prose>
   </component>
 </template>

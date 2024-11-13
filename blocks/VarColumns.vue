@@ -9,7 +9,7 @@ defineBlock({
   slots: {
     default: {
       label: 'Blocks', // Displayed in the dashboard
-      allowedChildBlocks: ['FlexProse', 'Column', 'Video'],
+      allowedChildBlocks: ['VarProse', 'Column', 'Video'],
     },
   },
 })

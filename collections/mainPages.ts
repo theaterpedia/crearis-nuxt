@@ -4,9 +4,8 @@ import { pageLikeCollection } from '#pruvious/standard'
 // @see https://pruvious.com/docs/collections
 export default defineCollection(
   pageLikeCollection({
-    name: 'seiten',
-    pathPrefix: 'seiten',
-    icon: 'Pin',
+    name: 'main-pages',
+    icon: 'Pencil',
     allowedLayouts: ['default'],
     additionalPublicPagesFields: [
       'author',

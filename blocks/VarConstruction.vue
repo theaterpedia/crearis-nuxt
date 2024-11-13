@@ -20,7 +20,7 @@ import { defineBlock, textField, checkboxField, textAreaField } from '#pruvious'
 
 defineBlock({
   icon: 'H3',
-  label: 'A/B: Construction',
+  label: 'B/C: Construction',
 })
 
 defineProps({
@@ -31,15 +31,14 @@ defineProps({
   text: textAreaField({
     placeholder: 'Beschreibungstext eingeben',
     required: false,
-  }),  
+  }),
   extension: textField({
     placeholder: 'Beta-Phase',
     required: true,
-  }),  
+  }),
 })
 // css-background see https://www.svgbackgrounds.com/how-to-add-svgs-with-css-background-image/
 // image taken from https://publicdomainvectors.org/en/free-clipart/Brick-wall-picture/71978.html
-
 </script>
 
 <style scoped>
