@@ -56,7 +56,7 @@ defineProps({
    */
   heightTmp: {
     type: String as PropType<'full' | 'prominent' | 'medium' | 'mini'>,
-    default: 'full',
+    default: 'prominent',
   },
 
   /**

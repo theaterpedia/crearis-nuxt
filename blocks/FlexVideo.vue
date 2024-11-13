@@ -1,8 +1,10 @@
 <script lang="ts" setup>
-import { defineBlock, imageField } from '#pruvious'
+import { defineBlock, imageField, checkboxField } from '#pruvious'
+import { Container } from '#components'
 
 defineBlock({
   icon: 'Video',
+  label: 'B/C: Video',
 })
 
 defineProps({
@@ -16,11 +18,17 @@ defineProps({
       { format: 'jpeg', width: 1440 },
     ],
   }),
+  pageBlock: checkboxField({
+    default: true,
+    label: 'B-Component?'
+  })
 })
 </script>
 
 <template>
-  <Container class="content-block">
-    <PruviousPicture :image="image" class="max-w-content block h-auto w-full overflow-hidden rounded-md" />
-  </Container>
+  <component :is="pageBlock ? 'Container' : 'div'">
+    <Prose>
+      <PruviousImage :image="image" />
+    </Prose>
+  </component>
 </template>

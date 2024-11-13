@@ -28,7 +28,7 @@ const NuxtLink = resolveComponent('NuxtLink')
 </script>
 
 <template>
-  <NarrowContainer>
+  <Container>
     <nav data-testid="breadcrumbs" class="font-body inline-flex items-center text-sm font-normal">
       <ol class="group flex w-auto leading-none md:flex-wrap">
         <li class="z-10 flex items-center text-neutral-500 sm:hidden">
@@ -80,5 +80,5 @@ const NuxtLink = resolveComponent('NuxtLink')
         </li>
       </ol>
     </nav>
-  </NarrowContainer>
+  </Container>
 </template>

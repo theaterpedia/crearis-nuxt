@@ -52,7 +52,7 @@ const props = defineProps({
     required: false,
   },
   color: {
-    type: [Object, String] as PropType<'primary' | 'secondary' | 'yellow' | 'green' | 'pink' | 'muted'>,
+    type: [Object, String] as PropType<'primary' | 'secondary' | 'yellow' | 'green' | 'pink' | 'accent' | 'muted'>,
     default: 'primary',
   }, 
   rotation: {
