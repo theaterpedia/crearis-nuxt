@@ -1,11 +1,11 @@
 <template>
   <div class="construction">
-    <div class="content flex mt-4">
-      <div class="warning" v-if="warning"></div>
+    <div class="content mt-4 flex">
+      <div v-if="warning" class="warning"></div>
       <div>
-        <div class="flex mb-2">
+        <div class="mb-2 flex">
           <Logo logoSize="sm" />
-          <strong class="ml-2 font-mono text-md sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">{{ extension }}</strong>
+          <strong class="text-md ml-2 font-mono sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">{{ extension }}</strong>
         </div>
         <slot />
       </div>
@@ -19,7 +19,7 @@
 
 const props = defineProps({
   extension: { type: String, default: 'Beta-Phase' },
-  warning: { type: Boolean, default: false }
+  warning: { type: Boolean, default: false },
 })
 </script>
 
@@ -29,14 +29,14 @@ const props = defineProps({
   height: 6em;
   width: 5em;
   min-width: 5em;
-  background-image: url( '/global/warning.svg' );
+  background-image: url('/global/warning.svg');
   background-size: 5em;
 }
 
 .construction {
   min-height: 8em;
   min-width: 20em;
-  background-image: url( '/global/brick.jpg' );
+  background-image: url('/global/brick.jpg');
   background-size: 14em;
   background-repeat: repeat;
   padding: 2em;

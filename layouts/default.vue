@@ -1,39 +1,176 @@
+<template>
+  <Component :is="isSideNav ? 'Box' : 'div'" class="text-sm sm:text-base">
+    <UiNavbarTop
+      v-show="!isSideNav"
+      :filled="y > scrollBreak"
+      :hideLogo="y <= scrollBreak"
+      :hideSearch="y <= scrollBreak"
+    >
+      <NuxtLink to="/konferenz" class="flex-1">Konferenz</NuxtLink>
+      <NuxtLink to="/sondierung" class="flex-1">Sondierung</NuxtLink>
+    </UiNavbarTop>
+    <Sidebar
+      v-show="isSideNav"
+      footerText="30 Jahre Theaterädagogik Bayern"
+      logo="https://pruvious.com/uploads/logo-dasei.svg"
+      logoAlt="DAS Ei"
+      logoSmall="https://pruvious.com/uploads/logo-dasei-small.svg"
+    >
+      <!-- MainMenu v-model:items="mainMenu.items" / -->
+    </Sidebar>
+
+    <Main class="tl:px-8 ph:px-6 mx-auto max-w-screen-2xl px-12">
+      <slot name="header">
+        <Hero
+          v-if="page?.fields.imgTmp"
+          :contentAlignY="page?.fields.contentAlignY"
+          :contentType="page?.fields.phoneBanner ? 'banner' : 'text'"
+          :contentWidth="page?.fields.contentWidth"
+          :gradient_depth="page?.fields.gradient_depth"
+          :gradient_type="page?.fields.gradient_type"
+          :heightTmp="page?.fields.heightTmp"
+          :imgTmp="page?.fields.imgTmp"
+          :imgTmpAlignX="page?.fields.imgTmpAlignX"
+          :imgTmpAlignY="page?.fields.imgTmpAlignY"
+        >
+          <Component
+            :card="page?.fields.phoneBanner && false"
+            :is="page?.fields.inBanner ? 'Banner' : 'div'"
+            transparent
+          >
+            <template v-if="route.path === '/'">
+              <Logo extended />
+            </template>
+            <template v-else>
+              <Heading v-if="page?.fields.heading" :content="page?.fields.heading" is="h1"></Heading>
+              <br v-if="page?.fields.heading && page?.fields.teaser" />
+              <MdBlock v-if="page?.fields.teaser" :content="page?.fields.teaser" htag="h3" />
+              <div v-if="page?.fields.cta">
+                <ButtonTmp
+                  v-if="page?.fields.cta"
+                  :size="page?.fields.isFullWidth ? 'medium' : 'small'"
+                  :to="page?.fields.cta.link ? page?.fields.cta.link : '#cta'"
+                  variant="plain"
+                >
+                  {{ page?.fields.cta.title }}
+                </ButtonTmp>
+                <NuxtLink
+                  v-if="page?.fields.link"
+                  :to="page?.fields.link.link"
+                  style="margin-left: 2em; text-decoration: underline"
+                  :style="page?.fields.isFullWidth ? 'font-weight:bold' : ''"
+                >
+                  {{ page?.fields.link.title }}
+                </NuxtLink>
+              </div>
+            </template>
+          </Component>
+        </Hero>
+        <SectionContainer v-else>
+          <Heading :content="page?.fields.heading" is="h1"></Heading>
+          <MdBlock v-if="page?.fields.teaser" :content="page?.fields.teaser" htag="h3" />
+        </SectionContainer>
+      </slot>
+      <slot />
+    </Main>
+  </Component>
+</template>
+
 <script lang="ts" setup>
+import { NuxtLink } from '#components'
+import { ref } from 'vue'
+import { useWindowScroll } from '@vueuse/core'
 import { defineLayout } from '#pruvious'
+import { usePage } from '#pruvious/client'
 
 defineLayout({
   label: 'default',
   allowedBlocks: [
-    'ProductSlider',
-    'Display',
-    'MockImageSection',
-    'MockBreadcrumbs',
-    'MockLogo',
-    'Hero',
-    'Prose',
-    'Video',
+    'FlexColumns',
+    'FlexConstruction',
+    'FlexImage',
+    'FlexProse',
+    'FlexVideo',
+    'HeaderCtaImage',
+    'HeaderScroll',
+    'HeaderText',
+    'PageDisplay',
+    'PageLogin',
+    'PageSection',
+    'PageSlider',
+    'PageSubnavigation',
   ],
-  allowedRootBlocks: [
-    'ProductSlider',
-    'Display',
-    'MockImageSection',
-    'MockBreadcrumbs',
-    'MockLogo',
-    'Hero',
-    'Prose',
-    'Video',
-  ],
+  /* allowedRootBlocks: [
+  ], */
 })
+
+const page = unref(usePage())
+// const { blogLandingPage } = await getCollectionData('settings')
+
+const isSideNav: Boolean = false
+
+const showHero = page?.fields.heading && page?.fields.imgTmp
+
+const scrollBreak = showHero
+  ? page?.fields.heightTmp === 'full' || page?.fields.heightTmp === 'prominent'
+    ? 400
+    : 250
+  : 80
+const y = ref(useWindowScroll().y)
+
+const route = useRoute()
+const mainMenu = undefined // TODO: Reactivate useMainMenu() (from dasei.eu)
 </script>
 
-<template>
-  <Header class="mt-12" />
-  <TheHeader />
+<style scoped>
+:deep() .footnotes {
+  /* merged from ui/section + section-muted + ui/container */
+  position: relative;
+  z-index: 1;
+  padding-top: 1.75rem; /* 28px */
+  padding-bottom: 1.75rem; /* 28px */
+  transform: translate3d(0, 0, 0); /* Fixes z-index in Safari */
+  --background: var(--muted-base);
+  --foreground: var(--card-foreground);
+  background-color: hsl(var(--muted-base));
+  color: hsl(var(--card-foreground));
+  width: 100%;
+  max-width: 90rem; /* 1440px */
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 1.75rem; /* 28px */
+  padding-left: 1.75rem; /* 28px */
+}
 
-  <div class="my-23 space-y-23">
-    <!-- Our page blocks will be rendered here -->
-    <slot />
-  </div>
+:deep() .footnotes > ol {
+  /* merged from ui/section + section-muted + ui/container */
+  list-style: decimal;
+  font-size: 0.9em;
+  margin-bottom: 0.5rem;
+  max-width: 52rem; /* from prose */
+}
 
-  <Footer class="mb-23" />
-</template>
+:deep() .footnotes > ol > li {
+  /* merged from ui/section + section-muted + ui/container */
+  list-style: decimal;
+  font-size: 0.92em;
+  margin-bottom: 0.5rem;
+}
+
+:deep() .footnotes > ol {
+  /* merged from ui/section + section-muted + ui/container */
+  margin-left: 1.6rem;
+}
+
+@media (max-width: 767px) {
+  :deep() .footnotes {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+  :deep() .columns:has(.column-1\/5) {
+    flex-direction: row;
+    border: black 4px;
+    gap: 1.2rem; /* 8px */
+  }
+}
+</style>

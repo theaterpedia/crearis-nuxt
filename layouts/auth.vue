@@ -3,8 +3,8 @@ import { defineLayout } from '#pruvious'
 
 defineLayout({
   label: 'auth',
-  allowedBlocks: ['Login', 'Subnavigation'],
-  allowedRootBlocks: ['Login', 'Subnavigation'],
+  allowedBlocks: ['PageLogin', 'Subnavigation'],
+  /* allowedRootBlocks: [] */
 })
 
 defineProps<{
