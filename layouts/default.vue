@@ -25,7 +25,7 @@
           v-if="showHero"
           :contentAlignY="page?.fields.contentAlignY"
           :contentType="page?.fields.phoneBanner ? 'banner' : 'text'"
-          :contentWidth="page?.fields.contentWidth"
+          :contentWidth="page?.fields.isFullWidth ? 'full' : 'short'"
           :gradient_depth="page?.fields.gradientDepth"
           :gradient_type="page?.fields.gradientType"
           :heightTmp="page?.fields.heightTmp"
@@ -38,7 +38,7 @@
             :is="page?.fields.inBanner ? 'Banner' : 'div'"
             transparent
           >
-            <template v-if="route.path === '/'">
+            <template v-if="route.path === '/seiten/test'">
               <Logo extended />
             </template>
             <template v-else>

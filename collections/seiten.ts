@@ -24,6 +24,7 @@ export default defineCollection(
       'bottomLine',
       'phoneBanner',
       'isTransparent',
+      'isFullWidth',
     ],
     additionalFields: {
       imgTmp: {
