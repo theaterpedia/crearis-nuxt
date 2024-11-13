@@ -1,5 +1,5 @@
 <template>
-  <div :style="width === '1/3' || width === '1/5' ? 'font-size: 0.8em;' : '' " class="p-6 column theme-shadow" :class="[`column-${width}`, `rotate-${rotation}`, `bg-${color}-400` ]">
+  <div :style="width === '1/3' ? 'font-size: 0.8em;' : '' " class="post-it column theme-shadow" :class="[`column-${width}`, `rotate-${rotation}`, `bg-${color}-400`, `${width==='1/5' ? 'p-2 text-[0.7em] sm:p-3 md:p-4 sm:text-[0.8em] ' : 'p-4 md:p-6 '}`]">
     <Heading
       v-if="heading"
       :headline="headline"
@@ -74,7 +74,7 @@ const { headline, overline, subline, tags, shortcode } = props.heading ? extract
 
   .column-1\/5 {
     width: 20%;
-    min-width: 12rem; /* 192px */
+    min-width: 10.5rem; /* 176px */
   }
 
   .column-1\/3 {

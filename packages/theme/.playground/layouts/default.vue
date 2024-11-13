@@ -1,5 +1,5 @@
 <template>
-  <Component :is="isSideNav ? 'Box' : 'div'">
+  <Component :is="isSideNav ? 'Box' : 'div'" class="text-sm sm:text-base">
     <UiNavbarTop v-show="!isSideNav" :filled="y > scrollBreak" :hideSearch="y <= scrollBreak" :hideLogo="y <= scrollBreak">
       <NuxtLink to="/konferenz" class="flex-1">Konferenz</NuxtLink>
       <NuxtLink to="/sondierung" class="flex-1">Sondierung</NuxtLink>
@@ -160,5 +160,10 @@ const mainMenu = useMainMenu()
     padding-right: 1rem;
     padding-left: 1rem;
   }
+  :deep() .columns:has(.column-1\/5) {
+    flex-direction: row;
+    border: black 4px;
+    gap: 1.2rem; /* 8px */
+  }    
 }
 </style>

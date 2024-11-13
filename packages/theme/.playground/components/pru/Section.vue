@@ -1,7 +1,7 @@
 <template>
-  <Section overlap>
+  <Section overlap class="section">
     <Container style="margin-top:-52px">
-        <Heading :is="is" style="max-width:600px; margin-left:-44px; padding-left: 44px" :content="heading" class="bg-primary-400 py-2 theme-shadow" >
+        <Heading :is="is" style="max-width:600px; margin-left:-44px; padding-left: 44px" :content="heading" class="bg-primary-base py-2 theme-shadow" >
 
         </Heading>
     </Container>
@@ -40,5 +40,9 @@ const props = defineProps({
 <style scoped>
   .theme-shadow {
     box-shadow: var(--theme-shadow);
+  }
+  .section {
+    max-width: 90rem; /* 1440px */
+    align-self: center;
   }
 </style>

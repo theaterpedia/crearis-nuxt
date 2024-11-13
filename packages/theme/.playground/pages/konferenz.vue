@@ -109,7 +109,7 @@ import { Columns } from '@crearis/ui'
           </Prose>
         </PostIt>                
       </Columns>
-      <Columns class="flex-row-reverse">
+      <Columns class="flex-row-reverse gap-0 sm:gap-2 md:gap-4">
         <PostIt rotation="right" width="1/5" is="h4" heading="Theaterpedia-Konferenz 21.-24. Nov 2024">
           <Prose>
             <p>
