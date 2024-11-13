@@ -1,7 +1,10 @@
 <script lang="ts" setup>
 import { defineBlock, imageField, linkField, textField } from '#pruvious'
 
-defineBlock({ icon: 'Mouse' })
+defineBlock({ 
+  icon: 'Mouse',
+  label: 'Text-Image-Hero',
+})
 
 defineProps({
   image: imageField({

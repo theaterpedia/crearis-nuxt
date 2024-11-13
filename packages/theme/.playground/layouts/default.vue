@@ -14,7 +14,7 @@
       <MainMenu v-model:items="mainMenu.items" />
     </Sidebar>
 
-    <Main>
+    <Main class="tl:px-8 ph:px-6 mx-auto max-w-screen-2xl px-12">
       <slot name="header">
         <Hero
           v-if="hero"
@@ -71,6 +71,7 @@
         </SectionContainer>
       </slot>
       <slot />
+
       <ButtonTmp
         v-if="details"
         :to="{ path: '/details', props: route.path, query: { src: route.path } }"

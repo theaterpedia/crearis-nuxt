@@ -1,5 +1,5 @@
 <template>
-  <div :style="width === '1/3' ? 'font-size: 0.8em;' : '' " class="post-it column theme-shadow" :class="[`column-${width}`, `rotate-${rotation}`, `bg-${color}-400`, `${width==='1/5' ? 'p-2 text-[0.7em] sm:p-3 md:p-4 sm:text-[0.8em] ' : 'p-4 md:p-6 '}`]">
+  <div :style="width === '1/3' ? 'font-size: 0.8em;' : '' " class="post-it column theme-shadow" :class="[`column-${width}`, `rotate-${rotation}`, `bg-${color}`, `${width==='1/5' ? 'p-2 text-[0.7em] sm:p-3 md:p-4 sm:text-[0.8em] ' : 'p-4 md:p-6 '}`]">
     <Heading
       v-if="heading"
       :headline="headline"
@@ -110,12 +110,12 @@ const { headline, overline, subline, tags, shortcode } = props.heading ? extract
   }
 
   .bg-primary {
-    background-color: var(--color-primary);
+    background-color: hsl(var(--primary-base));
   }
   .bg-secondary {
-    background-color: var(--color-secondary);
+    background-color: hsl(var(--secondary-base));
   }
   .bg-muted {
-    background-color: var(--color-muted);
+    background-color: hsl(var(--muted-base));
   }
 </style>
