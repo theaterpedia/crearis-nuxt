@@ -4,7 +4,7 @@ import { tailwindConfig } from '@crearis/tailwind-config'
 /** @type {import('tailwindcss').Config} */
 export default {
   presets: [tailwindConfig],
-  content: ['blocks/**/*.vue'],
+  content: ['blocks/**/*.vue','components/**/*.vue'],
   theme: {
     variables: {
       DEFAULT: {
@@ -12,7 +12,7 @@ export default {
           primary: {
             400: '255 238 0',
           },
-          secondary: {
+          notsecondary: {
             50: '245 243 255',
             100: '237 233 254',
             200: '221 214 254',

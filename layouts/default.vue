@@ -30,8 +30,8 @@
           :gradient_type="page?.fields.gradientType"
           :heightTmp="page?.fields.heightTmp"
           :imgTmp="imgTmp"
-          :imgTmpAlignX="imgTmpAlignX"
-          :imgTmpAlignY="imgTmpAlignY"
+          :imgTmpAlignX="page?.fields.imgTmpAlignX"
+          :imgTmpAlignY="page?.fields.imgTmpAlignY"
         >
           <Component
             :card="page?.fields.phoneBanner && false"
@@ -107,9 +107,9 @@ defineLayout({
 const page = unref(usePage())
 // const { blogLandingPage } = await getCollectionData('settings')
 
-const heading = page?.fields.heading ? page?.fields.heading : 'Overline **Headline**'
+const heading = page?.fields.heading
 const teaser = page?.fields.teaser ? page?.fields.teaser : 'Teasertext'
-const imgTmp = page?.fields.imgTmp ? page?.fields.imgTmp : 'Teasertext'
+const imgTmp = page?.fields.imgTmp
 
 const isSideNav: Boolean = false
 
