@@ -20,8 +20,8 @@ defineProps({
   }),
   pageBlock: checkboxField({
     default: true,
-    label: 'B-Component?'
-  })
+    label: 'B-Component?',
+  }),
 })
 </script>
 

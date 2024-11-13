@@ -1,9 +1,13 @@
 <template>
   <Section overlap class="section">
     <Container v-if="title" class="mt-[-3.25rem]">
-      <Heading :is="`h${level ? level : 2}`" :content="title" class="ml-[-2.75rem] pl-11 max-w-[44rem] bg-primary-base py-2 theme-shadow"/>
+      <Heading
+        :content="title"
+        :is="`h${level ? level : 2}`"
+        class="bg-primary-base theme-shadow ml-[-2.75rem] max-w-[44rem] py-2 pl-11"
+      />
     </Container>
-    <Container class="mt-4" >
+    <Container class="mt-4">
       <slot />
     </Container>
   </Section>
@@ -36,20 +40,19 @@ defineProps({
     default: 2,
     min: 1,
     max: 3,
-  }),  
+  }),
   description: textField({
     placeholder: 'Teasertext (optional)',
-  })
+  }),
 })
-
 </script>
 
 <style scoped>
-  .theme-shadow {
-    box-shadow: var(--theme-shadow);
-  }
-  .section {
-    max-width: 90rem; /* 1440px */
-    align-self: center;
-  }
+.theme-shadow {
+  box-shadow: var(--theme-shadow);
+}
+.section {
+  max-width: 90rem; /* 1440px */
+  align-self: center;
+}
 </style>

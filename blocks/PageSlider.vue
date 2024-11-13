@@ -17,7 +17,7 @@ defineProps({
     default: 2,
     min: 1,
     max: 3,
-  }),  
+  }),
 })
 
 const { loadProductTemplateList, loading, productTemplateList } = useProductTemplateList('')
@@ -31,7 +31,7 @@ await loadProductTemplateList({ pageSize: numOfProducts })
 <template>
   <div class="section">
     <div class="container">
-      <Heading v-if="title" :is="`h${level ? level : 2}`" :content="title" />
+      <Heading v-if="title" :content="title" :is="`h${level ? level : 2}`" />
       <SfScrollable
         v-if="productTemplateList?.length > 0"
         buttons-placement="floating"

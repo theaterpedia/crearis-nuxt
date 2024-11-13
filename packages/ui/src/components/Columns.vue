@@ -127,7 +127,6 @@ defineProps({
   flex-wrap: wrap;
 }
 
-
 @media (max-width: 767px) {
   .columns {
     flex-direction: column;

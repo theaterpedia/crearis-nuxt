@@ -11,14 +11,14 @@ defineBlock({
       label: 'Blocks', // Displayed in the dashboard
       allowedChildBlocks: ['FlexProse', 'Column', 'Video'],
     },
-  },  
+  },
 })
 
 defineProps({
   pageBlock: checkboxField({
     default: true,
-    label: 'B-Component?'
-  })
+    label: 'B-Component?',
+  }),
 })
 </script>
 

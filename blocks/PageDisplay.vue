@@ -19,7 +19,7 @@ defineProps({
         default: 3,
         min: 2,
         max: 4,
-      }),  
+      }),
       description: textSubfield(),
       buttonText: textSubfield(),
       buttonLink: linkSubfield({
@@ -61,8 +61,8 @@ const NuxtLink = resolveComponent('NuxtLink')
           ]"
         >
           <div class="max-w-1/2 flex flex-1 flex-col items-center justify-center p-6 md:items-start lg:p-10">
-            <Heading :is="`h${card.level ? card.level : 2}`" :content="card.title" />
-            <p class="text-base mb-4 block text-center md:text-left">
+            <Heading :content="card.title" :is="`h${card.level ? card.level : 2}`" />
+            <p class="mb-4 block text-center text-base md:text-left">
               {{ card.description }}
             </p>
             <ButtonTmp :is="NuxtLink" :to="card.buttonlink" class="!bg-black text-white">

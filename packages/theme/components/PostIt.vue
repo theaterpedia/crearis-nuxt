@@ -1,5 +1,14 @@
 <template>
-  <div :style="width === '1/3' ? 'font-size: 0.8em;' : '' " class="post-it column theme-shadow" :class="[`column-${width}`, `rotate-${rotation}`, `bg-${color}`, `${width==='1/5' ? 'p-2 text-[0.7em] sm:p-3 md:p-4 sm:text-[0.8em] ' : 'p-4 md:p-6 '}`]">
+  <div
+    class="post-it column theme-shadow"
+    :class="[
+      `column-${width}`,
+      `rotate-${rotation}`,
+      `bg-${color}`,
+      `${width === '1/5' ? 'p-2 text-[0.7em] sm:p-3 sm:text-[0.8em] md:p-4' : 'p-4 md:p-6'}`,
+    ]"
+    :style="width === '1/3' ? 'font-size: 0.8em;' : ''"
+  >
     <Heading
       v-if="heading"
       :headline="headline"
@@ -18,8 +27,7 @@
               : 'font-size: 0.875em;'
           : ''
       "
-    >
-    </Heading>
+    ></Heading>
     <slot />
   </div>
 </template>
@@ -34,10 +42,10 @@ const props = defineProps({
    *
    * @default 'auto'
    */
-   width: {
+  width: {
     type: String as PropType<'1/5' | '1/3' | '1/2' | '3/5' | '4/5'>,
     default: '1/3',
-  },  
+  },
   /**
    * The heading tag to render.
    *
@@ -54,11 +62,11 @@ const props = defineProps({
   color: {
     type: [Object, String] as PropType<'primary' | 'secondary' | 'yellow' | 'green' | 'pink' | 'accent' | 'muted'>,
     default: 'primary',
-  }, 
+  },
   rotation: {
     type: [Object, String] as PropType<'none' | 'left' | 'right' | Number>,
     default: 'none',
-  },    
+  },
 })
 
 import { useNuxtApp } from '#app'
@@ -68,54 +76,54 @@ const { headline, overline, subline, tags, shortcode } = props.heading ? extract
 </script>
 
 <style scoped>
-  .theme-shadow {
-      box-shadow: var(--theme-shadow);
-    }
+.theme-shadow {
+  box-shadow: var(--theme-shadow);
+}
 
-  .column-1\/5 {
-    width: 20%;
-    min-width: 10.5rem; /* 176px */
-  }
+.column-1\/5 {
+  width: 20%;
+  min-width: 10.5rem; /* 176px */
+}
 
-  .column-1\/3 {
-    width: calc(1 / 3 * 100%);
-    min-width: 18rem; /* 288px */
-  }
+.column-1\/3 {
+  width: calc(1 / 3 * 100%);
+  min-width: 18rem; /* 288px */
+}
 
-  .column-1\/2 {
-    width: 50%;
-    min-width: 21.5rem; /* 344px */
-  }
+.column-1\/2 {
+  width: 50%;
+  min-width: 21.5rem; /* 344px */
+}
 
-  .column-3\/5 {
-    width: 60%;
-    min-width: 21.5rem; /* 344px */
-  }
+.column-3\/5 {
+  width: 60%;
+  min-width: 21.5rem; /* 344px */
+}
 
-  .column-4\/5 {
-    width: 80%;
-    min-width: 21.5rem; /* 344px */
-  }
+.column-4\/5 {
+  width: 80%;
+  min-width: 21.5rem; /* 344px */
+}
 
-  .rotate-left {
-    rotate: -7deg;
-  }
+.rotate-left {
+  rotate: -7deg;
+}
 
-  .rotate-right {
-    rotate: 5deg;
-  }
+.rotate-right {
+  rotate: 5deg;
+}
 
-  .rotate-none {
-    rotate: 0deg;
-  }
+.rotate-none {
+  rotate: 0deg;
+}
 
-  .bg-primary {
-    background-color: hsl(var(--primary-base));
-  }
-  .bg-secondary {
-    background-color: hsl(var(--secondary-base));
-  }
-  .bg-muted {
-    background-color: hsl(var(--muted-base));
-  }
+.bg-primary {
+  background-color: hsl(var(--primary-base));
+}
+.bg-secondary {
+  background-color: hsl(var(--secondary-base));
+}
+.bg-muted {
+  background-color: hsl(var(--muted-base));
+}
 </style>

@@ -1,6 +1,11 @@
 <template>
   <Component :is="isSideNav ? 'Box' : 'div'" class="text-sm sm:text-base">
-    <UiNavbarTop v-show="!isSideNav" :filled="y > scrollBreak" :hideSearch="y <= scrollBreak" :hideLogo="y <= scrollBreak">
+    <UiNavbarTop
+      v-show="!isSideNav"
+      :filled="y > scrollBreak"
+      :hideLogo="y <= scrollBreak"
+      :hideSearch="y <= scrollBreak"
+    >
       <NuxtLink to="/konferenz" class="flex-1">Konferenz</NuxtLink>
       <NuxtLink to="/sondierung" class="flex-1">Sondierung</NuxtLink>
     </UiNavbarTop>
@@ -38,9 +43,9 @@
             </template>
             <template v-else>
               <Heading
-              v-if="page.heading || page.title"
-              :content="page.heading ? page.heading : page.title"
-              is="h1"
+                v-if="page.heading || page.title"
+                :content="page.heading ? page.heading : page.title"
+                is="h1"
               ></Heading>
               <br v-if="(page.heading || page.title) && page.teaser" />
               <MdBlock v-if="page.teaser" :content="page.teaser" :htag="page.heading ? 'h3' : 'h1'" />
@@ -89,10 +94,12 @@ import { NuxtLink } from '#components'
 import { ref } from 'vue'
 import { useWindowScroll } from '@vueuse/core'
 import { useDark, useToggle } from '@vueuse/core'
-import LogoOld from '../components/LogoOld.vue';
+import LogoOld from '../components/LogoOld.vue'
 
-
-const image = { src: 'https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_1440,h_900,g_auto/v1666847011/pedia_ipsum/core/theaterpedia.jpg', alt: 'DAS Ei' }
+const image = {
+  src: 'https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_1440,h_900,g_auto/v1666847011/pedia_ipsum/core/theaterpedia.jpg',
+  alt: 'DAS Ei',
+}
 const page = { heading: 'test heading', title: 'test title', teaser: 'test teaser', _path: '/dasei' }
 const content = '_A1_ Headline for Heading - **Test for Teaser**'
 const details = false
@@ -106,10 +113,10 @@ const hero = {
   content: 'banner',
   content_y: 'center',
   content_width: 'full',
-  cta: {title: 'jetzt anmelden'}
+  cta: { title: 'jetzt anmelden' },
 }
 
-const scrollBreak = hero ? hero.height === 'full' || hero.height === 'prominent' ? 400 : 250 : 80
+const scrollBreak = hero ? (hero.height === 'full' || hero.height === 'prominent' ? 400 : 250) : 80
 const y = ref(useWindowScroll().y)
 
 const route = useRoute()
@@ -165,6 +172,6 @@ const mainMenu = useMainMenu()
     flex-direction: row;
     border: black 4px;
     gap: 1.2rem; /* 8px */
-  }    
+  }
 }
 </style>

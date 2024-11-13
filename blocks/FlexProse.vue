@@ -14,15 +14,15 @@ defineProps({
   }),
   pageBlock: checkboxField({
     default: true,
-    label: 'B-Component?'
-  })
+    label: 'B-Component?',
+  }),
 })
 </script>
 
 <template>
   <component :is="pageBlock ? 'Container' : 'div'">
     <Prose>
-      <PruviousHTML :html="text"/>
+      <PruviousHTML :html="text" />
     </Prose>
   </component>
 </template>

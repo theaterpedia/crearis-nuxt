@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-
 const props = defineProps({
   filled: { type: Boolean, default: false },
   padding: { type: Boolean, default: true },
@@ -10,11 +9,14 @@ const props = defineProps({
 // const colorMode = useColorMode()
 // const logoClass = computed(() => colorMode.preference === 'theaterpedia-light' ? 'text-content' : 'text-content')
 const logoClass = 'text-content'
-const textShadow = "text-shadow: 0.2rem 0.2rem 0.3rem hsla(110, 10%, 0%, 0.8);"
+const textShadow = 'text-shadow: 0.2rem 0.2rem 0.3rem hsla(110, 10%, 0%, 0.8);'
 </script>
 
 <template>
-  <div :style="textShadow" :class="props.padding ? '' : 'pl-2 md:pl-4 lg:pl-6 xl:pl-8 ' + 'logoClass font-semibold dark:bg-black'">
+  <div
+    :class="props.padding ? '' : 'pl-2 md:pl-4 lg:pl-6 xl:pl-8 ' + 'logoClass font-semibold dark:bg-black'"
+    :style="textShadow"
+  >
     <h1
       :class="
         props.logoSize === 'default'
@@ -45,6 +47,6 @@ const textShadow = "text-shadow: 0.2rem 0.2rem 0.3rem hsla(110, 10%, 0%, 0.8);"
         <span :class="props.filled ? 'text-foreground' : 'text-foreground'">Theaterpädagogik</span>
         <span :class="props.filled ? '' : 'text-primary-base'">suchen und finden</span>
       </slot>
-    </h2>    
+    </h2>
   </div>
 </template>

@@ -1,11 +1,14 @@
 <template>
   <Section overlap class="section">
-    <Container style="margin-top:-52px">
-        <Heading :is="is" style="max-width:600px; margin-left:-44px; padding-left: 44px" :content="heading" class="bg-primary-base py-2 theme-shadow" >
-
-        </Heading>
+    <Container style="margin-top: -52px">
+      <Heading
+        :content="heading"
+        :is="is"
+        class="bg-primary-base theme-shadow py-2"
+        style="max-width: 600px; margin-left: -44px; padding-left: 44px"
+      ></Heading>
     </Container>
-    <Container class="mt-4" >
+    <Container class="mt-4">
       <slot>
         <div v-if="content" v-html="content"></div>
       </slot>
@@ -33,16 +36,16 @@ const props = defineProps({
   content: {
     type: String,
     required: false,
-  },  
+  },
 })
 </script>
 
 <style scoped>
-  .theme-shadow {
-    box-shadow: var(--theme-shadow);
-  }
-  .section {
-    max-width: 90rem; /* 1440px */
-    align-self: center;
-  }
+.theme-shadow {
+  box-shadow: var(--theme-shadow);
+}
+.section {
+  max-width: 90rem; /* 1440px */
+  align-self: center;
+}
 </style>

@@ -22,7 +22,7 @@ defineProps({
     default: 2,
     min: 1,
     max: 3,
-  }), 
+  }),
 })
 
 const NuxtLink = resolveComponent('NuxtLink')
@@ -31,7 +31,7 @@ const NuxtLink = resolveComponent('NuxtLink')
 <template>
   <div class="mb-20 px-4 md:px-0">
     <div class="mb-10 mt-8 flex justify-between px-4 md:px-0">
-      <Heading v-if="title" :is="`h${level ? level : 2}`" :content="title" />
+      <Heading v-if="title" :content="title" :is="`h${level ? level : 2}`" />
       <ButtonTmp :is="NuxtLink" :to="backHref" size="small" variant="tertiary" class="flex whitespace-nowrap md:hidden">
         <template #prefix>
           <SfIconArrowBack />

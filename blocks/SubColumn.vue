@@ -1,5 +1,5 @@
 <template>
-  <Column :fill="fill===true">
+  <Column :fill="fill === true">
     <slot />
   </Column>
 </template>
@@ -16,14 +16,13 @@ defineBlock({
       label: 'Blocks', // Displayed in the dashboard
       allowedChildBlocks: ['FlexProse', 'Columns', 'FlexVideo', 'FlexImage'],
     },
-  },  
+  },
 })
 
 defineProps({
   fill: checkboxField({
     default: false,
-    label: 'Vollbild?'
-  })
+    label: 'Vollbild?',
+  }),
 })
-
 </script>

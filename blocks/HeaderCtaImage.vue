@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { defineBlock, imageField, linkField, textField, numberField } from '#pruvious'
 
-defineBlock({ 
+defineBlock({
   icon: 'H2',
   label: 'A: Cta + Bild',
 })
@@ -27,7 +27,7 @@ const props = defineProps({
     default: 2,
     min: 1,
     max: 3,
-  }),  
+  }),
   description: textField({
     placeholder: 'Teasertext optional',
   }),
@@ -57,7 +57,7 @@ const NuxtLink = resolveComponent('NuxtLink')
         <PruviousPicture :image="image" :lazy="true" />
       </div>
       <div class="p-4 md:flex md:basis-2/4 md:flex-col md:items-start md:justify-center md:p-10">
-        <Heading :is="`h${level ? level : 2}`" :content="title" />
+        <Heading :content="title" :is="`h${level ? level : 2}`" />
         <!-- #TODO _05 Reference-Implement Prose with UiHero
           - unwrap the slot ...
         -->

@@ -20,8 +20,8 @@ defineProps({
   }),
   pageBlock: checkboxField({
     default: false,
-    label: 'Kasten?'
-  })
+    label: 'Kasten?',
+  }),
 })
 </script>
 

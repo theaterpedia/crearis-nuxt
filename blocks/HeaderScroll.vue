@@ -1,6 +1,16 @@
 <template>
-  <Hero :contentType="phoneBanner ? 'banner' : 'text'" :heightTmp="heightTmp" :imgTmp="imgTmp" :imgTmpAlignX="imgTmpAlignX" :imgTmpAlignY="imgTmpAlignY" :bottomline="bottomline" :contentWidth="isFullWidth ? 'full' : 'short'" :contentAlignY="contentAlignY" :overlay="getoverlay(gradient_type, gradient_depth)">
-    <component :transparent="isTransparent" :is="banner ? 'Banner' : 'div'">
+  <Hero
+    :bottomline="bottomline"
+    :contentAlignY="contentAlignY"
+    :contentType="phoneBanner ? 'banner' : 'text'"
+    :contentWidth="isFullWidth ? 'full' : 'short'"
+    :heightTmp="heightTmp"
+    :imgTmp="imgTmp"
+    :imgTmpAlignX="imgTmpAlignX"
+    :imgTmpAlignY="imgTmpAlignY"
+    :overlay="getoverlay(gradient_type, gradient_depth)"
+  >
+    <component :is="banner ? 'Banner' : 'div'" :transparent="isTransparent">
       <slot />
     </component>
   </Hero>
@@ -15,58 +25,66 @@ defineBlock({
   icon: 'H2',
   label: 'B: Section',
   gradient_type: selectField({
-    choices: {top: 'top', leftTop: 'left-top', left: 'left', leftBottom: 'left-bottom', bottom: 'bottom', none: 'none', full: 'full'},
-    label: 'Abdecken: Fokus'
+    choices: {
+      top: 'top',
+      leftTop: 'left-top',
+      left: 'left',
+      leftBottom: 'left-bottom',
+      bottom: 'bottom',
+      none: 'none',
+      full: 'full',
+    },
+    label: 'Abdecken: Fokus',
   }),
   gradient_depth: numberField({
     default: 0.8,
     min: 0,
     max: 1,
-    label: 'Abdecken: Intensität (0-1)'
+    label: 'Abdecken: Intensität (0-1)',
   }),
   inBanner: checkboxField({
     default: false,
-    label: 'Content-Banner'
-  }), 
+    label: 'Content-Banner',
+  }),
   phoneBanner: checkboxField({
     default: false,
-    label: 'phone>banner-style?'
-  }),   
+    label: 'phone>banner-style?',
+  }),
   isTansparent: checkboxField({
     default: true,
-    label: 'Banner-Transparenz'
+    label: 'Banner-Transparenz',
   }),
   isFullWidth: checkboxField({
     default: false,
-    label: 'breit'
-  }),  
+    label: 'breit',
+  }),
   bottomLine: checkboxField({
     default: false,
-    label: 'breit'
-  }),   
+    label: 'breit',
+  }),
   heightTmp: selectField({
-    choices: {full: 'full',  prominent: 'prominent', medium: 'medium', mini: 'mini'},
+    choices: { full: 'full', prominent: 'prominent', medium: 'medium', mini: 'mini' },
     default: 'prominent',
     label: 'Höhe',
-  }), 
+  }),
   contentAlignY: selectField({
-    choices: {top: 'top',  bottom: 'bottom', center: 'center'},
-    label: 'Content: V-Fokus'
-  }), 
+    choices: { top: 'top', bottom: 'bottom', center: 'center' },
+    label: 'Content: V-Fokus',
+  }),
   imgTmp: textField({
     required: true,
     label: 'Bild: URL',
   }),
   imgTmpAlignY: selectField({
-    choices: {top: 'top',  bottom: 'bottom', center: 'center', stretch: 'stretch', cover: 'cover'},
+    choices: { top: 'top', bottom: 'bottom', center: 'center', stretch: 'stretch', cover: 'cover' },
     default: 'stretch',
-    label: 'Bild: V-Fokus'
+    label: 'Bild: V-Fokus',
   }),
   imgTmpAlignX: selectField({
-    choices: {left: 'left',  right: 'right', center: 'center', stretch: 'stretch', cover: 'cover'},
+    choices: { left: 'left', right: 'right', center: 'center', stretch: 'stretch', cover: 'cover' },
     default: 'center',
-    label: 'Bild: H-Fokus'
-  }),          
+    label: 'Bild: H-Fokus',
+  }),
   slots: {
     default: {
       label: 'Blocks', // Displayed in the dashboard
