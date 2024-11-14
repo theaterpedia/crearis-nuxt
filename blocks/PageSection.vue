@@ -1,26 +1,24 @@
 <template>
-  <Section overlap class="section" :background="background"
+  <Section
+    :background="background"
+    overlap
+    class="section"
     :class="[
-        `columns-${colGapSmall ? 'small' : 'medium'}`,
-        `columns-${columns}`,
-        `columns-${colbackground ?? 'transparent'}`,
-        columns!=='none' ? 'columns' : null,
-        colWrap ? 'columns-wrap' : null,
-        colStackReverse ? 'columns-stack-reverse' : null,
+      `columns-${colGapSmall ? 'small' : 'medium'}`,
+      `columns-${columns}`,
+      `columns-${colbackground ?? 'transparent'}`,
+      columns !== 'none' ? 'columns' : null,
+      colWrap ? 'columns-wrap' : null,
+      colStackReverse ? 'columns-stack-reverse' : null,
     ]"
   >
-    <div class="hero-cover" v-if="imgTmp">
+    <div v-if="imgTmp" class="hero-cover">
       <div
         class="static-cover-image"
         :style="{
           backgroundImage: `url(${imgTmp})`,
           backgroundPositionX: 'center',
-          backgroundPositionY:
-            imgTmpAlignY === 'stretch'
-            ? 'top'
-            : imgTmpAlignY === 'cover'
-              ? 'center'
-              : imgTmpAlignY,
+          backgroundPositionY: imgTmpAlignY === 'stretch' ? 'top' : imgTmpAlignY === 'cover' ? 'center' : imgTmpAlignY,
           backgroundSize:
             imgTmpAlignX === 'cover' || imgTmpAlignY === 'cover'
               ? 'cover'
@@ -29,7 +27,7 @@
       >
         <div v-if="overlay" class="hero-cover-overlay" :style="{ background: overlay }"></div>
       </div>
-    </div>    
+    </div>
     <Container v-if="title" class="mt-[-3.25rem]">
       <Heading
         :content="title"
@@ -75,15 +73,15 @@ const props = defineProps({
     placeholder: 'Teasertext (optional)',
   }),
   columns: selectField({
-    choices: { none: 'nein', start: 'links', block: 'geblockt',middle: 'zentriert', rechts: 'end' },
+    choices: { none: 'nein', start: 'links', block: 'geblockt', middle: 'zentriert', rechts: 'end' },
     default: 'none',
     label: 'Spalten',
-  }), 
+  }),
   colbackground: selectField({
     choices: { default: 'default', muted: 'muted', accent: 'accent' },
     default: 'default',
     label: 'Spalten: Hintergrund',
-  }),  
+  }),
   colWrap: checkboxField({
     default: true,
     label: 'Spalten: umbrechen',
@@ -91,16 +89,16 @@ const props = defineProps({
   colGapSmall: checkboxField({
     default: false,
     label: 'Spalten: eng',
-  }), 
+  }),
   colStackReverse: checkboxField({
     default: false,
     label: 'Spalten: letzte nach oben',
-  }),        
+  }),
   background: selectField({
     choices: { default: 'default', muted: 'muted', accent: 'accent' },
     default: 'default',
     label: 'Hintergrund-Typ',
-  }),  
+  }),
   gradientType: selectField({
     choices: {
       top: 'top',
@@ -118,7 +116,7 @@ const props = defineProps({
     min: 0,
     max: 1,
     label: 'Abdecken: Intensität (0-1)',
-  }),  
+  }),
   imgTmp: textField({
     required: true,
     label: 'Bild: URL',
@@ -132,11 +130,10 @@ const props = defineProps({
     choices: { left: 'left', right: 'right', center: 'center', stretch: 'stretch', cover: 'cover' },
     default: 'center',
     label: 'Bild: H-Fokus',
-  }),  
+  }),
 })
 
 const overlay = getoverlay(props.gradient_type, props.gradientDepth)
-
 </script>
 
 <style scoped>
@@ -165,8 +162,6 @@ const overlay = getoverlay(props.gradient_type, props.gradientDepth)
   left: 0;
 }
 
-
-
 .columns {
   --column-padding: 0;
   display: flex;
@@ -194,8 +189,6 @@ const overlay = getoverlay(props.gradient_type, props.gradientDepth)
   background-color: hsl(var(--accent-base));
   color: hsl(var(--accent-foreground));
 }
-
-
 
 .columns-small {
   gap: 1.75rem; /* 28px */
@@ -243,9 +236,6 @@ const overlay = getoverlay(props.gradient_type, props.gradientDepth)
     flex-direction: column-reverse;
   }
 }
-
-
-
 
 .theme-shadow {
   box-shadow: var(--theme-shadow);

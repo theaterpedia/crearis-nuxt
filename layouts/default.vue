@@ -3,12 +3,12 @@
     <UiNavbarTop
       v-show="!isSideNav"
       :filled="y > scrollBreak"
-      :hideLogo="route.path==='/' && y <= scrollBreak"
+      :hideLogo="route.path === '/' && y <= scrollBreak"
       :hideSearch="searchDisablend ? true : y <= scrollBreak"
-      :class="route.path!=='/' ? 'bg-muted-base' : ''"
+      :class="route.path !== '/' ? 'bg-muted-base' : ''"
     >
-      <NuxtLink :style="textShadow" to="/konferenz" class="flex-1 mr-2">Konferenz</NuxtLink>
-      <NuxtLink :style="textShadow" to="/sondierung" class="flex-1">Sondierung</NuxtLink>
+      <NuxtLink to="/konferenz" class="mr-2 flex-1" :style="textShadow">Konferenz</NuxtLink>
+      <NuxtLink to="/sondierung" class="flex-1" :style="textShadow">Sondierung</NuxtLink>
     </UiNavbarTop>
     <Sidebar
       v-show="isSideNav"
@@ -20,7 +20,7 @@
       <!-- MainMenu v-model:items="mainMenu.items" / -->
     </Sidebar>
 
-    <Main class="tl:px-8 ph:px-0 px-12 mx-auto max-w-screen-2xl">
+    <Main class="tl:px-8 ph:px-0 mx-auto max-w-screen-2xl px-12">
       <slot name="header">
         <Hero
           v-if="showHero"

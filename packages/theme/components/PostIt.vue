@@ -4,7 +4,7 @@
     :class="[
       `column-${width}`,
       rotation,
-      sticky!=='static' ? 'sticky ' + sticky : '',
+      sticky !== 'static' ? 'sticky ' + sticky : '',
       `bg-${color}`,
       `${width === '1/5' ? 'p-2 text-[0.7em] sm:p-3 sm:text-[0.8em] md:p-4' : 'p-4 md:p-6'}`,
     ]"
@@ -70,19 +70,21 @@ const props = defineProps({
    *
    * @default 'rotate-0'
    */
-   rotation: {
-    type: String as PropType<'rotate-0' | '-rotate-9' | '-rotate-6' | '-rotate-3' | 'rotate-3' | 'rotate-6' | 'rotate-9'>,
+  rotation: {
+    type: String as PropType<
+      'rotate-0' | '-rotate-9' | '-rotate-6' | '-rotate-3' | 'rotate-3' | 'rotate-6' | 'rotate-9'
+    >,
     default: 'rotate-0',
   },
-    /**
+  /**
    * Specification to be written
    *
    * @default 'static'
    */
-   sticky: {
-    type: String as PropType<'static' | 'top-0' | 'top-20' | 'bottom-0' | 'bottom-20' >,
+  sticky: {
+    type: String as PropType<'static' | 'top-0' | 'top-20' | 'bottom-0' | 'bottom-20'>,
     default: 'static',
-  },  
+  },
 })
 
 import { useNuxtApp } from '#app'

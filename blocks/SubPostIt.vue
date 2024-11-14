@@ -1,10 +1,6 @@
 <template>
-  <PostIt :color="color" :rotation="rotation" :width="width" :sticky="sticky">
-    <Heading
-      v-if="title"  
-      :content="title"
-      :is="`h${level ? level : 4}`"
-      />    
+  <PostIt :color="color" :rotation="rotation" :sticky="sticky" :width="width">
+    <Heading v-if="title" :content="title" :is="`h${level ? level : 4}`" />
     <Prose>
       <PruviousHTML :html="text" />
     </Prose>
@@ -31,7 +27,7 @@ defineProps({
     default: 4,
     min: 3,
     max: 4,
-  }),  
+  }),
   text: editorField({
     required: true,
     toolbar: ['bold', 'italic', 'link', 'heading3', 'heading4', 'paragraph', 'link', 'bulletList'],
@@ -55,14 +51,28 @@ defineProps({
     label: 'Breite',
   }),
   rotation: selectField({
-    choices: { 'rotate-0': 'keine', '-rotate-9': '-9', '-rotate-6': '-6', '-rotate-3': '-3', 'rotate-3': '3' , 'rotate-6': '6', 'rotate-9': '6' },
+    choices: {
+      'rotate-0': 'keine',
+      '-rotate-9': '-9',
+      '-rotate-6': '-6',
+      '-rotate-3': '-3',
+      'rotate-3': '3',
+      'rotate-6': '6',
+      'rotate-9': '6',
+    },
     default: 'rotate-0',
     label: 'Drehung',
   }),
   sticky: selectField({
-    choices: { 'static': 'nein', 'top-0': 'top-0', 'top-20': 'top-20', 'bottom-0': 'bottom-0', 'bottom-20': 'bottom-20' },
+    choices: {
+      'static': 'nein',
+      'top-0': 'top-0',
+      'top-20': 'top-20',
+      'bottom-0': 'bottom-0',
+      'bottom-20': 'bottom-20',
+    },
     default: 'static',
     label: 'Anheften',
-  }),  
+  }),
 })
 </script>

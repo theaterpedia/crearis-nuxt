@@ -1,5 +1,14 @@
 <template>
-  <div class="column" :class="[`column-${width}`, rotation, sticky!=='static' ? 'sticky ' + sticky : '' ,`rotate-${rotation}`, `column-${fill ? 'fill' : 'default'}`]">
+  <div
+    class="column"
+    :class="[
+      `column-${width}`,
+      rotation,
+      sticky !== 'static' ? 'sticky ' + sticky : '',
+      `rotate-${rotation}`,
+      `column-${fill ? 'fill' : 'default'}`,
+    ]"
+  >
     <slot></slot>
   </div>
 </template>
@@ -24,8 +33,10 @@ defineProps({
    *
    * @default 'rotate-0'
    */
-   rotation: {
-    type: String as PropType<'rotate-0' | '-rotate-9' | '-rotate-6' | '-rotate-3' | 'rotate-3' | 'rotate-6' | 'rotate-9'>,
+  rotation: {
+    type: String as PropType<
+      'rotate-0' | '-rotate-9' | '-rotate-6' | '-rotate-3' | 'rotate-3' | 'rotate-6' | 'rotate-9'
+    >,
     default: 'rotate-0',
   },
 
@@ -40,16 +51,15 @@ defineProps({
     default: false,
   },
 
-    /**
+  /**
    * Specification to be written
    *
    * @default 'static'
    */
-   sticky: {
-    type: String as PropType<'static' | 'top-0' | 'top-20' | 'bottom-0' | 'bottom-20' >,
+  sticky: {
+    type: String as PropType<'static' | 'top-0' | 'top-20' | 'bottom-0' | 'bottom-20'>,
     default: 'static',
   },
-  
 })
 </script>
 

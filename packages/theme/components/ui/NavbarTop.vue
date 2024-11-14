@@ -41,11 +41,9 @@ const y = ref(useWindowScroll().y)
     ]"
   >
     <div
-      class="ph:px-0 ph:-ml-2 px-3 md:px-5 sticky top-0 mx-auto flex w-full items-center justify-between gap-[clamp(1rem,3vw,3rem)] py-6 md:h-[60px] md:justify-normal"
+      class="ph:px-0 ph:-ml-2 sticky top-0 mx-auto flex w-full items-center justify-between gap-[clamp(1rem,3vw,3rem)] px-3 py-6 md:h-[60px] md:justify-normal md:px-5"
     >
-      <NuxtLink to="/"
-        class="flex-grow"
-      >
+      <NuxtLink to="/" class="flex-grow">
         <Logo
           :extended="y <= scrollBreak && props.extended"
           :filled="filled"
@@ -61,7 +59,7 @@ const y = ref(useWindowScroll().y)
         :class="[
           { 'text-white': filled && !(y <= scrollBreak && props.extended) },
           { 'text-primary-400 dark:text-primary-400': !filled || (y <= scrollBreak && props.extended) },
-          { 'hidden': hideLinksOnMobile },
+          { hidden: hideLinksOnMobile },
         ]"
       >
         <NuxtLink
@@ -73,11 +71,8 @@ const y = ref(useWindowScroll().y)
           {{ link.title }}
         </NuxtLink>
         <slot />
-        <NuxtLink
-          @click="toggleDark()"
-        >
+        <NuxtLink @click="toggleDark()">
           <!-- SfIconCircle class="text-muted-base"/ -->
-        
         </NuxtLink>
       </nav>
     </div>

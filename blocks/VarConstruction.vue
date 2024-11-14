@@ -2,22 +2,26 @@
   <div class="construction">
     <div v-if="warning" class="warning drop-shadow-md"></div>
     <SectionContainer v-if="pageBlock" class="content mt-4 shadow">
-        <div class="mb-2 flex justify-start min-w-80">
-          <Logo hideSearch logoSize="sm" />
-          <strong class="mt-[12px] text-md -ml-14 font-mono sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">{{ extension }}</strong>
-        </div>
-        <p v-if="text">
-          {{ text }}
-        </p>
+      <div class="mb-2 flex min-w-80 justify-start">
+        <Logo hideSearch logoSize="sm" />
+        <strong class="text-md -ml-14 mt-[12px] font-mono sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">
+          {{ extension }}
+        </strong>
+      </div>
+      <p v-if="text">
+        {{ text }}
+      </p>
     </SectionContainer>
     <div v-else class="content mt-4 shadow">
-        <div class="mb-2 flex justify-start min-w-80">
-          <Logo hideSearch logoSize="sm" />
-          <strong class="mt-[12px] text-md -ml-14 font-mono sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">{{ extension }}</strong>
-        </div>
-        <p v-if="text">
-          {{ text }}
-        </p>
+      <div class="mb-2 flex min-w-80 justify-start">
+        <Logo hideSearch logoSize="sm" />
+        <strong class="text-md -ml-14 mt-[12px] font-mono sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">
+          {{ extension }}
+        </strong>
+      </div>
+      <p v-if="text">
+        {{ text }}
+      </p>
     </div>
   </div>
 </template>
@@ -38,7 +42,7 @@ defineProps({
   pageBlock: checkboxField({
     label: 'als Page-Block anzeigen',
     default: true,
-  }),  
+  }),
   text: textAreaField({
     placeholder: 'Beschreibungstext eingeben',
     required: false,
