@@ -5,9 +5,10 @@
       :filled="y > scrollBreak"
       :hideLogo="route.path==='/' && y <= scrollBreak"
       :hideSearch="y <= scrollBreak"
+      :class="route.path!=='/' ? 'bg-muted-base' : ''"
     >
-      <NuxtLink style="textShadow" to="/konferenz" class="flex-1">Konferenz</NuxtLink>
-      <NuxtLink style="textShadow" to="/sondierung" class="flex-1">Sondierung</NuxtLink>
+      <NuxtLink :style="textShadow" to="/konferenz" class="flex-1 mr-2">Konferenz</NuxtLink>
+      <NuxtLink :style="textShadow" to="/sondierung" class="flex-1">Sondierung</NuxtLink>
     </UiNavbarTop>
     <Sidebar
       v-show="isSideNav"
@@ -67,7 +68,7 @@
           </Component>
         </Hero>
         <SectionContainer v-else>
-          <Heading :content="heading" is="h1"></Heading>
+          <Heading :content="heading" is="h1" class="mt-14"></Heading>
           <MdBlock v-if="teaser" :content="teaser" htag="h3" />
         </SectionContainer>
       </slot>

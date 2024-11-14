@@ -1,28 +1,23 @@
 <template>
   <div class="construction">
-    <SectionContainer v-if="pageBlock" class="content mt-4 flex flex-col md:flex-row">
-      <div v-if="warning" class="warning"></div>
-      <div>
-        <div class="mb-2 flex">
+    <div v-if="warning" class="warning drop-shadow-md"></div>
+    <SectionContainer v-if="pageBlock" class="content mt-4 shadow">
+        <div class="mb-2 flex justify-start min-w-80">
           <Logo hideSearch logoSize="sm" />
-          <strong class="text-md ml-2 font-mono sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">{{ extension }}</strong>
+          <strong class="mt-[12px] text-md -ml-14 font-mono sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">{{ extension }}</strong>
         </div>
         <p v-if="text">
           {{ text }}
         </p>
-      </div>
     </SectionContainer>
-    <div v-else class="content mt-4 flex">
-      <div v-if="warning" class="warning"></div>
-      <div>
-        <div class="mb-2 flex justify-start">
+    <div v-else class="content mt-4 shadow">
+        <div class="mb-2 flex justify-start min-w-80">
           <Logo hideSearch logoSize="sm" />
-          <strong class="mt-5 text-md ml-2 font-mono sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">{{ extension }}</strong>
+          <strong class="mt-[12px] text-md -ml-14 font-mono sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">{{ extension }}</strong>
         </div>
         <p v-if="text">
           {{ text }}
         </p>
-      </div>
     </div>
   </div>
 </template>
@@ -40,6 +35,10 @@ defineProps({
     label: 'Baustelle-Icon',
     default: true,
   }),
+  pageBlock: checkboxField({
+    label: 'als Page-Block anzeigen',
+    default: true,
+  }),  
   text: textAreaField({
     placeholder: 'Beschreibungstext eingeben',
     required: false,
@@ -55,12 +54,13 @@ defineProps({
 
 <style scoped>
 .warning {
-  margin-right: 1em;
-  height: 6em;
-  width: 5em;
-  min-width: 5em;
+  margin-left: 14em;
+  height: 7.2em;
+  width: 6em;
+  min-width: 6em;
   background-image: url('/global/warning.svg');
-  background-size: 5em;
+  background-size: 6em;
+  rotate: 2deg;
 }
 
 .construction {
@@ -72,7 +72,9 @@ defineProps({
   padding: 2em;
 }
 .content {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 1);
+  rotate: 2deg;
+  max-width: 35rem;
   padding: 1em;
 }
 </style>

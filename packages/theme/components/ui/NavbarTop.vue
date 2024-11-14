@@ -32,7 +32,7 @@ const y = ref(useWindowScroll().y)
     class="jfustify-between fixed inset-x-0 top-0 z-50 flex h-14 items-center md:pt-2.5 lg:justify-start"
     :class="[
       {
-        'max-w-screen-3xl mx-auto md:-top-12 md:mt-6 md:h-28 md:px-6 lg:mt-10 lg:px-10 dark:bg-black':
+        'max-w-screen-3xl mx-auto md:-top-12 md:mt-6 md:h-28 lg:mt-10 dark:bg-black':
           y <= scrollBreak && props.extended,
       },
       { 'md:-top-4 md:h-20': y > scrollBreak || !props.extended },
@@ -41,16 +41,19 @@ const y = ref(useWindowScroll().y)
     ]"
   >
     <div
-      class="max-w-screen-3xl sticky top-0 mx-auto flex w-full items-center justify-between gap-[clamp(1rem,3vw,3rem)] py-6 sm:px-4 md:h-[60px] md:justify-normal md:px-6 lg:px-10"
+      class="ph:px-0 ph:-ml-2 px-3 md:px-5 sticky top-0 mx-auto flex w-full items-center justify-between gap-[clamp(1rem,3vw,3rem)] py-6 md:h-[60px] md:justify-normal"
     >
-      <Logo
-        :extended="y <= scrollBreak && props.extended"
-        :filled="filled"
-        :hideLogo="hideLogo"
-        :hideSearch="hideSearch"
-        logoSize="sm"
+      <NuxtLink to="/"
         class="flex-grow"
-      />
+      >
+        <Logo
+          :extended="y <= scrollBreak && props.extended"
+          :filled="filled"
+          :hideLogo="hideLogo"
+          :hideSearch="hideSearch"
+          logoSize="sm"
+        />
+      </NuxtLink>
       <!-- Links Section -->
       <nav
         aria-label="SF Navigation"
