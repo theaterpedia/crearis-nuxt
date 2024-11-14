@@ -1,6 +1,6 @@
 <template>
   <div class="construction">
-    <SectionContainer v-if="pageBlock">
+    <SectionContainer v-if="pageBlock" class="content mt-4 flex flex-col md:flex-row">
       <div v-if="warning" class="warning"></div>
       <div>
         <div class="mb-2 flex">
@@ -15,9 +15,9 @@
     <div v-else class="content mt-4 flex">
       <div v-if="warning" class="warning"></div>
       <div>
-        <div class="mb-2 flex">
+        <div class="mb-2 flex justify-start">
           <Logo hideSearch logoSize="sm" />
-          <strong class="text-md ml-2 font-mono sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">{{ extension }}</strong>
+          <strong class="mt-5 text-md ml-2 font-mono sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">{{ extension }}</strong>
         </div>
         <p v-if="text">
           {{ text }}
