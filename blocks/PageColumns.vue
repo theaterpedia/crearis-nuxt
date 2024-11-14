@@ -8,7 +8,7 @@ defineBlock({
   slots: {
     default: {
       label: 'Blocks', // Displayed in the dashboard
-      allowedChildBlocks: ['VarProse', 'SubColumn', 'SubPostIt', 'VarVideo', 'VarImage'],
+      allowedChildBlocks: ['VarProse', 'SubColumn', 'SubColumns', 'SubPostIt', 'VarVideo', 'VarImage'],
     },
   },
 })
@@ -16,7 +16,7 @@ defineBlock({
 
 <template>
   <SectionContainer>
-    <Columns>
+    <Columns class="md:max-w-4xl lg:max-w-6xl xl:max-w-7xl">
       <slot />
     </Columns>
   </SectionContainer>
