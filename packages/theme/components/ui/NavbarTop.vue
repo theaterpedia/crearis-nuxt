@@ -9,6 +9,7 @@ const props = defineProps<{
   extended?: boolean
   hideLogo?: boolean
   hideSearch?: boolean
+  hideLinksOnMobile?: boolean
 }>()
 
 const navigation = [{ title: 'home', _path: '/' }]
@@ -53,10 +54,11 @@ const y = ref(useWindowScroll().y)
       <!-- Links Section -->
       <nav
         aria-label="SF Navigation"
-        class="hidden flex-nowrap items-center justify-end gap-x-4 md:ml-10 lg:flex"
+        class="flex-nowrap items-center justify-end gap-x-4 md:ml-10 lg:flex"
         :class="[
           { 'text-white': filled && !(y <= scrollBreak && props.extended) },
           { 'text-primary-400 dark:text-primary-400': !filled || (y <= scrollBreak && props.extended) },
+          { 'hidden': hideLinksOnMobile },
         ]"
       >
         <NuxtLink
@@ -68,12 +70,12 @@ const y = ref(useWindowScroll().y)
           {{ link.title }}
         </NuxtLink>
         <slot />
-        <SfButton
+        <NuxtLink
           @click="toggleDark()"
-          class="bg-primary-200 text-primary-400 dark:bg-primary-700 dark:text-primary-400"
         >
-          <SfIconCircle />
-        </SfButton>
+          <!-- SfIconCircle class="text-muted-base"/ -->
+        
+        </NuxtLink>
       </nav>
     </div>
   </Container>

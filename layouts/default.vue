@@ -3,11 +3,11 @@
     <UiNavbarTop
       v-show="!isSideNav"
       :filled="y > scrollBreak"
-      :hideLogo="y <= scrollBreak"
+      :hideLogo="route.path==='/' && y <= scrollBreak"
       :hideSearch="y <= scrollBreak"
     >
-      <NuxtLink to="/konferenz" class="flex-1">Konferenz</NuxtLink>
-      <NuxtLink to="/sondierung" class="flex-1">Sondierung</NuxtLink>
+      <NuxtLink style="textShadow" to="/konferenz" class="flex-1">Konferenz</NuxtLink>
+      <NuxtLink style="textShadow" to="/sondierung" class="flex-1">Sondierung</NuxtLink>
     </UiNavbarTop>
     <Sidebar
       v-show="isSideNav"
@@ -19,7 +19,7 @@
       <!-- MainMenu v-model:items="mainMenu.items" / -->
     </Sidebar>
 
-    <Main class="tl:px-8 ph:px-6 mx-auto max-w-screen-2xl px-12">
+    <Main class="tl:px-8 ph:px-0 px-12 mx-auto max-w-screen-2xl">
       <slot name="header">
         <Hero
           v-if="showHero"
@@ -130,6 +130,7 @@ const imgTmp = page?.fields.imgTmp
 const isSideNav: Boolean = false
 
 const showHero = heading && imgTmp
+const textShadow = 'text-shadow: 0.2rem 0.2rem 0.3rem hsla(110, 10%, 0%, 0.8);'
 
 const scrollBreak = showHero
   ? page?.fields.heightTmp === 'full' || page?.fields.heightTmp === 'prominent'
