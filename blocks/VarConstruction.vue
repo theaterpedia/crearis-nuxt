@@ -4,7 +4,7 @@
     <SectionContainer v-if="pageBlock" class="content mt-4 shadow">
       <div class="mb-2 flex min-w-80 justify-start">
         <Logo hideSearch logoSize="sm" />
-        <strong class="text-md -ml-14 mt-[12px] font-mono sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">
+        <strong class="text-md ml-3 mt-[14px] font-mono sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">
           {{ extension }}
         </strong>
       </div>
@@ -15,7 +15,7 @@
     <div v-else class="content mt-4 shadow">
       <div class="mb-2 flex min-w-80 justify-start">
         <Logo hideSearch logoSize="sm" />
-        <strong class="text-md -ml-14 mt-[12px] font-mono sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">
+        <strong class="text-md ml-3 mt-[14px] font-mono sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">
           {{ extension }}
         </strong>
       </div>

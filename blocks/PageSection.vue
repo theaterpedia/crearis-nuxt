@@ -2,16 +2,7 @@
   <Section
     :background="background"
     overlap
-    class="section"
-    :class="[
-      `columns-${colGapSmall ? 'small' : 'medium'}`,
-      `columns-${columns}`,
-      `columns-${colbackground ?? 'transparent'}`,
-      columns !== 'none' ? 'columns' : null,
-      colWrap ? 'columns-wrap' : null,
-      colStackReverse ? 'columns-stack-reverse' : null,
-    ]"
-  >
+    class="section">
     <div v-if="imgTmp" class="hero-cover">
       <div
         class="static-cover-image"
@@ -35,7 +26,15 @@
         class="bg-primary-base theme-shadow ml-[-2.75rem] max-w-[44rem] py-2 pl-11"
       />
     </Container>
-    <Container class="mt-4">
+    <Container class="mt-4"
+      :class="[
+        `columns-${colGapSmall ? 'small' : 'medium'}`,
+        `columns-${columns}`,
+        `columns-${colbackground ?? 'transparent'}`,
+        columns !== 'none' ? 'columns' : null,
+        colWrap ? 'columns-wrap' : null,
+        colStackReverse ? 'columns-stack-reverse' : null,
+      ]">
       <slot />
     </Container>
   </Section>
@@ -51,7 +50,7 @@ defineBlock({
   slots: {
     default: {
       label: 'Blocks', // Displayed in the dashboard
-      allowedChildBlocks: ['SubColumns', 'VarProse', 'VarVideo', 'VarImage'],
+      allowedChildBlocks: ['SubColumns', 'SubColumn', 'SubPostIt', 'VarProse', 'VarVideo', 'VarImage'],
     },
   },
 })
@@ -113,12 +112,13 @@ const props = defineProps({
   }),
   gradientDepth: numberField({
     default: 0.8,
+    decimals: 2,
     min: 0,
     max: 1,
     label: 'Abdecken: Intensität (0-1)',
   }),
   imgTmp: textField({
-    required: true,
+    required: false,
     label: 'Bild: URL',
   }),
   imgTmpAlignY: selectField({
@@ -165,6 +165,7 @@ const overlay = getoverlay(props.gradient_type, props.gradientDepth)
 .columns {
   --column-padding: 0;
   display: flex;
+  align-items: flex-start;
 }
 
 .columns-default {
