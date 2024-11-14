@@ -1,5 +1,10 @@
 <template>
-  <PostIt :color="color" :rotation="rotation" :width="width">
+  <PostIt :color="color" :rotation="rotation" :width="width" :sticky="sticky">
+    <Heading
+      v-if="title"  
+      :content="title"
+      :is="`h${level ? level : 4}`"
+      />    
     <Prose>
       <PruviousHTML :html="text" />
     </Prose>
@@ -15,6 +20,18 @@ defineBlock({
 })
 
 defineProps({
+  title: textField({
+    placeholder: 'Heading: _ID_ overline **HEADLINE** subline',
+    label: 'Heading (optional)',
+    required: false,
+  }),
+  level: numberField({
+    label: 'Überschrifts-Ebene',
+    placeholder: '4',
+    default: 4,
+    min: 3,
+    max: 4,
+  }),  
   text: editorField({
     required: true,
     toolbar: ['bold', 'italic', 'link', 'heading3', 'heading4', 'paragraph', 'link', 'bulletList'],
@@ -38,9 +55,14 @@ defineProps({
     label: 'Breite',
   }),
   rotation: selectField({
-    choices: { none: 'none', left: 'left', right: 'right' },
-    default: 'none',
+    choices: { 'rotate-0': 'keine', '-rotate-9': '-9', '-rotate-6': '-6', '-rotate-3': '-3', 'rotate-3': '3' , 'rotate-6': '6', 'rotate-9': '6' },
+    default: 'rotate-0',
     label: 'Drehung',
   }),
+  sticky: selectField({
+    choices: { 'static': 'nein', 'top-0': 'top-0', 'top-20': 'top-20', 'bottom-0': 'bottom-0', 'bottom-20': 'bottom-20' },
+    default: 'static',
+    label: 'Anheften',
+  }),  
 })
 </script>

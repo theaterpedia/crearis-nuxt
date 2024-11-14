@@ -3,7 +3,8 @@
     class="post-it column theme-shadow"
     :class="[
       `column-${width}`,
-      `rotate-${rotation}`,
+      rotation,
+      sticky!=='static' ? 'sticky ' + sticky : '',
       `bg-${color}`,
       `${width === '1/5' ? 'p-2 text-[0.7em] sm:p-3 sm:text-[0.8em] md:p-4' : 'p-4 md:p-6'}`,
     ]"
@@ -33,6 +34,7 @@
 </template>
 
 <script lang="ts" setup>
+import type { PropType } from 'vue'
 import { Heading } from '@crearis/ui'
 import { extractHeading } from '~/utils/md-renderer'
 const props = defineProps({
@@ -63,10 +65,24 @@ const props = defineProps({
     type: [Object, String] as PropType<'primary' | 'secondary' | 'yellow' | 'green' | 'pink' | 'accent' | 'muted'>,
     default: 'primary',
   },
-  rotation: {
-    type: [Object, String] as PropType<'none' | 'left' | 'right' | Number>,
-    default: 'none',
+  /**
+   * The rotation of the column.
+   *
+   * @default 'rotate-0'
+   */
+   rotation: {
+    type: String as PropType<'rotate-0' | '-rotate-9' | '-rotate-6' | '-rotate-3' | 'rotate-3' | 'rotate-6' | 'rotate-9'>,
+    default: 'rotate-0',
   },
+    /**
+   * Specification to be written
+   *
+   * @default 'static'
+   */
+   sticky: {
+    type: String as PropType<'static' | 'top-0' | 'top-20' | 'bottom-0' | 'bottom-20' >,
+    default: 'static',
+  },  
 })
 
 import { useNuxtApp } from '#app'
@@ -105,15 +121,31 @@ const { headline, overline, subline, tags, shortcode } = props.heading ? extract
   min-width: 21.5rem; /* 344px */
 }
 
-.rotate-left {
-  rotate: -7deg;
+.-rotate-6 {
+  rotate: -6deg;
 }
 
-.rotate-right {
-  rotate: 5deg;
+.rotate-6 {
+  rotate: 6deg;
 }
 
-.rotate-none {
+.-rotate-3 {
+  rotate: -3deg;
+}
+
+.rotate-3 {
+  rotate: 3deg;
+}
+
+.-rotate-9 {
+  rotate: -9deg;
+}
+
+.rotate-9 {
+  rotate: 9deg;
+}
+
+.rotate-0 {
   rotate: 0deg;
 }
 

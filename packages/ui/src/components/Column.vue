@@ -1,5 +1,5 @@
 <template>
-  <div class="column" :class="[`column-${width}`, `column-${fill ? 'fill' : 'default'}`]">
+  <div class="column" :class="[`column-${width}`, rotation, sticky!=='static' ? 'sticky ' + sticky : '' ,`rotate-${rotation}`, `column-${fill ? 'fill' : 'default'}`]">
     <slot></slot>
   </div>
 </template>
@@ -20,6 +20,16 @@ defineProps({
   },
 
   /**
+   * The rotation of the column.
+   *
+   * @default 'rotate-0'
+   */
+   rotation: {
+    type: String as PropType<'rotate-0' | '-rotate-9' | '-rotate-6' | '-rotate-3' | 'rotate-3' | 'rotate-6' | 'rotate-9'>,
+    default: 'rotate-0',
+  },
+
+  /**
    * Specifies whether to fill the entire column space with a cover image.
    * This option is only usable with a single child element, which must be an image.
    *
@@ -29,10 +39,49 @@ defineProps({
     type: Boolean,
     default: false,
   },
+
+    /**
+   * Specification to be written
+   *
+   * @default 'static'
+   */
+   sticky: {
+    type: String as PropType<'static' | 'top-0' | 'top-20' | 'bottom-0' | 'bottom-20' >,
+    default: 'static',
+  },
+  
 })
 </script>
 
 <style scoped>
+.-rotate-6 {
+  rotate: -6deg;
+}
+
+.rotate-6 {
+  rotate: 6deg;
+}
+
+.-rotate-3 {
+  rotate: -3deg;
+}
+
+.rotate-3 {
+  rotate: 3deg;
+}
+
+.-rotate-9 {
+  rotate: -9deg;
+}
+
+.rotate-9 {
+  rotate: 9deg;
+}
+
+.rotate-0 {
+  rotate: 0deg;
+}
+
 .column-auto {
   flex: 1;
 }
@@ -75,6 +124,26 @@ defineProps({
 
 .column > * + * {
   margin-top: 1.75rem; /* 28px */
+}
+
+.sticky {
+  position: sticky;
+}
+
+.top-0 {
+  top: 0px;
+}
+
+.top-20 {
+  top: 5rem;
+}
+
+.bottom-0 {
+  bottom: 0px;
+}
+
+.bottom-20 {
+  bottom: 5rem;
 }
 
 .column-default {
