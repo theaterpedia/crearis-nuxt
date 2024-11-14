@@ -40,11 +40,11 @@ defineProps({
   /**
    * Whether to wrap the columns.
    *
-   * @default false
+   * @default true
    */
   wrap: {
     type: Boolean,
-    default: false,
+    default: true,
   },
 
   /**

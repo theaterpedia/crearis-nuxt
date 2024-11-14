@@ -85,7 +85,7 @@ const props = defineProps({
     label: 'Spalten: Hintergrund',
   }),  
   colWrap: checkboxField({
-    default: false,
+    default: true,
     label: 'Spalten: umbrechen',
   }),
   colGapSmall: checkboxField({

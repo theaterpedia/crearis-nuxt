@@ -16,7 +16,7 @@ defineBlock({
 
 <template>
   <SectionContainer>
-    <Columns class="md:max-w-4xl lg:max-w-6xl xl:max-w-7xl">
+    <Columns class="flex-wrap md:max-w-3xl lg:max-w-6xl xl:max-w-7xl">
       <slot />
     </Columns>
   </SectionContainer>
