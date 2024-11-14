@@ -4,7 +4,7 @@
       v-show="!isSideNav"
       :filled="y > scrollBreak"
       :hideLogo="route.path==='/' && y <= scrollBreak"
-      :hideSearch="y <= scrollBreak"
+      :hideSearch="searchDisablend ? true : y <= scrollBreak"
       :class="route.path!=='/' ? 'bg-muted-base' : ''"
     >
       <NuxtLink :style="textShadow" to="/konferenz" class="flex-1 mr-2">Konferenz</NuxtLink>
@@ -123,6 +123,8 @@ defineLayout({
 
 const page = unref(usePage())
 // const { blogLandingPage } = await getCollectionData('settings')
+
+const searchDisablend = true
 
 const heading = page?.fields.heading
 const teaser = page?.fields.teaser ? page?.fields.teaser : 'Teasertext'

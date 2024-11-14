@@ -22,7 +22,7 @@ const textShadow = 'text-shadow: 0.2rem 0.2rem 0.3rem hsla(110, 10%, 0%, 0.8);'
   >
     <div
       v-show="!hideLogo"
-      :class="(props.padding ? 'pl-2 md:pl-4 lg:pl-6 xl:pl-8 ' : '') + 'font-semibold'"
+      :class="(props.padding ? 'pl-1 sm:pl-2 md:pl-4 lg:pl-6 xl:pl-8 ' : '') + 'font-semibold'"
       :style="textShadow"
     >
       <Prose>
