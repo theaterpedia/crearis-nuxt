@@ -14,7 +14,7 @@ defineBlock({
   slots: {
     default: {
       label: 'Blocks', // Displayed in the dashboard
-      allowedChildBlocks: ['VarProse', 'VarVideo', 'VarImage'],
+      allowedChildBlocks: ['VarProse', 'VarVideo', 'SubPostIt', 'VarImage'],
     },
   },
 })
