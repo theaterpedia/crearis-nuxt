@@ -53,12 +53,12 @@ defineProps({
   rotation: selectField({
     choices: {
       'rotate-0': 'keine',
-      '-rotate-9': '-9',
-      '-rotate-6': '-6',
-      '-rotate-3': '-3',
-      'rotate-3': '3',
-      'rotate-6': '6',
-      'rotate-9': '6',
+      '-rotate-3': '-9',
+      '-rotate-2': '-6',
+      '-rotate-1': '-3',
+      'rotate-1': '3',
+      'rotate-2': '6',
+      'rotate-3': '6',
     },
     default: 'rotate-0',
     label: 'Drehung',

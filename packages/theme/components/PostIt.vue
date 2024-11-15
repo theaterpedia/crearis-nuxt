@@ -72,7 +72,7 @@ const props = defineProps({
    */
   rotation: {
     type: String as PropType<
-      'rotate-0' | '-rotate-9' | '-rotate-6' | '-rotate-3' | 'rotate-3' | 'rotate-6' | 'rotate-9'
+      'rotate-0' | '-rotate-3' | '-rotate-2' | '-rotate-1' | 'rotate-1' | 'rotate-2' | 'rotate-3'
     >,
     default: 'rotate-0',
   },
@@ -99,36 +99,44 @@ const { headline, overline, subline, tags, shortcode } = props.heading ? extract
 }
 
 .column-1\/5 {
-  width: 20%;
+  width: 17.5%;
   min-width: 10.5rem; /* 176px */
 }
 
 .column-1\/3 {
-  width: calc(1 / 3 * 100%);
+  width: calc(1 / 3 * 88%);
   min-width: 18rem; /* 288px */
 }
 
 .column-1\/2 {
-  width: 50%;
+  width: calc(1 / 2 * 93%);
   min-width: 21.5rem; /* 344px */
 }
 
 .column-3\/5 {
-  width: 60%;
+  width: 58%;
   min-width: 21.5rem; /* 344px */
 }
 
 .column-4\/5 {
-  width: 80%;
+  width: 79%;
   min-width: 21.5rem; /* 344px */
 }
 
-.-rotate-6 {
-  rotate: -6deg;
+.-rotate-2 {
+  rotate: -2deg;
 }
 
-.rotate-6 {
-  rotate: 6deg;
+.rotate-2 {
+  rotate: 2deg;
+}
+
+.-rotate-1 {
+  rotate: -1deg;
+}
+
+.rotate-1 {
+  rotate: 1deg;
 }
 
 .-rotate-3 {
@@ -137,14 +145,6 @@ const { headline, overline, subline, tags, shortcode } = props.heading ? extract
 
 .rotate-3 {
   rotate: 3deg;
-}
-
-.-rotate-9 {
-  rotate: -9deg;
-}
-
-.rotate-9 {
-  rotate: 9deg;
 }
 
 .rotate-0 {

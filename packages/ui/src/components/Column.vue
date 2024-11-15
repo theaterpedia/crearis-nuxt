@@ -35,7 +35,7 @@ defineProps({
    */
   rotation: {
     type: String as PropType<
-      'rotate-0' | '-rotate-9' | '-rotate-6' | '-rotate-3' | 'rotate-3' | 'rotate-6' | 'rotate-9'
+      'rotate-0' | '-rotate-3' | '-rotate-2' | '-rotate-1' | 'rotate-1' | 'rotate-2' | 'rotate-3'
     >,
     default: 'rotate-0',
   },
@@ -64,12 +64,20 @@ defineProps({
 </script>
 
 <style scoped>
-.-rotate-6 {
-  rotate: -6deg;
+.-rotate-2 {
+  rotate: -2deg;
 }
 
-.rotate-6 {
-  rotate: 6deg;
+.rotate-2 {
+  rotate: 2deg;
+}
+
+.-rotate-1 {
+  rotate: 1deg;
+}
+
+.rotate-1 {
+  rotate: 1deg;
 }
 
 .-rotate-3 {
@@ -80,16 +88,20 @@ defineProps({
   rotate: 3deg;
 }
 
-.-rotate-9 {
-  rotate: -9deg;
-}
-
-.rotate-9 {
-  rotate: 9deg;
-}
-
 .rotate-0 {
   rotate: 0deg;
+}
+
+:is(.column-auto, .column-1\/5, .column-1\/4) {
+  min-width: 10rem;
+}
+
+:is(.column-1\/3, .column-2\/5) {
+  min-width: 15rem;
+}
+
+:is(.column-1\/2, .column-3\/5, .column-2\/3, .column-3\/4, .column-5\/5) {
+  min-width: 21.5rem;
 }
 
 .column-auto {
@@ -97,39 +109,39 @@ defineProps({
 }
 
 .column-1\/5 {
-  width: 20%;
+  width: 17.5%;
 }
 
 .column-1\/4 {
-  width: 25%;
+  width: 22.5%;
 }
 
 .column-1\/3 {
-  width: calc(1 / 3 * 100%);
+  width: calc(1 / 3 * 88%);
 }
 
 .column-1\/2 {
-  width: 50%;
+  width: calc(1 / 2 * 93%);
 }
 
 .column-2\/5 {
-  width: 40%;
+  width: 37%;
 }
 
 .column-2\/3 {
-  width: calc(2 / 3 * 100%);
+  width: calc(2 / 3 * 90%);
 }
 
 .column-3\/5 {
-  width: 60%;
+  width: 58%;
 }
 
 .column-3\/4 {
-  width: 75%;
+  width: 72.5%;
 }
 
 .column-4\/5 {
-  width: 80%;
+  width: 78.5%;
 }
 
 .column > * + * {
@@ -162,11 +174,13 @@ defineProps({
 }
 
 .column-default:first-child {
-  padding-left: var(--column-padding);
+  /* siehe PageSection */
+  /* padding-left: var(--column-padding); */
 }
 
 .column-default:last-child {
-  padding-right: var(--column-padding);
+  /* siehe PageSection */
+  /* padding-right: var(--column-padding); */
 }
 
 .column-fill {

@@ -19,7 +19,7 @@ defineProps({
 </script>
 
 <template>
-  <div>
+  <div class="min-w-[21.5rem]">
     <SectionContainer v-if="pageBlock">
       <Prose>
         <PruviousHTML :html="text" class="text-base" />

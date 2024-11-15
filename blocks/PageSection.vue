@@ -1,9 +1,6 @@
 <template>
-  <Section
-    :background="background"
-    overlap
-    class="section">
-    <div v-if="imgTmp" class="hero-cover">
+  <Section :background="background" overlap class="section" :class="`bottom-${bottomSpacing}`">
+    <div v-if="imgTmp" class="hero-background">
       <div
         class="static-cover-image"
         :style="{
@@ -16,7 +13,7 @@
               : `${imgTmpAlignX === 'stretch' ? '100%' : 'auto'} ${imgTmpAlignY === 'stretch' ? '100%' : 'auto'}`,
         }"
       >
-        <div v-if="overlay" class="hero-cover-overlay" :style="{ background: overlay }"></div>
+        <div class="hero-cover-overlay" :style="{ background: `rgba(255, 255, 255, ${simpleOverlay}%)` }"></div>
       </div>
     </div>
     <Container v-if="title" class="mt-[-3.25rem]">
@@ -24,18 +21,25 @@
         :content="title"
         :is="`h${level ? level : 2}`"
         class="bg-primary-base theme-shadow ml-[-2.75rem] max-w-[44rem] py-2 pl-11"
+        :class="imgTmp && isBackgroundImage ? 'mb-52' : ''"
       />
+      <p v-if="description">
+        {{ description }}
+      </p>
     </Container>
-    <Container class="mt-4"
-      :class="[
-        `columns-${colGapSmall ? 'small' : 'medium'}`,
-        `columns-${columns}`,
-        `columns-${colbackground ?? 'transparent'}`,
-        columns !== 'none' ? 'columns' : null,
-        colWrap ? 'columns-wrap' : null,
-        colStackReverse ? 'columns-stack-reverse' : null,
-      ]">
-      <slot />
+    <Container class="mt-4">
+      <div
+        :class="[
+          `columns-${colGapSmall ? 'small' : 'medium'}`,
+          `columns-${columns}`,
+          `columns-${colbackground ?? 'nobox'}`,
+          columns !== 'none' ? 'columns' : null,
+          colWrap ? 'columns-wrap' : null,
+          colStackReverse ? 'columns-stack-reverse' : null,
+        ]"
+      >
+        <slot />
+      </div>
     </Container>
   </Section>
 </template>
@@ -72,14 +76,9 @@ const props = defineProps({
     placeholder: 'Teasertext (optional)',
   }),
   columns: selectField({
-    choices: { none: 'nein', start: 'links', block: 'geblockt', middle: 'zentriert', rechts: 'end' },
+    choices: { none: 'nein', start: 'links', block: 'geblockt', middle: 'zentriert', end: 'rechts' },
     default: 'none',
     label: 'Spalten',
-  }),
-  colbackground: selectField({
-    choices: { default: 'default', muted: 'muted', accent: 'accent' },
-    default: 'default',
-    label: 'Spalten: Hintergrund',
   }),
   colWrap: checkboxField({
     default: true,
@@ -93,12 +92,47 @@ const props = defineProps({
     default: false,
     label: 'Spalten: letzte nach oben',
   }),
+  bottomSpacing: selectField({
+    choices: { small: 'schmal', default: 'normal', medium: 'mittel', large: 'groß' },
+    default: 'default',
+    label: 'Bodenhöhe',
+  }),
   background: selectField({
     choices: { default: 'default', muted: 'muted', accent: 'accent' },
     default: 'default',
-    label: 'Hintergrund-Typ',
+    label: 'Hintergrund',
   }),
-  gradientType: selectField({
+  colbackground: selectField({
+    choices: { nobox: 'nein', transparent: 'tansparent', default: 'normal', muted: 'muted', accent: 'accent' },
+    default: 'nobox',
+    label: 'Spalten in Kasten?',
+  }),
+  imgTmp: textField({
+    required: false,
+    label: 'Banner-Bild? (1440*400): URL angeben',
+  }),
+  isBackgroundImage: checkboxField({
+    default: false,
+    label: ' > als Hintergrund-Banner?',
+  }),
+  simpleOverlay: numberField({
+    label: '---> Banner abschwächen (0-100%)',
+    placeholder: '0',
+    default: 0,
+    min: 0,
+    max: 100,
+  }),
+  imgTmpAlignY: selectField({
+    choices: { top: 'top', bottom: 'bottom', center: 'center', stretch: 'stretch', cover: 'cover' },
+    default: 'stretch',
+    label: 'Hintergrund: V-Fokus',
+  }),
+  imgTmpAlignX: selectField({
+    choices: { left: 'left', right: 'right', center: 'center', stretch: 'stretch', cover: 'cover' },
+    default: 'center',
+    label: 'Hintergrund: H-Fokus',
+  }),
+  /* gradientType: selectField({
     choices: {
       top: 'top',
       leftTop: 'left-top',
@@ -108,49 +142,38 @@ const props = defineProps({
       none: 'none',
       full: 'full',
     },
-    label: 'Abdecken: Fokus',
+    default: 'none',
+    label: 'Hintergrund: Abdecken Fokus',
   }),
   gradientDepth: numberField({
     default: 0.8,
     decimals: 2,
     min: 0,
     max: 1,
-    label: 'Abdecken: Intensität (0-1)',
-  }),
-  imgTmp: textField({
-    required: false,
-    label: 'Bild: URL',
-  }),
-  imgTmpAlignY: selectField({
-    choices: { top: 'top', bottom: 'bottom', center: 'center', stretch: 'stretch', cover: 'cover' },
-    default: 'stretch',
-    label: 'Bild: V-Fokus',
-  }),
-  imgTmpAlignX: selectField({
-    choices: { left: 'left', right: 'right', center: 'center', stretch: 'stretch', cover: 'cover' },
-    default: 'center',
-    label: 'Bild: H-Fokus',
-  }),
+    label: 'Hintergrund: Abdecken Intensität (0-1)',
+  }), */
 })
 
-const overlay = getoverlay(props.gradient_type, props.gradientDepth)
+const overlay = getoverlay(props.gradientType, props.gradientDepth)
 </script>
 
 <style scoped>
-.hero-cover {
+.hero-background {
+  z-index: -1;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 200%;
+  max-height: 250px;
   transform: translate3d(0, 0, 0);
 }
 
 .static-cover-image {
   top: 0;
   width: 100%;
-  max-width: 500px;
-  height: 50%;
+  height: 100%;
+  max-height: 250px;
   background-repeat: no-repeat;
 }
 
@@ -160,6 +183,18 @@ const overlay = getoverlay(props.gradient_type, props.gradientDepth)
   right: 0;
   bottom: 0;
   left: 0;
+}
+
+.bottom-small {
+  padding-bottom: 0em;
+}
+
+.bottom-medium {
+  padding-bottom: 4em;
+}
+
+.bottom-large {
+  padding-bottom: 6em;
 }
 
 .columns {
@@ -173,6 +208,14 @@ const overlay = getoverlay(props.gradient_type, props.gradientDepth)
   --foreground: var(--card-foreground);
   background-color: hsl(var(--card-base));
   color: hsl(var(--card-foreground));
+}
+
+:is(.columns-default, .columns-muted, .columns-transparent, .columns-accent) :deep() > .column-default:first-child {
+  padding-left: var(--column-padding);
+}
+
+:is(.columns-default, .columns-muted, .columns-transparent, .columns-accent) :deep() > .column-default:last-child {
+  padding-right: var(--column-padding);
 }
 
 .columns-muted {

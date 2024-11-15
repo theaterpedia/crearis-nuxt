@@ -38,7 +38,7 @@ defineBlock({
   }),
   gradientDepth: numberField({
     default: 0.8,
-    decimals: 2,    
+    decimals: 2,
     min: 0,
     max: 1,
     label: 'Abdecken: Intensität (0-1)',

@@ -61,7 +61,7 @@ const strokeDasharray = computed(() => `${(value.value / 100) * 151}, 150`)
       cx="50"
       cy="50"
       r="24"
-      class="origin-bottom-right -rotate-90 fill-none stroke-current"
+      class="-rotate-30 origin-bottom-right fill-none stroke-current"
       :class="strokeSizeClass[size]"
     />
     <slot />
