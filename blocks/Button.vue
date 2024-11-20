@@ -1,5 +1,10 @@
 <script lang="ts" setup>
-import { linkField, textField } from '#pruvious'
+import { defineBlock, linkField, textField } from '#pruvious'
+
+defineBlock({
+  icon: 'Pencil',
+  label: 'C: Button',
+})
 
 defineProps({
   linkTitle: textField({

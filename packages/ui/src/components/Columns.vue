@@ -40,11 +40,11 @@ defineProps({
   /**
    * Whether to wrap the columns.
    *
-   * @default false
+   * @default true
    */
   wrap: {
     type: Boolean,
-    default: false,
+    default: true,
   },
 
   /**
@@ -126,7 +126,6 @@ defineProps({
 .columns-wrap {
   flex-wrap: wrap;
 }
-
 
 @media (max-width: 767px) {
   .columns {

@@ -1,18 +1,22 @@
 <script lang="ts" setup>
-import { defineBlock, textField } from '#pruvious'
+import { defineBlock, textField, numberField } from '#pruvious'
 import type { Product } from '../graphql'
 
 defineBlock({
   icon: 'Pencil',
-  label: 'Product Slider',
+  label: 'B: Slider',
 })
 
 defineProps({
-  headline: textField({
-    placeholder: 'Titel eingeben',
+  title: textField({
+    placeholder: 'Heading: _ID_ overline **HEADLINE** subline',
   }),
-  overline: textField({
-    placeholder: 'Titel eingeben',
+  level: numberField({
+    label: 'Überschrifts-Ebene',
+    placeholder: '2',
+    default: 2,
+    min: 1,
+    max: 3,
   }),
 })
 
@@ -27,12 +31,7 @@ await loadProductTemplateList({ pageSize: numOfProducts })
 <template>
   <div class="section">
     <div class="container">
-      <p class="typography-text-lg my-4">
-        {{ overline }}
-      </p>
-      <h2 v-if="headline" class="typography-headline-3 md:typography-headline-2 mb-6 text-center font-bold">
-        {{ headline }}
-      </h2>
+      <Heading v-if="title" :content="title" :is="`h${level ? level : 2}`" />
       <SfScrollable
         v-if="productTemplateList?.length > 0"
         buttons-placement="floating"

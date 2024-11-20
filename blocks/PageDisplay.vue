@@ -1,16 +1,25 @@
 <script setup>
-import { defineBlock, repeaterField, textSubfield, linkSubfield, imageSubfield } from '#pruvious'
+import { defineBlock, repeaterField, textSubfield, numberSubfield, linkSubfield, imageSubfield } from '#pruvious'
 
 defineBlock({
   icon: 'Pencil',
-  label: 'Display',
+  label: 'B: Display',
 })
 
 defineProps({
   cards: repeaterField({
     subfields: {
-      overline: textSubfield(),
-      headline: textSubfield(),
+      title: textSubfield({
+        placeholder: 'Heading: _ID_ overline **HEADLINE** subline',
+        required: true,
+      }),
+      level: numberSubfield({
+        label: 'Überschrifts-Ebene',
+        placeholder: '3',
+        default: 3,
+        min: 2,
+        max: 4,
+      }),
       description: textSubfield(),
       buttonText: textSubfield(),
       buttonLink: linkSubfield({
@@ -52,13 +61,8 @@ const NuxtLink = resolveComponent('NuxtLink')
           ]"
         >
           <div class="max-w-1/2 flex flex-1 flex-col items-center justify-center p-6 md:items-start lg:p-10">
-            <p class="typography-text-xs block font-bold uppercase tracking-widest">
-              {{ card.overline }}
-            </p>
-            <h2 class="typography-headline-3 mb-4 mt-2 font-bold">
-              {{ card.headline }}
-            </h2>
-            <p class="typography-text-base mb-4 block text-center md:text-left">
+            <Heading :content="card.title" :is="`h${card.level ? card.level : 2}`" />
+            <p class="mb-4 block text-center text-base md:text-left">
               {{ card.description }}
             </p>
             <ButtonTmp :is="NuxtLink" :to="card.buttonlink" class="!bg-black text-white">

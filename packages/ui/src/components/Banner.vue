@@ -21,6 +21,9 @@ defineProps({
     default: false,
   },
 
+  /**
+   * for usage outside of pageHero (cards ...)
+   */
   card: {
     type: Boolean,
     default: false,

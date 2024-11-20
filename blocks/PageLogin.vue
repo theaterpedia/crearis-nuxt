@@ -38,7 +38,7 @@ import { defineBlock } from '#pruvious'
 
 defineBlock({
   icon: 'Pencil',
-  label: 'Login',
+  label: 'B: Login',
 })
 
 const { login, loading, logout } = useUser()

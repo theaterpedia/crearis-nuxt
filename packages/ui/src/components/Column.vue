@@ -1,5 +1,14 @@
 <template>
-  <div class="column" :class="[`column-${width}`, `column-${fill ? 'fill' : 'default'}`]">
+  <div
+    class="column"
+    :class="[
+      `column-${width}`,
+      rotation,
+      sticky !== 'static' ? 'sticky ' + sticky : '',
+      `rotate-${rotation}`,
+      `column-${fill ? 'fill' : 'default'}`,
+    ]"
+  >
     <slot></slot>
   </div>
 </template>
@@ -20,6 +29,18 @@ defineProps({
   },
 
   /**
+   * The rotation of the column.
+   *
+   * @default 'rotate-0'
+   */
+  rotation: {
+    type: String as PropType<
+      'rotate-0' | '-rotate-3' | '-rotate-2' | '-rotate-1' | 'rotate-1' | 'rotate-2' | 'rotate-3'
+    >,
+    default: 'rotate-0',
+  },
+
+  /**
    * Specifies whether to fill the entire column space with a cover image.
    * This option is only usable with a single child element, which must be an image.
    *
@@ -29,52 +50,122 @@ defineProps({
     type: Boolean,
     default: false,
   },
+
+  /**
+   * Specification to be written
+   *
+   * @default 'static'
+   */
+  sticky: {
+    type: String as PropType<'static' | 'top-0' | 'top-20' | 'bottom-0' | 'bottom-20'>,
+    default: 'static',
+  },
 })
 </script>
 
 <style scoped>
+.-rotate-2 {
+  rotate: -2deg;
+}
+
+.rotate-2 {
+  rotate: 2deg;
+}
+
+.-rotate-1 {
+  rotate: 1deg;
+}
+
+.rotate-1 {
+  rotate: 1deg;
+}
+
+.-rotate-3 {
+  rotate: -3deg;
+}
+
+.rotate-3 {
+  rotate: 3deg;
+}
+
+.rotate-0 {
+  rotate: 0deg;
+}
+
+:is(.column-auto, .column-1\/5, .column-1\/4) {
+  min-width: 10rem;
+}
+
+:is(.column-1\/3, .column-2\/5) {
+  min-width: 15rem;
+}
+
+:is(.column-1\/2, .column-3\/5, .column-2\/3, .column-3\/4, .column-5\/5) {
+  min-width: 21.5rem;
+}
+
 .column-auto {
   flex: 1;
 }
 
 .column-1\/5 {
-  width: 20%;
+  width: 17.5%;
 }
 
 .column-1\/4 {
-  width: 25%;
+  width: 22.5%;
 }
 
 .column-1\/3 {
-  width: calc(1 / 3 * 100%);
+  width: calc(1 / 3 * 88%);
 }
 
 .column-1\/2 {
-  width: 50%;
+  width: calc(1 / 2 * 93%);
 }
 
 .column-2\/5 {
-  width: 40%;
+  width: 37%;
 }
 
 .column-2\/3 {
-  width: calc(2 / 3 * 100%);
+  width: calc(2 / 3 * 90%);
 }
 
 .column-3\/5 {
-  width: 60%;
+  width: 58%;
 }
 
 .column-3\/4 {
-  width: 75%;
+  width: 72.5%;
 }
 
 .column-4\/5 {
-  width: 80%;
+  width: 78.5%;
 }
 
 .column > * + * {
   margin-top: 1.75rem; /* 28px */
+}
+
+.sticky {
+  position: sticky;
+}
+
+.top-0 {
+  top: 0px;
+}
+
+.top-20 {
+  top: 5rem;
+}
+
+.bottom-0 {
+  bottom: 0px;
+}
+
+.bottom-20 {
+  bottom: 5rem;
 }
 
 .column-default {
@@ -83,11 +174,13 @@ defineProps({
 }
 
 .column-default:first-child {
-  padding-left: var(--column-padding);
+  /* siehe PageSection */
+  /* padding-left: var(--column-padding); */
 }
 
 .column-default:last-child {
-  padding-right: var(--column-padding);
+  /* siehe PageSection */
+  /* padding-right: var(--column-padding); */
 }
 
 .column-fill {

@@ -117,9 +117,9 @@ const isBlock = computed(() => props.buttonsPlacement === SfScrollableButtonsPla
         'hidden !rounded-full bg-white !text-neutral-500 !ring-neutral-500 md:block',
         {
           'mr-4': isBlock && isHorizontal,
-          'mb-4 rotate-90': isBlock && !isHorizontal,
+          'rotate-30 mb-4': isBlock && !isHorizontal,
           'absolute left-4 z-10': isFloating && isHorizontal,
-          'absolute top-4 z-10 rotate-90': isFloating && !isHorizontal,
+          'rotate-30 absolute top-4 z-10': isFloating && !isHorizontal,
         },
         isFloating ? 'disabled:hidden' : 'disabled:!text-disabled-500 disabled:!ring-disabled-300',
       ]"
@@ -159,9 +159,9 @@ const isBlock = computed(() => props.buttonsPlacement === SfScrollableButtonsPla
         'hidden !rounded-full bg-white !text-neutral-500 !ring-neutral-500 md:block',
         {
           'ml-4': isBlock && isHorizontal,
-          'mt-4 rotate-90': isBlock && !isHorizontal,
+          'rotate-30 mt-4': isBlock && !isHorizontal,
           'absolute right-4 z-10': isFloating && isHorizontal,
-          'absolute bottom-4 z-10 rotate-90': isFloating && !isHorizontal,
+          'rotate-30 absolute bottom-4 z-10': isFloating && !isHorizontal,
         },
         isFloating ? 'disabled:hidden' : 'disabled:!text-disabled-500 disabled:!ring-disabled-300',
       ]"

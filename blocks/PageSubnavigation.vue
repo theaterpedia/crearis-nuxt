@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { defineBlock, textField, linkField } from '#pruvious'
+import { defineBlock, textField, linkField, numberField } from '#pruvious'
 
 defineBlock({
   icon: 'Pencil',
-  label: 'Subnavigation',
+  label: 'B: Subnavigation',
 })
 
 defineProps({
@@ -13,7 +13,16 @@ defineProps({
     required: false,
     placeholder: 'Enter url',
   }),
-  heading: textField(),
+  title: textField({
+    placeholder: 'Heading: _ID_ overline **HEADLINE** subline',
+  }),
+  level: numberField({
+    label: 'Überschrifts-Ebene',
+    placeholder: '2',
+    default: 2,
+    min: 1,
+    max: 3,
+  }),
 })
 
 const NuxtLink = resolveComponent('NuxtLink')
@@ -22,9 +31,7 @@ const NuxtLink = resolveComponent('NuxtLink')
 <template>
   <div class="mb-20 px-4 md:px-0">
     <div class="mb-10 mt-8 flex justify-between px-4 md:px-0">
-      <h1 class="typography-headline-3 md:typography-headline-2 font-bold">
-        {{ heading }}
-      </h1>
+      <Heading v-if="title" :content="title" :is="`h${level ? level : 2}`" />
       <ButtonTmp :is="NuxtLink" :to="backHref" size="small" variant="tertiary" class="flex whitespace-nowrap md:hidden">
         <template #prefix>
           <SfIconArrowBack />
