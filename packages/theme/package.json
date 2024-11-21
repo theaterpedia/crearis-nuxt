@@ -28,11 +28,14 @@
     "@vueuse/core": "^10.9.0",
     "jw-paginate": "^1.0.4",
     "tabbable": "^6.1.1",
-    "nuxt": "3.13.2"
+    "nuxt": "3.13.2",
+    "culori": "^4.0.1",
+    "simple-hue-picker": "^0.2"
   },
   "devDependencies": {
     "prettier": "^3.3.0",
     "vue-tsc": "^2.0.2",
+    "@types/culori": "^2.1.1",
     "@crearis/sfui-ts-config": "workspace:*",
     "tailwindcss": "^3.4.7",
     "typescript": "^5.5.4",
