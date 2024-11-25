@@ -65,7 +65,38 @@ const NuxtLink = resolveComponent('NuxtLink')
           <Button @click="showTheme(theme.id)" variant="primary" size="small">Vorschau</Button>
         </CardHero>
                     
-      </CardsGallery>      
+      </CardsGallery>
+      <Tabs>
+        <Tab active title="Demo">
+          <h2>DEMO</h2>
+          <Prose>
+            <li>Event-Cards</li>
+            <li>Check-Out-Sektion</li>
+            <li>Blog-Post</li>
+          </Prose>
+        </Tab>
+        <Tab title="Farben">
+          <Heading is="h2" content="**Farben**Basispalette, Graustile, Brand+Primary+Secondary" />
+        </Tab>
+        <Tab title="Elemente">
+          <Heading is="h2" content="**Elemente**Linien, Abstände, Ring etc." />
+        </Tab>
+        <Tab title="Typographie">
+          <Heading is="h2" content="**Typographie**Head-Font, Basis-Font, Fette, Range" />
+          <Prose>
+            <ul>
+              <li>head-font als dropdown + basis-fette + range</li>
+              <li>basis-font als dropdown + basis-fette + range</li>                
+            </ul>
+          </Prose>
+        </Tab> 
+        <Tab title="Dokumentation">
+          <Heading is="h2" content="**Dokmentation**" />
+        </Tab>
+        <Tab title="Dev-Docs">
+          <Heading is="h2" content="**Dev-Docs**Linien, Abstände, Ring etc." />
+        </Tab>            
+      </Tabs>      
       <form @submit.prevent="handleLogin" class="flex flex-col gap-4 rounded-md border-neutral-200 md:border md:p-6">
         <label>
           <UiFormLabel>Layout</UiFormLabel>

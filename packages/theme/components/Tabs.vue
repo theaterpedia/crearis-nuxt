@@ -15,6 +15,7 @@
 </template>
 
 <script lang="ts" setup>
+import { ref, onMounted, watch, useSlots } from 'vue'
 const activeTab = ref(0)
 const tabTitles = ref<string[]>([])
 const tabContent = ref<HTMLDivElement | null>(null)
