@@ -1,10 +1,12 @@
 <script lang="ts" setup>
+import { ref, resolveComponent } from 'vue'
 
 definePageMeta({
   layout: false,
 })
 
 const email = "email"
+const side = ref("side")
 const password = "password"
 const rememberMe = false
 const isLoading = false
@@ -28,8 +30,11 @@ const NuxtLink = resolveComponent('NuxtLink')
         <Hero
           contentType="banner"
           contentWidth="short"
+          imgTmpAlignY="top"
+          imgTmpAlignX="cover"
           heightTmp="medium"
           imgTmp="https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg"
+          :overlay="getoverlay('left_bottom', 0.8)"
         >
           <component is="Banner">
             <Prose>
