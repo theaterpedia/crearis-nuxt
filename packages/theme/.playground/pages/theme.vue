@@ -1,16 +1,24 @@
 <script lang="ts" setup>
 import { ref, resolveComponent } from 'vue'
+import { Button, CardHero } from '@crearis/ui'
 
 definePageMeta({
   layout: false,
 })
 
+const themes = [{ id: 0, heading: "**Theme 0**Feature, Feature, Feature", imgUrl: "https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg" }, { id: 1, heading: "**Theme 1**Feature, Feature, Feature", imgUrl: "https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg" }, { id: 2, heading: "**Theme 2**Feature, Feature, Feature", imgUrl: "https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg" }]
+const theme = ref(themes[0])
+const showTheme = (id) => {
+  theme.value = themes[id]
+}
+
 const email = "email"
 const side = ref("side")
-const password = "password"
-const rememberMe = false
+
 const isLoading = false
 const isAuthenticated = false
+
+const imgUrl = ref('https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg')
 
 const handleLogin = async () => {
   /* await login({ email: email.value, password: password.value }) */
@@ -19,6 +27,7 @@ const handleLogin = async () => {
 const handleLogout = async () => {
   /* await logout() */
 } 
+
 
 const NuxtLink = resolveComponent('NuxtLink')
 </script>
@@ -32,20 +41,31 @@ const NuxtLink = resolveComponent('NuxtLink')
           contentWidth="short"
           imgTmpAlignY="top"
           imgTmpAlignX="cover"
-          heightTmp="medium"
-          imgTmp="https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg"
-          :overlay="getoverlay('left_bottom', 0.8)"
+          heightTmp="small"
+          :imgTmp="imgUrl"
+          :overlay="getoverlay('left-bottom', 0.5)"
         >
           <component is="Banner">
-            <Prose>
-              <h2>
-                <strong>Theme und Design</strong>
-                colors, fonts, and other design elements
-              </h2>
-            </Prose>
+            <Heading is="h2" :content="theme.heading"/>
           </component>
         </Hero> 
       </template>
+      <CardsGallery>
+        <CardHero v-for="theme in themes" :key="theme.id"
+          contentType="banner"
+          contentWidth="short"
+          contentAlignY="bottom"
+          imgTmpAlignY="top"
+          imgTmpAlignX="cover"
+          heightTmp="mini"
+          :imgTmp="theme.imgUrl"
+          :overlay="getoverlay('left-bottom', 0.5)"
+          >
+          <Heading class="p-4" :content=theme.heading is="h3" />
+          <Button @click="showTheme(theme.id)" variant="primary" size="small">Vorschau</Button>
+        </CardHero>
+                    
+      </CardsGallery>      
       <form @submit.prevent="handleLogin" class="flex flex-col gap-4 rounded-md border-neutral-200 md:border md:p-6">
         <label>
           <UiFormLabel>Layout</UiFormLabel>
