@@ -14,6 +14,8 @@ const theme = ref(themes[0])
 const showTheme = (id) => {
   theme.value = themes[id]
 }
+
+
 const basisPalette = reactive<PaletteColor[]>([
   {name: 'neon', hue: 104, scale: 0},
   {name: 'lime', hue: 138, scale: 1},
@@ -22,14 +24,17 @@ const basisPalette = reactive<PaletteColor[]>([
 const brandPalette = reactive<PaletteColor[]>([{name: 'primary', hue: 88, scale: 1},
   {name: 'secondary', hue: 274, scale: 5}])
 
-const email = "email"
-const side = ref("side")
 
-const isLoading = false
-const isAuthenticated = false
 
 const imgUrl = ref('https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg')
 
+const NuxtLink = resolveComponent('NuxtLink')
+
+// BEGIN: not used
+const email = "email"
+const side = ref("side")
+const isLoading = false
+const isAuthenticated = false
 const handleLogin = async () => {
   /* await login({ email: email.value, password: password.value }) */
 }
@@ -37,9 +42,7 @@ const handleLogin = async () => {
 const handleLogout = async () => {
   /* await logout() */
 } 
-
-
-const NuxtLink = resolveComponent('NuxtLink')
+// END: not used
 </script>
 
 <template>

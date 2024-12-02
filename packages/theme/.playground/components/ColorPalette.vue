@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import type { PaletteColor } from '../utils/ColorSettings'
-import { PropType } from 'vue'
+import { onMounted, PropType, ref } from 'vue'
+import { generateAllPalettes } from '../utils/ColorSettings';
 
 defineEmits<{
   'update:colors': [colors: PaletteColor[]]
+  'update:palettes': []
 }>()
 
 const props = defineProps({
@@ -16,7 +18,13 @@ const props = defineProps({
   },
 })
 
-/* is this valid?
+const palettes = ref([])
+
+if (props.colors.length) {
+  palettes.value = generateAllPalettes(props.colors)
+}
+
+/* is this needed?
 const updateColor = (color: PaletteColor) => {
   const index = props.colors.findIndex((c) => c.name === color.name)
   if (index === -1) return
@@ -25,7 +33,8 @@ const updateColor = (color: PaletteColor) => {
   newColors[index] = color
 
   emit('update:colors', newColors)
-} */
+}
+  */
 
 </script>
 
@@ -40,6 +49,9 @@ const updateColor = (color: PaletteColor) => {
         :scale="color.scale"
       />
     </div>
-    <ShowPalette />
+    <div class='flex h-8' v-for="{name, palette} in palettes">
+      <div class='w-full mr-4'>{{name}}</div>
+      <div class='w-full grow' :style="`background-color: ${color}`" v-for="color, index in palette" :key="index"></div>
+    </div>
   </div>
 </template>
