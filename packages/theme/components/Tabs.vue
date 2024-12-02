@@ -15,14 +15,23 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted, watch, useSlots } from 'vue'
+import { ref, onMounted, watch, nextTick } from 'vue'
 const activeTab = ref(0)
 const tabTitles = ref<string[]>([])
 const tabContent = ref<HTMLDivElement | null>(null)
-const slots = useSlots()
+
+const slots = defineSlots<{
+  default(): any
+}>()
 
 onMounted(() => {
-  tabTitles.value = [...(slots.default!()[0].children as any)].map((tab: any) => tab.props.title)
+  watch(slots.default()[0].children, () => {
+    if (!slots.default()[0].children) return
+    debugger
+    tabTitles.value = [...(slots.default!()[0].children as any)].map((tab: any) => tab.props.title)
+  })
+  // console.log(slots.default!()[0].children)
+  // tabTitles.value = [...(slots.default!()[0].children as any)].map((tab: any) => tab.props.title)
 })
 
 watch(activeTab, () => {

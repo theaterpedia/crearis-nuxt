@@ -1,6 +1,9 @@
 <script lang="ts" setup>
-import { ref, resolveComponent } from 'vue'
-import { Button, CardHero } from '@crearis/ui'
+import { reactive, ref, resolveComponent } from 'vue'
+import { Button, CardHero, Columns, Column } from '@crearis/ui'
+import { TabsContent, TabsList, TabsRoot, TabsTrigger } from 'radix-vue'
+import type { PaletteColor } from '../utils/ColorSettings';
+import ColorPalette from '../components/ColorPalette.vue';
 
 definePageMeta({
   layout: false,
@@ -11,6 +14,13 @@ const theme = ref(themes[0])
 const showTheme = (id) => {
   theme.value = themes[id]
 }
+const basisPalette = reactive<PaletteColor[]>([
+  {name: 'neon', hue: 104, scale: 0},
+  {name: 'lime', hue: 138, scale: 1},
+  {name: 'pink', hue: 4, scale: 3}])
+
+const brandPalette = reactive<PaletteColor[]>([{name: 'primary', hue: 88, scale: 1},
+  {name: 'secondary', hue: 274, scale: 5}])
 
 const email = "email"
 const side = ref("side")
@@ -66,22 +76,55 @@ const NuxtLink = resolveComponent('NuxtLink')
         </CardHero>
                     
       </CardsGallery>
-      <Tabs>
-        <Tab active title="Demo">
+      <TabsRoot
+        default-value="tab1"
+        orientation="vertical"
+      >
+        <TabsList class="gap-4" aria-label="tabs example">
+          <TabsTrigger class="trigger" value="demo">
+            Demo
+          </TabsTrigger>
+          <TabsTrigger class="trigger" value="colors">
+            Colors
+          </TabsTrigger>
+          <TabsTrigger class="trigger" value="elements">
+            Elemente
+          </TabsTrigger>
+          <TabsTrigger class="trigger" value="typography">
+            Typographie
+          </TabsTrigger>
+          <TabsTrigger class="trigger" value="docs">
+            Docs
+          </TabsTrigger>  
+          <TabsTrigger class="trigger" value="dev">
+            Dev / Dev-Docs
+          </TabsTrigger>                              
+        </TabsList>
+        <TabsContent class="p-4" value="demo">
           <h2>DEMO</h2>
           <Prose>
             <li>Event-Cards</li>
             <li>Check-Out-Sektion</li>
             <li>Blog-Post</li>
           </Prose>
-        </Tab>
-        <Tab title="Farben">
-          <Heading is="h2" content="**Farben**Basispalette, Graustile, Brand+Primary+Secondary" />
-        </Tab>
-        <Tab title="Elemente">
+        </TabsContent>
+        <TabsContent class="p-4" value="colors">
+          <Columns>
+            <Column>
+              <Heading is="h2" content="Basisfarben & Graustile**Farbpalette**" />
+              <ColorPalette :colors="basisPalette" />
+            </Column>
+            <Column>
+              <Heading is="h2" content="Brand, Primary, Secondary**Theme-Farben**" />
+              <ColorPalette :colors="brandPalette" />
+            </Column>
+          </Columns>          
+          
+        </TabsContent>
+        <TabsContent class="p-4" value="elements">
           <Heading is="h2" content="**Elemente**Linien, Abstände, Ring etc." />
-        </Tab>
-        <Tab title="Typographie">
+        </TabsContent>                
+        <TabsContent class="p-4" value="typography">
           <Heading is="h2" content="**Typographie**Head-Font, Basis-Font, Fette, Range" />
           <Prose>
             <ul>
@@ -89,14 +132,15 @@ const NuxtLink = resolveComponent('NuxtLink')
               <li>basis-font als dropdown + basis-fette + range</li>                
             </ul>
           </Prose>
-        </Tab> 
-        <Tab title="Dokumentation">
+        </TabsContent>
+        <TabsContent class="p-4"  value="docs">
           <Heading is="h2" content="**Dokmentation**" />
-        </Tab>
-        <Tab title="Dev-Docs">
-          <Heading is="h2" content="**Dev-Docs**Linien, Abstände, Ring etc." />
-        </Tab>            
-      </Tabs>      
+        </TabsContent>
+        <TabsContent class="p-4" value="dev">
+          <Heading is="h2" content="**Dev-Docs**subline subline" />
+        </TabsContent>        
+      </TabsRoot>
+     
       <form @submit.prevent="handleLogin" class="flex flex-col gap-4 rounded-md border-neutral-200 md:border md:p-6">
         <label>
           <UiFormLabel>Layout</UiFormLabel>
@@ -141,3 +185,14 @@ const NuxtLink = resolveComponent('NuxtLink')
     </NuxtLayout>
   </div>
 </template>
+
+<style scoped>
+.trigger {
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+.trigger[data-state="active"] {
+  background-color: greenyellow
+}
+</style>
