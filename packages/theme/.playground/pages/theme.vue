@@ -2,7 +2,7 @@
 import { reactive, ref, resolveComponent } from 'vue'
 import { Button, CardHero, Columns, Column } from '@crearis/ui'
 import { TabsContent, TabsList, TabsRoot, TabsTrigger } from 'radix-vue'
-import type { PaletteColor } from '../utils/ColorSettings';
+import type { OklchColor } from '../utils/ColorSettings';
 import ColorPalette from '../components/ColorPalette.vue';
 
 definePageMeta({
@@ -16,13 +16,16 @@ const showTheme = (id) => {
 }
 
 
-const basisPalette = reactive<PaletteColor[]>([
-  {name: 'neon', hue: 104, scale: 0},
-  {name: 'lime', hue: 138, scale: 1},
-  {name: 'pink', hue: 4, scale: 3}])
+const basisColors = ref<OklchColor[]>([
+  {name: 'neon', hue: 104, scale: 0, greyval: 0},
+  {name: 'lime', hue: 138, scale: 1, greyval: 0},
+  {name: 'pink', hue: 4, scale: 3, greyval: 0}])
 
-const brandPalette = reactive<PaletteColor[]>([{name: 'primary', hue: 88, scale: 1},
-  {name: 'secondary', hue: 274, scale: 5}])
+const brandColors = ref<OklchColor[]>([{name: 'primary', hue: 88, scale: 1, greyval: 0},
+  {name: 'secondary', hue: 274, scale: 5, greyval: 0}])
+
+const neutralColors = ref<OklchColor[]>([{name: 'lines', hue: 88, scale: 1, greyval: 4},
+    {name: 'background', hue: 274, scale: 5, greyval: 4}])
 
 
 
@@ -112,17 +115,7 @@ const handleLogout = async () => {
           </Prose>
         </TabsContent>
         <TabsContent class="p-4" value="colors">
-          <Columns>
-            <Column>
-              <Heading is="h2" content="Basisfarben & Graustile**Farbpalette**" />
-              <ColorPalette :colors="basisPalette" />
-            </Column>
-            <Column>
-              <Heading is="h2" content="Brand, Primary, Secondary**Theme-Farben**" />
-              <ColorPalette :colors="brandPalette" />
-            </Column>
-          </Columns>          
-          
+          <ColorPalette v-model:neutral="neutralColors" v-model:basis="basisColors" v-model:brand="brandColors" />          
         </TabsContent>
         <TabsContent class="p-4" value="elements">
           <Heading is="h2" content="**Elemente**Linien, Abstände, Ring etc." />

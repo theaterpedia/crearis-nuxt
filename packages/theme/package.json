@@ -30,8 +30,7 @@
     "jw-paginate": "^1.0.4",
     "tabbable": "^6.1.1",
     "nuxt": "3.13.2",
-    "culori": "^4.0.1",
-    "simple-hue-picker": "^0.2"
+    "culori": "^4.0.1"
   },
   "devDependencies": {
     "prettier": "^3.3.0",
