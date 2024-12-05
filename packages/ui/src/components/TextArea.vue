@@ -153,7 +153,7 @@ onMounted(() => {
 .text-area-required .text-area-label label::after {
   content: '*';
   margin-left: 0.25em;
-  color: hsl(var(--color-destructive-base));
+  color: oklch(var(--color-destructive-base));
 }
 
 .text-area-group {
@@ -168,12 +168,12 @@ onMounted(() => {
   padding: 0.3125em 0.5em;
   overflow: hidden;
   resize: vertical;
-  background-color: hsl(var(--color-base));
-  border: 1px solid hsl(var(--color-input));
+  background-color: oklch(var(--color-base));
+  border: 1px solid oklch(var(--color-input));
   border-radius: calc(var(--radius) - 0.125rem);
   font-size: 1em;
   line-height: 1.25;
-  color: hsl(var(--color-contrast));
+  color: oklch(var(--color-contrast));
   white-space: nowrap;
   text-overflow: ellipsis;
   transition: var(--transition);
@@ -182,12 +182,12 @@ onMounted(() => {
 
 .text-area-has-error .text-area-control {
   --color-ring: var(--color-destructive-base);
-  border-color: hsl(var(--color-destructive-base));
+  border-color: oklch(var(--color-destructive-base));
 }
 
 .text-area-control:focus {
   border-color: transparent;
-  box-shadow: 0 0 0 0.125rem hsl(var(--color-ring));
+  box-shadow: 0 0 0 0.125rem oklch(var(--color-ring));
   outline: none;
 }
 
@@ -197,13 +197,13 @@ onMounted(() => {
 }
 
 .text-area-control::placeholder {
-  color: hsl(var(--color-contrast) / 40%);
+  color: oklch(var(--color-contrast) / 40%);
 }
 
 .text-area-error {
   margin-top: 0.375rem;
   font-size: 0.875em;
-  color: hsl(var(--color-destructive-base));
+  color: oklch(var(--color-destructive-base));
   font-weight: 500;
 }
 

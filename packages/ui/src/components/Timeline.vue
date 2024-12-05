@@ -15,7 +15,7 @@
   left: 50%;
   width: 1px;
   height: 100%;
-  background-color: hsl(var(--color-border));
+  background-color: oklch(var(--color-border));
 }
 
 .timeline :deep() > li {
@@ -27,7 +27,7 @@
   top: 50%;
   left: 50%;
   display: block;
-  background-color: hsl(var(--color-base));
+  background-color: oklch(var(--color-base));
   padding: 0.5rem;
   font-size: 0.875rem;
   font-weight: 600;
@@ -37,7 +37,7 @@
 .timeline :deep() > li > div {
   width: calc(50% - 3rem);
   padding: 1rem;
-  border: 1px solid hsl(var(--color-border));
+  border: 1px solid oklch(var(--color-border));
 }
 
 .timeline :deep() > li:nth-child(even) > div {

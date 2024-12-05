@@ -33,7 +33,7 @@
   min-width: 1rem;
   height: 1px;
   margin: 0 0.5rem;
-  background-color: hsl(var(--color-border));
+  background-color: oklch(var(--color-border));
 }
 
 .catalog .prose :deep() > ul > li > mark:first-child {

@@ -24,7 +24,7 @@
 
 .slide-inner {
   padding: 1.125rem; /* 18px */
-  background-color: hsl(var(--primary));
+  background-color: oklch(var(--primary));
   pointer-events: auto;
 }
 

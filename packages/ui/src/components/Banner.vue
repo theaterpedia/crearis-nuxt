@@ -36,22 +36,22 @@ defineProps({
   --selection: var(--color-secondary-base);
   --selection-foreground: var(--color-secondary-contrast);
   padding: 1.5rem;
-  background-color: hsl(var(--color-primary-base));
+  background-color: oklch(var(--color-primary-base));
 }
 
 .card {
   --selection: var(--color-primary-base);
   --selection-foreground: var(--color-primary-contrast);
   padding: 1.5rem;
-  background-color: hsl(var(--color-base));
+  background-color: oklch(var(--color-base));
 }
 
 .banner-transparent {
-  background-color: hsl(var(--primary) / 70%);
+  background-color: oklch(var(--primary) / 70%);
 }
 
 .card-transparent {
-  background-color: hsl(var(--color-base) / 70%);
+  background-color: oklch(var(--color-base) / 70%);
 }
 
 @media (max-width: 767px) {

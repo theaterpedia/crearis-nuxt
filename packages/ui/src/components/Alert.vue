@@ -61,7 +61,7 @@ defineProps({
   align-items: flex-start;
   width: 100%;
   min-height: 100vh;
-  background-color: hsl(var(--color-base));
+  background-color: oklch(var(--color-base));
 }
 
 .box-centered {

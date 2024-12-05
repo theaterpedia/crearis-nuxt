@@ -150,8 +150,8 @@ watch(
   width: 100vw;
   height: 2.75rem;
   padding: 0 1rem;
-  background-color: hsl(var(--color-card-base) / 48%);
-  color: hsl(var(--color-card-contrast));
+  background-color: oklch(var(--color-card-base) / 48%);
+  color: oklch(var(--color-card-contrast));
 }
 
 .sidebar-mobile-button {
@@ -210,7 +210,7 @@ watch(
 }
 
 .sidebar-search input::placeholder {
-  color: hsl(var(--color-dimmed));
+  color: oklch(var(--color-dimmed));
 }
 
 .sidebar-search svg {
@@ -231,7 +231,7 @@ watch(
 .sidebar-footer {
   margin-top: auto;
   padding-top: 2em;
-  color: hsl(var(--color-dimmed));
+  color: oklch(var(--color-dimmed));
   font-size: 0.875em;
   font-weight: 600;
   text-align: center;
@@ -243,7 +243,7 @@ watch(
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: hsl(var(--color-contrast) / 50%);
+  background-color: oklch(var(--color-contrast) / 50%);
   visibility: hidden;
   opacity: 0;
   transition: var(--transition);
@@ -266,7 +266,7 @@ watch(
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: hsl(var(--color-base));
+    background-color: oklch(var(--color-base));
     transition: var(--transition);
     transition-property: transform;
     transform: translate3d(-100%, 0, 0);

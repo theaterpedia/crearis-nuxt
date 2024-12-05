@@ -133,8 +133,8 @@ const mainMenu = useMainMenu()
   transform: translate3d(0, 0, 0); /* Fixes z-index in Safari */
   --color-base: var(--color-muted-base);
   --color-contrast: var(--color-card-contrast);
-  background-color: hsl(var(--color-muted-base));
-  color: hsl(var(--color-card-contrast));
+  background-color: oklch(var(--color-muted-base));
+  color: oklch(var(--color-card-contrast));
   width: 100%;
   max-width: 90rem; /* 1440px */
   margin-right: auto;
