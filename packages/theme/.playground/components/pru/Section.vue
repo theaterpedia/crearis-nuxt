@@ -4,7 +4,7 @@
       <Heading
         :content="heading"
         :is="is"
-        class="bg-primary-base theme-shadow py-2"
+        class="bg-primary theme-shadow py-2"
         style="max-width: 600px; margin-left: -44px; padding-left: 44px"
       ></Heading>
     </Container>

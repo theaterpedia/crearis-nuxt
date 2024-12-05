@@ -36,7 +36,7 @@ const y = ref(useWindowScroll().y)
           y <= scrollBreak && props.extended,
       },
       { 'md:-top-4 md:h-20': y > scrollBreak || !props.extended },
-      { 'bg-muted-base text-white': filled && (y > scrollBreak || !props.extended) },
+      { 'bg-muted text-white': filled && (y > scrollBreak || !props.extended) },
       { 'bg-white text-[#02C652]': !filled || (y <= scrollBreak && props.extended) },
     ]"
   >
@@ -72,7 +72,7 @@ const y = ref(useWindowScroll().y)
         </NuxtLink>
         <slot />
         <NuxtLink @click="toggleDark()">
-          <!-- SfIconCircle class="text-muted-base"/ -->
+          <!-- SfIconCircle class="text-muted"/ -->
         </NuxtLink>
       </nav>
     </div>

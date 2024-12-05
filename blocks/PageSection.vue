@@ -20,7 +20,7 @@
       <Heading
         :content="title"
         :is="`h${level ? level : 2}`"
-        class="bg-primary-base theme-shadow ml-[-2.75rem] max-w-[44rem] py-2 pl-11"
+        class="bg-primary theme-shadow ml-[-2.75rem] max-w-[44rem] py-2 pl-11"
         :class="imgTmp && isBackgroundImage ? 'mb-52' : ''"
       />
       <p v-if="description">

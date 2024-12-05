@@ -35,17 +35,17 @@ const textShadow = 'text-shadow: 0.2rem 0.2rem 0.3rem hsla(110, 10%, 0%, 0.8);'
           style="line-height: 0.25"
         >
           <strong>
-            <span class="text-accent-foreground">Theater</span>
-            <span class="text-primary-base">pedia</span>
+            <span class="text-accent-contrast">Theater</span>
+            <span class="text-primary">pedia</span>
           </strong>
           <span
             v-show="extended"
-            class="text-primary-base line-solid subline"
+            class="text-primary line-solid subline"
             style="margin-left: 0.4em; margin-top: -0.5em"
           >
             Theaterpädagogik
           </span>
-          <span v-show="extended" class="line-dashed subline text-accent-foreground">suchen und finden</span>
+          <span v-show="extended" class="line-dashed subline text-accent-contrast">suchen und finden</span>
         </h1>
       </Prose>
     </div>

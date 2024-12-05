@@ -51,13 +51,13 @@ onMounted(() => {
         <ColorControlCollection v-model="basisColors" />
         <p>Hintergründe & Graustile</p>
         <ColorControlCollection v-model="neutralColors" />
-        <div class='bg-muted-base flex h-6 mt-0'>
+        <div class='bg-muted flex h-6 mt-0'>
           <div class='min-w-24 mx-2'>Shades</div>
           <div class='grow px-2' v-for="shade, index in shades" :key="index">{{ shade }}</div>
         </div>
         <div style="margin-top: 4px" class='flex h-8 mt-0' v-for="{name, palette}, index in palettes" :key="index" >
           <div class='min-w-24 mx-2'>{{name}}</div>
-          <div class='grow' :class="{'text-accent-foreground': index > 6}" :style="`background-color: ${color}`" v-for="color, index in palette" :key="index"></div>
+          <div class='grow' :class="{'text-accent-contrast': index > 6}" :style="`background-color: ${color}`" v-for="color, index in palette" :key="index"></div>
         </div>
       </Column>
       <Column>
