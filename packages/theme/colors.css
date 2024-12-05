@@ -1,0 +1,22 @@
+:root {
+  --color-base: hsl(0 0% 95%);
+  --color-contrast: hsl(0 0% 0%);
+  --color-card-base: hsl(0 0% 100%);
+  --color-card-contrast: hsl(0 0% 0%);
+  --color-popover-base: hsl(0 0% 100%);
+  --color-popover-contrast: hsl(0 0% 0%);
+  --color-primary-base: hsl(56 100% 50%);
+  --color-primary-contrast: hsl(0 0% 0%);
+  --color-secondary-base: hsl(84 81% 44%);
+  --color-secondary-contrast: hsl(0 0% 100%);
+  --color-muted-base: hsl(0 0% 85%);
+  --color-muted-contrast: hsl(0 0% 20%);
+  --color-accent-base: hsl(0 0% 20%);
+  --color-accent-contrast: hsl(0 0% 100%);
+  --color-destructive-base: hsl(0 84.2% 60.2%);
+  --color-destructive-contrast: hsl(0 0% 100%);
+  --color-dimmed: hsl(0 0% 45%);
+  --color-border: hsl(210 8% 90.2%);
+  --color-input: hsl(0 0% 75%);
+  --color-ring: hsl(0 0% 0%);
+}

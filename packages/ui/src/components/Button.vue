@@ -60,21 +60,21 @@ defineProps({
 }
 
 .button-primary {
-  background-color: hsl(var(--primary-base));
-  color: hsl(var(--primary-foreground));
+  background-color: hsl(var(--color-primary-base));
+  color: hsl(var(--color-primary-contrast));
 }
 
 .button-primary:hover {
-  background-color: hsl(var(--primary-base) / 70%);
+  background-color: hsl(var(--color-primary-base) / 70%);
 }
 
 .button-plain {
-  background-color: hsl(var(--card-foreground));
-  color: hsl(var(--card-base));
+  background-color: hsl(var(--color-card-contrast));
+  color: hsl(var(--color-card-base));
 }
 
 .button-plain:hover {
-  background-color: hsl(var(--card-foreground) / 70%);
+  background-color: hsl(var(--color-card-contrast) / 70%);
 }
 
 .button-link {
@@ -82,7 +82,7 @@ defineProps({
 }
 
 .button-link:hover {
-  background-color: hsl(var(--card-foreground) / 30%);
+  background-color: hsl(var(--color-card-contrast) / 30%);
 }
 
 .button-small {

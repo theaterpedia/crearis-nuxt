@@ -73,26 +73,26 @@ defineProps({
 }
 
 .columns-default {
-  --background: var(--card-base);
-  --foreground: var(--card-foreground);
-  background-color: hsl(var(--card-base));
-  color: hsl(var(--card-foreground));
+  --color-base: var(--color-card-base);
+  --color-contrast: var(--color-card-contrast);
+  background-color: hsl(var(--color-card-base));
+  color: hsl(var(--color-card-contrast));
 }
 
 .columns-muted {
-  --background: var(--muted-base);
-  --foreground: var(--card-foreground);
-  background-color: hsl(var(--muted-base));
-  color: hsl(var(--card-foreground));
+  --color-base: var(--color-muted-base);
+  --color-contrast: var(--color-card-contrast);
+  background-color: hsl(var(--color-muted-base));
+  color: hsl(var(--color-card-contrast));
 }
 
 .columns-accent {
-  --background: var(--accent-base);
-  --foreground: var(--accent-foreground);
-  --muted-foreground: var(--accent-foreground);
-  --link: var(--primary-base);
-  background-color: hsl(var(--accent-base));
-  color: hsl(var(--accent-foreground));
+  --color-base: var(--color-accent-base);
+  --color-contrast: var(--color-accent-contrast);
+  --color-muted-contrast: var(--color-accent-contrast);
+  --link: var(--color-primary-base);
+  background-color: hsl(var(--color-accent-base));
+  color: hsl(var(--color-accent-contrast));
 }
 
 .columns-small {

@@ -33,17 +33,17 @@ defineProps({
 
 <style scoped>
 .banner {
-  --selection: var(--secondary-base);
-  --selection-foreground: var(--secondary-foreground);
+  --selection: var(--color-secondary-base);
+  --selection-foreground: var(--color-secondary-contrast);
   padding: 1.5rem;
-  background-color: hsl(var(--primary-base));
+  background-color: hsl(var(--color-primary-base));
 }
 
 .card {
-  --selection: var(--primary-base);
-  --selection-foreground: var(--primary-foreground);
+  --selection: var(--color-primary-base);
+  --selection-foreground: var(--color-primary-contrast);
   padding: 1.5rem;
-  background-color: hsl(var(--background));
+  background-color: hsl(var(--color-base));
 }
 
 .banner-transparent {
@@ -51,7 +51,7 @@ defineProps({
 }
 
 .card-transparent {
-  background-color: hsl(var(--background) / 70%);
+  background-color: hsl(var(--color-base) / 70%);
 }
 
 @media (max-width: 767px) {

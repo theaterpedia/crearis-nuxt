@@ -14,13 +14,13 @@ import Container from './Container.vue'
 
 <style scoped>
 .footer {
-  --background: var(--accent-base);
-  --foreground: var(--accent-foreground);
-  --muted-foreground: var(--accent-foreground);
-  --link: var(--primary-base);
+  --color-base: var(--color-accent-base);
+  --color-contrast: var(--color-accent-contrast);
+  --color-muted-contrast: var(--color-accent-contrast);
+  --link: var(--color-primary-base);
   width: 100%;
-  background-color: hsl(var(--accent-base));
-  color: hsl(var(--accent-foreground));
+  background-color: hsl(var(--color-accent-base));
+  color: hsl(var(--color-accent-contrast));
 }
 
 .footer-inner {

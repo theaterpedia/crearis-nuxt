@@ -14,7 +14,7 @@
  */
 
 .prose :where(p) {
-  color: hsl(var(--muted-foreground));
+  color: hsl(var(--color-muted-contrast));
   font-size: 1em;
   line-height: 1.15;
 }
@@ -24,7 +24,7 @@
  */
 
 .prose :where(h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6) {
-  color: hsl(var(--foreground));
+  color: hsl(var(--color-contrast));
   font-weight: 500;
 }
 
@@ -74,7 +74,7 @@
  */
 
 .prose :where(:not(:where(h1, h2, h3, h4, h5, h6)[id])) :where(a) {
-  color: hsl(var(--link, var(--secondary-base)));
+  color: hsl(var(--link, var(--color-secondary-base)));
   text-decoration: underline;
 }
 
@@ -88,7 +88,7 @@
 
 .prose > * + :where(ul, ol) {
   margin-top: 0.6em;
-  color: hsl(var(--muted-foreground));
+  color: hsl(var(--color-muted-contrast));
 }
 
 .prose :where(ul, ol) :where(ul, ol) {
@@ -111,7 +111,7 @@
   height: 0.1875rem;
   margin-top: -0.09375rem;
   border-radius: 50%;
-  background-color: hsl(var(--muted-foreground));
+  background-color: hsl(var(--color-muted-contrast));
 }
 
 /**
@@ -148,21 +148,21 @@
  * Colors
  */
 .prose :where(.primary) {
-  --foreground: var(--primary);
-  color: hsl(var(--primary-base));
+  --color-contrast: var(--primary);
+  color: hsl(var(--color-primary-base));
 }
 
 .prose :where(.secondary) {
-  --foreground: var(--secondary);
-  color: hsl(var(--secondary-base));
+  --color-contrast: var(--secondary);
+  color: hsl(var(--color-secondary-base));
 }
 
 .prose :where(.dimmed) {
-  --foreground: var(--dimmed);
-  color: hsl(var(--dimmed));
+  --color-contrast: var(--color-dimmed);
+  color: hsl(var(--color-dimmed));
 }
 
 .prose :where(strong) {
-  color: hsl(var(--foreground));
+  color: hsl(var(--color-contrast));
 }
 </style>

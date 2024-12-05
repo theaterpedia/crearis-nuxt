@@ -26,7 +26,7 @@ defineProps({
 }
 
 .form :where(fieldset legend span) {
-  color: hsl(var(--destructive-base));
+  color: hsl(var(--color-destructive-base));
 }
 
 .form > :where(fieldset):not(:first-child) {

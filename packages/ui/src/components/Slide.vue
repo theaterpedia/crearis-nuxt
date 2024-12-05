@@ -8,12 +8,12 @@
 
 <style scoped>
 .slide {
-  --background: var(--primary-base);
-  --foreground: var(--primary-foreground);
-  --muted-foreground: var(--primary-foreground);
-  --link: var(--primary-foreground);
-  --selection: var(--secondary-base);
-  --selection-foreground: var(--secondary-foreground);
+  --color-base: var(--color-primary-base);
+  --color-contrast: var(--color-primary-contrast);
+  --color-muted-contrast: var(--color-primary-contrast);
+  --link: var(--color-primary-contrast);
+  --selection: var(--color-secondary-base);
+  --selection-foreground: var(--color-secondary-contrast);
   width: 100%;
   padding: 0 4.5rem;
 }

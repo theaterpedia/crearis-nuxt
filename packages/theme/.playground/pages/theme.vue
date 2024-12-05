@@ -54,6 +54,21 @@ const brandColors = ref<OklchScale[]>([{name: 'primary', hue: 88, scale: 1, grey
 
 const neutralColors = ref<OklchScale[]>([{name: 'neutral', hue: 88, scale: 1, greyval: 4}])
 
+const colors = ref<OklchScale[]>([])
+const palettes = ref([])
+onMounted(() => {
+  colors.value.push(...neutralColors.value, ...basisColors.value, ...brandColors.value)
+  palettes.value = generateAllPalettes(colors.value)
+  watch([neutralColors, basisColors, brandColors], (newColors) => {
+    colors.value = []
+    colors.value.push(...neutralColors.value, ...basisColors.value, ...brandColors.value)
+    palettes.value = generateAllPalettes(colors.value)
+  })
+  /*
+  watch(palettes, (newPalettes) => {
+    emit('update:palettes', newPalettes)
+  })  */
+})
 
 
 const imgUrl = ref('https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg')

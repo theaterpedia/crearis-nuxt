@@ -152,12 +152,12 @@ const { headline, overline, subline, tags, shortcode } = props.heading ? extract
 }
 
 .bg-primary {
-  background-color: hsl(var(--primary-base));
+  background-color: hsl(var(--color-primary-base));
 }
 .bg-secondary {
-  background-color: hsl(var(--secondary-base));
+  background-color: hsl(var(--color-secondary-base));
 }
 .bg-muted {
-  background-color: hsl(var(--muted-base));
+  background-color: hsl(var(--color-muted-base));
 }
 </style>
