@@ -2,7 +2,7 @@
 import { reactive, ref, resolveComponent } from 'vue'
 import { Button, CardHero, Columns, Column } from '@crearis/ui'
 import { TabsContent, TabsList, TabsRoot, TabsTrigger } from 'radix-vue'
-import type { OklchColor } from '../utils/ColorSettings';
+import type { OklchScale, SfColorMapping } from '../utils/ColorSettings';
 import ColorPalette from '../components/ColorPalette.vue';
 
 definePageMeta({
@@ -15,17 +15,44 @@ const showTheme = (id) => {
   theme.value = themes[id]
 }
 
+const colormap = ref<SfColorMapping[]>([
+  {name: 'background', sfname: 'neutral', shade: 50},
+  {name: 'foreground', sfname: 'neutral', shade: 900},
+  {name: 'card-base', sfname: 'neutral', shade: 50},
+  {name: 'card-foreground', sfname: 'neutral', shade: 900},
+  {name: 'popover-base', sfname: 'neutral', shade: 50},
+  {name: 'popover-foreground', sfname: 'neutral', shade: 900},
+  {name: 'primary-base', sfname: 'primary', shade: 500},
+  {name: 'primary-foreground', sfname: 'neutral', shade: 900},
+  {name: 'secondary-base', sfname: 'secondary', shade: 500},
+  {name: 'secondary-foreground', sfname: 'neutral', shade: 900},
+  {name: 'muted-base', sfname: 'neutral', shade: 200},
+  {name: 'muted-foreground', sfname: 'neutral', shade: 700},  
+  {name: 'accent-base', sfname: 'neutral', shade: 700},
+  {name: 'accent-foreground', sfname: 'neutral', shade: 50},    
+  {name: 'constructive-base', sfname: 'positive', shade: 500},
+  {name: 'constructive-foreground', sfname: 'neutral', shade: 900},   
+  {name: 'destructive-base', sfname: 'negative', shade: 500},
+  {name: 'destructive-foreground', sfname: 'neutral', shade: 900},  
+  {name: 'instructive-base', sfname: 'warning', shade: 500},
+  {name: 'instructive-foreground', sfname: 'neutral', shade: 900},
+  // TODO: specify these from sf-colors
+  {name: 'dimmed', sfname: 'neutral', shade: 300},
+  {name: 'border', sfname: 'neutral', shade: 100},
+  {name: 'input', sfname: 'neutral', shade: 200},
+  {name: 'ring', sfname: 'neutral', shade: 900},
+])
 
-const basisColors = ref<OklchColor[]>([
-  {name: 'neon', hue: 104, scale: 0, greyval: 0},
-  {name: 'lime', hue: 138, scale: 1, greyval: 0},
-  {name: 'pink', hue: 4, scale: 3, greyval: 0}])
 
-const brandColors = ref<OklchColor[]>([{name: 'primary', hue: 88, scale: 1, greyval: 0},
+const basisColors = ref<OklchScale[]>([
+  {name: 'warning', hue: 104, scale: 0, greyval: 0},
+  {name: 'positive', hue: 138, scale: 1, greyval: 0},
+  {name: 'negative', hue: 4, scale: 3, greyval: 0}])
+
+const brandColors = ref<OklchScale[]>([{name: 'primary', hue: 88, scale: 1, greyval: 0},
   {name: 'secondary', hue: 274, scale: 5, greyval: 0}])
 
-const neutralColors = ref<OklchColor[]>([{name: 'lines', hue: 88, scale: 1, greyval: 4},
-    {name: 'background', hue: 274, scale: 5, greyval: 4}])
+const neutralColors = ref<OklchScale[]>([{name: 'neutral', hue: 88, scale: 1, greyval: 4}])
 
 
 
@@ -115,7 +142,7 @@ const handleLogout = async () => {
           </Prose>
         </TabsContent>
         <TabsContent class="p-4" value="colors">
-          <ColorPalette v-model:neutral="neutralColors" v-model:basis="basisColors" v-model:brand="brandColors" />          
+          <ColorPalette v-model:neutral="neutralColors" v-model:basis="basisColors" v-model:brand="brandColors" v-model:colormap="colormap" />          
         </TabsContent>
         <TabsContent class="p-4" value="elements">
           <Heading is="h2" content="**Elemente**Linien, Abstände, Ring etc." />

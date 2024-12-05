@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { should } from 'vitest';
-import type { OklchColor } from '../utils/ColorSettings'
+import type { OklchScale } from '../utils/ColorSettings'
 import { onMounted, PropType } from 'vue'
 
 defineProps({
@@ -13,13 +13,13 @@ defineProps({
   },  
 })
 
-const colors = defineModel<OklchColor[]>({
-  type: Array as PropType<OklchColor[]>,
+const colors = defineModel<OklchScale[]>({
+  type: Array as PropType<OklchScale[]>,
   default: [],
 })
 
 
-const updateColor = (color: OklchColor) => {
+const updateColor = (color: OklchScale) => {
   const index = colors.value.findIndex((c) => c.name === color.name)
   if (index === -1) return
   const newColors = [...colors.value]

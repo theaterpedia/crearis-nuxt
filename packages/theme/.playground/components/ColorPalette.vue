@@ -1,22 +1,28 @@
 <script setup lang="ts">
-import type { OklchColor, Palette } from '../utils/ColorSettings'
+import type { OklchScale, SfColorMapping } from '../utils/ColorSettings'
 import { onMounted, PropType, ref, watch } from 'vue'
-import { generateAllPalettes } from '../utils/ColorSettings';
+import { generateAllPalettes, shades } from '../utils/ColorSettings';
 
-const neutralColors = defineModel<OklchColor[]>('neutral', {
-  type: Array as PropType<OklchColor[]>,
+const brandColors = defineModel<OklchScale[]>('brand', {
+  type: Array as PropType<OklchScale[]>,
   required: true
 })
-const basisColors = defineModel<OklchColor[]>('basis', {
-  type: Array as PropType<OklchColor[]>,
+const basisColors = defineModel<OklchScale[]>('basis', {
+  type: Array as PropType<OklchScale[]>,
     required: true
 })
-const brandColors = defineModel<OklchColor[]>('brand', {
-  type: Array as PropType<OklchColor[]>,
+const neutralColors = defineModel<OklchScale[]>('neutral', {
+  type: Array as PropType<OklchScale[]>,
   required: true
 })
 
-const colors = ref<OklchColor[]>([])
+
+const colormap = defineModel<SfColorMapping[]>('colormap', {
+  type: Array as PropType<SfColorMapping[]>,
+  required: true
+})
+
+const colors = ref<OklchScale[]>([])
 
 const palettes = ref([])
 onMounted(() => {
@@ -39,18 +45,28 @@ onMounted(() => {
   <div class="color-palette">
     <Columns>
       <Column>
-        <Heading is="h3" content="**Systempalette** Hintergründe & Graustile" />
-        <ColorControlCollection showHead v-model="neutralColors" />
-        <Heading is="h3" content="**Basispalette** Basisfarben & Post-Its" />
-        <ColorControlCollection v-model="basisColors" />
         <Heading is="h3" content="**Theme-Farben** Brand, Primary, Secondary" />
-        <ColorControlCollection v-model="brandColors" />        
+        <ColorControlCollection showHead v-model="brandColors" />
+        <p>Post-Its & Generalfarben</p>
+        <ColorControlCollection v-model="basisColors" />
+        <p>Hintergründe & Graustile</p>
+        <ColorControlCollection v-model="neutralColors" />
+        <div class='bg-muted-base flex h-6 mt-0'>
+          <div class='min-w-24 mx-2'>Shades</div>
+          <div class='grow px-2' v-for="shade, index in shades" :key="index">{{ shade }}</div>
+        </div>
+        <div style="margin-top: 4px" class='flex h-8 mt-0' v-for="{name, palette}, index in palettes" :key="index" >
+          <div class='min-w-24 mx-2'>{{name}}</div>
+          <div class='grow' :class="{'text-accent-foreground': index > 6}" :style="`background-color: ${color}`" v-for="color, index in palette" :key="index"></div>
+        </div>
       </Column>
       <Column>
-        <div class='flex h-8' v-for="{name, palette} in palettes">
-          <div class='w-full mr-4'>{{name}}</div>
-          <div class='w-full grow' :style="`background-color: ${color}`" v-for="color, index in palette" :key="index"></div>
-        </div>
+
+        <ColorMapperCollection v-model="colormap" />   
+        <template style="margin-top: 4px" class='flex h-8 mt-0' v-for="{name, palette}, index in palettes" :key="index">
+          <p class="text-sm font-thin" v-for="color, index in palette" :key="index">--color-{{ name }}-{{ shades[index] }}: {{ color }}</p>
+        </template>
+
       </Column>
     </Columns>  
   </div>

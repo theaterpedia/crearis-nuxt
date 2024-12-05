@@ -1,11 +1,17 @@
 import type { MaybeRef } from '@vueuse/core'
 import { toGamut, differenceEuclidean, formatCss, converter } from 'culori'
 
-export interface OklchColor {
+export interface OklchScale {
   name: String
   hue: Number
   scale: 0 | 1 | 2 | 3 | 4 | 5
   greyval: 0 | 1 | 2 | 3 | 4
+}
+
+export interface SfColorMapping {
+  name: String
+  sfname: String
+  shade: Number
 }
 
 export interface Palette {
@@ -14,7 +20,7 @@ export interface Palette {
 }
 
 // see  https://stackblitz.com/edit/vitejs-vite-ncyeyc
-const shades = [50, ...Array.from({ length: 9 }).map((_, i) => (i + 1) * 100), 950]
+export const shades = [50, ...Array.from({ length: 9 }).map((_, i) => (i + 1) * 100), 950]
 
 const grey = [0.4, 0.2, 0.1, 0.05, 0.025]
 
@@ -27,14 +33,14 @@ const lightness = [
   [82.67, 74.22, 64.78, 57.33, 46.89, 39.44, 32, 23.78, 16, 12, 8],
 ]
 
-const getCssColor = (i, hue, scale, greyval) => {
+const getCssColor = (shade, i, hue, scale, greyval) => {
   let oklch = converter('oklch')
   let color = 'oklch(' + lightness[scale][i] + '% ' + grey[greyval] + ' ' + hue + ')'
   return formatCss(oklch(toGamut('p3', 'oklch', differenceEuclidean('oklch'), 0)(color)))
 }
 
 function calculatePalette(hue, scale, greyval) {
-  return shades.map((_, i) => getCssColor(i, hue, scale, greyval))
+  return shades.map((shade, i) => getCssColor(shade, i, hue, scale, greyval))
 }
 
 export function generateAllPalettes(colors) {
