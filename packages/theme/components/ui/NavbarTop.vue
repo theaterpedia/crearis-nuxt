@@ -37,7 +37,7 @@ const y = ref(useWindowScroll().y)
       },
       { 'md:-top-4 md:h-20': y > scrollBreak || !props.extended },
       { 'bg-muted text-white': filled && (y > scrollBreak || !props.extended) },
-      { 'bg-white text-[#02C652]': !filled || (y <= scrollBreak && props.extended) },
+      { 'bg-white text-primary': !filled || (y <= scrollBreak && props.extended) },
     ]"
   >
     <div
@@ -58,7 +58,7 @@ const y = ref(useWindowScroll().y)
         class="flex-nowrap items-center justify-end gap-x-4 md:ml-10 lg:flex"
         :class="[
           { 'text-white': filled && !(y <= scrollBreak && props.extended) },
-          { 'text-primary-400 dark:text-primary-400': !filled || (y <= scrollBreak && props.extended) },
+          { 'text-primary': !filled || (y <= scrollBreak && props.extended) },
           { hidden: hideLinksOnMobile },
         ]"
       >

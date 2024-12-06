@@ -231,6 +231,6 @@ const handleLogout = async () => {
   cursor: pointer;
 }
 .trigger[data-state="active"] {
-  background-color: greenyellow
+  background-color:oklch(var(--color-primary-base))
 }
 </style>
