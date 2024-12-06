@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { reactive, ref, resolveComponent } from 'vue'
-import { Button, CardHero, Columns, Column } from '@crearis/ui'
+import { ref, resolveComponent } from 'vue'
+import { Button, CardHero } from '@crearis/ui'
 import { TabsContent, TabsList, TabsRoot, TabsTrigger } from 'radix-vue'
 import type { OklchScale, SfColorMapping } from '../utils/ColorSettings'
 import ColorPalette from '../components/ColorPalette.vue'
@@ -125,9 +125,9 @@ const handleLogout = async () => {
           imgTmpAlignX="cover"
           imgTmpAlignY="top"
         >
-          <component is="Banner">
+          <banner transparent>
             <Heading :content="theme.heading" is="h2" />
-          </component>
+          </banner>
         </Hero>
       </template>
       <CardsGallery>

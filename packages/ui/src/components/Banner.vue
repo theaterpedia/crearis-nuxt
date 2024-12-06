@@ -2,8 +2,7 @@
   <div
     :class="{
       'banner': !card,
-      'banner-transparent': transparent && !card,
-      'card-transparent': transparent && card,
+      'transparent': transparent,
       'card': card,
     }"
   >
@@ -39,6 +38,10 @@ defineProps({
   background-color: oklch(var(--color-primary-base));
 }
 
+.banner.transparent {
+  background-color: oklch(var(--color-primary-base) / 70%);
+}
+
 .card {
   --selection: var(--color-primary-base);
   --selection-foreground: var(--color-primary-contrast);
@@ -46,11 +49,7 @@ defineProps({
   background-color: oklch(var(--color-base));
 }
 
-.banner-transparent {
-  background-color: oklch(var(--primary) / 70%);
-}
-
-.card-transparent {
+.card.transparent {
   background-color: oklch(var(--color-base) / 70%);
 }
 

@@ -78,7 +78,7 @@ defineProps({
 }
 
 .button-link {
-  color: oklch(var(--primary));
+  color: oklch(var(--color-primary-base));
 }
 
 .button-link:hover {

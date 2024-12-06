@@ -6,7 +6,6 @@
     :shortcode="shortcode"
     :subline="subline"
     :tags="tags"
-    class="bg-primary"
     :style="
       $viewport.isLessThan('tablet')
         ? is === 'h1'

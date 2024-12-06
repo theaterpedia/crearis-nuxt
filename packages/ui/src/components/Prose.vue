@@ -148,7 +148,7 @@
  * Colors
  */
 .prose :where(.primary) {
-  --color-contrast: var(--primary);
+  --color-contrast: var(--color-primary-base);
   color: oklch(var(--color-primary-base));
 }
 

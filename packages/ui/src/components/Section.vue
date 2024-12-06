@@ -66,7 +66,7 @@ defineProps({
   --color-base: var(--color-accent-base);
   --color-contrast: var(--color-accent-contrast);
   --color-muted-contrast: var(--color-accent-contrast);
-  --link: var(--primary);
+  --link: var(--color-primary-base);
   background-color: oklch(var(--color-accent-base));
   color: oklch(var(--color-accent-contrast));
 }
