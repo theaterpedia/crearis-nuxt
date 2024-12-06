@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { SfColorMapping } from '../utils/ColorSettings'
+import type { SfColorMapping } from '@crearis/theme/utils/colorSettings'
 import { PropType } from 'vue'
 
 const colormap = defineModel<SfColorMapping[]>({

@@ -2,7 +2,7 @@
 import { ref, resolveComponent } from 'vue'
 import { Button, CardHero } from '@crearis/ui'
 import { TabsContent, TabsList, TabsRoot, TabsTrigger } from 'radix-vue'
-import type { OklchScale, SfColorMapping } from '../utils/ColorSettings'
+import type { OklchScale, SfColorMapping } from '@crearis/theme/utils/colorSettings'
 import ColorPalette from '../components/ColorPalette.vue'
 
 definePageMeta({

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import type { OklchScale, SfColorMapping } from '../utils/ColorSettings'
+import type { OklchScale, SfColorMapping } from '@crearis/theme/utils/colorSettings'
 import { onMounted, PropType, ref, watch } from 'vue'
-import { generateAllPalettes, shades } from '../utils/ColorSettings'
+import { generateAllPalettes, shades } from '@crearis/theme/utils/colorSettings'
 
 const brandColors = defineModel<OklchScale[]>('brand', {
   type: Array as PropType<OklchScale[]>,

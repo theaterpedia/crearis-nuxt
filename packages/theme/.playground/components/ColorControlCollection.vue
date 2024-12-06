@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { should } from 'vitest'
-import type { OklchScale } from '../utils/ColorSettings'
+import type { OklchScale } from '@crearis/theme/utils/colorSettings'
 import { onMounted, PropType } from 'vue'
 
 defineProps({

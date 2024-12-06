@@ -1,5 +1,5 @@
 import defaultTheme from 'tailwindcss/defaultTheme'
-import {colorUtilities, colorUtitilies, colorVars} from './colors'
+import {colorUtilities, colorVars} from './utils/colors'
 import peerNextPlugin from '@storefront-ui/tw-plugin-peer-next'
 import tailwindCssVariables from '@mertasan/tailwindcss-variables'
 

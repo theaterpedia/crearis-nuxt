@@ -1,3 +1,5 @@
+import type { OklchScale, SfColorMapping } from '@crearis/theme/utils/colorSettings'
+
 export const colorVars = {
   'base': '96.19% 0 0',
   'contrast': '0% 0 0',
