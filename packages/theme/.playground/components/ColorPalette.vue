@@ -66,16 +66,6 @@ onMounted(() => {
       </Column>
       <Column>
         <ColorMapperCollection v-model="colormap" />
-        <template
-          v-for="({ name, palette }, index) in palettes"
-          :key="index"
-          class="mt-0 flex h-8"
-          style="margin-top: 4px"
-        >
-          <p v-for="(color, index) in palette" :key="index" class="text-sm font-thin">
-            --color-{{ name }}-{{ shades[index] }}: {{ color }}
-          </p>
-        </template>
       </Column>
     </Columns>
   </div>
