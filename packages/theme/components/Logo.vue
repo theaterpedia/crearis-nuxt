@@ -80,7 +80,7 @@ const textShadow = 'text-shadow: 0.2rem 0.2rem 0.3rem hsla(110, 10%, 0%, 0.8);'
     overflow-y: none;
     color: rgba(0, 0, 0, 0);
     text-shadow: none;
-    text-decoration: overline dashed 2px oklch(var(--color-primary-base)) ;
+    text-decoration: overline dashed 2px oklch(var(--color-primary-base));
   }
 }
 </style>

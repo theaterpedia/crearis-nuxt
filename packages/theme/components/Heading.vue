@@ -51,9 +51,10 @@ const tags = computed(() => heading.value.tags)
 const shortcode = computed(() => heading.value.shortcode)
 const headline = computed(() => heading.value.headline)
 
-watch(() => props.content, () => {
-  heading.value = extractHeading(props.content)
-})
-
+watch(
+  () => props.content,
+  () => {
+    heading.value = extractHeading(props.content)
+  },
+)
 </script>
-

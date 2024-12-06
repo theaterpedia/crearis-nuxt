@@ -2,57 +2,78 @@
 import { reactive, ref, resolveComponent } from 'vue'
 import { Button, CardHero, Columns, Column } from '@crearis/ui'
 import { TabsContent, TabsList, TabsRoot, TabsTrigger } from 'radix-vue'
-import type { OklchScale, SfColorMapping } from '../utils/ColorSettings';
-import ColorPalette from '../components/ColorPalette.vue';
+import type { OklchScale, SfColorMapping } from '../utils/ColorSettings'
+import ColorPalette from '../components/ColorPalette.vue'
 
 definePageMeta({
   layout: false,
 })
 
-const themes = [{ id: 0, heading: "**Theme 0**Feature, Feature, Feature", imgUrl: "https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg" }, { id: 1, heading: "**Theme 1**Feature, Feature, Feature", imgUrl: "https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg" }, { id: 2, heading: "**Theme 2**Feature, Feature, Feature", imgUrl: "https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg" }]
+const themes = [
+  {
+    id: 0,
+    heading: '**Theme 0**Feature, Feature, Feature',
+    imgUrl:
+      'https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg',
+  },
+  {
+    id: 1,
+    heading: '**Theme 1**Feature, Feature, Feature',
+    imgUrl:
+      'https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg',
+  },
+  {
+    id: 2,
+    heading: '**Theme 2**Feature, Feature, Feature',
+    imgUrl:
+      'https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg',
+  },
+]
 const theme = ref(themes[0])
 const showTheme = (id) => {
   theme.value = themes[id]
 }
 
 const colormap = ref<SfColorMapping[]>([
-  {name: 'background', sfname: 'neutral', shade: 50},
-  {name: 'foreground', sfname: 'neutral', shade: 900},
-  {name: 'card-base', sfname: 'neutral', shade: 50},
-  {name: 'card-contrast', sfname: 'neutral', shade: 900},
-  {name: 'popover-base', sfname: 'neutral', shade: 50},
-  {name: 'popover-contrast', sfname: 'neutral', shade: 900},
-  {name: 'primary-base', sfname: 'primary', shade: 500},
-  {name: 'primary-contrast', sfname: 'neutral', shade: 900},
-  {name: 'secondary-base', sfname: 'secondary', shade: 500},
-  {name: 'secondary-contrast', sfname: 'neutral', shade: 900},
-  {name: 'muted-base', sfname: 'neutral', shade: 200},
-  {name: 'muted-contrast', sfname: 'neutral', shade: 700},  
-  {name: 'accent-base', sfname: 'neutral', shade: 700},
-  {name: 'accent-contrast', sfname: 'neutral', shade: 50},    
-  {name: 'constructive-base', sfname: 'positive', shade: 500},
-  {name: 'constructive-foreground', sfname: 'neutral', shade: 900},   
-  {name: 'destructive-base', sfname: 'negative', shade: 500},
-  {name: 'destructive-contrast', sfname: 'neutral', shade: 900},  
-  {name: 'instructive-base', sfname: 'warning', shade: 500},
-  {name: 'instructive-foreground', sfname: 'neutral', shade: 900},
+  { name: 'background', sfname: 'neutral', shade: 50 },
+  { name: 'foreground', sfname: 'neutral', shade: 900 },
+  { name: 'card-base', sfname: 'neutral', shade: 50 },
+  { name: 'card-contrast', sfname: 'neutral', shade: 900 },
+  { name: 'popover-base', sfname: 'neutral', shade: 50 },
+  { name: 'popover-contrast', sfname: 'neutral', shade: 900 },
+  { name: 'primary-base', sfname: 'primary', shade: 500 },
+  { name: 'primary-contrast', sfname: 'neutral', shade: 900 },
+  { name: 'secondary-base', sfname: 'secondary', shade: 500 },
+  { name: 'secondary-contrast', sfname: 'neutral', shade: 900 },
+  { name: 'muted-base', sfname: 'neutral', shade: 200 },
+  { name: 'muted-contrast', sfname: 'neutral', shade: 700 },
+  { name: 'accent-base', sfname: 'neutral', shade: 700 },
+  { name: 'accent-contrast', sfname: 'neutral', shade: 50 },
+  { name: 'constructive-base', sfname: 'positive', shade: 500 },
+  { name: 'constructive-foreground', sfname: 'neutral', shade: 900 },
+  { name: 'destructive-base', sfname: 'negative', shade: 500 },
+  { name: 'destructive-contrast', sfname: 'neutral', shade: 900 },
+  { name: 'instructive-base', sfname: 'warning', shade: 500 },
+  { name: 'instructive-foreground', sfname: 'neutral', shade: 900 },
   // TODO: specify these from sf-colors
-  {name: 'dimmed', sfname: 'neutral', shade: 300},
-  {name: 'border', sfname: 'neutral', shade: 100},
-  {name: 'input', sfname: 'neutral', shade: 200},
-  {name: 'ring', sfname: 'neutral', shade: 900},
+  { name: 'dimmed', sfname: 'neutral', shade: 300 },
+  { name: 'border', sfname: 'neutral', shade: 100 },
+  { name: 'input', sfname: 'neutral', shade: 200 },
+  { name: 'ring', sfname: 'neutral', shade: 900 },
 ])
 
-
 const basisColors = ref<OklchScale[]>([
-  {name: 'warning', hue: 104, scale: 0, greyval: 0},
-  {name: 'positive', hue: 138, scale: 1, greyval: 0},
-  {name: 'negative', hue: 4, scale: 3, greyval: 0}])
+  { name: 'warning', hue: 104, scale: 0, greyval: 0 },
+  { name: 'positive', hue: 138, scale: 1, greyval: 0 },
+  { name: 'negative', hue: 4, scale: 3, greyval: 0 },
+])
 
-const brandColors = ref<OklchScale[]>([{name: 'primary', hue: 88, scale: 1, greyval: 0},
-  {name: 'secondary', hue: 274, scale: 5, greyval: 0}])
+const brandColors = ref<OklchScale[]>([
+  { name: 'primary', hue: 88, scale: 1, greyval: 0 },
+  { name: 'secondary', hue: 274, scale: 5, greyval: 0 },
+])
 
-const neutralColors = ref<OklchScale[]>([{name: 'neutral', hue: 88, scale: 1, greyval: 4}])
+const neutralColors = ref<OklchScale[]>([{ name: 'neutral', hue: 88, scale: 1, greyval: 4 }])
 
 const colors = ref<OklchScale[]>([])
 const palettes = ref([])
@@ -70,14 +91,15 @@ onMounted(() => {
   })  */
 })
 
-
-const imgUrl = ref('https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg')
+const imgUrl = ref(
+  'https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg',
+)
 
 const NuxtLink = resolveComponent('NuxtLink')
 
 // BEGIN: not used
-const email = "email"
-const side = ref("side")
+const email = 'email'
+const side = ref('side')
 const isLoading = false
 const isAuthenticated = false
 const handleLogin = async () => {
@@ -86,7 +108,7 @@ const handleLogin = async () => {
 
 const handleLogout = async () => {
   /* await logout() */
-} 
+}
 // END: not used
 </script>
 
@@ -95,60 +117,46 @@ const handleLogout = async () => {
     <NuxtLayout name="default">
       <template #header>
         <Hero
-          contentType="banner"
-          contentWidth="short"
-          imgTmpAlignY="top"
-          imgTmpAlignX="cover"
-          heightTmp="small"
           :imgTmp="imgUrl"
           :overlay="getoverlay('left-bottom', 0.5)"
-        >
-          <component is="Banner">
-            <Heading is="h2" :content="theme.heading"/>
-          </component>
-        </Hero> 
-      </template>
-      <CardsGallery>
-        <CardHero v-for="theme in themes" :key="theme.id"
           contentType="banner"
           contentWidth="short"
-          contentAlignY="bottom"
-          imgTmpAlignY="top"
+          heightTmp="small"
           imgTmpAlignX="cover"
-          heightTmp="mini"
+          imgTmpAlignY="top"
+        >
+          <component is="Banner">
+            <Heading :content="theme.heading" is="h2" />
+          </component>
+        </Hero>
+      </template>
+      <CardsGallery>
+        <CardHero
+          v-for="theme in themes"
           :imgTmp="theme.imgUrl"
+          :key="theme.id"
           :overlay="getoverlay('left-bottom', 0.5)"
-          >
-          <Heading class="p-4" :content=theme.heading is="h3" />
-          <Button @click="showTheme(theme.id)" variant="primary" size="small">Vorschau</Button>
+          contentAlignY="bottom"
+          contentType="banner"
+          contentWidth="short"
+          heightTmp="mini"
+          imgTmpAlignX="cover"
+          imgTmpAlignY="top"
+        >
+          <Heading :content="theme.heading" is="h3" class="p-4" />
+          <Button @click="showTheme(theme.id)" size="small" variant="primary">Vorschau</Button>
         </CardHero>
-                    
       </CardsGallery>
-      <TabsRoot
-        default-value="tab1"
-        orientation="vertical"
-      >
-        <TabsList class="gap-4" aria-label="tabs example">
-          <TabsTrigger class="trigger" value="demo">
-            Demo
-          </TabsTrigger>
-          <TabsTrigger class="trigger" value="colors">
-            Colors
-          </TabsTrigger>
-          <TabsTrigger class="trigger" value="elements">
-            Elemente
-          </TabsTrigger>
-          <TabsTrigger class="trigger" value="typography">
-            Typographie
-          </TabsTrigger>
-          <TabsTrigger class="trigger" value="docs">
-            Docs
-          </TabsTrigger>  
-          <TabsTrigger class="trigger" value="dev">
-            Dev / Dev-Docs
-          </TabsTrigger>                              
+      <TabsRoot default-value="tab1" orientation="vertical">
+        <TabsList aria-label="tabs example" class="gap-4">
+          <TabsTrigger value="demo" class="trigger">Demo</TabsTrigger>
+          <TabsTrigger value="colors" class="trigger">Colors</TabsTrigger>
+          <TabsTrigger value="elements" class="trigger">Elemente</TabsTrigger>
+          <TabsTrigger value="typography" class="trigger">Typographie</TabsTrigger>
+          <TabsTrigger value="docs" class="trigger">Docs</TabsTrigger>
+          <TabsTrigger value="dev" class="trigger">Dev / Dev-Docs</TabsTrigger>
         </TabsList>
-        <TabsContent class="p-4" value="demo">
+        <TabsContent value="demo" class="p-4">
           <h2>DEMO</h2>
           <Prose>
             <li>Event-Cards</li>
@@ -156,29 +164,34 @@ const handleLogout = async () => {
             <li>Blog-Post</li>
           </Prose>
         </TabsContent>
-        <TabsContent class="p-4" value="colors">
-          <ColorPalette v-model:neutral="neutralColors" v-model:basis="basisColors" v-model:brand="brandColors" v-model:colormap="colormap" />          
+        <TabsContent value="colors" class="p-4">
+          <ColorPalette
+            v-model:basis="basisColors"
+            v-model:brand="brandColors"
+            v-model:colormap="colormap"
+            v-model:neutral="neutralColors"
+          />
         </TabsContent>
-        <TabsContent class="p-4" value="elements">
-          <Heading is="h2" content="**Elemente**Linien, Abstände, Ring etc." />
-        </TabsContent>                
-        <TabsContent class="p-4" value="typography">
-          <Heading is="h2" content="**Typographie**Head-Font, Basis-Font, Fette, Range" />
+        <TabsContent value="elements" class="p-4">
+          <Heading content="**Elemente**Linien, Abstände, Ring etc." is="h2" />
+        </TabsContent>
+        <TabsContent value="typography" class="p-4">
+          <Heading content="**Typographie**Head-Font, Basis-Font, Fette, Range" is="h2" />
           <Prose>
             <ul>
               <li>head-font als dropdown + basis-fette + range</li>
-              <li>basis-font als dropdown + basis-fette + range</li>                
+              <li>basis-font als dropdown + basis-fette + range</li>
             </ul>
           </Prose>
         </TabsContent>
-        <TabsContent class="p-4"  value="docs">
-          <Heading is="h2" content="**Dokmentation**" />
+        <TabsContent value="docs" class="p-4">
+          <Heading content="**Dokmentation**" is="h2" />
         </TabsContent>
-        <TabsContent class="p-4" value="dev">
-          <Heading is="h2" content="**Dev-Docs**subline subline" />
-        </TabsContent>        
+        <TabsContent value="dev" class="p-4">
+          <Heading content="**Dev-Docs**subline subline" is="h2" />
+        </TabsContent>
       </TabsRoot>
-     
+
       <form @submit.prevent="handleLogin" class="flex flex-col gap-4 rounded-md border-neutral-200 md:border md:p-6">
         <label>
           <UiFormLabel>Layout</UiFormLabel>
@@ -230,7 +243,7 @@ const handleLogout = async () => {
   font-weight: 500;
   cursor: pointer;
 }
-.trigger[data-state="active"] {
-  background-color:oklch(var(--color-primary-base))
+.trigger[data-state='active'] {
+  background-color: oklch(var(--color-primary-base));
 }
 </style>

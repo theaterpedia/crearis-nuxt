@@ -1,6 +1,6 @@
 <template>
   <div>
-    <slot name="title"/>
+    <slot name="title" />
     <br v-if="$slots.default" />
     <Columns gap="small" wrap>
       <slot />
@@ -52,5 +52,4 @@ const props = defineProps({
     required: false,
   },
 })
-
 </script>

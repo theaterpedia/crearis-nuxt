@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type { SfColorMapping } from '../utils/ColorSettings'
 import { PropType } from 'vue'
 
@@ -14,20 +14,19 @@ const updateMapping = (color: SfColorMapping) => {
   newMap[index] = color
   colormap.value = newMap
 }
-
 </script>
 
 <template>
   <div class="color-palette__colors">
     <ColorMapper
-      v-for="mapping, index in colormap"
+      v-for="(mapping, index) in colormap"
       :key="index"
-      :showHead="index === 0"
       :name="mapping.name"
       :sfname="mapping.sfname"
       :shade="mapping.shade"
-      @update:sfname="updateMapping({name: mapping.name, sfname: $event, shade: mapping.shade})"
-      @update:shade="updateMapping({name: mapping.name, sfname: mapping.sfname, shade: $event})"
+      :showHead="index === 0"
+      @update:sfname="updateMapping({ name: mapping.name, sfname: $event, shade: mapping.shade })"
+      @update:shade="updateMapping({ name: mapping.name, sfname: mapping.sfname, shade: $event })"
     />
   </div>
 </template>

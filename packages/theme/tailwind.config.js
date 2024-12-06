@@ -59,8 +59,8 @@ export default {
       DEFAULT: 'var(--radius)',
     },
     colors: {
-      primary: {
-        DEFAULT: 'oklch(var(--color-primary-base) / <alpha-value>)', 
+      'primary': {
+        DEFAULT: 'oklch(var(--color-primary-base) / <alpha-value>)',
         400: 'oklch(var(--color-primary-base) / <alpha-value>)',
         contrast: 'oklch(var(--color-primary-contrast) / <alpha-value>)',
       },

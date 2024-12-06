@@ -37,7 +37,7 @@ const y = ref(useWindowScroll().y)
       },
       { 'md:-top-4 md:h-20': y > scrollBreak || !props.extended },
       { 'bg-muted text-white': filled && (y > scrollBreak || !props.extended) },
-      { 'bg-white text-primary': !filled || (y <= scrollBreak && props.extended) },
+      { 'text-primary bg-white': !filled || (y <= scrollBreak && props.extended) },
     ]"
   >
     <div
