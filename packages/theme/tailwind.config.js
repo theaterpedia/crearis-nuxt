@@ -1,13 +1,20 @@
 import defaultTheme from 'tailwindcss/defaultTheme'
+import {colorUtilities, colorUtitilies, colorVars} from './colors'
 import peerNextPlugin from '@storefront-ui/tw-plugin-peer-next'
+import tailwindCssVariables from '@mertasan/tailwindcss-variables'
 
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['blocks/**/*.vue', 'components/**/*.vue'],
   future: {
     hoverOnlyWhenSupported: true,
-  },  
+  },
   theme: {
+    variables: {
+      DEFAULT: {
+        color: colorVars
+      },
+    },
     extend: {
       fontFamily: {
         body: ['MonaspaceNeon', ...defaultTheme.fontFamily.sans], // Pruvious: Lato
@@ -15,7 +22,7 @@ export default {
         mono: ['MonaspaceNeon', ...defaultTheme.fontFamily.serif],
         headings: ['MonaspaceNeon', ...defaultTheme.fontFamily.mono], // Pruvious: Poppins
       },
-      //crearis-ui      
+      //crearis-ui
       screens: {
         xxl: '1440px',
         lp: { max: '1440px' },
@@ -52,7 +59,7 @@ export default {
           'linear-gradient(-45deg,transparent 65%, currentcolor 65.99%),linear-gradient(45deg,transparent 75%, currentcolor 75.99%),linear-gradient(-45deg, currentcolor 40%,transparent 40.99%),linear-gradient(45deg, currentcolor 30%, white 30.99%, white 40%,transparent 40.99%),linear-gradient(-45deg, white 50%, currentcolor 50.99%)',
         'indeterminate-checkbox-current':
           'linear-gradient(90deg,transparent 80%, currentcolor 80%),linear-gradient(-90deg,transparent 80%, currentcolor 80%),linear-gradient(0deg, currentcolor 43%, white 43%, white 57%, currentcolor 57%)',
-      },      
+      },
       keyframes: {
         'stroke-loader-circular': {
           '0%': { 'stroke-dasharray': '1, 200', 'stroke-dashoffset': '0' },
@@ -78,7 +85,7 @@ export default {
       fontSize: {
         '2xs': ['10px', '11px'],
         '3xs': ['8px', '8px'],
-      },       
+      },
     },
     // crearis-ui
     ringColor: {
@@ -89,7 +96,7 @@ export default {
     },
     transitionTimingFunction: {
       DEFAULT: 'var(--ease)',
-    },      
+    },
     borderColor: ({ theme }) => ({
       DEFAULT: theme('colors.border'),
       ...theme('colors'),
@@ -98,34 +105,24 @@ export default {
       DEFAULT: 'var(--radius)',
     },
     //theming
-    colors: {
-      'primary': {
-        DEFAULT: 'oklch(var(--color-primary-base) / <alpha-value>)',
-        400: 'oklch(var(--color-primary-base) / <alpha-value>)',
-        contrast: 'oklch(var(--color-primary-contrast) / <alpha-value>)',
-      },
+    colors: Object.assign( colorUtilities, 
+      {
       'background': 'oklch(var(--color-base) / <alpha-value>)',
       'foreground': 'oklch(var(--color-contrast) / <alpha-value>)',
       'card': 'oklch(var(--color-card-base) / <alpha-value>)',
       'card-contrast': 'oklch(var(--color-card-contrast) / <alpha-value>)',
       'popover': 'oklch(var(--color-popover-base) / <alpha-value>)',
       'popover-contrast': 'oklch(var(--color-popover-contrast) / <alpha-value>)',
-      'secondary': 'oklch(var(--color-secondary-base) / <alpha-value>)',
-      'secondary-contrast': 'oklch(var(--color-secondary-contrast) / <alpha-value>)',
       'muted': 'oklch(var(--color-muted-base) / <alpha-value>)',
       'muted-contrast': 'oklch(var(--color-muted-contrast) / <alpha-value>)',
       'accent': 'oklch(var(--color-accent-base) / <alpha-value>)',
       'accent-contrast': 'oklch(var(--color-accent-contrast) / <alpha-value>)',
       'focus': 'oklch(var(--focus-base) / <alpha-value>)',
       'focus-contrast': 'oklch(var(--focus-contrast) / <alpha-value>)',
-      'destructive': 'oklch(var(--color-destructive-base) / <alpha-value>)',
-      'destructive-contrast': 'oklch(var(--color-destructive-contrast) / <alpha-value>)',
       'border': 'oklch(var(--color-border) / <alpha-value>)',
       'input': 'oklch(var(--color-input) / <alpha-value>)',
-      'ring': 'oklch(var(--color-ring) / <alpha-value>)',
-    },
+      'ring': 'oklch(var(--color-ring) / <alpha-value>)'
+    })
   },
-  plugins: [
-    peerNextPlugin
-  ],
+  plugins: [tailwindCssVariables, peerNextPlugin],
 }

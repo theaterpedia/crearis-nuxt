@@ -153,7 +153,7 @@ onMounted(() => {
 .text-area-required .text-area-label label::after {
   content: '*';
   margin-left: 0.25em;
-  color: oklch(var(--color-destructive-base));
+  color: oklch(var(--color-negative-base));
 }
 
 .text-area-group {
@@ -181,8 +181,8 @@ onMounted(() => {
 }
 
 .text-area-has-error .text-area-control {
-  --color-ring: var(--color-destructive-base);
-  border-color: oklch(var(--color-destructive-base));
+  --color-ring: var(--color-negative-base);
+  border-color: oklch(var(--color-negative-base));
 }
 
 .text-area-control:focus {
@@ -203,7 +203,7 @@ onMounted(() => {
 .text-area-error {
   margin-top: 0.375rem;
   font-size: 0.875em;
-  color: oklch(var(--color-destructive-base));
+  color: oklch(var(--color-negative-base));
   font-weight: 500;
 }
 

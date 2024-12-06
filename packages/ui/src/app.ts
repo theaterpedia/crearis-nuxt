@@ -1,3 +1,4 @@
+import './assets/css/00-colors.css'
 import './styles'
 
 import { createApp } from 'vue'

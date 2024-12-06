@@ -1,9 +1,9 @@
 <template>
   <div
     :class="{
-      'banner': !card,
-      'transparent': transparent,
-      'card': card,
+      banner: !card,
+      transparent: transparent,
+      card: card,
     }"
   >
     <slot />

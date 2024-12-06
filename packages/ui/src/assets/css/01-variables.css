@@ -1,25 +1,4 @@
 :root {
-  --color-base: 96.19% 0 0;
-  --color-contrast: 0% 0 0;
-  --color-card-base: 100% 0 106.37;
-  --color-card-contrast: 0% 0 0;
-  --color-popover-base: 100% 0 106.37;
-  --color-popover-contrast: 0% 0 0;
-  --color-primary-base: 72.21% 0.2812 144.53;
-  --color-primary-contrast: 0% 0 0;
-  --color-secondary-base: 65.74% 0.2393 304.41;
-  --color-secondary-contrast: 100% 0 106.37;
-  --color-muted-base: 88.45% 0 0;
-  --color-muted-contrast: 32.11% 0 0;
-  --color-accent-base: 32.11% 0 0;
-  --color-accent-contrast: 100% 0 106.37;
-  --color-destructive-base: 63.68% 0.2078 25.33;
-  --color-destructive-contrast: 100% 0 106.37;
-  --color-dimmed: 55.47% 0 0;
-  --color-border: 92.4% 0.0035 247.86;
-  --color-input: 80.54% 0 0;
-  --color-ring: 0% 0 0;
-
   --theme-shadow: 0.2rem 0.2rem 0.6rem hsla(110, 10%, 0%, 0.65);
   --radius: 0.5rem;
   --font: 'MonaspaceNeon', mono;
@@ -44,8 +23,8 @@
   --color-muted-contrast: 231 10% 57.4%;
   --color-accent-base: 231 16.7% 24%;
   --color-accent-contrast: 0 0% 98%;
-  --color-destructive-base: 7.41 84.2% 60.4%;
-  --color-destructive-contrast: 0 0% 98%;
+  --color-negative-base: 7.41 84.2% 60.4%;
+  --color-negative-contrast: 0 0% 98%;
   --color-dimmed: 0 0% 45%;
   --color-border: 231 16.7% 24%;
   --color-input: 231 16.7% 32%;

@@ -159,8 +159,8 @@ input:checked + .radio-group-control::after {
 }
 
 .radio-group-has-error .radio-group-control {
-  --color-ring: var(--color-destructive-base);
-  border-color: oklch(var(--color-destructive-base));
+  --color-ring: var(--color-negative-base);
+  border-color: oklch(var(--color-negative-base));
 }
 
 input:focus + .radio-group-control {
@@ -177,7 +177,7 @@ input:disabled + .radio-group-control {
 .radio-group-error {
   margin-left: 1.5rem;
   font-size: 0.875em;
-  color: oklch(var(--color-destructive-base));
+  color: oklch(var(--color-negative-base));
   font-weight: 500;
 }
 </style>
