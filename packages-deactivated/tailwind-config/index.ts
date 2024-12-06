@@ -2,7 +2,6 @@ import { Config } from 'tailwindcss'
 import { ThemeConfig } from 'tailwindcss/types/config'
 import tailwindCssVariables from '@mertasan/tailwindcss-variables'
 import peerNextPlugin from '@storefront-ui/tw-plugin-peer-next'
-import { dynamicTwClasses } from './lib/twPlugin'
 
 export const tailwindConfig: Config = {
   content: [],

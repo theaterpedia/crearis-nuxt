@@ -38,7 +38,6 @@
     "@crearis/odoo-sdk": "0.7.5",
     "@crearis/odoo-sdk-api-client": "workspace:*",
     "@crearis/theme": "workspace:*",
-    "@crearis/tailwind-config": "workspace:*",
     "@nuxt/kit": "3.13.2",
     "@nuxt/image": "1.7.0",
     "@vue-storefront/sdk": "^2.0.0",

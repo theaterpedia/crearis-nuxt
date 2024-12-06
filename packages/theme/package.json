@@ -22,7 +22,6 @@
     "vue-toastification": "next",
     "@nuxt/content": "^2.13.0",
     "@crearis/ui": "workspace:*",
-    "@crearis/tailwind-config": "workspace:*",
     "@floating-ui/vue": "^1.1.0",
     "@nuxtjs/tailwindcss": "^6.12.1",
     "@storefront-ui/shared": "^2.5.0",
@@ -34,6 +33,8 @@
   },
   "devDependencies": {
     "prettier": "^3.3.0",
+    "@mertasan/tailwindcss-variables": "2.7.0",
+    "@storefront-ui/tw-plugin-peer-next": "^2.3.3",
     "vue-tsc": "^2.0.2",
     "@types/culori": "^2.1.1",
     "@crearis/sfui-ts-config": "workspace:*",
