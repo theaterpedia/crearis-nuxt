@@ -38,6 +38,7 @@
     "vue-tsc": "^2.0.2",
     "@types/culori": "^2.1.1",
     "@crearis/sfui-ts-config": "workspace:*",
+    "nuxi": "^3.16.0",
     "tailwindcss": "^3.4.7",
     "typescript": "^5.5.4",
     "vue": "latest"

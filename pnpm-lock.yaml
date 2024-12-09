@@ -129,6 +129,9 @@ importers:
       '@vitest/ui':
         specifier: ^2.1.2
         version: 2.1.4(vitest@2.1.4)
+      nuxi:
+        specifier: ^3.16.0
+        version: 3.16.0
       tw-colors:
         specifier: ^3.3.1
         version: 3.3.2(tailwindcss@3.4.14)
@@ -306,6 +309,9 @@ importers:
       '@types/culori':
         specifier: ^2.1.1
         version: 2.1.1
+      nuxi:
+        specifier: ^3.16.0
+        version: 3.16.0
       prettier:
         specifier: ^3.3.0
         version: 3.3.3
@@ -6206,6 +6212,11 @@ packages:
 
   nuxi@3.15.0:
     resolution: {integrity: sha512-ZVu45nuDrdb7nzKW2kLGY/N1vvFYLLbUVX6gUYw4BApKGGu4+GktTR5o48dGVgMYX9A8chaugl7TL9ZYmwC9Mg==}
+    engines: {node: ^16.10.0 || >=18.0.0}
+    hasBin: true
+
+  nuxi@3.16.0:
+    resolution: {integrity: sha512-t9m4zTq44R0/icuzQXJHEyPRM3YbgTPMpytyb6YW2LOL/3mwZ3Bmte1FIlCoigzDvxBJRbcchZGc689+Syyu8w==}
     engines: {node: ^16.10.0 || >=18.0.0}
     hasBin: true
 
@@ -16613,6 +16624,8 @@ snapshots:
   nullthrows@1.1.1: {}
 
   nuxi@3.15.0: {}
+
+  nuxi@3.16.0: {}
 
   nuxt-lazy-hydrate@1.0.0(magicast@0.2.11)(rollup@4.24.4)(vue@3.5.12(typescript@5.6.3)):
     dependencies:
