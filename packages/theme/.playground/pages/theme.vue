@@ -128,11 +128,11 @@ const neutralColors = ref<OklchScale[]>([{ name: 'neutral', hue: 88, scale: 1, g
 const colors = ref<OklchScale[]>([])
 const palettes = ref([])
 onMounted(() => {
-  colors.value.push(...neutralColors.value, ...basisColors.value, ...brandColors.value)
+  colors.value.push(...brandColors.value, ...basisColors.value,...neutralColors.value)
   palettes.value = generateAllPalettes(colors.value)
   watch([neutralColors, basisColors, brandColors], (newColors) => {
     colors.value = []
-    colors.value.push(...neutralColors.value, ...basisColors.value, ...brandColors.value)
+    colors.value.push(...brandColors.value, ...basisColors.value,...neutralColors.value)
     palettes.value = generateAllPalettes(colors.value)
   })
   /*
