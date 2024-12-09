@@ -21,7 +21,7 @@ onMounted(() => {
   // add a text-row for each colorScale
   watchEffect(() => {
     colors.value = props.colorScales.map((colorScale) => {
-      return `{ ${colorScale.name}: hue: ${colorScale.hue}, scale: ${colorScale.scale}, greyval: ${colorScale.greyval} }`
+      return `{ name: '${colorScale.name}', hue: ${colorScale.hue}, scale: ${colorScale.scale}, greyval: ${colorScale.greyval} }`
     }).join(',<br />')
   })
 })

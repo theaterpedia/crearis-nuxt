@@ -1,7 +1,7 @@
 import type { OklchScale } from '@crearis/theme/utils/colorSettings'
 
 export const colorScales = <OklchScale[]>[
-  { name: 'primary', hue: 88, scale: 1, greyval: 0 },
+  { name: 'primary', hue: 235, scale: 2, greyval: 0 },
   { name: 'secondary', hue: 274, scale: 5, greyval: 0 },
   { name: 'warning', hue: 104, scale: 0, greyval: 0 },
   { name: 'positive', hue: 138, scale: 1, greyval: 0 },
@@ -16,7 +16,7 @@ export const colorVars = {
   'card-contrast': '29% 0.025 88',
   'popover-base': '82.67% 0.025 88',
   'popover-contrast': '29% 0.025 88',
-  'primary-base': '82.67% 0.4 88',
+  'primary-base': '64.78% 0.4 235',
   'primary-contrast': '29% 0.025 88',
   'secondary-base': '39.44% 0.4 274',
   'secondary-contrast': '29% 0.025 88',
