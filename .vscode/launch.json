@@ -9,14 +9,14 @@
       "name": "client: theme(chrome)",
       "url": "http://localhost:3002",
       "webRoot": "${workspaceFolder}"
-    },
+    },  
     {
       "type": "chrome",
       "request": "launch",
       "name": "client: pruvious(chrome)",
       "url": "http://localhost:3000",
       "webRoot": "${workspaceFolder}"
-    },    
+    },  
     {
       "type": "node",
       "request": "launch",
@@ -24,7 +24,7 @@
       "outputCapture": "std",
       "program": "${workspaceFolder}/packages/theme/node_modules/nuxi/bin/nuxi.mjs",
       "args": [
-        "dev", "packages/theme"
+        "dev", "packages/theme/.playground", "--port", "3002"
       ],
     },
     {
