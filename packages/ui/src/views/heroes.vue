@@ -183,10 +183,10 @@ const columnsAlign = ref<'top' | 'center' | 'bottom'>('center')
   max-width: calc(100% - 1rem);
   max-height: calc(100% - 1rem);
   overflow-y: auto;
-  background-color: oklch(var(--color-card-base) / 70%);
-  border: 1px solid oklch(var(--color-border));
+  background-color: oklch(from var(--color-card-base) l c h / 70%);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius);
-  color: oklch(var(--color-card-contrast));
+  color: var(--color-card-contrast);
   padding: 1rem;
 }
 </style>

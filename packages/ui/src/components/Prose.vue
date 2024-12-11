@@ -14,7 +14,7 @@
  */
 
 .prose :where(p) {
-  color: oklch(var(--color-muted-contrast));
+  color: var(--color-muted-contrast);
   font-size: 1em;
   line-height: 1.15;
 }
@@ -24,7 +24,7 @@
  */
 
 .prose :where(h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6) {
-  color: oklch(var(--color-contrast));
+  color: var(--color-contrast);
   font-weight: 500;
 }
 
@@ -74,7 +74,7 @@
  */
 
 .prose :where(:not(:where(h1, h2, h3, h4, h5, h6)[id])) :where(a) {
-  color: oklch(var(--link, var(--color-secondary-base)));
+  color: var(--link, var(--color-secondary-base));
   text-decoration: underline;
 }
 
@@ -88,7 +88,7 @@
 
 .prose > * + :where(ul, ol) {
   margin-top: 0.6em;
-  color: oklch(var(--color-muted-contrast));
+  color: var(--color-muted-contrast);
 }
 
 .prose :where(ul, ol) :where(ul, ol) {
@@ -111,7 +111,7 @@
   height: 0.1875rem;
   margin-top: -0.09375rem;
   border-radius: 50%;
-  background-color: oklch(var(--color-muted-contrast));
+  background-color: var(--color-muted-contrast);
 }
 
 /**
@@ -149,20 +149,20 @@
  */
 .prose :where(.primary) {
   --color-contrast: var(--color-primary-base);
-  color: oklch(var(--color-primary-base));
+  color: var(--color-primary-base);
 }
 
 .prose :where(.secondary) {
   --color-contrast: var(--secondary);
-  color: oklch(var(--color-secondary-base));
+  color: var(--color-secondary-base);
 }
 
 .prose :where(.dimmed) {
   --color-contrast: var(--color-dimmed);
-  color: oklch(var(--color-dimmed));
+  color: var(--color-dimmed);
 }
 
 .prose :where(strong) {
-  color: oklch(var(--color-contrast));
+  color: var(--color-contrast);
 }
 </style>

@@ -17,7 +17,7 @@ export const getoverlay = (gradient: string, depth: number) => {
       : ''
   return gradient && gradient !== 'none'
     ? gradient !== 'full'
-      ? `linear-gradient(${deg}, oklch(var(--color-primary-base) / ${depth}) 18%, rgba(255, 255, 255, 0.62) 50%, rgba(255, 255, 255, 0.10) 81%)`
+      ? `linear-gradient(${deg}, oklch(from var(--color-primary-base) l c h / ${depth}) 18%, rgba(255, 255, 255, 0.62) 50%, rgba(255, 255, 255, 0.10) 81%)`
       : ''
     : ''
 }

@@ -133,8 +133,8 @@ onMounted(() => {
   width: 0.875rem;
   height: 0.875rem;
   margin-top: 0.125rem;
-  background-color: oklch(var(--color-base));
-  border: 1px solid oklch(var(--color-input));
+  background-color: var(--color-base);
+  border: 1px solid var(--color-input);
   border-radius: 50%;
   transition: var(--transition);
   transition-property: border-color, box-shadow;
@@ -147,7 +147,7 @@ onMounted(() => {
   right: 0.125rem;
   bottom: 0.125rem;
   left: 0.125rem;
-  background-color: oklch(var(--color-ring));
+  background-color: var(--color-ring);
   border-radius: 50%;
   transition: var(--transition);
   transition-property: transform;
@@ -160,12 +160,12 @@ input:checked + .radio-group-control::after {
 
 .radio-group-has-error .radio-group-control {
   --color-ring: var(--color-negative-base);
-  border-color: oklch(var(--color-negative-base));
+  border-color: var(--color-negative-base);
 }
 
 input:focus + .radio-group-control {
   border-color: transparent;
-  box-shadow: 0 0 0 0.125rem oklch(var(--color-ring));
+  box-shadow: 0 0 0 0.125rem var(--color-ring);
   outline: none;
 }
 
@@ -177,7 +177,7 @@ input:disabled + .radio-group-control {
 .radio-group-error {
   margin-left: 1.5rem;
   font-size: 0.875em;
-  color: oklch(var(--color-negative-base));
+  color: var(--color-negative-base);
   font-weight: 500;
 }
 </style>

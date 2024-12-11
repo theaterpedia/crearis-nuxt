@@ -75,24 +75,6 @@ export function palette(color: String, invert: String): ColorShades {
   }
 }
 
-export function palette2(color: String, base: String, contrast: String): ColorShades {
-  return {
-    DEFAULT: `oklch(${color})`,
-    contrast: `oklch(${contrast})`,
-    50: `color-mix(in oklch, oklch(${color}) 10%, ${base} 90%)`,
-    100: `color-mix(in oklch, oklch(${color}) 25%, ${base} 75%)`,
-    200: `color-mix(in oklch, oklch(${color}) 50%, ${base} 50%)`,
-    300: `color-mix(in oklch, oklch(${color}) 75%, ${base} 25%)`,
-    400: `color-mix(in oklch, oklch(${color}) 90%, ${base} 10%)`,
-    500: `oklch(${color})`,
-    600: `color-mix(in oklch, oklch(${color}) 80%, ${contrast} 20%)`,
-    700: `color-mix(in oklch, oklch(${color}) 60%, ${contrast} 40%)`,
-    800: `color-mix(in oklch, oklch(${color}) 40%, ${contrast} 60%)`,
-    900: `color-mix(in oklch, oklch(${color}) 25%, ${contrast} 75%)`,
-    950: `color-mix(in oklch, oklch(${color}) 10%, ${contrast} 90%)`,
-  }
-}
-
 export function getOklchColor(color: OklchColor): String {
   return `${color.light}% ${color.chroma} ${color.hue}`
 }
@@ -115,6 +97,13 @@ const oklchParams = (i, hue, scale, greyval) => {
 
 function calculatePalette(hue, scale, greyval) {
   return shades.map((shade, i) => maxChroma(i, hue, scale, greyval))
+}
+
+export function createAllPalettes(colors: OklchColor[]) {
+  return colors.map((color) => ({
+    palette: calculatePalette(color.hue, color.scale, color.greyval),
+    name: color.name,
+  }))
 }
 
 export function generateAllPalettes(colors) {
@@ -142,8 +131,7 @@ export function colorVars(colormap: SfColorMapping[], colorScales: OklchScale[])
     return oklchParams(color.shade, colorScale.hue, colorScale.scale, colorScale.greyval)
   }
   return {
-    'white': 'oklch(var(--color-white))',
-    'black': 'oklch(var(--color-black))',
+    'inverted': '0',
     'base': getColor('base'),
     'contrast': getColor('contrast'),
     'card-base': getColor('card-base'),
@@ -178,7 +166,7 @@ export function colorUtilities(colorScales: OklchScale[]) {
   const colors = {
     primary: {
       DEFAULT: oklchVal(4, colorScales[0].hue, colorScales[0].scale, colorScales[0].greyval),
-      contrast: 'oklch(var(--color-primary-contrast) / <alpha-value>)',
+      contrast: 'var(--color-primary-contrast) / <alpha-value>)',
       50: oklchVal(0, colorScales[0].hue, colorScales[0].scale, colorScales[0].greyval),
       100: oklchVal(1, colorScales[0].hue, colorScales[0].scale, colorScales[0].greyval),
       200: oklchVal(2, colorScales[0].hue, colorScales[0].scale, colorScales[0].greyval),
@@ -193,7 +181,7 @@ export function colorUtilities(colorScales: OklchScale[]) {
     },
     secondary: {
       DEFAULT: oklchVal(4, colorScales[1].hue, colorScales[1].scale, colorScales[1].greyval),
-      contrast: 'oklch(var(--color-secondary-contrast) / <alpha-value>)',
+      contrast: 'var(--color-secondary-contrast) / <alpha-value>)',
       50: oklchVal(0, colorScales[1].hue, colorScales[1].scale, colorScales[1].greyval),
       100: oklchVal(1, colorScales[1].hue, colorScales[1].scale, colorScales[1].greyval),
       200: oklchVal(2, colorScales[1].hue, colorScales[1].scale, colorScales[1].greyval),
@@ -208,7 +196,7 @@ export function colorUtilities(colorScales: OklchScale[]) {
     },
     warning: {
       DEFAULT: oklchVal(4, colorScales[2].hue, colorScales[2].scale, colorScales[2].greyval),
-      contrast: 'oklch(var(--color-warning-contrast) / <alpha-value>)',
+      contrast: 'var(--color-warning-contrast) / <alpha-value>)',
       50: oklchVal(0, colorScales[2].hue, colorScales[2].scale, colorScales[2].greyval),
       100: oklchVal(1, colorScales[2].hue, colorScales[2].scale, colorScales[2].greyval),
       200: oklchVal(2, colorScales[2].hue, colorScales[2].scale, colorScales[2].greyval),
@@ -223,7 +211,7 @@ export function colorUtilities(colorScales: OklchScale[]) {
     },
     positive: {
       DEFAULT: oklchVal(4, colorScales[3].hue, colorScales[3].scale, colorScales[3].greyval),
-      contrast: 'oklch(var(--color-positive-contrast) / <alpha-value>)',
+      contrast: 'var(--color-positive-contrast) / <alpha-value>)',
       50: oklchVal(0, colorScales[3].hue, colorScales[3].scale, colorScales[3].greyval),
       100: oklchVal(1, colorScales[3].hue, colorScales[3].scale, colorScales[3].greyval),
       200: oklchVal(2, colorScales[3].hue, colorScales[3].scale, colorScales[3].greyval),
@@ -238,7 +226,7 @@ export function colorUtilities(colorScales: OklchScale[]) {
     },
     negative: {
       DEFAULT: oklchVal(4, colorScales[4].hue, colorScales[4].scale, colorScales[4].greyval),
-      contrast: 'oklch(var(--color-negative-contrast) / <alpha-value>)',
+      contrast: 'var(--color-negative-contrast) / <alpha-value>)',
       50: oklchVal(0, colorScales[4].hue, colorScales[4].scale, colorScales[4].greyval),
       100: oklchVal(1, colorScales[4].hue, colorScales[4].scale, colorScales[4].greyval),
       200: oklchVal(2, colorScales[4].hue, colorScales[4].scale, colorScales[4].greyval),

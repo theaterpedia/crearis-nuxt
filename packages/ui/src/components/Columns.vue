@@ -75,15 +75,15 @@ defineProps({
 .columns-default {
   --color-base: var(--color-card-base);
   --color-contrast: var(--color-card-contrast);
-  background-color: oklch(var(--color-card-base));
-  color: oklch(var(--color-card-contrast));
+  background-color: var(--color-card-base);
+  color: var(--color-card-contrast);
 }
 
 .columns-muted {
   --color-base: var(--color-muted-base);
   --color-contrast: var(--color-card-contrast);
-  background-color: oklch(var(--color-muted-base));
-  color: oklch(var(--color-card-contrast));
+  background-color: var(--color-muted-base);
+  color: var(--color-card-contrast);
 }
 
 .columns-accent {
@@ -91,8 +91,8 @@ defineProps({
   --color-contrast: var(--color-accent-contrast);
   --color-muted-contrast: var(--color-accent-contrast);
   --link: var(--color-primary-base);
-  background-color: oklch(var(--color-accent-base));
-  color: oklch(var(--color-accent-contrast));
+  background-color: var(--color-accent-base);
+  color: var(--color-accent-contrast);
 }
 
 .columns-small {

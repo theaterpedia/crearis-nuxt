@@ -2,8 +2,8 @@
 import { ref, resolveComponent, onMounted, watch } from 'vue'
 import { Button, CardHero } from '@crearis/ui'
 import { TabsContent, TabsList, TabsRoot, TabsTrigger } from 'radix-vue'
-import type { OklchScale, OklchColor, SfColorMapping } from '@crearis/theme/utils/colorSettings'
-import { generateAllPalettes } from '@crearis/theme/utils/colorSettings'
+import type { ColorShades, OklchColor, SfColorMapping } from '@crearis/theme/utils/colorSettings'
+import { getOklchColor, palette } from '@crearis/theme/utils/colorSettings'
 import ColorPalette from '../components/ColorPalette.vue'
 
 definePageMeta({
@@ -23,12 +23,12 @@ const themes = [
       { name: 'neutral', hue: 0, light: 70, chroma: 0.02 }
     ],
     colormap: [
-      { name: 'positive-base', sfname: 'positive', shade: 2 },
-      { name: 'positive-contrast', sfname: 'neutral', shade: 2 },
-      { name: 'negative-base', sfname: 'negative', shade: 2 },
-      { name: 'negative-contrast', sfname: 'neutral', shade: 2 },
-      { name: 'warning-base', sfname: 'warning', shade: 2 },
-      { name: 'warning-contrast', sfname: 'neutral', shade: 2 },
+      { name: 'positive-base', sfname: 'positive', shade: 200 },
+      { name: 'positive-contrast', sfname: 'neutral', shade: 200 },
+      { name: 'negative-base', sfname: 'negative', shade: 200 },
+      { name: 'negative-contrast', sfname: 'neutral', shade: 200 },
+      { name: 'warning-base', sfname: 'warning', shade: 200 },
+      { name: 'warning-contrast', sfname: 'neutral', shade: 200 },
     ],
     imgUrl:
       'https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg',
@@ -45,8 +45,8 @@ const themes = [
       { name: 'neutral', hue: 0, light: 70, chroma: 0.02 },
     ],    
     colormap: [
-      { name: 'card-base', sfname: 'neutral', shade: 9 },
-      { name: 'card-contrast', sfname: 'neutral', shade: 9 },
+      { name: 'card-base', sfname: 'neutral', shade: 900 },
+      { name: 'card-contrast', sfname: 'neutral', shade: 900 },
     ],    
     imgUrl:
       'https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg',
@@ -63,10 +63,10 @@ const themes = [
       { name: 'neutral', hue: 88, light: 88, chroma: 0.02 }
     ],    
     colormap: [
-      { name: 'muted-base', sfname: 'neutral', shade: 5 },
-      { name: 'muted-contrast', sfname: 'neutral', shade: 5 },
-      { name: 'accent-base', sfname: 'neutral', shade: 5 },
-      { name: 'accent-contrast', sfname: 'neutral', shade: 5 },
+      { name: 'muted-base', sfname: 'neutral', shade: 500 },
+      { name: 'muted-contrast', sfname: 'neutral', shade: 500 },
+      { name: 'accent-base', sfname: 'neutral', shade: 500 },
+      { name: 'accent-contrast', sfname: 'neutral', shade: 500 },
     ],    
     imgUrl:
       'https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg',
@@ -82,31 +82,31 @@ const showTheme = (id) => {
 }
 
 const colormap_base = [
-  { name: 'base', sfname: 'neutral', shade: 0 },
-  { name: 'contrast', sfname: 'neutral', shade: 9 },
-  { name: 'card-base', sfname: 'neutral', shade: 5 },
-  { name: 'card-contrast', sfname: 'neutral', shade: 9 },
-  { name: 'popover-base', sfname: 'neutral', shade: 5 },
-  { name: 'popover-contrast', sfname: 'neutral', shade: 9 },
-  { name: 'primary-base', sfname: 'primary', shade: 5 },
-  { name: 'primary-contrast', sfname: 'neutral', shade: 9 },
-  { name: 'secondary-base', sfname: 'secondary', shade: 5 },
-  { name: 'secondary-contrast', sfname: 'neutral', shade: 9 },
-  { name: 'muted-base', sfname: 'neutral', shade: 2 },
-  { name: 'muted-contrast', sfname: 'neutral', shade: 7 },
-  { name: 'accent-base', sfname: 'neutral', shade: 7 },
-  { name: 'accent-contrast', sfname: 'neutral', shade: 5 },
-  { name: 'positive-base', sfname: 'positive', shade: 5 },
-  { name: 'positive-contrast', sfname: 'neutral', shade: 9 },
-  { name: 'negative-base', sfname: 'negative', shade: 5 },
-  { name: 'negative-contrast', sfname: 'neutral', shade: 9 },
-  { name: 'warning-base', sfname: 'warning', shade: 5 },
-  { name: 'warning-contrast', sfname: 'neutral', shade: 9 },
+  { name: 'base', sfname: 'neutral', shade: 50 },
+  { name: 'contrast', sfname: 'neutral', shade: 900 },
+  { name: 'card-base', sfname: 'neutral', shade: 500 },
+  { name: 'card-contrast', sfname: 'neutral', shade: 900 },
+  { name: 'popover-base', sfname: 'neutral', shade: 500 },
+  { name: 'popover-contrast', sfname: 'neutral', shade: 900 },
+  { name: 'primary-base', sfname: 'primary', shade: 500 },
+  { name: 'primary-contrast', sfname: 'neutral', shade: 900 },
+  { name: 'secondary-base', sfname: 'secondary', shade: 500 },
+  { name: 'secondary-contrast', sfname: 'neutral', shade: 900 },
+  { name: 'muted-base', sfname: 'neutral', shade: 200 },
+  { name: 'muted-contrast', sfname: 'neutral', shade: 700 },
+  { name: 'accent-base', sfname: 'neutral', shade: 700 },
+  { name: 'accent-contrast', sfname: 'neutral', shade: 500 },
+  { name: 'positive-base', sfname: 'positive', shade: 500 },
+  { name: 'positive-contrast', sfname: 'neutral', shade: 900 },
+  { name: 'negative-base', sfname: 'negative', shade: 500 },
+  { name: 'negative-contrast', sfname: 'neutral', shade: 900 },
+  { name: 'warning-base', sfname: 'warning', shade: 500 },
+  { name: 'warning-contrast', sfname: 'neutral', shade: 900 },
   // TODO: specify these from sf-colors
-  { name: 'dimmed', sfname: 'neutral', shade: 3 },
-  { name: 'border', sfname: 'neutral', shade: 1 },
-  { name: 'input', sfname: 'neutral', shade: 2 },
-  { name: 'ring', sfname: 'neutral', shade: 9 },
+  { name: 'dimmed', sfname: 'neutral', shade: 300 },
+  { name: 'border', sfname: 'neutral', shade: 100 },
+  { name: 'input', sfname: 'neutral', shade: 200 },
+  { name: 'ring', sfname: 'neutral', shade: 900 },
 ]
 
 const colormap = ref<SfColorMapping[]>([...colormap_base
@@ -127,16 +127,76 @@ const neutralColors = ref<OklchColor[]>([
   { name: 'neutral', hue: 0, light: 70, chroma: 0.02 },
 ])
 
-const colors = ref<OklchScale[]>([])
-const palettes = ref([])
+const colors = ref<OklchColor[]>([])
+const palettes = ref<ColorShades>([])
+const cssvars = ref<string[]>([])
 onMounted(() => {
-  /* colors.value.push(...brandColors.value, ...basisColors.value,...neutralColors.value)
-  palettes.value = generateAllPalettes(colors.value)
-  watch([neutralColors, basisColors, brandColors], (newColors) => {
+  colors.value.push(...brandColors.value, ...basisColors.value,...neutralColors.value)
+  // ts-expect-error TODO: fix this
+  palettes.value = colors.value.map((c) => palette(getOklchColor(c), '0'))
+  // window.CSS.registerProperty('--color-primary-base', palettes.value[0].base)
+  /* window.CSS.registerProperty({
+      name: '--color-primary-base', 
+      syntax: '<color>', 
+      inherits: false, 
+      initialValue: "99% 0.3 88"
+    })  */
+  cssvars.value = colormap.value.map((c) => {
+    let pindex = 0
+    switch(c.sfname) {
+      case 'secondary': pindex = 1
+      case 'warning': pindex = 2
+      case 'positive': pindex = 3
+      case 'negative': pindex = 4
+      case 'neutral': pindex = 5
+    }
+
+    const pal:ColorShades = palettes.value[pindex]
+    if (pal) {
+      return `--color-${c.name}: ${pal[c.shade.toString()]};`
+    }
+  })
+
+  watch([neutralColors, basisColors, brandColors, colormap], (newColors) => {
     colors.value = []
     colors.value.push(...brandColors.value, ...basisColors.value,...neutralColors.value)
-    palettes.value = generateAllPalettes(colors.value)
-  }) */
+    palettes.value = colors.value.map((c) => palette(getOklchColor(c), '0'))
+
+    // for every entry in colormap, re-assign css-properties with new colors
+    cssvars.value = colormap.value.map((c) => {
+      let pindex = 0
+      switch(c.sfname) {
+        case 'secondary': pindex = 1
+        case 'warning': pindex = 2
+        case 'positive': pindex = 3
+        case 'negative': pindex = 4
+        case 'neutral': pindex = 5
+      }
+
+      const pal:ColorShades = palettes.value[pindex]
+      if (pal) {
+        return `--color-${c.name}: ${pal[c.shade.toString()]};`
+      }
+    })
+
+    /*colormap.value.forEach((c) => {
+      const color = palettes.value.find((p) => p.name === c.sfname)
+      if (color) {
+        cssvars.value.push(`--color-${c.name}-base: ${color.base};`)
+        cssvars.value.push(`--color-${c.name}-contrast: ${color.contrast};`)
+      }
+    }) */
+
+
+    // re-assign css-properties with new colors
+    /* window.CSS.registerProperty({
+      name: '--color-primary-base', 
+      syntax: '<color>', 
+      inherits: false, 
+      initialValue: "99% 0.3 88"
+    }) */
+
+  })
 })
 
 const imgUrl = ref(
@@ -162,7 +222,7 @@ const handleLogout = async () => {
 
 <template>
   <div>
-    <NuxtLayout name="default">
+    <NuxtLayout :style="cssvars" name="default">
       <template #header>
         <Hero
           :imgTmp="imgUrl"
@@ -246,7 +306,7 @@ const handleLogout = async () => {
           auth.login.forgotPasswordLabel
         </SfButton>
       </form>
-      <div class="bg-primary-600 w-full p-4 md:p-6">
+      <div class="invert bg-primary-300 text-primary-400 w-full p-4 md:p-6">
         hallo hans
       </div>
       <UiAlert variant="neutral" class="typography-text-base mt-6 bg-primary-600 w-full !justify-start p-4 md:p-6">
@@ -288,12 +348,15 @@ const handleLogout = async () => {
 </template>
 
 <style scoped>
+.invert {
+  --color-inverted: '1';
+}
 .trigger {
   padding: 0.5rem 1rem;
   font-weight: 500;
   cursor: pointer;
 }
 .trigger[data-state='active'] {
-  background-color: oklch(var(--color-primary-base));
+  background-color: var(--color-primary-base);
 }
 </style>

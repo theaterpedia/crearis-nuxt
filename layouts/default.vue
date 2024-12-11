@@ -156,8 +156,8 @@ const mainMenu = undefined // TODO: Reactivate useMainMenu() (from dasei.eu)
   transform: translate3d(0, 0, 0); /* Fixes z-index in Safari */
   --color-base: var(--color-muted-base);
   --color-contrast: var(--color-card-contrast);
-  background-color: oklch(var(--color-muted-base));
-  color: oklch(var(--color-card-contrast));
+  background-color: var(--color-muted-base);
+  color: var(--color-card-contrast);
   width: 100%;
   max-width: 90rem; /* 1440px */
   margin-right: auto;

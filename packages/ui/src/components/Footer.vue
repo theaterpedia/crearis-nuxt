@@ -19,8 +19,8 @@ import Container from './Container.vue'
   --color-muted-contrast: var(--color-accent-contrast);
   --link: var(--color-primary-base);
   width: 100%;
-  background-color: oklch(var(--color-accent-base));
-  color: oklch(var(--color-accent-contrast));
+  background-color: var(--color-accent-base);
+  color: var(--color-accent-contrast);
 }
 
 .footer-inner {
@@ -53,7 +53,7 @@ import Container from './Container.vue'
 
 .footer-inner > :deep() ul li a:hover,
 .footer-inner > :deep() ul li a:focus {
-  color: oklch(var(--link));
+  color: var(--link);
 }
 
 .footer-inner > :deep() :last-child:not(:first-child) {

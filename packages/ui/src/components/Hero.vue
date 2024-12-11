@@ -186,7 +186,7 @@ defineProps({
   bottom: 0;
   left: 0;
   height: 1rem;
-  background-color: oklch(var(--color-primary-base));
+  background-color: var(--color-primary-base);
 }
 
 .hero-cover {

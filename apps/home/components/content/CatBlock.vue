@@ -112,7 +112,7 @@ const { headline, overline, subline, tags, shortcode } = extractHeading(heading)
   min-width: 1rem;
   height: 1px;
   margin: 0 0.5rem;
-  background-color: oklch(var(--color-border));
+  background-color: var(--color-border);
 }
 
 .catalog .prose :deep() > ul > li > mark:first-child {

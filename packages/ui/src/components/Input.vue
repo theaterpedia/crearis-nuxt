@@ -174,7 +174,7 @@ onMounted(() => {
 .input-required .input-label label::after {
   content: '*';
   margin-left: 0.25em;
-  color: oklch(var(--color-negative-base));
+  color: var(--color-negative-base);
 }
 
 .input-group {
@@ -187,12 +187,12 @@ onMounted(() => {
   height: 2em;
   padding: 0 0.5em;
   overflow: hidden;
-  background-color: oklch(var(--color-base));
-  border: 1px solid oklch(var(--color-input));
+  background-color: var(--color-base);
+  border: 1px solid var(--color-input);
   border-radius: calc(var(--radius) - 0.125rem);
   font-size: 1em;
   line-height: 1.25;
-  color: oklch(var(--color-contrast));
+  color: var(--color-contrast);
   white-space: nowrap;
   text-overflow: ellipsis;
   transition: var(--transition);
@@ -201,12 +201,12 @@ onMounted(() => {
 
 .input-has-error .input-control {
   --color-ring: var(--color-negative-base);
-  border-color: oklch(var(--color-negative-base));
+  border-color: var(--color-negative-base);
 }
 
 .input-control:focus {
   border-color: transparent;
-  box-shadow: 0 0 0 0.125rem oklch(var(--color-ring));
+  box-shadow: 0 0 0 0.125rem var(--color-ring);
   outline: none;
 }
 
@@ -216,13 +216,13 @@ onMounted(() => {
 }
 
 .input-control::placeholder {
-  color: oklch(var(--color-contrast) / 40%);
+  color: oklch(from var(--color-contrast) l c h / 40%);
 }
 
 .input-error {
   margin-top: 0.375rem;
   font-size: 0.875em;
-  color: oklch(var(--color-negative-base));
+  color: var(--color-negative-base);
   font-weight: 500;
 }
 

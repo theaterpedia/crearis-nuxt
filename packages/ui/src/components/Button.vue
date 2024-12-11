@@ -60,29 +60,29 @@ defineProps({
 }
 
 .button-primary {
-  background-color: oklch(var(--color-primary-base));
-  color: oklch(var(--color-primary-contrast));
+  background-color: var(--color-primary-base);
+  color: var(--color-primary-contrast);
 }
 
 .button-primary:hover {
-  background-color: oklch(var(--color-primary-base) / 70%);
+  background-color: oklch(from var(--color-primary-base) l c h / 70%);
 }
 
 .button-plain {
-  background-color: oklch(var(--color-card-contrast));
-  color: oklch(var(--color-card-base));
+  background-color: var(--color-card-contrast);
+  color: var(--color-card-base);
 }
 
 .button-plain:hover {
-  background-color: oklch(var(--color-card-contrast) / 70%);
+  background-color: oklch(from var(--color-card-contrast) l c h / 70%);
 }
 
 .button-link {
-  color: oklch(var(--color-primary-base));
+  color: var(--color-primary-base);
 }
 
 .button-link:hover {
-  background-color: oklch(var(--color-card-contrast) / 30%);
+  background-color: oklch(from var(--color-card-contrast) l c h / 30%);
 }
 
 .button-small {

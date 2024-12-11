@@ -26,7 +26,7 @@ defineProps({
 }
 
 .form :where(fieldset legend span) {
-  color: oklch(var(--color-negative-base));
+  color: var(--color-negative-base);
 }
 
 .form > :where(fieldset):not(:first-child) {
