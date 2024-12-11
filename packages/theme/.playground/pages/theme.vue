@@ -128,7 +128,7 @@ const neutralColors = ref<OklchColor[]>([
 ])
 
 const colors = ref<OklchColor[]>([])
-const cssvars = ref<string[]>([])
+const cssvars = ref<String[]>([])
 
 onMounted(() => {
   colors.value.push(...brandColors.value, ...basisColors.value,...neutralColors.value)
@@ -314,7 +314,7 @@ const handleLogout = async () => {
         </TabsContent>
         <TabsContent value="export" class="p-4">
           <Heading content="**Export**Paste settings into theme.ts" is="h2" />
-          <!--ThemeExporter :colorScales="colors" :colorMap="colormap" -->
+          <ThemeExporter :colorScales="colors" :cssVars="cssvars" :colorMap="colormap" />
         </TabsContent>
       </TabsRoot>
     </NuxtLayout>

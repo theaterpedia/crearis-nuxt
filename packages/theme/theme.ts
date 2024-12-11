@@ -1,16 +1,17 @@
 import type { OklchColor } from '@crearis/theme/utils/colorSettings'
 
 export const colorScales = <OklchColor[]>[
-  { name: 'primary', hue: 80, light: 99, chroma: 0.25 },
+  { name: 'primary', hue: 56, light: 99, chroma: 0.3 },
   { name: 'secondary', hue: 274, light: 80, chroma: 0.4 },
-  { name: 'warning', hue: 111, light: 94, chroma: 0.3 },
-  { name: 'positive', hue: 145, light: 85, chroma: 0.35 },
-  { name: 'negative', hue: 23, light: 99, chroma: 0.395 },
+  { name: 'warning', hue: 94, light: 92, chroma: 0.3 },
+  { name: 'positive', hue: 150, light: 70, chroma: 0.4 },
+  { name: 'negative', hue: 30, light: 60, chroma: 0.35 },
   { name: 'neutral', hue: 0, light: 70, chroma: 0.02 },
 ]
 
+//deactivated
 export const colorVars = {
-  'inverted': '0',
+  'inverted': '1',
   'base': 'oklch(98.5% 0.025 88)',
   'contrast': 'oklch(29% 0.025 88)',
   'card-base': 'oklch(82.67% 0.025 88)',

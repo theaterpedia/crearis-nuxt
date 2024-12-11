@@ -1,9 +1,8 @@
 
 import defaultTheme from 'tailwindcss/defaultTheme'
-import {colorScales, colorVars} from './theme'
+import {colorScales} from './theme'
 import {palette, neutralPalette, colorUtilities, lightness} from './utils/colorSettings'
 import peerNextPlugin from '@storefront-ui/tw-plugin-peer-next'
-import tailwindCssVariables from '@mertasan/tailwindcss-variables'
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -12,11 +11,6 @@ export default {
     hoverOnlyWhenSupported: true,
   },
   theme: {
-    variables: {
-      DEFAULT: {
-        color: colorVars
-      },
-    },
     extend: {
       fontFamily: {
         body: ['MonaspaceNeon', ...defaultTheme.fontFamily.sans], // Pruvious: Lato
@@ -133,5 +127,5 @@ export default {
       'ring': 'var(--color-ring) '
     })
   },
-  plugins: [tailwindCssVariables, peerNextPlugin],
+  plugins: [peerNextPlugin],
 }

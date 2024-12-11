@@ -55,9 +55,10 @@ const lightness = [
   [82.67, 74.22, 64.78, 57.33, 46.89, 39.44, 32, 23.78, 16, 12, 8],
 ]
 
-export function palette(color: String, invert: String): ColorShades {
+/* function paletteOld(color: String, invert: String): ColorShades {
   const base = `oklch(from oklch(${color}) calc(1 - ${invert}) 0 h)`
   const contrast = `oklch(from oklch(${color}) calc(0 + ${invert}) 0 h)`
+  const test = 'oklch(from var(--base) calc(l - 0.4) c h)'
   return {
     DEFAULT: `oklch(${color})`,
     contrast: `oklch(${contrast})`,
@@ -65,7 +66,7 @@ export function palette(color: String, invert: String): ColorShades {
     100: `color-mix(in oklch, oklch(${color}) 25%, ${base} 75%)`,
     200: `color-mix(in oklch, oklch(${color}) 40%, ${base} 60%)`,
     300: `color-mix(in oklch, oklch(${color}) 60%, ${base} 40%)`,
-    400: `color-mix(in oklch, oklch(${color}) 80%, ${base} 20%)`,
+    400: `oklch(from oklch(${color}) calc(l - ${invert} * 0.2))`,
     500: `oklch(${color})`,
     600: `color-mix(in oklch, oklch(${color}) 80%, ${contrast} 20%)`,
     700: `color-mix(in oklch, oklch(${color}) 60%, ${contrast} 40%)`,
@@ -73,10 +74,28 @@ export function palette(color: String, invert: String): ColorShades {
     900: `color-mix(in oklch, oklch(${color}) 25%, ${contrast} 75%)`,
     950: `color-mix(in oklch, oklch(${color}) 10%, ${contrast} 90%)`,
   }
+} */
+
+export function palette(color: String, invert: String): ColorShades {
+  return {
+    DEFAULT: `${color}`,
+    contrast: `oklch(from ${color} calc(l - ${invert} * 0.4))`,
+    50: `oklch(from ${color} calc(l + 1 * (${invert} - l)) calc(c / 4.5) h)`,
+    100: `oklch(from ${color} calc(l + 0.8 * (${invert} - l)) calc(c / 3)  h)`,
+    200: `oklch(from ${color} calc(l + 0.6 * (${invert} - l)) calc(c / 2)  h)`,
+    300: `oklch(from ${color} calc(l + 0.4 * (${invert} - l)) calc(c / 1.5) h)`,
+    400: `oklch(from ${color} calc(l + 0.2 * (${invert} - l)) calc(c / 1.25) h)`,
+    500: `${color}`,
+    600: `oklch(from ${color} calc(l + 0.2 * (1 - ${invert} - l)) calc(c / 1.25) h)`,
+    700: `oklch(from ${color} calc(l + 0.4 * (1 - ${invert} - l)) calc(c / 1.5) h)`,
+    800: `oklch(from ${color} calc(l + 0.6 * (1 - ${invert} - l)) calc(c / 2) h)`,
+    900: `oklch(from ${color} calc(l + 0.8 * (1 - ${invert} - l)) calc(c / 3) h)`,
+    950: `oklch(from ${color} calc(l + 1 * (1 - ${invert} - l)) calc(c / 4.5) h)`,
+  }
 }
 
 export function getOklchColor(color: OklchColor): String {
-  return `${color.light}% ${color.chroma} ${color.hue}`
+  return `oklch(${color.light}% ${color.chroma} ${color.hue})`
 }
 
 export const maxChroma = (i, hue, scale, greyval) => {
@@ -131,7 +150,7 @@ export function colorVars(colormap: SfColorMapping[], colorScales: OklchScale[])
     return oklchParams(color.shade, colorScale.hue, colorScale.scale, colorScale.greyval)
   }
   return {
-    'inverted': '0',
+    'inverted': '1',
     'base': getColor('base'),
     'contrast': getColor('contrast'),
     'card-base': getColor('card-base'),

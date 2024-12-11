@@ -33,12 +33,12 @@ onMounted(() => {
   if (neutralColors.value.length < 1 || basisColors.value.length < 3 || brandColors.value.length < 2) {
     return
   }
-  pPalette.value = palette(getOklchColor(brandColors.value[0]), '0')
-  sPalette.value = palette(getOklchColor(brandColors.value[1]), '0')
-  posPalette.value = palette(getOklchColor(basisColors.value[1]), '0')
-  negPalette.value = palette(getOklchColor(basisColors.value[0]), '0')
-  warnPalette.value = palette(getOklchColor(basisColors.value[2]), '0')
-  neutralPalette.value = palette(getOklchColor(neutralColors.value[0]), '0')
+  pPalette.value = palette(getOklchColor(brandColors.value[0]), '1')
+  sPalette.value = palette(getOklchColor(brandColors.value[1]), '1')
+  posPalette.value = palette(getOklchColor(basisColors.value[1]), '1')
+  negPalette.value = palette(getOklchColor(basisColors.value[0]), '1')
+  warnPalette.value = palette(getOklchColor(basisColors.value[2]), '1')
+  neutralPalette.value = palette(getOklchColor(neutralColors.value[0]), '1')
 
 
   watch([neutralColors, basisColors, brandColors], (newColors) => {
@@ -46,12 +46,12 @@ onMounted(() => {
     if (neutralColors.value.length < 1 || basisColors.value.length < 3 || brandColors.value.length < 2) {
       return
     }
-    pPalette.value = palette(getOklchColor(brandColors.value[0]), '0')
-    sPalette.value = palette(getOklchColor(brandColors.value[1]), '0')
-    posPalette.value = palette(getOklchColor(basisColors.value[1]), '0')
-    negPalette.value = palette(getOklchColor(basisColors.value[2]), '0')
-    warnPalette.value = palette(getOklchColor(basisColors.value[0]), '0')
-    neutralPalette.value = palette(getOklchColor(neutralColors.value[0]), '0')
+    pPalette.value = palette(getOklchColor(brandColors.value[0]), '1')
+    sPalette.value = palette(getOklchColor(brandColors.value[1]), '1')
+    posPalette.value = palette(getOklchColor(basisColors.value[1]), '1')
+    negPalette.value = palette(getOklchColor(basisColors.value[2]), '1')
+    warnPalette.value = palette(getOklchColor(basisColors.value[0]), '1')
+    neutralPalette.value = palette(getOklchColor(neutralColors.value[0]), '1')
   })
 })
 

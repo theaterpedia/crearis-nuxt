@@ -38,11 +38,11 @@ defineProps({
       <input v-model.number="hue" max="360" min="0" step="1" type="range" class="min-w-56" />
     </label>
     <label class="min-w-16 max-w-16">
-      <span v-show="showHead" class="bg-muted block">Scale</span>
+      <span v-show="showHead" class="bg-muted block">Light</span>
       <input v-model.number="light" max="99.9" min="0"  class="min-w-16 max-w-16" />
     </label>
     <label class="min-w-16 max-w-16">
-      <span v-show="showHead" class="bg-muted block">Greyval</span>
+      <span v-show="showHead" class="bg-muted block">Chroma</span>
       <input v-model.number="chroma" max="0.5" min="0" class="min-w-16 max-w-16" />
     </label>
   </form>
