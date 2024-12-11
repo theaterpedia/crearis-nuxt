@@ -7,6 +7,27 @@ export interface OklchScale {
   scale: 0 | 1 | 2 | 3 | 4 | 5
   greyval: 0 | 1 | 2 | 3 | 4
 }
+export interface ColorShades {
+  DEFAULT: String
+  contrast: String
+  50: String
+  100: String
+  200: String
+  300: String
+  400: String
+  500: String
+  600: String
+  700: String
+  800: String
+  900: String
+  950: String
+}
+export interface OklchColor {
+  name: String
+  hue: Number
+  light: Number
+  chroma: Number
+}
 
 export interface SfColorMapping {
   name: String
@@ -20,10 +41,11 @@ export interface Palette {
 }
 
 // see  https://stackblitz.com/edit/vitejs-vite-ncyeyc
-export const shades = [50, ...Array.from({ length: 9 }).map((_, i) => (i + 1) * 100), 950]
+export const shades = [50, ...Array.from({ length: 9 }).map((_, i) => (i + 1) * 100), 950, 'bas', 'def']
 
 const grey = [0.4, 0.2, 0.1, 0.05, 0.025]
 
+// values in column 5 (=default) MUST be different in each row!!
 const lightness = [
   [98.9, 98.0, 97.0, 95.5, 94.0, 91.11, 84, 62, 45, 29, 16],
   [98.5, 96.5, 93.0, 91.0, 88.11, 82.67, 73, 62, 45, 29, 16],
@@ -32,6 +54,48 @@ const lightness = [
   [88.11, 82.67, 74.22, 64.78, 57.33, 46.89, 39.44, 32, 23.78, 16, 12],
   [82.67, 74.22, 64.78, 57.33, 46.89, 39.44, 32, 23.78, 16, 12, 8],
 ]
+
+export function palette(color: String, invert: String): ColorShades {
+  const base = `oklch(from oklch(${color}) calc(1 - ${invert}) 0 h)`
+  const contrast = `oklch(from oklch(${color}) calc(0 + ${invert}) 0 h)`
+  return {
+    DEFAULT: `oklch(${color})`,
+    contrast: `oklch(${contrast})`,
+    50: `color-mix(in oklch, oklch(${color}) 10%, ${base} 90%)`,
+    100: `color-mix(in oklch, oklch(${color}) 25%, ${base} 75%)`,
+    200: `color-mix(in oklch, oklch(${color}) 40%, ${base} 60%)`,
+    300: `color-mix(in oklch, oklch(${color}) 60%, ${base} 40%)`,
+    400: `color-mix(in oklch, oklch(${color}) 80%, ${base} 20%)`,
+    500: `oklch(${color})`,
+    600: `color-mix(in oklch, oklch(${color}) 80%, ${contrast} 20%)`,
+    700: `color-mix(in oklch, oklch(${color}) 60%, ${contrast} 40%)`,
+    800: `color-mix(in oklch, oklch(${color}) 40%, ${contrast} 60%)`,
+    900: `color-mix(in oklch, oklch(${color}) 25%, ${contrast} 75%)`,
+    950: `color-mix(in oklch, oklch(${color}) 10%, ${contrast} 90%)`,
+  }
+}
+
+export function palette2(color: String, base: String, contrast: String): ColorShades {
+  return {
+    DEFAULT: `oklch(${color})`,
+    contrast: `oklch(${contrast})`,
+    50: `color-mix(in oklch, oklch(${color}) 10%, ${base} 90%)`,
+    100: `color-mix(in oklch, oklch(${color}) 25%, ${base} 75%)`,
+    200: `color-mix(in oklch, oklch(${color}) 50%, ${base} 50%)`,
+    300: `color-mix(in oklch, oklch(${color}) 75%, ${base} 25%)`,
+    400: `color-mix(in oklch, oklch(${color}) 90%, ${base} 10%)`,
+    500: `oklch(${color})`,
+    600: `color-mix(in oklch, oklch(${color}) 80%, ${contrast} 20%)`,
+    700: `color-mix(in oklch, oklch(${color}) 60%, ${contrast} 40%)`,
+    800: `color-mix(in oklch, oklch(${color}) 40%, ${contrast} 60%)`,
+    900: `color-mix(in oklch, oklch(${color}) 25%, ${contrast} 75%)`,
+    950: `color-mix(in oklch, oklch(${color}) 10%, ${contrast} 90%)`,
+  }
+}
+
+export function getOklchColor(color: OklchColor): String {
+  return `${color.light}% ${color.chroma} ${color.hue}`
+}
 
 export const maxChroma = (i, hue, scale, greyval) => {
   let oklch = converter('oklch')
@@ -64,6 +128,7 @@ export function colorVars(colormap: SfColorMapping[], colorScales: OklchScale[])
   function getColor(name: String) {
     // find the color in the colormap
     const color = colormap.find((c) => c.name === name)
+
     if (!color) {
       return `'var(--color-base)'`
     }
@@ -77,6 +142,8 @@ export function colorVars(colormap: SfColorMapping[], colorScales: OklchScale[])
     return oklchParams(color.shade, colorScale.hue, colorScale.scale, colorScale.greyval)
   }
   return {
+    'white': 'oklch(var(--color-white))',
+    'black': 'oklch(var(--color-black))',
     'base': getColor('base'),
     'contrast': getColor('contrast'),
     'card-base': getColor('card-base'),

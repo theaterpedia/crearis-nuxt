@@ -2,7 +2,7 @@
 import { ref, resolveComponent, onMounted, watch } from 'vue'
 import { Button, CardHero } from '@crearis/ui'
 import { TabsContent, TabsList, TabsRoot, TabsTrigger } from 'radix-vue'
-import type { OklchScale, SfColorMapping } from '@crearis/theme/utils/colorSettings'
+import type { OklchScale, OklchColor, SfColorMapping } from '@crearis/theme/utils/colorSettings'
 import { generateAllPalettes } from '@crearis/theme/utils/colorSettings'
 import ColorPalette from '../components/ColorPalette.vue'
 
@@ -14,13 +14,13 @@ const themes = [
   {
     id: 0,
     heading: '**Theme 0**Feature, Feature, Feature',
-    colorScales: <OklchScale[]> [
-      { name: 'primary', hue: 100, scale: 1, greyval: 0 },
-      { name: 'secondary', hue: 100, scale: 5, greyval: 0 },
-      { name: 'warning', hue: 100, scale: 0, greyval: 0 },
-      { name: 'positive', hue: 138, scale: 1, greyval: 0 },
-      { name: 'negative', hue: 4, scale: 3, greyval: 0 },
-      { name: 'neutral', hue: 88, scale: 1, greyval: 4 },
+    colorScales: <OklchColor[]> [
+      { name: 'primary', hue: 56, light: 99, chroma: 0.3 },
+      { name: 'secondary', hue: 274, light: 80, chroma: 0.4 },
+      { name: 'warning', hue: 94, light: 92, chroma: 0.3 },
+      { name: 'positive', hue: 150, light: 70, chroma: 0.4 },
+      { name: 'negative', hue: 30, light: 60, chroma: 0.35 },
+      { name: 'neutral', hue: 0, light: 70, chroma: 0.02 }
     ],
     colormap: [
       { name: 'positive-base', sfname: 'positive', shade: 2 },
@@ -36,13 +36,13 @@ const themes = [
   {
     id: 1,
     heading: '**Theme 1**Feature, Feature, Feature',
-    colorScales: <OklchScale[]>[
-      { name: 'primary', hue: 88, scale: 1, greyval: 0 },
-      { name: 'secondary', hue: 274, scale: 5, greyval: 0 },
-      { name: 'warning', hue: 104, scale: 0, greyval: 0 },
-      { name: 'positive', hue: 138, scale: 1, greyval: 0 },
-      { name: 'negative', hue: 4, scale: 3, greyval: 0 },
-      { name: 'neutral', hue: 88, scale: 1, greyval: 4 },
+    colorScales: <OklchColor[]>[
+      { name: 'primary', hue: 80, light: 99, chroma: 0.25 },
+      { name: 'secondary', hue: 274, light: 80, chroma: 0.4 },
+      { name: 'warning', hue: 111, light: 94, chroma: 0.3 },
+      { name: 'positive', hue: 145, light: 85, chroma: 0.35 },
+      { name: 'negative', hue: 23, light: 99, chroma: 0.395 },
+      { name: 'neutral', hue: 0, light: 70, chroma: 0.02 },
     ],    
     colormap: [
       { name: 'card-base', sfname: 'neutral', shade: 9 },
@@ -54,13 +54,13 @@ const themes = [
   {
     id: 2,
     heading: '**Theme 2**Feature, Feature, Feature',
-    colorScales: <OklchScale[]>[
-      { name: 'primary', hue: 88, scale: 1, greyval: 0 },
-      { name: 'secondary', hue: 274, scale: 5, greyval: 0 },
-      { name: 'warning', hue: 104, scale: 0, greyval: 0 },
-      { name: 'positive', hue: 138, scale: 1, greyval: 0 },
-      { name: 'negative', hue: 4, scale: 3, greyval: 0 },
-      { name: 'neutral', hue: 88, scale: 1, greyval: 4 },
+    colorScales: <OklchColor[]>[
+      { name: 'primary', hue: 100, light: 88, chroma: 0.4 },
+      { name: 'secondary', hue: 100, light: 88, chroma: 0.4 },
+      { name: 'warning', hue: 100, light: 88, chroma: 0.4 },
+      { name: 'positive', hue: 138, light: 88, chroma: 0.4 },
+      { name: 'negative', hue: 4, light: 88, chroma: 0.4 },
+      { name: 'neutral', hue: 88, light: 88, chroma: 0.02 }
     ],    
     colormap: [
       { name: 'muted-base', sfname: 'neutral', shade: 5 },
@@ -112,33 +112,31 @@ const colormap_base = [
 const colormap = ref<SfColorMapping[]>([...colormap_base
 ])
 
-const basisColors = ref<OklchScale[]>([
-  { name: 'warning', hue: 104, scale: 0, greyval: 0 },
-  { name: 'positive', hue: 138, scale: 1, greyval: 0 },
-  { name: 'negative', hue: 4, scale: 3, greyval: 0 },
+const basisColors = ref<OklchColor[]>([
+  { name: 'warning', hue: 94, light: 92, chroma: 0.3 },
+  { name: 'positive', hue: 150, light: 70, chroma: 0.4 },
+  { name: 'negative', hue: 30, light: 60, chroma: 0.35 },
 ])
 
-const brandColors = ref<OklchScale[]>([
-  { name: 'primary', hue: 88, scale: 1, greyval: 0 },
-  { name: 'secondary', hue: 274, scale: 5, greyval: 0 },
+const brandColors = ref<OklchColor[]>([
+  { name: 'primary', hue: 56, light: 99, chroma: 0.3 },
+  { name: 'secondary', hue: 274, light: 80, chroma: 0.4 },
 ])
 
-const neutralColors = ref<OklchScale[]>([{ name: 'neutral', hue: 88, scale: 1, greyval: 4 }])
+const neutralColors = ref<OklchColor[]>([
+  { name: 'neutral', hue: 0, light: 70, chroma: 0.02 },
+])
 
 const colors = ref<OklchScale[]>([])
 const palettes = ref([])
 onMounted(() => {
-  colors.value.push(...brandColors.value, ...basisColors.value,...neutralColors.value)
+  /* colors.value.push(...brandColors.value, ...basisColors.value,...neutralColors.value)
   palettes.value = generateAllPalettes(colors.value)
   watch([neutralColors, basisColors, brandColors], (newColors) => {
     colors.value = []
     colors.value.push(...brandColors.value, ...basisColors.value,...neutralColors.value)
     palettes.value = generateAllPalettes(colors.value)
-  })
-  /*
-  watch(palettes, (newPalettes) => {
-    emit('update:palettes', newPalettes)
-  })  */
+  }) */
 })
 
 const imgUrl = ref(
@@ -204,7 +202,7 @@ const handleLogout = async () => {
           <TabsTrigger value="elements" class="trigger">Elemente</TabsTrigger>
           <TabsTrigger value="typography" class="trigger">Typographie</TabsTrigger>
           <TabsTrigger value="docs" class="trigger">Docs</TabsTrigger>
-          <TabsTrigger value="dev" class="trigger">Dev / Dev-Docs</TabsTrigger>
+          <TabsTrigger value="export" class="trigger">Export</TabsTrigger>
         </TabsList>
         <TabsContent value="demo" class="p-4">
           <h2>DEMO</h2>
@@ -248,8 +246,10 @@ const handleLogout = async () => {
           auth.login.forgotPasswordLabel
         </SfButton>
       </form>
-
-      <UiAlert variant="neutral" class="typography-text-base mt-6 w-full !justify-start p-4 md:p-6">
+      <div class="bg-primary-600 w-full p-4 md:p-6">
+        hallo hans
+      </div>
+      <UiAlert variant="neutral" class="typography-text-base mt-6 bg-primary-600 w-full !justify-start p-4 md:p-6">
         <SfLink :is="NuxtLink" data-testid="login-page-signup-button" to="signup" variant="primary">
           auth.login.createAccountLinkLabel
         </SfLink>
@@ -278,9 +278,9 @@ const handleLogout = async () => {
         <TabsContent value="docs" class="p-4">
           <Heading content="**Dokmentation**" is="h2" />
         </TabsContent>
-        <TabsContent value="dev" class="p-4">
-          <Heading content="**Dev-Docs**subline subline" is="h2" />
-          <ThemeExporter :colorScales="colors" :colorMap="colormap" />
+        <TabsContent value="export" class="p-4">
+          <Heading content="**Export**Paste settings into theme.ts" is="h2" />
+          <!--ThemeExporter :colorScales="colors" :colorMap="colormap" -->
         </TabsContent>
       </TabsRoot>
     </NuxtLayout>

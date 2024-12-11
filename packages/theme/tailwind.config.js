@@ -1,6 +1,7 @@
+
 import defaultTheme from 'tailwindcss/defaultTheme'
 import {colorScales, colorVars} from './theme'
-import {colorUtilities} from './utils/colorSettings'
+import {palette, neutralPalette, colorUtilities, lightness} from './utils/colorSettings'
 import peerNextPlugin from '@storefront-ui/tw-plugin-peer-next'
 import tailwindCssVariables from '@mertasan/tailwindcss-variables'
 
@@ -106,7 +107,14 @@ export default {
       DEFAULT: 'var(--radius)',
     },
     //theming
-    colors: Object.assign(colorUtilities(colorScales), 
+    colors: Object.assign({
+      'primary': palette('var(--color-primary-base)', 'var(--color-white)', 'var(--color-black)'),
+      'secondary': palette('var(--color-secondary-base)', 'var(--color-white)', 'var(--color-black)'),
+      'positive': palette('var(--color-positive-base)', 'var(--color-white)', 'var(--color-black)'),
+      'negative': palette('var(--color-negative-base)', 'var(--color-white)', 'var(--color-black)'),
+      'warning': palette('var(--color-warning-base)', 'var(--color-white)', 'var(--color-black)'),
+      'neutral': palette('var(--color-neutral)', 'var(--color-white)', 'var(--color-black)'),
+    }, 
       {
       'background': 'oklch(var(--color-base) / <alpha-value>)',
       'foreground': 'oklch(var(--color-contrast) / <alpha-value>)',

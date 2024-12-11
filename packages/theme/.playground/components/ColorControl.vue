@@ -4,14 +4,14 @@ const hue = defineModel('hue', {
   default: 0,
 })
 
-const scale = defineModel('scale', {
+const light = defineModel('light', {
   type: Number,
-  default: 3,
+  default: 88,
 })
 
-const greyval = defineModel('greyval', {
+const chroma = defineModel('chroma', {
   type: Number,
-  default: 0,
+  default: 0.4,
 })
 
 defineProps({
@@ -39,11 +39,11 @@ defineProps({
     </label>
     <label class="min-w-16 max-w-16">
       <span v-show="showHead" class="bg-muted block">Scale</span>
-      <input v-model.number="scale" max="5" min="0" step="1" type="range" class="min-w-16 max-w-16" />
+      <input v-model.number="light" max="99.9" min="0"  class="min-w-16 max-w-16" />
     </label>
     <label class="min-w-16 max-w-16">
       <span v-show="showHead" class="bg-muted block">Greyval</span>
-      <input v-model.number="greyval" max="4" min="0" step="1" type="range" class="min-w-16 max-w-16" />
+      <input v-model.number="chroma" max="0.5" min="0" class="min-w-16 max-w-16" />
     </label>
   </form>
 </template>

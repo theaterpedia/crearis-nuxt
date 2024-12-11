@@ -1,18 +1,18 @@
 <script lang="ts" setup>
-import type { OklchScale, SfColorMapping } from '@crearis/theme/utils/colorSettings'
+import type { OklchColor, ColorShades, SfColorMapping } from '@crearis/theme/utils/colorSettings'
 import { onMounted, PropType, ref, watch } from 'vue'
-import { generateAllPalettes, shades } from '@crearis/theme/utils/colorSettings'
+import { palette, getOklchColor, generateAllPalettes, shades } from '@crearis/theme/utils/colorSettings'
 
-const brandColors = defineModel<OklchScale[]>('brand', {
-  type: Array as PropType<OklchScale[]>,
+const brandColors = defineModel<OklchColor[]>('brand', {
+  type: Array as PropType<OklchColor[]>,
   required: true,
 })
-const basisColors = defineModel<OklchScale[]>('basis', {
-  type: Array as PropType<OklchScale[]>,
+const basisColors = defineModel<OklchColor[]>('basis', {
+  type: Array as PropType<OklchColor[]>,
   required: true,
 })
-const neutralColors = defineModel<OklchScale[]>('neutral', {
-  type: Array as PropType<OklchScale[]>,
+const neutralColors = defineModel<OklchColor[]>('neutral', {
+  type: Array as PropType<OklchColor[]>,
   required: true,
 })
 
@@ -21,22 +21,40 @@ const colormap = defineModel<SfColorMapping[]>('colormap', {
   required: true,
 })
 
-const colors = ref<OklchScale[]>([])
+const pPalette = ref<ColorShades>()
+const sPalette = ref<ColorShades>()
+const posPalette = ref<ColorShades>()
+const negPalette = ref<ColorShades>()
+const warnPalette = ref<ColorShades>()
+const neutralPalette = ref<ColorShades>()
 
-const palettes = ref([])
 onMounted(() => {
-  colors.value.push(...neutralColors.value, ...basisColors.value, ...brandColors.value)
-  palettes.value = generateAllPalettes(colors.value)
+  // for every color in brandColors, basisColors, neutralColors create palette-array and push to colors
+  if (neutralColors.value.length < 1 || basisColors.value.length < 3 || brandColors.value.length < 2) {
+    return
+  }
+  pPalette.value = palette(getOklchColor(brandColors.value[0]), '0')
+  sPalette.value = palette(getOklchColor(brandColors.value[1]), '0')
+  posPalette.value = palette(getOklchColor(basisColors.value[1]), '0')
+  negPalette.value = palette(getOklchColor(basisColors.value[0]), '0')
+  warnPalette.value = palette(getOklchColor(basisColors.value[2]), '0')
+  neutralPalette.value = palette(getOklchColor(neutralColors.value[0]), '0')
+
+
   watch([neutralColors, basisColors, brandColors], (newColors) => {
-    colors.value = []
-    colors.value.push(...neutralColors.value, ...basisColors.value, ...brandColors.value)
-    palettes.value = generateAllPalettes(colors.value)
+    // same as above
+    if (neutralColors.value.length < 1 || basisColors.value.length < 3 || brandColors.value.length < 2) {
+      return
+    }
+    pPalette.value = palette(getOklchColor(brandColors.value[0]), '0')
+    sPalette.value = palette(getOklchColor(brandColors.value[1]), '0')
+    posPalette.value = palette(getOklchColor(basisColors.value[1]), '0')
+    negPalette.value = palette(getOklchColor(basisColors.value[2]), '0')
+    warnPalette.value = palette(getOklchColor(basisColors.value[0]), '0')
+    neutralPalette.value = palette(getOklchColor(neutralColors.value[0]), '0')
   })
-  /*
-  watch(palettes, (newPalettes) => {
-    emit('update:palettes', newPalettes)
-  })  */
 })
+
 </script>
 
 <template>
@@ -53,16 +71,67 @@ onMounted(() => {
           <div class="mx-2 min-w-24">Shades</div>
           <div v-for="(shade, index) in shades" :key="index" class="grow px-2">{{ shade }}</div>
         </div>
-        <div v-for="({ name, palette }, index) in palettes" :key="index" class="mt-0 flex h-8" style="margin-top: 4px">
-          <div class="mx-2 min-w-24">{{ name }}</div>
+        <div class="flex flex-row">
+          <div :style="`background-color: ${pPalette?.DEFAULT}`" class="mx-2 min-w-24">Primary</div>
           <div
-            v-for="(color, index) in palette"
-            :key="index"
+            v-for="(value, key) in pPalette"
+            :key="key"
             class="grow"
-            :class="{ 'text-accent-contrast': index > 6 }"
-            :style="`background-color: ${color}`"
-          ></div>
+            :style="`background-color: ${value}`"
+          >
+          </div>
         </div>
+        <div class="flex flex-row">
+          <div :style="`background-color: ${sPalette?.DEFAULT}`" class="mx-2 min-w-24">Secondary</div>
+          <div
+            v-for="(value, key) in sPalette"
+            :key="key"
+            class="grow"
+            :style="`background-color: ${value}`"
+          >
+          </div>
+        </div>  
+        <div class="flex flex-row">
+          <div :style="`background-color: ${warnPalette?.DEFAULT}`" class="mx-2 min-w-24">Warning</div>
+          <div
+            v-for="(value, key) in warnPalette"
+            :key="key"
+            class="grow"
+            :style="`background-color: ${value}`"
+          >
+          </div>
+        </div>         
+        <div class="flex flex-row">
+          <div :style="`background-color: ${posPalette?.DEFAULT}`" class="mx-2 min-w-24">Positive</div>
+          <div
+            v-for="(value, key) in posPalette"
+            :key="key"
+            class="grow"
+            :style="`background-color: ${value}`"
+          >
+          </div>
+        </div> 
+        <div class="flex flex-row">
+          <div :style="`background-color: ${negPalette?.DEFAULT}`" class="mx-2 min-w-24">Negative</div>
+          <div
+            v-for="(value, key) in negPalette"
+            :key="key"
+            class="grow"
+            :style="`background-color: ${value}`"
+          >
+          </div>
+        </div>   
+        <div class="flex flex-row">
+          <div :style="`background-color: ${neutralPalette?.DEFAULT}`" class="mx-2 min-w-24">Neutral</div>
+          <div
+            v-for="(value, key) in neutralPalette"
+            :key="key"
+            class="grow"
+            :style="`background-color: ${value}`"
+          >
+          </div>
+        </div>                                        
+      
       </Column>
       <Column>
         <ColorMapperCollection v-model="colormap" />
