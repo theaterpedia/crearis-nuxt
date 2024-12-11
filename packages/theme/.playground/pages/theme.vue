@@ -128,30 +128,21 @@ const neutralColors = ref<OklchColor[]>([
 ])
 
 const colors = ref<OklchColor[]>([])
-const palettes = ref<ColorShades>([])
 const cssvars = ref<string[]>([])
+
 onMounted(() => {
   colors.value.push(...brandColors.value, ...basisColors.value,...neutralColors.value)
-  // ts-expect-error TODO: fix this
-  palettes.value = colors.value.map((c) => palette(getOklchColor(c), '0'))
-  // window.CSS.registerProperty('--color-primary-base', palettes.value[0].base)
-  /* window.CSS.registerProperty({
-      name: '--color-primary-base', 
-      syntax: '<color>', 
-      inherits: false, 
-      initialValue: "99% 0.3 88"
-    })  */
   cssvars.value = colormap.value.map((c) => {
-    let pindex = 0
+    let colorPalette = brandColors.value[0]
     switch(c.sfname) {
-      case 'secondary': pindex = 1
-      case 'warning': pindex = 2
-      case 'positive': pindex = 3
-      case 'negative': pindex = 4
-      case 'neutral': pindex = 5
+      case 'secondary': colorPalette = brandColors.value[1]
+      case 'warning': colorPalette = basisColors.value[0]
+      case 'positive': colorPalette = basisColors.value[1]
+      case 'negative': colorPalette = basisColors.value[2]
+      case 'neutral': colorPalette = neutralColors.value[0]
     }
 
-    const pal:ColorShades = palettes.value[pindex]
+    const pal:ColorShades = palette(getOklchColor(colorPalette), '0')
     if (pal) {
       return `--color-${c.name}: ${pal[c.shade.toString()]};`
     }
@@ -160,41 +151,24 @@ onMounted(() => {
   watch([neutralColors, basisColors, brandColors, colormap], (newColors) => {
     colors.value = []
     colors.value.push(...brandColors.value, ...basisColors.value,...neutralColors.value)
-    palettes.value = colors.value.map((c) => palette(getOklchColor(c), '0'))
 
     // for every entry in colormap, re-assign css-properties with new colors
     cssvars.value = colormap.value.map((c) => {
-      let pindex = 0
-      switch(c.sfname) {
-        case 'secondary': pindex = 1
-        case 'warning': pindex = 2
-        case 'positive': pindex = 3
-        case 'negative': pindex = 4
-        case 'neutral': pindex = 5
-      }
+    let colorPalette = brandColors.value[0]
+    switch(c.sfname) {
+      case 'secondary': colorPalette = brandColors.value[1]
+      case 'warning': colorPalette = basisColors.value[0]
+      case 'positive': colorPalette = basisColors.value[1]
+      case 'negative': colorPalette = basisColors.value[2]
+      case 'neutral': colorPalette = neutralColors.value[0]
+    }
 
-      const pal:ColorShades = palettes.value[pindex]
-      if (pal) {
-        return `--color-${c.name}: ${pal[c.shade.toString()]};`
-      }
-    })
+    const pal:ColorShades = palette(getOklchColor(colorPalette), '0')
+    if (pal) {
+      return `--color-${c.name}: ${pal[c.shade.toString()]};`
+    }
+  })
 
-    /*colormap.value.forEach((c) => {
-      const color = palettes.value.find((p) => p.name === c.sfname)
-      if (color) {
-        cssvars.value.push(`--color-${c.name}-base: ${color.base};`)
-        cssvars.value.push(`--color-${c.name}-contrast: ${color.contrast};`)
-      }
-    }) */
-
-
-    // re-assign css-properties with new colors
-    /* window.CSS.registerProperty({
-      name: '--color-primary-base', 
-      syntax: '<color>', 
-      inherits: false, 
-      initialValue: "99% 0.3 88"
-    }) */
 
   })
 })

@@ -22,7 +22,7 @@ export const colorVars = {
   'secondary-base': 'oklch(39.44% 0.4 274)',
   'secondary-contrast': 'oklch(29% 0.025 88)',
   'muted-base': 'oklch(93% 0.025 88)',
-  'muted-contrast': 'var(--color-base)',
+  'muted-contrast': 'var(--color-contrast)',
   'accent-base': 'oklch(62% 0.025 88)',
   'accent-contrast': 'oklch(82.67% 0.025 88)',
   'negative-base': 'oklch(57.33% 0.4 4)',
