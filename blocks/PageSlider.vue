@@ -87,25 +87,25 @@ await loadProductTemplateList({ pageSize: numOfProducts })
 }
 
 .section-default {
-  --color-base: var(--color-card-base);
+  --color-bg: var(--color-card-bg);
   --color-contrast: var(--color-card-contrast);
-  background-color: var(--color-card-base);
+  background-color: var(--color-card-bg);
   color: var(--color-card-contrast);
 }
 
 .section-muted {
-  --color-base: var(--color-muted-base);
+  --color-bg: var(--color-muted-bg);
   --color-contrast: var(--color-card-contrast);
-  background-color: var(--color-muted-base);
+  background-color: var(--color-muted-bg);
   color: var(--color-card-contrast);
 }
 
 .section-accent {
-  --color-base: var(--color-accent-base);
+  --color-bg: var(--color-accent-bg);
   --color-contrast: var(--color-accent-contrast);
   --color-muted-contrast: var(--color-accent-contrast);
   --link: var(--color-primary-base);
-  background-color: var(--color-accent-base);
+  background-color: var(--color-accent-bg);
   color: var(--color-accent-contrast);
 }
 </style>

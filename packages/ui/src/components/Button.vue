@@ -70,7 +70,7 @@ defineProps({
 
 .button-plain {
   background-color: var(--color-card-contrast);
-  color: var(--color-card-base);
+  color: var(--color-card-bg);
 }
 
 .button-plain:hover {

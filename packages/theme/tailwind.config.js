@@ -1,8 +1,8 @@
-
 import defaultTheme from 'tailwindcss/defaultTheme'
-import {colorScales} from './theme'
-import {palette, neutralPalette, colorUtilities, lightness} from './utils/colorSettings'
+import { colorScales, colorVars } from './theme'
+import { palette } from './utils/colorSettings'
 import peerNextPlugin from '@storefront-ui/tw-plugin-peer-next'
+import tailwindCssVariables from '@mertasan/tailwindcss-variables'
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -11,6 +11,11 @@ export default {
     hoverOnlyWhenSupported: true,
   },
   theme: {
+    variables: {
+      DEFAULT: {
+        color: colorVars,
+      },
+    },
     extend: {
       fontFamily: {
         body: ['MonaspaceNeon', ...defaultTheme.fontFamily.sans], // Pruvious: Lato
@@ -101,31 +106,33 @@ export default {
       DEFAULT: 'var(--radius)',
     },
     //theming
-    colors: Object.assign({
-      'primary': palette('var(--color-primary-base)', 'var(--color-inverted)'),
-      'secondary': palette('var(--color-secondary-base)', 'var(--color-inverted)'),
-      'positive': palette('var(--color-positive-base)', 'var(--color-inverted)'),
-      'negative': palette('var(--color-negative-base)', 'var(--color-inverted)'),
-      'warning': palette('var(--color-warning-base)', 'var(--color-inverted)'),
-      'neutral': palette('var(--color-neutral)', 'var(--color-inverted)'),
-    }, 
+    colors: Object.assign(
       {
-      'background': 'var(--color-base) ',
-      'foreground': 'var(--color-contrast) ',
-      'card': 'var(--color-card-base) ',
-      'card-contrast': 'var(--color-card-contrast) ',
-      'popover': 'var(--color-popover-base) ',
-      'popover-contrast': 'var(--color-popover-contrast) ',
-      'muted': 'var(--color-muted-base) ',
-      'muted-contrast': 'var(--color-muted-contrast) ',
-      'accent': 'var(--color-accent-base) ',
-      'accent-contrast': 'var(--color-accent-contrast) ',
-      'focus': 'var(--focus-base) ',
-      'focus-contrast': 'var(--focus-contrast) ',
-      'border': 'var(--color-border) ',
-      'input': 'var(--color-input) ',
-      'ring': 'var(--color-ring) '
-    })
+        primary: palette('var(--color-primary-base)', 'var(--color-inverted)'),
+        secondary: palette('var(--color-secondary-base)', 'var(--color-inverted)'),
+        positive: palette('var(--color-positive-base)', 'var(--color-inverted)'),
+        negative: palette('var(--color-negative-base)', 'var(--color-inverted)'),
+        warning: palette('var(--color-warning-base)', 'var(--color-inverted)'),
+        neutral: palette('var(--color-neutral-base)', 'var(--color-inverted)'),
+      },
+      {
+        'background': 'var(--color-bg) ',
+        'foreground': 'var(--color-contrast) ',
+        'card': 'var(--color-card-bg) ',
+        'card-contrast': 'var(--color-card-contrast) ',
+        'popover': 'var(--color-popover-bg) ',
+        'popover-contrast': 'var(--color-popover-contrast) ',
+        'muted': 'var(--color-muted-bg) ',
+        'muted-contrast': 'var(--color-muted-contrast) ',
+        'accent': 'var(--color-accent-bg) ',
+        'accent-contrast': 'var(--color-accent-contrast) ',
+        'focus': 'var(--focus-bg) ',
+        'focus-contrast': 'var(--focus-contrast) ',
+        'border': 'var(--color-border) ',
+        'input': 'var(--color-input) ',
+        'ring': 'var(--color-ring) ',
+      },
+    ),
   },
-  plugins: [peerNextPlugin],
+  plugins: [tailwindCssVariables, peerNextPlugin],
 }

@@ -150,7 +150,7 @@ watch(
   width: 100vw;
   height: 2.75rem;
   padding: 0 1rem;
-  background-color: oklch(var(--color-card-base) l c h / 48%);
+  background-color: oklch(var(--color-card-bg) l c h / 48%);
   color: var(--color-card-contrast);
 }
 
@@ -266,7 +266,7 @@ watch(
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: var(--color-base);
+    background-color: var(--color-bg);
     transition: var(--transition);
     transition-property: transform;
     transform: translate3d(-100%, 0, 0);

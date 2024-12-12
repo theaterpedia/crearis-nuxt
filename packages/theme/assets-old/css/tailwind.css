@@ -1,10 +1,10 @@
 :root {
   --color-inverted: 0;
-  --color-base: color-mix(in oklch, oklch(70% 0.02 0) 10%, oklch(from oklch(70% 0.02 0) calc(1 - 0) 0 h) 90%);
+  --color-bg: color-mix(in oklch, oklch(70% 0.02 0) 10%, oklch(from oklch(70% 0.02 0) calc(1 - 0) 0 h) 90%);
   --color-contrast: color-mix(in oklch, oklch(70% 0.02 0) 25%, oklch(from oklch(70% 0.02 0) calc(0 + 0) 0 h) 75%);
-  --color-card-base: color-mix(in oklch, oklch(70% 0.02 0) 25%, oklch(from oklch(70% 0.02 0) calc(0 + 0) 0 h) 75%);
+  --color-card-bg: color-mix(in oklch, oklch(70% 0.02 0) 25%, oklch(from oklch(70% 0.02 0) calc(0 + 0) 0 h) 75%);
   --color-card-contrast: color-mix(in oklch, oklch(70% 0.02 0) 25%, oklch(from oklch(70% 0.02 0) calc(0 + 0) 0 h) 75%);
-  --color-popover-base: oklch(70% 0.02 0);
+  --color-popover-bg: oklch(70% 0.02 0);
   --color-popover-contrast: color-mix(
     in oklch,
     oklch(70% 0.02 0) 25%,
@@ -22,9 +22,9 @@
     oklch(70% 0.02 0) 25%,
     oklch(from oklch(70% 0.02 0) calc(0 + 0) 0 h) 75%
   );
-  --color-muted-base: color-mix(in oklch, oklch(70% 0.02 0) 40%, oklch(from oklch(70% 0.02 0) calc(1 - 0) 0 h) 60%);
+  --color-muted-bg: color-mix(in oklch, oklch(70% 0.02 0) 40%, oklch(from oklch(70% 0.02 0) calc(1 - 0) 0 h) 60%);
   --color-muted-contrast: color-mix(in oklch, oklch(70% 0.02 0) 60%, oklch(from oklch(70% 0.02 0) calc(0 + 0) 0 h) 40%);
-  --color-accent-base: color-mix(in oklch, oklch(70% 0.02 0) 60%, oklch(from oklch(70% 0.02 0) calc(0 + 0) 0 h) 40%);
+  --color-accent-bg: color-mix(in oklch, oklch(70% 0.02 0) 60%, oklch(from oklch(70% 0.02 0) calc(0 + 0) 0 h) 40%);
   --color-accent-contrast: oklch(70% 0.02 0);
   --color-positive-base: oklch(70% 0.02 0);
   --color-positive-contrast: color-mix(

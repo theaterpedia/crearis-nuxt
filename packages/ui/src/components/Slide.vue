@@ -8,7 +8,7 @@
 
 <style scoped>
 .slide {
-  --color-base: var(--color-primary-base);
+  --color-bg: var(--color-primary-base);
   --color-contrast: var(--color-primary-contrast);
   --color-muted-contrast: var(--color-primary-contrast);
   --link: var(--color-primary-contrast);

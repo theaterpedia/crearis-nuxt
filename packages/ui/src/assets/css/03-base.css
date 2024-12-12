@@ -3,7 +3,7 @@
 ::after {
   min-width: 0;
   box-sizing: border-box;
-  border: 0 solid var(--color-border));
+  border: 0 solid var(--color-border);
   text-underline-offset: 0.125em;
   text-underline-offset: round(0.125em, 1px);
 }
@@ -16,7 +16,7 @@
 body {
   min-height: 100vh;
   margin: 0;
-  background-color: var(--color-base);
+  background-color: var(--color-bg);
   color: var(--color-contrast);
   font-family: var(--font);
   line-height: 1.15;

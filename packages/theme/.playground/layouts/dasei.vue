@@ -94,9 +94,9 @@ const mainMenu = useMainMenu()
   padding-top: 1.75rem; /* 28px */
   padding-bottom: 1.75rem; /* 28px */
   transform: translate3d(0, 0, 0); /* Fixes z-index in Safari */
-  --color-base: var(--color-muted-base);
+  --color-bg: var(--color-muted-bg);
   --color-contrast: var(--color-card-contrast);
-  background-color: var(--color-muted-base);
+  background-color: var(--color-muted-bg);
   color: var(--color-card-contrast);
   width: 100%;
   max-width: 90rem; /* 1440px */

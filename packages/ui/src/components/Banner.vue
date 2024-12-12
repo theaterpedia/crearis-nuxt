@@ -46,11 +46,11 @@ defineProps({
   --selection: var(--color-primary-base);
   --selection-foreground: var(--color-primary-contrast);
   padding: 1.5rem;
-  background-color: var(--color-base);
+  background-color: var(--color-bg);
 }
 
 .card.transparent {
-  background-color: oklch(from var(--color-base) l c h / 70%);
+  background-color: oklch(from var(--color-bg) l c h / 70%);
 }
 
 @media (max-width: 767px) {

@@ -9,22 +9,22 @@ export const colorScales = <OklchColor[]>[
   { name: 'neutral', hue: 0, light: 70, chroma: 0.02 },
 ]
 
-//deactivated
 export const colorVars = {
   'inverted': '1',
   'base': 'oklch(98.5% 0.025 88)',
+  'neutral': 'oklch(98.5% 0.025 88)',
   'contrast': 'oklch(29% 0.025 88)',
-  'card-base': 'oklch(82.67% 0.025 88)',
+  'card-bg': 'oklch(82.67% 0.025 88)',
   'card-contrast': 'oklch(29% 0.025 88)',
-  'popover-base': 'oklch(82.67% 0.025 88)',
+  'popover-bg': 'oklch(82.67% 0.025 88)',
   'popover-contrast': 'oklch(29% 0.025 88)',
   'primary-base': 'oklch(64.78% 0.4 235)',
   'primary-contrast': 'oklch(29% 0.025 88)',
   'secondary-base': 'oklch(39.44% 0.4 274)',
   'secondary-contrast': 'oklch(29% 0.025 88)',
-  'muted-base': 'oklch(93% 0.025 88)',
+  'muted-bg': 'oklch(93% 0.025 88)',
   'muted-contrast': 'var(--color-contrast)',
-  'accent-base': 'oklch(62% 0.025 88)',
+  'accent-bg': 'oklch(62% 0.025 88)',
   'accent-contrast': 'oklch(82.67% 0.025 88)',
   'negative-base': 'oklch(57.33% 0.4 4)',
   'negative-contrast': 'oklch(29% 0.025 88)',

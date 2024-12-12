@@ -5,7 +5,7 @@
       :filled="y > scrollBreak"
       :hideLogo="route.path === '/' && y <= scrollBreak"
       :hideSearch="searchDisablend ? true : y <= scrollBreak"
-      :class="route.path !== '/' ? 'bg-muted-base' : ''"
+      :class="route.path !== '/' ? 'bg-muted-bg' : ''"
     >
       <NuxtLink to="/konferenz" class="mr-2 flex-1" :style="textShadow">Konferenz</NuxtLink>
       <NuxtLink to="/sondierung" class="flex-1" :style="textShadow">Sondierung</NuxtLink>
@@ -154,9 +154,9 @@ const mainMenu = undefined // TODO: Reactivate useMainMenu() (from dasei.eu)
   padding-top: 1.75rem; /* 28px */
   padding-bottom: 1.75rem; /* 28px */
   transform: translate3d(0, 0, 0); /* Fixes z-index in Safari */
-  --color-base: var(--color-muted-base);
+  --color-bg: var(--color-muted-bg);
   --color-contrast: var(--color-card-contrast);
-  background-color: var(--color-muted-base);
+  background-color: var(--color-muted-bg);
   color: var(--color-card-contrast);
   width: 100%;
   max-width: 90rem; /* 1440px */

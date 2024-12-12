@@ -14,21 +14,22 @@ const themes = [
   {
     id: 0,
     heading: '**Theme 0**Feature, Feature, Feature',
-    colorScales: <OklchColor[]> [
+    colorScales: <OklchColor[]>[
       { name: 'primary', hue: 56, light: 99, chroma: 0.3 },
       { name: 'secondary', hue: 274, light: 80, chroma: 0.4 },
       { name: 'warning', hue: 94, light: 92, chroma: 0.3 },
       { name: 'positive', hue: 150, light: 70, chroma: 0.4 },
       { name: 'negative', hue: 30, light: 60, chroma: 0.35 },
-      { name: 'neutral', hue: 0, light: 70, chroma: 0.02 }
+      { name: 'neutral', hue: 88, light: 88, chroma: 0.02 },
     ],
     colormap: [
-      { name: 'positive-base', sfname: 'positive', shade: 200 },
-      { name: 'positive-contrast', sfname: 'neutral', shade: 200 },
-      { name: 'negative-base', sfname: 'negative', shade: 200 },
-      { name: 'negative-contrast', sfname: 'neutral', shade: 200 },
-      { name: 'warning-base', sfname: 'warning', shade: 200 },
-      { name: 'warning-contrast', sfname: 'neutral', shade: 200 },
+      { name: 'positive-contrast', sfname: 'neutral', shade: 900 },
+      { name: 'negative-contrast', sfname: 'neutral', shade: 900 },
+      { name: 'warning-contrast', sfname: 'neutral', shade: 900 },
+      { name: 'muted-bg', sfname: 'neutral', shade: 200 },
+      { name: 'muted-contrast', sfname: 'neutral', shade: 600 },
+      { name: 'accent-bg', sfname: 'neutral', shade: 800 },
+      { name: 'accent-contrast', sfname: 'neutral', shade: 100 },
     ],
     imgUrl:
       'https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg',
@@ -42,12 +43,16 @@ const themes = [
       { name: 'warning', hue: 111, light: 94, chroma: 0.3 },
       { name: 'positive', hue: 145, light: 85, chroma: 0.35 },
       { name: 'negative', hue: 23, light: 99, chroma: 0.395 },
-      { name: 'neutral', hue: 0, light: 70, chroma: 0.02 },
-    ],    
+      { name: 'neutral', hue: 88, light: 88, chroma: 0.02 },
+    ],
     colormap: [
-      { name: 'card-base', sfname: 'neutral', shade: 900 },
+      { name: 'card-bg', sfname: 'neutral', shade: 200 },
       { name: 'card-contrast', sfname: 'neutral', shade: 900 },
-    ],    
+      { name: 'muted-bg', sfname: 'neutral', shade: 200 },
+      { name: 'muted-contrast', sfname: 'neutral', shade: 500 },
+      { name: 'accent-bg', sfname: 'neutral', shade: 800 },
+      { name: 'accent-contrast', sfname: 'neutral', shade: 100 },
+    ],
     imgUrl:
       'https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg',
   },
@@ -60,14 +65,14 @@ const themes = [
       { name: 'warning', hue: 100, light: 88, chroma: 0.4 },
       { name: 'positive', hue: 138, light: 88, chroma: 0.4 },
       { name: 'negative', hue: 4, light: 88, chroma: 0.4 },
-      { name: 'neutral', hue: 88, light: 88, chroma: 0.02 }
-    ],    
+      { name: 'neutral', hue: 88, light: 88, chroma: 0.02 },
+    ],
     colormap: [
-      { name: 'muted-base', sfname: 'neutral', shade: 500 },
-      { name: 'muted-contrast', sfname: 'neutral', shade: 500 },
-      { name: 'accent-base', sfname: 'neutral', shade: 500 },
-      { name: 'accent-contrast', sfname: 'neutral', shade: 500 },
-    ],    
+      { name: 'muted-bg', sfname: 'neutral', shade: 300 },
+      { name: 'muted-contrast', sfname: 'neutral', shade: 700 },
+      { name: 'accent-bg', sfname: 'neutral', shade: 800 },
+      { name: 'accent-contrast', sfname: 'neutral', shade: 100 },
+    ],
     imgUrl:
       'https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg',
   },
@@ -75,33 +80,30 @@ const themes = [
 const theme = ref(themes[0])
 const showTheme = (id) => {
   theme.value = themes[id]
-  colormap.value = colormap_base.map((c) => theme.value.colormap.find((tc) => tc.name === c.name) || c)
-  basisColors.value = theme.value.colorScales.filter((c) => c.name === 'positive' || c.name === 'negative' || c.name === 'warning')
+  colormap.value = colormap_vars.map((c) => theme.value.colormap.find((tc) => tc.name === c.name) || c)
+  basisColors.value = theme.value.colorScales.filter(
+    (c) => c.name === 'positive' || c.name === 'negative' || c.name === 'warning',
+  )
   brandColors.value = theme.value.colorScales.filter((c) => c.name === 'primary' || c.name === 'secondary')
   neutralColors.value = theme.value.colorScales.filter((c) => c.name === 'neutral')
 }
 
-const colormap_base = [
-  { name: 'base', sfname: 'neutral', shade: 50 },
-  { name: 'contrast', sfname: 'neutral', shade: 900 },
-  { name: 'card-base', sfname: 'neutral', shade: 500 },
-  { name: 'card-contrast', sfname: 'neutral', shade: 900 },
-  { name: 'popover-base', sfname: 'neutral', shade: 500 },
-  { name: 'popover-contrast', sfname: 'neutral', shade: 900 },
-  { name: 'primary-base', sfname: 'primary', shade: 500 },
-  { name: 'primary-contrast', sfname: 'neutral', shade: 900 },
-  { name: 'secondary-base', sfname: 'secondary', shade: 500 },
-  { name: 'secondary-contrast', sfname: 'neutral', shade: 900 },
-  { name: 'muted-base', sfname: 'neutral', shade: 200 },
+const colormap_vars = [
+  { name: 'bg', sfname: 'neutral', shade: 50 },
+  { name: 'contrast', sfname: 'neutral', shade: 950 },
+  { name: 'muted-bg', sfname: 'neutral', shade: 200 },
   { name: 'muted-contrast', sfname: 'neutral', shade: 700 },
-  { name: 'accent-base', sfname: 'neutral', shade: 700 },
-  { name: 'accent-contrast', sfname: 'neutral', shade: 500 },
-  { name: 'positive-base', sfname: 'positive', shade: 500 },
-  { name: 'positive-contrast', sfname: 'neutral', shade: 900 },
-  { name: 'negative-base', sfname: 'negative', shade: 500 },
-  { name: 'negative-contrast', sfname: 'neutral', shade: 900 },
-  { name: 'warning-base', sfname: 'warning', shade: 500 },
-  { name: 'warning-contrast', sfname: 'neutral', shade: 900 },
+  { name: 'accent-bg', sfname: 'neutral', shade: 800 },
+  { name: 'accent-contrast', sfname: 'neutral', shade: 50 },
+  { name: 'card-bg', sfname: 'neutral', shade: 200 },
+  { name: 'card-contrast', sfname: 'neutral', shade: 900 },
+  { name: 'popover-bg', sfname: 'neutral', shade: 200 },
+  { name: 'popover-contrast', sfname: 'neutral', shade: 900 },
+  { name: 'primary-contrast', sfname: 'neutral', shade: 950 },
+  { name: 'secondary-contrast', sfname: 'neutral', shade: 950 },
+  { name: 'positive-contrast', sfname: 'neutral', shade: 950 },
+  { name: 'negative-contrast', sfname: 'neutral', shade: 950 },
+  { name: 'warning-contrast', sfname: 'neutral', shade: 950 },
   // TODO: specify these from sf-colors
   { name: 'dimmed', sfname: 'neutral', shade: 300 },
   { name: 'border', sfname: 'neutral', shade: 100 },
@@ -109,8 +111,16 @@ const colormap_base = [
   { name: 'ring', sfname: 'neutral', shade: 900 },
 ]
 
-const colormap = ref<SfColorMapping[]>([...colormap_base
-])
+const colormap_base = [
+  { name: 'primary-base', sfname: 'primary', shade: 500 },
+  { name: 'secondary-base', sfname: 'secondary', shade: 500 },
+  { name: 'warning-base', sfname: 'warning', shade: 500 },
+  { name: 'positive-base', sfname: 'positive', shade: 500 },
+  { name: 'negative-base', sfname: 'negative', shade: 500 },
+  { name: 'neutral-base', sfname: 'neutral', shade: 500 },
+]
+
+const colormap = ref<SfColorMapping[]>([...colormap_vars])
 
 const basisColors = ref<OklchColor[]>([
   { name: 'warning', hue: 94, light: 92, chroma: 0.3 },
@@ -123,26 +133,29 @@ const brandColors = ref<OklchColor[]>([
   { name: 'secondary', hue: 274, light: 80, chroma: 0.4 },
 ])
 
-const neutralColors = ref<OklchColor[]>([
-  { name: 'neutral', hue: 0, light: 70, chroma: 0.02 },
-])
+const neutralColors = ref<OklchColor[]>([{ name: 'neutral', hue: 0, light: 70, chroma: 0.02 }])
 
 const colors = ref<OklchColor[]>([])
 const cssvars = ref<String[]>([])
 
 onMounted(() => {
-  colors.value.push(...brandColors.value, ...basisColors.value,...neutralColors.value)
-  cssvars.value = colormap.value.map((c) => {
+  colors.value.push(...brandColors.value, ...basisColors.value, ...neutralColors.value)
+  cssvars.value = colormap_base.concat(colormap.value).map((c) => {
     let colorPalette = brandColors.value[0]
-    switch(c.sfname) {
-      case 'secondary': colorPalette = brandColors.value[1]
-      case 'warning': colorPalette = basisColors.value[0]
-      case 'positive': colorPalette = basisColors.value[1]
-      case 'negative': colorPalette = basisColors.value[2]
-      case 'neutral': colorPalette = neutralColors.value[0]
+    switch (c.sfname) {
+      case 'secondary':
+        colorPalette = brandColors.value[1]
+      case 'warning':
+        colorPalette = basisColors.value[0]
+      case 'positive':
+        colorPalette = basisColors.value[1]
+      case 'negative':
+        colorPalette = basisColors.value[2]
+      case 'neutral':
+        colorPalette = neutralColors.value[0]
     }
 
-    const pal:ColorShades = palette(getOklchColor(colorPalette), '0')
+    const pal: ColorShades = palette(getOklchColor(colorPalette), '1')
     if (pal) {
       return `--color-${c.name}: ${pal[c.shade.toString()]};`
     }
@@ -150,26 +163,29 @@ onMounted(() => {
 
   watch([neutralColors, basisColors, brandColors, colormap], (newColors) => {
     colors.value = []
-    colors.value.push(...brandColors.value, ...basisColors.value,...neutralColors.value)
+    colors.value.push(...brandColors.value, ...basisColors.value, ...neutralColors.value)
 
     // for every entry in colormap, re-assign css-properties with new colors
-    cssvars.value = colormap.value.map((c) => {
-    let colorPalette = brandColors.value[0]
-    switch(c.sfname) {
-      case 'secondary': colorPalette = brandColors.value[1]
-      case 'warning': colorPalette = basisColors.value[0]
-      case 'positive': colorPalette = basisColors.value[1]
-      case 'negative': colorPalette = basisColors.value[2]
-      case 'neutral': colorPalette = neutralColors.value[0]
-    }
+    cssvars.value = colormap_base.concat(colormap.value).map((c) => {
+      let colorPalette = brandColors.value[0]
+      switch (c.sfname) {
+        case 'secondary':
+          colorPalette = brandColors.value[1]
+        case 'warning':
+          colorPalette = basisColors.value[0]
+        case 'positive':
+          colorPalette = basisColors.value[1]
+        case 'negative':
+          colorPalette = basisColors.value[2]
+        case 'neutral':
+          colorPalette = neutralColors.value[0]
+      }
 
-    const pal:ColorShades = palette(getOklchColor(colorPalette), '0')
-    if (pal) {
-      return `--color-${c.name}: ${pal[c.shade.toString()]};`
-    }
-  })
-
-
+      const pal: ColorShades = palette(getOklchColor(colorPalette), '1')
+      if (pal) {
+        return `--color-${c.name}: ${pal[c.shade.toString()]};`
+      }
+    })
   })
 })
 
@@ -196,7 +212,7 @@ const handleLogout = async () => {
 
 <template>
   <div>
-    <NuxtLayout :style="cssvars" name="default">
+    <NuxtLayout name="default" style="--color-inverted: 1" :style="cssvars">
       <template #header>
         <Hero
           :imgTmp="imgUrl"
@@ -245,49 +261,50 @@ const handleLogout = async () => {
             <li>Check-Out-Sektion</li>
             <li>Blog-Post</li>
           </Prose>
-          <form @submit.prevent="handleLogin" class="flex flex-col gap-4 rounded-md border-neutral-200 md:border md:p-6">
-        <label>
-          <UiFormLabel>Layout</UiFormLabel>
-          <SfSelect>
-            <option value="side">Side-Nav wide</option>
-            <option value="top">Top-Nav wide</option>
-          </SfSelect>
-        </label>
-        <label>
-          <UiFormLabel>form.emailLabel</UiFormLabel>
-          <SfInput v-model="email" autocomplete="email" name="email" required type="email" />
-        </label>
+          <form
+            @submit.prevent="handleLogin"
+            class="flex flex-col gap-4 rounded-md border-neutral-200 md:border md:p-6"
+          >
+            <label>
+              <UiFormLabel>Layout</UiFormLabel>
+              <SfSelect>
+                <option value="side">Side-Nav wide</option>
+                <option value="top">Top-Nav wide</option>
+              </SfSelect>
+            </label>
+            <label>
+              <UiFormLabel>form.emailLabel</UiFormLabel>
+              <SfInput v-model="email" autocomplete="email" name="email" required type="email" />
+            </label>
 
-        <label class="mt-2 flex items-center gap-2">
-          <SfCheckbox v-model="side" name="side" />
-          Layout: Side-Nav?
-        </label>
+            <label class="mt-2 flex items-center gap-2">
+              <SfCheckbox v-model="side" name="side" />
+              Layout: Side-Nav?
+            </label>
 
-        <SfButton :disabled="isLoading" type="submit" class="mt-2">
-          <SfLoaderCircular v-if="isLoading" size="base" class="flex items-center justify-center" />
-          <span v-else>auth.login.submitLabel</span>
-        </SfButton>
-        <SfButton
-          v-show="isAuthenticated"
-          :is="NuxtLink"
-          @click="handleLogout()"
-          data-testid="logout-page-reset-button"
-          variant="tertiary"
-        >
-          Logout
-        </SfButton>
-        <SfButton :is="NuxtLink" data-testid="login-page-reset-button" to="/reset-password" variant="tertiary">
-          auth.login.forgotPasswordLabel
-        </SfButton>
-      </form>
-      <div class="invert bg-primary-300 text-primary-400 w-full p-4 md:p-6">
-        hallo hans
-      </div>
-      <UiAlert variant="neutral" class="typography-text-base mt-6 bg-primary-600 w-full !justify-start p-4 md:p-6">
-        <SfLink :is="NuxtLink" data-testid="login-page-signup-button" to="signup" variant="primary">
-          auth.login.createAccountLinkLabel
-        </SfLink>
-      </UiAlert>          
+            <SfButton :disabled="isLoading" type="submit" class="mt-2">
+              <SfLoaderCircular v-if="isLoading" size="base" class="flex items-center justify-center" />
+              <span v-else>auth.login.submitLabel</span>
+            </SfButton>
+            <SfButton
+              v-show="isAuthenticated"
+              :is="NuxtLink"
+              @click="handleLogout()"
+              data-testid="logout-page-reset-button"
+              variant="tertiary"
+            >
+              Logout
+            </SfButton>
+            <SfButton :is="NuxtLink" data-testid="login-page-reset-button" to="/reset-password" variant="tertiary">
+              auth.login.forgotPasswordLabel
+            </SfButton>
+          </form>
+          <div class="bg-primary-300 text-primary-400 w-full p-4 invert md:p-6">hallo hans</div>
+          <UiAlert variant="neutral" class="typography-text-base bg-primary-600 mt-6 w-full !justify-start p-4 md:p-6">
+            <SfLink :is="NuxtLink" data-testid="login-page-signup-button" to="signup" variant="primary">
+              auth.login.createAccountLinkLabel
+            </SfLink>
+          </UiAlert>
         </TabsContent>
         <TabsContent value="colors" class="p-4">
           <ColorPalette
@@ -314,7 +331,7 @@ const handleLogout = async () => {
         </TabsContent>
         <TabsContent value="export" class="p-4">
           <Heading content="**Export**Paste settings into theme.ts" is="h2" />
-          <ThemeExporter :colorScales="colors" :cssVars="cssvars" :colorMap="colormap" />
+          <ThemeExporter :colorMap="colormap" :colorScales="colors" :cssVars="cssvars" />
         </TabsContent>
       </TabsRoot>
     </NuxtLayout>

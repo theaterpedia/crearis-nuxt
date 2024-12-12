@@ -40,7 +40,6 @@ onMounted(() => {
   warnPalette.value = palette(getOklchColor(basisColors.value[2]), '1')
   neutralPalette.value = palette(getOklchColor(neutralColors.value[0]), '1')
 
-
   watch([neutralColors, basisColors, brandColors], (newColors) => {
     // same as above
     if (neutralColors.value.length < 1 || basisColors.value.length < 3 || brandColors.value.length < 2) {
@@ -54,7 +53,6 @@ onMounted(() => {
     neutralPalette.value = palette(getOklchColor(neutralColors.value[0]), '1')
   })
 })
-
 </script>
 
 <template>
@@ -72,66 +70,34 @@ onMounted(() => {
           <div v-for="(shade, index) in shades" :key="index" class="grow px-2">{{ shade }}</div>
         </div>
         <div class="flex flex-row">
-          <div :style="`background-color: ${pPalette?.DEFAULT}`" class="mx-2 min-w-24">Primary</div>
-          <div
-            v-for="(value, key) in pPalette"
-            :key="key"
-            class="grow"
-            :style="`background-color: ${value}`"
-          >
-          </div>
+          <div class="mx-2 min-w-24" :style="`background-color: ${pPalette?.DEFAULT}`">Primary</div>
+          <div v-for="(value, key) in pPalette" :key="key" class="grow" :style="`background-color: ${value}`"></div>
         </div>
         <div class="flex flex-row">
-          <div :style="`background-color: ${sPalette?.DEFAULT}`" class="mx-2 min-w-24">Secondary</div>
-          <div
-            v-for="(value, key) in sPalette"
-            :key="key"
-            class="grow"
-            :style="`background-color: ${value}`"
-          >
-          </div>
-        </div>  
+          <div class="mx-2 min-w-24" :style="`background-color: ${sPalette?.DEFAULT}`">Secondary</div>
+          <div v-for="(value, key) in sPalette" :key="key" class="grow" :style="`background-color: ${value}`"></div>
+        </div>
         <div class="flex flex-row">
-          <div :style="`background-color: ${warnPalette?.DEFAULT}`" class="mx-2 min-w-24">Warning</div>
-          <div
-            v-for="(value, key) in warnPalette"
-            :key="key"
-            class="grow"
-            :style="`background-color: ${value}`"
-          >
-          </div>
-        </div>         
+          <div class="mx-2 min-w-24" :style="`background-color: ${warnPalette?.DEFAULT}`">Warning</div>
+          <div v-for="(value, key) in warnPalette" :key="key" class="grow" :style="`background-color: ${value}`"></div>
+        </div>
         <div class="flex flex-row">
-          <div :style="`background-color: ${posPalette?.DEFAULT}`" class="mx-2 min-w-24">Positive</div>
-          <div
-            v-for="(value, key) in posPalette"
-            :key="key"
-            class="grow"
-            :style="`background-color: ${value}`"
-          >
-          </div>
-        </div> 
+          <div class="mx-2 min-w-24" :style="`background-color: ${posPalette?.DEFAULT}`">Positive</div>
+          <div v-for="(value, key) in posPalette" :key="key" class="grow" :style="`background-color: ${value}`"></div>
+        </div>
         <div class="flex flex-row">
-          <div :style="`background-color: ${negPalette?.DEFAULT}`" class="mx-2 min-w-24">Negative</div>
-          <div
-            v-for="(value, key) in negPalette"
-            :key="key"
-            class="grow"
-            :style="`background-color: ${value}`"
-          >
-          </div>
-        </div>   
+          <div class="mx-2 min-w-24" :style="`background-color: ${negPalette?.DEFAULT}`">Negative</div>
+          <div v-for="(value, key) in negPalette" :key="key" class="grow" :style="`background-color: ${value}`"></div>
+        </div>
         <div class="flex flex-row">
-          <div :style="`background-color: ${neutralPalette?.DEFAULT}`" class="mx-2 min-w-24">Neutral</div>
+          <div class="mx-2 min-w-24" :style="`background-color: ${neutralPalette?.DEFAULT}`">Neutral</div>
           <div
             v-for="(value, key) in neutralPalette"
             :key="key"
             class="grow"
             :style="`background-color: ${value}`"
-          >
-          </div>
-        </div>                                        
-      
+          ></div>
+        </div>
       </Column>
       <Column>
         <ColorMapperCollection v-model="colormap" />

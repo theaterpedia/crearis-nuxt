@@ -27,7 +27,7 @@
   top: 50%;
   left: 50%;
   display: block;
-  background-color: var(--color-base);
+  background-color: var(--color-bg);
   padding: 0.5rem;
   font-size: 0.875rem;
   font-weight: 600;

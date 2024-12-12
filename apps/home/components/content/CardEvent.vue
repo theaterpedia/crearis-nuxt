@@ -54,7 +54,7 @@ const default_heading = '## Default Heading'
   box-shadow:
     0px 4px 6px 1px rgba(0, 0, 0, 0.1),
     0px 2px 4px -1px rgba(0, 0, 0, 0.06);
-  background-color: var(--color-card-base);
+  background-color: var(--color-card-bg);
 }
 
 .c-hero::after {
@@ -64,7 +64,7 @@ const default_heading = '## Default Heading'
   bottom: 0;
   left: 0;
   height: 0.5rem;
-  background-color: var(--color-muted-base);
+  background-color: var(--color-muted-bg);
 }
 .c-hero:hover::after {
   background-color: var(--color-primary-base);

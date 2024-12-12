@@ -158,6 +158,6 @@ const { headline, overline, subline, tags, shortcode } = props.heading ? extract
   background-color: var(--color-secondary-base);
 }
 .bg-muted {
-  background-color: var(--color-muted-base);
+  background-color: var(--color-muted-bg);
 }
 </style>

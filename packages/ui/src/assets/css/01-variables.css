@@ -9,19 +9,19 @@
 }
 
 .dark {
-  --color-base: 234 16.7% 11.8%;
+  --color-bg: 234 16.7% 11.8%;
   --color-contrast: 0 0% 98%;
-  --color-card-base: 231 16.7% 16.5%;
+  --color-card-bg: 231 16.7% 16.5%;
   --color-card-contrast: 0 0% 98%;
-  --color-popover-base: 231 16.7% 16.5%;
+  --color-popover-bg: 231 16.7% 16.5%;
   --color-popover-contrast: 0 0% 98%;
   --color-primary-base: 0 0% 98%;
   --color-primary-contrast: 240 5.9% 10%;
   --color-secondary-base: 231 16.7% 24%;
   --color-secondary-contrast: 0 0% 98%;
-  --color-muted-base: 231 16.7% 24%;
+  --color-muted-bg: 231 16.7% 24%;
   --color-muted-contrast: 231 10% 57.4%;
-  --color-accent-base: 231 16.7% 24%;
+  --color-accent-bg: 231 16.7% 24%;
   --color-accent-contrast: 0 0% 98%;
   --color-negative-base: 7.41 84.2% 60.4%;
   --color-negative-contrast: 0 0% 98%;

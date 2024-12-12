@@ -14,12 +14,12 @@ import Container from './Container.vue'
 
 <style scoped>
 .footer {
-  --color-base: var(--color-accent-base);
+  --color-bg: var(--color-accent-bg);
   --color-contrast: var(--color-accent-contrast);
   --color-muted-contrast: var(--color-accent-contrast);
   --link: var(--color-primary-base);
   width: 100%;
-  background-color: var(--color-accent-base);
+  background-color: var(--color-accent-bg);
   color: var(--color-accent-contrast);
 }
 

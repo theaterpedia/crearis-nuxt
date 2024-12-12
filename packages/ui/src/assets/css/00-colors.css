@@ -1,17 +1,17 @@
 :root {
-  --color-base: 96.19% 0 0;
+  --color-bg: 96.19% 0 0;
   --color-contrast: 0% 0 0;
-  --color-card-base: 100% 0 106.37;
+  --color-card-bg: 100% 0 106.37;
   --color-card-contrast: 0% 0 0;
-  --color-popover-base: 100% 0 106.37;
+  --color-popover-bg: 100% 0 106.37;
   --color-popover-contrast: 0% 0 0;
   --color-primary-base: 72.21% 0.2812 144.53;
   --color-primary-contrast: 0% 0 0;
   --color-secondary-base: 65.74% 0.2393 304.41;
   --color-secondary-contrast: 100% 0 106.37;
-  --color-muted-base: 88.45% 0 0;
+  --color-muted-bg: 88.45% 0 0;
   --color-muted-contrast: 32.11% 0 0;
-  --color-accent-base: 32.11% 0 0;
+  --color-accent-bg: 32.11% 0 0;
   --color-accent-contrast: 100% 0 106.37;
   --color-negative-base: 63.68% 0.2078 25.33;
   --color-negative-contrast: 100% 0 106.37;

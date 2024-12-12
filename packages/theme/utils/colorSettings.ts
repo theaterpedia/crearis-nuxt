@@ -138,13 +138,13 @@ export function colorVars(colormap: SfColorMapping[], colorScales: OklchScale[])
     const color = colormap.find((c) => c.name === name)
 
     if (!color) {
-      return `'var(--color-base)'`
+      return `'var(--color-bg)'`
     }
 
     // find the color in the colorScale
     const colorScale = colorScales.find((c) => c.name === color.sfname)
     if (!colorScale) {
-      return `'var(--color-base)'`
+      return `'var(--color-bg)'`
     }
 
     return oklchParams(color.shade, colorScale.hue, colorScale.scale, colorScale.greyval)
@@ -153,17 +153,17 @@ export function colorVars(colormap: SfColorMapping[], colorScales: OklchScale[])
     'inverted': '1',
     'base': getColor('base'),
     'contrast': getColor('contrast'),
-    'card-base': getColor('card-base'),
+    'card-bg': getColor('card-bg'),
     'card-contrast': getColor('card-contrast'),
-    'popover-base': getColor('popover-base'),
+    'popover-bg': getColor('popover-bg'),
     'popover-contrast': getColor('popover-contrast'),
     'primary-base': getColor('primary-base'),
     'primary-contrast': getColor('primary-contrast'),
     'secondary-base': getColor('secondary-base'),
     'secondary-contrast': getColor('secondary-contrast'),
-    'muted-base': getColor('muted-base'),
+    'muted-bg': getColor('muted-bg'),
     'muted-contrast': getColor('mute-contrast'),
-    'accent-base': getColor('accent-base'),
+    'accent-bg': getColor('accent-bg'),
     'accent-contrast': getColor('accent-contrast'),
     'negative-base': getColor('negative-base'),
     'negative-contrast': getColor('negative-contrast'),

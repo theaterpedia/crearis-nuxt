@@ -187,7 +187,7 @@ onMounted(() => {
   height: 2em;
   padding: 0 0.5em;
   overflow: hidden;
-  background-color: var(--color-base);
+  background-color: var(--color-bg);
   border: 1px solid var(--color-input);
   border-radius: calc(var(--radius) - 0.125rem);
   font-size: 1em;

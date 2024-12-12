@@ -39,7 +39,7 @@ defineProps({
     </label>
     <label class="min-w-16 max-w-16">
       <span v-show="showHead" class="bg-muted block">Light</span>
-      <input v-model.number="light" max="99.9" min="0"  class="min-w-16 max-w-16" />
+      <input v-model.number="light" max="99.9" min="0" class="min-w-16 max-w-16" />
     </label>
     <label class="min-w-16 max-w-16">
       <span v-show="showHead" class="bg-muted block">Chroma</span>
