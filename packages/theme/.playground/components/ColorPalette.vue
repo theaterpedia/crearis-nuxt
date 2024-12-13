@@ -17,6 +17,7 @@ const colormap = defineModel('colormap', {
   type: Array as PropType<SfColorMapping[]>,
   required: true,
 })
+
 </script>
 
 <template>
@@ -35,11 +36,12 @@ const colormap = defineModel('colormap', {
           <div v-for="(shade, index) in shades" :key="index" class="grow px-2">{{ shade }}</div>
         </div>
         <div v-for="(color, key) in baseColors" :key="key" class="flex flex-row" style="margin-top: 4px">
-          <div class="mx-2 min-w-24" :style="`background-color: ${palette(color, inverted ? '1' : '0').DEFAULT}`">
+          <div v-if="color" class="mx-2 min-w-24" :style="`background-color: ${palette(color, inverted ? '1':'0').DEFAULT}`">
             {{ key }}
           </div>
           <div
-            v-for="(value, key) in palette(`oklch(${color})`, inverted ? '1' : '0')"
+            v-if="color"
+            v-for="(value, key) in palette(`oklch(${color})`, !inverted || color.endsWith('.001') ? '0' : '1')"
             :key="key"
             class="grow"
             :style="`background-color: ${value}`"

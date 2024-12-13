@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { ref, resolveComponent, onMounted, watch } from 'vue'
-import { Button, CardHero, Box } from '@crearis/ui'
+import { ref, reactive, watch, resolveComponent } from 'vue'
+import { Button, CardHero } from '@crearis/ui'
 import { TabsContent, TabsList, TabsRoot, TabsTrigger } from 'radix-vue'
-import type { ColorShades, BaseColors, SfColorMapping } from '@crearis/theme/utils/colorSettings'
-import { getOklchColor, palette } from '@crearis/theme/utils/colorSettings'
+import type { BaseColors, SfColorMapping } from '@crearis/theme/utils/colorSettings'
+import { palette } from '@crearis/theme/utils/colorSettings'
 import ColorPalette from '../components/ColorPalette.vue'
 
 definePageMeta({
@@ -19,8 +19,8 @@ const themes = [
     <br />description-text`,
     inverted: false,
     baseColors: <BaseColors>{
-      primary: '93% 0.2 104',
-      secondary: '76% 0.205 131',
+      primary: '93% 0.2 104.001',
+      secondary: '76% 0.205 131.001',
       warning: '93% 0.2 104',
       positive: '76% 0.205 131',
       negative: '88% 0.3 17',
@@ -43,17 +43,19 @@ const themes = [
     <br />description-text`,
     inverted: false,
     baseColors: <BaseColors>{
-      primary: '86% 0.18 90',
-      secondary: '70% 0.204 43.5',
+      primary: '97% 0.35 81.001',
+      secondary: '70% 0.204 43',
       warning: '94% 0.3 111',
       positive: '70% 0.4 150',
       negative: '60% 0.35 30',
       neutral: '70% 0 0',
     },
     colormap: [
-      { name: 'positive-contrast', sfname: 'neutral', shade: 900 },
-      { name: 'negative-contrast', sfname: 'neutral', shade: 900 },
-      { name: 'warning-contrast', sfname: 'neutral', shade: 900 },
+      { name: 'primary-contrast', sfname: 'grey', shade: 950 },
+      { name: 'secondary-contrast', sfname: 'grey', shade: 950 },
+      { name: 'positive-contrast', sfname: 'grey', shade: 950 },
+      { name: 'negative-contrast', sfname: 'grey', shade: 950 },
+      { name: 'warning-contrast', sfname: 'grey', shade: 950 },
       { name: 'card-bg', sfname: 'neutral', shade: 100 },
       { name: 'muted-bg', sfname: 'neutral', shade: 200 },
       { name: 'muted-contrast', sfname: 'neutral', shade: 600 },
@@ -160,6 +162,8 @@ const themes = [
 const colormap_defaults = <SfColorMapping[]>[
   { name: 'bg', sfname: 'neutral', shade: 50 },
   { name: 'contrast', sfname: 'neutral', shade: 950 },
+  { name: 'black', sfname: 'grey', shade: 950 },
+  { name: 'white', sfname: 'grey', shade: 50 },
   { name: 'primary-bg', sfname: 'primary', shade: 500 },
   { name: 'secondary-bg', sfname: 'secondary', shade: 500 },
   { name: 'warning-bg', sfname: 'warning', shade: 500 },
@@ -173,11 +177,11 @@ const colormap_defaults = <SfColorMapping[]>[
   { name: 'card-contrast', sfname: 'neutral', shade: 900 },
   { name: 'popover-bg', sfname: 'neutral', shade: 200 },
   { name: 'popover-contrast', sfname: 'neutral', shade: 900 },
-  { name: 'primary-contrast', sfname: 'neutral', shade: 950 },
-  { name: 'secondary-contrast', sfname: 'neutral', shade: 950 },
-  { name: 'positive-contrast', sfname: 'neutral', shade: 950 },
-  { name: 'negative-contrast', sfname: 'neutral', shade: 950 },
-  { name: 'warning-contrast', sfname: 'neutral', shade: 950 },
+  { name: 'primary-contrast', sfname: 'primary', shade: 950 },
+  { name: 'secondary-contrast', sfname: 'secondary', shade: 950 },
+  { name: 'positive-contrast', sfname: 'positive', shade: 950 },
+  { name: 'negative-contrast', sfname: 'negative', shade: 950 },
+  { name: 'warning-contrast', sfname: 'warning', shade: 950 },
   // TODO: specify these from sf-colors
   { name: 'dimmed', sfname: 'neutral', shade: 300 },
   { name: 'border', sfname: 'neutral', shade: 100 },
@@ -186,7 +190,7 @@ const colormap_defaults = <SfColorMapping[]>[
 ]
 
 const theme = ref(themes[0])
-const baseColors = ref<BaseColors>(theme.value.baseColors)
+const baseColors = reactive<BaseColors>(theme.value.baseColors)
 const colormap = ref<SfColorMapping[]>(colormap_defaults)
 const inverted = ref(false)
 
@@ -194,7 +198,13 @@ const inverted = ref(false)
 const showTheme = (id) => {
   theme.value = themes[id]
   colormap.value = colormap_defaults.map((c) => theme.value.colormap.find((tc) => tc.name === c.name) || c)
-  baseColors.value = theme.value.baseColors
+  baseColors.primary = theme.value.baseColors.primary
+  baseColors.secondary = theme.value.baseColors.secondary
+  baseColors.warning = theme.value.baseColors.warning
+  baseColors.positive = theme.value.baseColors.positive
+  baseColors.negative = theme.value.baseColors.negative
+  baseColors.neutral = theme.value.baseColors.neutral.endsWith('.001') ? theme.value.baseColors.neutral.slice(0, -4) : theme.value.baseColors.neutral
+  baseColors.grey = theme.value.baseColors.neutral + '.001'
   inverted.value = theme.value.inverted
 }
 showTheme(0) // initialize colormap and baseColors with first theme
@@ -207,10 +217,26 @@ const getInverted = () => {
   return inverted.value ? '1' : '0'
 }
 
+const isPinned = (colorName: String) => {
+  if (colorName === 'grey') return true
+  if (colorName === 'neutral') return false
+  if (!baseColors[colorName.toString()]) return false
+  return baseColors[colorName.toString()].endsWith('.001')
+}
+
+// update grey color if neutral changes
+watch(baseColors, (newColors) => {
+  const newNeutral = newColors.neutral.endsWith('.001') ? newColors.neutral : newColors.neutral + '.001'
+  if (baseColors.grey !== newNeutral) {
+    baseColors.grey = newNeutral
+  }
+})
+
 // initialize colormap and baseColors with first theme
 const getVars = (colors: BaseColors, colormap: SfColorMapping[], asCss: Boolean, invert: String = '0') => {
   return [`${asCss ? '--color-inverted:' : '"inverted": "'}${invert}${asCss ? ';' : '",'}`].concat(
     Object.entries(colors).map(([key, value]) => {
+      // if value ends with ' pin', set boolean pin to true and remove it from value
       const oklchColor = `oklch(${value})`
       return `${asCss ? '--color-' : '"'}${key}-base${asCss ? ': ' : '": "'}${palette(oklchColor, 'var(--color-inverted)')[500]}${asCss ? ';' : '",'}`
     }),
@@ -220,14 +246,10 @@ const getVars = (colors: BaseColors, colormap: SfColorMapping[], asCss: Boolean,
       if (value.shade === 500) {
         return `${asCss ? '--color-' : '"'}${value.name}${asCss ? ': ' : '": "'}${varName}${asCss ? ';' : '",'}`
       }
-      return `${asCss ? '--color-' : '"'}${value.name}${asCss ? ': ' : '": "'}${palette(varName, 'var(--color-inverted)')[value.shade.toString()]}${asCss ? ';' : '",'}`
+      return `${asCss ? '--color-' : '"'}${value.name}${asCss ? ': ' : '": "'}${palette(varName, isPinned(value.sfname) ? '0' : 'var(--color-inverted)')[value.shade.toString()]}${asCss ? ';' : '",'}`
     }),
   )
 }
-
-/* watch([baseColors, colormap], () => {
-  cssvars.value = getVars(baseColors.value, colormap.value, false, '1')
-}, { immediate: true }) */
 
 const imgUrl = ref(
   'https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg',
@@ -286,7 +308,7 @@ const handleLogout = async () => {
             heightTmp="mini"
             imgTmpAlignX="cover"
             imgTmpAlignY="top"
-            class="shadow-md shadow-neutral-700"
+            class="shadow-lg"
             :style="getVars(theme.baseColors, getColormap(theme.colormap), true, theme.inverted ? '1' : '0')"
           >
             <Heading :content="theme.heading" is="h3" class="p-4" />
@@ -401,5 +423,6 @@ const handleLogout = async () => {
 }
 .trigger[data-state='active'] {
   background-color: var(--color-primary-bg);
+  color: var(--color-primary-contrast);
 }
 </style>

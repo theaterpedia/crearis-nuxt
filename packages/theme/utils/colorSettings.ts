@@ -8,7 +8,6 @@ export interface OklchScale {
 }
 export interface ColorShades {
   DEFAULT: String
-  contrast: String
   50: String
   100: String
   200: String
@@ -35,6 +34,7 @@ export interface BaseColors {
   positive: String
   negative: String
   neutral: String
+  grey?: String
 }
 
 export interface SfColorMapping {
@@ -49,23 +49,23 @@ export interface Palette {
 }
 
 // see  https://stackblitz.com/edit/vitejs-vite-ncyeyc
-export const shades = [50, ...Array.from({ length: 9 }).map((_, i) => (i + 1) * 100), 950, 'bas', 'def']
+export const shades = [50, ...Array.from({ length: 9 }).map((_, i) => (i + 1) * 100), 950, 'bas']
 
 export function palette(color: String, invert: String = '0'): ColorShades {
+  const inverted = color.endsWith('.001') || invert === '0' ? '0' : invert
   return {
     DEFAULT: `${color}`,
-    contrast: `oklch(from ${color} calc(l - ${invert} * 0.4))`,
-    50: `oklch(from ${color} calc(l + 1 * (1 - ${invert} - l)) calc(c / 4.5) h)`,
-    100: `oklch(from ${color} calc(l + 0.8 * (1 - ${invert} - l)) calc(c / 3) h)`,
-    200: `oklch(from ${color} calc(l + 0.6 * (1 - ${invert} - l)) calc(c / 2) h)`,
-    300: `oklch(from ${color} calc(l + 0.4 * (1 - ${invert} - l)) calc(c / 1.5) h)`,
-    400: `oklch(from ${color} calc(l + 0.2 * (1 - ${invert} - l)) calc(c / 1.25) h)`,
+    50: `oklch(from ${color} calc(l + 1 * (1 - ${inverted} - l)) calc(c / 4.5) h)`,
+    100: `oklch(from ${color} calc(l + 0.8 * (1 - ${inverted} - l)) calc(c / 3) h)`,
+    200: `oklch(from ${color} calc(l + 0.6 * (1 - ${inverted} - l)) calc(c / 2) h)`,
+    300: `oklch(from ${color} calc(l + 0.4 * (1 - ${inverted} - l)) calc(c / 1.5) h)`,
+    400: `oklch(from ${color} calc(l + 0.2 * (1 - ${inverted} - l)) calc(c / 1.25) h)`,
     500: `${color}`,
-    600: `oklch(from ${color} calc(l + 0.2 * (${invert} - l)) calc(c / 1.25) h)`,
-    700: `oklch(from ${color} calc(l + 0.4 * (${invert} - l)) calc(c / 1.5) h)`,
-    800: `oklch(from ${color} calc(l + 0.6 * (${invert} - l)) calc(c / 2)  h)`,
-    900: `oklch(from ${color} calc(l + 0.8 * (${invert} - l)) calc(c / 3)  h)`,
-    950: `oklch(from ${color} calc(l + 1 * (${invert} - l)) calc(c / 4.5) h)`,
+    600: `oklch(from ${color} calc(l + 0.2 * (${inverted} - l)) calc(c / 1.25) h)`,
+    700: `oklch(from ${color} calc(l + 0.4 * (${inverted} - l)) calc(c / 1.5) h)`,
+    800: `oklch(from ${color} calc(l + 0.6 * (${inverted} - l)) calc(c / 2)  h)`,
+    900: `oklch(from ${color} calc(l + 0.8 * (${inverted} - l)) calc(c / 3)  h)`,
+    950: `oklch(from ${color} calc(l + 1 * (${inverted} - l)) calc(c / 4.5) h)`,
   }
 }
 

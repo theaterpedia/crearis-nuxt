@@ -151,11 +151,36 @@ const { headline, overline, subline, tags, shortcode } = props.heading ? extract
   rotate: 0deg;
 }
 
+:is(.bg-primary, .bg-secondary, .bg-yellow, .bg-green, .bg-pink):slotted(div) :is(.bg-primary, .bg-secondary, .bg-yellow, .bg-green, .bg-pink) {
+  --color-inverted: 0;
+  --color-contrast: var(--color-black);
+  --color-primary-contrast: var(--color-black);
+  color: var(--color-black);
+}
+
 .bg-primary {
   background-color: var(--color-primary-bg);
+  color: var(--color-black);
 }
 .bg-secondary {
   background-color: var(--color-secondary-bg);
+  color: var(--color-black);
+}
+.bg-yellow:deep() {
+  background-color: var(--color-warning-bg);
+  color: var(--color-warning-contrast);
+  --color-contrast: var(--color-black);
+  --color-primary-contrast: var(--color-black);
+}
+.bg-green {
+  background-color: var(--color-positiv-bg);
+  color: var(--color-positive-contrast);
+
+}
+.bg-pink {
+  background-color: var(--color-negative-bg);
+  color: var(--color-negative-contrast);
+
 }
 .bg-muted {
   background-color: var(--color-muted-bg);
