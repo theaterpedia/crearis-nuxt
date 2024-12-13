@@ -24,7 +24,7 @@ const colors = ref('')
     <strong>colorVars</strong -->
     <p>
       <span v-for="(tsVar, index) in props.tsVars" :key="index" class="mt-0 block text-sm font-thin">
-        {{ tsVar.replace(/"/g, '\'') }}
+        {{ tsVar.replace(/"/g, "'") }}
         <br />
       </span>
     </p>

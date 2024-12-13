@@ -17,9 +17,9 @@ export default {
       },
       dark: {
         color: {
-          'bg': 'blue',
-        }
-      }
+          bg: 'blue',
+        },
+      },
     },
     extend: {
       fontFamily: {

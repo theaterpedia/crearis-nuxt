@@ -34,7 +34,7 @@ const themes = [
     ],
     imgUrl:
       'https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg',
-  },  
+  },
   {
     id: 1,
     heading: '**DASEi**Feature, Feature, Feature',
@@ -82,7 +82,7 @@ const themes = [
       { name: 'secondary-bg', sfname: 'secondary', shade: 400 },
       { name: 'warning-bg', sfname: 'warning', shade: 400 },
       { name: 'positive-bg', sfname: 'positive', shade: 400 },
-      { name: 'negative-bg', sfname: 'negative', shade: 400 },      
+      { name: 'negative-bg', sfname: 'negative', shade: 400 },
       { name: 'card-bg', sfname: 'neutral', shade: 400 },
       { name: 'card-contrast', sfname: 'neutral', shade: 900 },
       { name: 'muted-bg', sfname: 'neutral', shade: 600 },
@@ -113,7 +113,7 @@ const themes = [
       { name: 'secondary-bg', sfname: 'secondary', shade: 200 },
       { name: 'warning-bg', sfname: 'warning', shade: 200 },
       { name: 'positive-bg', sfname: 'positive', shade: 200 },
-      { name: 'negative-bg', sfname: 'negative', shade: 200 },      
+      { name: 'negative-bg', sfname: 'negative', shade: 200 },
       { name: 'card-bg', sfname: 'neutral', shade: 200 },
       { name: 'card-contrast', sfname: 'neutral', shade: 900 },
       { name: 'muted-bg', sfname: 'neutral', shade: 200 },
@@ -144,7 +144,7 @@ const themes = [
       { name: 'secondary-bg', sfname: 'secondary', shade: 400 },
       { name: 'warning-bg', sfname: 'warning', shade: 400 },
       { name: 'positive-bg', sfname: 'positive', shade: 400 },
-      { name: 'negative-bg', sfname: 'negative', shade: 400 },       
+      { name: 'negative-bg', sfname: 'negative', shade: 400 },
       { name: 'muted-bg', sfname: 'neutral', shade: 300 },
       { name: 'muted-contrast', sfname: 'neutral', shade: 700 },
       { name: 'accent-bg', sfname: 'neutral', shade: 800 },
@@ -152,7 +152,7 @@ const themes = [
     ],
     imgUrl:
       'https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg',
-  }
+  },
 ]
 
 // these mappings are congifurable and can be changed by the user, will be exported as css-vars
@@ -250,8 +250,11 @@ const handleLogout = async () => {
 </script>
 
 <template>
-  <div style="background-color: var(--color-bg); color: var(--color-contrast)" :style="getVars(baseColors, colormap, true, getInverted())">
-    <NuxtLayout name="default" :class="`${{ 'dark': inverted }}`">
+  <div
+    style="background-color: var(--color-bg); color: var(--color-contrast)"
+    :style="getVars(baseColors, colormap, true, getInverted())"
+  >
+    <NuxtLayout name="default" :class="`${{ dark: inverted }}`">
       <template #header>
         <Hero
           :imgTmp="imgUrl"
@@ -264,7 +267,7 @@ const handleLogout = async () => {
         >
           <banner transparent>
             <Heading :content="theme.heading" is="h2" />
-            <p class="text-sm font-light" v-html="theme.description"></p>
+            <p v-html="theme.description" class="text-sm font-light"></p>
           </banner>
         </Hero>
       </template>
@@ -274,13 +277,13 @@ const handleLogout = async () => {
           :imgTmp="theme.imgUrl"
           :key="theme.id"
           :overlay="getoverlay('left-bottom', 0.5)"
-          :style="getVars(theme.baseColors, getColormap(theme.colormap), true, theme.inverted ? '1' : '0')"
           contentAlignY="bottom"
           contentType="banner"
           contentWidth="short"
           heightTmp="mini"
           imgTmpAlignX="cover"
           imgTmpAlignY="top"
+          :style="getVars(theme.baseColors, getColormap(theme.colormap), true, theme.inverted ? '1' : '0')"
         >
           <Heading :content="theme.heading" is="h3" class="p-4" />
           <Button @click="showTheme(theme.id)" size="small" variant="primary">Vorschau</Button>

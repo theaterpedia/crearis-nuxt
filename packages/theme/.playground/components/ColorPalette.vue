@@ -24,11 +24,10 @@ const colormap = defineModel('colormap', {
     <Columns>
       <Column>
         <Heading content="**Theme-Farben** Brand, Primary, Secondary" is="h3" />
-        <div class="flex flex-row bg-neutral-100 max-w-40">
+        <div class="flex max-w-40 flex-row bg-neutral-100">
           <span v-if="inverted">Inverted</span>
           <span v-else>Normal</span>
-          <SfSwitch v-model="inverted" class="ml-2 bg-secondary">
-          </SfSwitch>
+          <SfSwitch v-model="inverted" class="bg-secondary ml-2"></SfSwitch>
         </div>
         <ColorControlCollection v-model="baseColors" showHead />
         <div class="bg-muted mt-0 flex h-6">
