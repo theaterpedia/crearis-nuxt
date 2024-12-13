@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import type { OklchColor, ColorShades, SfColorMapping, BaseColors } from '@crearis/theme/utils/colorSettings'
-import { onMounted, PropType, ref, watch } from 'vue'
-import { palette, getOklchColor, generateAllPalettes, shades } from '@crearis/theme/utils/colorSettings'
+import type { SfColorMapping, BaseColors } from '@crearis/theme/utils/colorSettings'
+import { PropType } from 'vue'
+import { palette, shades } from '@crearis/theme/utils/colorSettings'
 
 const baseColors = defineModel('baseColors', {
   type: Object as PropType<BaseColors>,

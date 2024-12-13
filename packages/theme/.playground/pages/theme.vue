@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref, resolveComponent, onMounted, watch } from 'vue'
-import { Button, CardHero } from '@crearis/ui'
+import { Button, CardHero, Box } from '@crearis/ui'
 import { TabsContent, TabsList, TabsRoot, TabsTrigger } from 'radix-vue'
 import type { ColorShades, BaseColors, SfColorMapping } from '@crearis/theme/utils/colorSettings'
 import { getOklchColor, palette } from '@crearis/theme/utils/colorSettings'
@@ -54,6 +54,7 @@ const themes = [
       { name: 'positive-contrast', sfname: 'neutral', shade: 900 },
       { name: 'negative-contrast', sfname: 'neutral', shade: 900 },
       { name: 'warning-contrast', sfname: 'neutral', shade: 900 },
+      { name: 'card-bg', sfname: 'neutral', shade: 100 },
       { name: 'muted-bg', sfname: 'neutral', shade: 200 },
       { name: 'muted-contrast', sfname: 'neutral', shade: 600 },
       { name: 'accent-bg', sfname: 'neutral', shade: 800 },
@@ -114,7 +115,7 @@ const themes = [
       { name: 'warning-bg', sfname: 'warning', shade: 200 },
       { name: 'positive-bg', sfname: 'positive', shade: 200 },
       { name: 'negative-bg', sfname: 'negative', shade: 200 },
-      { name: 'card-bg', sfname: 'neutral', shade: 200 },
+      { name: 'card-bg', sfname: 'neutral', shade: 100 },
       { name: 'card-contrast', sfname: 'neutral', shade: 900 },
       { name: 'muted-bg', sfname: 'neutral', shade: 200 },
       { name: 'muted-contrast', sfname: 'neutral', shade: 500 },
@@ -251,10 +252,9 @@ const handleLogout = async () => {
 
 <template>
   <div
-    style="background-color: var(--color-bg); color: var(--color-contrast)"
     :style="getVars(baseColors, colormap, true, getInverted())"
   >
-    <NuxtLayout name="default" :class="`${{ dark: inverted }}`">
+    <NuxtLayout name="default" style="background-color: var(--color-bg); color: var(--color-contrast)" :class="`${{ dark: inverted }}`">
       <template #header>
         <Hero
           :imgTmp="imgUrl"
@@ -271,7 +271,8 @@ const handleLogout = async () => {
           </banner>
         </Hero>
       </template>
-      <CardsGallery>
+      <SectionContainer background="muted">
+        <CardsGallery>
         <CardHero
           v-for="theme in themes"
           :imgTmp="theme.imgUrl"
@@ -283,13 +284,16 @@ const handleLogout = async () => {
           heightTmp="mini"
           imgTmpAlignX="cover"
           imgTmpAlignY="top"
+          class="shadow-md shadow-neutral-700"
           :style="getVars(theme.baseColors, getColormap(theme.colormap), true, theme.inverted ? '1' : '0')"
         >
           <Heading :content="theme.heading" is="h3" class="p-4" />
-          <Button @click="showTheme(theme.id)" size="small" variant="primary">Vorschau</Button>
+          <Button @click="showTheme(theme.id)"  size="small" variant="primary">Vorschau</Button>
         </CardHero>
       </CardsGallery>
-      <TabsRoot default-value="tab1" orientation="vertical">
+      </SectionContainer>
+      <SectionContainer background="default">
+        <TabsRoot default-value="tab1" orientation="vertical">
         <TabsList aria-label="tabs example" class="gap-4">
           <TabsTrigger value="demo" class="trigger">Demo</TabsTrigger>
           <TabsTrigger value="colors" class="trigger">Colors</TabsTrigger>
@@ -299,7 +303,7 @@ const handleLogout = async () => {
           <TabsTrigger value="export" class="trigger">Export</TabsTrigger>
         </TabsList>
         <TabsContent value="demo" class="p-4">
-          <h2>DEMO</h2>
+          <h2 class="bg-primary-bg">DEMO <span class="text-primary-700">(mit primary-bg)</span></h2>
           <Prose>
             <li>Event-Cards</li>
             <li>Check-Out-Sektion</li>
@@ -372,7 +376,8 @@ const handleLogout = async () => {
           <Heading content="**Export**Paste settings into theme.ts" is="h2" />
           <ThemeExporter :tsVars="getVars(baseColors, colormap, false, getInverted())" />
         </TabsContent>
-      </TabsRoot>
+      </TabsRoot>        
+      </SectionContainer>
     </NuxtLayout>
   </div>
 </template>

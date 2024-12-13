@@ -1,5 +1,5 @@
 import defaultTheme from 'tailwindcss/defaultTheme'
-import { colorScales, colorVars } from './theme'
+import { colorVars } from './theme'
 import { palette } from './utils/colorSettings'
 import peerNextPlugin from '@storefront-ui/tw-plugin-peer-next'
 import tailwindCssVariables from '@mertasan/tailwindcss-variables'
@@ -14,11 +14,6 @@ export default {
     variables: {
       DEFAULT: {
         color: colorVars,
-      },
-      dark: {
-        color: {
-          bg: 'blue',
-        },
       },
     },
     extend: {
@@ -122,7 +117,12 @@ export default {
       },
       {
         'background': 'var(--color-bg) ',
-        'foreground': 'var(--color-contrast) ',
+        'foreground': 'var(--color-contrast) ',        
+        'primary-bg': 'var(--color-primary-bg) ',
+        'secondary-bg': 'var(--color-secondary-bg) ',
+        'positive-bg': 'var(--color-positive-bg) ',
+        'negative-bg': 'var(--color-negative-bg) ',
+        'warning-bg': 'var(--color-warning-bg) ',
         'card': 'var(--color-card-bg) ',
         'card-contrast': 'var(--color-card-contrast) ',
         'popover': 'var(--color-popover-bg) ',
