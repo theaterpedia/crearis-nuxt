@@ -53,11 +53,11 @@ watch([hue, light, chroma], (newColor) => {
     </label>
     <label class="min-w-16 max-w-16">
       <span v-show="showHead" class="bg-muted block">Light</span>
-      <input v-model.number="light" max="99.9" min="0" class="min-w-16 max-w-16" />
+      <input v-model.number="light" max="99.9" min="0" class="bg-neutral-100 min-w-16 max-w-16" />
     </label>
     <label class="min-w-16 max-w-16">
       <span v-show="showHead" class="bg-muted block">Chroma</span>
-      <input v-model.number="chroma" max="0.5" min="0" class="min-w-16 max-w-16" />
+      <input v-model.number="chroma" max="0.5" min="0" class="bg-neutral-100 min-w-16 max-w-16" />
     </label>
   </form>
 </template>

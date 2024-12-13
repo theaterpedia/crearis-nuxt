@@ -32,14 +32,14 @@ defineProps({
 
 <style scoped>
 .banner {
-  --selection: var(--color-secondary-base);
+  --selection: var(--color-secondary-bg);
   --selection-foreground: var(--color-secondary-contrast);
   padding: 1.5rem;
-  background-color: var(--color-primary-base);
+  background-color: var(--color-primary-bg);
 }
 
 .banner.transparent {
-  background-color: oklch(from var(--color-primary-base) l c h / 70%);
+  background-color: oklch(from var(--color-primary-bg) l c h / 70%);
 }
 
 .card {

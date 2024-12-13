@@ -60,12 +60,12 @@ defineProps({
 }
 
 .button-primary {
-  background-color: var(--color-primary-base);
+  background-color: var(--color-primary-bg);
   color: var(--color-primary-contrast);
 }
 
 .button-primary:hover {
-  background-color: oklch(from var(--color-primary-base) l c h / 70%);
+  background-color: oklch(from var(--color-primary-bg) l c h / 70%);
 }
 
 .button-plain {

@@ -29,11 +29,11 @@ defineProps({
     <span class="bg-muted min-w-64">{{ name }}</span>
     <label class="min-w-32 flex-grow">
       <span v-show="showHead" class="bg-muted block">Sf-Name</span>
-      <input v-model.trim="sfname" class="min-w-56" />
+      <input v-model.trim="sfname" class="bg-neutral-100 min-w-56" />
     </label>
     <label class="min-w-20 max-w-20">
       <span v-show="showHead" class="bg-muted block">TW-shade</span>
-      <input v-model.number="shade" max="10" min="0" step="1" type="number" class="min-w-20 max-w-20" />
+      <input v-model.number="shade" max="10" min="0" step="1" type="number" class="bg-neutral-100 min-w-20 max-w-20" />
     </label>
   </form>
 </template>

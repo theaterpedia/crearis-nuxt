@@ -211,6 +211,6 @@ defineEmits<{
 
 .main-menu-item-link:hover,
 .main-menu-item-link-active {
-  background-color: var(--color-primary-base);
+  background-color: var(--color-primary-bg);
 }
 </style>

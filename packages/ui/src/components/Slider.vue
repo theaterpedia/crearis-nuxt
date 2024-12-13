@@ -143,7 +143,7 @@ onUnmounted(() => {
 }
 
 .slider-pagination:deep() .swiper-pagination-bullet-active {
-  background-color: var(--color-primary-base);
+  background-color: var(--color-primary-bg);
 }
 
 @media (max-width: 1023px) {

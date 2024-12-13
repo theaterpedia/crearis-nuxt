@@ -85,7 +85,7 @@ const default_heading = '## Default Heading'
 }
 
 .tagline:hover {
-  background-color: var(--color-primary-base);
+  background-color: var(--color-primary-bg);
 }
 
 .heading {

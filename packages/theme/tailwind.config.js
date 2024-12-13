@@ -15,6 +15,11 @@ export default {
       DEFAULT: {
         color: colorVars,
       },
+      dark: {
+        color: {
+          'bg': 'blue',
+        }
+      }
     },
     extend: {
       fontFamily: {

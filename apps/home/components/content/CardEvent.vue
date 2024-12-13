@@ -67,7 +67,7 @@ const default_heading = '## Default Heading'
   background-color: var(--color-muted-bg);
 }
 .c-hero:hover::after {
-  background-color: var(--color-primary-base);
+  background-color: var(--color-primary-bg);
 }
 
 .heading {

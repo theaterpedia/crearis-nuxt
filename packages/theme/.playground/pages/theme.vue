@@ -13,14 +13,42 @@ definePageMeta({
 const themes = [
   {
     id: 0,
-    heading: '**Theme 0**Feature, Feature, Feature',
+    heading: '**Theaterpedia**Feature, Feature, Feature',
+    description: `description-text description-text 
+    <br />description-text 
+    <br />description-text`,
+    inverted: false,
     baseColors: <BaseColors>{
-      primary: '99% 0.3 56',
-      secondary: '80% 0.4 274',
+      primary: '93% 0.2 104',
+      secondary: '76% 0.205 131',
+      warning: '93% 0.2 104',
+      positive: '76% 0.205 131',
+      negative: '88% 0.3 17',
+      neutral: '70% 0 0',
+    },
+    colormap: [
+      { name: 'muted-bg', sfname: 'neutral', shade: 300 },
+      { name: 'muted-contrast', sfname: 'neutral', shade: 700 },
+      { name: 'accent-bg', sfname: 'neutral', shade: 800 },
+      { name: 'accent-contrast', sfname: 'neutral', shade: 100 },
+    ],
+    imgUrl:
+      'https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg',
+  },  
+  {
+    id: 1,
+    heading: '**DASEi**Feature, Feature, Feature',
+    description: `description-text description-text 
+    <br />description-text 
+    <br />description-text`,
+    inverted: false,
+    baseColors: <BaseColors>{
+      primary: '86% 0.18 90',
+      secondary: '70% 0.204 43.5',
       warning: '94% 0.3 111',
       positive: '70% 0.4 150',
       negative: '60% 0.35 30',
-      neutral: '70% 0.02 0',
+      neutral: '70% 0 0',
     },
     colormap: [
       { name: 'positive-contrast', sfname: 'neutral', shade: 900 },
@@ -35,8 +63,43 @@ const themes = [
       'https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg',
   },
   {
-    id: 1,
-    heading: '**Theme 1**Feature, Feature, Feature',
+    id: 2,
+    heading: '**Neon**Feature, Feature, Feature',
+    description: `description-text description-text 
+    <br />description-text 
+    <br />description-text`,
+    inverted: false,
+    baseColors: <BaseColors>{
+      primary: '99% 0.30 110',
+      secondary: '82% 0.35 0',
+      warning: '99% 0.30 110',
+      positive: '97% 0.35 145',
+      negative: '82% 0.35 0',
+      neutral: '99% 0.02 110',
+    },
+    colormap: [
+      { name: 'primary-bg', sfname: 'primary', shade: 400 },
+      { name: 'secondary-bg', sfname: 'secondary', shade: 400 },
+      { name: 'warning-bg', sfname: 'warning', shade: 400 },
+      { name: 'positive-bg', sfname: 'positive', shade: 400 },
+      { name: 'negative-bg', sfname: 'negative', shade: 400 },      
+      { name: 'card-bg', sfname: 'neutral', shade: 400 },
+      { name: 'card-contrast', sfname: 'neutral', shade: 900 },
+      { name: 'muted-bg', sfname: 'neutral', shade: 600 },
+      { name: 'muted-contrast', sfname: 'neutral', shade: 950 },
+      { name: 'accent-bg', sfname: 'neutral', shade: 900 },
+      { name: 'accent-contrast', sfname: 'primary', shade: 200 },
+    ],
+    imgUrl:
+      'https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg',
+  },
+  {
+    id: 3,
+    heading: '**Pastell**Feature, Feature, Feature',
+    description: `description-text description-text 
+    <br />description-text 
+    <br />description-text`,
+    inverted: false,
     baseColors: <BaseColors>{
       primary: '99% 0.25 80',
       secondary: '80% 0.4 274',
@@ -46,6 +109,11 @@ const themes = [
       neutral: '88% 0.02 88',
     },
     colormap: [
+      { name: 'primary-bg', sfname: 'primary', shade: 200 },
+      { name: 'secondary-bg', sfname: 'secondary', shade: 200 },
+      { name: 'warning-bg', sfname: 'warning', shade: 200 },
+      { name: 'positive-bg', sfname: 'positive', shade: 200 },
+      { name: 'negative-bg', sfname: 'negative', shade: 200 },      
       { name: 'card-bg', sfname: 'neutral', shade: 200 },
       { name: 'card-contrast', sfname: 'neutral', shade: 900 },
       { name: 'muted-bg', sfname: 'neutral', shade: 200 },
@@ -57,8 +125,12 @@ const themes = [
       'https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg',
   },
   {
-    id: 2,
-    heading: '**Theme 2**Feature, Feature, Feature',
+    id: 4,
+    heading: '**Dark**Feature, Feature, Feature',
+    description: `description-text description-text 
+    <br />description-text 
+    <br />description-text`,
+    inverted: true,
     baseColors: <BaseColors>{
       primary: '88% 0.4 100',
       secondary: '88% 0.4 100',
@@ -68,6 +140,11 @@ const themes = [
       neutral: '88% 0.02 88',
     },
     colormap: [
+      { name: 'primary-bg', sfname: 'primary', shade: 400 },
+      { name: 'secondary-bg', sfname: 'secondary', shade: 400 },
+      { name: 'warning-bg', sfname: 'warning', shade: 400 },
+      { name: 'positive-bg', sfname: 'positive', shade: 400 },
+      { name: 'negative-bg', sfname: 'negative', shade: 400 },       
       { name: 'muted-bg', sfname: 'neutral', shade: 300 },
       { name: 'muted-contrast', sfname: 'neutral', shade: 700 },
       { name: 'accent-bg', sfname: 'neutral', shade: 800 },
@@ -75,13 +152,18 @@ const themes = [
     ],
     imgUrl:
       'https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg',
-  },
+  }
 ]
 
 // these mappings are congifurable and can be changed by the user, will be exported as css-vars
 const colormap_defaults = <SfColorMapping[]>[
   { name: 'bg', sfname: 'neutral', shade: 50 },
   { name: 'contrast', sfname: 'neutral', shade: 950 },
+  { name: 'primary-bg', sfname: 'primary', shade: 500 },
+  { name: 'secondary-bg', sfname: 'secondary', shade: 500 },
+  { name: 'warning-bg', sfname: 'warning', shade: 500 },
+  { name: 'positive-bg', sfname: 'positive', shade: 500 },
+  { name: 'negative-bg', sfname: 'negative', shade: 500 },
   { name: 'muted-bg', sfname: 'neutral', shade: 200 },
   { name: 'muted-contrast', sfname: 'neutral', shade: 700 },
   { name: 'accent-bg', sfname: 'neutral', shade: 800 },
@@ -112,8 +194,13 @@ const showTheme = (id) => {
   theme.value = themes[id]
   colormap.value = colormap_defaults.map((c) => theme.value.colormap.find((tc) => tc.name === c.name) || c)
   baseColors.value = theme.value.baseColors
+  inverted.value = theme.value.inverted
 }
 showTheme(0) // initialize colormap and baseColors with first theme
+
+const getColormap = (colormap: SfColorMapping[]) => {
+  return colormap_defaults.map((c) => colormap.find((tc) => tc.name === c.name) || c)
+}
 
 const getInverted = () => {
   return inverted.value ? '1' : '0'
@@ -128,6 +215,10 @@ const getVars = (colors: BaseColors, colormap: SfColorMapping[], asCss: Boolean,
     }),
     Object.entries(colormap).map(([key, value]) => {
       const varName = `var(--color-${value.sfname}-base)`
+      // if shade is 500, use the base color = no calculations + no effect on 'inverted'
+      if (value.shade === 500) {
+        return `${asCss ? '--color-' : '"'}${value.name}${asCss ? ': ' : '": "'}${varName}${asCss ? ';' : '",'}`
+      }
       return `${asCss ? '--color-' : '"'}${value.name}${asCss ? ': ' : '": "'}${palette(varName, 'var(--color-inverted)')[value.shade.toString()]}${asCss ? ';' : '",'}`
     }),
   )
@@ -159,8 +250,8 @@ const handleLogout = async () => {
 </script>
 
 <template>
-  <div>
-    <NuxtLayout name="default" :style="getVars(baseColors, colormap, true, getInverted())">
+  <div style="background-color: var(--color-bg); color: var(--color-contrast)" :style="getVars(baseColors, colormap, true, getInverted())">
+    <NuxtLayout name="default" :class="`${{ 'dark': inverted }}`">
       <template #header>
         <Hero
           :imgTmp="imgUrl"
@@ -173,6 +264,7 @@ const handleLogout = async () => {
         >
           <banner transparent>
             <Heading :content="theme.heading" is="h2" />
+            <p class="text-sm font-light" v-html="theme.description"></p>
           </banner>
         </Hero>
       </template>
@@ -182,6 +274,7 @@ const handleLogout = async () => {
           :imgTmp="theme.imgUrl"
           :key="theme.id"
           :overlay="getoverlay('left-bottom', 0.5)"
+          :style="getVars(theme.baseColors, getColormap(theme.colormap), true, theme.inverted ? '1' : '0')"
           contentAlignY="bottom"
           contentType="banner"
           contentWidth="short"
@@ -291,6 +384,6 @@ const handleLogout = async () => {
   cursor: pointer;
 }
 .trigger[data-state='active'] {
-  background-color: var(--color-primary-base);
+  background-color: var(--color-primary-bg);
 }
 </style>
