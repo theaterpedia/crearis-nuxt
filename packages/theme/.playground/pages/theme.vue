@@ -251,10 +251,12 @@ const handleLogout = async () => {
 </script>
 
 <template>
-  <div
-    :style="getVars(baseColors, colormap, true, getInverted())"
-  >
-    <NuxtLayout name="default" style="background-color: var(--color-bg); color: var(--color-contrast)" :class="`${{ dark: inverted }}`">
+  <div :style="getVars(baseColors, colormap, true, getInverted())">
+    <NuxtLayout
+      name="default"
+      :class="`${{ dark: inverted }}`"
+      style="background-color: var(--color-bg); color: var(--color-contrast)"
+    >
       <template #header>
         <Hero
           :imgTmp="imgUrl"
@@ -273,110 +275,116 @@ const handleLogout = async () => {
       </template>
       <SectionContainer background="muted">
         <CardsGallery>
-        <CardHero
-          v-for="theme in themes"
-          :imgTmp="theme.imgUrl"
-          :key="theme.id"
-          :overlay="getoverlay('left-bottom', 0.5)"
-          contentAlignY="bottom"
-          contentType="banner"
-          contentWidth="short"
-          heightTmp="mini"
-          imgTmpAlignX="cover"
-          imgTmpAlignY="top"
-          class="shadow-md shadow-neutral-700"
-          :style="getVars(theme.baseColors, getColormap(theme.colormap), true, theme.inverted ? '1' : '0')"
-        >
-          <Heading :content="theme.heading" is="h3" class="p-4" />
-          <Button @click="showTheme(theme.id)"  size="small" variant="primary">Vorschau</Button>
-        </CardHero>
-      </CardsGallery>
+          <CardHero
+            v-for="theme in themes"
+            :imgTmp="theme.imgUrl"
+            :key="theme.id"
+            :overlay="getoverlay('left-bottom', 0.5)"
+            contentAlignY="bottom"
+            contentType="banner"
+            contentWidth="short"
+            heightTmp="mini"
+            imgTmpAlignX="cover"
+            imgTmpAlignY="top"
+            class="shadow-md shadow-neutral-700"
+            :style="getVars(theme.baseColors, getColormap(theme.colormap), true, theme.inverted ? '1' : '0')"
+          >
+            <Heading :content="theme.heading" is="h3" class="p-4" />
+            <Button @click="showTheme(theme.id)" size="small" variant="primary">Vorschau</Button>
+          </CardHero>
+        </CardsGallery>
       </SectionContainer>
       <SectionContainer background="default">
         <TabsRoot default-value="tab1" orientation="vertical">
-        <TabsList aria-label="tabs example" class="gap-4">
-          <TabsTrigger value="demo" class="trigger">Demo</TabsTrigger>
-          <TabsTrigger value="colors" class="trigger">Colors</TabsTrigger>
-          <TabsTrigger value="elements" class="trigger">Elemente</TabsTrigger>
-          <TabsTrigger value="typography" class="trigger">Typographie</TabsTrigger>
-          <TabsTrigger value="docs" class="trigger">Docs</TabsTrigger>
-          <TabsTrigger value="export" class="trigger">Export</TabsTrigger>
-        </TabsList>
-        <TabsContent value="demo" class="p-4">
-          <h2 class="bg-primary-bg">DEMO <span class="text-primary-700">(mit primary-bg)</span></h2>
-          <Prose>
-            <li>Event-Cards</li>
-            <li>Check-Out-Sektion</li>
-            <li>Blog-Post</li>
-          </Prose>
-          <form
-            @submit.prevent="handleLogin"
-            class="flex flex-col gap-4 rounded-md border-neutral-200 md:border md:p-6"
-          >
-            <label>
-              <UiFormLabel>Layout</UiFormLabel>
-              <SfSelect>
-                <option value="side">Side-Nav wide</option>
-                <option value="top">Top-Nav wide</option>
-              </SfSelect>
-            </label>
-            <label>
-              <UiFormLabel>form.emailLabel</UiFormLabel>
-              <SfInput v-model="email" autocomplete="email" name="email" required type="email" />
-            </label>
-
-            <label class="mt-2 flex items-center gap-2">
-              <SfCheckbox v-model="side" name="side" />
-              Layout: Side-Nav?
-            </label>
-
-            <SfButton :disabled="isLoading" type="submit" class="mt-2">
-              <SfLoaderCircular v-if="isLoading" size="base" class="flex items-center justify-center" />
-              <span v-else>auth.login.submitLabel</span>
-            </SfButton>
-            <SfButton
-              v-show="isAuthenticated"
-              :is="NuxtLink"
-              @click="handleLogout()"
-              data-testid="logout-page-reset-button"
-              variant="tertiary"
+          <TabsList aria-label="tabs example" class="gap-4">
+            <TabsTrigger value="demo" class="trigger">Demo</TabsTrigger>
+            <TabsTrigger value="colors" class="trigger">Colors</TabsTrigger>
+            <TabsTrigger value="elements" class="trigger">Elemente</TabsTrigger>
+            <TabsTrigger value="typography" class="trigger">Typographie</TabsTrigger>
+            <TabsTrigger value="docs" class="trigger">Docs</TabsTrigger>
+            <TabsTrigger value="export" class="trigger">Export</TabsTrigger>
+          </TabsList>
+          <TabsContent value="demo" class="p-4">
+            <h2 class="bg-primary-bg">
+              DEMO
+              <span class="text-primary-700">(mit primary-bg)</span>
+            </h2>
+            <Prose>
+              <li>Event-Cards</li>
+              <li>Check-Out-Sektion</li>
+              <li>Blog-Post</li>
+            </Prose>
+            <form
+              @submit.prevent="handleLogin"
+              class="flex flex-col gap-4 rounded-md border-neutral-200 md:border md:p-6"
             >
-              Logout
-            </SfButton>
-            <SfButton :is="NuxtLink" data-testid="login-page-reset-button" to="/reset-password" variant="tertiary">
-              auth.login.forgotPasswordLabel
-            </SfButton>
-          </form>
-          <div class="bg-primary-300 text-primary-400 w-full p-4 invert md:p-6">hallo hans</div>
-          <UiAlert variant="neutral" class="typography-text-base bg-primary-600 mt-6 w-full !justify-start p-4 md:p-6">
-            <SfLink :is="NuxtLink" data-testid="login-page-signup-button" to="signup" variant="primary">
-              auth.login.createAccountLinkLabel
-            </SfLink>
-          </UiAlert>
-        </TabsContent>
-        <TabsContent value="colors" class="p-4">
-          <ColorPalette v-model:baseColors="baseColors" v-model:colormap="colormap" v-model:inverted="inverted" />
-        </TabsContent>
-        <TabsContent value="elements" class="p-4">
-          <Heading content="**Elemente**Linien, Abstände, Ring etc." is="h2" />
-        </TabsContent>
-        <TabsContent value="typography" class="p-4">
-          <Heading content="**Typographie**Head-Font, Basis-Font, Fette, Range" is="h2" />
-          <Prose>
-            <ul>
-              <li>head-font als dropdown + basis-fette + range</li>
-              <li>basis-font als dropdown + basis-fette + range</li>
-            </ul>
-          </Prose>
-        </TabsContent>
-        <TabsContent value="docs" class="p-4">
-          <Heading content="**Dokmentation**" is="h2" />
-        </TabsContent>
-        <TabsContent value="export" class="p-4">
-          <Heading content="**Export**Paste settings into theme.ts" is="h2" />
-          <ThemeExporter :tsVars="getVars(baseColors, colormap, false, getInverted())" />
-        </TabsContent>
-      </TabsRoot>        
+              <label>
+                <UiFormLabel>Layout</UiFormLabel>
+                <SfSelect>
+                  <option value="side">Side-Nav wide</option>
+                  <option value="top">Top-Nav wide</option>
+                </SfSelect>
+              </label>
+              <label>
+                <UiFormLabel>form.emailLabel</UiFormLabel>
+                <SfInput v-model="email" autocomplete="email" name="email" required type="email" />
+              </label>
+
+              <label class="mt-2 flex items-center gap-2">
+                <SfCheckbox v-model="side" name="side" />
+                Layout: Side-Nav?
+              </label>
+
+              <SfButton :disabled="isLoading" type="submit" class="mt-2">
+                <SfLoaderCircular v-if="isLoading" size="base" class="flex items-center justify-center" />
+                <span v-else>auth.login.submitLabel</span>
+              </SfButton>
+              <SfButton
+                v-show="isAuthenticated"
+                :is="NuxtLink"
+                @click="handleLogout()"
+                data-testid="logout-page-reset-button"
+                variant="tertiary"
+              >
+                Logout
+              </SfButton>
+              <SfButton :is="NuxtLink" data-testid="login-page-reset-button" to="/reset-password" variant="tertiary">
+                auth.login.forgotPasswordLabel
+              </SfButton>
+            </form>
+            <div class="bg-primary-300 text-primary-400 w-full p-4 invert md:p-6">hallo hans</div>
+            <UiAlert
+              variant="neutral"
+              class="typography-text-base bg-primary-600 mt-6 w-full !justify-start p-4 md:p-6"
+            >
+              <SfLink :is="NuxtLink" data-testid="login-page-signup-button" to="signup" variant="primary">
+                auth.login.createAccountLinkLabel
+              </SfLink>
+            </UiAlert>
+          </TabsContent>
+          <TabsContent value="colors" class="p-4">
+            <ColorPalette v-model:baseColors="baseColors" v-model:colormap="colormap" v-model:inverted="inverted" />
+          </TabsContent>
+          <TabsContent value="elements" class="p-4">
+            <Heading content="**Elemente**Linien, Abstände, Ring etc." is="h2" />
+          </TabsContent>
+          <TabsContent value="typography" class="p-4">
+            <Heading content="**Typographie**Head-Font, Basis-Font, Fette, Range" is="h2" />
+            <Prose>
+              <ul>
+                <li>head-font als dropdown + basis-fette + range</li>
+                <li>basis-font als dropdown + basis-fette + range</li>
+              </ul>
+            </Prose>
+          </TabsContent>
+          <TabsContent value="docs" class="p-4">
+            <Heading content="**Dokmentation**" is="h2" />
+          </TabsContent>
+          <TabsContent value="export" class="p-4">
+            <Heading content="**Export**Paste settings into theme.ts" is="h2" />
+            <ThemeExporter :tsVars="getVars(baseColors, colormap, false, getInverted())" />
+          </TabsContent>
+        </TabsRoot>
       </SectionContainer>
     </NuxtLayout>
   </div>

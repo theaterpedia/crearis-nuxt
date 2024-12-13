@@ -11,17 +11,21 @@ export const colorScales = <OklchColor[]>[
 
 export const colorVars = {
   'inverted': '0',
-  'primary-base': 'oklch(99% 0.3 118)',
-  'secondary-base': 'oklch(80% 0.4 274)',
-  'warning-base': 'oklch(94% 0.3 111)',
-  'positive-base': 'oklch(70% 0.4 150)',
-  'negative-base': 'oklch(60% 0.35 30)',
-  'neutral-base': 'oklch(70% 0.02 0)',
+  'primary-base': 'oklch(93% 0.2 104)',
+  'secondary-base': 'oklch(76% 0.205 131)',
+  'warning-base': 'oklch(93% 0.2 104)',
+  'positive-base': 'oklch(76% 0.205 131)',
+  'negative-base': 'oklch(88% 0.3 17)',
+  'neutral-base': 'oklch(70% 0 0)',
   'bg': 'oklch(from var(--color-neutral-base) calc(l + 1 * (1 - var(--color-inverted) - l)) calc(c / 4.5) h)',
   'contrast': 'oklch(from var(--color-neutral-base) calc(l + 1 * (var(--color-inverted) - l)) calc(c / 4.5) h)',
-  'muted-bg': 'oklch(from var(--color-neutral-base) calc(l + 0.6 * (1 - var(--color-inverted) - l)) calc(c / 2) h)',
-  'muted-contrast':
-    'oklch(from var(--color-neutral-base) calc(l + 0.2 * (var(--color-inverted) - l)) calc(c / 1.25) h)',
+  'primary-bg': 'var(--color-primary-base)',
+  'secondary-bg': 'var(--color-secondary-base)',
+  'warning-bg': 'var(--color-warning-base)',
+  'positive-bg': 'var(--color-positive-base)',
+  'negative-bg': 'var(--color-negative-base)',
+  'muted-bg': 'oklch(from var(--color-neutral-base) calc(l + 0.4 * (1 - var(--color-inverted) - l)) calc(c / 1.5) h)',
+  'muted-contrast': 'oklch(from var(--color-neutral-base) calc(l + 0.4 * (var(--color-inverted) - l)) calc(c / 1.5) h)',
   'accent-bg': 'oklch(from var(--color-neutral-base) calc(l + 0.6 * (var(--color-inverted) - l)) calc(c / 2) h)',
   'accent-contrast':
     'oklch(from var(--color-neutral-base) calc(l + 0.8 * (1 - var(--color-inverted) - l)) calc(c / 3) h)',
@@ -33,10 +37,10 @@ export const colorVars = {
   'secondary-contrast':
     'oklch(from var(--color-neutral-base) calc(l + 1 * (var(--color-inverted) - l)) calc(c / 4.5) h)',
   'positive-contrast':
-    'oklch(from var(--color-neutral-base) calc(l + 0.8 * (var(--color-inverted) - l)) calc(c / 3) h)',
+    'oklch(from var(--color-neutral-base) calc(l + 1 * (var(--color-inverted) - l)) calc(c / 4.5) h)',
   'negative-contrast':
-    'oklch(from var(--color-neutral-base) calc(l + 0.8 * (var(--color-inverted) - l)) calc(c / 3) h)',
-  'warning-contrast': 'oklch(from var(--color-neutral-base) calc(l + 0.8 * (var(--color-inverted) - l)) calc(c / 3) h)',
+    'oklch(from var(--color-neutral-base) calc(l + 1 * (var(--color-inverted) - l)) calc(c / 4.5) h)',
+  'warning-contrast': 'oklch(from var(--color-neutral-base) calc(l + 1 * (var(--color-inverted) - l)) calc(c / 4.5) h)',
   'dimmed': 'oklch(from var(--color-neutral-base) calc(l + 0.4 * (1 - var(--color-inverted) - l)) calc(c / 1.5) h)',
   'border': 'oklch(from var(--color-neutral-base) calc(l + 0.8 * (1 - var(--color-inverted) - l)) calc(c / 3) h)',
   'input': 'oklch(from var(--color-neutral-base) calc(l + 0.6 * (1 - var(--color-inverted) - l)) calc(c / 2) h)',

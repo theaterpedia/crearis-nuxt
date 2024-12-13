@@ -117,7 +117,7 @@ export default {
       },
       {
         'background': 'var(--color-bg) ',
-        'foreground': 'var(--color-contrast) ',        
+        'foreground': 'var(--color-contrast) ',
         'primary-bg': 'var(--color-primary-bg) ',
         'secondary-bg': 'var(--color-secondary-bg) ',
         'positive-bg': 'var(--color-positive-bg) ',
