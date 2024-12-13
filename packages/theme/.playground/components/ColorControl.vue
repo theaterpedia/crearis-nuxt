@@ -1,17 +1,8 @@
 <script lang="ts" setup>
-const hue = defineModel('hue', {
-  type: Number,
-  default: 0,
-})
-
-const light = defineModel('light', {
-  type: Number,
-  default: 88,
-})
-
-const chroma = defineModel('chroma', {
-  type: Number,
-  default: 0.4,
+import { ref, onMounted, watch } from 'vue'
+const color = defineModel({
+  type: String,
+  required: true,
 })
 
 defineProps({
@@ -26,6 +17,29 @@ defineProps({
     type: Boolean,
     default: false,
   },
+})
+
+const hue = ref(0)
+const light = ref(88)
+const chroma = ref(0.4)
+
+const extractRefs = (color: String) => {
+  const [l, c, h] = color.split(' ').map((value) => parseFloat(value))
+  light.value = l
+  chroma.value = c
+  hue.value = h
+}
+
+onMounted(() => {
+  extractRefs(color.value)
+})
+
+watch(color, (newColor) => {
+  extractRefs(newColor)
+})
+
+watch([hue, light, chroma], (newColor) => {
+  color.value = `${light.value}% ${chroma.value} ${hue.value}`
 })
 </script>
 

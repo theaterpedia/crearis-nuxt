@@ -2,7 +2,7 @@
 import { ref, resolveComponent, onMounted, watch } from 'vue'
 import { Button, CardHero } from '@crearis/ui'
 import { TabsContent, TabsList, TabsRoot, TabsTrigger } from 'radix-vue'
-import type { ColorShades, OklchColor, SfColorMapping } from '@crearis/theme/utils/colorSettings'
+import type { ColorShades, BaseColors, SfColorMapping } from '@crearis/theme/utils/colorSettings'
 import { getOklchColor, palette } from '@crearis/theme/utils/colorSettings'
 import ColorPalette from '../components/ColorPalette.vue'
 
@@ -14,14 +14,14 @@ const themes = [
   {
     id: 0,
     heading: '**Theme 0**Feature, Feature, Feature',
-    colorScales: <OklchColor[]>[
-      { name: 'primary', hue: 56, light: 99, chroma: 0.3 },
-      { name: 'secondary', hue: 274, light: 80, chroma: 0.4 },
-      { name: 'warning', hue: 94, light: 92, chroma: 0.3 },
-      { name: 'positive', hue: 150, light: 70, chroma: 0.4 },
-      { name: 'negative', hue: 30, light: 60, chroma: 0.35 },
-      { name: 'neutral', hue: 88, light: 88, chroma: 0.02 },
-    ],
+    baseColors: <BaseColors>{
+      primary: '99% 0.3 56',
+      secondary: '80% 0.4 274',
+      warning: '94% 0.3 111',
+      positive: '70% 0.4 150',
+      negative: '60% 0.35 30',
+      neutral: '70% 0.02 0',
+    },
     colormap: [
       { name: 'positive-contrast', sfname: 'neutral', shade: 900 },
       { name: 'negative-contrast', sfname: 'neutral', shade: 900 },
@@ -37,14 +37,14 @@ const themes = [
   {
     id: 1,
     heading: '**Theme 1**Feature, Feature, Feature',
-    colorScales: <OklchColor[]>[
-      { name: 'primary', hue: 80, light: 99, chroma: 0.25 },
-      { name: 'secondary', hue: 274, light: 80, chroma: 0.4 },
-      { name: 'warning', hue: 111, light: 94, chroma: 0.3 },
-      { name: 'positive', hue: 145, light: 85, chroma: 0.35 },
-      { name: 'negative', hue: 23, light: 99, chroma: 0.395 },
-      { name: 'neutral', hue: 88, light: 88, chroma: 0.02 },
-    ],
+    baseColors: <BaseColors>{
+      primary: '99% 0.25 80',
+      secondary: '80% 0.4 274',
+      warning: '94% 0.3 111',
+      positive: '85% 0.35 145',
+      negative: '99% 0.395 23',
+      neutral: '88% 0.02 88',
+    },
     colormap: [
       { name: 'card-bg', sfname: 'neutral', shade: 200 },
       { name: 'card-contrast', sfname: 'neutral', shade: 900 },
@@ -59,14 +59,14 @@ const themes = [
   {
     id: 2,
     heading: '**Theme 2**Feature, Feature, Feature',
-    colorScales: <OklchColor[]>[
-      { name: 'primary', hue: 100, light: 88, chroma: 0.4 },
-      { name: 'secondary', hue: 100, light: 88, chroma: 0.4 },
-      { name: 'warning', hue: 100, light: 88, chroma: 0.4 },
-      { name: 'positive', hue: 138, light: 88, chroma: 0.4 },
-      { name: 'negative', hue: 4, light: 88, chroma: 0.4 },
-      { name: 'neutral', hue: 88, light: 88, chroma: 0.02 },
-    ],
+    baseColors: <BaseColors>{
+      primary: '88% 0.4 100',
+      secondary: '88% 0.4 100',
+      warning: '88% 0.4 100',
+      positive: '88% 0.4 138',
+      negative: '88% 0.4 4',
+      neutral: '88% 0.02 88',
+    },
     colormap: [
       { name: 'muted-bg', sfname: 'neutral', shade: 300 },
       { name: 'muted-contrast', sfname: 'neutral', shade: 700 },
@@ -77,18 +77,9 @@ const themes = [
       'https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg',
   },
 ]
-const theme = ref(themes[0])
-const showTheme = (id) => {
-  theme.value = themes[id]
-  colormap.value = colormap_vars.map((c) => theme.value.colormap.find((tc) => tc.name === c.name) || c)
-  basisColors.value = theme.value.colorScales.filter(
-    (c) => c.name === 'positive' || c.name === 'negative' || c.name === 'warning',
-  )
-  brandColors.value = theme.value.colorScales.filter((c) => c.name === 'primary' || c.name === 'secondary')
-  neutralColors.value = theme.value.colorScales.filter((c) => c.name === 'neutral')
-}
 
-const colormap_vars = [
+// these mappings are congifurable and can be changed by the user, will be exported as css-vars
+const colormap_defaults = <SfColorMapping[]>[
   { name: 'bg', sfname: 'neutral', shade: 50 },
   { name: 'contrast', sfname: 'neutral', shade: 950 },
   { name: 'muted-bg', sfname: 'neutral', shade: 200 },
@@ -111,83 +102,40 @@ const colormap_vars = [
   { name: 'ring', sfname: 'neutral', shade: 900 },
 ]
 
-const colormap_base = [
-  { name: 'primary-base', sfname: 'primary', shade: 500 },
-  { name: 'secondary-base', sfname: 'secondary', shade: 500 },
-  { name: 'warning-base', sfname: 'warning', shade: 500 },
-  { name: 'positive-base', sfname: 'positive', shade: 500 },
-  { name: 'negative-base', sfname: 'negative', shade: 500 },
-  { name: 'neutral-base', sfname: 'neutral', shade: 500 },
-]
+const theme = ref(themes[0])
+const baseColors = ref<BaseColors>(theme.value.baseColors)
+const colormap = ref<SfColorMapping[]>(colormap_defaults)
+const inverted = ref(false)
 
-const colormap = ref<SfColorMapping[]>([...colormap_vars])
+// method to preview a theme if selected
+const showTheme = (id) => {
+  theme.value = themes[id]
+  colormap.value = colormap_defaults.map((c) => theme.value.colormap.find((tc) => tc.name === c.name) || c)
+  baseColors.value = theme.value.baseColors
+}
+showTheme(0) // initialize colormap and baseColors with first theme
 
-const basisColors = ref<OklchColor[]>([
-  { name: 'warning', hue: 94, light: 92, chroma: 0.3 },
-  { name: 'positive', hue: 150, light: 70, chroma: 0.4 },
-  { name: 'negative', hue: 30, light: 60, chroma: 0.35 },
-])
+const getInverted = () => {
+  return inverted.value ? '1' : '0'
+}
 
-const brandColors = ref<OklchColor[]>([
-  { name: 'primary', hue: 56, light: 99, chroma: 0.3 },
-  { name: 'secondary', hue: 274, light: 80, chroma: 0.4 },
-])
+// initialize colormap and baseColors with first theme
+const getVars = (colors: BaseColors, colormap: SfColorMapping[], asCss: Boolean, invert: String = '0') => {
+  return [`${asCss ? '--color-inverted:' : '"inverted": "'}${invert}${asCss ? ';' : '",'}`].concat(
+    Object.entries(colors).map(([key, value]) => {
+      const oklchColor = `oklch(${value})`
+      return `${asCss ? '--color-' : '"'}${key}-base${asCss ? ': ' : '": "'}${palette(oklchColor, 'var(--color-inverted)')[500]}${asCss ? ';' : '",'}`
+    }),
+    Object.entries(colormap).map(([key, value]) => {
+      const varName = `var(--color-${value.sfname}-base)`
+      return `${asCss ? '--color-' : '"'}${value.name}${asCss ? ': ' : '": "'}${palette(varName, 'var(--color-inverted)')[value.shade.toString()]}${asCss ? ';' : '",'}`
+    }),
+  )
+}
 
-const neutralColors = ref<OklchColor[]>([{ name: 'neutral', hue: 0, light: 70, chroma: 0.02 }])
-
-const colors = ref<OklchColor[]>([])
-const cssvars = ref<String[]>([])
-
-onMounted(() => {
-  colors.value.push(...brandColors.value, ...basisColors.value, ...neutralColors.value)
-  cssvars.value = colormap_base.concat(colormap.value).map((c) => {
-    let colorPalette = brandColors.value[0]
-    switch (c.sfname) {
-      case 'secondary':
-        colorPalette = brandColors.value[1]
-      case 'warning':
-        colorPalette = basisColors.value[0]
-      case 'positive':
-        colorPalette = basisColors.value[1]
-      case 'negative':
-        colorPalette = basisColors.value[2]
-      case 'neutral':
-        colorPalette = neutralColors.value[0]
-    }
-
-    const pal: ColorShades = palette(getOklchColor(colorPalette), '1')
-    if (pal) {
-      return `--color-${c.name}: ${pal[c.shade.toString()]};`
-    }
-  })
-
-  watch([neutralColors, basisColors, brandColors, colormap], (newColors) => {
-    colors.value = []
-    colors.value.push(...brandColors.value, ...basisColors.value, ...neutralColors.value)
-
-    // for every entry in colormap, re-assign css-properties with new colors
-    cssvars.value = colormap_base.concat(colormap.value).map((c) => {
-      let colorPalette = brandColors.value[0]
-      switch (c.sfname) {
-        case 'secondary':
-          colorPalette = brandColors.value[1]
-        case 'warning':
-          colorPalette = basisColors.value[0]
-        case 'positive':
-          colorPalette = basisColors.value[1]
-        case 'negative':
-          colorPalette = basisColors.value[2]
-        case 'neutral':
-          colorPalette = neutralColors.value[0]
-      }
-
-      const pal: ColorShades = palette(getOklchColor(colorPalette), '1')
-      if (pal) {
-        return `--color-${c.name}: ${pal[c.shade.toString()]};`
-      }
-    })
-  })
-})
+/* watch([baseColors, colormap], () => {
+  cssvars.value = getVars(baseColors.value, colormap.value, false, '1')
+}, { immediate: true }) */
 
 const imgUrl = ref(
   'https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg',
@@ -212,7 +160,7 @@ const handleLogout = async () => {
 
 <template>
   <div>
-    <NuxtLayout name="default" style="--color-inverted: 1" :style="cssvars">
+    <NuxtLayout name="default" :style="getVars(baseColors, colormap, true, getInverted())">
       <template #header>
         <Hero
           :imgTmp="imgUrl"
@@ -307,12 +255,7 @@ const handleLogout = async () => {
           </UiAlert>
         </TabsContent>
         <TabsContent value="colors" class="p-4">
-          <ColorPalette
-            v-model:basis="basisColors"
-            v-model:brand="brandColors"
-            v-model:colormap="colormap"
-            v-model:neutral="neutralColors"
-          />
+          <ColorPalette v-model:baseColors="baseColors" v-model:colormap="colormap" v-model:inverted="inverted" />
         </TabsContent>
         <TabsContent value="elements" class="p-4">
           <Heading content="**Elemente**Linien, Abstände, Ring etc." is="h2" />
@@ -331,7 +274,7 @@ const handleLogout = async () => {
         </TabsContent>
         <TabsContent value="export" class="p-4">
           <Heading content="**Export**Paste settings into theme.ts" is="h2" />
-          <ThemeExporter :colorMap="colormap" :colorScales="colors" :cssVars="cssvars" />
+          <ThemeExporter :tsVars="getVars(baseColors, colormap, false, getInverted())" />
         </TabsContent>
       </TabsRoot>
     </NuxtLayout>

@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { should } from 'vitest'
-import type { OklchColor } from '@crearis/theme/utils/colorSettings'
+import type { BaseColors } from '@crearis/theme/utils/colorSettings'
 import { onMounted, PropType } from 'vue'
 
 defineProps({
@@ -13,33 +12,19 @@ defineProps({
   },
 })
 
-const colors = defineModel<OklchColor[]>({
-  type: Array as PropType<OklchColor[]>,
-  default: [],
+const colors = defineModel({
+  type: Object as PropType<BaseColors>,
+  required: true,
 })
-
-const updateColor = (color: OklchColor) => {
-  const index = colors.value.findIndex((c) => c.name === color.name)
-  if (index === -1) return
-  const newColors = [...colors.value]
-  newColors[index] = color
-  colors.value = newColors
-}
 </script>
 
 <template>
   <div class="color-palette__colors">
-    <ColorControl
-      v-for="(color, index) in colors"
-      :chroma="color.chroma"
-      :hue="color.hue"
-      :key="index"
-      :light="color.light"
-      :name="color.name"
-      :showHead="index === 0 && showHead"
-      @update:chroma="updateColor({ name: color.name, hue: color.hue, light: color.light, chroma: $event })"
-      @update:hue="updateColor({ name: color.name, hue: $event, light: color.light, chroma: color.chroma })"
-      @update:light="updateColor({ name: color.name, hue: color.hue, light: $event, chroma: color.chroma })"
-    />
+    <ColorControl v-model="colors.primary" name="Primary" showHead />
+    <ColorControl v-model="colors.secondary" name="Secondary" />
+    <ColorControl v-model="colors.warning" name="Warning" />
+    <ColorControl v-model="colors.positive" name="Positive" />
+    <ColorControl v-model="colors.negative" name="Negative" />
+    <ColorControl v-model="colors.neutral" name="Neutral" />
   </div>
 </template>
