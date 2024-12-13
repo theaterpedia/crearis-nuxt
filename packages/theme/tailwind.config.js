@@ -116,6 +116,8 @@ export default {
         neutral: palette('var(--color-neutral-base)', 'var(--color-inverted)'),
       },
       {
+        'black': 'var(--color-black) ',
+        'white': 'var(--color-white) ',
         'background': 'var(--color-bg) ',
         'foreground': 'var(--color-contrast) ',
         'primary-bg': 'var(--color-primary-bg) ',

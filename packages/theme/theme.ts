@@ -10,7 +10,9 @@ export const colorScales = <OklchColor[]>[
 ]
 
 export const colorVars = {
-  'inverted': '0',
+  'inverted': '1',
+  'black': 'oklch(0% 0 0)',
+  'white': 'oklch(100% 0 0)',
   'primary-base': 'oklch(93% 0.2 104)',
   'secondary-base': 'oklch(76% 0.205 131)',
   'warning-base': 'oklch(93% 0.2 104)',
