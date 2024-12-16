@@ -26,8 +26,8 @@ defineProps({
   max-width: 90rem; /* 1440px */
   margin-right: auto;
   margin-left: auto;
-  padding-right: 1.75rem; /* 28px */
-  padding-left: 1.75rem; /* 28px */
+  padding-right: 2.75rem; /* 44px */
+  padding-left: 2.75rem; /* 44px */
 }
 
 .container > * + * {

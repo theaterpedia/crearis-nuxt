@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts" setup>
-import { Container, Section } from '@crearis-nuxt/ui'
+import { Container, Section } from '@crearis/ui'
 defineProps({
   /**
    * The background color of the section.

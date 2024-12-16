@@ -6,8 +6,14 @@ const currentDir = dirname(fileURLToPath(import.meta.url))
 export default defineNuxtConfig({
   compatibilityDate: '2024-07-25',
   devtools: { enabled: false },
-  modules: ['@crearis-nuxt/ui/nuxt', '@nuxtjs/tailwindcss'],
+  modules: ['@crearis/ui/nuxt', '@nuxtjs/tailwindcss'],
+  crearisUI: { styles: true },
   tailwindcss: {
-    cssPath: join(currentDir, './assets/css/index.css'),
+    viewer: true,
+    cssPath: join(currentDir, './assets/css/tailwind.css'),
+  },
+  sourcemap: true,
+  experimental: {
+    asyncContext: true,
   },
 })

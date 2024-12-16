@@ -17,7 +17,7 @@
 /* This should work but it DOES NOT, see Issue #35
  */
 
-import { Container, Section } from '@crearis-nuxt/ui'
+import { Container, Section } from '@crearis/ui'
 import { renderMdProp } from '~/utils/md-renderer'
 const props = defineProps({
   /**

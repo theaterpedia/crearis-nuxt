@@ -6,6 +6,7 @@
 
 <script lang="ts" setup>
 import { NuxtLink } from '#components'
+import { Button } from '@crearis/ui'
 
 defineProps({
   /**

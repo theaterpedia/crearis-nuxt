@@ -5,5 +5,5 @@
 </template>
 
 <script lang="ts" setup>
-import { Catalog } from '@crearis-nuxt/ui'
+import { Catalog } from '@crearis/ui'
 </script>

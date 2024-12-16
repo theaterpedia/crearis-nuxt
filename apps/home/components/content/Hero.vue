@@ -5,7 +5,8 @@
 </template>
 
 <script lang="ts" setup>
-import { Hero } from '@crearis-nuxt/ui'
+import { Hero } from '@crearis/ui'
+import { getoverlay } from '@crearis/theme/utils/BackgroundHelpers'
 import { type PropType } from 'vue'
 
 const props = defineProps({
@@ -29,7 +30,8 @@ const props = defineProps({
   },
 })
 
-const getoverlay = (gradient: string, depth: number) => {
+// imported from utils
+/* const getoverlay = (gradient: string, depth: number) => {
   const deg =
     gradient && gradient !== 'none'
       ? gradient == 'left'
@@ -51,5 +53,5 @@ const getoverlay = (gradient: string, depth: number) => {
       ? `linear-gradient(${deg}, rgba(255, 193, 7, ${depth}) 18%, rgba(255, 255, 255, 0.62) 50%, rgba(255, 255, 255, 0.10) 81%)`
       : ''
     : ''
-}
+} */
 </script>

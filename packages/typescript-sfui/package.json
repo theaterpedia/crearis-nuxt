@@ -1,0 +1,9 @@
+{
+  "name": "@crearis/sfui-ts-config",
+  "version": "0.0.9",
+  "private": true,
+  "main": "index.js",
+  "files": [
+    "base.json"
+  ]
+}

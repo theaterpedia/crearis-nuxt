@@ -1,7 +1,9 @@
 <template>
-  <NuxtLayout>
-    <DataViewDetails :product="product" :src="src" />
-  </NuxtLayout>
+  <div>
+    <NuxtLayout>
+      <DataViewDetails :product="product" :src="src" />
+    </NuxtLayout>
+  </div>
 </template>
 
 <script lang="ts" setup>
