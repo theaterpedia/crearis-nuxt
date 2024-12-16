@@ -5,5 +5,5 @@
 </template>
 
 <script lang="ts" setup>
-import { CardHero } from '@crearis-nuxt/ui'
+import { CardHero } from '@crearis/ui'
 </script>

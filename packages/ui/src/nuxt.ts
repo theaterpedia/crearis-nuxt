@@ -28,14 +28,14 @@ export default defineNuxtModule<CrearisUINuxtOptions>({
 
     if (fs.existsSync(composables)) {
       addImportsSources({
-        from: '@crearis-nuxt/ui',
+        from: '@crearis/ui',
         imports: fs.readdirSync(composables).map((file) => file.split('.')[0]),
         priority: -1,
       })
     }
 
     if (options.styles) {
-      nuxt.options.css.push('@crearis-nuxt/ui/styles')
+      nuxt.options.css.push('@crearis/ui/styles')
     }
   },
 })

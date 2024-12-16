@@ -108,7 +108,7 @@ onUnmounted(() => {
   width: 4.5rem;
   height: 4.5rem;
   pointer-events: auto;
-  color: hsl(var(--foreground));
+  color: var(--color-contrast);
   transition: var(--transition);
   transition-property: opacity, visibility, color;
 }
@@ -135,7 +135,7 @@ onUnmounted(() => {
 .slider-pagination:deep() .swiper-pagination-bullet {
   width: 0.4375rem;
   height: 0.4375rem;
-  background-color: hsl(var(--foreground));
+  background-color: var(--color-contrast);
   border-radius: 50%;
   cursor: pointer;
   transition: var(--transition);
@@ -143,7 +143,7 @@ onUnmounted(() => {
 }
 
 .slider-pagination:deep() .swiper-pagination-bullet-active {
-  background-color: hsl(var(--primary));
+  background-color: var(--color-primary-bg);
 }
 
 @media (max-width: 1023px) {

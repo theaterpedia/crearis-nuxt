@@ -1,7 +1,11 @@
 <template>
   <div
     class="hero"
-    :class="[target === 'page' ? `hero-${heightTmp}` : 'hero-mini card-hero', `hero-align-content-${contentAlignY}`]"
+    :class="[
+      target === 'page' ? `hero-${heightTmp}` : 'hero-mini card-hero',
+      `hero-align-content-${contentAlignY}`,
+      bottomline ? 'hero-bottomline' : '',
+    ]"
   >
     <div class="hero-cover">
       <div
@@ -56,7 +60,7 @@ defineProps({
    */
   heightTmp: {
     type: String as PropType<'full' | 'prominent' | 'medium' | 'mini'>,
-    default: 'full',
+    default: 'prominent',
   },
 
   /**
@@ -87,6 +91,14 @@ defineProps({
    */
   overlay: {
     type: String,
+  },
+
+  /**
+   * deactivates the bottom-line.
+   */
+  bottomline: {
+    type: Boolean,
+    default: false,
   },
 
   /**
@@ -167,14 +179,14 @@ defineProps({
   align-items: flex-end;
 }
 
-.hero::after {
+.hero-bottomline::after {
   content: '';
   position: absolute;
   right: 0;
   bottom: 0;
   left: 0;
   height: 1rem;
-  background-color: hsl(var(--primary));
+  background-color: var(--color-primary-bg);
 }
 
 .hero-cover {

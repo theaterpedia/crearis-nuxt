@@ -1,0 +1,26 @@
+:root {
+  --color-bg: 96.19% 0 0;
+  --color-contrast: 0% 0 0;
+  --color-card-bg: 100% 0 106.37;
+  --color-card-contrast: 0% 0 0;
+  --color-popover-bg: 100% 0 106.37;
+  --color-popover-contrast: 0% 0 0;
+  --color-primary-base: 72.21% 0.2812 144.53;
+  --color-primary-bg: 72.21% 0.2812 144.53;
+  --color-primary-contrast: 0% 0 0;
+  --color-secondary-base: 65.74% 0.2393 304.41;
+  --color-secondary-bg: 65.74% 0.2393 304.41;
+  --color-secondary-contrast: 100% 0 106.37;
+  --color-muted-bg: 88.45% 0 0;
+  --color-muted-contrast: 32.11% 0 0;
+  --color-accent-bg: 32.11% 0 0;
+  --color-accent-contrast: 100% 0 106.37;
+  --color-negative-base: 63.68% 0.2078 25.33;
+  --color-negative-contrast: 100% 0 106.37;
+  --color-dimmed: 55.47% 0 0;
+  --color-border: 92.4% 0.0035 247.86;
+  --color-input: 80.54% 0 0;
+  --color-ring: 0% 0 0;
+  --font: 'MonaspaceNeon', mono;
+  --headings: var(--font);
+}

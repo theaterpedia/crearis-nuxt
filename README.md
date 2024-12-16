@@ -1,5 +1,6 @@
 # Crearis Nuxt
 
+
 This monorepo contains [Vue](https://vuejs.org) components and [Nuxt](https://nuxt.com) layers for the [dasei.eu](https://dasei.eu) website.
 
 ## System requirements
@@ -27,50 +28,50 @@ This monorepo contains [Vue](https://vuejs.org) components and [Nuxt](https://nu
 
 This repository contains the following packages:
 
-### 1. `@crearis-nuxt/ui`
+### 1. `@crearis/ui`
 
-The `@crearis-nuxt/ui` package is a Vue component library powered by [Vite](https://vite.dev). It includes the following exports:
+The `@crearis/ui` package is a Vue component library powered by [Vite](https://vite.dev). It includes the following exports:
 
-- `@crearis-nuxt/ui` - Vue components and composables.
-- `@crearis-nuxt/ui/css/*` - Separate bases styles.
-- `@crearis-nuxt/ui/fonts/*` - Local webfonts.
-- `@crearis-nuxt/ui/nuxt` - Nuxt [module](https://nuxt.com/docs/guide/concepts/modules) that [auto-imports](https://nuxt.com/docs/guide/concepts/auto-imports) all components and composables in a Nuxt project.
-- `@crearis-nuxt/ui/styles` - Bundled base styles.
+- `@crearis/ui` - Vue components and composables.
+- `@crearis/ui/css/*` - Separate bases styles.
+- `@crearis/ui/fonts/*` - Local webfonts.
+- `@crearis/ui/nuxt` - Nuxt [module](https://nuxt.com/docs/guide/concepts/modules) that [auto-imports](https://nuxt.com/docs/guide/concepts/auto-imports) all components and composables in a Nuxt project.
+- `@crearis/ui/styles` - Bundled base styles.
 
 #### Usage (Nuxt)
 
 Install the package in your Nuxt project.
 
 ```bash
-npm i @crearis-nuxt/ui
+npm i @crearis/ui
 ```
 
 Then, add the module in your `nuxt.config.ts` file:
 
 ```ts
 defineNuxtConfig({
-  modules: ['@crearis-nuxt/ui/nuxt'],
+  modules: ['@crearis/ui/nuxt'],
 })
 ```
 
-### 2. `@crearis-nuxt/theme`
+### 2. `@crearis/theme`
 
-The `@crearis-nuxt/theme` package is a Nuxt [layer](https://nuxt.com/docs/getting-started/layers) containing Nuxt-ready components and composables for building the [dasei.eu](https://dasei.eu) website.
+The `@crearis/theme` package is a Nuxt [layer](https://nuxt.com/docs/getting-started/layers) containing Nuxt-ready components and composables for building the [dasei.eu](https://dasei.eu) website.
 
 #### Usage
 
 Install the layer in your Nuxt project.
 
 ```bash
-npm i @crearis-nuxt/theme
+npm i @crearis/theme
 ```
 
 Then, add the dependency in your `nuxt.config.ts` file:
 
 ```ts
 defineNuxtConfig({
-  extends: ['@crearis-nuxt/theme'],
+  extends: ['@crearis/theme'],
 })
 ```
 
-The `@crearis-nuxt/ui` module is included in the layer, so there's no need to install it separately.
+The `@crearis/ui` module is included in the layer, so there's no need to install it separately.

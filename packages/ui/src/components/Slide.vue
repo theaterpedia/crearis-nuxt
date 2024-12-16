@@ -8,12 +8,12 @@
 
 <style scoped>
 .slide {
-  --background: var(--primary);
-  --foreground: var(--primary-foreground);
-  --muted-foreground: var(--primary-foreground);
-  --link: var(--primary-foreground);
-  --selection: var(--secondary);
-  --selection-foreground: var(--secondary-foreground);
+  --color-bg: var(--color-primary-bg);
+  --color-contrast: var(--color-primary-contrast);
+  --color-muted-contrast: var(--color-primary-contrast);
+  --link: var(--color-primary-contrast);
+  --selection: var(--color-secondary-bg);
+  --selection-foreground: var(--color-secondary-contrast);
   width: 100%;
   padding: 0 4.5rem;
 }
@@ -24,7 +24,7 @@
 
 .slide-inner {
   padding: 1.125rem; /* 18px */
-  background-color: hsl(var(--primary));
+  background-color: var(--color-primary-bg);
   pointer-events: auto;
 }
 

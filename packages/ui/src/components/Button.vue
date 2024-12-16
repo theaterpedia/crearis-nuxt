@@ -60,29 +60,29 @@ defineProps({
 }
 
 .button-primary {
-  background-color: hsl(var(--primary));
-  color: hsl(var(--primary-foreground));
+  background-color: var(--color-primary-bg);
+  color: var(--color-primary-contrast);
 }
 
 .button-primary:hover {
-  background-color: hsl(var(--primary) / 70%);
+  background-color: oklch(from var(--color-primary-bg) l c h / 70%);
 }
 
 .button-plain {
-  background-color: hsl(var(--card-foreground));
-  color: hsl(var(--card));
+  background-color: var(--color-card-contrast);
+  color: var(--color-card-bg);
 }
 
 .button-plain:hover {
-  background-color: hsl(var(--card-foreground) / 70%);
+  background-color: oklch(from var(--color-card-contrast) l c h / 70%);
 }
 
 .button-link {
-  color: hsl(var(--primary));
+  color: var(--color-primary-base);
 }
 
 .button-link:hover {
-  background-color: hsl(var(--card-foreground) / 30%);
+  background-color: oklch(from var(--color-card-contrast) l c h / 30%);
 }
 
 .button-small {

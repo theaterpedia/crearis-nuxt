@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-import { Column } from '@crearis-nuxt/ui'
+import { Column } from '@crearis/ui'
 
 defineProps({
   /**

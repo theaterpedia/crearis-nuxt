@@ -3,21 +3,21 @@
 ::after {
   min-width: 0;
   box-sizing: border-box;
-  border: 0 solid hsl(var(--border));
+  border: 0 solid var(--color-border);
   text-underline-offset: 0.125em;
   text-underline-offset: round(0.125em, 1px);
 }
 
 ::selection {
-  background-color: hsl(var(--selection, var(--primary)));
-  color: hsl(var(--selection-foreground, var(--primary-foreground)));
+  background-color: var(--selection, var(--color-primary-base));
+  color: var(--selection-foreground, var(--color-primary-contrast));
 }
 
 body {
   min-height: 100vh;
   margin: 0;
-  background-color: hsl(var(--background));
-  color: hsl(var(--foreground));
+  background-color: var(--color-bg);
+  color: var(--color-contrast);
   font-family: var(--font);
   line-height: 1.15;
   letter-spacing: -0.015em;

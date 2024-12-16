@@ -1,5 +1,5 @@
 {
-  "name": "@crearis-nuxt/ui",
+  "name": "@crearis/ui",
   "version": "0.1.0",
   "description": "Vue UI components.",
   "repository": {
@@ -27,11 +27,12 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build && vue-tsc --project tsconfig.build.json"
+    "dev": "vite --port 3001",
+    "build": "vite build && vue-tsc --project tsconfig.build.json",
+    "postinstall": "pnpm build"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.12.4",
+    "@nuxt/kit": "^3.13.2",
     "@vueuse/core": "^10.11.0",
     "focus-trap": "^7",
     "nanoid": "^5.0.7",
@@ -41,15 +42,15 @@
   },
   "devDependencies": {
     "@laynezh/vite-plugin-lib-assets": "^0.5.23",
-    "@nuxt/schema": "^3.12.4",
+    "@nuxt/schema": "^3.13.2",
     "@tsconfig/node20": "^20.1.4",
     "@types/node": "^20.14.12",
     "@vitejs/plugin-vue": "^5.1.0",
     "@vue/tsconfig": "^0.5.1",
-    "nuxt": "^3.12.4",
+    "nuxt": "^3.13.2",
     "vite": "^5.3.5",
     "vite-plugin-lib-inject-css": "^2.1.1",
     "vite-plugin-static-copy": "^1.0.6",
-    "vue-tsc": "^2.0.29"
+    "vue-tsc": "^2.1.10"
   }
 }

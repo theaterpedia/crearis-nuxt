@@ -14,13 +14,13 @@ import Container from './Container.vue'
 
 <style scoped>
 .footer {
-  --background: var(--accent);
-  --foreground: var(--accent-foreground);
-  --muted-foreground: var(--accent-foreground);
-  --link: var(--primary);
+  --color-bg: var(--color-accent-bg);
+  --color-contrast: var(--color-accent-contrast);
+  --color-muted-contrast: var(--color-accent-contrast);
+  --link: var(--color-primary-base);
   width: 100%;
-  background-color: hsl(var(--accent));
-  color: hsl(var(--accent-foreground));
+  background-color: var(--color-accent-bg);
+  color: var(--color-accent-contrast);
 }
 
 .footer-inner {
@@ -53,7 +53,7 @@ import Container from './Container.vue'
 
 .footer-inner > :deep() ul li a:hover,
 .footer-inner > :deep() ul li a:focus {
-  color: hsl(var(--link));
+  color: var(--link);
 }
 
 .footer-inner > :deep() :last-child:not(:first-child) {

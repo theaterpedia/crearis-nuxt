@@ -1,29 +1,56 @@
 {
-  "name": "@crearis-nuxt/theme",
+  "name": "@crearis/theme",
   "version": "0.1.0",
-  "description": "Nuxt layer.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/theaterpedia/crearis-nuxt.git",
-    "directory": "packages/editor"
+    "directory": "packages/theme"
   },
   "files": [],
+  "description": "combine parts of @crearis/ui + @storefront-ui/vue as foundation for @crearis/theme",
+  "license": "MIT",
   "type": "module",
   "main": "./nuxt.config.ts",
   "scripts": {
-    "dev": "nuxi dev .playground",
-    "dev:prepare": "nuxt prepare .playground",
-    "build": "nuxt build .playground",
-    "postinstall": "pnpm run dev:prepare"
+    "dev": "nuxi dev .playground --port 3002",
+    "prepare": "nuxt prepare .playground",
+    "postinstall": "pnpm run prepare"
   },
   "dependencies": {
-    "@crearis-nuxt/ui": "workspace:*",
-    "@nuxtjs/tailwindcss": "^6.12.1"
+    "nuxt-viewport": "^2.2.0",
+    "radix-vue": "^1.9.10",
+    "vue-toastification": "next",
+    "@nuxt/content": "^2.13.0",
+    "@crearis/ui": "workspace:*",
+    "@floating-ui/vue": "^1.1.0",
+    "@nuxtjs/tailwindcss": "^6.12.1",
+    "@storefront-ui/shared": "^2.5.0",
+    "@vueuse/core": "^10.9.0",
+    "jw-paginate": "^1.0.4",
+    "tabbable": "^6.1.1",
+    "nuxt": "3.13.2",
+    "culori": "^4.0.1"
   },
   "devDependencies": {
-    "nuxt": "^3.12.4",
+    "prettier": "^3.3.0",
+    "@mertasan/tailwindcss-variables": "2.7.0",
+    "@storefront-ui/tw-plugin-peer-next": "^2.3.3",
+    "vue-tsc": "^2.0.2",
+    "@types/culori": "^2.1.1",
+    "@crearis/sfui-ts-config": "workspace:*",
+    "nuxi": "^3.16.0",
     "tailwindcss": "^3.4.7",
     "typescript": "^5.5.4",
     "vue": "latest"
+  },
+  "peerDependencies": {
+    "vue": "^3.2.47"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "homepage": "https://docs.storefrontui.io/v2/#vue",
+  "bugs": {
+    "url": "https://github.com/theaterpedia/crearis-ui/issues"
   }
 }
