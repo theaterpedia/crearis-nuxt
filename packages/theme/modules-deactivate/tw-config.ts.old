@@ -1,0 +1,13 @@
+import { defineNuxtModule, addTemplate } from '@nuxt/kit'
+
+export default defineNuxtModule({
+  setup(options, nuxt) {
+    nuxt.hook('tailwindcss:config', function (tailwindConfig) {
+      tailwindConfig.theme.colors.primary-depr = {
+        DEFAULT: '#ccc',
+        400: '#333',
+        contrast: '#555',
+      }
+    })
+  },
+})

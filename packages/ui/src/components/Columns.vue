@@ -40,11 +40,11 @@ defineProps({
   /**
    * Whether to wrap the columns.
    *
-   * @default false
+   * @default true
    */
   wrap: {
     type: Boolean,
-    default: false,
+    default: true,
   },
 
   /**
@@ -73,26 +73,26 @@ defineProps({
 }
 
 .columns-default {
-  --background: var(--card);
-  --foreground: var(--card-foreground);
-  background-color: hsl(var(--card));
-  color: hsl(var(--card-foreground));
+  --color-bg: var(--color-card-bg);
+  --color-contrast: var(--color-card-contrast);
+  background-color: var(--color-card-bg);
+  color: var(--color-card-contrast);
 }
 
 .columns-muted {
-  --background: var(--muted);
-  --foreground: var(--card-foreground);
-  background-color: hsl(var(--muted));
-  color: hsl(var(--card-foreground));
+  --color-bg: var(--color-muted-bg);
+  --color-contrast: var(--color-card-contrast);
+  background-color: var(--color-muted-bg);
+  color: var(--color-card-contrast);
 }
 
 .columns-accent {
-  --background: var(--accent);
-  --foreground: var(--accent-foreground);
-  --muted-foreground: var(--accent-foreground);
-  --link: var(--primary);
-  background-color: hsl(var(--accent));
-  color: hsl(var(--accent-foreground));
+  --color-bg: var(--color-accent-bg);
+  --color-contrast: var(--color-accent-contrast);
+  --color-muted-contrast: var(--color-accent-contrast);
+  --link: var(--color-primary-base);
+  background-color: var(--color-accent-bg);
+  color: var(--color-accent-contrast);
 }
 
 .columns-small {

@@ -1,5 +1,5 @@
 <template>
-  <component :is="is" class="section" :class="[`section-${background}`]">
+  <component :is="is" class="section" :class="[`section-${background}`, overlap ? 'overlap' : '']">
     <slot />
   </component>
 </template>
@@ -27,6 +27,15 @@ defineProps({
     type: String as PropType<'default' | 'muted' | 'accent'>,
     default: 'default',
   },
+  /**
+   * adds padding to the bottom
+   *
+   * @default false
+   */
+  overlap: {
+    type: Boolean,
+    default: false,
+  },
 })
 </script>
 
@@ -40,25 +49,29 @@ defineProps({
 }
 
 .section-default {
-  --background: var(--card);
-  --foreground: var(--card-foreground);
-  background-color: hsl(var(--card));
-  color: hsl(var(--card-foreground));
+  --color-bg: var(--color-card-bg);
+  --color-contrast: var(--color-card-contrast);
+  background-color: var(--color-card-bg);
+  color: var(--color-card-contrast);
 }
 
 .section-muted {
-  --background: var(--muted);
-  --foreground: var(--card-foreground);
-  background-color: hsl(var(--muted));
-  color: hsl(var(--card-foreground));
+  --color-bg: var(--color-muted-bg);
+  --color-contrast: var(--color-card-contrast);
+  background-color: var(--color-muted-bg);
+  color: var(--color-card-contrast);
 }
 
 .section-accent {
-  --background: var(--accent);
-  --foreground: var(--accent-foreground);
-  --muted-foreground: var(--accent-foreground);
-  --link: var(--primary);
-  background-color: hsl(var(--accent));
-  color: hsl(var(--accent-foreground));
+  --color-bg: var(--color-accent-bg);
+  --color-contrast: var(--color-accent-contrast);
+  --color-muted-contrast: var(--color-accent-contrast);
+  --link: var(--color-primary-base);
+  background-color: var(--color-accent-bg);
+  color: var(--color-accent-contrast);
+}
+
+.overlap {
+  padding-bottom: 2.75rem; /* 44px */
 }
 </style>

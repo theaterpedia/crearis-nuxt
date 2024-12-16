@@ -1,10 +1,9 @@
 <template>
   <div
     :class="{
-      'banner': !card,
-      'banner-transparent': transparent && !card,
-      'card-transparent': transparent && card,
-      'card': card,
+      banner: !card,
+      transparent: transparent,
+      card: card,
     }"
   >
     <slot />
@@ -21,6 +20,9 @@ defineProps({
     default: false,
   },
 
+  /**
+   * for usage outside of pageHero (cards ...)
+   */
   card: {
     type: Boolean,
     default: false,
@@ -30,25 +32,25 @@ defineProps({
 
 <style scoped>
 .banner {
-  --selection: var(--secondary);
-  --selection-foreground: var(--secondary-foreground);
+  --selection: var(--color-secondary-bg);
+  --selection-foreground: var(--color-secondary-contrast);
   padding: 1.5rem;
-  background-color: hsl(var(--primary));
+  background-color: var(--color-primary-bg);
+}
+
+.banner.transparent {
+  background-color: oklch(from var(--color-primary-bg) l c h / 70%);
 }
 
 .card {
-  --selection: var(--primary);
-  --selection-foreground: var(--primary-foreground);
+  --selection: var(--color-primary-base);
+  --selection-foreground: var(--color-primary-contrast);
   padding: 1.5rem;
-  background-color: hsl(var(--background));
+  background-color: var(--color-bg);
 }
 
-.banner-transparent {
-  background-color: hsl(var(--primary) / 70%);
-}
-
-.card-transparent {
-  background-color: hsl(var(--background) / 70%);
+.card.transparent {
+  background-color: oklch(from var(--color-bg) l c h / 70%);
 }
 
 @media (max-width: 767px) {

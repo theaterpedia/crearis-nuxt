@@ -1,0 +1,47 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "client: theme(chrome)",
+      "url": "http://localhost:3002",
+      "webRoot": "${workspaceFolder}"
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "client: pruvious(chrome)",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "server: theme(nuxt)",
+      "outputCapture": "std",
+      "program": "${workspaceFolder}/packages/theme/node_modules/nuxi/bin/nuxi.mjs",
+      "args": ["dev", "packages/theme/.playground", "--port", "3002"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "server: pruvious(nuxt)",
+      "outputCapture": "std",
+      "program": "${workspaceFolder}/node_modules/nuxi/bin/nuxi.mjs",
+      "args": ["dev"]
+    }
+  ],
+  "compounds": [
+    {
+      "name": "fullstack: theme",
+      "configurations": ["server: theme(nuxt)", "client: theme(chrome)"]
+    },
+    {
+      "name": "fullstack: pruvious",
+      "configurations": ["server: pruvious(nuxt)", "client: pruvious(chrome)"]
+    }
+  ]
+}

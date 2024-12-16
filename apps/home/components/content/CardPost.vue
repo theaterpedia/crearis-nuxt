@@ -77,15 +77,15 @@ const default_heading = '## Default Heading'
   box-shadow:
     0px 4px 6px 1px rgba(0, 0, 0, 0.1),
     0px 2px 4px -1px rgba(0, 0, 0, 0.06);
-  background-color: hsl(var(--card));
+  background-color: var(--color-card-bg);
 }
 
 .tagline {
-  background-color: hsl(var(--muted));
+  background-color: var(--color-muted-bg);
 }
 
 .tagline:hover {
-  background-color: hsl(var(--primary));
+  background-color: var(--color-primary-bg);
 }
 
 .heading {

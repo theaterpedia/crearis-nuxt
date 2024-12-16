@@ -5,5 +5,5 @@
 </template>
 
 <script lang="ts" setup>
-import { Banner } from '@crearis-nuxt/ui'
+import { Banner } from '@crearis/ui'
 </script>
