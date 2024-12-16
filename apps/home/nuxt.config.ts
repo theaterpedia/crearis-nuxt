@@ -6,5 +6,13 @@ export default defineNuxtConfig({
   imports: { transform: { exclude: [/\/packages\/ui\//] } },
   modules: ['@nuxt/content', '@nuxt/image', 'nuxt-viewport'],
   routeRules: { '/': { prerender: true } },
-  nitro: { plugins: ['plugins/content.ts'] },
+  nitro: { plugins: ['plugins/content.ts'],
+        prerender: {
+          ignore: [
+            '/details',
+            '/blog',
+            '/cart'
+          ],
+        },          
+      },
 })

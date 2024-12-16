@@ -57,8 +57,8 @@ Raum, Rhythmus, Kontakt und Bewegung... Dieser Performance-Kurs zielt darauf ab,
 
 ### 2.-4.8.2024 - **MACH DEN MUND AUF**
 Fr. 18:30-21:00 / Sa. 09:00-18:00 / So. 09:00-15:00   
-Stimmworkshop zum Thema “Sprechen auf der Bühne"  [>> weitere Infos](/event/mach-den-mund-auf-47/)
+Stimmworkshop zum Thema “Sprechen auf der Bühne" 
 
 ### 6.-8.12.2024 – WORKSHOP MASKENSPIEL: **Die Magie der Verwandlung**  
 Fr. 18:30-21:00 / Sa. 09:00-18:00 / So. 09:00-14:00   
-Das Gesicht wird hinter der Maske unsichtbar, und trotzdem kann diese Theaterform besonders lebendig und berührend sein. Entdecke die Faszination und das Handwerk von Masken!  [>> weitere Infos](/event/die-magie-der-verwandlung-51)
+Das Gesicht wird hinter der Maske unsichtbar, und trotzdem kann diese Theaterform besonders lebendig und berührend sein. Entdecke die Faszination und das Handwerk von Masken!  [>> weitere Infos](/agenda/die-magie-der-verwandlung-51)
