@@ -19,7 +19,7 @@ const themes = [
     <br />description-text`,
     inverted: false,
     font: 'MonaspaceNeon',
-    headings: 'MonaspaceNeon',    
+    headings: 'MonaspaceNeon',
     baseColors: <BaseColors>{
       primary: '93% 0.2 104.001',
       secondary: '76% 0.205 131.001',
@@ -45,7 +45,7 @@ const themes = [
     <br />description-text`,
     inverted: false,
     font: 'Roboto',
-    headings: 'Roboto',    
+    headings: 'Roboto',
     baseColors: <BaseColors>{
       primary: '97% 0.35 81.001',
       secondary: '70% 0.204 43',
@@ -196,7 +196,7 @@ const themes = [
     ],
     imgUrl:
       'https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg',
-  },  
+  },
   {
     id: 6,
     heading: '**Rayleigh**Theme from the pruvious-tutorial',
@@ -227,7 +227,7 @@ const themes = [
     ],
     imgUrl:
       'https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg',
-  },  
+  },
 ]
 
 // these mappings are congifurable and can be changed by the user, will be exported as css-vars
@@ -279,7 +279,9 @@ const showTheme = (id) => {
   baseColors.warning = theme.value.baseColors.warning
   baseColors.positive = theme.value.baseColors.positive
   baseColors.negative = theme.value.baseColors.negative
-  baseColors.neutral = theme.value.baseColors.neutral.endsWith('.001') ? theme.value.baseColors.neutral.slice(0, -4) : theme.value.baseColors.neutral
+  baseColors.neutral = theme.value.baseColors.neutral.endsWith('.001')
+    ? theme.value.baseColors.neutral.slice(0, -4)
+    : theme.value.baseColors.neutral
   baseColors.grey = theme.value.baseColors.neutral + '.001'
   inverted.value = theme.value.inverted
 }
@@ -310,9 +312,7 @@ watch(baseColors, (newColors) => {
 
 // initialize colormap and baseColors with first theme
 const getVars = (colors: BaseColors, colormap: SfColorMapping[], asCss: Boolean, invert: String = '0') => {
-  return [
-    `${asCss ? '--color-inverted:' : '"inverted": "'}${invert}${asCss ? ';' : '",'}`
-  ].concat(
+  return [`${asCss ? '--color-inverted:' : '"inverted": "'}${invert}${asCss ? ';' : '",'}`].concat(
     Object.entries(colors).map(([key, value]) => {
       // if value ends with ' pin', set boolean pin to true and remove it from value
       const oklchColor = `oklch(${value})`
@@ -394,10 +394,16 @@ const handleLogout = async () => {
             imgTmpAlignX="cover"
             imgTmpAlignY="top"
             class="shadow-lg"
-            :style="getVars(theme.baseColors, getColormap(theme.colormap), true, theme.inverted ? '1' : '0').concat(getFontVars(theme.font, theme.headings, true))"
+            :style="
+              getVars(theme.baseColors, getColormap(theme.colormap), true, theme.inverted ? '1' : '0').concat(
+                getFontVars(theme.font, theme.headings, true),
+              )
+            "
           >
             <Heading :content="theme.heading" is="h3" class="p-4" />
-            <Button @click="showTheme(theme.id)" :style="'font-family: ' + theme.font " size="small" variant="primary">Vorschau</Button>
+            <Button @click="showTheme(theme.id)" size="small" variant="primary" :style="'font-family: ' + theme.font">
+              Vorschau
+            </Button>
           </CardHero>
         </CardsGallery>
       </SectionContainer>

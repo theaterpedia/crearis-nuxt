@@ -151,7 +151,8 @@ const { headline, overline, subline, tags, shortcode } = props.heading ? extract
   rotate: 0deg;
 }
 
-:is(.bg-primary, .bg-secondary, .bg-yellow, .bg-green, .bg-pink):slotted(div) :is(.bg-primary, .bg-secondary, .bg-yellow, .bg-green, .bg-pink) {
+:is(.bg-primary, .bg-secondary, .bg-yellow, .bg-green, .bg-pink):slotted(div)
+  :is(.bg-primary, .bg-secondary, .bg-yellow, .bg-green, .bg-pink) {
   --color-inverted: 0;
   --color-contrast: var(--color-black);
   --color-primary-contrast: var(--color-black);
@@ -175,12 +176,10 @@ const { headline, overline, subline, tags, shortcode } = props.heading ? extract
 .bg-green {
   background-color: var(--color-positiv-bg);
   color: var(--color-positive-contrast);
-
 }
 .bg-pink {
   background-color: var(--color-negative-bg);
   color: var(--color-negative-contrast);
-
 }
 .bg-muted {
   background-color: var(--color-muted-bg);

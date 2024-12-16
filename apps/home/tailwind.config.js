@@ -20,7 +20,6 @@ export default {
         mono: ['MonaspaceNeon', ...defaultTheme.fontFamily.serif],
         headings: ['Roboto', ...defaultTheme.fontFamily.mono], // Pruvious: Poppins
       },
-
     },
   },
   plugins: [tailwindCssVariables],

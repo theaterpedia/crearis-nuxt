@@ -46,7 +46,7 @@ watch([hue, light, chroma, pin], (newColor) => {
 </script>
 
 <template>
-  <form class="mb-1 flex max-w-96 flex-row gap-2" v-if="name !== 'grey'">
+  <form v-if="name !== 'grey'" class="mb-1 flex max-w-96 flex-row gap-2">
     <span class="bg-muted min-w-28" :class="{ 'mt-8': showHead }">{{ name }}</span>
     <span class="min-w-10" :class="{ 'mt-8': showHead }">{{ hue }}</span>
     <label class="min-w-56 flex-grow">
@@ -61,9 +61,9 @@ watch([hue, light, chroma, pin], (newColor) => {
       <span v-show="showHead" class="bg-muted block">Chroma</span>
       <input v-model.number="chroma" max="0.5" min="0" class="min-w-16 max-w-16 text-black" />
     </label>
-    <label v-show="name!='neutral'" class="min-w-12 max-w-12">
+    <label v-show="name != 'neutral'" class="min-w-12 max-w-12">
       <span v-show="showHead" class="bg-muted block">Pin</span>
-      <SfSwitch v-show="name!=='Neutral'" v-model="pin" />
-    </label>    
+      <SfSwitch v-model="pin" v-show="name !== 'Neutral'" />
+    </label>
   </form>
 </template>
