@@ -1,8 +1,6 @@
 :root {
   --theme-shadow: 0.2rem 0.2rem 0.6rem hsla(110, 10%, 0%, 0.65);
   --radius: 0.5rem;
-  --font: 'MonaspaceNeon', mono;
-  --headings: var(--font);
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
   --duration: 150ms;
   --transition: all var(--duration) var(--ease);

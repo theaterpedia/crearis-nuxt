@@ -18,6 +18,8 @@ const themes = [
     <br />description-text 
     <br />description-text`,
     inverted: false,
+    font: 'MonaspaceNeon',
+    headings: 'MonaspaceNeon',    
     baseColors: <BaseColors>{
       primary: '93% 0.2 104.001',
       secondary: '76% 0.205 131.001',
@@ -42,6 +44,8 @@ const themes = [
     <br />description-text 
     <br />description-text`,
     inverted: false,
+    font: 'Roboto',
+    headings: 'Roboto',    
     baseColors: <BaseColors>{
       primary: '97% 0.35 81.001',
       secondary: '70% 0.204 43',
@@ -72,6 +76,8 @@ const themes = [
     <br />description-text 
     <br />description-text`,
     inverted: false,
+    font: 'MonaspaceNeon',
+    headings: 'MonaspaceArgon',
     baseColors: <BaseColors>{
       primary: '99% 0.30 110',
       secondary: '82% 0.35 0',
@@ -103,6 +109,8 @@ const themes = [
     <br />description-text 
     <br />description-text`,
     inverted: false,
+    font: 'MonaspaceKrypton',
+    headings: 'MonaspaceKrypton',
     baseColors: <BaseColors>{
       primary: '99% 0.25 80',
       secondary: '80% 0.4 274',
@@ -134,6 +142,8 @@ const themes = [
     <br />description-text 
     <br />description-text`,
     inverted: true,
+    font: 'MonaspaceXenon',
+    headings: 'MonaspaceXenon',
     baseColors: <BaseColors>{
       primary: '88% 0.4 100',
       secondary: '88% 0.4 100',
@@ -156,6 +166,68 @@ const themes = [
     imgUrl:
       'https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg',
   },
+  {
+    id: 5,
+    heading: '**Lempel**Theme with VSF-Colors & Typography',
+    description: `
+    <br />- missing: typography
+    <br />- missing: colors`,
+    inverted: false,
+    font: 'Lato',
+    headings: 'Poppins',
+    baseColors: <BaseColors>{
+      primary: '88% 0.4 100',
+      secondary: '88% 0.4 100',
+      warning: '88% 0.4 100',
+      positive: '88% 0.4 138',
+      negative: '88% 0.4 4',
+      neutral: '88% 0.02 88',
+    },
+    colormap: [
+      { name: 'primary-bg', sfname: 'primary', shade: 400 },
+      { name: 'secondary-bg', sfname: 'secondary', shade: 400 },
+      { name: 'warning-bg', sfname: 'warning', shade: 400 },
+      { name: 'positive-bg', sfname: 'positive', shade: 400 },
+      { name: 'negative-bg', sfname: 'negative', shade: 400 },
+      { name: 'muted-bg', sfname: 'neutral', shade: 300 },
+      { name: 'muted-contrast', sfname: 'neutral', shade: 700 },
+      { name: 'accent-bg', sfname: 'neutral', shade: 800 },
+      { name: 'accent-contrast', sfname: 'neutral', shade: 100 },
+    ],
+    imgUrl:
+      'https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg',
+  },  
+  {
+    id: 6,
+    heading: '**Rayleigh**Theme from the pruvious-tutorial',
+    description: `description-text description-text 
+    <br />description-text 
+    <br />description-text`,
+    inverted: false,
+    font: 'Lato',
+    headings: 'Poppins',
+    baseColors: <BaseColors>{
+      primary: '88% 0.4 100',
+      secondary: '88% 0.4 100',
+      warning: '88% 0.4 100',
+      positive: '88% 0.4 138',
+      negative: '88% 0.4 4',
+      neutral: '88% 0.02 88',
+    },
+    colormap: [
+      { name: 'primary-bg', sfname: 'primary', shade: 400 },
+      { name: 'secondary-bg', sfname: 'secondary', shade: 400 },
+      { name: 'warning-bg', sfname: 'warning', shade: 400 },
+      { name: 'positive-bg', sfname: 'positive', shade: 400 },
+      { name: 'negative-bg', sfname: 'negative', shade: 400 },
+      { name: 'muted-bg', sfname: 'neutral', shade: 300 },
+      { name: 'muted-contrast', sfname: 'neutral', shade: 700 },
+      { name: 'accent-bg', sfname: 'neutral', shade: 800 },
+      { name: 'accent-contrast', sfname: 'neutral', shade: 100 },
+    ],
+    imgUrl:
+      'https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg',
+  },  
 ]
 
 // these mappings are congifurable and can be changed by the user, will be exported as css-vars
@@ -190,6 +262,8 @@ const colormap_defaults = <SfColorMapping[]>[
 ]
 
 const theme = ref(themes[0])
+const font = ref(theme.value.font)
+const headings = ref(theme.value.headings)
 const baseColors = reactive<BaseColors>(theme.value.baseColors)
 const colormap = ref<SfColorMapping[]>(colormap_defaults)
 const inverted = ref(false)
@@ -197,6 +271,8 @@ const inverted = ref(false)
 // method to preview a theme if selected
 const showTheme = (id) => {
   theme.value = themes[id]
+  font.value = theme.value.font
+  headings.value = theme.value.headings
   colormap.value = colormap_defaults.map((c) => theme.value.colormap.find((tc) => tc.name === c.name) || c)
   baseColors.primary = theme.value.baseColors.primary
   baseColors.secondary = theme.value.baseColors.secondary
@@ -234,7 +310,9 @@ watch(baseColors, (newColors) => {
 
 // initialize colormap and baseColors with first theme
 const getVars = (colors: BaseColors, colormap: SfColorMapping[], asCss: Boolean, invert: String = '0') => {
-  return [`${asCss ? '--color-inverted:' : '"inverted": "'}${invert}${asCss ? ';' : '",'}`].concat(
+  return [
+    `${asCss ? '--color-inverted:' : '"inverted": "'}${invert}${asCss ? ';' : '",'}`
+  ].concat(
     Object.entries(colors).map(([key, value]) => {
       // if value ends with ' pin', set boolean pin to true and remove it from value
       const oklchColor = `oklch(${value})`
@@ -249,6 +327,13 @@ const getVars = (colors: BaseColors, colormap: SfColorMapping[], asCss: Boolean,
       return `${asCss ? '--color-' : '"'}${value.name}${asCss ? ': ' : '": "'}${palette(varName, isPinned(value.sfname) ? '0' : 'var(--color-inverted)')[value.shade.toString()]}${asCss ? ';' : '",'}`
     }),
   )
+}
+
+const getFontVars = (font: String = 'Roboto', headings: String = 'MonaspaceNeon', asCss: Boolean) => {
+  return [
+    `${asCss ? '--font:' : '"font": "'}${font}${asCss ? ';' : '",'}`,
+    `${asCss ? '--headings:' : '"headings": "'}${headings}${asCss ? ';' : '",'}`,
+  ]
 }
 
 const imgUrl = ref(
@@ -273,7 +358,7 @@ const handleLogout = async () => {
 </script>
 
 <template>
-  <div :style="getVars(baseColors, colormap, true, getInverted())">
+  <div :style="getVars(baseColors, colormap, true, getInverted()).concat(getFontVars(font, headings, true))">
     <NuxtLayout
       name="default"
       :class="`${{ dark: inverted }}`"
@@ -309,10 +394,10 @@ const handleLogout = async () => {
             imgTmpAlignX="cover"
             imgTmpAlignY="top"
             class="shadow-lg"
-            :style="getVars(theme.baseColors, getColormap(theme.colormap), true, theme.inverted ? '1' : '0')"
+            :style="getVars(theme.baseColors, getColormap(theme.colormap), true, theme.inverted ? '1' : '0').concat(getFontVars(theme.font, theme.headings, true))"
           >
             <Heading :content="theme.heading" is="h3" class="p-4" />
-            <Button @click="showTheme(theme.id)" size="small" variant="primary">Vorschau</Button>
+            <Button @click="showTheme(theme.id)" :style="'font-family: ' + theme.font " size="small" variant="primary">Vorschau</Button>
           </CardHero>
         </CardsGallery>
       </SectionContainer>

@@ -1,6 +1,6 @@
 import defaultTheme from 'tailwindcss/defaultTheme'
 import { colorVars } from './theme'
-import { palette } from './utils/colorSettings'
+import { palette } from '@crearis/theme/utils/colorSettings'
 import peerNextPlugin from '@storefront-ui/tw-plugin-peer-next'
 import tailwindCssVariables from '@mertasan/tailwindcss-variables'
 
@@ -13,12 +13,14 @@ export default {
   theme: {
     variables: {
       DEFAULT: {
+        font: 'MonaspaceNeon',
+        headings: 'MonaspaceNeon',
         color: colorVars,
       },
     },
     extend: {
       fontFamily: {
-        body: ['MonaspaceNeon', ...defaultTheme.fontFamily.sans], // Pruvious: Lato
+        body: ['Roboto', ...defaultTheme.fontFamily.sans], // Pruvious: Lato
         sans: ['MonaspaceNeon', ...defaultTheme.fontFamily.sans], // Pruvious: Lato
         mono: ['MonaspaceNeon', ...defaultTheme.fontFamily.serif],
         headings: ['MonaspaceNeon', ...defaultTheme.fontFamily.mono], // Pruvious: Poppins
