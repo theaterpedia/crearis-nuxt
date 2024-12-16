@@ -11,17 +11,48 @@ definePageMeta({
 })
 
 const themes = [
-  {
+{
     id: 0,
-    heading: '**Theaterpedia**Feature, Feature, Feature',
-    description: `description-text description-text 
+    heading: '**E-Motion**Performance und Shows',
+    description: `dark-Theme mit
+    <br />- markanter Typographie 
+    <br />- flächigen Farben`,
+    inverted: true,
+    font: 'MonaspaceKrypton',
+    headings: 'MonaspaceKrypton',
+    baseColors: <BaseColors>{
+      primary: '70% 0.4 20',
+      secondary: '88% 0.4 100',
+      warning: '88% 0.4 100',
+      positive: '88% 0.4 138',
+      negative: '88% 0.4 4',
+      neutral: '88% 0.02 88',
+    },
+    colormap: [
+      { name: 'primary-bg', sfname: 'primary', shade: 400 },
+      { name: 'secondary-bg', sfname: 'secondary', shade: 400 },
+      { name: 'warning-bg', sfname: 'warning', shade: 400 },
+      { name: 'positive-bg', sfname: 'positive', shade: 400 },
+      { name: 'negative-bg', sfname: 'negative', shade: 400 },
+      { name: 'muted-bg', sfname: 'neutral', shade: 300 },
+      { name: 'muted-contrast', sfname: 'neutral', shade: 700 },
+      { name: 'accent-bg', sfname: 'neutral', shade: 800 },
+      { name: 'accent-contrast', sfname: 'neutral', shade: 100 },
+    ],
+    imgUrl:
+      'https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg',
+  },  
+  {
+    id: 1,
+    heading: '**REGIO**Vernetzung und Profile',
+    description: `Sidenavigation mit Scroll-Over-Design 
     <br />description-text 
     <br />description-text`,
     inverted: false,
     font: 'MonaspaceNeon',
     headings: 'MonaspaceNeon',
     baseColors: <BaseColors>{
-      primary: '93% 0.2 104.001',
+      primary: '70% 0.4 141.001',
       secondary: '76% 0.205 131.001',
       warning: '93% 0.2 104',
       positive: '76% 0.205 131',
@@ -38,79 +69,14 @@ const themes = [
       'https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg',
   },
   {
-    id: 1,
-    heading: '**DASEi**Feature, Feature, Feature',
-    description: `description-text description-text 
-    <br />description-text 
-    <br />description-text`,
-    inverted: false,
-    font: 'Roboto',
-    headings: 'Roboto',
-    baseColors: <BaseColors>{
-      primary: '97% 0.35 81.001',
-      secondary: '70% 0.204 43',
-      warning: '94% 0.3 111',
-      positive: '70% 0.4 150',
-      negative: '60% 0.35 30',
-      neutral: '70% 0 0',
-    },
-    colormap: [
-      { name: 'primary-contrast', sfname: 'grey', shade: 950 },
-      { name: 'secondary-contrast', sfname: 'grey', shade: 950 },
-      { name: 'positive-contrast', sfname: 'grey', shade: 950 },
-      { name: 'negative-contrast', sfname: 'grey', shade: 950 },
-      { name: 'warning-contrast', sfname: 'grey', shade: 950 },
-      { name: 'card-bg', sfname: 'neutral', shade: 100 },
-      { name: 'muted-bg', sfname: 'neutral', shade: 200 },
-      { name: 'muted-contrast', sfname: 'neutral', shade: 600 },
-      { name: 'accent-bg', sfname: 'neutral', shade: 800 },
-      { name: 'accent-contrast', sfname: 'neutral', shade: 100 },
-    ],
-    imgUrl:
-      'https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg',
-  },
-  {
     id: 2,
-    heading: '**Neon**Feature, Feature, Feature',
+    heading: '**Pastell**Blogging und News',
     description: `description-text description-text 
     <br />description-text 
     <br />description-text`,
     inverted: false,
-    font: 'MonaspaceNeon',
-    headings: 'MonaspaceArgon',
-    baseColors: <BaseColors>{
-      primary: '99% 0.30 110',
-      secondary: '82% 0.35 0',
-      warning: '99% 0.30 110',
-      positive: '97% 0.35 145',
-      negative: '82% 0.35 0',
-      neutral: '99% 0.02 110',
-    },
-    colormap: [
-      { name: 'primary-bg', sfname: 'primary', shade: 400 },
-      { name: 'secondary-bg', sfname: 'secondary', shade: 400 },
-      { name: 'warning-bg', sfname: 'warning', shade: 400 },
-      { name: 'positive-bg', sfname: 'positive', shade: 400 },
-      { name: 'negative-bg', sfname: 'negative', shade: 400 },
-      { name: 'card-bg', sfname: 'neutral', shade: 400 },
-      { name: 'card-contrast', sfname: 'neutral', shade: 900 },
-      { name: 'muted-bg', sfname: 'neutral', shade: 600 },
-      { name: 'muted-contrast', sfname: 'neutral', shade: 950 },
-      { name: 'accent-bg', sfname: 'neutral', shade: 900 },
-      { name: 'accent-contrast', sfname: 'primary', shade: 200 },
-    ],
-    imgUrl:
-      'https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg',
-  },
-  {
-    id: 3,
-    heading: '**Pastell**Feature, Feature, Feature',
-    description: `description-text description-text 
-    <br />description-text 
-    <br />description-text`,
-    inverted: false,
-    font: 'MonaspaceKrypton',
-    headings: 'MonaspaceKrypton',
+    font: 'MonaspaceRadon',
+    headings: 'MonaspaceRadon',
     baseColors: <BaseColors>{
       primary: '99% 0.25 80',
       secondary: '80% 0.4 274',
@@ -134,23 +100,55 @@ const themes = [
     ],
     imgUrl:
       'https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg',
+  },  
+  {
+    id: 3,
+    heading: '**INSTITUT**Kurse managen',
+    description: `Sidenavigation mit Scroll-Over-Design 
+    <br />description-text 
+    <br />description-text`,
+    inverted: false,
+    font: 'Roboto',
+    headings: 'Roboto',
+    baseColors: <BaseColors>{
+      primary: '97% 0.35 191.001',
+      secondary: '70% 0.204 43',
+      warning: '94% 0.3 111',
+      positive: '70% 0.4 150',
+      negative: '60% 0.35 30',
+      neutral: '70% 0 0',
+    },
+    colormap: [
+      { name: 'primary-contrast', sfname: 'grey', shade: 950 },
+      { name: 'secondary-contrast', sfname: 'grey', shade: 950 },
+      { name: 'positive-contrast', sfname: 'grey', shade: 950 },
+      { name: 'negative-contrast', sfname: 'grey', shade: 950 },
+      { name: 'warning-contrast', sfname: 'grey', shade: 950 },
+      { name: 'card-bg', sfname: 'neutral', shade: 100 },
+      { name: 'muted-bg', sfname: 'neutral', shade: 200 },
+      { name: 'muted-contrast', sfname: 'neutral', shade: 600 },
+      { name: 'accent-bg', sfname: 'neutral', shade: 800 },
+      { name: 'accent-contrast', sfname: 'neutral', shade: 100 },
+    ],
+    imgUrl:
+      'https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg',
   },
   {
     id: 4,
-    heading: '**Dark**Feature, Feature, Feature',
-    description: `description-text description-text 
-    <br />description-text 
-    <br />description-text`,
-    inverted: true,
-    font: 'MonaspaceXenon',
-    headings: 'MonaspaceXenon',
+    heading: '**Neon**Konzepte visualisieren',
+    description: `knallige Post-Its-Farben 
+    <br />- Mono-Typographie 
+    <br />- schlichte Farbflächen`,
+    inverted: false,
+    font: 'MonaspaceNeon',
+    headings: 'MonaspaceArgon',
     baseColors: <BaseColors>{
-      primary: '88% 0.4 100',
-      secondary: '88% 0.4 100',
-      warning: '88% 0.4 100',
-      positive: '88% 0.4 138',
-      negative: '88% 0.4 4',
-      neutral: '88% 0.02 88',
+      primary: '99% 0.30 110',
+      secondary: '82% 0.35 0',
+      warning: '99% 0.30 110',
+      positive: '97% 0.35 145',
+      negative: '82% 0.35 0',
+      neutral: '99% 0.02 110',
     },
     colormap: [
       { name: 'primary-bg', sfname: 'primary', shade: 400 },
@@ -158,10 +156,12 @@ const themes = [
       { name: 'warning-bg', sfname: 'warning', shade: 400 },
       { name: 'positive-bg', sfname: 'positive', shade: 400 },
       { name: 'negative-bg', sfname: 'negative', shade: 400 },
-      { name: 'muted-bg', sfname: 'neutral', shade: 300 },
-      { name: 'muted-contrast', sfname: 'neutral', shade: 700 },
-      { name: 'accent-bg', sfname: 'neutral', shade: 800 },
-      { name: 'accent-contrast', sfname: 'neutral', shade: 100 },
+      { name: 'card-bg', sfname: 'neutral', shade: 400 },
+      { name: 'card-contrast', sfname: 'neutral', shade: 900 },
+      { name: 'muted-bg', sfname: 'neutral', shade: 600 },
+      { name: 'muted-contrast', sfname: 'neutral', shade: 950 },
+      { name: 'accent-bg', sfname: 'neutral', shade: 900 },
+      { name: 'accent-contrast', sfname: 'primary', shade: 200 },
     ],
     imgUrl:
       'https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg',
