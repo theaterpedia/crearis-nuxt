@@ -17,6 +17,7 @@
   "dependencies": {
     "@crearis/theme": "workspace:*",
     "@crearis/ui": "workspace:*",
+    "@mertasan/tailwindcss-variables": "^2.7.0",
     "@nuxt/content": "^2.13.1",
     "@nuxt/image": "^1.7.0",
     "consola": "^3.2.3",
