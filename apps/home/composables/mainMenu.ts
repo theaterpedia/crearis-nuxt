@@ -17,9 +17,11 @@ export function refreshMainMenu(activeRoute: RouteLocation | string) {
   const mainMenu = useMainMenu().value
   const navigation = mainMenu.navigation
 
+  // if item has children, it cannot have a direct link (folder-logic)
   mainMenu.items = navigation.map((item) => ({
     label: item.title,
     children: item.children ? navigationToMenuItems(item.children, activeRoute) : [],
+    link: item.children ? undefined : item._path,
     expanded: path === item._path || path.startsWith(`${item._path}/`),
   }))
 

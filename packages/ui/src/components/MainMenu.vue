@@ -3,6 +3,7 @@
     <ul>
       <MainMenuItem
         v-for="item in items"
+        :to="item.link"
         :item="item"
         :linkComponent="linkComponent"
         :wrap="wrap"

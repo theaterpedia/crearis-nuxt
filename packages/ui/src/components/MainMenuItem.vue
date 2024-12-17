@@ -82,6 +82,13 @@ export interface MainMenuParentItem {
    */
   label: string
 
+  
+  /**
+   * The URL (path) to navigate to when the menu item is clicked.
+   */
+   link: string
+   required: false
+
   /**
    * The type of menu item.
    */
@@ -94,6 +101,7 @@ export interface MainMenuParentItem {
    */
   expanded?: boolean
 }
+
 
 export interface MainMenuLinkItem {
   /**
