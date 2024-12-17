@@ -1,5 +1,5 @@
 ---
-title: Überblick
+title: Institut
 heading: 30 Jahre freie Theaterpädagogik in Bayern **Theaterpädagogisches Institut**
 description: Willkommen bei DAS Ei - Wir entwickeln und erforschen Theaterpädagogik. Über unsere Workshops und das Ausbildungsprogramm kannst Du daran teilhaben.
 icon: 'lucide:info'
@@ -21,6 +21,7 @@ image:
 >> 
 >> ## **Willkommen bei DAS Ei**
 >> Wir entwickeln und erforschen Theaterpädagogik. Über unsere Workshops und das Ausbildungsprogramm kannst Du daran teilhaben.
+>> 
 >> Bei Interesse an unserem Programm schreibst Du am besten direkt eine Email an: [info@dasei.eu](mailto:info@dasei.eu)  
 >> Oder noch besser: Du vereinbarst direkt ein Telefonat zur unverbindlichen Beratung unter: 0911/7808476.
 >
@@ -36,7 +37,7 @@ image:
 >> - Fort- und Ausbildung
 >> - überregionale Vernetzung
 >> - Projektarbeit im künstlerischen und sozialen Bereich
->> Das Fundament für unzählige Aktivitäten in diesen Schwerpunkten war von vornherein ein Selbstverständnis als 'freie Organisation'. DAS Ei möchte einen optimalen Rahmen schaffen für ein freiberufliches Engagement und verfolgt die Vision einer 'freien Theaterpädagogik': Eine Theaterpädagogik, die sich möglichst frei von fremden Zwecken und Interessen entwickeln darf.
+>> Das Fundament für unzählige Aktivitäten in diesen Schwerpunkten war von vornherein ein Selbstverständnis als 'freie Organisation'. DAS Ei möchte einen optimalen Rahmen schaffen für ein freiberufliches Engagement und verfolgt die Vision einer 'freien Theaterpädagogik': Eine Theaterpädagogik, die sich frei von fremden Zwecken und Interessen entwickeln darf.
 >
 >> [!column|width=1/2]
 >> ## **Arbeitsschwerpunkte**

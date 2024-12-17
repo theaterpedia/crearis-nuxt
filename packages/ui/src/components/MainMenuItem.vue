@@ -4,7 +4,7 @@
     :class="[`main-menu-item-${level}`, { 'main-menu-item-no-wrap': !wrap }]"
     :style="{ paddingLeft: `${(level - 1) * 1}em` }"
   >
-    <template v-if="'children' in item">
+    <template v-if="'children' in item && item.children.length">
       <button @click="$emit('update:item', { ...item, expanded: !item.expanded })" class="main-menu-item-button">
         <span>{{ item.label }}</span>
 
@@ -59,13 +59,13 @@
     </template>
 
     <component
-      v-else
+      v-else-if = "item.link"
       :is="linkComponent"
       :rel="item.link.startsWith('http') ? 'noopener noreferrer' : undefined"
       :target="item.link.startsWith('http') ? '_blank' : undefined"
       :to="item.link"
       class="main-menu-item-link"
-      :class="{ 'main-menu-item-link-active': item.active }"
+      :class="{ 'main-menu-item-link-active': item.active  }"
     >
       <span>{{ item.label }}</span>
     </component>
@@ -86,13 +86,19 @@ export interface MainMenuParentItem {
   /**
    * The URL (path) to navigate to when the menu item is clicked.
    */
-   link: string
-   required: false
+  link?: string
 
   /**
    * The type of menu item.
    */
   children: (MainMenuParentItem | MainMenuLinkItem)[]
+
+  /**
+   * Whether the menu item is active.
+   *
+   * @default false
+   */
+   active?: boolean
 
   /**
    * Whether the menu group is expanded.
@@ -212,13 +218,19 @@ defineEmits<{
   text-transform: uppercase;
 }
 
+.main-menu-item-0 > .main-menu-item-link {
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
 .main-menu-item-link {
   transition: var(--transition);
   transition-property: background-color;
 }
 
 .main-menu-item-link:hover,
-.main-menu-item-link-active {
+.main-menu-item-link-active,
+.main-menu-item-0 > .router-link-exact-active{
   background-color: var(--color-primary-bg);
 }
 </style>
