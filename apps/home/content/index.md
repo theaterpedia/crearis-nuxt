@@ -13,7 +13,7 @@ start: 2024-12-06
 ende: 2024-12-08
 hero:
   height: prominent
-  gradient_type: left-top
+  gradientType: left-top
   image_focus_y: top
   image_focus_x: center
   content_y: top

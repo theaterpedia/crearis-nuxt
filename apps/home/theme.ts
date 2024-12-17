@@ -28,8 +28,7 @@ export const colorVars = {
   'positive-bg': 'var(--color-positive-base)',
   'negative-bg': 'var(--color-negative-base)',
   'muted-bg': 'oklch(from var(--color-neutral-base) calc(l + 0.6 * (1 - var(--color-inverted) - l)) calc(c / 2) h)',
-  'muted-contrast':
-    'oklch(from var(--color-neutral-base) calc(l + 0.2 * (var(--color-inverted) - l)) calc(c / 1.25) h)',
+  'muted-contrast': 'oklch(from var(--color-neutral-base) calc(l + 0.6 * (var(--color-inverted) - l)) calc(c / 2) h)',
   'accent-bg': 'oklch(from var(--color-neutral-base) calc(l + 0.6 * (var(--color-inverted) - l)) calc(c / 2) h)',
   'accent-contrast':
     'oklch(from var(--color-neutral-base) calc(l + 0.8 * (1 - var(--color-inverted) - l)) calc(c / 3) h)',

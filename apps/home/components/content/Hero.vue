@@ -1,5 +1,5 @@
 <template>
-  <Hero :overlay="getoverlay(gradient_type, gradient_depth)">
+  <Hero bottomline :overlay="getoverlay(gradient_type, gradient_depth)">
     <ContentSlot />
   </Hero>
 </template>
