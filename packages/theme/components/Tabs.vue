@@ -26,7 +26,6 @@ const slots = defineSlots<{
 
 onMounted(() => {
   tabTitles.value = [...(slots.default!()[0].children as any)].map((tab: any) => tab.props.title)
-  
   // tabTitles.value = [...(slots.default!()[0].children as any)].map((tab: any) => tab.props.title)
 })
 

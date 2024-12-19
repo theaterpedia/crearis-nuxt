@@ -34,7 +34,7 @@ const props = defineProps({
     default: 'h1',
   },
   content: {
-    type: String,
+    type: String as PropType<string>,
     required: true,
   },
 })
