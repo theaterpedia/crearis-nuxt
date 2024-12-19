@@ -119,11 +119,11 @@ const themes = [
       neutral: '70% 0 0',
     },
     colormap: [
-      { name: 'primary-contrast', sfname: 'grey', shade: 950 },
-      { name: 'secondary-contrast', sfname: 'grey', shade: 950 },
-      { name: 'positive-contrast', sfname: 'grey', shade: 950 },
-      { name: 'negative-contrast', sfname: 'grey', shade: 950 },
-      { name: 'warning-contrast', sfname: 'grey', shade: 950 },
+      { name: 'primary-contrast', sfname: 'gray', shade: 950 },
+      { name: 'secondary-contrast', sfname: 'gray', shade: 950 },
+      { name: 'positive-contrast', sfname: 'gray', shade: 950 },
+      { name: 'negative-contrast', sfname: 'gray', shade: 950 },
+      { name: 'warning-contrast', sfname: 'gray', shade: 950 },
       { name: 'card-bg', sfname: 'neutral', shade: 100 },
       { name: 'muted-bg', sfname: 'neutral', shade: 200 },
       { name: 'muted-contrast', sfname: 'neutral', shade: 600 },
@@ -234,8 +234,8 @@ const themes = [
 const colormap_defaults = <SfColorMapping[]>[
   { name: 'bg', sfname: 'neutral', shade: 50 },
   { name: 'contrast', sfname: 'neutral', shade: 950 },
-  { name: 'black', sfname: 'grey', shade: 950 },
-  { name: 'white', sfname: 'grey', shade: 50 },
+  { name: 'black', sfname: 'gray', shade: 950 },
+  { name: 'white', sfname: 'gray', shade: 50 },
   { name: 'primary-bg', sfname: 'primary', shade: 500 },
   { name: 'secondary-bg', sfname: 'secondary', shade: 500 },
   { name: 'warning-bg', sfname: 'warning', shade: 500 },
@@ -282,7 +282,7 @@ const showTheme = (id) => {
   baseColors.neutral = theme.value.baseColors.neutral.endsWith('.001')
     ? theme.value.baseColors.neutral.slice(0, -4)
     : theme.value.baseColors.neutral
-  baseColors.grey = theme.value.baseColors.neutral + '.001'
+  baseColors.gray = theme.value.baseColors.neutral + '.001'
   inverted.value = theme.value.inverted
 }
 showTheme(0) // initialize colormap and baseColors with first theme
@@ -296,17 +296,17 @@ const getInverted = () => {
 }
 
 const isPinned = (colorName: String) => {
-  if (colorName === 'grey') return true
+  if (colorName === 'gray') return true
   if (colorName === 'neutral') return false
   if (!baseColors[colorName.toString()]) return false
   return baseColors[colorName.toString()].endsWith('.001')
 }
 
-// update grey color if neutral changes
+// update gray color if neutral changes
 watch(baseColors, (newColors) => {
   const newNeutral = newColors.neutral.endsWith('.001') ? newColors.neutral : newColors.neutral + '.001'
-  if (baseColors.grey !== newNeutral) {
-    baseColors.grey = newNeutral
+  if (baseColors.gray !== newNeutral) {
+    baseColors.gray = newNeutral
   }
 })
 

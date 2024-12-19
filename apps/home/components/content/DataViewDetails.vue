@@ -8,13 +8,22 @@
       ></Heading>
     </SectionContainer>
 
-    <Tabs style="margin-top: 1.5em">
-      <Tab
+    <StepperRoot style="margin-top: 1.5em" :default-value="2" class="flex gap-2 w-full">
+      <StepperItem
         v-for="(tab, key, index) in product.details"
-        :active="index === 0"
-        :key="key"
+        :step="index"
+        :key="index"
+        class="w-full flex justify-center gap-2 cursor-pointer group data-[disabled]:pointer-events-none relative px-4"
         :title="tab.title ? tab.title : key"
       >
+        <StepperTrigger class="flex items-center gap-2">
+          <StepperIndicator :step="index" />
+          <StepperTitle :title="tab.title ? tab.title : key" />
+          <StepperSeparator v-if="index !== product.details.length"
+            class="absolute block top-5 left-[calc(50%+30px)] right-[calc(-50%+20px)] h-0.5 rounded-full group-data-[disabled]:bg-gray-300 bg-gray-300 group-data-[state=completed]:bg-white bg-primary shrink-0"
+          />
+          <StepperDescription :description="tab.description ? tab.description : key" />
+        </StepperTrigger>
         <Columns gap="medium" stackReverse>
           <Column>
             <ContentQuery v-slot="{ data }" :path="product.meta_product ? getRootPath(product.root) : src" find="one">
@@ -73,13 +82,14 @@
             </template>
           </Column>
         </Columns>
-      </Tab>
-    </Tabs>
+      </StepperItem>
+    </StepperRoot>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { Hero } from '#components'
+import { StepperDescription, StepperIndicator, StepperItem, StepperRoot, StepperSeparator, StepperTitle, StepperTrigger } from 'radix-vue'
 /* This belongs to the DataView + DataViewTab component
 - it should NOT be availabe in the component-spec
 */

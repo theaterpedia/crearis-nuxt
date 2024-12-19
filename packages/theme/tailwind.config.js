@@ -116,7 +116,7 @@ export default {
         negative: palette('var(--color-negative-base)', 'var(--color-inverted)'),
         warning: palette('var(--color-warning-base)', 'var(--color-inverted)'),
         neutral: palette('var(--color-neutral-base)', 'var(--color-inverted)'),
-        grey: palette('var(--color-grey-base)', '0'),
+        gray: palette('var(--color-gray-base)', '0'),
       },
       {
         'black': 'var(--color-black) ',

@@ -4,7 +4,7 @@ export interface OklchScale {
   name: String
   hue: Number
   scale: 0 | 1 | 2 | 3 | 4 | 5
-  greyval: 0 | 1 | 2 | 3 | 4
+  grayval: 0 | 1 | 2 | 3 | 4
 }
 export interface ColorShades {
   DEFAULT: String
@@ -34,7 +34,7 @@ export interface BaseColors {
   positive: String
   negative: String
   neutral: String
-  grey?: String
+  gray?: String
 }
 
 export interface SfColorMapping {
@@ -73,22 +73,22 @@ export function getOklchColor(color: OklchColor): String {
   return `oklch(${color.light}% ${color.chroma} ${color.hue})`
 }
 
-export const maxChroma = (i, hue, scale, greyval) => {
+export const maxChroma = (i, hue, scale, grayval) => {
   let oklch = converter('oklch')
-  let color = 'oklch(' + lightness[scale][i] + '% ' + grey[greyval] + ' ' + hue + ')'
+  let color = 'oklch(' + lightness[scale][i] + '% ' + gray[grayval] + ' ' + hue + ')'
   return formatCss(oklch(toGamut('p3', 'oklch', differenceEuclidean('oklch'), 0)(color)))
 }
 
-export const oklchVal = (i, hue, scale, greyval) => {
+export const oklchVal = (i, hue, scale, grayval) => {
   let oklch = converter('oklch')
-  return `oklch(${lightness[scale][i]}% ${grey[greyval]} ${hue} / <alpha-value>)`
+  return `oklch(${lightness[scale][i]}% ${gray[grayval]} ${hue} / <alpha-value>)`
 }
 
-const oklchParams = (i, hue, scale, greyval) => {
+const oklchParams = (i, hue, scale, grayval) => {
   let oklch = converter('oklch')
-  return `'${lightness[scale][i]}% ${grey[greyval]} ${hue}'`
+  return `'${lightness[scale][i]}% ${gray[grayval]} ${hue}'`
 }
 
-function calculatePalette(hue, scale, greyval) {
-  return shades.map((shade, i) => maxChroma(i, hue, scale, greyval))
+function calculatePalette(hue, scale, grayval) {
+  return shades.map((shade, i) => maxChroma(i, hue, scale, grayval))
 }

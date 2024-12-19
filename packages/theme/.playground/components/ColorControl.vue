@@ -46,7 +46,7 @@ watch([hue, light, chroma, pin], (newColor) => {
 </script>
 
 <template>
-  <form v-if="name !== 'grey'" class="mb-1 flex max-w-96 flex-row gap-2">
+  <form v-if="name !== 'gray'" class="mb-1 flex max-w-96 flex-row gap-2">
     <span class="bg-muted min-w-28" :class="{ 'mt-8': showHead }">{{ name }}</span>
     <span class="min-w-10" :class="{ 'mt-8': showHead }">{{ hue }}</span>
     <label class="min-w-56 flex-grow">
