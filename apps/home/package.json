@@ -20,6 +20,7 @@
     "@mertasan/tailwindcss-variables": "^2.7.0",
     "@nuxt/content": "^2.13.1",
     "@nuxt/image": "^1.7.0",
+    "radix-vue": "^1.9.11",
     "consola": "^3.2.3",
     "nuxt": "3.13.2",
     "nuxt-viewport": "^2.2.0",
