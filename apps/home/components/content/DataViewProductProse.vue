@@ -18,7 +18,6 @@
  */
 
 import { Container, Section } from '@crearis/ui'
-import { renderMdProp } from '~/utils/md-renderer'
 const props = defineProps({
   /**
    * The background color of the section.

@@ -22,7 +22,7 @@
 
 <script lang="ts" setup>
 import { Heading } from '@crearis/ui'
-import { extractHeading } from '~/utils/md-renderer'
+
 const props = defineProps({
   /**
    * The heading tag to render.
@@ -30,7 +30,7 @@ const props = defineProps({
    * @default 'h1'
    */
   is: {
-    type: [Object, String] as PropType<'h1' | 'h2' | 'h3' | 'span' | 'li'>,
+    type: [Object, String] as PropType<'h1' | 'h2' | 'h3' | 'h4' | 'span' | 'li'>,
     default: 'h1',
   },
   content: {

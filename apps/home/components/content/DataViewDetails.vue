@@ -1,9 +1,8 @@
 
 <script lang="ts" setup>
-import { Hero } from '#components'
-import { NuxtLink } from '@nuxt/components'
+import { Hero, Prose } from '#components'
 import { SfIconPerson, SfIconTune, SfIconArrowBack, SfIconShoppingCartCheckout, SfIconViewList, SfIconInfo } from '#components'
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import type { CheckoutInfo, CheckoutStep, Product, Catalog } from '../../utils/checkout'
 import { StepperDescription, StepperIndicator, StepperItem, StepperRoot, StepperSeparator, StepperTitle, StepperTrigger } from 'radix-vue'
 /* This belongs to the DataView + DataViewTab component
@@ -101,13 +100,13 @@ const stepProps = ref<CheckoutInfo>({
   header: 'Programm & Struktur',
 })
 
+
 watch(() => activestep.value, (value) => {
   stepProps.value = allsteps.value[value - 1]
 })
 
-
 activestep.value = 1
-stepProps.value = allsteps.value[0]
+// stepProps.value = allsteps.value[0]
 
 const shortcodeTitle = (shortcode: String | undefined, title: String) => {
   if (!shortcode) return title
@@ -162,7 +161,8 @@ const getRootPath = (root: string | undefined) => {
             class="absolute block top-4 left-[calc(50%+30px)] right-[calc(-50%+20px)] h-0.5 rounded-full group-data-[disabled]:bg-neutral-700 bg-neutral-500 group-data-[state=completed]:bg-primary shrink-0"
           /> 
       </StepperItem>
-    </StepperRoot>        
+    </StepperRoot> 
+    <SectionContainer>
     <Columns gap="medium" stackReverse>
       <Column>
         <ContentQuery v-slot="{ data }" :path="product.meta_product ? getRootPath(product.root) : src" find="one">
@@ -207,16 +207,15 @@ const getRootPath = (root: string | undefined) => {
           </columns>
         </SectionContainer>
       </Column>
-      <Column class="checkout-card">
-        <MdBlock v-if="stepProps.header" :content="stepProps.header" is="h3" />
+      <Column class="checkout-card bg-neutral-50">
+        <MdBlock v-if="stepProps.header" :content="stepProps.header" htag="h3" />
         <div v-if="stepProps.info">
           <template v-for="(column, index) in stepProps.info" :key="index">
             <CatBlock :content="column" htag="h4" style="padding-bottom: 1rem" />
           </template>
         </div>
-        <div v-else-if="stepProps.catalog">
-          <Catalog :catalog="stepProps.catalog" />
-        </div>
+        <CatBlock v-else-if="stepProps.catalog" :content="stepProps.catalog" :htag="stepProps.header ? 'h4' : 'h3'" />
+        
         <div v-else-if="stepProps.columns">
           <template v-for="(column, key, index) in stepProps.columns" :key="index">
             <div v-if="key === 'catalog'">
@@ -230,7 +229,7 @@ const getRootPath = (root: string | undefined) => {
         <div v-else>
           <CatBlock :content="stepProps.toString()" htag="h4" style="padding-bottom: 1rem" />
         </div>
-        <MdBlock v-if="stepProps.footer" :content="stepProps.footer" is="h4" /> 
+        <MdBlock v-if="stepProps.footer" :content="stepProps.footer" htag="h4" /> 
         <div class="flex flex-row-reverse justify-between">
           <ButtonTmp class="cursor-pointer" @click="handle_completestep" id="button_completestep" style="margin-top: 3em">
             {{ activestep === allsteps.length ? 'Abschicken' : 'Weiter' }}
@@ -241,12 +240,12 @@ const getRootPath = (root: string | undefined) => {
         </div> 
       </Column>
     </Columns>
+    </SectionContainer>       
   </div>
 </template>
 
 <style scoped>
 .checkout-card {
-  margin-top: 3rem;
   padding: 1rem;
   box-shadow:
     0px 4px 6px 1px rgba(0, 0, 0, 0.1),

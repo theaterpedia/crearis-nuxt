@@ -21,6 +21,6 @@
       "@crearis/sfui": ["./index.ts"]
     }
   },
-  "include": ["**/*.ts", "**/*.vue"],
+  "include": ["**/*.ts", "**/*.vue", "../../apps/home/components/content/MdBlock.vue"],
   "exclude": ["./dist/**/*"]
 }

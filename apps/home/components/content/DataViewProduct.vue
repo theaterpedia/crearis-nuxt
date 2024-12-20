@@ -31,7 +31,6 @@
 </template>
 
 <script lang="ts" setup>
-import { renderMdProp } from '~/utils/md-renderer'
 import MainMenuItem from '../../../../packages/ui/dist/components/MainMenuItem.vue'
 /* This belongs to the DataView + DataViewTab component
 - it should NOT be availabe in the component-spec

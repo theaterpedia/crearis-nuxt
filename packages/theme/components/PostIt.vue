@@ -36,7 +36,6 @@
 <script lang="ts" setup>
 import type { PropType } from 'vue'
 import { Heading } from '@crearis/ui'
-import { extractHeading } from '~/utils/md-renderer'
 const props = defineProps({
   /**
    * The width of the column.

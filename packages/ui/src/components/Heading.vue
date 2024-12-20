@@ -39,7 +39,7 @@ const props = defineProps({
    * @default 'h1'
    */
   is: {
-    type: [Object, String] as PropType<'h1' | 'h2' | 'h3' | 'span' | 'li' | 'p'>,
+    type: [Object, String] as PropType<'h1' | 'h2' | 'h3' | 'h4' | 'span' | 'li' | 'p'>,
     default: 'h1',
   },
   /**

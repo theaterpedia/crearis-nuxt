@@ -22,7 +22,6 @@
 
 <script lang="ts" setup>
 import { Heading } from '@crearis/ui'
-import { extractHeading } from '~/utils/md-renderer'
 import { ref, watch, computed } from 'vue'
 const props = defineProps({
   /**

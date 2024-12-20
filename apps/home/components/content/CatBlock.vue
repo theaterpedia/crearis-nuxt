@@ -15,7 +15,6 @@
 
 <script lang="ts" setup>
 import { Heading } from '@crearis/ui'
-import { extractHeading } from '~/utils/md-renderer'
 
 const props = defineProps({
   /**
@@ -93,11 +92,21 @@ const { headline, overline, subline, tags, shortcode } = extractHeading(heading)
   }
 }
 
+.catalog :deep() p {
+  padding-top: 0.8rem;
+  font-weight: 300;
+}
+
+.catalog :deep() > ul > li {
+  margin-bottom: 0.2rem;
+}
+
 .catalog :deep() > ul > li + li {
   margin-top: 0.25rem;
 }
 
 .catalog :deep() > ul > li > :where(strong, mark):first-child {
+  margin-top: 0.3rem;
   flex: 1;
   display: flex;
   align-items: center;

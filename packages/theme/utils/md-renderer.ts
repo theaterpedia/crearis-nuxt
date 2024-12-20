@@ -48,6 +48,8 @@ export function renderMdProp(content: string, htag: string = 'h3') {
   if (lines[0].startsWith('#')) {
     // render as heading
     heading = lines[0].replace(/#*/g, '').trim()
+    // remove first line
+    lines.shift()
   } else {
     // render as paragraph
     body = `<p>${content}</p>\n`
@@ -56,11 +58,11 @@ export function renderMdProp(content: string, htag: string = 'h3') {
     // check if line is a list
     if (lines[i].startsWith('- ')) {
       // render as list
-      if (!lines[i - 1].startsWith('- ')) {
+      if (i === 1 || !lines[i - 1].startsWith('- ')) {
         body += `<ul>\n`
       }
       body += `<li>${lines[i].replace('- ', '')}</li>\n`
-      if (!lines[i + 1].startsWith('- ')) {
+      if (i === lines.length - 1 || !lines[i + 1].startsWith('- ')) {
         body += `</ul>\n`
       }
     } else {
@@ -72,5 +74,5 @@ export function renderMdProp(content: string, htag: string = 'h3') {
   body = body.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
   body = body.replace(/\_(.*?)\_/g, '<em>$1</em>')
 
-  return heading ? `<Heading is="${htag}" content="${heading}" />\n${body}` : body
+  return (heading ? `<Heading is="${htag}" content="${heading}" />\n` : '') + body
 }

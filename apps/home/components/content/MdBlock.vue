@@ -1,23 +1,23 @@
 <template>
-  <div>
+  <Component :is="mtag">
     <Heading
-      v-if="heading"
-      :headline="headline"
+      v-if="raw.heading"
+      :headline="parsed.headline"
       :is="htag"
-      :overline="overline ? overline : ''"
-      :shortcode="shortcode ? shortcode : ''"
-      :subline="subline ? subline : ''"
-      :tags="tags ? tags : ''"
+      :overline="parsed.overline ? parsed.overline : ''"
+      :shortcode="parsed.shortcode ? parsed.shortcode : ''"
+      :subline="parsed.subline ? parsed.subline : ''"
+      :tags="parsed.tags ? parsed.tags : ''"
     />
     <Prose>
-      <div v-html="body" :class="narrow ? 'narrow' : ''" />
+      <div v-html="raw.body" :class="narrow ? 'narrow' : ''" />
     </Prose>
-  </div>
+  </Component>
 </template>
 
 <script lang="ts" setup>
 import { Heading } from '@crearis/ui'
-import { extractHeading } from '~/utils/md-renderer'
+import { reactive, watch } from 'vue'
 
 const props = defineProps({
   /**
@@ -26,9 +26,13 @@ const props = defineProps({
    * @default 'h3'
    */
   htag: {
-    type: [Object, String] as PropType<'h1' | 'h2' | 'h3' | 'p' | 'span' | 'li'>,
+    type: [Object, String] as PropType<'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span' | 'li'>,
     default: 'h3',
   },
+  mtag: {
+    type: [Object, String] as PropType<'div' | 'Catalog'>,
+    default: 'div',
+  },  
   content: {
     type: String,
     required: true,
@@ -70,6 +74,19 @@ const extractContent = (content: string) => {
   return { heading, body }
 }
 
-const { heading, body } = extractContent(props.content)
-const { headline, overline, subline, tags, shortcode } = extractHeading(heading)
+const raw = reactive(extractContent(props.content))
+const parsed = reactive(extractHeading(raw.heading))
+
+watch(() => props.content, () => {
+  const { heading, body } = extractContent(props.content)
+  raw.heading = heading
+  raw.body = body
+  const parsed2 = extractHeading(heading)
+  parsed.headline = parsed2.headline
+  parsed.overline = parsed2.overline
+  parsed.subline = parsed2.subline
+  parsed.tags = parsed2.tags
+  parsed.shortcode = parsed2.shortcode
+})
+
 </script>
