@@ -18,7 +18,7 @@ import { StepperDescription, StepperIndicator, StepperItem, StepperRoot, Stepper
 
 const activestep = defineModel('activestep', {
   type: Number,
-  default: 1,
+  default: 0,
 })
 
 const props = defineProps({
@@ -105,7 +105,11 @@ watch(() => activestep.value, (value) => {
   stepProps.value = allsteps.value[value - 1]
 })
 
-activestep.value = 1
+onMounted(() => {
+  activestep.value = 1
+})
+
+
 // stepProps.value = allsteps.value[0]
 
 const shortcodeTitle = (shortcode: String | undefined, title: String) => {
@@ -230,11 +234,11 @@ const getRootPath = (root: string | undefined) => {
           <CatBlock :content="stepProps.toString()" htag="h4" style="padding-bottom: 1rem" />
         </div>
         <MdBlock v-if="stepProps.footer" :content="stepProps.footer" htag="h4" /> 
-        <div class="flex flex-row-reverse justify-between">
-          <ButtonTmp class="cursor-pointer" @click="handle_completestep" id="button_completestep" style="margin-top: 3em">
+        <div class="flex flex-row-reverse justify-between" style="margin-top: 3em">
+          <ButtonTmp class="cursor-pointer" @click="handle_completestep" id="button_completestep">
             {{ activestep === allsteps.length ? 'Abschicken' : 'Weiter' }}
           </ButtonTmp>  
-          <ButtonTmp is="a" v-if="activestep > 1" class="cursor-pointer" @click="handle_backwards" id="button_completestep" style="margin-top: 3em">
+          <ButtonTmp is="a" v-if="activestep > 1" class="cursor-pointer" @click="handle_backwards" id="button_completestep">
             <SfIconArrowBack size="lg" />
           </ButtonTmp>            
         </div> 
