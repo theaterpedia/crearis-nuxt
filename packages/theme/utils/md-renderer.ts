@@ -27,6 +27,38 @@ export function extractHeading(content: string) {
   return { headline, overline, subline, tags, shortcode }
 }
 
+function mailHeading(content: string) {
+  if (!content) return { headline: '', overline: '', subline: '', tags: '', shortcode: '' }
+  var restContent = content.trim()
+  var shortcode = restContent.startsWith('_') ? restContent.split('_ ')[0] : null
+  if (shortcode) {
+    restContent = restContent.replace(`${shortcode}_ `, '').trim()
+    shortcode = shortcode.replace('_', '').trim()
+  }
+
+  var tags = restContent.match(/(==.*==)/g) ? restContent.split('==')[1] : null
+  if (tags) {
+    restContent = restContent.replace(` ==${tags}== `, '').trim()
+    tags = tags.replace('==', '').trim()
+  }
+
+  const simple = restContent.match(/(\*\*.*\*\*)/g) ? false : true
+  const headline = simple ? restContent : restContent.split('**')[1]
+
+  const overline = restContent.startsWith('**') ? null : !simple ? tags + ' | ' + restContent.split('**')[0] : null
+  const subline =
+    !simple && !overline && restContent.startsWith('**') ? tags + ' | ' + restContent.split('**')[2] : null
+
+  // shortcode is missing
+  if (overline) {
+    return `<span style="font-size:16px; font-weight:500;">${overline}"</span><br><h1 style="font-size:24px; font-weight:700;">${headline}</h1>`
+  } else if (subline) {
+    return `<h1 style="font-size:24px; font-weight:700;">${headline}</h1><br><span style="font-size:16px; font-weight:500;">${subline}</span>`
+  } else {
+    return `<h1 style="font-size:24px; font-weight:700;">${headline}</h1>`
+  }
+}
+
 /**
  * @param content (basic markdown)
  * @param hlevel (1-5) represents the heading level if first line is a heading
@@ -38,7 +70,7 @@ export function extractHeading(content: string) {
  * - lists (with catalog-functionality)
  * - bold, italic, underline
  */
-export function renderMdProp(content: string, htag: string = 'h3') {
+export function renderMdProp(content: string, htag: string = 'h3', mailbody: boolean = false) {
   // get lines
   if (!content) return ''
   const lines = content.split('\n')
@@ -74,5 +106,8 @@ export function renderMdProp(content: string, htag: string = 'h3') {
   body = body.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
   body = body.replace(/\_(.*?)\_/g, '<em>$1</em>')
 
+  if (mailbody) {
+    return mailHeading(heading) + '<br /> <br />' + body
+  }
   return (heading ? `<Heading is="${htag}" content="${heading}" />\n` : '') + body
 }

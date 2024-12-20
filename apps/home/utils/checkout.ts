@@ -7,6 +7,36 @@ export interface FormContactInformationProps {
   strasse?: string
   mobil?: string
 }
+
+export interface CheckoutRecord {
+  basistag: string
+  ratentyp: string
+  kursumfang: string
+  strasse: string
+  kurs: string
+  verification: boolean
+  plz: string
+  ort: string
+  vorname: string
+  geburtsdatum: string
+  geschlecht: string
+  anmerkungen: string
+  tel: string
+  mobil: string
+  name: string
+  email: string
+  storno: string
+  bemerkungen: string
+  individualprogramm: string
+  details: string
+  start: string
+  ende: string
+  actionstep: string
+  mailbody: string
+  ratenzahl: string
+  json: string
+}
+
 export interface CheckoutInfo {
   title: string
   header?: string

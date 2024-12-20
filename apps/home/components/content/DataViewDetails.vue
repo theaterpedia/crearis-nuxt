@@ -2,8 +2,8 @@
 <script lang="ts" setup>
 import { Hero, Prose } from '#components'
 import { SfIconPerson, SfIconTune, SfIconArrowBack, SfIconShoppingCartCheckout, SfIconViewList, SfIconInfo } from '#components'
-import { ref, onMounted } from 'vue'
-import type {  CheckoutStep, Product, FormContactInformationProps } from '../../utils/checkout'
+import { ref, onMounted, computed } from 'vue'
+import type {  CheckoutStep, Product, FormContactInformationProps, CheckoutRecord } from '../../utils/checkout'
 import { StepperDescription, StepperIndicator, StepperItem, StepperRoot, StepperSeparator, StepperTitle, StepperTrigger } from 'radix-vue'
 /* This belongs to the DataView + DataViewTab component
 - it should NOT be availabe in the component-spec
@@ -55,6 +55,35 @@ const contactInfo = ref<FormContactInformationProps>({
   mobil: '',
 })
 
+const checkoutRecord: CheckoutRecord = {
+  basistag: '-',
+  ratentyp: 'Standard',
+  kursumfang: '-',
+  strasse: '',
+  kurs: '-',
+  verification: false,
+  plz: '',
+  ort: '',
+  vorname: '',
+  geburtsdatum: '-',
+  geschlecht: '',
+  anmerkungen: '',
+  tel: '',
+  mobil: '',
+  name: '',
+  email: '',
+  storno: '',
+  bemerkungen: '-',
+  individualprogramm: '-',
+  details: '-',
+  start: '',
+  ende: '',
+  actionstep: '',
+  mailbody: '',
+  ratenzahl: '',
+  json: ''
+}
+
 const steps_outro: CheckoutStep[] = [
   {
     name: 'kontakt',
@@ -104,6 +133,23 @@ const handle_backwards = () => {
   }
 }
 
+const handle_checkout = () => {
+  checkoutRecord.mailbody = mailbody.value
+  checkoutRecord.email = contactInfo.value.email  || ''
+  checkoutRecord.name = contactInfo.value.nachname  || ''
+  checkoutRecord.vorname = contactInfo.value.vorname  || ''
+  checkoutRecord.strasse = contactInfo.value.strasse  || ''
+  checkoutRecord.ort = contactInfo.value.ort  || ''
+  checkoutRecord.plz = contactInfo.value.plz  || ''
+  checkoutRecord.mobil = contactInfo.value.mobil  || ''
+  checkoutRecord.start = props.product.start ? props.product.start.toString() : ''
+  checkoutRecord.ende = props.product.ende ? props.product.ende.toString() : ''
+  checkoutRecord.actionstep = props.product.shortcode  || ''
+  checkoutRecord.json = JSON.stringify(checkoutRecord)
+  console.log(checkoutRecord)
+}
+
+
 const stepProps = ref<CheckoutStep>({
   name: 'kontakt',
   title: 'Programm & Struktur',
@@ -121,7 +167,47 @@ onMounted(() => {
 })
 
 
-// stepProps.value = allsteps.value[0]
+const zahlungsmodell = computed(() => {
+  const md = allsteps.value.find(step => step.name === 'konditionen')?.info?.kosten
+  if (md) {
+    return renderMdProp(md, 'h2', true)
+  }
+})
+
+const storno = computed(() => {
+  const md = allsteps.value.find(step => step.name === 'konditionen')?.info?.storno
+  if (md) {
+    return renderMdProp(md, 'h2', true)
+  }
+})
+
+const agb = computed(() => {
+    return 'Die <a target="_blank" href="https://dasei.eu/agb">Allgemeinen Geschäftsbedingungen (https://www.dasei.eu/agb) von DAS Ei - theaterpädagogisches Institut Bayern e.V.</a> habe ich gelesen. Ich bestätige sie hiermit.'
+})
+
+const datenschutz = computed(() => {
+    return 'Die <a target="_blank" href="https://dasei.eu/datenschutz">Datenschutzerklärung (https://www.dasei.eu/datenschutz) von DAS Ei - theaterpädagogisches Institut Bayern e.V.</a> habe ich gelesen und stimme der entsprechenden Verarbeitung meiner Daten zu.'
+})
+//return 'Ich habe ein 14-tägiges Rücktrittsrecht von dieser Online-Anmeldung, gültig ab Eingang der EMail-Bestätigung von service@dasei.eu in mein Postfach unter: ' + this.email + '.'
+
+const ruecktritt = computed(() => {
+    return 'Ich habe ein 14-tägiges Rücktrittsrecht von dieser Online-Anmeldung, gültig ab Eingang der EMail-Bestätigung von service@dasei.eu in mein Postfach unter: ' + contactInfo.value.email + '.'
+})
+
+const person = computed(() => {
+  return `\n\r<strong>Diese Anmeldung wurde erstellt von:</strong><br />${contactInfo.value.vorname} ${contactInfo.value.nachname}<br>${contactInfo.value.strasse}<br>${contactInfo.value.plz} ${contactInfo.value.ort}<br>Telefon: ${contactInfo.value.mobil}<br>Email: ${contactInfo.value.email}`
+})
+
+const mailheading = computed(() => {
+  const headtext = props.heading ? props.heading : props.product.heading ? props.product.heading.toString() : 'Details'
+  if (headtext) {
+    return renderMdProp(headtext, 'h2', true)
+  }
+})
+
+const mailbody = computed(() => {
+  return mailheading.value + '\n\r' + zahlungsmodell.value + '\n\r' + storno.value + '\n\r' + [checkoutRecord.anmerkungen.length > 1 ? checkoutRecord.anmerkungen : ''] + '\n\r' + person.value + '\n\r' + datenschutz.value + '\n\r' + agb.value + '\n\r' + ruecktritt.value
+})
 
 const shortcodeTitle = (shortcode: String | undefined, title: String) => {
   if (!shortcode) return title
