@@ -118,7 +118,7 @@ const allsteps = ref<CheckoutStep[]>(product_steps.filter(s => s.name !== 'konta
 
 const handle_completestep = () => {
   if(activestep.value === allsteps.value.length) {
-    alert('Anmeldung vorläufig nur per eMail möglich')
+    handle_checkout()
   } else {
     allsteps.value[activestep.value - 1].completed = true
     activestep.value++
@@ -133,7 +133,7 @@ const handle_backwards = () => {
   }
 }
 
-const handle_checkout = () => {
+const handle_checkout = async () => {
   checkoutRecord.mailbody = mailbody.value
   checkoutRecord.email = contactInfo.value.email  || ''
   checkoutRecord.name = contactInfo.value.nachname  || ''
@@ -144,9 +144,26 @@ const handle_checkout = () => {
   checkoutRecord.mobil = contactInfo.value.mobil  || ''
   checkoutRecord.start = props.product.start ? props.product.start.toString() : ''
   checkoutRecord.ende = props.product.ende ? props.product.ende.toString() : ''
-  checkoutRecord.actionstep = props.product.shortcode  || ''
+  checkoutRecord.actionstep = props.product.id ? props.product.id : props.product.shortcode ? props.product.shortcode : ''
   checkoutRecord.json = JSON.stringify(checkoutRecord)
   console.log(checkoutRecord)
+  const data = await $fetch('https://prod-53.westeurope.logic.azure.com:443/workflows/e24e854998a44b8990cb883f006b0612/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=lQRSV83cnOJ69qBn_SWojAazlEcoZu8yntN4m_ZhFec', {
+      method: 'post',
+      body: checkoutRecord,
+      responseType: 'stream'
+  })
+  // Create a new ReadableStream from the response with TextDecoderStream to get the data as text
+  const reader = data.pipeThrough(new TextDecoderStream()).getReader()
+
+  // Read the chunk of data as we get it
+  while (true) {
+    const { value, done } = await reader.read()
+
+    if (done)
+      break
+
+    console.log('Received:', value)
+  }
 }
 
 
