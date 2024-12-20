@@ -3,6 +3,7 @@ export interface CheckoutInfo {
   header?: string
   description?: string
   footer?: string
+  fields?: Record<string, string>
   info?: Record<string, string>
   agenda?: Record<string, string>
   catalog?: Catalog
@@ -12,9 +13,9 @@ export interface CheckoutInfo {
   }
 }
 
-export interface CheckoutStep {
-  title: string
-  info: CheckoutInfo
+export interface CheckoutStep extends CheckoutInfo {
+  name: string
+  completed: boolean
 }
 
 export interface Catalog {
