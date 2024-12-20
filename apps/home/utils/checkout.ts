@@ -1,3 +1,12 @@
+export interface FormContactInformationProps {
+  vorname?: string
+  nachname?: string
+  email?: string
+  plz?: string
+  ort?: string
+  strasse?: string
+  mobil?: string
+}
 export interface CheckoutInfo {
   title: string
   header?: string

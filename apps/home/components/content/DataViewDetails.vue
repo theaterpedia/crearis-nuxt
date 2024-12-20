@@ -3,7 +3,7 @@
 import { Hero, Prose } from '#components'
 import { SfIconPerson, SfIconTune, SfIconArrowBack, SfIconShoppingCartCheckout, SfIconViewList, SfIconInfo } from '#components'
 import { ref, onMounted } from 'vue'
-import type { CheckoutInfo, CheckoutStep, Product, Catalog } from '../../utils/checkout'
+import type {  CheckoutStep, Product, FormContactInformationProps } from '../../utils/checkout'
 import { StepperDescription, StepperIndicator, StepperItem, StepperRoot, StepperSeparator, StepperTitle, StepperTrigger } from 'radix-vue'
 /* This belongs to the DataView + DataViewTab component
 - it should NOT be availabe in the component-spec
@@ -45,13 +45,22 @@ const props = defineProps({
   },
 })
 
+const contactInfo = ref<FormContactInformationProps>({
+  email: '',
+  vorname: '',
+  nachname: '',
+  plz: '',
+  ort: '',
+  strasse: '',
+  mobil: '',
+})
 
 const steps_outro: CheckoutStep[] = [
   {
     name: 'kontakt',
     title: 'Kontaktangaben',
+    header: '### bitte Namen und Kontaktdaten eintragen',
     completed: false,
-    fields: {geburtsort: 'nicht erforderlich'}
   },  
   {
     name: 'checks',
@@ -95,9 +104,11 @@ const handle_backwards = () => {
   }
 }
 
-const stepProps = ref<CheckoutInfo>({
+const stepProps = ref<CheckoutStep>({
+  name: 'kontakt',
   title: 'Programm & Struktur',
   header: 'Programm & Struktur',
+  completed: false
 })
 
 
@@ -213,6 +224,18 @@ const getRootPath = (root: string | undefined) => {
       </Column>
       <Column class="checkout-card bg-neutral-50">
         <MdBlock v-if="stepProps.header" :content="stepProps.header" htag="h3" />
+        <UiFormContactInformation 
+          :vorname="contactInfo.vorname" 
+          :nachname="contactInfo.nachname" 
+          :plz="contactInfo.plz" 
+          :ort="contactInfo.ort" 
+          :strasse="contactInfo.strasse" 
+          :mobil="contactInfo.mobil" 
+          :email="contactInfo.email" 
+          @on-save="contactInfo = $event; handle_completestep()" 
+          @on-cancel="contactInfo = {email: '',  vorname: '',  nachname: '',  plz: '',  ort: '',  strasse: '',  mobil: '',}; handle_backwards()"
+          v-if="stepProps.name === 'kontakt'" 
+        />
         <div v-if="stepProps.info">
           <template v-for="(column, index) in stepProps.info" :key="index">
             <CatBlock :content="column" htag="h4" style="padding-bottom: 1rem" />
@@ -230,11 +253,11 @@ const getRootPath = (root: string | undefined) => {
             </div>
           </template>
         </div>
-        <div v-else>
+        <!-- div v-else>
           <CatBlock :content="stepProps.toString()" htag="h4" style="padding-bottom: 1rem" />
-        </div>
+        </!-->
         <MdBlock v-if="stepProps.footer" :content="stepProps.footer" htag="h4" /> 
-        <div class="flex flex-row-reverse justify-between" style="margin-top: 3em">
+        <div v-show="stepProps.name!=='kontakt'" class="flex flex-row-reverse justify-between" style="margin-top: 3em">
           <ButtonTmp class="cursor-pointer" @click="handle_completestep" id="button_completestep">
             {{ activestep === allsteps.length ? 'Abschicken' : 'Weiter' }}
           </ButtonTmp>  
