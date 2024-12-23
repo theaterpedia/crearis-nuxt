@@ -1,5 +1,4 @@
 ---
-draft: true
 id: 21
 heading: Programm und Zielsetzung der Launch-Konferenz in Nürnberg 
 description: Programm und Zielsetzung der Launch-Konferenz in Nürnberg
@@ -28,7 +27,7 @@ hero:
 > 
 > Mit einer Konferenz feiern wir den Launch der Website https://theaterpedia.org nach einer zwei Jahre andauernden Entwicklungsphase. Wir erleben gemeinsam den Start der Regio Nürnberg und der Regio Augsburg, starten Arbeitsgruppen und neue Visionen auf der Internet-Plattform. Wir prüfen die im November 2022 auf der Gründungskonferenz vereinbarten Ziele und Prinzipien und entscheiden die wichtigsten Fragen für die nächsten zwei Jahre.
 > 
-> [[../../agenda/theaterpedia-x1_1133|direkt anmelden]] [Was ist Theaterpedia?](was-ist-theaterpedia-19)[Roadmap](theaterpedia-roadmap-2024-22) [Konferenz 2022](bericht-theaterpedia-konferenz-2022-20)
+> [[../../agenda/theaterpedia-x1_1133|direkt anmelden]] Was ist Theaterpedia?was-ist-theaterpedia-19 [Roadmap](theaterpedia-roadmap-2024-22) [Konferenz 2022](bericht-theaterpedia-konferenz-2022-20)
 
 
 <!-- TODO: Sticky-Toc on h2-only > see example: https://primer.tailwindui.com/#table-of-contents -->

@@ -4,7 +4,7 @@
     :class="[`main-menu-item-${level}`, { 'main-menu-item-no-wrap': !wrap }]"
     :style="{ paddingLeft: `${(level - 1) * 1}em` }"
   >
-    <template v-if="'children' in item && item.children.length">
+    <template v-if="'children' in item && item.children.length && !item.hidden">
       <button @click="$emit('update:item', { ...item, expanded: !item.expanded })" class="main-menu-item-button">
         <span>{{ item.label }}</span>
 
@@ -82,11 +82,20 @@ export interface MainMenuParentItem {
    */
   label: string
 
+  /**
+   * The path on which the item itself or its descendants operate
+   */
+   path?: string
   
   /**
    * The URL (path) to navigate to when the menu item is clicked.
    */
   link?: string
+
+    /**
+   * do not display this item in the menu
+   */
+   hidden?: Boolean
 
   /**
    * The type of menu item.
@@ -121,6 +130,11 @@ export interface MainMenuLinkItem {
   link: string
 
   /**
+   * do not display this item in the menu
+   */
+   hidden?: Boolean
+
+  /**
    * Whether the menu item is active.
    *
    * @default false
@@ -128,7 +142,7 @@ export interface MainMenuLinkItem {
   active?: boolean
 }
 
-defineProps({
+const props = defineProps({
   /**
    * The menu item.
    */

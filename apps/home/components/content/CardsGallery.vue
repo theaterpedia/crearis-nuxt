@@ -90,7 +90,7 @@ const folder = props.custom_folder ? props.custom_folder : props.preset === 'blo
 const getPath = (folder: 'agenda' | 'blog' | string | undefined) => {
   if (!folder) return ''
   if (props.subfolder === '') return folder.startsWith('/') ? folder : `/${folder}`
-  return `${folder.startsWith('/') ? '' : '/'}${folder}${props.subfolder.startsWith('/') ? '' : '/' + props.subfolder}`
+  return `${folder.startsWith('/') ? '' : '/'}${folder}${props.subfolder.startsWith('/') ? '' : '/'}${props.subfolder}`
 }
 
 import type { QueryBuilderParams } from '@nuxt/content'

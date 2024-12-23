@@ -57,6 +57,7 @@ defineProps({
 defineEmits<{
   'update:items': [items: MainMenuParentItem[]]
 }>()
+
 </script>
 
 <style scoped>

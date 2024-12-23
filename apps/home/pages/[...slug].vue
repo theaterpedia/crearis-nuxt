@@ -7,6 +7,7 @@
 </template>
 
 <script lang="ts" setup>
+
 const route = useRoute()
 const mainMenu = useMainMenu()
 const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation())

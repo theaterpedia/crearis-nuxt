@@ -1,5 +1,4 @@
 ---
-draft: true
 id: 26
 heading: "**aktuelle Infos 24.6** der monatliche Newsletter DAS Ei"
 description: der monatliche Newsletter DAS Ei
@@ -31,7 +30,7 @@ _Episode Theaterpädagogik & Demokratie - Basistage - Praxisprojekt - Offenes Pr
 > In dieser Theaterpädagogik Episode geht es um die Zusammenhänge von Theaterpädagogik und Demokratie. Die unterschiedlichen Folgen einer „Episode“ sind kurze multimediale, fachtheoretische „Essays“ oder auch „Kapitel“. Sie sind für Theaterpädagog:innen und alle Neugierigen.
 > Dieses Projekt wurde gefördert durch [Kulturgemeinschaften](https://kulturgemeinschaften.de/) - ein Förderprogramm Neustart Kultur, durchgeführt von der  Kulturstiftung der Länder.
 > 
-> [Folge 2: Gehört werden](/blog/theaterpadagogik-demokratie-10/folge-2-gehort-werden-14) In den nächsten NEWS geht es weiter mit der Folge 3: Gestalten und Reflektieren - Theater als Kulturtechnik?
+> Folge 2: Gehört werden: In den nächsten NEWS geht es weiter mit der Folge 3: Gestalten und Reflektieren - Theater als Kulturtechnik?
 
 > [!sec-tmp] ## **Basistage Grundlagenbildung** Lerne uns kennen | Online-Informations-Termin 27. August
 > - Nürnberg: 6. Juli  sowie  7. September
@@ -53,7 +52,7 @@ Das offene Programm von DAS Ei ist offen für alle, nicht nur Ausbildungsteilneh
 ### Fortlaufend montags bis 29.7 - Einladung zur kostenfreien Teilnahme **CONTROLLED CHAOS (Fürth)**
 Teilnahme noch möglich...
 Offener Performance-Kurs / Tanzzentrale Fürth  
-Raum, Rhythmus, Kontakt und Bewegung... Dieser Performance-Kurs zielt darauf ab, die Grundlagen der Performance Kunst zu erforschen und findet von April bis Juli montags von 18-21 Uhr in der Tanzzentrale Fürth statt. Der Kurs ist offen für alle mit und ohne Vorerfahrung. [>> weitere Infos](/blog/aktuelles-4/controlled-chaos-24)
+Raum, Rhythmus, Kontakt und Bewegung... Dieser Performance-Kurs zielt darauf ab, die Grundlagen der Performance Kunst zu erforschen und findet von April bis Juli montags von 18-21 Uhr in der Tanzzentrale Fürth statt. Der Kurs ist offen für alle mit und ohne Vorerfahrung. 
 
 ### 2.-4.8.2024 - **MACH DEN MUND AUF**
 Fr. 18:30-21:00 / Sa. 09:00-18:00 / So. 09:00-15:00   
@@ -61,4 +60,4 @@ Stimmworkshop zum Thema “Sprechen auf der Bühne" 
 
 ### 6.-8.12.2024 – WORKSHOP MASKENSPIEL: **Die Magie der Verwandlung**  
 Fr. 18:30-21:00 / Sa. 09:00-18:00 / So. 09:00-14:00   
-Das Gesicht wird hinter der Maske unsichtbar, und trotzdem kann diese Theaterform besonders lebendig und berührend sein. Entdecke die Faszination und das Handwerk von Masken!  [>> weitere Infos](/agenda/die-magie-der-verwandlung-51)
+Das Gesicht wird hinter der Maske unsichtbar, und trotzdem kann diese Theaterform besonders lebendig und berührend sein. Entdecke die Faszination und das Handwerk von Masken!

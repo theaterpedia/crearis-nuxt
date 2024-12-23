@@ -23,6 +23,7 @@ export function refreshMainMenu(activeRoute: RouteLocation | string) {
     children: item.children ? navigationToMenuItems(item.children, activeRoute) : [],
     link: item.children ? undefined : item._path,
     expanded: path === item._path || path.startsWith(`${item._path}/`),
+    path: item._path + (item.children?.length ? '/' : ''), // used for the active class and for folder-logic (hidefolders)
   }))
 
   if (mainMenu.items.every(({ expanded }) => !expanded)) {
