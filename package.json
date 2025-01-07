@@ -46,6 +46,7 @@
     "@vueuse/core": "^11.0.0",
     "currency.js": "^2.0.4",
     "graphql": "^16.8.1",
+    "radix-vue": "^1.9.11",
     "graphql-request": "^6.1.0",
     "nuxt": "3.13.2",
     "nitropack": "2.9.7",

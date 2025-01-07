@@ -4,7 +4,7 @@ import { Button, CardHero } from '@crearis/ui'
 import { TabsContent, TabsList, TabsRoot, TabsTrigger } from 'radix-vue'
 import type { BaseColors, SfColorMapping } from '@crearis/theme/utils/colorSettings'
 import { palette } from '@crearis/theme/utils/colorSettings'
-import ColorPalette from '../components/ColorPalette.vue'
+import ColorPalette from '@crearis/theme/components/ColorPalette.vue'
 
 definePageMeta({
   layout: false,
