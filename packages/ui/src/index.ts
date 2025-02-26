@@ -1,3 +1,4 @@
+export { default as Abc } from './components/Abc.vue'
 export { default as Alert } from './components/Alert.vue'
 export { default as Banner } from './components/Banner.vue'
 export { default as Box } from './components/Box.vue'

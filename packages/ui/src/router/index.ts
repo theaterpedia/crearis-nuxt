@@ -5,6 +5,7 @@ export default createRouter({
   routes: [
     { path: '/', component: () => import('../views/index.vue') },
     { path: '/catalog', component: () => import('../views/catalog.vue') },
+    { path: '/abc', component: () => import('../views/abc.vue') },
     { path: '/heading', component: () => import('../views/heading.vue') },
     { path: '/heroes', component: () => import('../views/heroes.vue') },
     { path: '/timeline', component: () => import('../views/timeline.vue') },
