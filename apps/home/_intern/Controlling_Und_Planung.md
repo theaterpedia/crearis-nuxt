@@ -7,6 +7,37 @@
 
 lernst, nach didaktischen Modellen zu arbeiten und ...
 
+## Rundmail 1. Feb
+### Aufruf Johanna
+
+### Episoden
+- [ ] neue Episode/Folge: vlt. so umsetzbar
+- [ ] bestehende Episoden/Folge: reparieren
+- [ ] Navigationslogik Episoden weiterentwickeln: Folge 1, Folge 2
+
+### Grundlagen und Aufbau: Downloads einstellen
+- siehe Grundlagen - aber in light + ordentliche Überschrift
+- jeweils im Stepper ein Download
+
+### Aufbaustufe
+#### Dokutheater **als Teil der Aufbaustufe**
+ca. 5 Plätze zu vergeben
+
+#### Slides Performance
+
+
+#### Anmeldeprozess Aufbaustufe
+
+
+#### Komplettdarstellung Theatrales Lernen
+
+
+### offenes Programm
+#### Eine Rolle
+
+#### Elementare Animation
+
+
 ## Sammlung
 - Schlussbesprechung 19.12
 	- kommt Rosalin klar mit dem `section-container`?

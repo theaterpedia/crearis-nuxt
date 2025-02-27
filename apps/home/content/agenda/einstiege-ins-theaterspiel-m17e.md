@@ -2,12 +2,12 @@
 navigation: false
 navigation_highlight: /ausbildung-theaterpaedagogik/einstiege
 shortcode: m17e
-heading: "**Einstiege ins Theaterspiel** München 23.2 - 9.12.2025 // Sonntag & Online"
-start: 2025-02-23
+heading: "**Einstiege ins Theaterspiel** München 27.6 - 9.12.2025 // Sonntag & Online"
+start: 2025-06-27
 end: 2025-12-09
 ctype: course
 tag: course
-description: Weiterbildung Theaterpädagogik - Kurs M17E München 23.2 - 9.12.2025 // Sonntags-Kurs München
+description: Weiterbildung Theaterpädagogik - Kurs M17E München 27.6 - 9.12.2025 // Sonntags-Kurs München
 title: Einstiege ins Theaterspiel
 cssclasses:
   - course
@@ -41,42 +41,20 @@ details:
    kosten: |
     ### Kosten
     - **A0 Anmeldegebühr (inkl. Basistag)** € 80,00 
-    - Frist: 17.2.2025
+    - Frist: 17.6.2025
     - **5 Kursraten A1-A5** 5 Raten x € 220,00
     - Zahlung: 5 Monatsraten
    storno: |
     ### Widerruf & Storno
-    - 14 Tage Widerruf (bei Anmeldungen bis 6. Feb 2026)
+    - 14 Tage Widerruf (bei Anmeldungen bis 1. Juni 2026)
     - bis 10 Tage nach Basistag kostenfreies Storno A1-A5        
 product:
  header: |
   ## 6 Kurseinheiten
   In 6 prägnanten Einheiten wirst Du beide Wege erleben, verstehen und selber anleiten: Du lernst die Methoden, die Leitungshaltung und typische Abläufe. Egal, welche Vorerfahrungen Du mitbringst sind wir sicher, dass Du dabei viel mitnehmen wirst.
  footer: |
-  ## September - Dezember 2024 // München, Nürnberg **Einstiege ins Theaterspiel**
+  ## Juni - Dez. 2025 // München, Nürnberg **Einstiege ins Theaterspiel**
 items: 
- a0_1328:
-  ctype: event
-  shortcode: a0
-  title: Praxis, Theorie & Ausbildung bei DAS Ei **Basistag Theaterpädagogik**
-  tag: Fr., 21.2. online + So., 23.2. ganztags
-  image: 
-   url: https://res.cloudinary.com/little-papillon/image/upload/w_400/v1676101506/dasei/700_dasei2022_I8A7903_cvtigl.jpg
-   caption: Foto Basistag Theaterpädagogik
-  body: |
-   Am Basistag erlebst Du die grundsätzlichen Zusammenhänge der Theaterpädagogik von DAS Ei konzentriert und ganz praktisch am eigenen Leib. Du erarbeitest Dir ausgehend von drei Zwischenreflexionen ein Grundverständnis der Module
-   - Einstiege ins Theaterspiel (Modul A)
-   - Szenische Themenarbeit (Modul B)
-   - Pädagogische Regie (Modul C)
-  start: 2025-02-21T18:00
-  ende: 2025-02-23T19:00
-  ort: |
-   Schwanthalerstraße 91
-   80336 München
-  ablauf: |
-   Fr. 18:00-20:00 _online_
-   So. 09:30-19:00
-  mit: Hans Dönitz
  a4_1294:
   ctype: event
   shortcode: a4
@@ -97,6 +75,28 @@ items:
    So. 09:30-19:00
    Di. 18:00-21:00 _online_
   mit: Cornelia Jung
+ a0_1344:
+  ctype: event
+  shortcode: a0
+  title: Praxis, Theorie & Ausbildung bei DAS Ei **Basistag Theaterpädagogik**
+  tag: Fr., 4.7. online + So., 6.7. ganztags
+  image: 
+   url: https://res.cloudinary.com/little-papillon/image/upload/w_400/v1676101506/dasei/700_dasei2022_I8A7903_cvtigl.jpg
+   caption: Foto Basistag Theaterpädagogik
+  body: |
+   Am Basistag erlebst Du die grundsätzlichen Zusammenhänge der Theaterpädagogik von DAS Ei konzentriert und ganz praktisch am eigenen Leib. Du erarbeitest Dir ausgehend von drei Zwischenreflexionen ein Grundverständnis der Module
+   - Einstiege ins Theaterspiel (Modul A)
+   - Szenische Themenarbeit (Modul B)
+   - Pädagogische Regie (Modul C)
+  start: 2025-07-04T18:00
+  ende: 2025-07-06T19:00
+  ort: |
+   Schwanthalerstraße 91
+   80336 München
+  ablauf: |
+   Fr. 18:00-20:00 _online_
+   So. 09:30-19:00
+  mit: Hans Dönitz  
  a5_1294:
   ctype: event
   shortcode: a5
