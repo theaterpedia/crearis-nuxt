@@ -47,8 +47,13 @@ import Prose from './Prose.vue'
 }
 
 .abc :deep() > h2 + p {
-  margin-left: 0.25rem;
   margin-bottom: 0.25rem;
+  margin-left: 0.25rem;
+}
+
+.abc :deep() > h2 + p:not(:has(em)) {
+  font-size: large;
+  margin-left: -9rem;
 }
 
 .abc :deep() p:has(em, mark) {

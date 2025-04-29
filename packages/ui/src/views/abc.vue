@@ -10,13 +10,13 @@
           <Abc>
             <h3>Einführung in die Kreisanimation<strong>Wege entstehen beim Gehen beim Gehen</strong></h3>
             <h2>Einführung in die Kreisanimation<strong>Wege entstehen beim Gehen beim Gehen</strong></h2>
-            <p>h2-Konzeptbeschreibung ohne neue Zeitangabe - Konzeptbeschreibung - Konzept beschreibung - Konzeptbeschreibung.<mark>h2-Kommentar und noch ein Kommentar</mark></p>  
+            <p>h2-Konzeptbeschreibung ohne neue Zeitangabe - Konzept beschreibung - Konzept beschreibung - Konzeptbeschreibung.<mark>h2-Kommentar und noch ein Kommentar</mark></p>  
             <p>Konzeptbeschreibung - Konzeptbeschreibung - Konzept beschreibung - Konzeptbeschreibung.<mark>ein Kommentar und noch ein Kommentar</mark></p>
             <p>Konzept ohne Zeitplanung - Konzept beschreibung - Konzeptbeschreibung.</p>
             <p><em>17:30</em>Konzeptbeschreibung - Konzeptbeschreibung - Konzept beschreibung - Konzeptbeschreibung.<mark>ein Kommentar und noch ein Kommentar</mark></p>
             
             <h2>Einführung in die Kreisanimation<strong>Wege entstehen beim Gehen beim Gehen</strong></h2>
-            <p><em>17:30</em>h2-Konzeptbeschreibung ohne neue Zeitangabe - Konzeptbeschreibung - Konzept beschreibung - Konzeptbeschreibung.<mark>h2-Kommentar und noch ein Kommentar</mark></p>  
+            <p><em>17:30</em>h2-Konzeptbeschreibung mit Zeitangabe - Konzeptbeschreibung - Konzept beschreibung - Konzeptbeschreibung.<mark>h2-Kommentar und noch ein Kommentar</mark></p>  
 
             <h3><em>17:30</em>Wege entstehen beim Gehen</h3>
 
