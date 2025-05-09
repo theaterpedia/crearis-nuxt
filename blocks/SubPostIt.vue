@@ -41,6 +41,7 @@ defineProps({
       pink: 'pink',
       accent: 'accent',
       muted: 'muted',
+      dimmed: 'dimmed',
     },
     default: 'primary',
     label: 'Farbe',

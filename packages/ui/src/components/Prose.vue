@@ -148,18 +148,18 @@
  * Colors
  */
 .prose :where(.primary) {
-  --color-contrast: var(--color-primary-base);
-  color: var(--color-primary-base);
+  --color-contrast: var(--color-primary-contrast);
+  color: var(--color-primary-contrast);
 }
 
 .prose :where(.secondary) {
-  --color-contrast: var(--secondary);
-  color: var(--color-secondary-base);
+  --color-contrast: var(--color-secondary-contrast);
+  color: var(--color-secondary-contrast);
 }
 
 .prose :where(.dimmed) {
-  --color-contrast: var(--color-dimmed);
-  color: var(--color-dimmed);
+  --color-contrast: var(--color-muted-contrast);
+  color: var(--color-muted-contrast);
 }
 
 .prose :where(strong) {

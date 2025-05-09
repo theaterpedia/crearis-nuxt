@@ -227,7 +227,44 @@ const themes = [
     ],
     imgUrl:
       'https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg',
-  },
+  },  
+  {
+    id: 7,
+    heading: '**Theaterpedia**eine Neon-Variante',
+    description: `knallige Post-Its-Farben 
+    <br />- Mono-Typographie 
+    <br />- schlichte Farbflächen`,
+    inverted: true,
+    font: 'MonaspaceNeon',
+    headings: 'MonaspaceArgon',
+    baseColors: <BaseColors>{
+      primary: '93% 0.25 104.001',
+      secondary: '76% 0.25 131',
+      warning: '93% 0.25 104',
+      positive: '76% 0.25 131',
+      negative: '82% 0.3 17',
+      neutral: '80% 0.02 104',
+    },
+    colormap: [
+      { name: 'contrast', sfname: 'gray', shade: 950 },
+      { name: 'primary-bg', sfname: 'primary', shade: 500 },
+      { name: 'secondary-bg', sfname: 'secondary', shade: 500 },
+      { name: 'warning-bg', sfname: 'warning', shade: 500 },
+      { name: 'positive-bg', sfname: 'positive', shade: 500 },
+      { name: 'negative-bg', sfname: 'negative', shade: 500 },
+      { name: 'card-bg', sfname: 'neutral', shade: 300 },
+      { name: 'card-contrast', sfname: 'neutral', shade: 900 },
+      { name: 'muted-bg', sfname: 'neutral', shade: 200 },
+      { name: 'muted-contrast', sfname: 'neutral', shade: 950 },
+      { name: 'accent-bg', sfname: 'neutral', shade: 800 },
+      { name: 'accent-contrast', sfname: 'neutral', shade: 50 },
+      { name: 'warning-contrast', sfname: 'gray', shade: 950 },
+      { name: 'positive-contrast', sfname: 'gray', shade: 950 },
+      { name: 'negative-contrast', sfname: 'gray', shade: 950 },      
+    ],
+    imgUrl:
+      'https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg',
+  },  
 ]
 
 // these mappings are congifurable and can be changed by the user, will be exported as css-vars
@@ -244,7 +281,7 @@ const colormap_defaults = <SfColorMapping[]>[
   { name: 'muted-bg', sfname: 'neutral', shade: 200 },
   { name: 'muted-contrast', sfname: 'neutral', shade: 700 },
   { name: 'accent-bg', sfname: 'neutral', shade: 800 },
-  { name: 'accent-contrast', sfname: 'neutral', shade: 50 },
+  { name: 'accent-contrast', sfname: 'neutal', shade: 50 },
   { name: 'card-bg', sfname: 'neutral', shade: 200 },
   { name: 'card-contrast', sfname: 'neutral', shade: 900 },
   { name: 'popover-bg', sfname: 'neutral', shade: 200 },

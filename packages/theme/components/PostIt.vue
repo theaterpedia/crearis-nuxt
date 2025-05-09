@@ -19,6 +19,7 @@
       :subline="subline ? subline : ''"
       :tags="tags ? tags : ''"
       class="mb-4"
+      :class="'bg-' + color"
       :style="
         $viewport.isLessThan('tablet')
           ? is === 'h2'
@@ -61,7 +62,7 @@ const props = defineProps({
     required: false,
   },
   color: {
-    type: [Object, String] as PropType<'primary' | 'secondary' | 'yellow' | 'green' | 'pink' | 'accent' | 'muted'>,
+    type: [Object, String] as PropType<'primary' | 'secondary' | 'warning' | 'positive' | 'negative' | 'accent' | 'muted' | 'dimmed'>,
     default: 'primary',
   },
   /**
@@ -160,27 +161,37 @@ const { headline, overline, subline, tags, shortcode } = props.heading ? extract
 
 .bg-primary {
   background-color: var(--color-primary-bg);
-  color: var(--color-black);
+  --color-contrast: var(--color-primary-contrast);
 }
 .bg-secondary {
   background-color: var(--color-secondary-bg);
-  color: var(--color-black);
+  --color-contrast: var(--color-secondary-contrast);
 }
 .bg-yellow:deep() {
   background-color: var(--color-warning-bg);
   color: var(--color-warning-contrast);
   --color-contrast: var(--color-black);
-  --color-primary-contrast: var(--color-black);
+  --color-primary-contrast: var(--color-black);  
 }
-.bg-green {
-  background-color: var(--color-positiv-bg);
-  color: var(--color-positive-contrast);
+
+.bg-green:deep() {
+  background-color: var(--color-positive-bg);
+  --color-contrast: var(--color-positive-contrast)
 }
-.bg-pink {
+.bg-pink:deep() {
   background-color: var(--color-negative-bg);
-  color: var(--color-negative-contrast);
+  --color-contrast: var(--color-negative-contrast);
+}
+.bg-accent {
+  background-color: var(--color-accent-bg);
+  --color-contrast: var(--color-accent-contrast);  
 }
 .bg-muted {
   background-color: var(--color-muted-bg);
+  --color-contrast: var(--color-muted-contrast); 
+}
+.bg-dimmed {
+  background-color: var(--color-dimmed);
+  --color-contrast: var(--color-muted-contrast);
 }
 </style>
