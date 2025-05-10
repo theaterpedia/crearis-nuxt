@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { useWindowScroll } from '@vueuse/core'
-import { useDark, useToggle } from '@vueuse/core'
+// import { useDark, useToggle } from '@vueuse/core'
+
 import { Container } from '@crearis/ui'
 import { ref } from 'vue'
 
@@ -14,10 +15,18 @@ const props = defineProps<{
 
 const navigation = [{ title: 'home', _path: '/' }]
 
-const isDark = useDark()
-const toggleDark = useToggle(isDark)
-
-const NuxtLink = resolveComponent('NuxtLink')
+const colorMode = useColorMode()
+// const isDark = useDark()
+// const isDark = computed({
+//  get() {
+//    return colorMode.value === 'dark'
+//  },
+//  set(_isDark) {
+//    colorMode.preference = _isDark ? 'dark' : 'light'
+//  }
+//})
+// const toggleDark = useToggle(isDark)
+// const NuxtLink = resolveComponent('NuxtLink')
 
 const scrollBreak = 80
 const y = ref(useWindowScroll().y)
@@ -29,10 +38,10 @@ const y = ref(useWindowScroll().y)
 <template>
   <Container
     is="header"
-    class="jfustify-between fixed inset-x-0 top-0 z-50 flex h-14 items-center md:pt-2.5 lg:justify-start"
+    class="justify-between fixed inset-x-0 top-0 z-50 flex h-14 items-center md:pt-2.5 lg:justify-start"
     :class="[
       {
-        'max-w-screen-3xl mx-auto md:-top-12 md:mt-6 md:h-28 lg:mt-10 dark:bg-black':
+        'max-w-screen-3xl mx-auto md:-top-12 md:mt-6 md:h-28 lg:mt-10':
           y <= scrollBreak && props.extended,
       },
       { 'md:-top-4 md:h-20': y > scrollBreak || !props.extended },
@@ -71,9 +80,15 @@ const y = ref(useWindowScroll().y)
           {{ link.title }}
         </NuxtLink>
         <slot />
-        <NuxtLink @click="toggleDark()">
-          <!-- SfIconCircle class="text-muted"/ -->
-        </NuxtLink>
+        <!--NuxtLink @click="toggleDark()">
+          dark/light
+        </!--NuxtLink -->
+      <select v-model="$colorMode.preference">
+        <option value="system">System</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+        <option value="sepia">Sepia</option>
+      </select>        
       </nav>
     </div>
   </Container>

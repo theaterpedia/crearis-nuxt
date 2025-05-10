@@ -32,6 +32,9 @@ importers:
       '@nuxt/kit':
         specifier: 3.13.2
         version: 3.13.2(magicast@0.2.11)(rollup@4.24.4)
+      '@nuxtjs/color-mode':
+        specifier: ^3.5.2
+        version: 3.5.2(magicast@0.2.11)(rollup@4.24.4)
       '@storefront-ui/shared':
         specifier: ^2.5.0
         version: 2.5.1
@@ -87,8 +90,8 @@ importers:
         specifier: ^0.6.5
         version: 0.6.8(prettier-plugin-organize-attributes@1.0.0(prettier@3.3.3))(prettier@3.3.3)
       pruvious:
-        specifier: ^3.13.2
-        version: 3.13.3(axios@1.7.7)(change-case@4.1.2)(encoding@0.1.13)(rollup@4.24.4)(vue@3.5.12(typescript@5.6.3))
+        specifier: 3.13.2
+        version: 3.13.2(axios@1.7.7)(change-case@4.1.2)(encoding@0.1.13)(rollup@4.24.4)(vue@3.5.12(typescript@5.6.3))
       radix-vue:
         specifier: ^1.9.11
         version: 1.9.11(vue@3.5.12(typescript@5.6.3))
@@ -133,7 +136,7 @@ importers:
         specifier: ^2.1.2
         version: 2.1.4(vitest@2.1.4)
       nuxi:
-        specifier: ^3.16.0
+        specifier: 3.16.0
         version: 3.16.0
       tw-colors:
         specifier: ^3.3.1
@@ -275,6 +278,9 @@ importers:
       '@nuxt/content':
         specifier: ^2.13.0
         version: 2.13.4(ioredis@5.4.1)(magicast@0.3.5)(nuxt@3.13.2(@parcel/watcher@2.5.0)(@types/node@20.17.6)(encoding@0.1.13)(eslint@8.57.1)(ioredis@5.4.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3)(vite@5.4.10(@types/node@20.17.6)(terser@5.36.0))(vue-tsc@2.1.10(typescript@5.6.3)))(rollup@4.24.4)(vue@3.5.12(typescript@5.6.3))
+      '@nuxtjs/color-mode':
+        specifier: ^3.5.0
+        version: 3.5.2(magicast@0.3.5)(rollup@4.24.4)
       '@nuxtjs/tailwindcss':
         specifier: ^6.12.1
         version: 6.12.2(magicast@0.3.5)(rollup@4.24.4)
@@ -2179,6 +2185,9 @@ packages:
     engines: {node: ^14.18.0 || >=16.10.0}
     peerDependencies:
       vue: ^3.3.4
+
+  '@nuxtjs/color-mode@3.5.2':
+    resolution: {integrity: sha512-cC6RfgZh3guHBMLLjrBB2Uti5eUoGM9KyauOaYS9ETmxNWBMTvpgjvSiSJp1OFljIXPIqVTJ3xtJpSNZiO3ZaA==}
 
   '@nuxtjs/google-fonts@3.2.0':
     resolution: {integrity: sha512-cGAjDJoeQ2jm6VJCo4AtSmKO6KjsbO9RSLj8q261fD0lMVNMZCxkCxBkg8L0/2Vfgp+5QBHWVXL71p1tiybJFw==}
@@ -6983,8 +6992,8 @@ packages:
   proxy-from-env@1.1.0:
     resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}
 
-  pruvious@3.13.3:
-    resolution: {integrity: sha512-bwpIvPA7hH0KC0CNEemvhXdDyCyZnmTpr3NUiPyqEOUumHYcyv/XU+2lqHJEwtcY6GCjCvpIuxB3s75eGPNCng==}
+  pruvious@3.13.2:
+    resolution: {integrity: sha512-dTXHGvVjM01iFr+1vTv1TuK8TvrNOXFz3xSl+sEAsD7Z4AZgkTF48ocxSN59d5/DVbpIMdi+QnS9isa8tq9bOw==}
     engines: {node: '>=20'}
     hasBin: true
 
@@ -11372,6 +11381,30 @@ snapshots:
       - vls
       - vti
       - vue-tsc
+      - webpack-sources
+
+  '@nuxtjs/color-mode@3.5.2(magicast@0.2.11)(rollup@4.24.4)':
+    dependencies:
+      '@nuxt/kit': 3.13.2(magicast@0.2.11)(rollup@4.24.4)
+      pathe: 1.1.2
+      pkg-types: 1.2.1
+      semver: 7.6.3
+    transitivePeerDependencies:
+      - magicast
+      - rollup
+      - supports-color
+      - webpack-sources
+
+  '@nuxtjs/color-mode@3.5.2(magicast@0.3.5)(rollup@4.24.4)':
+    dependencies:
+      '@nuxt/kit': 3.13.2(magicast@0.3.5)(rollup@4.24.4)
+      pathe: 1.1.2
+      pkg-types: 1.2.1
+      semver: 7.6.3
+    transitivePeerDependencies:
+      - magicast
+      - rollup
+      - supports-color
       - webpack-sources
 
   '@nuxtjs/google-fonts@3.2.0(magicast@0.2.11)(rollup@4.24.4)':
@@ -17740,7 +17773,7 @@ snapshots:
 
   proxy-from-env@1.1.0: {}
 
-  pruvious@3.13.3(axios@1.7.7)(change-case@4.1.2)(encoding@0.1.13)(rollup@4.24.4)(vue@3.5.12(typescript@5.6.3)):
+  pruvious@3.13.2(axios@1.7.7)(change-case@4.1.2)(encoding@0.1.13)(rollup@4.24.4)(vue@3.5.12(typescript@5.6.3)):
     dependencies:
       '@antfu/utils': 0.7.10
       '@aws-sdk/client-s3': 3.687.0
