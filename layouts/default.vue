@@ -68,7 +68,7 @@
           </Component>
         </Hero>
         <SectionContainer v-else>
-          <Heading :content="heading" is="h1" class="mt-14"></Heading>
+          <Heading v-if="heading" :content="heading" is="h1" class="mt-14"></Heading>
           <MdBlock v-if="teaser" :content="teaser" htag="h3" />
         </SectionContainer>
       </slot>
@@ -103,6 +103,7 @@ defineLayout({
     'SubColumns',
     'SubColumn',
     'SubPostIt',
+    'ThemeGallery',
   ],
   allowedRootBlocks: [
     'HeaderCtaImage',
@@ -118,6 +119,7 @@ defineLayout({
     'VarImage',
     'VarProse',
     'VarVideo',
+    'ThemeGallery',
   ],
 })
 
