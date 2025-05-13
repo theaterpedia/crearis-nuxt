@@ -1,5 +1,6 @@
 import { dirname, join } from 'path'
 import { fileURLToPath } from 'url'
+import { colorVars } from './theme'
 
 const currentDir = dirname(fileURLToPath(import.meta.url))
 
@@ -13,9 +14,8 @@ export default defineNuxtConfig({
     cssPath: join(currentDir, './assets/css/tailwind.css'),
   },
   colorMode: {
-    classSuffix: '',
-    preference: 'light',
-    fallback: 'light',
+    fallback: colorVars['inverted'] === '1' ? 'dark' : 'light',
+    preference: colorVars['inverted'] === '1' ? 'dark' : 'light',
     storageKey: 'color-mode',
     hid: 'nuxt-color-mode-script',
     globalName: '__NUXT_COLOR_MODE__',
