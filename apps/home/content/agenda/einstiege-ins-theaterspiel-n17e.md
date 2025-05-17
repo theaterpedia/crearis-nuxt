@@ -2,12 +2,12 @@
 navigation: false
 navigation_highlight: /ausbildung-theaterpaedagogik/einstiege
 shortcode: n17e
-heading: "**Einstiege ins Theaterspiel** Nürnberg 9.5 - 14.12.2025 // Samstag & Online"
-start: 2025-05-09
+heading: "**Einstiege ins Theaterspiel** Nürnberg 27.6 - 14.12.2025 // Samstag & Online"
+start: 2025-06-27
 end: 2025-12-14
 ctype: course
 tag: course
-description: Weiterbildung Theaterpädagogik - Kurs N17E | 9.5-14.12.2025 // Samstags-Kurs Nürnberg
+description: Weiterbildung Theaterpädagogik - Kurs N17E | 27.6-14.12.2025 // Samstags-Kurs Nürnberg
 title: Einstiege ins Theaterspiel
 cssclasses:
   - course
@@ -38,7 +38,7 @@ details:
    kosten: |
     ### Kosten
     - **A0 Anmeldegebühr (inkl. Basistag)** € 80,00 
-    - Frist: 22.4.2025
+    - Frist: 10.6.2025
     - **5 Kursraten A1-A5** 5 Raten x € 220,00
     - Zahlung: 5 Monatsraten
    storno: |
@@ -50,31 +50,8 @@ product:
   ## 6 Kurseinheiten
   In 6 prägnanten Einheiten wirst Du beide Wege erleben, verstehen und selber anleiten: Du lernst die Methoden, die Leitungshaltung und typische Abläufe. Egal, welche Vorerfahrungen Du mitbringst sind wir sicher, dass Du dabei viel mitnehmen wirst.
  footer: |
-  ## Mai - Dezember 2025 // Nürnberg **Einstiege ins Theaterspiel**
+  ## Juni - Dezember 2025 // Nürnberg **Einstiege ins Theaterspiel**
 items: 
- a0_1328:
-  ctype: event
-  shortcode: a0
-  title: Praxis, Theorie & Ausbildung bei DAS Ei **Basistag Theaterpädagogik**
-  tag: Fr., 8.5. online + Sa., 9.5. ganztags
-  image: 
-   url: https://res.cloudinary.com/little-papillon/image/upload/w_400/v1676101506/dasei/700_dasei2022_I8A7903_cvtigl.jpg
-   caption: Foto Basistag Theaterpädagogik
-  body: |
-   Am Basistag erlebst Du die grundsätzlichen Zusammenhänge der Theaterpädagogik von DAS Ei konzentriert und ganz praktisch am eigenen Leib. Du erarbeitest Dir ausgehend von drei Zwischenreflexionen ein Grundverständnis der Module
-   - Einstiege ins Theaterspiel (Modul A)
-   - Szenische Themenarbeit (Modul B)
-   - Pädagogische Regie (Modul C)
-  start: 2025-05-08T18:00
-  ende: 2025-05-09T18:00
-  ort: |
-   Tanzerei
-   Kaiserstr. 175
-   90763 Fürth
-  ablauf: |
-   Fr. 18:00-20:00 _online_
-   So. 09:00-18:00
-  mit: Hans Dönitz
  a4_1294:
   ctype: event
   shortcode: a4
@@ -96,6 +73,29 @@ items:
    Sa. 09:00-18:00
    Di. 18:00-21:00 _online_
   mit: Cornelia Jung
+ a0_1328:
+  ctype: event
+  shortcode: a0
+  title: Praxis, Theorie & Ausbildung bei DAS Ei **Basistag Theaterpädagogik**
+  tag: Fr., 4.7. online + Sa., 5.7. ganztags
+  image: 
+   url: https://res.cloudinary.com/little-papillon/image/upload/w_400/v1676101506/dasei/700_dasei2022_I8A7903_cvtigl.jpg
+   caption: Foto Basistag Theaterpädagogik
+  body: |
+   Am Basistag erlebst Du die grundsätzlichen Zusammenhänge der Theaterpädagogik von DAS Ei konzentriert und ganz praktisch am eigenen Leib. Du erarbeitest Dir ausgehend von drei Zwischenreflexionen ein Grundverständnis der Module
+   - Einstiege ins Theaterspiel (Modul A)
+   - Szenische Themenarbeit (Modul B)
+   - Pädagogische Regie (Modul C)
+  start: 2025-07-04T18:00
+  ende: 2025-07-05T18:00
+  ort: |
+   Tanzerei
+   Kaiserstr. 175
+   90763 Fürth
+  ablauf: |
+   Fr. 18:00-20:00 _online_
+   So. 09:00-18:00
+  mit: Hans Dönitz
  a5_1294:
   ctype: event
   shortcode: a5

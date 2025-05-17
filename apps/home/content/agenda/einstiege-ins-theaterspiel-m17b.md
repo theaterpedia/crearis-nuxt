@@ -38,7 +38,7 @@ details:
    kosten: |
     ### Kosten
     - **A0 Anmeldegebühr (inkl. Basistag)** € 80,00 
-    - Frist: 5.5.2025
+    - Frist: 24.5.2025
     - **5 Kursraten A1-A5** 5 Raten x € 220,00
     - Zahlung: 2 Raten 10. Mai, 2 Raten 10. Aug, 1 Rate 10. Nov 2025
    storno: |
@@ -53,28 +53,6 @@ product:
  footer: |
   ## September - Dezember 2024 // München, Nürnberg **Einstiege ins Theaterspiel**
 items: 
- a0_1328:
-  ctype: event
-  shortcode: a0
-  title: Praxis, Theorie & Ausbildung bei DAS Ei **Basistag Theaterpädagogik**
-  tag: Fr., 8.5. online + So., 10.5. ganztags (oder alternative Terminauswahl)
-  image: 
-   url: https://res.cloudinary.com/little-papillon/image/upload/w_400/v1676101506/dasei/700_dasei2022_I8A7903_cvtigl.jpg
-   caption: Foto Basistag Theaterpädagogik
-  body: |
-   Am Basistag erlebst Du die grundsätzlichen Zusammenhänge der Theaterpädagogik von DAS Ei konzentriert und ganz praktisch am eigenen Leib. Du erarbeitest Dir ausgehend von drei Zwischenreflexionen ein Grundverständnis der Module
-   - Einstiege ins Theaterspiel (Modul A)
-   - Szenische Themenarbeit (Modul B)
-   - Pädagogische Regie (Modul C)
-  start: 2025-05-08T18:00
-  ende: 2025-05-10T19:00
-  ort: |
-   Schwanthalerstraße 91
-   80336 München
-  ablauf: |
-   Fr. 18:00-20:00 _online_
-   So. 09:30-19:00
-  mit: Hans Dönitz
  a1_1178:
   ctype: event
   shortcode: a1
@@ -113,6 +91,28 @@ items:
    Sa. 09:00-18:00
    So. 09:00-15:00
    Di. 18:00-21:00 _online_
+  mit: Hans Dönitz
+ a0_1328:
+  ctype: event
+  shortcode: a0
+  title: Praxis, Theorie & Ausbildung bei DAS Ei **Basistag Theaterpädagogik**
+  tag: Fr., 4.7. online + So., 6.7. ganztags (oder alternative Terminauswahl)
+  image: 
+   url: https://res.cloudinary.com/little-papillon/image/upload/w_400/v1676101506/dasei/700_dasei2022_I8A7903_cvtigl.jpg
+   caption: Foto Basistag Theaterpädagogik
+  body: |
+   Am Basistag erlebst Du die grundsätzlichen Zusammenhänge der Theaterpädagogik von DAS Ei konzentriert und ganz praktisch am eigenen Leib. Du erarbeitest Dir ausgehend von drei Zwischenreflexionen ein Grundverständnis der Module
+   - Einstiege ins Theaterspiel (Modul A)
+   - Szenische Themenarbeit (Modul B)
+   - Pädagogische Regie (Modul C)
+  start: 2025-07-04T18:00
+  ende: 2025-07-06T19:00
+  ort: |
+   Schwanthalerstraße 91
+   80336 München
+  ablauf: |
+   Fr. 18:00-20:00 _online_
+   So. 09:30-19:00
   mit: Hans Dönitz
  a4_1294:
   ctype: event
