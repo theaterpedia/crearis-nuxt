@@ -386,7 +386,7 @@ const getRootPath = (root: string | undefined) => {
         <div v-else-if="stepProps.name === 'checks' && stepProps.completed">
           <Prose>
             <h2>Vielen Dank für deine Buchung</h2>
-            <p class="mb-8">Derzeit sind Weihnachtsferien - Du erhältst ab 7. Januar eine Bestätigung / Rückmeldung von uns.</p>
+            <p class="mb-8">Bitte gib uns ca. 2 Arbeitstage Zeit - Du erhältst in Kürze eine Bestätigung / Rückmeldung von uns.</p>
           </Prose>
           <ButtonTmp to="/" class="cursor-pointer" id="button_home">
             zur Startseite
