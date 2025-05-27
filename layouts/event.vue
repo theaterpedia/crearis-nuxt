@@ -88,7 +88,7 @@ import { defineLayout } from '#pruvious'
 import { usePage } from '#pruvious/client'
 
 defineLayout({
-  label: 'default',
+  label: 'event',
   allowedBlocks: [
     'HeaderCtaImage',
     'HeaderScroll',
@@ -132,7 +132,7 @@ const page = unref(usePage())
 const searchDisablend = true
 
 // const author = page?.fields.author ? page?.fields.author : 'kein Autor angegeben'
-const heading = page?.fields.title ? page?.fields.overline ? `${page?.fields.overline} **${page?.fields.title}**`: page?.fields.title: 'Kein Titel angegeben'
+const heading = page?.fields.title ? page?.fields.overline ? `${page?.fields.overline} **${page?.fields.title}**`: page?.fields.title: 'Event ohne Titel'
 const teaser = page?.fields.teaserText ? page?.fields.teaserText : 'Teasertext'
 const imgTmp = page?.fields.imgTmp
 
