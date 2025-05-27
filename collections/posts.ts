@@ -7,6 +7,7 @@ const posts = pageLikeCollection({
   name: 'posts',
   pathPrefix: 'blog',
   icon: 'Pin',
+  allowedLayouts: ['post'],
   additionalFields: {
     syncId: {
       type: 'text',

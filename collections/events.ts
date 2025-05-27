@@ -1,13 +1,14 @@
 import { defineCollection } from '#pruvious'
 import { pageLikeCollection } from '#pruvious/standard'
 import { uniqueValidator } from '#pruvious/server'
-import { EventEditMode } from '@crearis/data-main/graphql'
+import { EventEditMode } from '../graphql'
 
 export default defineCollection(
   pageLikeCollection({
     name: 'events',
     pathPrefix: 'events',
     icon: 'CalendarEvent',
+    allowedLayouts: ['event'],
     additionalFields: {
       syncId: {
         type: 'text',
