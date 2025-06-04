@@ -1,0 +1,129 @@
+<script lang="ts" setup>
+definePageMeta({
+  layout: false,
+});
+import { Columns } from '@crearis/ui'
+const image = {
+  src: 'https://res.cloudinary.com/little-papillon/image/upload/v1747158295/pedia_ipsum/cv/rosa_koeniger_iojoxe.jpg',
+  alt: 'Rosa Koeniger',
+}
+</script>
+
+<template>
+  <NuxtLayout name="default" :image="image">
+  <div class="bg-default">
+    <PruSection heading="**Rosa Koeniger** in jeder Krise steckt eine Chance">
+      <Prose>
+        <p>Testeintrag Testeintrag Testeintrag Testeintrag Testeintrag Testeintrag</p>
+        <p>
+          Testeintrag Testeintrag Testeintrag Testeintrag Testeintrag Testeintrag Testeintrag Testeintrag Testeintrag
+          Testeintrag
+        </p>
+        <p>Testeintrag Testeintrag Testeintrag Testeintrag Testeintrag Testeintrag</p>
+      </Prose>
+    </PruSection>
+    <PruSection background="muted" heading="**Headline Headline** Subline Subline">
+      <Prose>
+        <p>Testeintrag Testeintrag Testeintrag Testeintrag Testeintrag Testeintrag</p>
+        <p>
+          Testeintrag Testeintrag Testeintrag Testeintrag Testeintrag Testeintrag Testeintrag Testeintrag Testeintrag
+          Testeintrag
+        </p>
+        <p>Testeintrag Testeintrag Testeintrag Testeintrag Testeintrag Testeintrag</p>
+      </Prose>
+    </PruSection>
+    <SectionContainer>
+      <Columns>
+        <PostIt
+          heading="_01_ **Ich und Automatisierung** von seinen administrativen Prozessen"
+          rotation="right"
+          width="1/3"
+        >
+          <Prose>
+            <p>
+              Jeder Theaterpädagoge benötigt heute eine eigene Webpräsenz, die idealerweise mit Datenbanken kompatibel
+              ist, um Inhalte effektiv teilen und verbreiten zu können.
+            </p>
+            <p>
+              Eine gut gestaltete, vernetzte Website ermöglicht es, Projekte und Veranstaltungen sichtbar zu machen und
+              die eigene Arbeit einem breiteren Publikum zugänglich zu machen.
+            </p>
+            <h4>Erste Schritte mit Obsidian</h4>
+            <p>wie effektiv mit .md-Dateien arbeiten</p>
+            <p>
+              Der Workshop in Rahmen von Theaterpedia-Konferenz von Hans Dönitz wird sich darauf konzentrieren, wie
+              Theaterpädagogen ihre eigene Webpräsenz erstellen und sie mit Datenbanken verbinden können, um Inhalte
+              leichter zu teilen und zu verbreiten.
+            </p>
+            <a href="#">>>> bin dabei <<<</a>
+          </Prose>
+        </PostIt>
+        <PostIt heading="_02_ **Ich und Automatisierung** von seinen administrativen Prozessen" width="1/3">
+          <Prose>
+            <p>
+              Jeder Theaterpädagoge benötigt heute eine eigene Webpräsenz, die idealerweise mit Datenbanken kompatibel
+              ist, um Inhalte effektiv teilen und verbreiten zu können.
+            </p>
+            <p>
+              Eine gut gestaltete, vernetzte Website ermöglicht es, Projekte und Veranstaltungen sichtbar zu machen und
+              die eigene Arbeit einem breiteren Publikum zugänglich zu machen.
+            </p>
+            <h4>Erste Schritte mit Obsidian</h4>
+            <p>wie effektiv mit .md-Dateien arbeiten</p>
+            <p>
+              Der Workshop in Rahmen von Theaterpedia-Konferenz von Hans Dönitz wird sich darauf konzentrieren, wie
+              Theaterpädagogen ihre eigene Webpräsenz erstellen und sie mit Datenbanken verbinden können, um Inhalte
+              leichter zu teilen und zu verbreiten.
+            </p>
+            <a href="#">>>> bin dabei <<<</a>
+          </Prose>
+        </PostIt>
+        <PostIt
+          color="secondary"
+          heading="_03_ **Ich und Automatisierung** von seinen administrativen Prozessen"
+          width="1/3"
+        >
+          <Prose>
+            <p>
+              Jeder Theaterpädagoge benötigt heute eine eigene Webpräsenz, die idealerweise mit Datenbanken kompatibel
+              ist, um Inhalte effektiv teilen und verbreiten zu können.
+            </p>
+            <p>
+              Eine gut gestaltete, vernetzte Website ermöglicht es, Projekte und Veranstaltungen sichtbar zu machen und
+              die eigene Arbeit einem breiteren Publikum zugänglich zu machen.
+            </p>
+            <h4>Erste Schritte mit Obsidian</h4>
+            <p>wie effektiv mit .md-Dateien arbeiten</p>
+            <p>
+              Der Workshop in Rahmen von Theaterpedia-Konferenz von Hans Dönitz wird sich darauf konzentrieren, wie
+              Theaterpädagogen ihre eigene Webpräsenz erstellen und sie mit Datenbanken verbinden können, um Inhalte
+              leichter zu teilen und zu verbreiten.
+            </p>
+            <a href="#">>>> bin dabei <<<</a>
+          </Prose>
+        </PostIt>
+      </Columns>
+      <Columns class="flex-row-reverse gap-0 sm:gap-2 md:gap-4">
+        <PostIt heading="Theaterpedia-Konferenz 21.-24. Nov 2024" is="h4" rotation="right" width="1/5">
+          <Prose>
+            <p>
+              Jeder Theaterpädagoge benötigt heute eine eigene Webpräsenz, die idealerweise mit Datenbanken kompatibel
+              ist, um Inhalte effektiv teilen und verbreiten zu können.
+            </p>
+            <a href="#">>>> bin dabei <<<</a>
+          </Prose>
+        </PostIt>
+        <PostIt heading="Theaterpedia-Konferenz 21.-24. Nov 2024" is="h4" rotation="left" width="1/5">
+          <Prose>
+            <p>
+              Eine gut gestaltete, vernetzte Website ermöglicht es, Projekte und Veranstaltungen sichtbar zu machen und
+              die eigene Arbeit einem breiteren Publikum zugänglich zu machen.
+            </p>
+            <a href="#">>>> bin dabei <<<</a>
+          </Prose>
+        </PostIt>
+      </Columns>
+    </SectionContainer>
+  </div>
+  </NuxtLayout>
+</template>

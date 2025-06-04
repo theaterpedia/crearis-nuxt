@@ -7,6 +7,10 @@
       :hideSearch="y <= scrollBreak"
     >
       <NuxtLink to="/konferenz" class="flex-1">Konferenz</NuxtLink>
+      <NuxtLink to="/partner/rosa_koeniger" class="flex-1">Rosa</NuxtLink>
+      <NuxtLink to="/partner/kathrin_jung" class="flex-1">Kathrin</NuxtLink>
+      <NuxtLink to="/partner/kathrin_jung" class="flex-1">Nora</NuxtLink>
+      <NuxtLink to="/partner/kathrin_jung" class="flex-1">Rosalin</NuxtLink>
       <NuxtLink to="/sondierung" class="flex-1">Sondierung</NuxtLink>
     </UiNavbarTop>
     <Sidebar
@@ -32,6 +36,7 @@
           :imgTmp="image.src"
           :imgTmpAlignX="hero.image_focus_x"
           :imgTmpAlignY="hero.image_focus_y"
+          
         >
           <Component
             :card="hero.content === 'banner' && page._path?.startsWith('/agenda')"
@@ -42,11 +47,6 @@
               <Logo extended />
             </template>
             <template v-else>
-              <Heading
-                v-if="page?.fields.heading || page?.fields.title"
-                :content="page?.fields.heading ? page?.fields.heading : page?.fields.title"
-                is="h1"
-              ></Heading>
               <br v-if="(page.heading || page?.fields.title) && page.teaser" />
               <MdBlock v-if="page.teaser" :content="page.teaser" :htag="page.heading ? 'h3' : 'h1'" />
               <div v-if="hero.cta || hero.link">
@@ -95,16 +95,23 @@ import { ref } from 'vue'
 import { useWindowScroll } from '@vueuse/core'
 import { useDark, useToggle } from '@vueuse/core'
 import LogoOld from '../components/LogoOld.vue'
+import { useRoute } from 'vue-router'
 
-const image = {
-  src: 'https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_1440,h_900,g_auto/v1666847011/pedia_ipsum/core/theaterpedia.jpg',
-  alt: 'DAS Ei',
-}
+const props = defineProps({
+  image: {
+    type: Object,
+    default: () => ({
+      src: 'https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_1440,h_900,g_auto/v1666847011/pedia_ipsum/core/theaterpedia.jpg',
+      alt: 'DAS Ei',
+    }),
+  },
+})
+
 const page = { heading: 'test heading', title: 'test title', teaser: 'test teaser', _path: '/dasei' }
 const content = '_A1_ Headline for Heading - **Test for Teaser**'
 const details = false
 const isSideNav: Boolean = false
-const isLanding: Boolean = true
+const isLanding: Boolean = useRoute().path === '/'
 
 const hero = {
   height: 'prominent',
