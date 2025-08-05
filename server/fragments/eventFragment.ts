@@ -1,5 +1,6 @@
 export default `
     syncId
+    cid
     id
     slug
     templateCode

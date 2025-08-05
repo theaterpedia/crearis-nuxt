@@ -175,6 +175,7 @@ export class SyncableOdooCollection {
       return {
         ...base,
         path: odooRecord.slug || nanoid(),
+        cid: odooRecord.cid || null,
         title: odooRecord.headline || '',
         overline: odooRecord.overline || '',
         metaTags: odooRecord.metaKeywords ? [{ name: 'keywords', content: odooRecord.metaKeywords }] : [],

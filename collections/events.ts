@@ -23,6 +23,19 @@ export default defineCollection(
           nullable: false,
         },
       },
+      cid: {
+        type: 'text',
+        options: {
+          required: true,
+        },
+        additional: {
+          immutable: true,
+          unique: 'allLanguages',
+          validators: [uniqueValidator],
+          index: true,
+          nullable: false,
+        },
+      },
       version: {
         type: 'number',
         options: {
