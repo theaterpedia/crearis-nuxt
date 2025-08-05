@@ -36,7 +36,7 @@ export class SyncableOdooCollection {
 
       const queryName = `Get${capitalize(this.collection)}Query`
       const odooRecordsResponse = await this.apolloClientApi.query<any, any>({ queryName } as any, {} as any)
-      console.log('odooRecordsResponse', odooRecordsResponse)
+      // console.log('odooRecordsResponse', odooRecordsResponse)
 
       if (odooRecordsResponse.errors?.length) {
         throw new Error(odooRecordsResponse.errors[0].message)
@@ -190,6 +190,7 @@ export class SyncableOdooCollection {
               )
             )?.id
           : null,
+        editMode: odooRecord.editMode || 'content',
         layout: odooRecord.layout || 'event',
       }
     } else if (this.collection === 'domainusers') {
