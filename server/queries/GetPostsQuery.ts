@@ -5,7 +5,7 @@ export default gql`
 query(
   $filter: PostFilterInput
   $currentPage: Int
-  $pageSize: Int = 0
+  $pageSize: Int = 50
   $search: String
   $sort: PostSortInput
 ) {
