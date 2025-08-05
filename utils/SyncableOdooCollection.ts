@@ -9,6 +9,7 @@ import { nanoid } from 'nanoid'
 import { Queries } from '../server/queries'
 import { Mutations } from '../server/mutations'
 import { logError, logInfo } from './logger'
+import { resultKeyNameFromField } from '@apollo/client/utilities'
 
 export interface CollectionSyncResult {
   created: any[]
@@ -19,7 +20,7 @@ export interface CollectionSyncResult {
 export class SyncableOdooCollection {
   protected apolloClientApi!: Endpoints
 
-  constructor(protected collection: 'events' | 'posts') {}
+  constructor(protected collection: 'events' | 'posts' | 'domainusers') {}
 
   /**
    * Sync records from Odoo to Pruvious.
@@ -35,16 +36,27 @@ export class SyncableOdooCollection {
 
       const queryName = `Get${capitalize(this.collection)}Query`
       const odooRecordsResponse = await this.apolloClientApi.query<any, any>({ queryName } as any, {} as any)
-      const odooRecords = await this.filterRecordsForThisSite(
-        odooRecordsResponse.data[this.collection][this.collection],
-      )
+      console.log('odooRecordsResponse', odooRecordsResponse)
+
+      if (odooRecordsResponse.errors?.length) {
+        throw new Error(odooRecordsResponse.errors[0].message)
+      }
+      // Filter Odoo records for the current site
+      // is not needed here, as the Odoo API should already return only the relevant records.
+      // maybe we need this, if we want to separate read-only and writeable records
+
+      // const odooRecords = await this.filterRecordsForThisSite(
+      //  odooRecordsResponse.data[this.collection][this.collection],
+      // )
+
+      const odooRecords = odooRecordsResponse.data[this.collection][this.collection]
       const result: CollectionSyncResult = { created: [], updated: [], errors: {} }
 
       // Delete Pruvious records that are not in Odoo
       await (query as any)(this.collection)
         .whereNotIn(
           'syncId',
-          odooRecords.map((odooRecord) => odooRecord.syncId),
+          odooRecords.map((odooRecord: any) => odooRecord.syncId),
         )
         .delete()
 
@@ -94,10 +106,21 @@ export class SyncableOdooCollection {
 
       return result
     } catch (e: any) {
-      await logError(
-        'odoo-sync',
-        `Unexpected error syncing collection '${this.collection}' from Odoo to Pruvious: ${e.message}`,
-      )
+      if (e.cause !== undefined) {
+        for (const error of e.cause.result.errors) {
+          console.error(`Get${capitalize(this.collection)}Query`, error)
+        }
+        // console.log('e.cause.result.errors', e.cause.result.errors)
+        await logError(
+          'odoo-sync',
+          `Unexpected error syncing collection '${this.collection}' from Odoo to Pruvious: ${e.cause.result.errors}`,
+        )
+      } else {
+        await logError(
+          'odoo-sync',
+          `Unexpected error syncing collection '${this.collection}' from Odoo to Pruvious: ${e.message}`,
+        )
+      }
       throw e
     }
   }
@@ -143,12 +166,14 @@ export class SyncableOdooCollection {
         metaTags: odooRecord.metaKeywords ? [{ name: 'keywords', content: odooRecord.metaKeywords }] : [],
         blocks: odooRecord.blocks ? odooRecord.blocks : [],
         publishDate: odooRecord.postDate ? new Date(odooRecord.postDate).getTime() : null,
-        author: odooRecord.author ? (await ensureUser(odooRecord.author.email))?.id : null,
+        author: odooRecord.author
+          ? (await ensureUser(odooRecord.author.email, odooRecord.author.firstname, odooRecord.author.lastname))?.id
+          : null,
+        layout: odooRecord.layout || 'post',
       }
     } else if (this.collection === 'events') {
       return {
         ...base,
-        editMode: odooRecord.editMode,
         path: odooRecord.slug || nanoid(),
         title: odooRecord.headline || '',
         overline: odooRecord.overline || '',
@@ -156,7 +181,49 @@ export class SyncableOdooCollection {
         blocks: odooRecord.blocks ? odooRecord.blocks : [],
         dateBegin: odooRecord.dateBegin ? new Date(odooRecord.dateBegin).getTime() : null,
         dateEnd: odooRecord.dateEnd ? new Date(odooRecord.dateEnd).getTime() : null,
-        organizer: odooRecord.organizer ? (await ensureUser(odooRecord.organizer.email))?.id : null,
+        organizer: odooRecord.organizer
+          ? (
+              await ensureUser(
+                odooRecord.organizer.email,
+                odooRecord.organizer.firstname,
+                odooRecord.organizer.lastname,
+              )
+            )?.id
+          : null,
+        layout: odooRecord.layout || 'event',
+      }
+    } else if (this.collection === 'domainusers') {
+      const hasPartner: boolean = odooRecord.user ? odooRecord.user.partner || false : false
+      return {
+        ...base,
+        path: odooRecord.slug || nanoid(),
+        title: odooRecord.name || '',
+        overline: odooRecord.title || '',
+        metaTags: odooRecord.metaKeywords ? [{ name: 'keywords', content: odooRecord.metaKeywords }] : [],
+        user: odooRecord.user
+          ? (
+              await ensureUser(
+                odooRecord.user.email,
+                odooRecord.user.partner.firstname,
+                odooRecord.user.partner.lastname,
+              )
+            )?.id
+          : null,
+        role: odooRecord.role || '',
+        roleTitle: odooRecord.title || '',
+        capabilities: odooRecord.capabilities || '',
+        description: odooRecord.description || '',
+        firstname: hasPartner ? odooRecord.user.partner.firstname || '' : '',
+        lastname: hasPartner ? odooRecord.user.partner.lastname || '' : '',
+        bodyMd: hasPartner ? odooRecord.user.partner.bodyMd || '' : '',
+        mobile: hasPartner ? odooRecord.user.partner.phone || '' : '',
+        email: hasPartner ? odooRecord.user.partner.email || '' : '',
+        street: hasPartner ? odooRecord.user.partner.street || '' : '',
+        street2: hasPartner ? odooRecord.user.partner.street2 || '' : '',
+        city: hasPartner ? odooRecord.user.partner.city || '' : '',
+        zip: hasPartner ? odooRecord.user.partner.zip || '' : '',
+        image: hasPartner ? odooRecord.user.partner.image || '' : '',
+        layout: odooRecord.layout || 'contact',
       }
     }
   }

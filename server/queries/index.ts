@@ -4,6 +4,7 @@ import GetProductVariantQuery from './GetProductVariantQuery'
 import StockLotsQuery from './StockLotsQuery'
 import GetCategoriesQuery from './GetCategoriesQuery'
 import GetCategoryQuery from './GetCategoryQuery'
+import GetDomainusersQuery from './GetDomainusersQuery'
 import GetProductTemplateListQuery from './GetProductTemplateListQuery'
 import GetProductTemplateQuery from './GetProductTemplateQuery'
 import WishlistLoadQuery from './WishlistLoadQuery'
@@ -21,6 +22,7 @@ enum QueryName {
   StockLotsQuery = 'StockLotsQuery',
   GetCategoriesQuery = 'GetCategoriesQuery',
   GetCategoryQuery = 'GetCategoryQuery',
+  GetDomainusersQuery = 'GetDomainusersQuery',
   GetProductTemplateListQuery = 'GetProductTemplateListQuery',
   GetProductTemplateQuery = 'GetProductTemplateQuery',
   GetWishlist = 'GetWishlist',
@@ -40,6 +42,7 @@ const Queries: Record<QueryName, DocumentNode> = {
   StockLotsQuery,
   GetCategoriesQuery,
   GetCategoryQuery,
+  GetDomainusersQuery,
   GetProductTemplateListQuery,
   GetProductTemplateQuery,
   WishlistLoadQuery,

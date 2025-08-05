@@ -2,11 +2,11 @@ export default `
     syncId
     id
     slug
+    templateCode
     writeDate	      
     version
     editMode
-    visibility
-    templateCode          
+    visibility      
     headline      
     overline
     teasertext

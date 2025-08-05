@@ -6,6 +6,8 @@ import type {
   Category,
   Country,
   Partner,
+  Event,
+  DomainUser,
   Post,
   Product,
   ProductVariant,

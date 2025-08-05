@@ -8,14 +8,14 @@ import { nanoid } from 'nanoid'
  * @returns The user record.
  * @throws An error if the user could not be created.
  */
-export async function ensureUser(email: string) {
+export async function ensureUser(email: string, firstName?: string, lastName?: string) {
   let user = await query('users').selectAll().where('email', email).populate().first()
 
   if (!user) {
     const createResult = await query('users')
       .selectAll()
       .populate()
-      .create({ email, password: nanoid(), isActive: true } as any)
+      .create({ email, password: nanoid(), isActive: true, firstName, lastName } as any)
 
     if (createResult.success) {
       user = createResult.record

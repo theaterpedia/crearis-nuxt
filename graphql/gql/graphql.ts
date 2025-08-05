@@ -270,6 +270,33 @@ export type DeleteAddressInput = {
   id: Scalars['Int']['input'];
 };
 
+export type DomainUser = {
+  __typename?: 'DomainUser';
+  capabilities: Scalars['String']['output'];
+  description: Maybe<Scalars['String']['output']>;
+  domainCode: Scalars['String']['output'];
+  email: Scalars['String']['output'];
+  id: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  role: Scalars['String']['output'];
+  slug: Maybe<Scalars['String']['output']>;
+  syncId: Maybe<Scalars['String']['output']>;
+  title: Maybe<Scalars['String']['output']>;
+  user: Maybe<User>;
+  version: Maybe<Scalars['Int']['output']>;
+};
+
+export type DomainUserList = DomainUsers & {
+  __typename?: 'DomainUserList';
+  domainusers: Maybe<Array<Maybe<DomainUser>>>;
+  totalCount: Scalars['Int']['output'];
+};
+
+export type DomainUsers = {
+  domainusers: Maybe<Array<Maybe<DomainUser>>>;
+  totalCount: Scalars['Int']['output'];
+};
+
 export type Event = {
   __typename?: 'Event';
   barcode: Maybe<Scalars['String']['output']>;
@@ -875,15 +902,18 @@ export type Partner = {
   __typename?: 'Partner';
   addressType: Maybe<AddressType>;
   billingAddress: Maybe<Partner>;
+  bodyMd: Maybe<Scalars['String']['output']>;
   city: Maybe<Scalars['String']['output']>;
   company: Maybe<Partner>;
   contacts: Maybe<Array<Partner>>;
   country: Maybe<Country>;
   currentPricelist: Maybe<Pricelist>;
   email: Maybe<Scalars['String']['output']>;
+  firstname: Maybe<Scalars['String']['output']>;
   id: Scalars['Int']['output'];
   image: Maybe<Scalars['String']['output']>;
   isCompany: Scalars['Boolean']['output'];
+  lastname: Maybe<Scalars['String']['output']>;
   mobile: Maybe<Scalars['String']['output']>;
   name: Maybe<Scalars['String']['output']>;
   parentId: Maybe<Partner>;
@@ -1143,6 +1173,8 @@ export type Query = {
   countries: Maybe<Countries>;
   country: Country;
   deliveryMethods: Maybe<Array<ShippingMethod>>;
+  domainuser: Maybe<DomainUser>;
+  domainusers: Maybe<DomainUsers>;
   event: Maybe<Event>;
   events: Maybe<Events>;
   invoice: Invoice;
@@ -1216,6 +1248,17 @@ export type QueryCountriesArgs = {
 
 export type QueryCountryArgs = {
   id: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type QueryDomainuserArgs = {
+  id: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type QueryDomainusersArgs = {
+  currentPage?: InputMaybe<Scalars['Int']['input']>;
+  pageSize?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
