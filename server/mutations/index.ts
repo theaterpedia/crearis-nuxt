@@ -16,6 +16,7 @@ import AddAddress from './AddAddress'
 import UpdateAddress from './UpdateAddress'
 import CreateUpdatePartner from './CreateUpdatePartner'
 import UpdatePost from './UpdatePost'
+import UpdateEvent from './UpdateEvent'
 
 enum MutationName {
   LoginMutation = 'LoginMutation',
@@ -35,6 +36,7 @@ enum MutationName {
   UpdateAddress = 'UpdateAddress',
   CreateUpdatePartner = 'CreateUpdatePartner',
   UpdatePost = 'UpdatePost',
+  UpdateEvent = 'UpdateEvent',
 }
 
 const Mutations: Record<MutationName, DocumentNode> = {
@@ -55,6 +57,7 @@ const Mutations: Record<MutationName, DocumentNode> = {
   UpdateAddress,
   CreateUpdatePartner,
   UpdatePost,
+  UpdateEvent,
 }
 
 export { Mutations, MutationName }

@@ -10,17 +10,22 @@ import { Queries } from '../server/queries'
 import { Mutations } from '../server/mutations'
 import { logError, logInfo } from './logger'
 import { resultKeyNameFromField } from '@apollo/client/utilities'
+import type { UpdateEventInput } from '~/graphql'
 
 export interface CollectionSyncResult {
   created: any[]
   updated: any[]
-  errors: { [syncId: string]: any }
+  errors: { [cid: string]: any }
 }
 
 export class SyncableOdooCollection {
   protected apolloClientApi!: Endpoints
 
   constructor(protected collection: 'events' | 'posts' | 'domainusers') {}
+  get dataType() {
+    // strip the 's' from the collection name
+    return this.collection.slice(0, -1)
+  }
 
   /**
    * Sync records from Odoo to Pruvious.
@@ -28,7 +33,7 @@ export class SyncableOdooCollection {
    *
    * - Create records that do not exist in Pruvious.
    * - Update records that are outdated in Pruvious.
-   * - Delete records that do not exist in `odooRecords` by comparing the `syncId`.
+   * - Delete records that do not exist in `odooRecords` by comparing the `cid`.
    */
   async syncFromOdoo() {
     try {
@@ -55,14 +60,14 @@ export class SyncableOdooCollection {
       // Delete Pruvious records that are not in Odoo
       await (query as any)(this.collection)
         .whereNotIn(
-          'syncId',
-          odooRecords.map((odooRecord: any) => odooRecord.syncId),
+          'cid',
+          odooRecords.map((odooRecord: any) => odooRecord.cid),
         )
         .delete()
 
       for (const odooRecord of odooRecords) {
         // Find matching record in Pruvious
-        let record = await (query as any)(this.collection).selectAll().where('syncId', odooRecord.syncId).first()
+        let record = await (query as any)(this.collection).selectAll().where('cid', odooRecord.cid).first()
 
         // Update Pruvious record if it is outdated
         if (record && record.updatedAt < new Date((odooRecord as any).writeDate).getTime()) {
@@ -74,7 +79,7 @@ export class SyncableOdooCollection {
           if (qr.success) {
             result.updated.push(qr.records[0])
           } else {
-            result.errors[`update:${odooRecord.syncId}`] = qr.message ?? qr.errors
+            result.errors[`update:${odooRecord.cid}`] = qr.message ?? qr.errors
           }
         }
 
@@ -87,7 +92,7 @@ export class SyncableOdooCollection {
           if (qr.success) {
             result.created.push(qr.record)
           } else {
-            result.errors[`create:${odooRecord.syncId}`] = qr.message ?? qr.errors
+            result.errors[`create:${odooRecord.cid}`] = qr.message ?? qr.errors
           }
         }
       }
@@ -126,20 +131,27 @@ export class SyncableOdooCollection {
   }
 
   /**
-   * Sync a single record from Pruvious to Odoo.
+   * Add a single record from Pruvious to Odoo.
    */
-  async syncRecordToOdoo(recordId: number) {
+  async addRecordToOdoo(recordId: number) {
     try {
       await this.ensureApolloClient()
 
       const record = await (query as any)(this.collection).where('id', recordId).populate().first()
 
-      const mutationName = `Add${capitalize(this.collection)}Mutation`
+      const mutationName = `Add${capitalize(this.dataType)}`
       const odooRecord = await this.mapPruviousToOdooFields(record)
-      const odooResponse = await this.apolloClientApi.mutation<any, any>({ mutationName } as any, odooRecord as any)
+      const odooResponse = await this.apolloClientApi.mutation<any, any>({ mutationName } as any, odooRecord as any, {
+        event: 5,
+      })
 
       return odooResponse // @todo handle result
     } catch (e: any) {
+      if (e.cause !== undefined) {
+        for (const error of e.cause.result.errors) {
+          console.error(`Add${capitalize(this.dataType)} Mutation`, error)
+        }
+      }
       await logError(
         'odoo-sync',
         `Unexpected error creating '${this.collection}' record from Pruvious to Odoo: ${e.message}`,
@@ -149,11 +161,54 @@ export class SyncableOdooCollection {
   }
 
   /**
+   * Update a single record from Pruvious to Odoo.
+   */
+  async updateRecordOnOdoo(recordId: number) {
+    try {
+      await this.ensureApolloClient()
+
+      const record = await (query as any)(this.collection).where('id', recordId).populate().first()
+
+      const mutationName = `Update${capitalize(this.dataType)}`
+      const odooRecord = await this.mapPruviousToOdooFields(record)
+      const contentRec = { [this.dataType]: odooRecord } as any
+
+      const odooResponse = await this.apolloClientApi.mutation<any, any>({ mutationName } as any, contentRec)
+      if (odooResponse.errors?.length) {
+        const errorMessages = odooResponse.errors?.map((error: any) => error.message).join(', ')
+        await logError(
+          'odoo-sync',
+          `Error updating '${this.collection}' record from Pruvious to Odoo: ${errorMessages}`,
+        )
+        throw new Error(`Could not update '${this.collection}' - got this Error: ${errorMessages}`)
+      } else {
+        const qr = await (query as any)(this.collection)
+          .selectAll()
+          .where('id', record.id)
+          .update('version', odooResponse.data.version ?? null)
+        return odooResponse
+      }
+    } catch (e: any) {
+      let error = ''
+      if (e.cause !== undefined) {
+        error = e.cause.result.errors?.map((error: any) => error.message).join(', ')
+      } else {
+        error = e.message
+      }
+      await logError(
+        'odoo-sync',
+        `Unexpected error creating '${this.collection}' record from Pruvious to Odoo: ${error}`,
+      )
+      throw new Error(`Could not save '${this.collection}' record from Pruvious to Odoo: ${error}`)
+    }
+  }
+
+  /**
    * Map Odoo fields to Pruvious fields.
    */
   async mapOdooToPruviousFields(odooRecord: Record<string, any>) {
     const base: Record<string, any> = {
-      syncId: odooRecord.syncId,
+      cid: odooRecord.cid,
       version: odooRecord.version,
     }
 
@@ -161,6 +216,7 @@ export class SyncableOdooCollection {
       return {
         ...base,
         path: odooRecord.slugBlog + odooRecord.slugPost, // @todo catch noslug-error via nanoid,
+        isEditable: false, //odooRecord?.homesite?.domainCode === process.env.NUXT_DOMAIN_CODE ||
         title: odooRecord.headline || '',
         overline: odooRecord.overline || '',
         metaTags: odooRecord.metaKeywords ? [{ name: 'keywords', content: odooRecord.metaKeywords }] : [],
@@ -236,6 +292,7 @@ export class SyncableOdooCollection {
   async mapPruviousToOdooFields(record: Record<string, any>) {
     const base: Record<string, any> = {
       version: record.version,
+      cid: record.cid || null,
     }
 
     if (this.collection === 'posts') {
@@ -243,28 +300,38 @@ export class SyncableOdooCollection {
 
       return {
         ...base,
-        slugBlog: secondPathSlash > -1 ? record.path.slice(0, secondPathSlash) : '',
-        slugPost: secondPathSlash > -1 ? record.path.slice(secondPathSlash + 1) : record.path,
+        // slugBlog: secondPathSlash > -1 ? record.path.slice(0, secondPathSlash) : '',
+        // slugPost: secondPathSlash > -1 ? record.path.slice(secondPathSlash + 1) : record.path,
         headline: record.title,
         overline: record.overline,
         metaKeywords: record.metaTags.find((tag: any) => tag.name === 'keywords')?.content ?? '',
         blocks: record.blocks,
-        publishDate: record.publishDate ? new Date(record.publishDate).toISOString() : null,
-        author: record.author.email,
+        // publishDate: record.publishDate ? new Date(record.publishDate).toISOString() : null,
+        // author: record.author.email,
       }
     } else if (this.collection === 'events') {
       return {
         ...base,
+        // slug: record.path,
+        name: record.title,
+        overline: record.overline,
+        metaKeywords: record.metaTags.find((tag: any) => tag.name === 'keywords')?.content ?? '',
+        blocks: record.blocks,
+        teasertext: record.teaserText || '',
+        // dateBegin: record.dateBegin ? new Date(record.dateBegin).toISOString() : null,
+        // dateEnd: record.dateEnd ? new Date(record.dateEnd).toISOString() : null,
+        // organizer: record.organizer ? { email: record.organizer.email } : null,
+        // editMode: record.editMode || 'content',
       }
     }
   }
 
   /**
-   * Filter Odoo records for the current site by checking the `syncId` prefix against the domain code.
+   * Filter Odoo records for the current site by checking the `cid` prefix against the domain code.
    */
-  protected async filterRecordsForThisSite<T extends { syncId: string }>(odooRecords: T[]): Promise<T[]> {
+  protected async filterRecordsForThisSite<T extends { cid: string }>(odooRecords: T[]): Promise<T[]> {
     const domainCode = process.env.NUXT_DOMAIN_CODE
-    return odooRecords.filter((odooRecord) => odooRecord.syncId.startsWith(`${domainCode}.`))
+    return odooRecords.filter((odooRecord) => odooRecord.cid.startsWith(`${domainCode}.`))
   }
 
   /**

@@ -9,7 +9,7 @@ const domainusers = pageLikeCollection({
   icon: 'Pin',
   allowedLayouts: ['contact'],
   additionalFields: {
-    syncId: {
+    cid: {
       type: 'text',
       options: {
         required: true,

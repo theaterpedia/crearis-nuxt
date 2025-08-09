@@ -9,7 +9,7 @@ const posts = pageLikeCollection({
   icon: 'Pin',
   allowedLayouts: ['post'],
   additionalFields: {
-    syncId: {
+    cid: {
       type: 'text',
       options: {
         required: true,
@@ -34,6 +34,13 @@ const posts = pageLikeCollection({
         nullable: false,
       },
     },
+    isEditable: {
+      type: 'switch',
+      options: {
+        default: true,
+        required: false,
+      },
+    },
     overline: {
       type: 'text',
       options: {},
@@ -53,7 +60,7 @@ const posts = pageLikeCollection({
 })
 
 posts.dashboard!.fieldLayout = posts.dashboard!.fieldLayout!.filter(
-  (fieldLayout) => !isString(fieldLayout) || !['syncId', 'version'].includes(fieldLayout),
+  (fieldLayout) => !isString(fieldLayout) || !['cid', 'version', 'isEditable'].includes(fieldLayout),
 )
 
 export default defineCollection(posts)

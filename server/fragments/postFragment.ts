@@ -1,5 +1,5 @@
 export default `
-  syncId
+  cid
   id
   slugPost
   slugBlog

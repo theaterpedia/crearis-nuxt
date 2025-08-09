@@ -10,19 +10,6 @@ export default defineCollection(
     icon: 'CalendarEvent',
     allowedLayouts: ['event'],
     additionalFields: {
-      syncId: {
-        type: 'text',
-        options: {
-          required: true,
-        },
-        additional: {
-          immutable: true,
-          unique: 'allLanguages',
-          validators: [uniqueValidator],
-          index: true,
-          nullable: false,
-        },
-      },
       cid: {
         type: 'text',
         options: {
@@ -65,15 +52,24 @@ export default defineCollection(
       dateBegin: {
         type: 'date-time',
         options: {},
+        additional: {
+          protected: true,
+        },
       },
       dateEnd: {
         type: 'date-time',
         options: {},
+        additional: {
+          protected: true,
+        },
       },
       organizer: {
         type: 'record',
         options: {
           collection: 'users',
+        },
+        additional: {
+          protected: true,
         },
       },
     },
