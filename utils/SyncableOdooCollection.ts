@@ -11,6 +11,7 @@ import { Mutations } from '../server/mutations'
 import { logError, logInfo } from './logger'
 import { resultKeyNameFromField } from '@apollo/client/utilities'
 import type { UpdateEventInput } from '~/graphql'
+import type content from '~/server/plugins/content'
 
 export interface CollectionSyncResult {
   created: any[]
@@ -220,8 +221,13 @@ export class SyncableOdooCollection {
         title: odooRecord.headline || '',
         overline: odooRecord.overline || '',
         metaTags: odooRecord.metaKeywords ? [{ name: 'keywords', content: odooRecord.metaKeywords }] : [],
+        public: odooRecord.public || false,
+        publishDate: odooRecord.publishDate ? new Date(odooRecord.publishDate).getDate() : null,
+        md: odooRecord.md || '',
+        cimg: odooRecord.cimg || '',
+        heroType: odooRecord.heroType || '',
+        heroFormat: odooRecord.heroFormat || '',
         blocks: odooRecord.blocks ? odooRecord.blocks : [],
-        publishDate: odooRecord.postDate ? new Date(odooRecord.postDate).getTime() : null,
         author: odooRecord.author
           ? (await ensureUser(odooRecord.author.email, odooRecord.author.firstname, odooRecord.author.lastname))?.id
           : null,
@@ -273,7 +279,7 @@ export class SyncableOdooCollection {
         description: odooRecord.description || '',
         firstname: hasPartner ? odooRecord.user.partner.firstname || '' : '',
         lastname: hasPartner ? odooRecord.user.partner.lastname || '' : '',
-        bodyMd: hasPartner ? odooRecord.user.partner.bodyMd || '' : '',
+        md: hasPartner ? odooRecord.user.partner.md || '' : '',
         mobile: hasPartner ? odooRecord.user.partner.phone || '' : '',
         email: hasPartner ? odooRecord.user.partner.email || '' : '',
         street: hasPartner ? odooRecord.user.partner.street || '' : '',
@@ -303,6 +309,12 @@ export class SyncableOdooCollection {
         // slugBlog: secondPathSlash > -1 ? record.path.slice(0, secondPathSlash) : '',
         // slugPost: secondPathSlash > -1 ? record.path.slice(secondPathSlash + 1) : record.path,
         headline: record.title,
+        publishDate: record.publishDate ? new Date(record.publishDate) : null,
+        md: record.md || '',
+        public: record.public || false,
+        cimg: record.cimg || '',
+        heroType: record.heroType || '',
+        heroFormat: record.heroFormat || '',
         overline: record.overline,
         metaKeywords: record.metaTags.find((tag: any) => tag.name === 'keywords')?.content ?? '',
         blocks: record.blocks,

@@ -49,6 +49,22 @@ const posts = pageLikeCollection({
       type: 'text',
       options: {},
     },
+    md: {
+      type: 'text',
+      options: {},
+    },
+    heroType: {
+      type: 'text',
+      options: {},
+    },
+    heroFormat: {
+      type: 'text',
+      options: {},
+    },
+    cimg: {
+      type: 'text',
+      options: {},
+    },
     author: {
       type: 'record',
       options: {
@@ -60,7 +76,8 @@ const posts = pageLikeCollection({
 })
 
 posts.dashboard!.fieldLayout = posts.dashboard!.fieldLayout!.filter(
-  (fieldLayout) => !isString(fieldLayout) || !['cid', 'version', 'isEditable'].includes(fieldLayout),
+  (fieldLayout) =>
+    !isString(fieldLayout) || !['cid', 'version', 'isEditable', 'heroType', 'heroFormat'].includes(fieldLayout),
 )
 
 export default defineCollection(posts)

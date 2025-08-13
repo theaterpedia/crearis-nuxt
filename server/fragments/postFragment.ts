@@ -5,17 +5,19 @@ export default `
   slugBlog
   writeDate
   version
-  isPublished
-  writeDate
+  public
+  publishDate
   visits
   headline
   overline
   teasertext     
   blocks
-  content
+  md
+  cimg
+  heroType
+  heroFormat
   author { id, name, email }
   blog { id, name, templateCode }
-  postDate
   homesite { domain, domainCode }
   seoName      
   metaTitle
