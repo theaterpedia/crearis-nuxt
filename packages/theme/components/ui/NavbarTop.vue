@@ -18,6 +18,7 @@ const navigation = [{ title: 'home', _path: '/' }]
 
 // we setup a ref that keeps track of the current valid inverted (color mode)
 // and initialize the app with the default-value of the theme
+// @ts-expect-error
 const colorMode = useColorMode()
 const isInverted = ref(colorMode.value == 'dark' ? '1' : '0')
 const isSepia = ref(false)
@@ -38,6 +39,8 @@ const isDark = computed({
 const toggleDark = useToggle(isDark)
 // make a toggle out of it
 const toggleSepia = useToggle(isSepia)
+
+toggleDark(!isDark.value) // align isDark and isInverted
 
 const scrollBreak = 80
 const y = ref(useWindowScroll().y)

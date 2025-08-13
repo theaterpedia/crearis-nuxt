@@ -1,5 +1,4 @@
 <template>
-  <h2>{{ title }}</h2>
   <ThemeConfigurator background="muted"></ThemeConfigurator>
 </template>
 

@@ -4,6 +4,7 @@ import { Button, CardHero } from '@crearis/ui'
 import { TabsContent, TabsList, TabsRoot, TabsTrigger } from 'radix-vue'
 import ColorPalette from '@crearis/theme/components/ColorPalette.vue'
 import { useTheme } from '../composables/useTheme'
+import Container from './Container.vue'
 
 const { baseColors, colormap, inverted, themes, initTheme, getTsVars, getThemeVars, loadTheme, updateTheme  } = useTheme()
 
@@ -25,7 +26,8 @@ const handleLogout = async () => {
 </script>
 
 <template>
-  <SectionContainer>
+  <Section>
+    <Container>
     <CardsGallery>
       <CardHero
         v-for="theme in themes"
@@ -49,11 +51,11 @@ const handleLogout = async () => {
         </Button>
       </CardHero>
     </CardsGallery>
-        <Button @click="updateTheme()" size="medium" variant="primary" :style="'font-family: ' + theme.font">
-          Update Website
-        </Button>    
-  </SectionContainer>
-  <SectionContainer background="default">
+    <Button @click="updateTheme()" size="medium" variant="primary" :style="'font-family: ' + theme.font">
+      Update Website
+    </Button> 
+    </Container>
+    <Container background="default">
     <TabsRoot default-value="tab1" orientation="vertical">
       <TabsList aria-label="tabs example" class="gap-4">
         <TabsTrigger value="demo" class="trigger">Demo</TabsTrigger>
@@ -144,7 +146,8 @@ const handleLogout = async () => {
         <ThemeExporter :tsVars="getTsVars()" />
       </TabsContent>
     </TabsRoot>
-  </SectionContainer>
+    </Container>
+  </Section>
 </template>
 
 <style scoped>
