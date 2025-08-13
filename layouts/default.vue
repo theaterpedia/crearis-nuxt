@@ -12,7 +12,7 @@
     </UiNavbarTop>
     <Sidebar
       v-show="isSideNav"
-      footerText="30 Jahre Theaterädagogik Bayern"
+      footerText="30 Jahre Theaterpädagogik Bayern"
       logo="https://pruvious.com/uploads/logo-dasei.svg"
       logoAlt="DAS Ei"
       logoSmall="https://pruvious.com/uploads/logo-dasei-small.svg"
