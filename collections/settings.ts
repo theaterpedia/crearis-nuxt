@@ -1,6 +1,6 @@
 import { defineCollection } from '#pruvious'
-
 // @see https://pruvious.com/docs/collections
+
 export default defineCollection({
   name: 'settings',
   mode: 'single',
@@ -27,6 +27,31 @@ export default defineCollection({
         },
         addLabel: 'Add menu item',
         fieldLayout: [['link', 'label']], // Display the subfields in a single row
+      },
+    },
+    headerConfigs: {
+      type: 'repeater',
+      options: {
+        subfields: {
+          name: {
+            type: 'text',
+            options: {
+              required: true,
+            },
+          },
+          formatOptions: {
+            type: 'text-area',
+            options: {
+              required: true,
+            },
+          },
+        },
+      },
+    },
+    simpleHeaderConfig: {
+      type: 'text-area',
+      options: {
+        required: false,
       },
     },
     copyrightText: {

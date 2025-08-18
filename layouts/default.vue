@@ -4,7 +4,7 @@
       v-show="!isSideNav"
       :filled="y > scrollBreak"
       :hideLogo="route.path === '/' && y <= scrollBreak"
-      :hideSearch="searchDisablend ? true : y <= scrollBreak"
+      :hideSearch="searchDisabled ? true : y <= scrollBreak"
       :class="route.path !== '/' ? 'bg-muted-bg' : ''"
     >
       <NuxtLink to="/konferenz" class="mr-2 flex-1" :style="textShadow">Konferenz</NuxtLink>
@@ -22,55 +22,18 @@
 
     <Main class="tl:px-8 ph:px-0 mx-auto max-w-screen-2xl px-12">
       <slot name="header">
-        <Hero
-          v-if="showHero"
-          :contentAlignY="page?.fields.contentAlignY"
-          :contentType="page?.fields.phoneBanner ? 'banner' : 'text'"
-          :contentWidth="page?.fields.isFullWidth ? 'full' : 'short'"
-          :gradient_depth="page?.fields.gradientDepth"
-          :gradient_type="page?.fields.gradientType"
-          :heightTmp="page?.fields.heightTmp"
-          :imgTmp="imgTmp"
-          :imgTmpAlignX="page?.fields.imgTmpAlignX"
-          :imgTmpAlignY="page?.fields.imgTmpAlignY"
-        >
-          <Component
-            :card="page?.fields.phoneBanner && false"
-            :is="page?.fields.inBanner ? 'Banner' : 'div'"
-            transparent
-          >
-            <template v-if="route.path === '/'">
-              <Logo extended />
-            </template>
-            <template v-else>
-              <Heading v-if="heading" :content="heading" is="h1"></Heading>
-              <br v-if="heading && teaser" />
-              <MdBlock v-if="teaser" :content="teaser" htag="h3" />
-              <div v-if="page?.fields.cta">
-                <ButtonTmp
-                  v-if="page?.fields.cta"
-                  :size="page?.fields.isFullWidth ? 'medium' : 'small'"
-                  :to="page?.fields.cta.link ? page?.fields.cta.link : '#cta'"
-                  variant="plain"
-                >
-                  {{ page?.fields.cta.title }}
-                </ButtonTmp>
-                <NuxtLink
-                  v-if="page?.fields.link"
-                  :to="page?.fields.link.link"
-                  style="margin-left: 2em; text-decoration: underline"
-                  :style="page?.fields.isFullWidth ? 'font-weight:bold' : ''"
-                >
-                  {{ page?.fields.link.title }}
-                </NuxtLink>
-              </div>
-            </template>
-          </Component>
-        </Hero>
-        <SectionContainer v-else>
-          <Heading v-if="heading" :content="heading" is="h1" class="mt-14"></Heading>
-          <MdBlock v-if="teaser" :content="teaser" htag="h3" />
-        </SectionContainer>
+        <Header
+          :headerType="page?.fields?.headerType"
+          :headerSize="page?.fields?.headerSize || 'mini'"        
+          :formatOptions="page?.fields?.formatOptions"
+          :showLogoBanner="route.path === '/' && y <= scrollBreak"
+          :searchDisabled="searchDisabled"
+          :heading="page?.fields?.heading"
+          :teaser="page?.fields?.teaser"
+          :imgTmp="page?.fields?.imgTmp"
+          :cta="page?.fields?.cta"
+          :link="page?.fields?.link"
+        />
       </slot>
       <slot />
     </Main>
@@ -126,19 +89,15 @@ defineLayout({
 const page = unref(usePage())
 // const { blogLandingPage } = await getCollectionData('settings')
 
-const searchDisablend = true
-
-const heading = page?.fields.heading
-const teaser = page?.fields.teaser ? page?.fields.teaser : 'Teasertext'
-const imgTmp = page?.fields.imgTmp
+const searchDisabled = true
 
 const isSideNav: Boolean = false
 
-const showHero = heading && imgTmp
+const showHeader = page?.fields?.imgTmp && page?.fields?.headerType !== 'simple'
 const textShadow = 'text-shadow: 0.2rem 0.2rem 0.3rem hsla(110, 10%, 0%, 0.8);'
 
-const scrollBreak = showHero
-  ? page?.fields.heightTmp === 'full' || page?.fields.heightTmp === 'prominent'
+const scrollBreak = showHeader
+  ? page?.fields.headerSize === 'full' || page?.fields.headerSize === 'prominent'
     ? 400
     : 250
   : 80

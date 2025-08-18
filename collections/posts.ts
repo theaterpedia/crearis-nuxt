@@ -53,14 +53,6 @@ const posts = pageLikeCollection({
       type: 'text',
       options: {},
     },
-    heroType: {
-      type: 'text',
-      options: {},
-    },
-    heroFormat: {
-      type: 'text',
-      options: {},
-    },
     cimg: {
       type: 'text',
       options: {},
@@ -72,12 +64,34 @@ const posts = pageLikeCollection({
         fields: ['email'],
       },
     },
+    heroType: {
+      type: 'record',
+      options: {
+        collection: 'herotypes',
+        fields: ['title', 'description'],
+        placeholder: 'Select a hero type',
+      },
+    },
+    heroHeight: {
+      type: 'select',
+      options: {
+        choices: { full: 'full', prominent: 'prominent', medium: 'medium', mini: 'mini' },
+        default: 'prominent',
+        label: 'Hero Höhe',
+      },
+    },
+    formatOptions: {
+      type: 'text-area',
+      options: {
+        placeholder: "optionName: 'value', optionName: 'value'",
+        description: 'Formatierung von Hero und Page (Json)',
+      },
+    },
   },
 })
 
 posts.dashboard!.fieldLayout = posts.dashboard!.fieldLayout!.filter(
-  (fieldLayout) =>
-    !isString(fieldLayout) || !['cid', 'version', 'isEditable', 'heroType', 'heroFormat'].includes(fieldLayout),
+  (fieldLayout) => !isString(fieldLayout) || !['cid', 'version', 'isEditable', 'layout'].includes(fieldLayout),
 )
 
 export default defineCollection(posts)
