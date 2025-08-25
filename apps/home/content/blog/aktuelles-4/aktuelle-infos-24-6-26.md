@@ -36,7 +36,7 @@ _Episode Theaterpädagogik & Demokratie - Basistage - Praxisprojekt - Offenes Pr
 > - Nürnberg: 6. Juli  sowie  7. September
 > - München: 7. Juli  sowie 27. Oktober
 > 
-[weiteres Infos zum Basistag](/ausbildung-theaterpaedagogik/kurs_einstiege)
+[weiteres Infos zum Basistag](/ausbildung-theaterpaedagogik/kurs_einstiege_ins_theaterspiel)
 
   
 ## Kooperation mit dem Paul-Moor-Förderzentrum Nürnberg **Praxisprojekt Theatrales Lernen**
