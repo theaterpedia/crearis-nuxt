@@ -10,14 +10,8 @@ export default defineNuxtConfig({
     plugins: ['plugins/content.ts'],
     prerender: {
       crawlLinks: true,
-      routes: [
-        '/blog',
-        '/agenda',
-        '/ausbildung-theaterpaedagogik/aufbaustufe/profil_theatrales_lernen',
-        '/ausbildung-theaterpaedagogik/aufbaustufe/profil_performance',
-        '/ausbildung-theaterpaedagogik/aufbaustufe/berufsabschluss_theaterpaedagogik_but',
-      ],
-      ignore: ['/api', '/details', '/cart', '/ausbildung-theaterpaedagogik/aufbaustufe'],
+      routes: ['/blog', '/agenda'],
+      ignore: ['/api', '/details', '/cart'],
     },
   },
 })
