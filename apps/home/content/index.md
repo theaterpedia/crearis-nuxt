@@ -5,7 +5,7 @@ description: Ausbildung Theaterpädagogik (BuT), Fortbildung + Vernetzung in Nü
 heading: mit Theater Grenzen bewegen **AUSBILDUNG THEATERPÄDAGOGIK** 
 teaser: |
   **Grundlagen Theaterpädagogik (BuT) 2025-2027**
-  **Theaterpädagoge/in (BuT) 2025-2028**
+  **Theaterpädagoge/in (BuT) 2026-2028**
 cssclasses:
   - workshop
 start: 2024-12-06
