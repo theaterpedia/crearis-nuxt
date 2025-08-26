@@ -2,12 +2,12 @@
 navigation: false
 navigation_highlight: /ausbildung-theaterpaedagogik/einstiege
 shortcode: m17b
-heading: "**Einstiege ins Theaterspiel** Burgstallmühle 29.5 - 16.12.2025 // Blockseminarverlauf"
-start: 2025-05-29
+heading: "**Einstiege ins Theaterspiel** Burgstallmühle 25.9 - 16.12.2025 // Blockseminarverlauf"
+start: 2025-09-25
 end: 2025-12-16
 ctype: course
 tag: course
-description: Weiterbildung Theaterpädagogik - Kurs M17B Burgstallmühle 29.5 - 16.12.2025 // Blockseminarverlauf Burgstallmühle
+description: Weiterbildung Theaterpädagogik - Kurs M17B Burgstallmühle 25.9 - 16.12.2025 // Blockseminarverlauf Burgstallmühle
 title: Einstiege ins Theaterspiel
 cssclasses:
   - course
@@ -38,82 +38,21 @@ details:
    kosten: |
     ### Kosten
     - **A0 Anmeldegebühr (inkl. Basistag)** € 80,00 
-    - Frist: 24.5.2025
+    - Frist: 18.9.2025
     - **5 Kursraten A1-A5** 5 Raten x € 220,00
-    - Zahlung: 2 Raten 10. Mai, 2 Raten 10. Aug, 1 Rate 10. Nov 2025
+    - Zahlung: 2 Raten 18. Sept, 2 Raten 6. Okt, 1 Rate 10. Nov 2025
    storno: |
     ### Widerruf & Storno
     -14-tägiges Widerrufsrecht ab Datum der Anmeldung
-    -bis 5.5.2025 kostenfreies Storno
-    -danach Bezahlung A1/A2 (29.5 bis 1.6.2025) obligatorisch, bis 11.6.2025 kostenfreies Storno der Teilnahme A3-A5
+    -bis 16.9.2025 kostenfreies Storno
+    -danach Bezahlung A4/A5 (25.9 bis 28.9.2025) obligatorisch, bis 5.10.2025 kostenfreies Storno der Teilnahme A3-A5
 product:
  header: |
   ## 6 Kurseinheiten in 3 Blocks
   In 6 prägnanten Einheiten wirst Du beide Wege erleben, verstehen und selber anleiten: Du lernst die Methoden, die Leitungshaltung und typische Abläufe. Egal, welche Vorerfahrungen Du mitbringst sind wir sicher, dass Du dabei viel mitnehmen wirst.
  footer: |
-  ## September - Dezember 2024 // München, Nürnberg **Einstiege ins Theaterspiel**
+  ## September - Dezember 2025 // München, Nürnberg **Einstiege ins Theaterspiel**
 items: 
- a1_1178:
-  ctype: event
-  shortcode: a1
-  tag: Do., 29.5. bis So., 1.6 (Seminarhaus)
-  title: Einführung in die Kreisanimation **Am Anfang war der Kreis**
-  image: 
-   url: https://res.cloudinary.com/little-papillon/image/upload/w_400/v1594788813/dasei/am_anfang_war_der_kreis_s9qh5y.jpg
-   caption: Theaterpädagogik Kreisanimation
-  body: |
-   Den Einstieg in die elementare Animation bilden die Kreisspiele: Hier kommen Grundregeln und -phänomene von interaktivem Spiel sehr deutlich zum Vorschein. Zunächst beschäftigen wir uns mit den einfachen und offensichtlichen Impulsen entlang der Kreisbahn und quer durch die Kreismitte und lernen dann, zahlreiche Grundanforderungen des Theaterspiels im Kreisspiel zu trainieren.
-  start: 2025-05-29T19:00
-  ende: 2025-05-30T18:00
-  ort: |
-   Burgstallmühle 1
-   91572 Bechhofen
-  ablauf: |
-   Do. 19:00-21:30
-   Fr. 09:00-18:30
-  mit: Hans Dönitz 
- a2_1190:
-  ctype: event
-  shortcode: a2 
-  title: Arbeiten mit dem Zwei-Kreise-Modell **die Bühne kommt von selbst**
-  tag: "(Fortsetzung: Do., 29.5. bis So., 1.6)"
-  image: 
-   url: https://res.cloudinary.com/little-papillon/image/upload/w_400/v1676100503/dasei/377_dasei2022_I8A6515_p6aee7.jpg
-   caption: Foto die Bühne kommt von selbst
-  body: |
-   Wenn Du gelernt hast, die Interaktion der Gruppe im Kreis freizusetzen, entstehen fast von selbst 'Bühnenmomente'. Mit dem Zwei-Kreise-Modell lernst Du diese Momente gezielt zu gestalten und verbindest das Theaterpotential einfacher Animationen zu einem bühnenreifen Setting: Der Kreis öffnet sich zum Halbkreis und gibt in der Mitte eine Spielfläche frei.
-  start: 2025-05-31T09:00
-  ende: 2025-06-03T21:00
-  ort: |
-   Burgstallmühle 1
-   91572 Bechhofen
-  ablauf: |
-   Sa. 09:00-18:00
-   So. 09:00-15:00
-   Di. 18:00-21:00 _online_
-  mit: Hans Dönitz
- a0_1328:
-  ctype: event
-  shortcode: a0
-  title: Praxis, Theorie & Ausbildung bei DAS Ei **Basistag Theaterpädagogik**
-  tag: Fr., 4.7. online + So., 6.7. ganztags (oder alternative Terminauswahl)
-  image: 
-   url: https://res.cloudinary.com/little-papillon/image/upload/w_400/v1676101506/dasei/700_dasei2022_I8A7903_cvtigl.jpg
-   caption: Foto Basistag Theaterpädagogik
-  body: |
-   Am Basistag erlebst Du die grundsätzlichen Zusammenhänge der Theaterpädagogik von DAS Ei konzentriert und ganz praktisch am eigenen Leib. Du erarbeitest Dir ausgehend von drei Zwischenreflexionen ein Grundverständnis der Module
-   - Einstiege ins Theaterspiel (Modul A)
-   - Szenische Themenarbeit (Modul B)
-   - Pädagogische Regie (Modul C)
-  start: 2025-07-04T18:00
-  ende: 2025-07-06T19:00
-  ort: |
-   Schwanthalerstraße 91
-   80336 München
-  ablauf: |
-   Fr. 18:00-20:00 _online_
-   So. 09:30-19:00
-  mit: Hans Dönitz
  a4_1294:
   ctype: event
   shortcode: a4
@@ -153,6 +92,68 @@ items:
    So. 09:00-15:00
    Di. 18:00-21:00 _online_
   mit: Kathrin Jung
+ a1_1178:
+  ctype: event
+  shortcode: a1
+  tag: So., 12.10. ganztags + 2 Abende online
+  title: Einführung in die Kreisanimation **Am Anfang war der Kreis**
+  image: 
+   url: https://res.cloudinary.com/little-papillon/image/upload/w_400/v1594788813/dasei/am_anfang_war_der_kreis_s9qh5y.jpg
+   caption: Theaterpädagogik Kreisanimation
+  body: |
+   Den Einstieg in die elementare Animation bilden die Kreisspiele: Hier kommen Grundregeln und -phänomene von interaktivem Spiel sehr deutlich zum Vorschein. Zunächst beschäftigen wir uns mit den einfachen und offensichtlichen Impulsen entlang der Kreisbahn und quer durch die Kreismitte und lernen dann, zahlreiche Grundanforderungen des Theaterspiels im Kreisspiel zu trainieren.
+  start: 2025-10-10T18:00
+  ende: 2025-10-14T21:00
+  ort: |
+   Schwanthalerstraße 91
+   80336 München
+  ablauf: |
+   Fr. 18:00-20:00 _online_
+   So. 09:30-19:00
+   Di. 18:00-21:00 _online_
+  mit: Hans Dönitz 
+ a2_1190:
+  ctype: event
+  shortcode: a2 
+  title: Arbeiten mit dem Zwei-Kreise-Modell **die Bühne kommt von selbst**
+  tag: So., 26.10. ganztags + 2 Abende online  
+  image: 
+   url: https://res.cloudinary.com/little-papillon/image/upload/w_400/v1676100503/dasei/377_dasei2022_I8A6515_p6aee7.jpg
+   caption: Foto die Bühne kommt von selbst
+  body: |
+   Wenn Du gelernt hast, die Interaktion der Gruppe im Kreis freizusetzen, entstehen fast von selbst 'Bühnenmomente'. Mit dem Zwei-Kreise-Modell lernst Du diese Momente gezielt zu gestalten und verbindest das Theaterpotential einfacher Animationen zu einem bühnenreifen Setting: Der Kreis öffnet sich zum Halbkreis und gibt in der Mitte eine Spielfläche frei.
+  start: 2025-10-24T18:00
+  ende: 2025-10-28T21:00
+  ort: |
+   Schwanthalerstraße 91
+   80336 München
+  ablauf: |
+   Fr. 18:00-20:00 _online_
+   So. 09:30-19:00
+   Di. 18:00-21:00 _online_
+  mit: Hans Dönitz
+ a0_1328:
+  ctype: event
+  shortcode: a0
+  title: Praxis, Theorie & Ausbildung bei DAS Ei **Basistag Theaterpädagogik**
+  tag: Fr., 31.10. online + So., 2.11. ganztags (oder alternative Terminauswahl)
+  image: 
+   url: https://res.cloudinary.com/little-papillon/image/upload/w_400/v1676101506/dasei/700_dasei2022_I8A7903_cvtigl.jpg
+   caption: Foto Basistag Theaterpädagogik
+  body: |
+   Am Basistag erlebst Du die grundsätzlichen Zusammenhänge der Theaterpädagogik von DAS Ei konzentriert und ganz praktisch am eigenen Leib. Du erarbeitest Dir ausgehend von drei Zwischenreflexionen ein Grundverständnis der Module
+   - Einstiege ins Theaterspiel (Modul A)
+   - Szenische Themenarbeit (Modul B)
+   - Pädagogische Regie (Modul C)
+  start: 2025-10-31T18:00
+  ende: 2025-11-02T19:00
+  ort: |
+   Schwanthalerstraße 91
+   80336 München
+  ablauf: |
+   Fr. 18:00-20:00 _online_
+   So. 09:30-19:00
+  mit: Cornelia Jung
  a3_1346:
   ctype: event
   shortcode: a3
