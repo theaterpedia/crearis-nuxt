@@ -54,24 +54,24 @@ items:
     ctype: event
     shortcode: az
     title: Online-Information und Beratung **INFO-Teaser Aufbaustufe Theaterpädadgogik (BuT)**
-    tag: 20.10.2025 18:00-20:00 WEB (MS Teams)
+    tag: DO 23.10. 18:00-20:00 WEB (MS Teams)
     image:
       url: https://res.cloudinary.com/little-papillon/image/upload/c_crop,h_1050,q_60,w_1390,x_50,y_50/v1756048022/dasei/das_glas_voll_machen_h34pwb.png
       caption: das Glas voll machen
     body: |
       Gesamtüberblick über die Struktur der Aufbaustufe Theaterpädagogik (BuT) 2026-2028 und der beiden Profile "Theatrales Lernen" und "Performance und Interkult. Theater". Fragen und Antworten.
-    start: 2025-10-20T18:00
-    ende: 2025-10-20T20:00
+    start: 2025-10-23T18:00
+    ende: 2025-10-23T20:00
     ort: |
       ONLINE (MS Teams)
     ablauf: |
-      Di. 18:00-21:00 _online_
+      DO 18:00-20:00 _online_
     mit: Hans Dönitz (Rosalin Hertrich, Cornelia Jung)
   a0_1276:
     ctype: event
     shortcode: a0
     title: Praxis, Theorie & Ausbildung bei DAS Ei **Theaterpedia-Konferenz**
-    tag: DO-SO 21.-23. NOV München
+    tag: DO-SO 20.-23. NOV München
     image:
       url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_500,h_500,g_auto/v1666847011/pedia_ipsum/core/theaterpedia.jpg
       caption: 'Theaterpedia: Theaterpädagogik suchen und finden'

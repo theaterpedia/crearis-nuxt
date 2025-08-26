@@ -57,18 +57,18 @@ items:
     ctype: event
     shortcode: az
     title: Online-Information und Beratung **INFO-Teaser Aufbaustufe Theaterpädadgogik (BuT)**
-    tag: 20.10.2025 18:00-20:00 WEB (MS Teams)
+    tag: 23.10.2025 18:00-20:00 WEB (MS Teams)
     image:
       url: https://res.cloudinary.com/little-papillon/image/upload/c_crop,h_1050,q_60,w_1390,x_50,y_50/v1756048022/dasei/das_glas_voll_machen_h34pwb.png
       caption: das Glas voll machen
     body: |
       Gesamtüberblick über die Struktur der Aufbaustufe Theaterpädagogik (BuT) 2026-2028 und der beiden Profile "Theatrales Lernen" und "Performance und Interkult. Theater". Fragen und Antworten.
-    start: 2025-10-20T18:00
-    ende: 2025-10-20T20:00
+    start: 2025-10-23T18:00
+    ende: 2025-10-23T20:00
     ort: |
       ONLINE (MS Teams)
     ablauf: |
-      Di. 18:00-21:00 _online_
+      DO 18:00-20:00 _online_
     mit: Hans Dönitz (Rosalin Hertrich, Cornelia Jung)
 ---
 > [!data-hero] ## **Einstiege ins Theaterspiel** M16E Mue 6.10.2024 - 30.07.2025 // Sonntags & Online
