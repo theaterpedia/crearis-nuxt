@@ -38,7 +38,7 @@ details:
    kosten: |
     ### Kosten
     - **A0 Anmeldegebühr (inkl. Basistag)** € 80,00 
-    - Frist: 10.6.2025
+    - Frist: 1.10.2025
     - **5 Kursraten A1-A5** 5 Raten x € 220,00
     - Zahlung: 5 Monatsraten
    storno: |
@@ -50,7 +50,7 @@ product:
   ## 6 Kurseinheiten
   In 6 prägnanten Einheiten wirst Du beide Wege erleben, verstehen und selber anleiten: Du lernst die Methoden, die Leitungshaltung und typische Abläufe. Egal, welche Vorerfahrungen Du mitbringst sind wir sicher, dass Du dabei viel mitnehmen wirst.
  footer: |
-  ## Juni - Dezember 2025 // Nürnberg **Einstiege ins Theaterspiel**
+  ## Okt - Dezember 2025 // Nürnberg **Einstiege ins Theaterspiel**
 items: 
  a1_1178:
   ctype: event
