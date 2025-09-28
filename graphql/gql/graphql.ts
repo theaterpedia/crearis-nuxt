@@ -14,6 +14,12 @@ export type Scalars = {
   Int: { input: number; output: number; }
   Float: { input: number; output: number; }
   /**
+   * The `Date` scalar type represents a Date
+   * value as specified by
+   * [iso8601](https://en.wikipedia.org/wiki/ISO_8601).
+   */
+  Date: { input: any; output: any; }
+  /**
    * The `GenericScalar` scalar type represents a generic
    * GraphQL scalar value that could be:
    * String, Boolean, Int, Float, List or Object.
@@ -38,9 +44,12 @@ export type AddBlogPostInput = {
   blocks: InputMaybe<Scalars['GenericScalar']['input']>;
   blogId: Scalars['Int']['input'];
   headline: Scalars['String']['input'];
+  md: InputMaybe<Scalars['String']['input']>;
   metaDescription: InputMaybe<Scalars['String']['input']>;
   metaKeywords: InputMaybe<Scalars['String']['input']>;
   overline: InputMaybe<Scalars['String']['input']>;
+  public: InputMaybe<Scalars['Boolean']['input']>;
+  publishDate: InputMaybe<Scalars['Date']['input']>;
   teasertext: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -197,6 +206,7 @@ export type Company = {
   image: Maybe<Scalars['String']['output']>;
   mobile: Maybe<Scalars['String']['output']>;
   name: Maybe<Scalars['String']['output']>;
+  partner: Maybe<Partner>;
   phone: Maybe<Scalars['String']['output']>;
   socialFacebook: Maybe<Scalars['String']['output']>;
   socialGithub: Maybe<Scalars['String']['output']>;
@@ -301,14 +311,19 @@ export type Event = {
   __typename?: 'Event';
   barcode: Maybe<Scalars['String']['output']>;
   blocks: Maybe<Scalars['GenericScalar']['output']>;
+  cid: Maybe<Scalars['String']['output']>;
   company: Maybe<Partner>;
   currency: Maybe<Currency>;
   dateBegin: Maybe<Scalars['String']['output']>;
   dateEnd: Maybe<Scalars['String']['output']>;
   description: Maybe<Scalars['String']['output']>;
+  domainCode: Scalars['String']['output'];
   editMode: Maybe<EventEditMode>;
   eventMailTemplateId: Maybe<Scalars['String']['output']>;
   eventType: Maybe<EventType>;
+  formatOptions: Maybe<Scalars['GenericScalar']['output']>;
+  headerSize: Maybe<Scalars['String']['output']>;
+  headerType: Maybe<Scalars['String']['output']>;
   headline: Maybe<Scalars['String']['output']>;
   id: Scalars['Int']['output'];
   location: Maybe<Partner>;
@@ -323,7 +338,6 @@ export type Event = {
   seatsLimited: Maybe<Scalars['Boolean']['output']>;
   slug: Maybe<Scalars['String']['output']>;
   stage: Maybe<EventStage>;
-  syncId: Maybe<Scalars['String']['output']>;
   teasertext: Maybe<Scalars['String']['output']>;
   templateCode: Maybe<Scalars['String']['output']>;
   ticketInstructions: Maybe<Scalars['String']['output']>;
@@ -902,7 +916,6 @@ export type Partner = {
   __typename?: 'Partner';
   addressType: Maybe<AddressType>;
   billingAddress: Maybe<Partner>;
-  bodyMd: Maybe<Scalars['String']['output']>;
   city: Maybe<Scalars['String']['output']>;
   company: Maybe<Partner>;
   contacts: Maybe<Array<Partner>>;
@@ -910,14 +923,20 @@ export type Partner = {
   currentPricelist: Maybe<Pricelist>;
   email: Maybe<Scalars['String']['output']>;
   firstname: Maybe<Scalars['String']['output']>;
+  formatOptions: Maybe<Scalars['GenericScalar']['output']>;
+  headerSize: Maybe<Scalars['String']['output']>;
+  headerType: Maybe<Scalars['String']['output']>;
   id: Scalars['Int']['output'];
   image: Maybe<Scalars['String']['output']>;
+  imagePath: Maybe<Scalars['String']['output']>;
   isCompany: Scalars['Boolean']['output'];
   lastname: Maybe<Scalars['String']['output']>;
+  md: Maybe<Scalars['String']['output']>;
   mobile: Maybe<Scalars['String']['output']>;
   name: Maybe<Scalars['String']['output']>;
   parentId: Maybe<Partner>;
   phone: Maybe<Scalars['String']['output']>;
+  public: Maybe<Scalars['Boolean']['output']>;
   publicPricelist: Maybe<Pricelist>;
   signupToken: Maybe<Scalars['String']['output']>;
   signupValid: Maybe<Scalars['String']['output']>;
@@ -925,6 +944,7 @@ export type Partner = {
   street: Maybe<Scalars['String']['output']>;
   street2: Maybe<Scalars['String']['output']>;
   vat: Maybe<Scalars['String']['output']>;
+  websiteLink: Maybe<Scalars['String']['output']>;
   zip: Maybe<Scalars['String']['output']>;
 };
 
@@ -981,22 +1001,27 @@ export type Post = {
   author: Maybe<Partner>;
   blocks: Maybe<Scalars['GenericScalar']['output']>;
   blog: Maybe<Blog>;
+  cid: Maybe<Scalars['String']['output']>;
+  cimg: Maybe<Scalars['String']['output']>;
   content: Maybe<Scalars['String']['output']>;
   domainCode: Maybe<Scalars['String']['output']>;
+  formatOptions: Maybe<Scalars['GenericScalar']['output']>;
+  headerSize: Maybe<Scalars['String']['output']>;
+  headerType: Maybe<Scalars['String']['output']>;
   headline: Maybe<Scalars['String']['output']>;
   homesite: Maybe<Website>;
   id: Scalars['Int']['output'];
-  isPublished: Maybe<Scalars['Boolean']['output']>;
+  md: Maybe<Scalars['String']['output']>;
   metaDescription: Maybe<Scalars['String']['output']>;
   metaKeywords: Maybe<Scalars['String']['output']>;
   metaTitle: Maybe<Scalars['String']['output']>;
   overline: Maybe<Scalars['String']['output']>;
   postDate: Maybe<Scalars['String']['output']>;
-  publishedDate: Maybe<Scalars['String']['output']>;
+  public: Maybe<Scalars['Boolean']['output']>;
+  publishDate: Maybe<Scalars['String']['output']>;
   seoName: Maybe<Scalars['String']['output']>;
   slugBlog: Maybe<Scalars['String']['output']>;
   slugPost: Maybe<Scalars['String']['output']>;
-  syncId: Maybe<Scalars['String']['output']>;
   teasertext: Maybe<Scalars['String']['output']>;
   version: Maybe<Scalars['Int']['output']>;
   visits: Maybe<Scalars['Int']['output']>;
@@ -1422,8 +1447,9 @@ export type UpdateAddressInput = {
 
 export type UpdateEventInput = {
   blocks: InputMaybe<Scalars['GenericScalar']['input']>;
+  /** Crearis ID of the event to update. */
+  cid: Scalars['String']['input'];
   description: InputMaybe<Scalars['String']['input']>;
-  id: Scalars['Int']['input'];
   metaDescription: InputMaybe<Scalars['String']['input']>;
   metaKeywords: InputMaybe<Scalars['String']['input']>;
   metaTitle: InputMaybe<Scalars['String']['input']>;
@@ -1431,7 +1457,8 @@ export type UpdateEventInput = {
   note: InputMaybe<Scalars['String']['input']>;
   overline: InputMaybe<Scalars['String']['input']>;
   teasertext: InputMaybe<Scalars['String']['input']>;
-  templateCode: InputMaybe<Scalars['String']['input']>;
+  /** old Version of the event to update. */
+  version: Scalars['Int']['input'];
 };
 
 export type UpdateMyAccountParams = {
@@ -1443,12 +1470,18 @@ export type UpdateMyAccountParams = {
 export type UpdatePostInput = {
   authorId: InputMaybe<Scalars['Int']['input']>;
   blocks: InputMaybe<Scalars['GenericScalar']['input']>;
+  /** Crearis ID of the event to update. */
+  cid: Scalars['String']['input'];
   headline: InputMaybe<Scalars['String']['input']>;
-  id: Scalars['Int']['input'];
+  md: InputMaybe<Scalars['String']['input']>;
   metaDescription: InputMaybe<Scalars['String']['input']>;
   metaKeywords: InputMaybe<Scalars['String']['input']>;
   overline: InputMaybe<Scalars['String']['input']>;
+  public: InputMaybe<Scalars['Boolean']['input']>;
+  publishDate: InputMaybe<Scalars['Date']['input']>;
   teasertext: InputMaybe<Scalars['String']['input']>;
+  /** old Version of the event to update. */
+  version: Scalars['Int']['input'];
 };
 
 export type User = {

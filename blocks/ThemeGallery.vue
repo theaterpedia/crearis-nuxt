@@ -1,21 +1,31 @@
 <template>
-  <ThemeConfigurator background="muted"></ThemeConfigurator>
+  <ThemeConfigurator background="muted" @update:theme-config="changeThemeConfig" @update:theme-id="changeThemeId"></ThemeConfigurator>
+  <button @click="changeTheme">Change Theme</button>
 </template>
 
 <script lang="ts" setup>
 import { defineBlock, textField } from '#pruvious'
+import { ref } from 'vue'
 
 defineBlock({
   icon: 'Pencil',
   label: 'B: ThemeSwitch',
 })
 
-defineProps({
-  title: textField({
-    placeholder: 'Heading: _ID_ overline **HEADLINE** subline',
-    label: 'Heading (optional)',
-    required: false,
-  }),
-})
+const newThemeConfig = ref('')
+const newThemeId = ref(0)
+
+const changeThemeConfig = (newConfig: string) => {
+  // Logic to change the theme config
+  newThemeConfig.value = newConfig
+}
+
+const changeThemeId = (newId: number) => {
+  newThemeId.value = newId
+}
+
+const changeTheme = async () => {
+  await updateSettings({ themeId: newThemeId.value, themeConfig: newThemeConfig.value })
+}
 
 </script>

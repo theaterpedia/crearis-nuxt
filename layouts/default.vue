@@ -1,5 +1,5 @@
 <template>
-  <Component :is="isSideNav ? 'Box' : 'div'" class="text-sm sm:text-base">
+  <Component :is="isSideNav ? 'Box' : 'div'" class="text-sm sm:text-base" :style="themeId !== 0 ? cssVars : {}">
     <UiNavbarTop
       v-show="!isSideNav"
       :filled="y > scrollBreak"
@@ -46,6 +46,8 @@ import { ref } from 'vue'
 import { useWindowScroll } from '@vueuse/core'
 import { defineLayout } from '#pruvious'
 import { usePage } from '#pruvious/client'
+import { useTheme } from '#imports'
+import { getCollectionData } from '#pruvious/client'
 
 defineLayout({
   label: 'default',
@@ -88,6 +90,15 @@ defineLayout({
 
 const page = unref(usePage())
 // const { blogLandingPage } = await getCollectionData('settings')
+
+const { theme } = await getCollectionData('settings')
+console.log('Layout theme:', theme)
+if (theme !== undefined && theme !== 0) {
+  useTheme().initTheme(theme)
+}
+
+const cssVars = useAppConfig().cssVars
+const themeId = useTheme().getThemeId()
 
 const searchDisabled = true
 

@@ -1,12 +1,12 @@
 <script lang="ts" setup>
-import { ref} from 'vue'
+import { ref, watch } from 'vue'
 import { Button, CardHero } from '@crearis/ui'
 import { TabsContent, TabsList, TabsRoot, TabsTrigger } from 'radix-vue'
 import ColorPalette from '@crearis/theme/components/ColorPalette.vue'
 import { useTheme } from '../composables/useTheme'
 import Container from './Container.vue'
 
-const { baseColors, colormap, inverted, themes, initTheme, getTsVars, getThemeVars, loadTheme, updateTheme  } = useTheme()
+const { baseColors, colormap, inverted, theme, themes, getThemeId, initTheme, getTsVars, getThemeVars, loadTheme, getConfigJson  } = useTheme()
 
 initTheme(0)
 // BEGIN: not used
@@ -21,6 +21,15 @@ const handleLogin = async () => {
 const handleLogout = async () => {
   /* await logout() */
 }
+
+// add emitter for configJson and themeId
+const emit = defineEmits(['update:themeId', 'update:themeConfig'])
+watch(getThemeId, (newValue: number) => {
+  emit('update:themeId', newValue)
+})
+watch(getConfigJson, (newValue: string) => {
+  emit('update:themeConfig', newValue)
+})
 
 // END: not used
 </script>
@@ -51,9 +60,7 @@ const handleLogout = async () => {
         </Button>
       </CardHero>
     </CardsGallery>
-    <Button @click="updateTheme()" size="medium" variant="primary" :style="'font-family: ' + theme.font">
-      Update Website
-    </Button> 
+ 
     </Container>
     <Container background="default">
     <TabsRoot default-value="tab1" orientation="vertical">
@@ -143,7 +150,7 @@ const handleLogout = async () => {
       </TabsContent>
       <TabsContent value="export" class="p-4">
         <Heading content="**Export**Paste settings into theme.ts" is="h2" />
-        <ThemeExporter :tsVars="getTsVars()" />
+        <ThemeExporter :tsVars="getTsVars()" :themeId="theme.id" :themeConfig="getConfigJson()" />
       </TabsContent>
     </TabsRoot>
     </Container>
