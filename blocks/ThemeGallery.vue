@@ -25,7 +25,18 @@ const changeThemeId = (newId: number) => {
 }
 
 const changeTheme = async () => {
-  await updateSettings({ themeId: newThemeId.value, themeConfig: newThemeConfig.value })
+  try {
+    const { data } = await $fetch('/api/settings', {
+      method: 'PATCH',
+      body: {
+        themeId: newThemeId.value,
+        themeConfig: newThemeConfig.value
+      }
+    })
+    console.log('Theme updated successfully:', data)
+  } catch (error) {
+    console.error('Failed to update theme:', error)
+  }
 }
 
 </script>
