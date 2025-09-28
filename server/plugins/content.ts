@@ -1,5 +1,5 @@
 // @ts-ignore
-import { defineNitroPlugin } from 'nitropack/runtime'
+// import { defineNitroPlugin } from 'nitropack/runtime'
 import { consola } from 'consola'
 import { parse } from '~/utils/parse'
 
