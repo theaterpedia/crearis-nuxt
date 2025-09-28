@@ -1,4 +1,7 @@
-import consola from 'consola'
+import { defineNitroPlugin } from '#imports'
+// @ts-ignore
+import { defineNitroPlugin } from 'nitropack/runtime'
+import { consola } from 'consola'
 import { parse } from '~/utils/parse'
 
 export default defineNitroPlugin((nitroApp) => {

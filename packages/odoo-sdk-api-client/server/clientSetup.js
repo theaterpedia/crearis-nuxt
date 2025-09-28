@@ -1,11 +1,9 @@
-import { ApolloClient, InMemoryCache } from '@apollo/client/core/core.cjs'
-import { createHttpLink } from '@apollo/client/link/http/http.cjs'
-import { ApolloLink } from '@apollo/client'
-import type { MiddlewareConfig } from '../index'
+const { ApolloClient, InMemoryCache } = require('@apollo/client/core/core.cjs')
+const { createHttpLink } = require('@apollo/client/link/http/http.cjs')
+const { ApolloLink } = require('@apollo/client')
+const fetch = require('cross-fetch')
 
-import fetch from 'cross-fetch'
-
-const buildClient = (settings: MiddlewareConfig) => {
+const buildClient = (settings) => {
   const httpLink = createHttpLink({
     uri: settings.odooGraphqlUrl,
     credentials: 'include',
@@ -45,4 +43,4 @@ const buildClient = (settings: MiddlewareConfig) => {
   })
 }
 
-export default buildClient
+module.exports = buildClient
