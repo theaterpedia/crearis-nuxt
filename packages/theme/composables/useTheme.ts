@@ -294,14 +294,24 @@ export function useTheme() {
 
   const themeId = ref(0)
   const theme = ref(themes[0])
+
+  // active theme state (preview theme if selected)
   const font = ref(theme.value.font)
   const headings = ref(theme.value.headings)
-  const baseColors = reactive<BaseColors>(theme.value.baseColors)
-  const colormap = ref<SfColorMapping[]>(colormap_defaults)
+  const baseColors = reactive<BaseColors>({ ...theme.value.baseColors })
+  const colormap = ref<SfColorMapping[]>([...colormap_defaults])
   const inverted = ref(false)
   const getInverted = () => {
     return inverted.value ? '1' : '0'
   }
+
+  // currently edited theme state (for page-level theming)
+  // const editFont = ref(theme.value.font)
+  // const editHeadings = ref(theme.value.headings)
+  // const editBaseColors = reactive<BaseColors>({ ...theme.value.baseColors })
+  // const editColormap = ref<SfColorMapping[]>([...colormap_defaults])
+  // const editInverted = ref(false)
+
   const loading = ref(false)
   // const toast = useToast()
   const getThemeId = () => {
@@ -332,11 +342,15 @@ export function useTheme() {
     return colormap_defaults.map((c) => colormap.find((tc) => tc.name === c.name) || c)
   }
 
-  const isPinned = (colorName: String) => {
+  const isPinned = (colorName: String, colors?: BaseColors) => {
     if (colorName === 'gray') return true
     if (colorName === 'neutral') return false
-    if (!baseColors[colorName.toString()]) return false
-    return baseColors[colorName.toString()].endsWith('.001')
+    
+    // Use provided colors or fall back to global baseColors
+    const targetColors = colors || baseColors
+    const colorKey = colorName.toString() as keyof BaseColors
+    if (!targetColors[colorKey]) return false
+    return targetColors[colorKey].endsWith('.001')
   }
 
   // update gray color if neutral changes
@@ -361,7 +375,7 @@ export function useTheme() {
         if (value.shade === 500) {
           return `${asCss ? '--color-' : '"'}${value.name}${asCss ? ': ' : '": "'}${varName}${asCss ? ';' : '",'}`
         }
-        return `${asCss ? '--color-' : '"'}${value.name}${asCss ? ': ' : '": "'}${palette(varName, isPinned(value.sfname) ? '0' : 'var(--color-inverted)')[value.shade.toString()]}${asCss ? ';' : '",'}`
+        return `${asCss ? '--color-' : '"'}${value.name}${asCss ? ': ' : '": "'}${palette(varName, isPinned(value.sfname, colors) ? '0' : 'var(--color-inverted)')[value.shade as keyof ReturnType<typeof palette>]}${asCss ? ';' : '",'}`
       }))
     )
   }
@@ -402,7 +416,10 @@ export function useTheme() {
   const updateTheme = () => {
     cssColorVars.value = getColorVars(baseColors, getColormapWithDefaults(colormap.value), true)
     cssFontVars.value = getFontVars(font.value, headings.value, true)
-    console.log('Current colors:', cssColorVars.value)
+    // console.log('🎨 Current theme base-colors:', JSON.stringify(themes[themeId.value].baseColors))
+    // log only the colormap entries (all strings without '-base'), concatenated to a single string with line breaks
+    // console.log('🎨 Current theme bg-colormap:', '\n'.concat(cssColorVars.value.filter((c) => c.indexOf('bg') > 0).join('\n')))
+
     useHead({
       htmlAttrs: {
         'data-theme': 'dynamic',
@@ -423,8 +440,9 @@ export function useTheme() {
   }
 
   const getThemeVars = (id: number) => {
-    const colors = getColorVars(themes[id].baseColors, themes[id].colormap, true)
-    const fonts = getFontVars(themes[id].font, themes[id].heading, true)
+    // Use the specific theme's baseColors for pinning logic, not the global state
+    const colors = getColorVars(themes[id].baseColors, getColormapWithDefaults(themes[id].colormap), true)
+    const fonts = getFontVars(themes[id].font, themes[id].headings, true)
     const theme_invert = themes[id].inverted ? '1' : '0'
     const ThemeCssVars = colors.concat(fonts).map((v) => v.replace('var(--color-inverted)', theme_invert))
     return ThemeCssVars
