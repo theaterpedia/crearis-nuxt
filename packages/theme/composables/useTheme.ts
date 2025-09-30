@@ -354,7 +354,7 @@ export function useTheme() {
         // if value ends with ' pin', set boolean pin to true and remove it from value
         const oklchColor = `oklch(${value})`
         return `${asCss ? '--color-' : '"'}${key}-base${asCss ? ': ' : '": "'}${palette(oklchColor, 'var(--color-inverted)')[500]}${asCss ? ';' : '",'}`
-      }),
+      }).concat(
       Object.entries(colormap).map(([key, value]) => {
         const varName = `var(--color-${value.sfname}-base)`
         // if shade is 500, use the base color = no calculations + no effect on 'inverted'
@@ -362,7 +362,7 @@ export function useTheme() {
           return `${asCss ? '--color-' : '"'}${value.name}${asCss ? ': ' : '": "'}${varName}${asCss ? ';' : '",'}`
         }
         return `${asCss ? '--color-' : '"'}${value.name}${asCss ? ': ' : '": "'}${palette(varName, isPinned(value.sfname) ? '0' : 'var(--color-inverted)')[value.shade.toString()]}${asCss ? ';' : '",'}`
-      })
+      }))
     )
   }
 
@@ -400,11 +400,17 @@ export function useTheme() {
   }
 
   const updateTheme = () => {
-    console.log('Current theme:', theme.value)
-    cssColorVars.value = getColorVars(baseColors, colormap.value, true)
+    cssColorVars.value = getColorVars(baseColors, getColormapWithDefaults(colormap.value), true)
     cssFontVars.value = getFontVars(font.value, headings.value, true)
     console.log('Current colors:', cssColorVars.value)
-    useHead({ htmlAttrs: { style: cssColorVars.value.concat(cssFontVars.value) } })
+    useHead({
+      htmlAttrs: {
+        'data-theme': 'dynamic',
+        style: cssColorVars.value.concat(cssFontVars.value),
+        id: 'dynamic-theme-vars'
+      },
+    })
+
     // const newAppConfig = useAppConfig().cssVars
 
     //convert colorVars to css vars
@@ -512,6 +518,8 @@ export function useTheme() {
   /* const isAuthenticated = computed(() => {
     return user?.value?.id || Boolean(userCookie.value)
   }) */
+
+  initTheme(0)
 
   return {
     baseColors,

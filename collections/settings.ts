@@ -67,7 +67,6 @@ export default defineCollection({
     themeConfig: {
       type: 'text-area',
       options: {
-        multiline: true,
         description: 'Custom theme configuration in JSON format',
         required: false,
       },
