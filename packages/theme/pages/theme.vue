@@ -34,6 +34,126 @@ const getThemeColors = (themeData: any) => {
   }))
 }
 
+// Mode state management
+type ThemeMode = 'default' | 'preview' | 'config'
+const currentMode = ref<ThemeMode>('default')
+const defaultTheme = ref(0)
+
+// Button configurations
+const primaryButtonConfig = computed(() => {
+  switch (currentMode.value) {
+    case 'default':
+      return { label: 'Reset', action: 'reset' }
+    case 'preview':
+      return { label: 'Save', action: 'save' }
+    case 'config':
+      return { label: 'Save', action: 'save' }
+  }
+})
+
+const secondaryButtonConfig = computed(() => {
+  switch (currentMode.value) {
+    case 'default':
+      return { label: 'Edit', action: 'edit' }
+    case 'preview':
+      return { label: 'Edit', action: 'edit' }
+    case 'config':
+      return { label: 'Cancel', action: 'cancel' }
+  }
+})
+
+// Abstract event handlers
+const handlePrimaryAction = () => {
+  const action = primaryButtonConfig.value.action
+  switch (action) {
+    case 'reset':
+      performReset()
+      break
+    case 'save':
+      performSave()
+      break
+  }
+}
+
+const handleSecondaryAction = () => {
+  const action = secondaryButtonConfig.value.action
+  switch (action) {
+    case 'edit':
+      performEdit()
+      break
+    case 'cancel':
+      performCancel()
+      break
+  }
+}
+
+// Action functions
+const performReset = () => {
+  // Reset theme to default state
+  console.log('Resetting theme...')
+  // Add reset logic here
+}
+
+const performEdit = () => {
+  // Switch to config mode for editing (only from preview mode)
+  if (currentMode.value === 'preview') {
+    console.log('Switching to config mode...')
+    currentMode.value = 'config'
+  }
+}
+
+const performCancel = () => {
+  // Cancel changes with confirmation and return to previous mode
+  if (confirm('Änderungen verwerfen?')) {
+    console.log('Canceling changes...')
+    // Return to preview or default mode based on current theme
+    if (theme.value.id === defaultTheme.value) {
+      currentMode.value = 'default'
+    } else {
+      currentMode.value = 'preview'
+    }
+  }
+}
+
+const performSave = () => {
+  // Save current theme changes and exit config mode
+  console.log('Saving theme...')
+  updateTheme()
+  // Return to preview or default mode based on current theme
+  if (theme.value.id === defaultTheme.value) {
+    currentMode.value = 'default'
+  } else {
+    currentMode.value = 'preview'
+  }
+}
+
+// Handle preview card clicks
+const handlePreviewClick = (themeId: number) => {
+  loadTheme(themeId)
+  if (themeId === defaultTheme.value) {
+    currentMode.value = 'default'
+  } else {
+    currentMode.value = 'preview'
+  }
+}
+
+// Computed hero heading with AKTIV prefix for default mode
+const heroHeading = computed(() => {
+  if (currentMode.value === 'default') {
+    return `AKTIV: ${theme.value.heading}`
+  }
+  return theme.value.heading
+})
+
+// Visibility computed properties
+const showGallery = computed(() => {
+  return currentMode.value === 'default' || currentMode.value === 'preview'
+})
+
+const showConfiguration = computed(() => {
+  return currentMode.value === 'config'
+})
+
 const NuxtLink = resolveComponent('NuxtLink')
 
 // BEGIN: not used
@@ -68,12 +188,33 @@ const handleLogout = async () => {
           imgTmpAlignY="top"
         >
           <banner transparent>
-            <Heading :content="theme.heading" is="h2" />
+            <Heading :content="heroHeading" is="h2" />
             <p v-html="theme.description" class="text-sm font-light"></p>
 
-            <Button @click="updateTheme()" size="medium" variant="primary" :style="'font-family: ' + theme.font">
-              Update Website
-            </Button>
+            <div class="flex gap-3 mt-4">
+              <Button 
+                @click="handlePrimaryAction()" 
+                size="medium" 
+                variant="primary" 
+                :style="'font-family: ' + theme.font"
+              >
+                {{ primaryButtonConfig.label }}
+              </Button>
+              
+              <Button 
+                @click="handleSecondaryAction()" 
+                size="medium" 
+                variant="plain" 
+                :style="'font-family: ' + theme.font"
+              >
+                {{ secondaryButtonConfig.label }}
+              </Button>
+            </div>
+            
+            <!-- Mode Indicator -->
+            <div class="mt-2 text-xs text-white/60 font-medium">
+              Mode: {{ currentMode.charAt(0).toUpperCase() + currentMode.slice(1) }}
+            </div>
           </banner>
           
           <!-- Enhanced Color Display - Right Edge -->
@@ -102,7 +243,9 @@ const handleLogout = async () => {
           </div>
         </Hero>
       </template>
-      <SectionContainer background="muted">
+      
+      <!-- Themes Gallery - Only show in default and preview modes -->
+      <SectionContainer v-if="showGallery" background="muted">
         <CardsGallery>
           <!-- make the style isolated -->
           <CardHero
@@ -143,7 +286,7 @@ const handleLogout = async () => {
               </template>
             </div>
 
-            <Button @click="loadTheme(theme.id)" size="small" :style="[{'font-family': theme.font}, {'--color-inverted': theme.inverted ? '0' : '1'},{ 'isolation': 'isolate' }]">
+            <Button @click="handlePreviewClick(theme.id)" size="small" :style="[{'font-family': theme.font}, {'--color-inverted': theme.inverted ? '0' : '1'},{ 'isolation': 'isolate' }]">
               Vorschau
             </Button>
           </CardHero>
@@ -152,7 +295,9 @@ const handleLogout = async () => {
           Update Website
         </Button>
       </SectionContainer>
-      <SectionContainer background="default">
+
+      <!-- Theme Configuration - Only show in config mode -->
+      <SectionContainer v-if="showConfiguration" background="default">
         <TabsRoot default-value="tab1" orientation="vertical">
           <TabsList aria-label="tabs example" class="gap-4">
             <TabsTrigger value="demo" class="trigger">Demo</TabsTrigger>
