@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, resolveComponent, computed } from 'vue'
+import { ref, resolveComponent, computed, watch } from 'vue'
 import { Button, CardHero } from '@crearis/ui'
 import { TabsContent, TabsList, TabsRoot, TabsTrigger } from 'radix-vue'
 import { useTheme } from '../composables/useTheme'
@@ -38,6 +38,7 @@ const getThemeColors = (themeData: any) => {
 type ThemeMode = 'default' | 'preview' | 'config'
 const currentMode = ref<ThemeMode>('default')
 const defaultTheme = ref(0)
+const autoUpdate = ref(true)
 
 // Button configurations
 const primaryButtonConfig = computed(() => {
@@ -154,6 +155,22 @@ const showConfiguration = computed(() => {
   return currentMode.value === 'config'
 })
 
+// Auto-update watcher for config changes
+watch(
+  [baseColors, colormap, inverted],
+  () => {
+    if (autoUpdate.value && currentMode.value === 'config') {
+      updateTheme()
+    }
+  },
+  { deep: true }
+)
+
+// Manual update function for when auto is disabled
+const manualUpdate = () => {
+  updateTheme()
+}
+
 const NuxtLink = resolveComponent('NuxtLink')
 
 // BEGIN: not used
@@ -214,6 +231,32 @@ const handleLogout = async () => {
             <!-- Mode Indicator -->
             <div class="mt-2 text-xs text-white/60 font-medium">
               Mode: {{ currentMode.charAt(0).toUpperCase() + currentMode.slice(1) }}
+              
+              <!-- Config Mode Auto-Update Controls -->
+              <template v-if="currentMode === 'config'">
+                <div class="flex items-center gap-2 mt-2">
+                  <label class="flex items-center gap-1 text-xs">
+                    <input 
+                      v-model="autoUpdate" 
+                      type="checkbox" 
+                      class="w-3 h-3 rounded border border-white/30 bg-black/20"
+                    />
+                    <span class="text-white/80">auto</span>
+                  </label>
+                  
+                  <!-- Manual Update Button - only show when auto is disabled -->
+                  <Button 
+                    v-if="!autoUpdate"
+                    @click="manualUpdate()" 
+                    size="small" 
+                    variant="plain"
+                    class="text-xs px-2 py-1 min-h-0 h-6"
+                    :style="'font-family: ' + theme.font"
+                  >
+                    Update
+                  </Button>
+                </div>
+              </template>
             </div>
           </banner>
           
