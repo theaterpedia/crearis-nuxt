@@ -1,89 +1,67 @@
 <template>
   <PruviousBase>
     <div class="scrollbar-thin overflow-auto">
-      <!-- Dashboard wrapper with theme styles -->
-      <div :style="getCssVars(true)">
-        <!-- Hero Header Section -->
-        <Hero
-          :imgTmp="imgUrl"
-          :overlay="getoverlay('left-bottom', 0.5)"
-          contentType="banner"
-          contentWidth="short"
-          heightTmp="small"
-          imgTmpAlignX="cover"
-          imgTmpAlignY="top"
-          class="relative"
-        >
-          <banner transparent>
-            <Heading :content="heroHeading" is="h2" :style="[{'font-family': theme.font}]" />
-            <p v-html="theme.description" class="text-sm font-light" :style="[{'font-family': theme.font}]"></p>
+      <!-- Two Column Layout -->
+      <div class="flex min-h-screen w-full gap-6">
+        <!-- Left Column - Hero Section -->
+        <div class="flex flex-col flex-shrink min-w-0" :style="getCssVars(true)">
+          <Hero
+            :imgTmp="imgUrl"
+            :overlay="getoverlay('left-bottom', 0.5)"
+            contentType="banner"
+            contentWidth="short"
+            heightTmp="medium"
+            imgTmpAlignX="cover"
+            imgTmpAlignY="top"
+            class="relative h-full"
+            style="max-height: 30rem; max-width: 35rem"
+          >
+            <banner transparent>
+              <Heading :content="heroHeading" is="h2" :style="[{'font-family': theme.font}]" />
+              <p v-html="theme.description" class="text-sm font-light" :style="[{'font-family': theme.font}]"></p>
 
-            <div class="flex gap-3 mt-4">
-              <CrearisButton 
-                @click="handlePrimaryAction()" 
-                size="medium" 
-                variant="primary" 
-                :style="[{'font-family': theme.font}, {'--color-inverted': theme.inverted ? '0' : '1'}]"
-              >
-                {{ primaryButtonConfig.label }}
-              </CrearisButton>
-              
-              <CrearisButton 
-                @click="handleSecondaryAction()" 
-                size="medium" 
-                variant="plain" 
-                :style="[{'font-family': theme.font}, {'--color-inverted': theme.inverted ? '0' : '1'}]"
-              >
-                {{ secondaryButtonConfig.label }}
-              </CrearisButton>
-            </div>
-            
-            <!-- Mode Indicator -->
-            <div class="mt-2 text-xs text-white/60 font-medium">
-              Mode: {{ currentMode.charAt(0).toUpperCase() + currentMode.slice(1) }}
-              
-              <!-- Config Mode Auto-Update Controls -->
-              <template v-if="currentMode === 'config'">
-                <div class="flex items-center gap-2 mt-2">
-                  <label class="flex items-center gap-1 text-xs">
-                    <input 
-                      v-model="autoUpdate" 
-                      type="checkbox" 
-                      class="w-3 h-3 rounded border border-white/30 bg-black/20"
-                    />
-                    <span class="text-white/80">auto</span>
-                  </label>
-                  
-                  <!-- Manual Update Button - only show when auto is disabled -->
-                  <CrearisButton 
-                    v-if="!autoUpdate"
-                    @click="manualUpdate()" 
-                    size="small" 
-                    variant="plain"
-                    class="text-xs px-2 py-1 min-h-0 h-6"
-                    :style="[{'font-family': theme.font}, {'--color-inverted': theme.inverted ? '0' : '1'}]"
-                  >
-                    Update
-                  </CrearisButton>
+              <!-- Theme Color Demo Buttons -->
+              <div class="flex gap-3 mt-4">
+                <div 
+                  class="px-4 py-2 rounded-md font-medium text-sm cursor-default"
+                  :style="[
+                    {'font-family': theme.font}, 
+                    {'background-color': `oklch(${theme.baseColors.primary})`},
+                    {'color': `oklch(${theme.baseColors.primary.replace(/[\d.]+%/, '15%')})`}
+                  ]"
+                >
+                  Primary
                 </div>
-              </template>
-            </div>
-          </banner>
+                
+                <div 
+                  class="px-4 py-2 rounded-md font-medium text-sm border cursor-default"
+                  :style="[
+                    {'font-family': theme.font}, 
+                    {'border-color': `oklch(${theme.baseColors.secondary})`},
+                    {'color': `oklch(${theme.baseColors.secondary})`},
+                    {'background-color': 'transparent'}
+                  ]"
+                >
+                  Secondary
+                </div>
+              </div>
+            </banner>
+          </Hero>
           
-          <!-- Enhanced Color Display - Right Edge -->
-          <div class="absolute top-4 right-0 flex flex-col gap-2">
+          <!-- Enhanced Color Display - Below Hero -->
+          <div class="mt-4 flex flex-col gap-2">
             <template v-for="color in getThemeColors(theme)" :key="color.name">
-              <div class="flex items-center gap-2 bg-black/30 backdrop-blur px-3 py-2 border border-white/10">
-                <span class="text-xs font-medium text-white/80 capitalize min-w-[60px]">{{ color.displayName }}</span>
+              <div class="flex items-center gap-2 bg-white/90 backdrop-blur px-3 py-2 border border-gray-200 rounded-md shadow-sm">
+                <span class="text-xs font-medium text-gray-700 capitalize min-w-[60px]" :style="[{'font-family': theme.font}]">{{ color.displayName }}</span>
                 <div class="relative">
                   <div 
-                    class="w-5 h-5 border-2 border-white/30 shadow-sm" 
+                    class="w-5 h-5 border-2 border-gray-300 shadow-sm rounded" 
                     :style="{ backgroundColor: `oklch(${color.value.replace('.001', '')})` }"
                   ></div>
                   <!-- Pin Icon for pinned colors -->
                   <div 
                     v-if="color.isPinned" 
-                    class="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full flex items-center justify-center border border-white/50 shadow-sm"
+                    class="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full flex items-center justify-center border border-gray-300 shadow-sm"
                     title="Pinned color (not affected by inversion)"
                   >
                     <svg class="w-2 h-2 text-yellow-900" fill="currentColor" viewBox="0 0 20 20">
@@ -94,65 +72,91 @@
               </div>
             </template>
           </div>
-        </Hero>
-        
-        
-        <!-- Themes Gallery - Only show in default and preview modes -->
-        <SectionContainer v-if="showGallery" background="muted">
-          <CardsGallery>
-            <CardHero
-              v-for="themeItem in themes"
-              :imgTmp="themeItem.imgUrl"
-              :key="themeItem.id"
-              :overlay="getoverlay('left-bottom', 0.5)"
-              contentAlignY="bottom"
-              contentType="banner"
-              contentWidth="short"
-              heightTmp="mini"
-              imgTmpAlignX="cover"
-              imgTmpAlignY="top"
-              class="shadow-lg relative"
-              :style="[getThemeVars(themeItem.id)]"
-              >
-              <Heading :content="themeItem.heading" is="h3" class="p-4" :style="[{'font-family': themeItem.font}]" />
-              
-              <!-- Enhanced 5-Color Preview Dots - Right Edge -->
-              <div class="absolute bottom-0 right-0 flex flex-col gap-1">
-                <template v-for="color in getThemeColors(themeItem)" :key="color.name">
-                  <div class="relative">
-                    <div 
-                      class="w-4 h-4 shadow-lg" 
-                      :style="{ backgroundColor: `oklch(${color.value.replace('.001', '')})` }"
-                    ></div>
-                    <!-- Pin Icon for pinned colors -->
-                    <div 
-                      v-if="color.isPinned" 
-                      class="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full flex items-center justify-center border border-white/70 shadow-md"
-                      title="Pinned color"
-                    >
-                      <svg class="w-1.5 h-1.5 text-yellow-900" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                    </div>
-                  </div>
-                </template>
+        </div>
+
+        <!-- Right Column - Gallery and Configuration -->
+        <div class="flex flex-col flex-1 h-screen min-w-[30rem]">
+          <!-- Header Section -->
+          <div class="p-6 border-b border-gray-200 bg-white">
+            <!-- Main Title -->
+            <h1 class="text-2xl font-bold text-gray-900 mb-2" :style="[{'font-family': theme.font}]">
+              {{ showGallery ? 'Theme Gallery' : 'Theme Configuration' }}
+            </h1>
+            
+            <!-- Theme Name -->
+            <h2 class="text-lg font-medium text-gray-700 mb-3" :style="[{'font-family': theme.font}]">
+              {{ theme.heading.replace(/\*\*/g, '') }}
+            </h2>
+            
+            <!-- Description -->
+            <div class="text-sm text-gray-600 mb-4 leading-relaxed" :style="[{'font-family': theme.font}]">
+              <p v-if="showGallery" class="mb-1">
+                Select and preview different themes for your website.
+              </p>
+              <p v-if="showGallery" class="mb-1">
+                Choose a theme to customize or apply it directly to your site.
+              </p>
+              <p v-if="showConfiguration" class="mb-1">
+                Customize colors, typography, and visual elements for the selected theme.
+              </p>
+              <p v-if="showConfiguration" class="mb-1">
+                Changes are {{ autoUpdate ? 'automatically applied' : 'saved when you click Update' }} to the preview.
+              </p>
+              <div class="flex items-center justify-between mt-3">
+                <p class="text-xs text-gray-500">
+                  Current mode: {{ currentMode.charAt(0).toUpperCase() + currentMode.slice(1) }}
+                </p>
+                
+                <!-- Config Mode Auto-Update Controls -->
+                <div v-if="showConfiguration" class="flex items-center gap-3">
+                  <label class="flex items-center gap-2 text-sm text-gray-600">
+                    <input 
+                      v-model="autoUpdate" 
+                      type="checkbox" 
+                      class="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                    />
+                    <span>Auto-update preview</span>
+                  </label>
+                  
+                  <!-- Manual Update Button - only show when auto is disabled -->
+                  <CrearisButton 
+                    v-if="!autoUpdate"
+                    @click="manualUpdate()" 
+                    size="small" 
+                    variant="plain"
+                    class="text-sm px-3 py-1 h-8"
+                    :style="[{'font-family': theme.font}]"
+                  >
+                    Update Preview
+                  </CrearisButton>
+                </div>
               </div>
-
-              <CrearisButton @click="handlePreviewClick(themeItem.id)" size="small" :style="[{'font-family': themeItem.font}, {'--color-inverted': themeItem.inverted ? '0' : '1'},{ 'isolation': 'isolate' }]">
-                Vorschau
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="flex gap-3">
+              <CrearisButton 
+                @click="handlePrimaryAction()" 
+                size="medium" 
+                variant="primary" 
+                :style="[{'font-family': theme.font}]"
+              >
+                {{ primaryButtonConfig.label }}
               </CrearisButton>
-            </CardHero>
-          </CardsGallery>
-          <CrearisButton @click="manualUpdate()" size="medium" variant="primary" :style="[{'font-family': theme.font}, {'--color-inverted': theme.inverted ? '0' : '1'}]">
-            Update Website
-          </CrearisButton>
-        </SectionContainer>
+              
+              <CrearisButton 
+                @click="handleSecondaryAction()" 
+                size="medium" 
+                variant="plain" 
+                :style="[{'font-family': theme.font}]"
+              >
+                {{ secondaryButtonConfig.label }}
+              </CrearisButton>
+            </div>
+          </div>
 
-        
-        <!-- Theme Configuration - Only show in config mode -->
-        <SectionContainer v-if="showConfiguration" background="default">
           <!-- Status Messages -->
-          <div v-if="statusMessage" class="mb-6">
+          <div v-if="statusMessage" class="mx-4 mt-4">
             <div 
               :class="[
                 'p-4 rounded-md text-sm border',
@@ -164,67 +168,175 @@
               {{ statusMessage }}
             </div>
           </div>
-          
-          <TabsRoot default-value="colors" orientation="vertical">
-            <TabsList aria-label="tabs example" class="gap-4">
-              <TabsTrigger value="demo" class="trigger">Demo</TabsTrigger>
-              <TabsTrigger value="colors" class="trigger">Colors</TabsTrigger>
-              <TabsTrigger value="elements" class="trigger">Elemente</TabsTrigger>
-              <TabsTrigger value="typography" class="trigger">Typographie</TabsTrigger>
-              <TabsTrigger value="docs" class="trigger">Docs</TabsTrigger>
-              <TabsTrigger value="export" class="trigger">Export</TabsTrigger>
-            </TabsList>
-            <TabsContent value="demo" class="p-4">
-              <Heading content="**Demo**Components and Examples" is="h2" :style="[{'font-family': theme.font}]" />
-              <div class="mt-4 space-y-4">
-                <div class="flex gap-2">
-                  <CrearisButton size="medium" variant="primary" :style="[{'font-family': theme.font}, {'--color-inverted': theme.inverted ? '0' : '1'}]">Primary Button</CrearisButton>
-                  <CrearisButton size="medium" variant="plain" :style="[{'font-family': theme.font}, {'--color-inverted': theme.inverted ? '0' : '1'}]">Secondary Button</CrearisButton>
+
+          <!-- Theme Gallery - Only show in default and preview modes -->
+          <div v-if="showGallery" class="flex-1 p-4">
+            <!-- Loading state -->
+            <div v-if="!isInitialized || !themesLoaded" class="flex items-center justify-center p-8">
+              <div class="text-gray-500">Loading themes...</div>
+            </div>
+            
+            <!-- Theme Gallery -->
+            <CardsGallery v-else :key="`gallery-${galleryKey}`">
+              <!-- make the style isolated -->
+              <CardHero
+                v-for="theme in availableThemes"
+                :imgTmp="theme.imgUrl"
+                :key="theme.id"
+                :overlay="getoverlay('left-bottom', 0.5)"
+                contentAlignY="bottom"
+                contentType="banner"
+                contentWidth="short"
+                heightTmp="mini"
+                imgTmpAlignX="cover"
+                imgTmpAlignY="top"
+                class="shadow-lg relative cursor-pointer"
+                :style="[getThemeVars(theme.id)]"
+                @click="handlePreviewClick(theme.id)"
+                >
+                <Heading :content="theme.heading" is="h3" class="p-4" :style="'font-family: ' + theme.font" />
+                
+                <!-- Enhanced 5-Color Preview Squares - Right Edge -->
+                <div class="absolute bottom-0 right-0 flex flex-col gap-1">
+                  <template v-for="color in getThemeColors(theme)" :key="color.name">
+                    <div class="relative">
+                      <div 
+                        class="w-4 h-4 shadow-lg" 
+                        :style="{ backgroundColor: `oklch(${color.value.replace('.001', '')})` }"
+                      ></div>
+                      <!-- Pin Icon for pinned colors -->
+                      <div 
+                        v-if="color.isPinned" 
+                        class="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full flex items-center justify-center border border-white/70 shadow-md"
+                        title="Pinned color"
+                      >
+                        <svg class="w-1.5 h-1.5 text-yellow-900" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                      </div>
+                    </div>
+                  </template>
                 </div>
-                <p :style="[{'font-family': theme.font}]">This shows how the current theme affects UI components.</p>
+              </CardHero>
+            </CardsGallery>
+            
+            <div class="mt-4">
+              <CrearisButton 
+                @click="updateTheme()" 
+                size="medium" 
+                variant="primary" 
+                :style="[
+                  {'font-family': theme.font}, 
+                  {'--color-inverted': theme.inverted ? '0' : '1'}
+                ]"
+              >
+                Update Website
+              </CrearisButton>
+            </div>
+          </div>
+
+          <!-- Theme Configuration - Only show in config mode -->
+          <div v-if="showConfiguration" class="flex-1 p-4 overflow-hidden">
+            <!-- Native Pruvious Dashboard Tabs -->
+            <div class="h-full flex flex-col">
+              <!-- Tab Navigation -->
+              <div class="relative flex items-end px-4 pt-4 before:absolute before:inset-x-0 before:bottom-0 before:h-px before:bg-gray-200">
+                <span v-for="(tab, i) of configTabs" :key="tab.id" class="relative flex overflow-hidden pb-px">
+                  <button
+                    :title="tab.label"
+                    @click="activeConfigTab = tab.id"
+                    type="button"
+                    class="flex h-9 items-center gap-2 overflow-hidden border-r border-t px-3 text-sm transition"
+                    :class="{
+                      'cursor-default bg-white border-gray-200 text-gray-900': activeConfigTab === tab.id,
+                      'text-gray-400 hocus:text-primary-700 bg-gray-50 border-gray-300': activeConfigTab !== tab.id,
+                      'rounded-tl-md border-l': i === 0,
+                      'rounded-tr-md': i === configTabs.length - 1,
+                    }"
+                  >
+                    <span class="truncate">{{ tab.label }}</span>
+                  </button>
+
+                  <span
+                    v-if="activeConfigTab === tab.id"
+                    class="absolute bottom-0 right-px h-px bg-white"
+                    :class="{
+                      'left-px': i === 0,
+                      'left-0': i > 0,
+                    }"
+                  ></span>
+                </span>
               </div>
-            </TabsContent>
-            <TabsContent value="colors" class="p-4">
-              <ColorPalette v-model:baseColors="baseColors" v-model:colormap="colormap" v-model:inverted="inverted" />
-            </TabsContent>
-            <TabsContent value="elements" class="p-4">
-              <Heading content="**Elemente**Linien, Abstände, Ring etc." is="h2" :style="[{'font-family': theme.font}]" />
-            </TabsContent>
-            <TabsContent value="typography" class="p-4">
-              <Heading content="**Typographie**Head-Font, Basis-Font, Fette, Range" is="h2" :style="[{'font-family': theme.font}]" />
-              <div class="mt-4 space-y-2 text-sm">
-                <p :style="[{'font-family': theme.font}]">• Head font selection and weight ranges</p>
-                <p :style="[{'font-family': theme.font}]">• Base font selection and weight ranges</p>
+
+              <!-- Tab Content -->
+              <div class="flex-1 bg-white border border-gray-200 border-t-0 p-4 overflow-auto">
+                <!-- Demo Tab -->
+                <div v-if="activeConfigTab === 'demo'">
+                  <Heading content="**Demo** Components and Examples" is="h2" :style="[{'font-family': theme.font}]" />
+                  <div class="mt-4 space-y-4">
+                    <div class="flex gap-2">
+                      <CrearisButton size="medium" variant="primary" :style="[{'font-family': theme.font}, {'--color-inverted': theme.inverted ? '0' : '1'}]">Primary Button</CrearisButton>
+                      <CrearisButton size="medium" variant="plain" :style="[{'font-family': theme.font}, {'--color-inverted': theme.inverted ? '0' : '1'}]">Secondary Button</CrearisButton>
+                    </div>
+                    <p :style="[{'font-family': theme.font}]">This shows how the current theme affects UI components.</p>
+                  </div>
+                </div>
+
+                <!-- Colors Tab -->
+                <div v-if="activeConfigTab === 'colors'">
+                  <ColorPalette v-model:baseColors="baseColors" v-model:colormap="colormap" v-model:inverted="inverted" />
+                </div>
+
+                <!-- Elements Tab -->
+                <div v-if="activeConfigTab === 'elements'">
+                  <Heading content="**Elemente** Linien, Abstände, Ring etc." is="h2" :style="[{'font-family': theme.font}]" />
+                </div>
+
+                <!-- Typography Tab -->
+                <div v-if="activeConfigTab === 'typography'">
+                  <Heading content="**Typographie** Head-Font, Basis-Font, Fette, Range" is="h2" :style="[{'font-family': theme.font}]" />
+                  <div class="mt-4 space-y-2 text-sm">
+                    <p :style="[{'font-family': theme.font}]">• Head font selection and weight ranges</p>
+                    <p :style="[{'font-family': theme.font}]">• Base font selection and weight ranges</p>
+                  </div>
+                </div>
+
+                <!-- Export Tab -->
+                <div v-if="activeConfigTab === 'export'">
+                  <ThemeExporter :tsVars="getTsVars()" :themeConfig="getConfigJson()" :themeId="theme.id" />
+                </div>
               </div>
-            </TabsContent>
-            <TabsContent value="docs" class="p-4">
-              <Heading content="**Dokmentation**" is="h2" :style="[{'font-family': theme.font}]" />
-            </TabsContent>
-            <TabsContent value="export" class="p-4">
-              <ThemeExporter :tsVars="getTsVars()" :themeConfig="getConfigJson()" :themeId="theme.id" />
-            </TabsContent>
-          </TabsRoot>
-        </SectionContainer>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </PruviousBase>
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, watch, onMounted } from 'vue'
-import { Button as CrearisButton, CardHero, Hero, Banner } from '@crearis/ui'
-import { TabsContent, TabsList, TabsRoot, TabsTrigger } from 'radix-vue'
+import { ref, computed, watch, onMounted, nextTick, onBeforeMount, onUpdated } from 'vue'
+import { dashboardMiscComponent, selectFieldComponent } from '#pruvious/dashboard'
 import { useTheme } from '@crearis/theme/composables/useTheme'
 import { getoverlay } from '@crearis/theme/utils/BackgroundHelpers'
 import ColorPalette from '@crearis/theme/components/ColorPalette.vue'
 import ThemeExporter from '@crearis/theme/components/ThemeExporter.vue'
-import SectionContainer from '@crearis/theme/components/SectionContainer.vue'
-import CardsGallery from '@crearis/theme/components/CardsGallery.vue'
 import Heading from '@crearis/theme/components/Heading.vue'
+import CardsGallery from '@crearis/theme/components/CardsGallery.vue'
+
+// Import UI components directly from packages
+import CrearisButton from '~/packages/ui/src/components/Button.vue'
+import Hero from '~/packages/ui/src/components/Hero.vue'
+import Banner from '~/packages/ui/src/components/Banner.vue'
+import CardHero from '~/packages/ui/src/components/CardHero.vue'
 import { getCollectionData } from '#pruvious/client'
 
 // Import UI styles to ensure fonts are loaded
 import '@crearis/ui/styles'
+
+// Pruvious Dashboard Components
+const PruviousBase = dashboardMiscComponent.Base()
+const ThemeSelectField = selectFieldComponent()
 
 // Theme composable
 const { baseColors, getCssVars, loadTheme, getThemeVars, getTsVars, getConfigJson, colormap, inverted, theme, themes, updateTheme } = useTheme()
@@ -233,11 +345,32 @@ const imgUrl = ref(
   'https://res.cloudinary.com/little-papillon/image/upload/t_event-banner-smart/v1722972081/dasei/thematische_warmups_wfwtzh.jpg',
 )
 
+// Dashboard-specific state for theme management
+const selectedThemeId = ref<string | null>(theme.value.id.toString())
+const isInitialized = ref(false)
+const galleryKey = ref(0) // Force re-render key for gallery
+
+// Sync selectedThemeId with current theme
+watch(() => theme.value.id, (newId) => {
+  selectedThemeId.value = newId.toString()
+})
+
+// Theme selection handler
+const handleThemeSelection = (themeId: string | null) => {
+  if (themeId) {
+    const numericId = parseInt(themeId)
+    if (!isNaN(numericId)) {
+      handlePreviewClick(numericId)
+    }
+  }
+}
+
 // Dashboard-specific state
 const statusMessage = ref('')
 const statusType = ref<'success' | 'error'>('success')
 const isSaving = ref(false)
 const activeTab = ref('colors')
+const activeConfigTab = ref('colors')
 const originalSettings = ref<any>(null)
 
 // Config tabs
@@ -301,10 +434,10 @@ const loadSettings = async () => {
         }
       }
       
-      // Store original settings for comparison
+      // Store original settings for comparison using the same format as save/export
       originalSettings.value = {
         theme: settingsRecord.theme,
-        themeConfig: settingsRecord.themeConfig,
+        themeConfig: settingsRecord.themeConfig || getConfigJson(),
         baseColors: JSON.parse(JSON.stringify(baseColors)),
         colormap: JSON.parse(JSON.stringify(colormap.value)),
         inverted: inverted.value
@@ -316,7 +449,7 @@ const loadSettings = async () => {
       loadTheme(defaultTheme.value)
       originalSettings.value = {
         theme: 0,
-        themeConfig: null,
+        themeConfig: getConfigJson(),
         baseColors: JSON.parse(JSON.stringify(baseColors)),
         colormap: JSON.parse(JSON.stringify(colormap.value)),
         inverted: inverted.value
@@ -330,12 +463,23 @@ const loadSettings = async () => {
     loadTheme(defaultTheme.value)
     originalSettings.value = {
       theme: 0,
-      themeConfig: null,
+      themeConfig: getConfigJson(),
       baseColors: JSON.parse(JSON.stringify(baseColors)),
       colormap: JSON.parse(JSON.stringify(colormap.value)),
       inverted: inverted.value
     }
   }
+  
+  // Mark as initialized and force gallery refresh
+  await nextTick()
+  isInitialized.value = true
+  galleryKey.value++
+}
+
+// Force gallery refresh when themes change
+const forceGalleryRefresh = async () => {
+  await nextTick()
+  galleryKey.value++
 }
 
 // Button configurations
@@ -426,38 +570,56 @@ const performSave = async () => {
   statusMessage.value = ''
   
   try {
-    // Determine what has changed
-    const currentConfig = {
-      baseColors: baseColors,
-      colormap: colormap.value,
-      inverted: inverted.value
+    // Use getConfigJson() to get the correct config data (same as export tab)
+    const currentConfig = getConfigJson()
+    console.log('Current config from getConfigJson():', currentConfig)
+    console.log('Original config:', originalSettings.value?.themeConfig)
+    
+    // Normalize both configs by parsing and re-stringifying to handle whitespace differences
+    const normalizeConfig = (config: string) => {
+      try {
+        if (!config || config === '{}') return '{}'
+        return JSON.stringify(JSON.parse(config), null, 2)
+      } catch {
+        return config || '{}'
+      }
     }
     
+    const normalizedCurrent = normalizeConfig(currentConfig)
+    const normalizedOriginal = normalizeConfig(originalSettings.value?.themeConfig || '{}')
+    
     const hasChanges = originalSettings.value && (
-      JSON.stringify(currentConfig.baseColors) !== JSON.stringify(originalSettings.value.baseColors) ||
-      JSON.stringify(currentConfig.colormap) !== JSON.stringify(originalSettings.value.colormap) ||
-      currentConfig.inverted !== originalSettings.value.inverted ||
+      normalizedCurrent !== normalizedOriginal ||
       theme.value.id !== originalSettings.value.theme
     )
     
+    console.log('Has changes:', hasChanges)
+    console.log('Normalized current:', normalizedCurrent)
+    console.log('Normalized original:', normalizedOriginal)
+    
     if (hasChanges) {
-      // Save only the changed settings
+      console.log('Saving theme config:', {
+        themeId: theme.value.id,
+        config: currentConfig
+      })
+      
+      // Save using the same format as export
       const response = await $fetch('/api/settings', {
         method: 'PATCH',
         body: {
           themeId: theme.value.id,
-          themeConfig: JSON.stringify(currentConfig)
+          themeConfig: currentConfig
         }
       }) as { success: boolean; record?: any }
       
       if (response.success) {
-        // Update original settings
+        // Update original settings with the actual saved data
         originalSettings.value = {
           theme: theme.value.id,
-          themeConfig: JSON.stringify(currentConfig),
-          baseColors: JSON.parse(JSON.stringify(currentConfig.baseColors)),
-          colormap: JSON.parse(JSON.stringify(currentConfig.colormap)),
-          inverted: currentConfig.inverted
+          themeConfig: currentConfig,
+          baseColors: JSON.parse(JSON.stringify(baseColors)),
+          colormap: JSON.parse(JSON.stringify(colormap.value)),
+          inverted: inverted.value
         }
         
         showStatus('Theme settings saved successfully!', 'success')
@@ -483,13 +645,16 @@ const performSave = async () => {
 }
 
 // Handle preview card clicks
-const handlePreviewClick = (themeId: number) => {
+const handlePreviewClick = async (themeId: number) => {
   loadTheme(themeId)
   if (themeId === defaultTheme.value) {
     currentMode.value = 'default'
   } else {
     currentMode.value = 'preview'
   }
+  // Ensure gallery stays reactive after theme change
+  await nextTick()
+  await forceGalleryRefresh()
 }
 
 // Computed hero heading with AKTIV prefix for default mode
@@ -507,6 +672,16 @@ const showGallery = computed(() => {
 
 const showConfiguration = computed(() => {
   return currentMode.value === 'config'
+})
+
+// Reactive themes getter to ensure proper reactivity
+const availableThemes = computed(() => {
+  return themes || []
+})
+
+// Check if themes are loaded
+const themesLoaded = computed(() => {
+  return availableThemes.value.length > 0
 })
 
 // Auto-update watcher for config changes
@@ -540,9 +715,63 @@ const showStatus = (message: string, type: 'success' | 'error') => {
   }
 }
 
-// Initialize component
-onMounted(() => {
-  loadSettings()
+// Watch for themes changes to refresh gallery
+watch(() => themes, async (newThemes, oldThemes) => {
+  if (isInitialized.value && newThemes && newThemes.length > 0) {
+    console.log('Themes updated, refreshing gallery...', newThemes.length)
+    await forceGalleryRefresh()
+  }
+}, { deep: true, immediate: false })
+
+// Watch for themes array length changes specifically
+watch(() => themes?.length, async (newLength) => {
+  if (isInitialized.value && newLength && newLength > 0) {
+    console.log('Themes length changed:', newLength)
+    await forceGalleryRefresh()
+  }
+})
+
+// Watch for theme.value changes
+watch(() => theme.value, async () => {
+  if (isInitialized.value) {
+    selectedThemeId.value = theme.value.id.toString()
+    await forceGalleryRefresh()
+  }
+}, { deep: true })
+
+// Initialize component with proper timing
+onBeforeMount(async () => {
+  // Ensure themes are loaded before mounting
+  await nextTick()
+})
+
+onMounted(async () => {
+  console.log('ThemeEditor mounted, loading settings...')
+  await loadSettings()
+  
+  // Additional safety measures for programmatic navigation
+  setTimeout(async () => {
+    if (themes && themes.length > 0) {
+      console.log('Delayed gallery refresh with', themes.length, 'themes')
+      await forceGalleryRefresh()
+    }
+  }, 100)
+  
+  // Extra fallback for slow loading
+  setTimeout(async () => {
+    if (themes && themes.length > 0 && !isInitialized.value) {
+      console.log('Fallback initialization')
+      isInitialized.value = true
+      await forceGalleryRefresh()
+    }
+  }, 500)
+})
+
+onUpdated(async () => {
+  // Ensure gallery is refreshed after any updates
+  if (isInitialized.value && themes.length > 0) {
+    await nextTick()
+  }
 })
 </script>
 

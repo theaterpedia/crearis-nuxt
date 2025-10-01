@@ -91,10 +91,14 @@ defineLayout({
 const page = unref(usePage())
 // const { blogLandingPage } = await getCollectionData('settings')
 
-const { theme } = await getCollectionData('settings')
+const { theme, themeConfig } = await getCollectionData('settings')
 console.log('Layout theme:', theme)
-if (theme !== undefined && theme !== 0) {
+if (theme !== undefined && theme > -1) {
   useTheme().initTheme(theme)
+}
+
+if (themeConfig !== undefined && themeConfig !== '') {
+  useTheme().loadThemeConfig(themeConfig)
 }
 
 const cssVars = useAppConfig().cssVars

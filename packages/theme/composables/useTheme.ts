@@ -537,6 +537,79 @@ export function useTheme() {
     return user?.value?.id || Boolean(userCookie.value)
   }) */
 
+  const loadThemeConfig = (themeConfigJson: string) => {
+    try {
+      if (!themeConfigJson || themeConfigJson.trim() === '' || themeConfigJson.trim() === '{}') {
+        console.log('No theme config provided or empty config, using defaults')
+        return
+      }
+
+      const config = JSON.parse(themeConfigJson)
+      console.log('Loading theme config:', config)
+
+      // Apply font settings if provided
+      if (config.font !== undefined) {
+        font.value = config.font
+      }
+      if (config.headings !== undefined) {
+        headings.value = config.headings
+      }
+
+      // Apply inverted setting if provided
+      if (config.inverted !== undefined) {
+        inverted.value = config.inverted
+      }
+
+      // Apply base colors if provided (merge with current theme defaults)
+      if (config.baseColors) {
+        if (config.baseColors.primary !== undefined) {
+          baseColors.primary = config.baseColors.primary
+        }
+        if (config.baseColors.secondary !== undefined) {
+          baseColors.secondary = config.baseColors.secondary
+        }
+        if (config.baseColors.warning !== undefined) {
+          baseColors.warning = config.baseColors.warning
+        }
+        if (config.baseColors.positive !== undefined) {
+          baseColors.positive = config.baseColors.positive
+        }
+        if (config.baseColors.negative !== undefined) {
+          baseColors.negative = config.baseColors.negative
+        }
+        if (config.baseColors.neutral !== undefined) {
+          baseColors.neutral = config.baseColors.neutral.endsWith('.001')
+            ? config.baseColors.neutral.slice(0, -4)
+            : config.baseColors.neutral
+          baseColors.gray = config.baseColors.neutral + '.001'
+        }
+      }
+
+      // Apply colormap if provided (merge with defaults)
+      if (config.colormap && Array.isArray(config.colormap)) {
+        // Merge config colormap with current colormap
+        config.colormap.forEach((configColor: any) => {
+          const existingIndex = colormap.value.findIndex(c => c.name === configColor.name)
+          if (existingIndex >= 0) {
+            // Update existing colormap entry
+            colormap.value[existingIndex] = { ...colormap.value[existingIndex], ...configColor }
+          } else {
+            // Add new colormap entry
+            colormap.value.push(configColor)
+          }
+        })
+      }
+
+      // Apply the theme changes
+      updateTheme()
+      
+      console.log('Theme config loaded and applied successfully')
+    } catch (error) {
+      console.error('Failed to load theme config:', error)
+      console.error('Invalid theme config JSON:', themeConfigJson)
+    }
+  }
+
   initTheme(0)
 
   return {
@@ -557,5 +630,6 @@ export function useTheme() {
     setInverted,
     getThemeVars,
     getConfigJson,
+    loadThemeConfig,
   }
 }
