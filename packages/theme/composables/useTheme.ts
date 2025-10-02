@@ -1,10 +1,16 @@
 // import { useToast } from 'vue-toastification'
 import { ref, reactive, watch } from 'vue'
+import { useHead } from 'nuxt/app'
 import type { BaseColors, SfColorMapping } from '@crearis/theme/utils/colorSettings'
 import { palette } from '@crearis/theme/utils/colorSettings'
 
-export function useTheme() {
-  const themes = [
+// Global reactive state - persists across calls (Vue composable singleton pattern)
+const loading = ref(true)
+const enabled = ref(false)
+const themeId = ref(0)
+const hasBeenInitialized = ref(false)
+
+const themes = [
     {
       id: 0,
       heading: '**E-Motion**Performance und Shows',
@@ -292,15 +298,25 @@ export function useTheme() {
     { name: 'ring', sfname: 'neutral', shade: 900 },
   ]
 
-  const themeId = ref(0)
-  const theme = ref(themes[0])
+// Move theme state to module level for true singleton behavior
+const theme = ref(themes[0])
+const font = ref(themes[0].font)
+const headings = ref(themes[0].headings)
+const baseColors = reactive<BaseColors>({ ...themes[0].baseColors })
+const colormap = ref<SfColorMapping[]>([...colormap_defaults])
+const inverted = ref(false)
 
-  // active theme state (preview theme if selected)
-  const font = ref(theme.value.font)
-  const headings = ref(theme.value.headings)
-  const baseColors = reactive<BaseColors>({ ...theme.value.baseColors })
-  const colormap = ref<SfColorMapping[]>([...colormap_defaults])
-  const inverted = ref(false)
+
+
+// update gray color if neutral changes
+watch(() => baseColors.neutral, (newNeutral) => {
+  const grayValue = newNeutral.endsWith('.001') ? newNeutral : newNeutral + '.001'
+  if (baseColors.gray !== grayValue) {
+    baseColors.gray = grayValue
+  }
+})
+
+export function useTheme() {
   const getInverted = () => {
     return inverted.value ? '1' : '0'
   }
@@ -311,8 +327,6 @@ export function useTheme() {
   // const editBaseColors = reactive<BaseColors>({ ...theme.value.baseColors })
   // const editColormap = ref<SfColorMapping[]>([...colormap_defaults])
   // const editInverted = ref(false)
-
-  const loading = ref(false)
   // const toast = useToast()
   const getThemeId = () => {
     return themeId.value
@@ -325,6 +339,7 @@ export function useTheme() {
     font.value = theme.value.font
     headings.value = theme.value.headings
     colormap.value = colormap_defaults.map((c) => theme.value.colormap.find((tc) => tc.name === c.name) || c)
+    
     baseColors.primary = theme.value.baseColors.primary
     baseColors.secondary = theme.value.baseColors.secondary
     baseColors.warning = theme.value.baseColors.warning
@@ -334,6 +349,7 @@ export function useTheme() {
       ? theme.value.baseColors.neutral.slice(0, -4)
       : theme.value.baseColors.neutral
     baseColors.gray = theme.value.baseColors.neutral + '.001'
+    
     inverted.value = theme.value.inverted
   }
   // initialize colormap and baseColors with first theme
@@ -352,14 +368,6 @@ export function useTheme() {
     if (!targetColors[colorKey]) return false
     return targetColors[colorKey].endsWith('.001')
   }
-
-  // update gray color if neutral changes
-  watch(baseColors, (newColors) => {
-    const newNeutral = newColors.neutral.endsWith('.001') ? newColors.neutral : newColors.neutral + '.001'
-    if (baseColors.gray !== newNeutral) {
-      baseColors.gray = newNeutral
-    }
-  })
 
   // initialize colormap and baseColors with first theme
   const getColorVars = (colors: BaseColors, colormap: SfColorMapping[], asCss: Boolean) => {
@@ -406,11 +414,20 @@ export function useTheme() {
 
   const setInverted = (invert: boolean) => {
     inverted.value = invert
-    useHead({ htmlAttrs: { style: { '--color-inverted': inverted.value ? '1' : '0' } } })
-    // toast.info('Inverted: ' + getInverted())
-    /* updateTheme()
-    toast.info('Inverted colors: ' + getInverted())
-    console.log('cssColorVars.value', cssColorVars.value) */
+    if (isEnabled()) {
+      useHead({ htmlAttrs: { style: `--color-inverted: ${inverted.value ? '1' : '0'};` } })
+    }
+    // Force updateTheme to apply all changes together
+    updateTheme()
+  }
+
+  const getCurrentCssString = () => {
+    if (isEnabled()) {
+      const invertedVar = `--color-inverted: ${inverted.value ? '1' : '0'};`
+      const allVars = [invertedVar].concat(cssColorVars.value, cssFontVars.value)
+      return allVars.join(' ')
+    }
+    return ''
   }
 
   const updateTheme = () => {
@@ -420,13 +437,7 @@ export function useTheme() {
     // log only the colormap entries (all strings without '-base'), concatenated to a single string with line breaks
     // console.log('🎨 Current theme bg-colormap:', '\n'.concat(cssColorVars.value.filter((c) => c.indexOf('bg') > 0).join('\n')))
 
-    useHead({
-      htmlAttrs: {
-        'data-theme': 'dynamic',
-        style: cssColorVars.value.concat(cssFontVars.value),
-        id: 'dynamic-theme-vars'
-      },
-    })
+    // CSS application is handled by components using getCurrentCssString()
 
     // const newAppConfig = useAppConfig().cssVars
 
@@ -494,6 +505,23 @@ export function useTheme() {
     return JSON.stringify(newConfig, null, 2)
   }
 
+  const isEnabled = () => {
+    return enabled.value && !loading.value ? true : false
+  }
+
+  const hasLoaded = () => {
+    return !loading.value
+  }
+
+  const shouldInitialize = () => {
+    if (loading.value && !hasBeenInitialized.value) {
+      loading.value = false
+      hasBeenInitialized.value = true
+      return true
+    } 
+    return false
+  }
+
   const getTsVars = () => {
     return getColorVars(baseColors, colormap.value, false)
   }
@@ -540,12 +568,10 @@ export function useTheme() {
   const loadThemeConfig = (themeConfigJson: string) => {
     try {
       if (!themeConfigJson || themeConfigJson.trim() === '' || themeConfigJson.trim() === '{}') {
-        console.log('No theme config provided or empty config, using defaults')
         return
       }
 
       const config = JSON.parse(themeConfigJson)
-      console.log('Loading theme config:', config)
 
       // Apply font settings if provided
       if (config.font !== undefined) {
@@ -602,15 +628,24 @@ export function useTheme() {
 
       // Apply the theme changes
       updateTheme()
-      
-      console.log('Theme config loaded and applied successfully')
     } catch (error) {
       console.error('Failed to load theme config:', error)
       console.error('Invalid theme config JSON:', themeConfigJson)
     }
   }
 
-  initTheme(0)
+  const toggleTheming = (enable: boolean = true) => {
+    const wasEnabled = enabled.value
+    enabled.value = enable
+    
+    // Only update theme when enabling for the first time, not on subsequent calls
+    if (enable && !wasEnabled) {
+      updateTheme()
+    }
+  }
+
+  // Don't auto-initialize to theme 0 - let the application decide which theme to load
+  // initTheme(0)
 
   return {
     baseColors,
@@ -620,8 +655,11 @@ export function useTheme() {
     font,
     headings,
     inverted,
-    loading,
+    hasLoaded,
+    shouldInitialize,
+    isEnabled,
     updateTheme,
+    getCurrentCssString,
     getThemeId,
     loadTheme,
     initTheme,
@@ -631,5 +669,6 @@ export function useTheme() {
     getThemeVars,
     getConfigJson,
     loadThemeConfig,
+    toggleTheming,
   }
 }

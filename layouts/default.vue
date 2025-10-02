@@ -1,8 +1,15 @@
 <template>
-  <Component :is="isSideNav ? 'Box' : 'div'" class="text-sm sm:text-base" :style="themeId !== 0 ? cssVars : {}">
+  <Component 
+    :is="isSideNav ? 'Box' : 'div'" 
+    :key="themeKey" 
+    :class="['text-sm sm:text-base', themeStatus.enabled ? 'theme-enabled' : 'theme-disabled']"
+    :data-theme-loaded="themeStatus.loaded"
+    :data-theme-id="themeStatus.themeId"
+  >
     <UiNavbarTop
       v-show="!isSideNav"
       :filled="y > scrollBreak"
+      :key="themeKey" 
       :hideLogo="route.path === '/' && y <= scrollBreak"
       :hideSearch="searchDisabled ? true : y <= scrollBreak"
       :class="route.path !== '/' ? 'bg-muted-bg' : ''"
@@ -42,7 +49,7 @@
 
 <script lang="ts" setup>
 import { NuxtLink } from '#components'
-import { ref } from 'vue'
+import { ref, watch, nextTick, computed } from 'vue'
 import { useWindowScroll } from '@vueuse/core'
 import { defineLayout } from '#pruvious'
 import { usePage } from '#pruvious/client'
@@ -91,18 +98,25 @@ defineLayout({
 const page = unref(usePage())
 // const { blogLandingPage } = await getCollectionData('settings')
 
-const { theme, themeConfig } = await getCollectionData('settings')
-console.log('Layout theme:', theme)
-if (theme !== undefined && theme > -1) {
-  useTheme().initTheme(theme)
-}
+// Get theme composable and make layout reactive to theme changes
+const themeComposable = useTheme()
+const themeKey = ref(0) // Force reactivity key for layout updates
 
-if (themeConfig !== undefined && themeConfig !== '') {
-  useTheme().loadThemeConfig(themeConfig)
-}
+// Create a computed property that depends on theme state to force reactivity
+const themeStatus = computed(() => ({
+  enabled: themeComposable.isEnabled(),
+  loaded: themeComposable.hasLoaded(),
+  themeId: themeComposable.getThemeId()
+}))
 
-const cssVars = useAppConfig().cssVars
-const themeId = useTheme().getThemeId()
+
+// Watch for theme changes and force layout refresh (only on actual theme changes, not route changes)
+watch(() => themeComposable.isEnabled(), async (enabled, wasEnabled) => {
+  if (enabled && !wasEnabled) {
+    await nextTick()
+    themeKey.value++ // Force template re-render only when theme is first enabled
+  }
+}, { immediate: false }) // Don't trigger on mount, only on actual changes
 
 const searchDisabled = true
 

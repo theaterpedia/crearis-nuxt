@@ -61,9 +61,11 @@
 <script lang="ts" setup>
 import { NuxtLink } from '#components'
 import { getCollectionData } from '#pruvious/client'
-import { ref } from 'vue'
+import { ref, nextTick, onMounted, computed } from 'vue'
 import { useWindowScroll } from '@vueuse/core'
 import { type PropType } from 'vue'
+import { useTheme } from '#imports'
+import { useColorMode } from '@vueuse/core'
 
 const props = defineProps({
   /**
@@ -147,24 +149,46 @@ const props = defineProps({
 
 // const { blogLandingPage } = await getCollectionData('settings')
 
-const { headerConfigs, theme, themeConfig } = await getCollectionData('settings')
+const { headerConfigs, theme, themeConfig } = await getCollectionData('settings') 
+const themeComposable = useTheme()
 
-onBeforeMount(() => {
-  if (theme !== undefined && theme !== 0) {
-    useTheme().loadTheme(theme)
+// Reactive CSS application using useHead
+const themeCssString = computed(() => {
+  if (themeComposable.isEnabled()) {
+    return themeComposable.getCurrentCssString()
   }
-  if (themeConfig !== undefined && themeConfig.length > 6) {
-    const themeSettings = JSON.parse(themeConfig)
-    console.log('Loaded theme settings:', themeSettings)
-    useTheme().baseColors = Object.assign({}, useTheme().baseColors, themeSettings?.baseColors)
-    useTheme().colormap = Object.assign({}, useTheme().colormap, themeSettings?.colormap)
-    useTheme().font = themeSettings.font ? themeSettings.font : useTheme().font
-    useTheme().headings = themeSettings.headings ? themeSettings.headings : useTheme().headings
-    useTheme().updateTheme()
-    // useTheme().baseColors = themeConfig?.baseColors
-    // useTheme().font = themeConfig?.font
-    // useTheme().headings = themeConfig?.headings
-    // useTheme().updateTheme()
+  return ''
+})
+
+// Apply CSS reactively
+useHead(computed(() => ({
+  htmlAttrs: {
+    'data-theme': themeComposable.isEnabled() ? 'dynamic' : undefined,
+    style: themeCssString.value || undefined,
+  },
+})))
+
+onMounted(async () => {
+  // Only initialize if not already enabled (singleton pattern ensures this works correctly)
+  if (themeComposable.shouldInitialize()) {
+    if (theme !== undefined && theme > -1) {
+      // Load theme BEFORE enabling to avoid applying default theme
+      themeComposable.loadTheme(theme)
+      
+      if (themeConfig !== undefined && themeConfig.length > 6) {  
+        themeComposable.loadThemeConfig(themeConfig)
+      }
+      
+      // Enable theming after loading the correct theme
+      themeComposable.toggleTheming(true)
+      
+      // Sync with current color mode state after enabling theming
+      const colorMode = useColorMode()
+      themeComposable.setInverted(colorMode.value === 'dark')
+      
+      // CSS is applied reactively via the computed useHead above
+      await nextTick()
+    }
   }
 })
 
@@ -252,9 +276,9 @@ const headerTypes = [
 ]
 
 // check whether the headerConfigs contain an entry matching the headerType-prop
-const customSiteHeader = headerConfigs.find((config: any) => config.name === props.headerType) || {}
-// if customHeaderConfig contains entries then convert formatOptions to json
-const siteHeader = customSiteHeader.formatOptions ? customSiteHeader.formatOptions.toJSON() : {}
+const customSiteHeader = headerConfigs.find((config: any) => config.name === props.headerType)
+// if customHeaderConfig contains entries then parse formatOptions from JSON string
+const siteHeader = customSiteHeader?.formatOptions ? JSON.parse(customSiteHeader.formatOptions) : {}
 
 // get default Header, if not found, take 'simple'
 const defaultHeader = headerTypes.find((type) => type.name === props.headerType) || headerTypes[0]

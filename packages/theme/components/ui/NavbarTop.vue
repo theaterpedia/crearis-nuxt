@@ -4,7 +4,6 @@ import { useWindowScroll } from '@vueuse/core'
 import { useToggle } from '@vueuse/core'
 import { Container } from '@crearis/ui'
 import { computed, ref } from 'vue'
-import { useTheme } from '../../composables/useTheme'
 
 const props = defineProps<{
   filled?: boolean
@@ -23,6 +22,8 @@ const colorMode = useColorMode()
 const isInverted = ref(colorMode.value == 'dark' ? '1' : '0')
 const isSepia = ref(false)
 
+const themeComposable = useTheme()
+
 // with isDark we extend the default dark/light-toggle to sync isDark (Boolean) and isInverted (String)
 const isDark = computed({
   get() {
@@ -32,15 +33,17 @@ const isDark = computed({
     colorMode.preference = _isDark ? 'dark' : 'light'
     // useHead({htmlAttrs: { style: {'--color-inverted': _isDark ? '1' : '0'}}})
     // this is a workaround to set the inverted value in the theme
-    useTheme().setInverted(_isDark)
+    themeComposable.setInverted(_isDark)
   }
 })
+
 // make a toggle out of it
 const toggleDark = useToggle(isDark)
 // make a toggle out of it
 const toggleSepia = useToggle(isSepia)
 
-toggleDark(!isDark.value) // align isDark and isInverted
+// Don't automatically toggle on mount - this was causing route change issues
+// toggleDark(!isDark.value) // align isDark and isInverted
 
 const scrollBreak = 80
 const y = ref(useWindowScroll().y)
@@ -54,14 +57,16 @@ const y = ref(useWindowScroll().y)
   <Container
     is="header"
     class="justify-between fixed inset-x-0 top-0 z-50 flex h-14 items-center md:pt-2.5 lg:justify-start"
+    :style="[
+      { 'background': props.filled && (y > scrollBreak && props.extended) ? 'var(--color-muted-bg)' : !props.filled || (y <= scrollBreak && props.extended) ? 'transparent' : 'inherit' },
+      { 'color': props.filled && (y > scrollBreak && props.extended) ? 'var(--color-primary-bg)' : 'inherit' }
+    ]"    
     :class="[
       {
         'max-w-screen-3xl mx-auto md:-top-12 md:mt-6 md:h-28 lg:mt-10':
           y <= scrollBreak && props.extended,
       },
       { 'md:-top-4 md:h-20': y > scrollBreak || !props.extended },
-      { 'bg-muted text-white': filled && (y > scrollBreak || !props.extended) },
-      { 'bg-transparent text-primary': !filled || (y <= scrollBreak && props.extended) },
     ]"
   >
     <div
@@ -80,11 +85,12 @@ const y = ref(useWindowScroll().y)
       <nav
         aria-label="SF Navigation"
         class="flex-nowrap items-center justify-end gap-x-4 md:ml-10 lg:flex"
-        :class="[
-          { 'text-white': filled && !(y <= scrollBreak && props.extended) },
-          { 'text-primary': !filled || (y <= scrollBreak && props.extended) },
-          { hidden: hideLinksOnMobile },
+        :style="[
+          { 'color': props.filled && !(y <= scrollBreak && props.extended) ? 'var(--color-primary-bg)' : !props.filled || (y <= scrollBreak && props.extended) ? 'var(--color-secondary-bg)' : 'inherit' }
         ]"
+        :class="[{
+          hidden: hideLinksOnMobile
+        }]"
       >
         <NuxtLink
           v-for="link of navigation"
