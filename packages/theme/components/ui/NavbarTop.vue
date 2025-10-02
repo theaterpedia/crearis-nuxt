@@ -28,20 +28,33 @@ const themeComposable = useTheme()
 
 // Direct toggle function that changes theme state - colorMode will follow
 const toggleDark = () => {
-  // Toggle the theme's inverted state directly
-  const currentInverted = themeComposable.inverted.value
-  themeComposable.setInverted(!currentInverted)
-  console.log('🌓 NavbarTop: Toggled theme inverted:', !currentInverted)
+  if (themeComposable.isEnabled()) {
+    // Dynamic theming: toggle the theme's inverted state
+    const currentInverted = themeComposable.inverted.value
+    themeComposable.setInverted(!currentInverted)
+    console.log('🌓 NavbarTop: Toggled dynamic theme inverted:', !currentInverted)
+  } else {
+    // Default theming: toggle colorMode directly (standard behavior)
+    const newColorMode = colorMode.value === 'dark' ? 'light' : 'dark'
+    colorMode.value = newColorMode
+    console.log('🌓 NavbarTop: Toggled default colorMode:', newColorMode)
+  }
 }
 
 // Sync colorMode with theme state when theme loads or changes
 watch([() => sharedThemeState.loaded.value, () => themeComposable.inverted.value], 
   ([loaded, inverted]) => {
-    if (loaded && themeComposable.isEnabled()) {
-      const newColorMode = inverted ? 'dark' : 'light'
-      if (colorMode.value !== newColorMode) {
-        console.log('🌓 NavbarTop: Syncing colorMode to theme state - inverted:', inverted, '→ colorMode:', newColorMode)
-        colorMode.value = newColorMode
+    if (loaded) {
+      if (themeComposable.isEnabled()) {
+        // Dynamic theming: sync colorMode to theme's inverted state
+        const newColorMode = inverted ? 'dark' : 'light'
+        if (colorMode.value !== newColorMode) {
+          console.log('🌓 NavbarTop: Syncing colorMode to dynamic theme - inverted:', inverted, '→ colorMode:', newColorMode)
+          colorMode.value = newColorMode
+        }
+      } else {
+        // Default theming: use colorMode as-is (from user preference or system)
+        console.log('🌓 NavbarTop: Using default theme - colorMode remains:', colorMode.value)
       }
     }
   }, 

@@ -159,8 +159,9 @@ onMounted(async () => {
   const shouldInit = themeComposable.shouldInitialize()
   // Only initialize if not already enabled (singleton pattern ensures this works correctly)
   if (shouldInit) {
-    if (theme !== undefined && theme > -1) {
-      // Load theme BEFORE enabling to avoid applying default theme
+    if (theme !== undefined && theme !== null && theme >= 0) {
+      // Valid theme ID: Load and enable dynamic theming (0 is first theme)
+      console.log('🎨 Header: Loading dynamic theme:', theme)
       themeComposable.loadTheme(theme)
       
       if (themeConfig !== undefined && themeConfig.trim().length >= 2) {  
@@ -171,6 +172,12 @@ onMounted(async () => {
       themeComposable.toggleTheming(true)
       
       await nextTick()
+    } else {
+      // Fallback behavior: theme is undefined, null, or -1
+      // Use default CSS variables from root/tailwind (no dynamic theming)
+      console.log('🎨 Header: Using fallback theme from root CSS (theme:', theme, ')')
+      // Do NOT call toggleTheming(true) - keep theming disabled
+      // This allows CSS variables to be read from root via tailwind/theme.ts
     }
   }
 })

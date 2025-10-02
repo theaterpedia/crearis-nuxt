@@ -5,6 +5,7 @@ export default defineNuxtPlugin(() => {
   if (process.server) return
   
   const themeComposable = useTheme()
+  const colorMode = useColorMode()
   let hasInitiallyLoaded = false
   
   // Use nextTick to wait for hydration to complete before setting up reactivity
@@ -33,9 +34,22 @@ export default defineNuxtPlugin(() => {
 
         }
       } else {
-        // Reset loaded flag when theme is disabled
-        sharedThemeState.loaded.value = false
-        hasInitiallyLoaded = false
+        // Theme is disabled - using default CSS from root
+        // But still need to set --color-inverted for dark/light toggle
+        const invertedValue = colorMode.value === 'dark' ? '1' : '0'
+        
+        useHead({
+          htmlAttrs: {
+            'data-theme': 'fallback',
+            style: `--color-inverted: ${invertedValue};`,
+          },
+        })
+        
+        if (!hasInitiallyLoaded) {
+          sharedThemeState.loaded.value = true
+          hasInitiallyLoaded = true
+          console.log('🎨 Theme Plugin: Using fallback theme, --color-inverted set to:', invertedValue)
+        }
       }
     })
   })
