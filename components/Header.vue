@@ -66,6 +66,7 @@ import { useWindowScroll } from '@vueuse/core'
 import { type PropType } from 'vue'
 import { useTheme } from '#imports'
 import { useColorMode } from '@vueuse/core'
+import { sharedThemeState } from '~/packages/theme/composables/sharedThemeState'
 
 const props = defineProps({
   /**
@@ -169,14 +170,12 @@ onMounted(async () => {
       // Enable theming after loading the correct theme
       themeComposable.toggleTheming(true)
       
-      // Sync with current color mode state after enabling theming
-      const colorMode = useColorMode()
-      themeComposable.setInverted(colorMode.value === 'dark')
-      
       await nextTick()
     }
   }
 })
+
+// colorMode synchronization is now handled by NavbarTop component
 
 const headerTypes = [
   {
