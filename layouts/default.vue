@@ -2,9 +2,7 @@
   <Component 
     :is="isSideNav ? 'Box' : 'div'" 
     :key="themeKey" 
-    :class="['text-sm sm:text-base', themeStatus.enabled ? 'theme-enabled' : 'theme-disabled']"
-    :data-theme-loaded="themeStatus.loaded"
-    :data-theme-id="themeStatus.themeId"
+    class="text-sm sm:text-base"
   >
     <UiNavbarTop
       v-show="!isSideNav"
@@ -49,11 +47,11 @@
 
 <script lang="ts" setup>
 import { NuxtLink } from '#components'
-import { ref, watch, nextTick, computed } from 'vue'
+import { ref } from 'vue'
 import { useWindowScroll } from '@vueuse/core'
 import { defineLayout } from '#pruvious'
 import { usePage } from '#pruvious/client'
-import { useTheme } from '#imports'
+// Theme is handled by theme-css.client.ts plugin
 import { getCollectionData } from '#pruvious/client'
 
 defineLayout({
@@ -98,25 +96,8 @@ defineLayout({
 const page = unref(usePage())
 // const { blogLandingPage } = await getCollectionData('settings')
 
-// Get theme composable and make layout reactive to theme changes
-const themeComposable = useTheme()
-const themeKey = ref(0) // Force reactivity key for layout updates
-
-// Create a computed property that depends on theme state to force reactivity
-const themeStatus = computed(() => ({
-  enabled: themeComposable.isEnabled(),
-  loaded: themeComposable.hasLoaded(),
-  themeId: themeComposable.getThemeId()
-}))
-
-
-// Watch for theme changes and force layout refresh (only on actual theme changes, not route changes)
-watch(() => themeComposable.isEnabled(), async (enabled, wasEnabled) => {
-  if (enabled && !wasEnabled) {
-    await nextTick()
-    themeKey.value++ // Force template re-render only when theme is first enabled
-  }
-}, { immediate: false }) // Don't trigger on mount, only on actual changes
+// Theme is handled by the theme-css.client.ts plugin
+const themeKey = ref(0) // Keep for potential layout updates
 
 const searchDisabled = true
 

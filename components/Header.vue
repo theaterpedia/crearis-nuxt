@@ -61,7 +61,7 @@
 <script lang="ts" setup>
 import { NuxtLink } from '#components'
 import { getCollectionData } from '#pruvious/client'
-import { ref, nextTick, onMounted, computed } from 'vue'
+import { ref, nextTick, onMounted } from 'vue'
 import { useWindowScroll } from '@vueuse/core'
 import { type PropType } from 'vue'
 import { useTheme } from '#imports'
@@ -152,30 +152,17 @@ const props = defineProps({
 const { headerConfigs, theme, themeConfig } = await getCollectionData('settings') 
 const themeComposable = useTheme()
 
-// Reactive CSS application using useHead
-const themeCssString = computed(() => {
-  if (themeComposable.isEnabled()) {
-    return themeComposable.getCurrentCssString()
-  }
-  return ''
-})
-
-// Apply CSS reactively
-useHead(computed(() => ({
-  htmlAttrs: {
-    'data-theme': themeComposable.isEnabled() ? 'dynamic' : undefined,
-    style: themeCssString.value || undefined,
-  },
-})))
+// CSS application is handled by the theme-css.client.ts plugin
 
 onMounted(async () => {
+  const shouldInit = themeComposable.shouldInitialize()
   // Only initialize if not already enabled (singleton pattern ensures this works correctly)
-  if (themeComposable.shouldInitialize()) {
+  if (shouldInit) {
     if (theme !== undefined && theme > -1) {
       // Load theme BEFORE enabling to avoid applying default theme
       themeComposable.loadTheme(theme)
       
-      if (themeConfig !== undefined && themeConfig.length > 6) {  
+      if (themeConfig !== undefined && themeConfig.trim().length >= 2) {  
         themeComposable.loadThemeConfig(themeConfig)
       }
       
@@ -186,7 +173,6 @@ onMounted(async () => {
       const colorMode = useColorMode()
       themeComposable.setInverted(colorMode.value === 'dark')
       
-      // CSS is applied reactively via the computed useHead above
       await nextTick()
     }
   }

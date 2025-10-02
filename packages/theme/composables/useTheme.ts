@@ -1,14 +1,17 @@
 // import { useToast } from 'vue-toastification'
 import { ref, reactive, watch } from 'vue'
-import { useHead } from 'nuxt/app'
+// useHead is now handled by theme-css.client.ts plugin
 import type { BaseColors, SfColorMapping } from '@crearis/theme/utils/colorSettings'
 import { palette } from '@crearis/theme/utils/colorSettings'
+import { sharedThemeState } from './sharedThemeState'
 
 // Global reactive state - persists across calls (Vue composable singleton pattern)
 const loading = ref(true)
 const enabled = ref(false)
 const themeId = ref(0)
 const hasBeenInitialized = ref(false)
+
+
 
 const themes = [
     {
@@ -317,6 +320,7 @@ watch(() => baseColors.neutral, (newNeutral) => {
 })
 
 export function useTheme() {
+  
   const getInverted = () => {
     return inverted.value ? '1' : '0'
   }
@@ -414,17 +418,15 @@ export function useTheme() {
 
   const setInverted = (invert: boolean) => {
     inverted.value = invert
-    if (isEnabled()) {
-      useHead({ htmlAttrs: { style: `--color-inverted: ${inverted.value ? '1' : '0'};` } })
-    }
+    // CSS application is handled by the theme plugin
     // Force updateTheme to apply all changes together
     updateTheme()
   }
 
   const getCurrentCssString = () => {
-    if (isEnabled()) {
+    if (isEnabled() || sharedThemeState.enabled.value) {
       const invertedVar = `--color-inverted: ${inverted.value ? '1' : '0'};`
-      const allVars = [invertedVar].concat(cssColorVars.value, cssFontVars.value)
+      const allVars = [invertedVar].concat(sharedThemeState.cssColorVars.value, sharedThemeState.cssFontVars.value)
       return allVars.join(' ')
     }
     return ''
@@ -433,10 +435,13 @@ export function useTheme() {
   const updateTheme = () => {
     cssColorVars.value = getColorVars(baseColors, getColormapWithDefaults(colormap.value), true)
     cssFontVars.value = getFontVars(font.value, headings.value, true)
-    // console.log('🎨 Current theme base-colors:', JSON.stringify(themes[themeId.value].baseColors))
-    // log only the colormap entries (all strings without '-base'), concatenated to a single string with line breaks
-    // console.log('🎨 Current theme bg-colormap:', '\n'.concat(cssColorVars.value.filter((c) => c.indexOf('bg') > 0).join('\n')))
-
+    
+    // Sync to shared state for other components 
+    sharedThemeState.cssColorVars.value = cssColorVars.value
+    sharedThemeState.cssFontVars.value = cssFontVars.value
+    sharedThemeState.themeId.value = theme.value?.id || 0
+    sharedThemeState.enabled.value = enabled.value
+    
     // CSS application is handled by components using getCurrentCssString()
 
     // const newAppConfig = useAppConfig().cssVars
