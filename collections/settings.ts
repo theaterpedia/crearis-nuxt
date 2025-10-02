@@ -57,8 +57,8 @@ export default defineCollection({
     theme: {
       type: 'number',
       options: {
-        default: 0,
-        min: 0,
+        default: -1,
+        min: -1,
         max: 7,
         step: 1,
         required: true,
