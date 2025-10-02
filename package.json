@@ -15,6 +15,7 @@
   "type": "module",
   "scripts": {
     "start": "node .output/server/index.mjs ",
+    "cleanup": "rm -rf .output && rm -rf .pruvious && rm -rf .cache && rm -rf .output && rm -rf node_modules && rm -rf apps/home/node_modules && rm -rf packages/ui/node_modules && rm -rf packages/theme/node_modules && rm -rf packages/odoo-sdk-api-client/node_modules && rm -rf pnpm-lock.yaml",
     "start:home": "cd apps/home && node .output/server/index.mjs",
     "build": "nuxt build --log-level=verbose",
     "codegen": "graphql-codegen",
