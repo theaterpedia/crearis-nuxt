@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, resolveComponent, computed, watch } from 'vue'
+import { ref, resolveComponent, computed, watch, onMounted } from 'vue'
 import { Button, CardHero } from '@crearis/ui'
 import { TabsContent, TabsList, TabsRoot, TabsTrigger } from 'radix-vue'
 import { useTheme } from '../composables/useTheme'
@@ -44,22 +44,22 @@ const autoUpdate = ref(true)
 const primaryButtonConfig = computed(() => {
   switch (currentMode.value) {
     case 'default':
-      return { label: 'Reset', action: 'reset' }
+      return { label: 'Zurücksetzen', action: 'reset' }
     case 'preview':
-      return { label: 'Save', action: 'save' }
+      return { label: 'Ausprobieren', action: 'save' }
     case 'config':
-      return { label: 'Save', action: 'save' }
+      return { label: 'Ausprobieren', action: 'save' }
   }
 })
 
 const secondaryButtonConfig = computed(() => {
   switch (currentMode.value) {
     case 'default':
-      return { label: 'Edit', action: 'edit' }
+      return { label: 'Bearbeiten', action: 'edit' }
     case 'preview':
-      return { label: 'Edit', action: 'edit' }
+      return { label: 'Bearbeiten', action: 'edit' }
     case 'config':
-      return { label: 'Cancel', action: 'cancel' }
+      return { label: 'Abbrechen', action: 'cancel' }
   }
 })
 
@@ -90,9 +90,19 @@ const handleSecondaryAction = () => {
 
 // Action functions
 const performReset = () => {
-  // Reset theme to default state
-  console.log('Resetting theme...')
-  // Add reset logic here
+  // Reset to default state and disable session theming
+  console.log('🔄 Resetting to default theme and disabling session theming')
+  
+  // Disable session theming - website will return to database/fallback themes
+  const { toggleTheming, loadTheme } = useTheme()
+  toggleTheming(false)
+  
+  // Load database theme (or fallback to theme 0 if no database theme)
+  const themeToLoad = databaseTheme.value !== null ? databaseTheme.value : defaultTheme.value
+  loadTheme(themeToLoad)
+  currentMode.value = 'default'
+  
+  console.log('✅ Session theming disabled - website returned to database/fallback theme')
 }
 
 const performEdit = () => {
@@ -108,7 +118,7 @@ const performCancel = () => {
   if (confirm('Änderungen verwerfen?')) {
     console.log('Canceling changes...')
     // Return to preview or default mode based on current theme
-    if (theme.value.id === defaultTheme.value) {
+    if (databaseTheme.value !== null && theme.value.id === databaseTheme.value) {
       currentMode.value = 'default'
     } else {
       currentMode.value = 'preview'
@@ -117,11 +127,18 @@ const performCancel = () => {
 }
 
 const performSave = () => {
-  // Save current theme changes and exit config mode
-  console.log('Saving theme...')
-  updateTheme()
+  // Enable session-based theming (no database save, just activate for current session)
+  console.log('🎨 Activating session-based theming for current theme:', theme.value.id)
+  updateTheme() // Generate CSS variables
+  
+  // Enable theming for the current session only (not database)
+  const { toggleTheming } = useTheme()
+  toggleTheming(true)
+  
+  console.log('🚀 Theme activated for session - visitors can now test-drive this theme')
+  
   // Return to preview or default mode based on current theme
-  if (theme.value.id === defaultTheme.value) {
+  if (databaseTheme.value !== null && theme.value.id === databaseTheme.value) {
     currentMode.value = 'default'
   } else {
     currentMode.value = 'preview'
@@ -131,19 +148,62 @@ const performSave = () => {
 // Handle preview card clicks
 const handlePreviewClick = (themeId: number) => {
   loadTheme(themeId)
-  if (themeId === defaultTheme.value) {
+  // Check if this is the database theme (not just theme 0)
+  if (databaseTheme.value !== null && themeId === databaseTheme.value) {
     currentMode.value = 'default'
   } else {
     currentMode.value = 'preview'
   }
 }
 
-// Computed hero heading with AKTIV prefix for default mode
+// Database theme state
+const databaseTheme = ref(null)
+const databaseThemeConfig = ref(null)
+
+// Fetch database configuration on mount
+onMounted(async () => {
+  try {
+    const response = await fetch('/api/settings')
+    if (response.ok) {
+      const data = await response.json()
+      databaseTheme.value = data.theme
+      databaseThemeConfig.value = data.themeConfig
+      console.log('Database theme loaded:', data.theme, data.themeConfig)
+    }
+  } catch (error) {
+    console.warn('Could not fetch database theme:', error)
+    // Fallback: assume no database theme set
+    databaseTheme.value = null
+  }
+})
+
+// Session theming status
+const { isEnabled } = useTheme()
+const isSessionThemeActive = computed(() => isEnabled())
+
+// Helper to check if current theme is the database theme
+const isDatabaseTheme = computed(() => {
+  return databaseTheme.value !== null && theme.value.id === databaseTheme.value
+})
+
+// Computed hero heading with status indicators
 const heroHeading = computed(() => {
-  if (currentMode.value === 'default') {
+  if (isSessionThemeActive.value) {
+    return `🎨 SESSION: ${theme.value.heading}`
+  } else if (isDatabaseTheme.value) {
     return `AKTIV: ${theme.value.heading}`
   }
   return theme.value.heading
+})
+
+// Computed description with session status
+const heroDescription = computed(() => {
+  if (isSessionThemeActive.value) {
+    return `${theme.value.description}<br/><br/><strong>⚡ Session-Theme aktiv:</strong> Dieses Theme ist temporär auf Ihrer Website aktiv. Besucher können es ausprobieren. Verwenden Sie "Zurücksetzen", um zu Ihrem Datenbank-Theme zurückzukehren.`
+  } else if (isDatabaseTheme.value) {
+    return `${theme.value.description}<br/><br/><strong>✅ Datenbank-Theme:</strong> Dies ist derzeit Ihr aktives Website-Theme. Alle Besucher sehen dieses Theme.`
+  }
+  return `${theme.value.description}<br/><br/><strong>👀 Vorschau-Modus:</strong> Sie betrachten eine Vorschau dieses Themes. Verwenden Sie "Ausprobieren", um es für Ihre Website zu aktivieren.`
 })
 
 // Visibility computed properties
@@ -206,7 +266,17 @@ const handleLogout = async () => {
         >
           <banner transparent>
             <Heading :content="heroHeading" is="h2" />
-            <p v-html="theme.description" class="text-sm font-light"></p>
+            <p v-html="heroDescription" class="text-sm font-light"></p>
+
+            <!-- Session Status Indicator -->
+            <div v-if="isSessionThemeActive" class="mt-3 p-3 bg-green-100 dark:bg-green-900 rounded-lg border border-green-300 dark:border-green-700">
+              <div class="flex items-center gap-2">
+                <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <span class="text-sm font-medium text-green-800 dark:text-green-200">
+                  Session Theme Active - Visitors can test-drive this theme
+                </span>
+              </div>
+            </div>
 
             <div class="flex gap-3 mt-4">
               <Button 

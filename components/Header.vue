@@ -157,11 +157,18 @@ const themeComposable = useTheme()
 
 onMounted(async () => {
   const shouldInit = themeComposable.shouldInitialize()
+  
+  // Check if theming is already enabled (session-based from /theme page)
+  if (themeComposable.isEnabled()) {
+    console.log('🎨 Header: Session-based theming already active, keeping current theme')
+    return // Don't override session theme with database theme
+  }
+  
   // Only initialize if not already enabled (singleton pattern ensures this works correctly)
   if (shouldInit) {
     if (theme !== undefined && theme !== null && theme >= 0) {
       // Valid theme ID: Load and enable dynamic theming (0 is first theme)
-      console.log('🎨 Header: Loading dynamic theme:', theme)
+      console.log('🎨 Header: Loading database theme:', theme)
       themeComposable.loadTheme(theme)
       
       if (themeConfig !== undefined && themeConfig.trim().length >= 2) {  
