@@ -63,15 +63,19 @@ const inputValue = computed({
     :is="wrapperTag"
     data-testid="input"
     :class="[
-      'focus-within:caret-primary-700 focus-within:ring-primary-700 hover:ring-primary-700 active:caret-primary-700 active:ring-primary-700 flex items-center gap-2 rounded-md bg-white px-4 text-neutral-500 ring-1 focus-within:ring-2 active:ring-2',
+      'flex items-center gap-2 rounded-md px-4',
       {
-        'ring-negative-700 ring-2': invalid,
-        'ring-1 ring-neutral-200': !invalid,
         'focus-within:outline-offset focus-within:outline': isFocusVisible,
       },
       getSizeClasses[size],
       wrapperClass,
     ]"
+    :style="{
+      backgroundColor: 'var(--color-input)',
+      color: 'var(--color-ring)',
+      border: invalid ? '2px solid var(--color-negative-bg)' : '1px solid var(--color-border)',
+      caretColor: 'var(--color-primary-bg)',
+    }"
   >
     <slot name="prefix" />
     <input
@@ -79,7 +83,11 @@ const inputValue = computed({
       v-model="inputValue"
       :size="1"
       data-testid="input-field"
-      class="w-full min-w-[80px] appearance-none text-base text-neutral-900 outline-none read-only:bg-transparent disabled:cursor-not-allowed disabled:bg-transparent"
+      class="w-full min-w-[80px] appearance-none text-base outline-none read-only:bg-transparent disabled:cursor-not-allowed disabled:bg-transparent"
+      :style="{
+        color: 'var(--color-contrast)',
+        backgroundColor: 'transparent',
+      }"
     />
     <slot name="suffix" />
   </component>
