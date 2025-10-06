@@ -112,19 +112,15 @@ defineLayout({
   ],
 })
 
-const page = unref(usePage())
+const page = usePage()
 // const { blogLandingPage } = await getCollectionData('settings')
 
 const searchDisablend = true
 
-const author = page?.fields.author ? page?.fields.author : 'kein Autor angegeben'
-const heading = page?.fields.title
-  ? page?.fields.overline
-    ? `${page?.fields.overline} **${page?.fields.title}**`
-    : page?.fields.title
-  : 'Contact ohne Titel'
-const teaser = page?.fields.teaserText ? page?.fields.teaserText : 'Teasertext'
-const imgTmp = page?.fields.imgTmp
+const author = page.value?.fields.author ? page.value?.fields.author : 'kein Autor angegeben'
+const heading = page.value?.fields.heading || page.value?.fields.title || 'Contact ohne Titel'
+const teaser = page.value?.fields.teaserText ? page.value?.fields.teaserText : 'Teasertext'
+const imgTmp = page.value?.fields.imgTmp
 
 const isSideNav: Boolean = false
 
@@ -132,7 +128,7 @@ const showHero = heading && imgTmp
 const textShadow = 'text-shadow: 0.2rem 0.2rem 0.3rem hsla(110, 10%, 0%, 0.8);'
 
 const scrollBreak = showHero
-  ? page?.fields.heightTmp === 'full' || page?.fields.heightTmp === 'prominent'
+  ? page.value?.fields.heightTmp === 'full' || page.value?.fields.heightTmp === 'prominent'
     ? 400
     : 250
   : 80

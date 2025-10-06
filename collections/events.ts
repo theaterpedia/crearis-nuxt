@@ -8,6 +8,19 @@ const events = pageLikeCollection({
   pathPrefix: 'events',
   icon: 'CalendarEvent',
   allowedLayouts: ['event'],
+  additionalPublicPagesFields: [
+    'editMode',
+    // 'heading',
+    'templateCode',
+    'teaserText',
+    'md',
+    'cimg',
+    'headerType',
+    'headerSize',
+    'formatOptions',
+    'dateBegin',
+    'dateEnd',
+  ],
   additionalFields: {
     cid: {
       type: 'text',
@@ -40,10 +53,10 @@ const events = pageLikeCollection({
         required: true,
       },
     },
-    overline: {
+    /* heading: {
       type: 'text',
       options: {},
-    },
+    }, */
     templateCode: {
       type: 'text',
       options: {
@@ -53,6 +66,37 @@ const events = pageLikeCollection({
     teaserText: {
       type: 'text',
       options: {},
+    },    
+    md: {
+      type: 'text',
+      options: {},
+    },    
+    cimg: {
+      type: 'text',
+      options: {},
+    },    
+    headerType: {
+      type: 'select',
+      options: {
+        choices: { simple: 'simple', columns: 'Text-Bild (2 Spalten)', banner: 'Banner medium', cover: 'Cover Fullsize', bauchbinde: 'Bauchbinde' },
+        default: 'simple',
+        label: 'Header Typ',
+      },
+    },
+    headerSize: {
+      type: 'select',
+      options: {
+        choices: { full: 'full', prominent: 'prominent', medium: 'medium', mini: 'mini' },
+        default: 'prominent',
+        label: 'Header Höhe',
+      },
+    },
+    formatOptions: {
+      type: 'text-area',
+      options: {
+        placeholder: "optionName: 'value', optionName: 'value'",
+        description: 'Formatierung von Header und Page (Json)',
+      },
     },
     dateBegin: {
       type: 'date-time',

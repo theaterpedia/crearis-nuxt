@@ -46,12 +46,45 @@
         </template>
       </Component>
     </Hero>
+    <TextImage
+      v-else-if="showTextImage"
+      :heightTmp="headerprops.headerSize"
+      :imgTmp="imgTmp"
+      :imgTmpAlignX="headerprops.imgTmpAlignX"
+      :imgTmpAlignY="headerprops.imgTmpAlignY"
+      :contentAlignY="headerprops.contentAlignY"
+    >
+      <div v-if="showLogoBanner">
+        <Logo extended />
+      </div>
+      <div v-else>
+        <Heading v-if="heading" :content="heading" is="h1"></Heading>
+        <br v-if="heading && teaser" />
+        <MdBlock v-if="teaser" :content="teaser" htag="h3" />
+        <div v-if="showCta">
+          <ButtonTmp
+            :size="headerprops.isFullWidth ? 'medium' : 'small'"
+            :to="cta.link ? cta.link : '#cta'"
+            variant="plain"
+          >
+            {{ cta.title }}
+          </ButtonTmp>
+          <NuxtLink
+            v-if="showLink"
+            :to="link.link"
+            style="margin-left: 2em; text-decoration: underline"
+            :style="headerprops.isFullWidth ? 'font-weight:bold' : ''"
+          >
+            {{ link.title }}
+          </NuxtLink>
+        </div>
+      </div>
+    </TextImage>
     <SectionContainer v-else-if="!showTextImage">
       <Heading v-if="heading" :content="heading" is="h1" class="mt-14"></Heading>
       <MdBlock v-if="teaser" :content="teaser" htag="h3" />
     </SectionContainer>
     <SectionContainer v-else>
-      <h2 class="mt-14">Text-Bild-Kombination</h2>
       <Heading v-if="heading" :content="heading" is="h1" class="mt-14"></Heading>
       <MdBlock v-if="teaser" :content="teaser" htag="h3" />
     </SectionContainer>
@@ -67,6 +100,7 @@ import { type PropType } from 'vue'
 import { useTheme } from '#imports'
 import { useColorMode } from '@vueuse/core'
 import { sharedThemeState } from '~/packages/theme/composables/sharedThemeState'
+import TextImage from '~/packages/ui/src/components/TextImage.vue'
 
 const props = defineProps({
   /**
@@ -141,9 +175,10 @@ const props = defineProps({
   },  
   /**
    * Format options to manually adjust the site-settings.
+   * Can be either a JSON string or an object. Empty strings are treated as empty objects.
    */
   formatOptions: {
-    type: Object,
+    type: [Object, String],
     default: () => ({}),
   },
 })
@@ -282,7 +317,27 @@ const siteHeader = customSiteHeader?.formatOptions ? JSON.parse(customSiteHeader
 // get default Header, if not found, take 'simple'
 const defaultHeader = headerTypes.find((type) => type.name === props.headerType) || headerTypes[0]
 
-const headerprops = Object.assign(defaultHeader, siteHeader, props.formatOptions)
+// Parse formatOptions if it's a string (JSON string or empty string)
+let parsedFormatOptions = {}
+if (typeof props.formatOptions === 'string') {
+  // Empty string means empty object
+  if (props.formatOptions.trim() === '') {
+    parsedFormatOptions = {}
+  } else {
+    // Try to parse JSON string
+    try {
+      parsedFormatOptions = JSON.parse(props.formatOptions)
+    } catch (e) {
+      console.warn('Failed to parse formatOptions JSON string:', props.formatOptions, e)
+      parsedFormatOptions = {}
+    }
+  }
+} else {
+  // Already an object
+  parsedFormatOptions = props.formatOptions
+}
+
+const headerprops = Object.assign(defaultHeader, siteHeader, parsedFormatOptions)
 
 // if headerprops.headerSize is not in allowedSizes set it to default
 if (!headerprops.allowedSizes.includes(headerprops.headerSize)) {

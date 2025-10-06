@@ -43,11 +43,10 @@ export type AddBlogPostInput = {
   authorId: Scalars['Int']['input'];
   blocks: InputMaybe<Scalars['GenericScalar']['input']>;
   blogId: Scalars['Int']['input'];
-  headline: Scalars['String']['input'];
+  heading: Scalars['String']['input'];
   md: InputMaybe<Scalars['String']['input']>;
   metaDescription: InputMaybe<Scalars['String']['input']>;
   metaKeywords: InputMaybe<Scalars['String']['input']>;
-  overline: InputMaybe<Scalars['String']['input']>;
   public: InputMaybe<Scalars['Boolean']['input']>;
   publishDate: InputMaybe<Scalars['Date']['input']>;
   teasertext: InputMaybe<Scalars['String']['input']>;
@@ -324,16 +323,14 @@ export type Event = {
   formatOptions: Maybe<Scalars['GenericScalar']['output']>;
   headerSize: Maybe<Scalars['String']['output']>;
   headerType: Maybe<Scalars['String']['output']>;
-  headline: Maybe<Scalars['String']['output']>;
+  heading: Maybe<Scalars['String']['output']>;
   id: Scalars['Int']['output'];
   location: Maybe<Partner>;
   metaDescription: Maybe<Scalars['String']['output']>;
   metaKeywords: Maybe<Scalars['String']['output']>;
   metaTitle: Maybe<Scalars['String']['output']>;
-  name: Maybe<Scalars['String']['output']>;
   note: Maybe<Scalars['String']['output']>;
   organizer: Maybe<Partner>;
-  overline: Maybe<Scalars['String']['output']>;
   publicUser: Maybe<User>;
   seatsLimited: Maybe<Scalars['Boolean']['output']>;
   slug: Maybe<Scalars['String']['output']>;
@@ -1008,14 +1005,13 @@ export type Post = {
   formatOptions: Maybe<Scalars['GenericScalar']['output']>;
   headerSize: Maybe<Scalars['String']['output']>;
   headerType: Maybe<Scalars['String']['output']>;
-  headline: Maybe<Scalars['String']['output']>;
+  heading: Maybe<Scalars['String']['output']>;
   homesite: Maybe<Website>;
   id: Scalars['Int']['output'];
   md: Maybe<Scalars['String']['output']>;
   metaDescription: Maybe<Scalars['String']['output']>;
   metaKeywords: Maybe<Scalars['String']['output']>;
   metaTitle: Maybe<Scalars['String']['output']>;
-  overline: Maybe<Scalars['String']['output']>;
   postDate: Maybe<Scalars['String']['output']>;
   public: Maybe<Scalars['Boolean']['output']>;
   publishDate: Maybe<Scalars['String']['output']>;
@@ -1450,12 +1446,11 @@ export type UpdateEventInput = {
   /** Crearis ID of the event to update. */
   cid: Scalars['String']['input'];
   description: InputMaybe<Scalars['String']['input']>;
+  heading: InputMaybe<Scalars['String']['input']>;
   metaDescription: InputMaybe<Scalars['String']['input']>;
   metaKeywords: InputMaybe<Scalars['String']['input']>;
   metaTitle: InputMaybe<Scalars['String']['input']>;
-  name: InputMaybe<Scalars['String']['input']>;
   note: InputMaybe<Scalars['String']['input']>;
-  overline: InputMaybe<Scalars['String']['input']>;
   teasertext: InputMaybe<Scalars['String']['input']>;
   /** old Version of the event to update. */
   version: Scalars['Int']['input'];
@@ -1472,11 +1467,10 @@ export type UpdatePostInput = {
   blocks: InputMaybe<Scalars['GenericScalar']['input']>;
   /** Crearis ID of the event to update. */
   cid: Scalars['String']['input'];
-  headline: InputMaybe<Scalars['String']['input']>;
+  heading: InputMaybe<Scalars['String']['input']>;
   md: InputMaybe<Scalars['String']['input']>;
   metaDescription: InputMaybe<Scalars['String']['input']>;
   metaKeywords: InputMaybe<Scalars['String']['input']>;
-  overline: InputMaybe<Scalars['String']['input']>;
   public: InputMaybe<Scalars['Boolean']['input']>;
   publishDate: InputMaybe<Scalars['Date']['input']>;
   teasertext: InputMaybe<Scalars['String']['input']>;

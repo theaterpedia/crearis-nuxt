@@ -33,7 +33,7 @@
           :formatOptions="page?.fields?.formatOptions"
           :showLogoBanner="route.path === '/' && y <= scrollBreak"
           :searchDisabled="searchDisabled"
-          :heading="page?.fields?.heading"
+          :heading="page?.title"
           :teaser="page?.fields?.teaser"
           :imgTmp="page?.fields?.imgTmp"
           :cta="page?.fields?.cta"
@@ -85,7 +85,7 @@ defineLayout({
     'PageSection',
     'PageSlider',
     'PageSubnavigation',
-    'VarConstruction',
+    'VarConstruction',  
     'VarImage',
     'VarProse',
     'VarVideo',
@@ -93,7 +93,7 @@ defineLayout({
   ],
 })
 
-const page = unref(usePage())
+const page = usePage()
 // const { blogLandingPage } = await getCollectionData('settings')
 
 // Theme is handled by the theme-css.client.ts plugin
@@ -103,11 +103,11 @@ const searchDisabled = true
 
 const isSideNav: Boolean = false
 
-const showHeader = page?.fields?.imgTmp && page?.fields?.headerType !== 'simple'
+const showHeader = page.value?.fields?.imgTmp && page.value?.fields?.headerType !== 'simple'
 const textShadow = 'text-shadow: 0.2rem 0.2rem 0.3rem hsla(110, 10%, 0%, 0.8);'
 
 const scrollBreak = showHeader
-  ? page?.fields.headerSize === 'full' || page?.fields.headerSize === 'prominent'
+  ? page.value?.fields.headerSize === 'full' || page.value?.fields.headerSize === 'prominent'
     ? 400
     : 250
   : 80

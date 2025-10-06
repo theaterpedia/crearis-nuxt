@@ -7,6 +7,7 @@ export default createRouter({
     { path: '/catalog', component: () => import('../views/catalog.vue') },
     { path: '/heading', component: () => import('../views/heading.vue') },
     { path: '/heroes', component: () => import('../views/heroes.vue') },
+    { path: '/text-image', component: () => import('../views/text-image.vue') },
     { path: '/timeline', component: () => import('../views/timeline.vue') },
   ],
 })
