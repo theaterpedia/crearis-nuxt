@@ -19,7 +19,7 @@ export const colorVars = {
   'neutral-base': 'oklch(80% 0.02 104)',
   'gray-base': 'oklch(80% 0.02 104.001)',
   'bg': 'oklch(from var(--color-neutral-base) calc(l + 1 * (1 - var(--color-inverted) - l)) calc(c / 4.5) h)',
-  'contrast': 'oklch(from var(--color-gray-base) calc(l + 1 * (0 - l)) calc(c / 4.5) h)',
+  'contrast': 'oklch(from var(--color-gray-base) calc(l + 1 * (1 - var(--color-inverted) - l)) calc(c / 2) h)',
   'black': 'oklch(from var(--color-gray-base) calc(l + 1 * (0 - l)) calc(c / 4.5) h)',
   'white': 'oklch(from var(--color-gray-base) calc(l + 1 * (1 - 0 - l)) calc(c / 4.5) h)',
   'primary-bg': 'var(--color-primary-base)',
