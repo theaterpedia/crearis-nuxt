@@ -1,5 +1,5 @@
 <template>
-  <Hero :overlay="getoverlay(gradient_type, gradient_depth)">
+  <Hero :overlay="getoverlay(gradient_type, gradient_depth, backgroundCorrection)">
     <slot />
   </Hero>
 </template>
@@ -27,9 +27,34 @@ const props = defineProps({
     type: Number,
     default: 0.8,
   },
+  /**
+   * Background correction level for better text readability.
+   * 0 or 'none': No correction
+   * 1: Light correction (20% inverted color)
+   * 2: Strong correction (40% inverted color)
+   *
+   * @default 'none'
+   */
+  backgroundCorrection: {
+    type: [String, Number] as PropType<'none' | 0 | 1 | 2>,
+    default: 'none',
+  },
 })
 
-const getoverlay = (gradient: string, depth: number) => {
+/**
+ * Helper function to get the background correction color overlay
+ */
+const getCorrectionOverlay = (correction: 'none' | 0 | 1 | 2) => {
+  return correction === 'none' || correction === 0
+    ? ''
+    : correction === 1
+      ? 'linear-gradient(to bottom, oklch(from var(--color-bg) l c h / 0.2), oklch(from var(--color-bg) l c h / 0.2))'
+      : correction === 2
+        ? 'linear-gradient(to bottom, oklch(from var(--color-bg) l c h / 0.4), oklch(from var(--color-bg) l c h / 0.4))'
+        : '' 
+}
+
+const getoverlay = (gradient: string, depth: number, correction: 'none' | 0 | 1 | 2) => {
   const deg =
     gradient && gradient !== 'none'
       ? gradient == 'left'
@@ -46,10 +71,20 @@ const getoverlay = (gradient: string, depth: number) => {
                   ? '170deg'
                   : ''
       : ''
-  return gradient && gradient !== 'none'
-    ? gradient !== 'full'
-      ? `linear-gradient(${deg}, rgba(255, 193, 7, ${depth}) 18%, rgba(255, 255, 255, 0.62) 50%, rgba(255, 255, 255, 0.10) 81%)`
+  
+  const gradientOverlay =
+    gradient && gradient !== 'none'
+      ? gradient !== 'full'
+        ? `linear-gradient(${deg}, rgba(255, 193, 7, ${depth}) 18%, rgba(255, 255, 255, 0.62) 50%, rgba(255, 255, 255, 0.10) 81%)`
+        : ''
       : ''
-    : ''
+  
+  const correctionOverlay = getCorrectionOverlay(correction)
+  
+  // Return ternary: if both exist, combine them; otherwise return whichever exists
+  /* return gradientOverlay && correctionOverlay
+    ? `${gradientOverlay}, ${correctionOverlay}`
+    : gradientOverlay || correctionOverlay */
+  return correctionOverlay
 }
 </script>

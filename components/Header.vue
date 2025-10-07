@@ -16,7 +16,7 @@
     >
       <Component
         :card="headerprops.phoneBanner && false"
-        :is="headerprops.inBanner ? 'Banner' : 'div'"
+        :is="headerprops.contentInBanner ? Banner : 'div'"
         transparent
       >
         <template v-if="showLogoBanner">
@@ -95,6 +95,7 @@ import { type PropType } from 'vue'
 import { useTheme } from '#imports'
 import { sharedThemeState } from '~/packages/theme/composables/sharedThemeState'
 import TextImage from '~/packages/ui/src/components/TextImage.vue'
+import Banner from '~/packages/ui/src/components/Banner.vue'
 
 const props = defineProps({
   /**
@@ -260,14 +261,14 @@ const headerTypes = [
     headerSize: 'medium',
     allowedSizes: ['prominent', 'medium', 'mini'],
     isFullWidth: false,
-    contentAlignY: 'center',
+    contentAlignY: 'top',
     imgTmpAlignX: 'center',
-    imgTmpAlignY: 'center',
-    backgroundCorrection: 'none',
+    imgTmpAlignY: 'top',
+    backgroundCorrection: 1,
     phoneBanner: false,
     contentInBanner: false,
-    gradientType: 'none',
-    gradientDepth: 1.0,
+    gradientType: 'left-bottom',
+    gradientDepth: 0.6,
   },
   {
     id: 3,
@@ -276,14 +277,14 @@ const headerTypes = [
     headerSize: 'prominent',
     allowedSizes: ['prominent', 'full'],
     isFullWidth: false,
-    contentAlignY: 'center',
-    imgTmpAlignX: 'center',
+    contentAlignY: 'bottom',
+    imgTmpAlignX: 'cover',
     imgTmpAlignY: 'center',
-    backgroundCorrection: 'none',
-    phoneBanner: false,
+    backgroundCorrection: 1,
+    phoneBanner: true,
     contentInBanner: false,
-    gradientType: 'none',
-    gradientDepth: 1.0,
+    gradientType: 'left-bottom',
+    gradientDepth: 0.6,
   },
   {
     id: 4,
@@ -291,13 +292,13 @@ const headerTypes = [
     description: `Bauchbinde`,
     headerSize: 'prominent',
     allowedSizes: ['prominent', 'full'],
-    isFullWidth: false,
-    contentAlignY: 'center',
+    isFullWidth: true,
+    contentAlignY: 'bottom',
     imgTmpAlignX: 'center',
     imgTmpAlignY: 'center',
     backgroundCorrection: 'none',
     phoneBanner: false,
-    contentInBanner: false,
+    contentInBanner: true,
     gradientType: 'none',
     gradientDepth: 1.0,
   },            
