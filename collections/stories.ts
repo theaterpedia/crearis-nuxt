@@ -10,7 +10,7 @@ const stories = pageLikeCollection({
     'author',
     'imgTmp',
     // 'heading',
-    'teaser',
+    'teaserText',
     'headerType',
     'headerSize',
     'formatOptions',
@@ -40,7 +40,7 @@ const stories = pageLikeCollection({
         label: 'Heading',
       },
     }, */
-    teaser: {
+    teaserText: {
       type: 'text',
       options: {
         label: 'Teaser',

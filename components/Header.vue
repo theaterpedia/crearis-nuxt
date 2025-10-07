@@ -24,8 +24,8 @@
         </template>
         <template v-else>
           <Heading :content="heading" is="h1"></Heading>
-          <br v-if="heading && teaser" />
-          <MdBlock v-if="teaser" :content="teaser" htag="h3" />
+          <br v-if="heading && teaserText" />
+          <MdBlock v-if="teaserText" :content="teaserText" htag="h3" />
           <div v-if="showCta">
             <ButtonTmp
               :size="headerprops.isFullWidth ? 'medium' : 'small'"
@@ -59,8 +59,8 @@
       </div>
       <div v-else>
         <Heading v-if="heading" :content="heading" is="h1"></Heading>
-        <br v-if="heading && teaser" />
-        <MdBlock v-if="teaser" :content="teaser" htag="h3" />
+        <br v-if="heading && teaserText" />
+        <MdBlock v-if="teaserText" :content="teaserText" htag="h3" />
         <div v-if="showCta">
           <ButtonTmp
             :size="headerprops.isFullWidth ? 'medium' : 'small'"
@@ -80,13 +80,9 @@
         </div>
       </div>
     </TextImage>
-    <SectionContainer v-else-if="!showTextImage">
-      <Heading v-if="heading" :content="heading" is="h1" class="mt-14"></Heading>
-      <MdBlock v-if="teaser" :content="teaser" htag="h3" />
-    </SectionContainer>
     <SectionContainer v-else>
       <Heading v-if="heading" :content="heading" is="h1" class="mt-14"></Heading>
-      <MdBlock v-if="teaser" :content="teaser" htag="h3" />
+      <MdBlock v-if="teaserText" :content="teaserText" htag="h3" />
     </SectionContainer>
   </div>
 </template>
@@ -94,11 +90,9 @@
 <script lang="ts" setup>
 import { NuxtLink } from '#components'
 import { getCollectionData } from '#pruvious/client'
-import { ref, nextTick, onMounted } from 'vue'
-import { useWindowScroll } from '@vueuse/core'
+import { nextTick, onMounted } from 'vue'
 import { type PropType } from 'vue'
 import { useTheme } from '#imports'
-import { useColorMode } from '@vueuse/core'
 import { sharedThemeState } from '~/packages/theme/composables/sharedThemeState'
 import TextImage from '~/packages/ui/src/components/TextImage.vue'
 
@@ -128,7 +122,7 @@ const props = defineProps({
   /**
    * Optional Text-Section for short description.
    */
-  teaser: {
+  teaserText: {
     type: String,
     default: '',
   },

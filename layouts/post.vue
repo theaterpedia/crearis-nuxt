@@ -29,7 +29,7 @@
           :showLogoBanner="route.path === '/' && y <= scrollBreak"
           :searchDisabled="searchDisabled"
           :heading="page?.title"
-          :teaser="page?.fields?.teaser"
+          :teaserText="page?.fields?.teaserText"
           :imgTmp="page?.fields?.imgTmp"
           :cta="page?.fields?.cta"
           :link="page?.fields?.link"
