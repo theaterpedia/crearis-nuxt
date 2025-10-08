@@ -47,7 +47,7 @@
         </template>
       </Component>
     </Hero>
-    <TextImage
+    <!--TextImage
       v-else-if="showTextImage"
       :heightTmp="headerprops.headerSize"
       :imgTmp="imgTmp"
@@ -80,7 +80,7 @@
           </NuxtLink>
         </div>
       </div>
-    </TextImage>
+    </TextImage -->
     <SectionContainer v-else>
       <Heading v-if="heading" :content="heading" is="h1" class="mt-14"></Heading>
       <MdBlock v-if="teaserText" :content="teaserText" htag="h3" />
@@ -95,7 +95,7 @@ import { nextTick, onMounted } from 'vue'
 import { type PropType } from 'vue'
 import { useTheme } from '#imports'
 import { sharedThemeState } from '~/packages/theme/composables/sharedThemeState'
-import TextImage from '~/packages/ui/src/components/TextImage.vue'
+//import TextImage from '~/packages/ui/src/components/TextImage.vue'
 import Banner from '~/packages/ui/src/components/Banner.vue'
 
 const props = defineProps({
