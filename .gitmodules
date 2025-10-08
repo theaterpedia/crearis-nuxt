@@ -1,0 +1,4 @@
+[submodule "_meta"]
+	path = _meta
+	url = https://github.com/theaterpedia/meta.git
+	branch = main
