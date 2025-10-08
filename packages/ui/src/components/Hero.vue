@@ -185,7 +185,7 @@ defineProps({
   right: 0;
   bottom: 0;
   left: 0;
-  height: 1rem;
+  height: var(--bottomline-hero);
   background-color: var(--color-primary-bg);
 }
 

@@ -51,7 +51,9 @@ defineProps({
   align-items: center;
   max-width: 100%;
   overflow: hidden;
-  border: none;
+  border: var(--border-button);
+  border-radius: var(--radius-button);
+  border-color: var(--color-border);
   font-weight: 500;
   white-space: nowrap;
   text-decoration: none;

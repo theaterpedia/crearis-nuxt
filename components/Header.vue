@@ -17,6 +17,7 @@
       <Component
         :card="headerprops.phoneBanner && false"
         :is="headerprops.contentInBanner ? Banner : 'div'"
+        themeColor="secondary"
         transparent
       >
         <template v-if="showLogoBanner">
