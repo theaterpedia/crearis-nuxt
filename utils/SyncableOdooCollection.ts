@@ -256,7 +256,8 @@ export class SyncableOdooCollection {
         cimg: odooRecord.cimg || '',
         headerType: odooRecord.headerType || '',
         headerSize: odooRecord.headerSize || 'prominent',
-        formatOptions: odooRecord.formatOptions || '',
+        // GraphQL returns formatOptions as GenericScalar (dictionary), stringify for Pruvious string field
+        formatOptions: odooRecord.formatOptions ? JSON.stringify(odooRecord.formatOptions) : '',
         blocks: odooRecord.blocks ? odooRecord.blocks : [],
         author: odooRecord.author
           ? (await ensureUser(odooRecord.author.email, odooRecord.author.firstname, odooRecord.author.lastname))?.id
@@ -279,7 +280,8 @@ export class SyncableOdooCollection {
         cimg: odooRecord.cimg || '',
         headerType: odooRecord.headerType || '',
         headerSize: odooRecord.headerSize || 'prominent',
-        formatOptions: odooRecord.formatOptions || '',        
+        // GraphQL returns formatOptions as GenericScalar (dictionary), stringify for Pruvious string field
+        formatOptions: odooRecord.formatOptions ? JSON.stringify(odooRecord.formatOptions) : '',        
         blocks: odooRecord.blocks ? odooRecord.blocks : [],
         dateBegin: odooRecord.dateBegin ? new Date(odooRecord.dateBegin).getTime() : null,
         dateEnd: odooRecord.dateEnd ? new Date(odooRecord.dateEnd).getTime() : null,
@@ -320,6 +322,8 @@ export class SyncableOdooCollection {
         // (Odoo does not provide separate teasertext field for domainusers)
         description: odooRecord.description || '',
         teaserText: odooRecord.description || '',
+        // GraphQL returns formatOptions as GenericScalar (dictionary), stringify for Pruvious string field
+        formatOptions: odooRecord.formatOptions ? JSON.stringify(odooRecord.formatOptions) : '',
         firstname: hasPartner ? odooRecord.user.partner.firstname || '' : '',
         lastname: hasPartner ? odooRecord.user.partner.lastname || '' : '',
         md: hasPartner ? odooRecord.user.partner.md || '' : '',
