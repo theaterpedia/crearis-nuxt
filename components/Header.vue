@@ -3,8 +3,8 @@
     <Hero
       v-if="showHero"
       :contentAlignY="headerprops.contentAlignY"
-      :contentType="headerprops.phoneBanner ? 'banner' : 'text'"
-      :contentWidth="headerprops.isFullWidth ? 'full' : 'short'"
+      :contentType="headerprops.contentType ? headerprops.contentType : headerprops.phoneBanner ? 'banner' : 'text'"
+      :contentWidth="headerprops.contentWidth ? headerprops.contentWidth : headerprops.isFullWidth ? 'full' : 'short'"
       :darkMode="$colorMode.value === 'dark'"
       :gradient_depth="headerprops.gradientDepth"
       :gradient_type="headerprops.gradientType"
@@ -13,11 +13,14 @@
       :imgTmpAlignX="headerprops.imgTmpAlignX"
       :imgTmpAlignY="headerprops.imgTmpAlignY"
       :backgroundCorrection="headerprops.backgroundCorrection"
-    >
+    > 
+      <!-- TODO: Passing 'bauchbinde' option to Banner is a hack with hardcoded padding. 
+           Should be refactored to use proper CSS classes or theme variables -->
       <Component
         :card="headerprops.phoneBanner && false"
         :is="headerprops.contentInBanner ? Banner : 'div'"
         themeColor="secondary"
+        :option="headerprops.name === 'bauchbinde' ? 'bauchbinde' : ''"
         transparent
       >
         <template v-if="showLogoBanner">
@@ -295,10 +298,12 @@ const headerTypes = [
     allowedSizes: ['prominent', 'full'],
     isFullWidth: true,
     contentAlignY: 'bottom',
-    imgTmpAlignX: 'center',
+    imgTmpAlignX: 'cover',
     imgTmpAlignY: 'center',
     backgroundCorrection: 'none',
     phoneBanner: false,
+    contentType: 'left',
+    contentWidth: 'fixed',
     contentInBanner: true,
     gradientType: 'none',
     gradientDepth: 1.0,

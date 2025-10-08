@@ -1,5 +1,6 @@
 <template>
-  <div
+  <!-- TODO: Hardcoded padding is a hack. Should use CSS classes or theme variables instead of inline styles -->
+  <div :style="option === 'bauchbinde' ? 'padding-left: 4rem;' : ''"
     :class="{
       banner: !card,
       transparent: transparent,
@@ -34,6 +35,17 @@ defineProps({
   themeColor: {
     type: String as PropType<'primary' | 'secondary' | 'neutral' | 'muted' | 'accent'>,
     default: 'neutral',
+  },
+
+  /**
+   * Options for special effects.
+   * TODO: This is currently a hack for bauchbinde layout. The hardcoded padding should be 
+   * refactored into proper CSS classes or controlled by theme variables.
+   * @default ''
+   */
+  option: {
+    type: String as PropType<'' | 'bauchbinde'>,
+    default: '',
   },
 
   /**
