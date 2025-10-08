@@ -11,7 +11,7 @@ export const colorScales = <OklchColor[]>[
 
 export const themeVars = {
   'radius': 'var(--radius-medium)',
-  'radius-button': 'var(--radius-medium)',  
+  'radius-button': 'var(--radius-none)',  
   'border': 'var(--border-none)',
   'border-button': 'var(--border-small)',  
   'bottomline': 'var(--bottomline-medium)',
