@@ -9,6 +9,17 @@ export const colorScales = <OklchColor[]>[
   { name: 'neutral', hue: 0, light: 70, chroma: 0.02 },
 ]
 
+export const themeVars = {
+  'radius': 'var(--radius-medium)',
+  'radius-button': 'var(--radius-medium)',  
+  'border': 'var(--border-none)',
+  'border-button': 'var(--border-small)',  
+  'bottomline': 'var(--bottomline-medium)',
+  'bottomline-hero': 'var(--bottomline-large)',
+  'transparency': 'var(--transparency-none)',
+  'transparency-banner': 'var(--transparency-small)',
+}
+
 export const colorVars = {
   'inverted': '1',
   'primary-base': 'oklch(93% 0.25 104.001)',
