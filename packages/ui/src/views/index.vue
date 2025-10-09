@@ -10,7 +10,7 @@
     </Sidebar>
 
     <Main>
-      <Hero contentType="banner" imgTmp="https://pruvious.com/uploads/dasei/banner.jpg">
+      <Hero contentType="banner" imgTmpAlignX="cover" imgTmp="https://pruvious.com/uploads/dasei/banner.jpg">
         <Banner transparent>
           <Prose>
             <h1>
