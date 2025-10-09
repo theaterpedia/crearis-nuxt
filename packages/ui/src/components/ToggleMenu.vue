@@ -34,7 +34,7 @@
             :class="{ 'layout-toggle-option-active': modelValue === child.state }"
             @click="selectOption(child.state)"
           >
-            <component v-if="child.icon" :is="child.icon" class="layout-toggle-icon" />
+            <span v-if="child.icon" class="layout-toggle-icon" v-html="child.icon.template"></span>
             
             <div class="layout-toggle-label">
               <template v-if="parseText(child.text).type === 'single'">
@@ -71,7 +71,7 @@
           :class="{ 'layout-toggle-option-active': modelValue === option.state }"
           @click="selectOption(option.state)"
         >
-          <component v-if="option.icon" :is="option.icon" class="layout-toggle-icon" />
+          <span v-if="option.icon" class="layout-toggle-icon" v-html="option.icon.template"></span>
           
           <div class="layout-toggle-label">
             <template v-if="parseText(option.text).type === 'single'">

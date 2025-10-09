@@ -31,12 +31,13 @@ export { default as TopNav, type TopnavLinkItem, type TopnavParentItem } from '.
 
 export { useSidebar } from './composables/useSidebar'
 
-// Settings
-export { 
-  pageSettings, 
-  layoutSettings, 
-  navbarSettings, 
-  mainMenuItems, 
-  layoutToggleOptions,
-  type SiteLayout 
-} from './settings'
+// Settings: DO NOT EXPORT - Use /utils/layoutsettings.ts instead
+// Settings have been moved to project-level /utils/layoutsettings.ts for auto-import
+// export { 
+//   pageSettings, 
+//   layoutSettings, 
+//   navbarSettings, 
+//   mainMenuItems, 
+//   layoutToggleOptions,
+//   type SiteLayout 
+// } from './settings'
