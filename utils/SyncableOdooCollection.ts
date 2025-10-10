@@ -239,6 +239,16 @@ export class SyncableOdooCollection {
     }
 
     if (this.collection === 'posts') {
+      // Ensure publicPartner exists (author is the partner directly)
+      const publicPartner = odooRecord.author
+        ? await ensurePartner(
+            odooRecord.author.id,
+            odooRecord.author.name,
+            odooRecord.author.email,
+            undefined // phone not available in postFragment
+          )
+        : null
+
       return {
         ...base,
         path: odooRecord.slugBlog + odooRecord.slugPost, // @todo catch noslug-error via nanoid,
@@ -259,10 +269,14 @@ export class SyncableOdooCollection {
         // GraphQL returns formatOptions as GenericScalar (dictionary), stringify for Pruvious string field
         formatOptions: odooRecord.formatOptions ? JSON.stringify(odooRecord.formatOptions) : '',
         blocks: odooRecord.blocks ? odooRecord.blocks : [],
-        author: odooRecord.author
-          ? (await ensureUser(odooRecord.author.email, odooRecord.author.firstname, odooRecord.author.lastname))?.id
-          : null,
+        // TODO: User creation will be handled in a separate step
+        // author: odooRecord.author
+        //   ? (await ensureUser(odooRecord.author.email, odooRecord.author.firstname, odooRecord.author.lastname))?.id
+        //   : null,
+        author: null, // Will be populated when user sync is implemented
         layout: odooRecord.layout || 'post',
+        // Partner relation (author is partner directly in posts)
+        publicPartner: publicPartner?.id || null,
       }
     } else if (this.collection === 'events') {
       // Ensure partners exist and get their Pruvious IDs
@@ -322,15 +336,6 @@ export class SyncableOdooCollection {
         blocks: odooRecord.blocks ? odooRecord.blocks : [],
         dateBegin: odooRecord.dateBegin ? new Date(odooRecord.dateBegin).getTime() : null,
         dateEnd: odooRecord.dateEnd ? new Date(odooRecord.dateEnd).getTime() : null,
-        organizer: odooRecord.organizer
-          ? (
-              await ensureUser(
-                odooRecord.organizer.email,
-                odooRecord.organizer.firstname,
-                odooRecord.organizer.lastname,
-              )
-            )?.id
-          : null,
         editMode: odooRecord.editMode || 'content',
         layout: odooRecord.layout || 'event',
         domainCode: odooRecord.website?.domainCode || '',

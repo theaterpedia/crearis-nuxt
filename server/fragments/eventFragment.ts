@@ -18,8 +18,6 @@ export default `
     blocks      
     dateBegin
     dateEnd      
-    stage { id, name, description }
-    eventType { id, name, seatsMax }
     publicUser { id, name, partner { id, name, email, phone } }
     company { id, name, email, phone }
     website { domainCode, domain }

@@ -121,12 +121,6 @@ const events = pageLikeCollection({
         protected: true,
       },
     },
-    company: {
-      type: 'text',
-      options: {
-        required: false,
-      },
-    },
     domainCode: {
       type: 'text',
       options: {
@@ -139,19 +133,7 @@ const events = pageLikeCollection({
         required: false,
       },
     },
-    location: {
-      type: 'text',
-      options: {
-        required: false,
-      },
-    },
     city: {
-      type: 'text',
-      options: {
-        required: false,
-      },
-    },
-    organizer: {
       type: 'text',
       options: {
         required: false,

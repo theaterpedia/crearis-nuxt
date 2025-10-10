@@ -97,6 +97,17 @@ const posts = pageLikeCollection({
         description: 'Formatierung von Hero und Page (Json)',
       },
     },
+    publicPartner: {
+      type: 'record',
+      options: {
+        collection: 'partners',
+        fields: ['name', 'oid'],
+        label: 'Autor:in Partner',
+      },
+      additional: {
+        protected: true,
+      },
+    },
   },
 })
 
