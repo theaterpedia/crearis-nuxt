@@ -1,6 +1,6 @@
 import { capitalize } from '#pruvious'
 import { query } from '#pruvious/server'
-import { ensureUser } from './user'
+import { ensureUser, ensurePartner } from './user'
 import type { MiddlewareConfig } from '@crearis/odoo-sdk-api-client'
 // @ts-ignore
 import { createApiClient } from '../packages/odoo-sdk-api-client/src/index.server'
@@ -265,6 +265,43 @@ export class SyncableOdooCollection {
         layout: odooRecord.layout || 'post',
       }
     } else if (this.collection === 'events') {
+      // Ensure partners exist and get their Pruvious IDs
+      const publicPartner = odooRecord.publicUser?.partner 
+        ? await ensurePartner(
+            odooRecord.publicUser.partner.id,
+            odooRecord.publicUser.partner.name,
+            odooRecord.publicUser.partner.email,
+            odooRecord.publicUser.partner.phone
+          )
+        : null
+
+      const companyPartner = odooRecord.company
+        ? await ensurePartner(
+            odooRecord.company.id,
+            odooRecord.company.name,
+            odooRecord.company.email,
+            odooRecord.company.phone
+          )
+        : null
+
+      const locationPartner = odooRecord.location
+        ? await ensurePartner(
+            odooRecord.location.id,
+            odooRecord.location.name,
+            odooRecord.location.email,
+            odooRecord.location.phone
+          )
+        : null
+
+      const organizerPartner = odooRecord.organizer
+        ? await ensurePartner(
+            odooRecord.organizer.id,
+            odooRecord.organizer.name,
+            odooRecord.organizer.email,
+            odooRecord.organizer.phone
+          )
+        : null
+
       return {
         ...base,
         path: odooRecord.slug || nanoid(),
@@ -296,6 +333,12 @@ export class SyncableOdooCollection {
           : null,
         editMode: odooRecord.editMode || 'content',
         layout: odooRecord.layout || 'event',
+        domainCode: odooRecord.website?.domainCode || '',
+        // Partner relations
+        publicPartner: publicPartner?.id || null,
+        companyPartner: companyPartner?.id || null,
+        locationPartner: locationPartner?.id || null,
+        organizerPartner: organizerPartner?.id || null,
       }
     } else if (this.collection === 'domainusers') {
       const hasPartner: boolean = odooRecord.user ? odooRecord.user.partner || false : false

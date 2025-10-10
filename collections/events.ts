@@ -220,6 +220,50 @@ const events = pageLikeCollection({
         default: false,
       },
     },
+    publicPartner: {
+      type: 'record',
+      options: {
+        collection: 'partners',
+        fields: ['name', 'oid'],
+        label: 'Referent:in',
+      },
+      additional: {
+        protected: true,
+      },
+    },
+    companyPartner: {
+      type: 'record',
+      options: {
+        collection: 'partners',
+        fields: ['name', 'oid'],
+        label: 'Organisation',
+      },
+      additional: {
+        protected: true,
+      },
+    },
+    locationPartner: {
+      type: 'record',
+      options: {
+        collection: 'partners',
+        fields: ['name', 'oid'],
+        label: 'Venue',
+      },
+      additional: {
+        protected: true,
+      },
+    },
+    organizerPartner: {
+      type: 'record',
+      options: {
+        collection: 'partners',
+        fields: ['name', 'oid'],
+        label: 'Management',
+      },
+      additional: {
+        protected: true,
+      },
+    },
   },
 })
 

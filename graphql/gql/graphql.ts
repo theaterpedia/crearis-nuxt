@@ -945,6 +945,10 @@ export type Partner = {
   zip: Maybe<Scalars['String']['output']>;
 };
 
+export type PartnerFilterInput = {
+  ids: Array<InputMaybe<Scalars['Int']['input']>>;
+};
+
 export type Payment = {
   __typename?: 'Payment';
   amount: Maybe<Scalars['Float']['output']>;
@@ -1206,6 +1210,7 @@ export type Query = {
   order: Order;
   orders: Maybe<Orders>;
   partner: Partner;
+  partners: Maybe<Array<Partner>>;
   paymentConfirmation: Maybe<Cart>;
   paymentProvider: PaymentProvider;
   paymentProviders: Maybe<Array<PaymentProvider>>;
@@ -1344,6 +1349,11 @@ export type QueryOrdersArgs = {
   filter?: InputMaybe<OrderFilterInput>;
   pageSize?: InputMaybe<Scalars['Int']['input']>;
   sort?: InputMaybe<OrderSortInput>;
+};
+
+
+export type QueryPartnersArgs = {
+  filter: PartnerFilterInput;
 };
 
 
