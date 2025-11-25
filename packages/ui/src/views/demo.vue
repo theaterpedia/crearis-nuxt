@@ -12,6 +12,19 @@
           heightTmp="prominent"
         >
           <Banner transparent>
+            <!-- Edit button (only visible when using SQL data source) -->
+            <button
+              v-if="dataSource === 'sql'"
+              class="hero-edit-btn"
+              @click="openEditModal"
+              aria-label="Hero bearbeiten"
+              title="Hero bearbeiten"
+            >
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+              </svg>
+            </button>
+
             <Prose>
               <h1>
                 {{ formatEventDate(currentEvent.date_begin) }} – {{ formatEventDate(currentEvent.date_end) }}
@@ -25,8 +38,26 @@
           </Banner>
         </Hero>
 
-        <!-- Events Dropdown positioned absolutely -->
+        <!-- Events Dropdown and Data Source Toggle positioned absolutely -->
         <div class="events-dropdown-container">
+          <!-- Data Source Toggle -->
+          <div class="data-source-toggle">
+            <button
+              :class="['source-btn', { active: dataSource === 'csv' }]"
+              @click="dataSource = 'csv'"
+              title="CSV Daten"
+            >
+              CSV
+            </button>
+            <button
+              :class="['source-btn', { active: dataSource === 'sql' }]"
+              @click="switchToSql"
+              title="SQL Daten"
+            >
+              SQL
+            </button>
+          </div>
+
           <div class="events-toggle" ref="toggleRef">
             <button 
               class="events-toggle-button" 
@@ -174,6 +205,15 @@
         </Section>
       </Main>
     </Box>
+
+    <!-- Hero Edit Modal -->
+    <HeroEditModal
+      :is-open="isEditModalOpen"
+      :hero-data="editingHero"
+      :available-events="events"
+      @close="closeEditModal"
+      @save="saveHeroEdit"
+    />
   </div>
 </template>
 
@@ -192,10 +232,11 @@ import {
   Column,
   Heading
 } from '@/index'
-import BlogPreview from '../components/demo/BlogPreview.vue'
-import LocationCard from '../components/demo/LocationCard.vue'
-import InstructorCard from '../components/demo/InstructorCard.vue'
-import ParticipantCard from '../components/demo/ParticipantCard.vue'
+import BlogPreview from "./demo/BlogPreview.vue";
+import LocationCard from "./demo/LocationCard.vue";
+import InstructorCard from "./demo/InstructorCard.vue";
+import ParticipantCard from "./demo/ParticipantCard.vue";
+import HeroEditModal from './demo/HeroEditModal.vue'
 
 const { 
   events,
@@ -207,12 +248,18 @@ const {
   currentEventChildren,
   currentEventTeens,
   currentEventAdults,
-  switchEvent
+  switchEvent,
+  dataSource,
+  refreshSqlData
 } = useDemoData()
 
 // Events dropdown state
 const isEventsOpen = ref(false)
 const toggleRef = ref<HTMLElement>()
+
+// Edit modal state
+const isEditModalOpen = ref(false)
+const editingHero = ref<any>(null)
 
 const toggleEventsDropdown = () => {
   isEventsOpen.value = !isEventsOpen.value
@@ -268,6 +315,64 @@ const hasParticipants = computed(() => {
          currentEventTeens.value.length > 0 || 
          currentEventAdults.value.length > 0
 })
+
+// Switch to SQL data source
+const switchToSql = async () => {
+  dataSource.value = 'sql'
+  await refreshSqlData()
+}
+
+// Edit modal functions
+const openEditModal = () => {
+  if (currentEvent.value) {
+    editingHero.value = {
+      id: currentEvent.value.id,
+      cimg: currentEvent.value.cimg,
+      heading: currentEvent.value.name,
+      description: currentEvent.value.teaser || '',
+      eventIds: []
+    }
+    isEditModalOpen.value = true
+  }
+}
+
+const closeEditModal = () => {
+  isEditModalOpen.value = false
+  editingHero.value = null
+}
+
+const saveHeroEdit = async (data: any) => {
+  try {
+    const response = await fetch('/api/demo/hero', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        id: data.id,
+        cimg: data.cimg,
+        heading: data.heading,
+        description: data.description,
+        event_ids: data.eventIds?.join(',') || ''
+      })
+    })
+
+    if (response.ok) {
+      // Refresh data from SQL
+      await refreshSqlData()
+      closeEditModal()
+      
+      // Show success message (you can add a toast notification here)
+      console.log('Hero updated successfully!')
+    } else {
+      throw new Error('Failed to save hero')
+    }
+  } catch (error) {
+    console.error('Error saving hero:', error)
+    // Show error message (you can add a toast notification here)
+    alert('Fehler beim Speichern!')
+  }
+}
 </script>
 
 <style scoped>
@@ -277,12 +382,78 @@ const hasParticipants = computed(() => {
   color: var(--color-contrast);
 }
 
-/* Events Dropdown positioned absolutely on hero */
+/* Edit button in hero */
+.hero-edit-btn {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-card-bg);
+  border: var(--border-button) solid var(--color-border);
+  border-radius: var(--radius-button);
+  color: var(--color-contrast);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 6px -1px oklch(0% 0 0 / 0.1), 0 2px 4px -1px oklch(0% 0 0 / 0.06);
+  z-index: 10;
+}
+
+.hero-edit-btn:hover {
+  background: var(--color-primary-bg);
+  color: var(--color-primary-contrast);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 15px -3px oklch(0% 0 0 / 0.1), 0 4px 6px -2px oklch(0% 0 0 / 0.05);
+}
+
+.hero-edit-btn svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Events Dropdown and Data Source Toggle positioned absolutely on hero */
 .events-dropdown-container {
   position: absolute;
   top: 2rem;
   right: 2rem;
   z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Data Source Toggle */
+.data-source-toggle {
+  display: flex;
+  background: var(--color-card-bg);
+  border: var(--border-button) solid var(--color-border);
+  border-radius: var(--radius-button);
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px oklch(0% 0 0 / 0.1), 0 2px 4px -1px oklch(0% 0 0 / 0.06);
+}
+
+.source-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  background: transparent;
+  color: var(--color-dimmed);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.source-btn:hover {
+  background: var(--color-muted-bg);
+  color: var(--color-contrast);
+}
+
+.source-btn.active {
+  background: var(--color-primary-bg);
+  color: var(--color-primary-contrast);
 }
 
 /* Events Toggle Menu (matching ToggleMenu styles) */

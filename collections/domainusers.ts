@@ -42,7 +42,7 @@ const domainusers = pageLikeCollection({
       type: 'text',
       options: {},
     },
-    bodyMd: {
+    md: {
       type: 'text',
       options: {},
     },
@@ -61,6 +61,14 @@ const domainusers = pageLikeCollection({
         fields: ['email'],
       },
     },
+    partner: {
+      type: 'record',
+      options: {
+        collection: 'partners',
+        fields: ['oid', 'name', 'md', 'format_options', 'headerType', 'headerSize', 'cimg', 'teaserText'],
+        description: 'Linked partner (if any)',
+      },
+    },    
     firstname: {
       type: 'text',
       options: {},

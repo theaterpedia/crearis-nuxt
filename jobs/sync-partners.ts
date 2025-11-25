@@ -88,16 +88,26 @@ export default defineJob({
  */
 async function fetchPartnersFromOdoo(partnerIds: number[]) {
   try {
+    const queryName = 'GetPartnersQuery' // Changed from GetPartnerQuery to GetPartnersQuery (plural)
+    const variables = {
+      filter: {
+        ids: partnerIds,
+      },
+    }
+
+    // Log GraphQL query for debugging on Odoo side
+    console.log('[sync-partners] GraphQL Query:', {
+      queryName,
+      variables,
+      partnerIds,
+    })
+
     // Use the internal API endpoint to query Odoo
     const response = await $fetch('/api/odoo/query', {
       method: 'POST',
       body: [
-        'GetPartnerQuery',
-        {
-          filter: {
-            ids: partnerIds,
-          },
-        },
+        { queryName }, // API expects an object with queryName property
+        variables,
       ],
     })
 

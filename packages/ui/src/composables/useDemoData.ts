@@ -1,4 +1,4 @@
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 
 // CSV data import simulation - in real app this would come via GraphQL
 import eventsCSV from '../assets/csv/events.csv?raw'
@@ -102,15 +102,97 @@ function parseCSV(csvText: string): any[] {
 
 export const useDemoData = () => {
   const currentEventId = ref('_demo.event_forum_theater_schwabing')
+  const dataSource = ref<'csv' | 'sql'>('csv')
+  const sqlData = ref<any>(null)
   
-  // Parse CSV data
-  const events = computed(() => parseCSV(eventsCSV) as Event[])
-  const posts = computed(() => parseCSV(postsCSV) as Post[])
-  const locations = computed(() => parseCSV(locationsCSV) as Location[])
-  const instructors = computed(() => parseCSV(instructorsCSV) as Instructor[])
-  const children = computed(() => parseCSV(childrenCSV) as Participant[])
-  const teens = computed(() => parseCSV(teensCSV) as Participant[])
-  const adults = computed(() => parseCSV(adultsCSV) as Participant[])
+  // Fetch SQL data when source is SQL
+  const fetchSqlData = async () => {
+    try {
+      const response = await fetch('/api/demo/data')
+      sqlData.value = await response.json()
+    } catch (error) {
+      console.error('Failed to fetch SQL data:', error)
+    }
+  }
+  
+  // Watch data source and fetch SQL data if needed
+  watch(dataSource, async (newSource) => {
+    if (newSource === 'sql' && !sqlData.value) {
+      await fetchSqlData()
+    }
+  })
+  
+  // Parse CSV or return SQL data
+  const events = computed(() => {
+    if (dataSource.value === 'sql' && sqlData.value) {
+      return sqlData.value.events as Event[]
+    }
+    return parseCSV(eventsCSV) as Event[]
+  })
+  
+  const posts = computed(() => {
+    if (dataSource.value === 'sql' && sqlData.value) {
+      return sqlData.value.posts.map((p: any) => ({
+        ...p,
+        'author_id/id': p.author_id,
+        'event_id/id': p.event_id
+      })) as Post[]
+    }
+    return parseCSV(postsCSV) as Post[]
+  })
+  
+  const locations = computed(() => {
+    if (dataSource.value === 'sql' && sqlData.value) {
+      return sqlData.value.locations as Location[]
+    }
+    return parseCSV(locationsCSV) as Location[]
+  })
+  
+  const instructors = computed(() => {
+    if (dataSource.value === 'sql' && sqlData.value) {
+      return sqlData.value.instructors.map((i: any) => ({
+        ...i,
+        'event_id/id': i.event_id
+      })) as Instructor[]
+    }
+    return parseCSV(instructorsCSV) as Instructor[]
+  })
+  
+  const children = computed(() => {
+    if (dataSource.value === 'sql' && sqlData.value) {
+      return sqlData.value.participants
+        .filter((p: any) => p.type === 'child')
+        .map((p: any) => ({
+          ...p,
+          'event_id/id': p.event_id
+        })) as Participant[]
+    }
+    return parseCSV(childrenCSV) as Participant[]
+  })
+  
+  const teens = computed(() => {
+    if (dataSource.value === 'sql' && sqlData.value) {
+      return sqlData.value.participants
+        .filter((p: any) => p.type === 'teen')
+        .map((p: any) => ({
+          ...p,
+          'event_id/id': p.event_id
+        })) as Participant[]
+    }
+    return parseCSV(teensCSV) as Participant[]
+  })
+  
+  const adults = computed(() => {
+    if (dataSource.value === 'sql' && sqlData.value) {
+      return sqlData.value.participants
+        .filter((p: any) => p.type === 'adult')
+        .map((p: any) => ({
+          ...p,
+          'event_id/id': p.event_id
+        })) as Participant[]
+    }
+    return parseCSV(adultsCSV) as Participant[]
+  })
   
   // Get current event
   const currentEvent = computed(() => 
@@ -167,8 +249,10 @@ export const useDemoData = () => {
     
     // Actions
     switchEvent,
+    refreshSqlData: fetchSqlData,
     
     // State
-    currentEventId
+    currentEventId,
+    dataSource
   }
 }
