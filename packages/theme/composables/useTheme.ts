@@ -1,4 +1,4 @@
-import { useToast } from 'vue-toastification'
+// import { useToast } from 'vue-toastification'
 import { ref, reactive, watch } from 'vue'
 import type { BaseColors, SfColorMapping } from '@crearis/theme/utils/colorSettings'
 import { palette } from '@crearis/theme/utils/colorSettings'
@@ -292,6 +292,7 @@ export function useTheme() {
     { name: 'ring', sfname: 'neutral', shade: 900 },
   ]
 
+  const themeId = ref(0)
   const theme = ref(themes[0])
   const font = ref(theme.value.font)
   const headings = ref(theme.value.headings)
@@ -302,10 +303,14 @@ export function useTheme() {
     return inverted.value ? '1' : '0'
   }
   const loading = ref(false)
-  const toast = useToast()
+  // const toast = useToast()
+  const getThemeId = () => {
+    return themeId.value
+  }
 
   // method to preview a theme if selected
   const initTheme = (id: number) => {
+    themeId.value = id
     theme.value = themes[id]
     font.value = theme.value.font
     headings.value = theme.value.headings
@@ -388,7 +393,7 @@ export function useTheme() {
   const setInverted = (invert: boolean) => {
     inverted.value = invert
     useHead({ htmlAttrs: { style: { '--color-inverted': inverted.value ? '1' : '0' } } })
-    toast.info('Inverted: ' + getInverted())
+    // toast.info('Inverted: ' + getInverted())
     /* updateTheme()
     toast.info('Inverted colors: ' + getInverted())
     console.log('cssColorVars.value', cssColorVars.value) */
@@ -400,6 +405,15 @@ export function useTheme() {
     cssFontVars.value = getFontVars(font.value, headings.value, true)
     console.log('Current colors:', cssColorVars.value)
     useHead({ htmlAttrs: { style: cssColorVars.value.concat(cssFontVars.value) } })
+    // const newAppConfig = useAppConfig().cssVars
+
+    //convert colorVars to css vars
+    // const cssVars = Object.fromEntries(
+    //  Object.entries(colorVars).map(([key, value]) => [`--color-${key.replace(/_/g, '-')}`, value])
+    //)
+    // newAppConfig['--color-primary-base'] = 'oklch(60% 0.25 264)'
+    // updateAppConfig(newAppConfig)
+    // console.log('new CSSVars: ', useAppConfig().cssVars)
   }
 
   const getThemeVars = (id: number) => {
@@ -415,6 +429,45 @@ export function useTheme() {
       return cssColorVars.value.concat(cssFontVars.value).map((v) => v.replace('var(--color-inverted)', getInverted()))
     }
     return cssColorVars.value.concat(cssFontVars.value)
+  }
+
+  const getConfigJson = () => {
+    const newConfig = { baseColors: {} as any, colormap: [] as any }
+    if (font.value !== theme.value.font) Object.assign(newConfig, { font: font.value })
+    if (headings.value !== theme.value.headings) Object.assign(newConfig, { headings: headings.value })
+    if (inverted.value !== theme.value.inverted) Object.assign(newConfig, { inverted: inverted.value })
+    if (baseColors.primary !== theme.value.baseColors.primary)
+      Object.assign(newConfig.baseColors, { primary: baseColors.primary })
+    if (baseColors.secondary !== theme.value.baseColors.secondary)
+      Object.assign(newConfig.baseColors, { secondary: baseColors.secondary })
+    if (baseColors.warning !== theme.value.baseColors.warning)
+      Object.assign(newConfig.baseColors, { warning: baseColors.warning })
+    if (baseColors.positive !== theme.value.baseColors.positive)
+      Object.assign(newConfig.baseColors, { positive: baseColors.positive })
+    if (baseColors.negative !== theme.value.baseColors.negative)
+      Object.assign(newConfig.baseColors, { negative: baseColors.negative })
+    if (baseColors.neutral !== theme.value.baseColors.neutral)
+      Object.assign(newConfig.baseColors, { neutral: baseColors.neutral })
+
+    // only add those entries in colormap that are different from the colormap of the loaded theme
+    const currentColormap = colormap.value
+    const loadedColormap = getColormapWithDefaults(theme.value.colormap)
+    for (const [key, value] of Object.entries(currentColormap)) {
+      if (JSON.stringify(value) !== JSON.stringify(loadedColormap[key])) {
+        Object.assign(newConfig.colormap, { [key]: value })
+      }
+    }
+    // delete null entries from colormap
+    newConfig.colormap = newConfig.colormap.filter((c) => c != null)
+
+    // delete baseColors if empty
+    if (Object.keys(newConfig.baseColors).length === 0) delete newConfig.baseColors
+    // delete colormap if empty
+    if (newConfig.colormap.length === 0) delete newConfig.colormap
+
+    // if no changes were made, return empty json
+    if (Object.keys(newConfig).length === 0) return '{}'
+    return JSON.stringify(newConfig, null, 2)
   }
 
   const getTsVars = () => {
@@ -470,11 +523,13 @@ export function useTheme() {
     inverted,
     loading,
     updateTheme,
+    getThemeId,
     loadTheme,
     initTheme,
     getCssVars,
     getTsVars,
     setInverted,
     getThemeVars,
+    getConfigJson,
   }
 }

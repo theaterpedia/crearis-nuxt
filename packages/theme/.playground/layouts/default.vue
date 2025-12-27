@@ -1,5 +1,5 @@
 <template>
-  <Component :is="isSideNav ? 'Box' : 'div'" class="text-sm sm:text-base">
+  <Component :is="isSideNav ? 'Box' : 'div'" class="text-sm sm:text-base" :style="cssVars">
     <UiNavbarTop
       v-show="!isSideNav"
       :filled="y > scrollBreak"
@@ -91,10 +91,8 @@
 
 <script lang="ts" setup>
 import { NuxtLink } from '#components'
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 import { useWindowScroll } from '@vueuse/core'
-import { useDark, useToggle } from '@vueuse/core'
-import LogoOld from '../components/LogoOld.vue'
 import { useRoute } from 'vue-router'
 
 const props = defineProps({
@@ -106,6 +104,16 @@ const props = defineProps({
     }),
   },
 })
+
+const cssVars = useAppConfig().cssVars
+
+// const newAppConfig = cssVars
+//convert colorVars to css vars
+// const cssVars = Object.fromEntries(
+//  Object.entries(colorVars).map(([key, value]) => [`--color-${key.replace(/_/g, '-')}`, value])
+//)
+// newAppConfig['--color-primary-base'] = 'oklch(60% 0.25 264)'
+// updateAppConfig(newAppConfig)
 
 const page = { heading: 'test heading', title: 'test title', teaser: 'test teaser', _path: '/dasei' }
 const content = '_A1_ Headline for Heading - **Test for Teaser**'

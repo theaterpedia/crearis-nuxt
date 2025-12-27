@@ -147,7 +147,26 @@ const props = defineProps({
 
 // const { blogLandingPage } = await getCollectionData('settings')
 
-const { headerConfigs } = await getCollectionData('settings')
+const { headerConfigs, theme, themeConfig } = await getCollectionData('settings')
+
+onBeforeMount(() => {
+  if (theme !== undefined && theme !== 0) {
+    useTheme().loadTheme(theme)
+  }
+  if (themeConfig !== undefined && themeConfig.length > 6) {
+    const themeSettings = JSON.parse(themeConfig)
+    console.log('Loaded theme settings:', themeSettings)
+    useTheme().baseColors = Object.assign({}, useTheme().baseColors, themeSettings?.baseColors)
+    useTheme().colormap = Object.assign({}, useTheme().colormap, themeSettings?.colormap)
+    useTheme().font = themeSettings.font ? themeSettings.font : useTheme().font
+    useTheme().headings = themeSettings.headings ? themeSettings.headings : useTheme().headings
+    useTheme().updateTheme()
+    // useTheme().baseColors = themeConfig?.baseColors
+    // useTheme().font = themeConfig?.font
+    // useTheme().headings = themeConfig?.headings
+    // useTheme().updateTheme()
+  }
+})
 
 const headerTypes = [
   {
