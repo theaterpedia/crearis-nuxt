@@ -2,20 +2,34 @@ export default `
 partner{
     id
     name
+    public
+    addressType    
+    firstName
+    lastName
+    isCompany
     street
     street2
     city
-    state
-    {
-      id
-      name
-    }
+    zip
     country
     {
       id
       name
     }
     email
-    phone
+    phone   
+    websiteLink
+    company {
+      id
+    }
+    contacts {
+      id
+    }
+    signupValid
+    md
+    imagePath    
+    billingAddress {
+      id
+    }
   }
 `

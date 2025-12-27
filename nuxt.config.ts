@@ -50,6 +50,12 @@ export default defineNuxtConfig({
   experimental: {
     asyncContext: true,
   },
+  nitro: {
+    imports: {
+      dirs: ['server/utils'],
+    },
+  },
+
   tailwindcss: {
     viewer: true,
     cssPath: '~/assets/css/tailwind.css',

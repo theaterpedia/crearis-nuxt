@@ -1,5 +1,5 @@
 import defaultTheme from 'tailwindcss/defaultTheme'
-import { colorVars } from './theme'
+import { colorVars, themeVars } from './theme'
 import { palette } from '@crearis/theme/utils/colorSettings'
 import peerNextPlugin from '@storefront-ui/tw-plugin-peer-next'
 import tailwindCssVariables from '@mertasan/tailwindcss-variables'
@@ -16,6 +16,7 @@ export default {
         font: 'MonaspaceNeon',
         headings: 'MonaspaceNeon',
         color: colorVars,
+        ...themeVars,
       },
     },
     extend: {

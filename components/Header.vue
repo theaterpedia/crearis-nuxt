@@ -3,8 +3,8 @@
     <Hero
       v-if="showHero"
       :contentAlignY="headerprops.contentAlignY"
-      :contentType="headerprops.phoneBanner ? 'banner' : 'text'"
-      :contentWidth="headerprops.isFullWidth ? 'full' : 'short'"
+      :contentType="headerprops.contentType ? headerprops.contentType : headerprops.phoneBanner ? 'banner' : 'text'"
+      :contentWidth="headerprops.contentWidth ? headerprops.contentWidth : headerprops.isFullWidth ? 'full' : 'short'"
       :darkMode="$colorMode.value === 'dark'"
       :gradient_depth="headerprops.gradientDepth"
       :gradient_type="headerprops.gradientType"
@@ -13,10 +13,14 @@
       :imgTmpAlignX="headerprops.imgTmpAlignX"
       :imgTmpAlignY="headerprops.imgTmpAlignY"
       :backgroundCorrection="headerprops.backgroundCorrection"
-    >
+    > 
+      <!-- TODO: Passing 'bauchbinde' option to Banner is a hack with hardcoded padding. 
+           Should be refactored to use proper CSS classes or theme variables -->
       <Component
         :card="headerprops.phoneBanner && false"
-        :is="headerprops.inBanner ? 'Banner' : 'div'"
+        :is="headerprops.contentInBanner ? Banner : 'div'"
+        themeColor="secondary"
+        :option="headerprops.name === 'bauchbinde' ? 'bauchbinde' : ''"
         transparent
       >
         <template v-if="showLogoBanner">
@@ -24,8 +28,8 @@
         </template>
         <template v-else>
           <Heading :content="heading" is="h1"></Heading>
-          <br v-if="heading && teaser" />
-          <MdBlock v-if="teaser" :content="teaser" htag="h3" />
+          <br v-if="heading && teaserText" />
+          <MdBlock v-if="teaserText" :content="teaserText" htag="h3" />
           <div v-if="showCta">
             <ButtonTmp
               :size="headerprops.isFullWidth ? 'medium' : 'small'"
@@ -46,14 +50,43 @@
         </template>
       </Component>
     </Hero>
-    <SectionContainer v-else-if="!showTextImage">
-      <Heading v-if="heading" :content="heading" is="h1" class="mt-14"></Heading>
-      <MdBlock v-if="teaser" :content="teaser" htag="h3" />
-    </SectionContainer>
+    <!--TextImage
+      v-else-if="showTextImage"
+      :heightTmp="headerprops.headerSize"
+      :imgTmp="imgTmp"
+      :imgTmpAlignX="headerprops.imgTmpAlignX"
+      :imgTmpAlignY="headerprops.imgTmpAlignY"
+      :contentAlignY="headerprops.contentAlignY"
+    >
+      <div v-if="showLogoBanner">
+        <Logo extended />
+      </div>
+      <div v-else>
+        <Heading v-if="heading" :content="heading" is="h1"></Heading>
+        <br v-if="heading && teaserText" />
+        <MdBlock v-if="teaserText" :content="teaserText" htag="h3" />
+        <div v-if="showCta">
+          <ButtonTmp
+            :size="headerprops.isFullWidth ? 'medium' : 'small'"
+            :to="cta.link ? cta.link : '#cta'"
+            variant="plain"
+          >
+            {{ cta.title }}
+          </ButtonTmp>
+          <NuxtLink
+            v-if="showLink"
+            :to="link.link"
+            style="margin-left: 2em; text-decoration: underline"
+            :style="headerprops.isFullWidth ? 'font-weight:bold' : ''"
+          >
+            {{ link.title }}
+          </NuxtLink>
+        </div>
+      </div>
+    </TextImage -->
     <SectionContainer v-else>
-      <h2 class="mt-14">Text-Bild-Kombination</h2>
       <Heading v-if="heading" :content="heading" is="h1" class="mt-14"></Heading>
-      <MdBlock v-if="teaser" :content="teaser" htag="h3" />
+      <MdBlock v-if="teaserText" :content="teaserText" htag="h3" />
     </SectionContainer>
   </div>
 </template>
@@ -61,9 +94,12 @@
 <script lang="ts" setup>
 import { NuxtLink } from '#components'
 import { getCollectionData } from '#pruvious/client'
-import { ref } from 'vue'
-import { useWindowScroll } from '@vueuse/core'
+import { nextTick, onMounted } from 'vue'
 import { type PropType } from 'vue'
+import { useTheme } from '#imports'
+import { sharedThemeState } from '~/packages/theme/composables/sharedThemeState'
+//import TextImage from '~/packages/ui/src/components/TextImage.vue'
+import Banner from '~/packages/ui/src/components/Banner.vue'
 
 const props = defineProps({
   /**
@@ -91,7 +127,7 @@ const props = defineProps({
   /**
    * Optional Text-Section for short description.
    */
-  teaser: {
+  teaserText: {
     type: String,
     default: '',
   },
@@ -138,35 +174,17 @@ const props = defineProps({
   },  
   /**
    * Format options to manually adjust the site-settings.
+   * Can be either a JSON string or an object. Empty strings are treated as empty objects.
    */
   formatOptions: {
-    type: Object,
+    type: [Object, String],
     default: () => ({}),
   },
 })
 
 // const { blogLandingPage } = await getCollectionData('settings')
 
-const { headerConfigs, theme, themeConfig } = await getCollectionData('settings')
-
-onBeforeMount(() => {
-  if (theme !== undefined && theme !== 0) {
-    useTheme().loadTheme(theme)
-  }
-  if (themeConfig !== undefined && themeConfig.length > 6) {
-    const themeSettings = JSON.parse(themeConfig)
-    console.log('Loaded theme settings:', themeSettings)
-    useTheme().baseColors = Object.assign({}, useTheme().baseColors, themeSettings?.baseColors)
-    useTheme().colormap = Object.assign({}, useTheme().colormap, themeSettings?.colormap)
-    useTheme().font = themeSettings.font ? themeSettings.font : useTheme().font
-    useTheme().headings = themeSettings.headings ? themeSettings.headings : useTheme().headings
-    useTheme().updateTheme()
-    // useTheme().baseColors = themeConfig?.baseColors
-    // useTheme().font = themeConfig?.font
-    // useTheme().headings = themeConfig?.headings
-    // useTheme().updateTheme()
-  }
-})
+const { headerConfigs } = await getCollectionData('settings')
 
 const headerTypes = [
   {
@@ -208,14 +226,14 @@ const headerTypes = [
     headerSize: 'medium',
     allowedSizes: ['prominent', 'medium', 'mini'],
     isFullWidth: false,
-    contentAlignY: 'center',
+    contentAlignY: 'top',
     imgTmpAlignX: 'center',
-    imgTmpAlignY: 'center',
-    backgroundCorrection: 'none',
+    imgTmpAlignY: 'top',
+    backgroundCorrection: 1,
     phoneBanner: false,
     contentInBanner: false,
-    gradientType: 'none',
-    gradientDepth: 1.0,
+    gradientType: 'left-bottom',
+    gradientDepth: 0.6,
   },
   {
     id: 3,
@@ -224,14 +242,14 @@ const headerTypes = [
     headerSize: 'prominent',
     allowedSizes: ['prominent', 'full'],
     isFullWidth: false,
-    contentAlignY: 'center',
-    imgTmpAlignX: 'center',
+    contentAlignY: 'bottom',
+    imgTmpAlignX: 'cover',
     imgTmpAlignY: 'center',
-    backgroundCorrection: 'none',
-    phoneBanner: false,
+    backgroundCorrection: 1,
+    phoneBanner: true,
     contentInBanner: false,
-    gradientType: 'none',
-    gradientDepth: 1.0,
+    gradientType: 'left-bottom',
+    gradientDepth: 0.6,
   },
   {
     id: 4,
@@ -239,27 +257,49 @@ const headerTypes = [
     description: `Bauchbinde`,
     headerSize: 'prominent',
     allowedSizes: ['prominent', 'full'],
-    isFullWidth: false,
-    contentAlignY: 'center',
-    imgTmpAlignX: 'center',
+    isFullWidth: true,
+    contentAlignY: 'bottom',
+    imgTmpAlignX: 'cover',
     imgTmpAlignY: 'center',
     backgroundCorrection: 'none',
     phoneBanner: false,
-    contentInBanner: false,
+    contentType: 'left',
+    contentWidth: 'fixed',
+    contentInBanner: true,
     gradientType: 'none',
     gradientDepth: 1.0,
   },            
 ]
 
 // check whether the headerConfigs contain an entry matching the headerType-prop
-const customSiteHeader = headerConfigs.find((config: any) => config.name === props.headerType) || {}
-// if customHeaderConfig contains entries then convert formatOptions to json
-const siteHeader = customSiteHeader.formatOptions ? customSiteHeader.formatOptions.toJSON() : {}
+const customSiteHeader = headerConfigs.find((config: any) => config.name === props.headerType)
+// if customHeaderConfig contains entries then parse formatOptions from JSON string
+const siteHeader = customSiteHeader?.formatOptions ? JSON.parse(customSiteHeader.formatOptions) : {}
 
 // get default Header, if not found, take 'simple'
 const defaultHeader = headerTypes.find((type) => type.name === props.headerType) || headerTypes[0]
 
-const headerprops = Object.assign(defaultHeader, siteHeader, props.formatOptions)
+// Parse formatOptions if it's a string (JSON string or empty string)
+let parsedFormatOptions = {}
+if (typeof props.formatOptions === 'string') {
+  // Empty string means empty object
+  if (props.formatOptions.trim() === '') {
+    parsedFormatOptions = {}
+  } else {
+    // Try to parse JSON string
+    try {
+      parsedFormatOptions = JSON.parse(props.formatOptions)
+    } catch (e) {
+      console.warn('Failed to parse formatOptions JSON string:', props.formatOptions, e)
+      parsedFormatOptions = {}
+    }
+  }
+} else {
+  // Already an object
+  parsedFormatOptions = props.formatOptions
+}
+
+const headerprops = Object.assign(defaultHeader, siteHeader, parsedFormatOptions)
 
 // if headerprops.headerSize is not in allowedSizes set it to default
 if (!headerprops.allowedSizes.includes(headerprops.headerSize)) {

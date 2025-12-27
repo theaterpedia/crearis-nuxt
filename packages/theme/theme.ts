@@ -9,6 +9,17 @@ export const colorScales = <OklchColor[]>[
   { name: 'neutral', hue: 0, light: 70, chroma: 0.02 },
 ]
 
+export const themeVars = {
+  'radius': 'var(--radius-medium)',
+  'radius-button': 'var(--radius-none)',  
+  'border': 'var(--border-none)',
+  'border-button': 'var(--border-small)',  
+  'bottomline': 'var(--bottomline-medium)',
+  'bottomline-hero': 'var(--bottomline-large)',
+  'transparency': 'var(--transparency-none)',
+  'transparency-banner': 'var(--transparency-small)',
+}
+
 export const colorVars = {
   'inverted': '1',
   'primary-base': 'oklch(93% 0.25 104.001)',
@@ -19,7 +30,7 @@ export const colorVars = {
   'neutral-base': 'oklch(80% 0.02 104)',
   'gray-base': 'oklch(80% 0.02 104.001)',
   'bg': 'oklch(from var(--color-neutral-base) calc(l + 1 * (1 - var(--color-inverted) - l)) calc(c / 4.5) h)',
-  'contrast': 'oklch(from var(--color-gray-base) calc(l + 1 * (0 - l)) calc(c / 4.5) h)',
+  'contrast': 'oklch(from var(--color-neutral-base) calc(l + 0.8 * (var(--color-inverted) - l)) calc(c / 3) h)',
   'black': 'oklch(from var(--color-gray-base) calc(l + 1 * (0 - l)) calc(c / 4.5) h)',
   'white': 'oklch(from var(--color-gray-base) calc(l + 1 * (1 - 0 - l)) calc(c / 4.5) h)',
   'primary-bg': 'var(--color-primary-base)',

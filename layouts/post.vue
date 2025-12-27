@@ -22,54 +22,18 @@
 
     <Main class="tl:px-8 ph:px-0 mx-auto max-w-screen-2xl px-12">
       <slot name="header">
-        <Hero
-          v-if="showHero"
-          contentAlignY="top"
-          contentType="banner"
-          contentWidth="full"
-          :imgTmp="imgTmp"
-        >
-          <Component
-            card="false"
-            is="div"
-            transparent
-          >
-            <template v-if="route.path === '/'">
-              <Logo extended />
-            </template>
-            <template v-else>
-              <Heading v-if="heading" :content="heading" is="h1"></Heading>
-              <br v-if="heading && teaser" />
-              <MdBlock v-if="teaser" :content="teaser" htag="h3" />
-              <div v-if="author" class="text-muted-text text-xs mt-2">
-                <span>Autor: </span>
-                <span>{{ author }}</span>
-              </div>
-              <div v-if="page?.fields.cta">
-                <ButtonTmp
-                  v-if="page?.fields.cta"
-                  :size="page?.fields.isFullWidth ? 'medium' : 'small'"
-                  :to="page?.fields.cta.link ? page?.fields.cta.link : '#cta'"
-                  variant="plain"
-                >
-                  {{ page?.fields.cta.title }}
-                </ButtonTmp>
-                <NuxtLink
-                  v-if="page?.fields.link"
-                  :to="page?.fields.link.link"
-                  style="margin-left: 2em; text-decoration: underline"
-                  :style="page?.fields.isFullWidth ? 'font-weight:bold' : ''"
-                >
-                  {{ page?.fields.link.title }}
-                </NuxtLink>
-              </div>
-            </template>
-          </Component>
-        </Hero>
-        <SectionContainer v-else>
-          <Heading v-if="heading" :content="heading" is="h1" class="mt-14"></Heading>
-          <MdBlock v-if="teaser" :content="teaser" htag="h3" />
-        </SectionContainer>
+        <Header
+          :headerType="page?.fields?.headerType"
+          :headerSize="page?.fields?.headerSize || 'mini'"        
+          :formatOptions="page?.fields?.formatOptions"
+          :showLogoBanner="route.path === '/' && y <= scrollBreak"
+          :searchDisabled="searchDisabled"
+          :heading="page?.title"
+          :teaserText="page?.fields?.teaserText"
+          :imgTmp="page?.fields?.imgTmp"
+          :cta="page?.fields?.cta"
+          :link="page?.fields?.link"
+        />
       </slot>
       <slot />
     </Main>
@@ -122,23 +86,27 @@ defineLayout({
   ],
 })
 
-const page = unref(usePage())
+const page = usePage()
 // const { blogLandingPage } = await getCollectionData('settings')
+
+// Theme is handled by the theme-css.client.ts plugin
+const themeKey = ref(0) // Keep for potential layout updates
 
 const searchDisablend = true
 
-const author = page?.fields.author ? page?.fields.author : 'kein Autor angegeben'
-const heading = page?.fields.title ? page?.fields.overline ? `${page?.fields.overline} **${page?.fields.title}**`: page?.fields.title: 'Post ohne Titel'
-const teaser = page?.fields.teaserText ? page?.fields.teaserText : 'Teasertext'
-const imgTmp = page?.fields.imgTmp
+// const author = page.value?.fields.author ? page.value?.fields.author : 'kein Autor angegeben'
+// const heading = page.value?.fields.heading || page.value?.fields.title || 'Post ohne Titel'
+// const teaser = page.value?.fields.teaserText ? page.value?.fields.teaserText : 'Teasertext'
+const imgTmp = page.value?.fields.imgTmp
 
 const isSideNav: Boolean = false
+const searchDisabled = true
 
-const showHero = heading && imgTmp
+const showHeader = page.value?.fields?.imgTmp && page.value?.fields?.headerType !== 'simple'
 const textShadow = 'text-shadow: 0.2rem 0.2rem 0.3rem hsla(110, 10%, 0%, 0.8);'
 
-const scrollBreak = showHero
-  ? page?.fields.heightTmp === 'full' || page?.fields.heightTmp === 'prominent'
+const scrollBreak = showHeader
+  ? page.value?.fields.headerSize === 'full' || page.value?.fields.headerSize === 'prominent'
     ? 400
     : 250
   : 80

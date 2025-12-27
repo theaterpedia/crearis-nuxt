@@ -1,6 +1,6 @@
 import { capitalize } from '#pruvious'
 import { query } from '#pruvious/server'
-import { ensureUser } from './user'
+import { ensureUser, ensurePartner } from './user'
 import type { MiddlewareConfig } from '@crearis/odoo-sdk-api-client'
 // @ts-ignore
 import { createApiClient } from '../packages/odoo-sdk-api-client/src/index.server'
@@ -205,6 +205,31 @@ export class SyncableOdooCollection {
   }
 
   /**
+   * Intelligent mapping for description field from Odoo to Pruvious.
+   * Uses meta_description if available (or plain description for domainusers), 
+   * otherwise falls back to teasertext (max 200 chars).
+   * 
+   * @param odooRecord - The Odoo record containing description fields
+   * @param useDescriptionField - If true, uses 'description' instead of 'metaDescription' (for domainusers)
+   */
+  private mapDescription(odooRecord: Record<string, any>, useDescriptionField: boolean = false): string {
+    // For domainusers: prefer 'description' field if it has content
+    // For posts/events: prefer 'metaDescription' field if it has content
+    const primaryField = useDescriptionField ? odooRecord.description : odooRecord.metaDescription
+    if (primaryField && primaryField.trim().length > 0) {
+      return primaryField
+    }
+    
+    // Fallback to teasertext, shortened to 200 chars
+    if (odooRecord.teasertext && odooRecord.teasertext.trim().length > 0) {
+      const teaser = odooRecord.teasertext.trim()
+      return teaser.length > 200 ? teaser.substring(0, 200) + '...' : teaser
+    }
+    
+    return ''
+  }
+
+  /**
    * Map Odoo fields to Pruvious fields.
    */
   async mapOdooToPruviousFields(odooRecord: Record<string, any>) {
@@ -214,47 +239,111 @@ export class SyncableOdooCollection {
     }
 
     if (this.collection === 'posts') {
+      // Ensure publicPartner exists (author is the partner directly)
+      const publicPartner = odooRecord.author
+        ? await ensurePartner(
+            odooRecord.author.id,
+            odooRecord.author.name,
+            odooRecord.author.email,
+            undefined // phone not available in postFragment
+          )
+        : null
+
       return {
         ...base,
         path: odooRecord.slugBlog + odooRecord.slugPost, // @todo catch noslug-error via nanoid,
         isEditable: false, //odooRecord?.homesite?.domainCode === process.env.NUXT_DOMAIN_CODE ||
-        title: odooRecord.headline || '',
-        overline: odooRecord.overline || '',
+        // Simplified heading-logic > could be extended to fullstyle headings
+        // Map Odoo 'heading' field to Pruvious 'title' field
+        title: odooRecord.heading || '',
+        // Intelligent description mapping: prefer meta_description, fallback to teasertext (max 200 chars)
+        description: this.mapDescription(odooRecord),
+        teaserText: odooRecord.teasertext || '',
         metaTags: odooRecord.metaKeywords ? [{ name: 'keywords', content: odooRecord.metaKeywords }] : [],
         public: odooRecord.public || false,
         publishDate: odooRecord.publishDate ? new Date(odooRecord.publishDate).getDate() : null,
         md: odooRecord.md || '',
         cimg: odooRecord.cimg || '',
-        heroType: odooRecord.heroType || '',
-        heroFormat: odooRecord.heroFormat || '',
+        headerType: odooRecord.headerType || '',
+        headerSize: odooRecord.headerSize || 'prominent',
+        // GraphQL returns formatOptions as GenericScalar (dictionary), stringify for Pruvious string field
+        formatOptions: odooRecord.formatOptions ? JSON.stringify(odooRecord.formatOptions) : '',
         blocks: odooRecord.blocks ? odooRecord.blocks : [],
-        author: odooRecord.author
-          ? (await ensureUser(odooRecord.author.email, odooRecord.author.firstname, odooRecord.author.lastname))?.id
-          : null,
+        // TODO: User creation will be handled in a separate step
+        // author: odooRecord.author
+        //   ? (await ensureUser(odooRecord.author.email, odooRecord.author.firstname, odooRecord.author.lastname))?.id
+        //   : null,
+        author: null, // Will be populated when user sync is implemented
         layout: odooRecord.layout || 'post',
+        // Partner relation (author is partner directly in posts)
+        publicPartner: publicPartner?.id || null,
       }
     } else if (this.collection === 'events') {
+      // Ensure partners exist and get their Pruvious IDs
+      const publicPartner = odooRecord.publicUser?.partner 
+        ? await ensurePartner(
+            odooRecord.publicUser.partner.id,
+            odooRecord.publicUser.partner.name,
+            odooRecord.publicUser.partner.email,
+            odooRecord.publicUser.partner.phone
+          )
+        : null
+
+      const companyPartner = odooRecord.company
+        ? await ensurePartner(
+            odooRecord.company.id,
+            odooRecord.company.name,
+            odooRecord.company.email,
+            odooRecord.company.phone
+          )
+        : null
+
+      const locationPartner = odooRecord.location
+        ? await ensurePartner(
+            odooRecord.location.id,
+            odooRecord.location.name,
+            odooRecord.location.email,
+            odooRecord.location.phone
+          )
+        : null
+
+      const organizerPartner = odooRecord.organizer
+        ? await ensurePartner(
+            odooRecord.organizer.id,
+            odooRecord.organizer.name,
+            odooRecord.organizer.email,
+            odooRecord.organizer.phone
+          )
+        : null
+
       return {
         ...base,
         path: odooRecord.slug || nanoid(),
         cid: odooRecord.cid || null,
-        title: odooRecord.headline || '',
-        overline: odooRecord.overline || '',
+        // Simplified heading-logic > could be extended to fullstyle headings
+        // Map Odoo 'heading' field to Pruvious 'title' field
+        title: odooRecord.heading || '',
+        // Intelligent description mapping: prefer meta_description, fallback to teasertext (max 200 chars)
+        description: this.mapDescription(odooRecord),
+        teaserText: odooRecord.teasertext || '',
         metaTags: odooRecord.metaKeywords ? [{ name: 'keywords', content: odooRecord.metaKeywords }] : [],
+        md: odooRecord.md || '',
+        cimg: odooRecord.cimg || '',
+        headerType: odooRecord.headerType || '',
+        headerSize: odooRecord.headerSize || 'prominent',
+        // GraphQL returns formatOptions as GenericScalar (dictionary), stringify for Pruvious string field
+        formatOptions: odooRecord.formatOptions ? JSON.stringify(odooRecord.formatOptions) : '',        
         blocks: odooRecord.blocks ? odooRecord.blocks : [],
         dateBegin: odooRecord.dateBegin ? new Date(odooRecord.dateBegin).getTime() : null,
         dateEnd: odooRecord.dateEnd ? new Date(odooRecord.dateEnd).getTime() : null,
-        organizer: odooRecord.organizer
-          ? (
-              await ensureUser(
-                odooRecord.organizer.email,
-                odooRecord.organizer.firstname,
-                odooRecord.organizer.lastname,
-              )
-            )?.id
-          : null,
         editMode: odooRecord.editMode || 'content',
         layout: odooRecord.layout || 'event',
+        domainCode: odooRecord.website?.domainCode || '',
+        // Partner relations
+        publicPartner: publicPartner?.id || null,
+        companyPartner: companyPartner?.id || null,
+        locationPartner: locationPartner?.id || null,
+        organizerPartner: organizerPartner?.id || null,
       }
     } else if (this.collection === 'domainusers') {
       const hasPartner: boolean = odooRecord.user ? odooRecord.user.partner || false : false
@@ -276,7 +365,13 @@ export class SyncableOdooCollection {
         role: odooRecord.role || '',
         roleTitle: odooRecord.title || '',
         capabilities: odooRecord.capabilities || '',
+        // Simplified non-standardized pattern for domainusers:
+        // Both Pruvious 'description' and 'teaserText' map to the same Odoo 'description' field
+        // (Odoo does not provide separate teasertext field for domainusers)
         description: odooRecord.description || '',
+        teaserText: odooRecord.description || '',
+        // GraphQL returns formatOptions as GenericScalar (dictionary), stringify for Pruvious string field
+        formatOptions: odooRecord.formatOptions ? JSON.stringify(odooRecord.formatOptions) : '',
         firstname: hasPartner ? odooRecord.user.partner.firstname || '' : '',
         lastname: hasPartner ? odooRecord.user.partner.lastname || '' : '',
         md: hasPartner ? odooRecord.user.partner.md || '' : '',
@@ -308,14 +403,17 @@ export class SyncableOdooCollection {
         ...base,
         // slugBlog: secondPathSlash > -1 ? record.path.slice(0, secondPathSlash) : '',
         // slugPost: secondPathSlash > -1 ? record.path.slice(secondPathSlash + 1) : record.path,
-        headline: record.title,
+        // Simplified heading-logic > could be extended to fullstyle headings
+        // Map Pruvious 'title' field to Odoo 'heading' field
+        heading: record.title,
+        // TODO: Synchronize meta_description from Pruvious 'description' field
+        teasertext: record.teaserText || '',
         publishDate: record.publishDate ? new Date(record.publishDate) : null,
         md: record.md || '',
         public: record.public || false,
         cimg: record.cimg || '',
-        heroType: record.heroType || '',
-        heroFormat: record.heroFormat || '',
-        overline: record.overline,
+        headerType: record.headerType || '',
+        headerSize: record.headerSize || '',
         metaKeywords: record.metaTags.find((tag: any) => tag.name === 'keywords')?.content ?? '',
         blocks: record.blocks,
         // publishDate: record.publishDate ? new Date(record.publishDate).toISOString() : null,
@@ -325,8 +423,11 @@ export class SyncableOdooCollection {
       return {
         ...base,
         // slug: record.path,
-        name: record.title,
-        overline: record.overline,
+        // Simplified heading-logic > could be extended to fullstyle headings
+        // Map Pruvious 'title' field to Odoo 'heading' field
+        heading: record.title,
+        // TODO: Synchronize meta_description from Pruvious 'description' field
+        md: record.md || '',
         metaKeywords: record.metaTags.find((tag: any) => tag.name === 'keywords')?.content ?? '',
         blocks: record.blocks,
         teasertext: record.teaserText || '',
@@ -334,6 +435,16 @@ export class SyncableOdooCollection {
         // dateEnd: record.dateEnd ? new Date(record.dateEnd).toISOString() : null,
         // organizer: record.organizer ? { email: record.organizer.email } : null,
         // editMode: record.editMode || 'content',
+      }
+    } else if (this.collection === 'domainusers') {
+      return {
+        ...base,
+        // TODO: Implement full upsync for domainusers if needed
+        // Simplified non-standardized pattern: Map Pruvious 'description' or 'teaserText' to Odoo 'description'
+        // (Odoo does not provide separate teasertext field for domainusers)
+        // TODO: Determine which Pruvious field (description vs teaserText) should be prioritized for upsync
+        role: record.role || '',
+        // Note: Other domainuser fields may need to be mapped here for upsync
       }
     }
   }

@@ -33,7 +33,6 @@ const buildClient = (settings: MiddlewareConfig) => {
     link: apolloLink,
     cache: new InMemoryCache(),
     ssrMode: true,
-    credentials: 'include',
     defaultOptions: {
       query: {
         errorPolicy: 'all',

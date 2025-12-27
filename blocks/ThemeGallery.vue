@@ -12,20 +12,12 @@ defineBlock({
   label: 'B: ThemeSwitch',
 })
 
-const newThemeConfig = ref('')
-const newThemeId = ref(0)
-
-const changeThemeConfig = (newConfig: string) => {
-  // Logic to change the theme config
-  newThemeConfig.value = newConfig
-}
-
-const changeThemeId = (newId: number) => {
-  newThemeId.value = newId
-}
-
-const changeTheme = async () => {
-  await updateSettings({ themeId: newThemeId.value, themeConfig: newThemeConfig.value })
-}
+defineProps({
+  title: textField({
+    placeholder: 'Heading: _ID_ overline **HEADLINE** subline',
+    label: 'Heading (optional)',
+    required: false,
+  }),
+})
 
 </script>

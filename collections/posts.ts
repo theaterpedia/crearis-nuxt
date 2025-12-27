@@ -8,6 +8,16 @@ const posts = pageLikeCollection({
   pathPrefix: 'blog',
   icon: 'Pin',
   allowedLayouts: ['post'],
+  additionalPublicPagesFields: [
+    'author',
+    // 'heading',
+    'teaserText',
+    'md',
+    'cimg',
+    'headerType',
+    'headerSize',
+    'formatOptions',
+  ],
   additionalFields: {
     cid: {
       type: 'text',
@@ -41,10 +51,10 @@ const posts = pageLikeCollection({
         required: false,
       },
     },
-    overline: {
+    /* heading: {
       type: 'text',
       options: {},
-    },
+    }, */
     teaserText: {
       type: 'text',
       options: {},
@@ -64,20 +74,20 @@ const posts = pageLikeCollection({
         fields: ['email'],
       },
     },
-    heroType: {
-      type: 'record',
+    headerType: {
+      type: 'select',
       options: {
-        collection: 'herotypes',
-        fields: ['title', 'description'],
-        placeholder: 'Select a hero type',
+        choices: { simple: 'simple', columns: 'Text-Bild (2 Spalten)', banner: 'Banner medium', cover: 'Cover Fullsize', bauchbinde: 'Bauchbinde' },
+        default: 'simple',
+        label: 'Header Typ',
       },
     },
-    heroHeight: {
+    headerSize: {
       type: 'select',
       options: {
         choices: { full: 'full', prominent: 'prominent', medium: 'medium', mini: 'mini' },
         default: 'prominent',
-        label: 'Hero Höhe',
+        label: 'Header Höhe',
       },
     },
     formatOptions: {
@@ -85,6 +95,17 @@ const posts = pageLikeCollection({
       options: {
         placeholder: "optionName: 'value', optionName: 'value'",
         description: 'Formatierung von Hero und Page (Json)',
+      },
+    },
+    publicPartner: {
+      type: 'record',
+      options: {
+        collection: 'partners',
+        fields: ['name', 'oid'],
+        label: 'Autor:in Partner',
+      },
+      additional: {
+        protected: true,
       },
     },
   },

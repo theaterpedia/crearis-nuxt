@@ -10,7 +10,7 @@
     :imgTmpAlignY="imgTmpAlignY"
     :overlay="getoverlay(gradient_type, gradientDepth)"
   >
-    <component :is="banner ? 'Banner' : 'div'" :transparent="isTransparent">
+    <component :is="inBanner ? Banner : 'div'" :transparent="isTransparent">
       <slot />
     </component>
   </Hero>

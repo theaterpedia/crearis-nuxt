@@ -30,3 +30,41 @@ export async function ensureUser(email: string, firstName?: string, lastName?: s
 
   return user
 }
+
+/**
+ * Ensure that a partner exists in the Pruvious database.
+ * Looks up partner by Odoo ID (oid field) and creates if not found.
+ *
+ * @param odooId - The Odoo ID of the partner
+ * @param name - The partner name
+ * @param email - Optional email address
+ * @param phone - Optional phone number
+ * @returns The partner record or null if odooId is not provided
+ * @throws An error if the partner could not be created
+ */
+export async function ensurePartner(odooId?: number, name?: string, email?: string, phone?: string) {
+  if (!odooId) {
+    return null
+  }
+
+  let partner = await query('partners').selectAll().where('oid', odooId).first()
+
+  if (!partner) {
+    const createResult = await query('partners')
+      .selectAll()
+      .create({ 
+        oid: odooId, 
+        name: name || `Partner ${odooId}`,
+        email: email || undefined,
+        phone: phone || undefined,
+      } as any)
+
+    if (createResult.success) {
+      partner = createResult.record
+    } else {
+      throw new Error(createResult.message ?? JSON.stringify(createResult.errors))
+    }
+  }
+
+  return partner
+}

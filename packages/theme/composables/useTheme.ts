@@ -1,10 +1,19 @@
 // import { useToast } from 'vue-toastification'
 import { ref, reactive, watch } from 'vue'
+// useHead is now handled by theme-css.client.ts plugin
 import type { BaseColors, SfColorMapping } from '@crearis/theme/utils/colorSettings'
 import { palette } from '@crearis/theme/utils/colorSettings'
+import { sharedThemeState } from './sharedThemeState'
 
-export function useTheme() {
-  const themes = [
+// Global reactive state - persists across calls (Vue composable singleton pattern)
+const loading = ref(true)
+const enabled = ref(false)
+const themeId = ref(0)
+const hasBeenInitialized = ref(false)
+
+
+
+const themes = [
     {
       id: 0,
       heading: '**E-Motion**Performance und Shows',
@@ -292,7 +301,6 @@ export function useTheme() {
     { name: 'ring', sfname: 'neutral', shade: 900 },
   ]
 
-  const themeId = ref(0)
   const theme = ref(themes[0])
   const font = ref(theme.value.font)
   const headings = ref(theme.value.headings)
@@ -303,10 +311,7 @@ export function useTheme() {
     return inverted.value ? '1' : '0'
   }
   const loading = ref(false)
-  // const toast = useToast()
-  const getThemeId = () => {
-    return themeId.value
-  }
+  const toast = useToast()
 
   // method to preview a theme if selected
   const initTheme = (id: number) => {
@@ -315,6 +320,7 @@ export function useTheme() {
     font.value = theme.value.font
     headings.value = theme.value.headings
     colormap.value = colormap_defaults.map((c) => theme.value.colormap.find((tc) => tc.name === c.name) || c)
+    
     baseColors.primary = theme.value.baseColors.primary
     baseColors.secondary = theme.value.baseColors.secondary
     baseColors.warning = theme.value.baseColors.warning
@@ -324,6 +330,7 @@ export function useTheme() {
       ? theme.value.baseColors.neutral.slice(0, -4)
       : theme.value.baseColors.neutral
     baseColors.gray = theme.value.baseColors.neutral + '.001'
+    
     inverted.value = theme.value.inverted
   }
   // initialize colormap and baseColors with first theme
@@ -332,20 +339,16 @@ export function useTheme() {
     return colormap_defaults.map((c) => colormap.find((tc) => tc.name === c.name) || c)
   }
 
-  const isPinned = (colorName: String) => {
+  const isPinned = (colorName: String, colors?: BaseColors) => {
     if (colorName === 'gray') return true
     if (colorName === 'neutral') return false
-    if (!baseColors[colorName.toString()]) return false
-    return baseColors[colorName.toString()].endsWith('.001')
+    
+    // Use provided colors or fall back to global baseColors
+    const targetColors = colors || baseColors
+    const colorKey = colorName.toString() as keyof BaseColors
+    if (!targetColors[colorKey]) return false
+    return targetColors[colorKey].endsWith('.001')
   }
-
-  // update gray color if neutral changes
-  watch(baseColors, (newColors) => {
-    const newNeutral = newColors.neutral.endsWith('.001') ? newColors.neutral : newColors.neutral + '.001'
-    if (baseColors.gray !== newNeutral) {
-      baseColors.gray = newNeutral
-    }
-  })
 
   // initialize colormap and baseColors with first theme
   const getColorVars = (colors: BaseColors, colormap: SfColorMapping[], asCss: Boolean) => {
@@ -354,15 +357,15 @@ export function useTheme() {
         // if value ends with ' pin', set boolean pin to true and remove it from value
         const oklchColor = `oklch(${value})`
         return `${asCss ? '--color-' : '"'}${key}-base${asCss ? ': ' : '": "'}${palette(oklchColor, 'var(--color-inverted)')[500]}${asCss ? ';' : '",'}`
-      }),
+      }).concat(
       Object.entries(colormap).map(([key, value]) => {
         const varName = `var(--color-${value.sfname}-base)`
         // if shade is 500, use the base color = no calculations + no effect on 'inverted'
         if (value.shade === 500) {
           return `${asCss ? '--color-' : '"'}${value.name}${asCss ? ': ' : '": "'}${varName}${asCss ? ';' : '",'}`
         }
-        return `${asCss ? '--color-' : '"'}${value.name}${asCss ? ': ' : '": "'}${palette(varName, isPinned(value.sfname) ? '0' : 'var(--color-inverted)')[value.shade.toString()]}${asCss ? ';' : '",'}`
-      })
+        return `${asCss ? '--color-' : '"'}${value.name}${asCss ? ': ' : '": "'}${palette(varName, isPinned(value.sfname, colors) ? '0' : 'var(--color-inverted)')[value.shade as keyof ReturnType<typeof palette>]}${asCss ? ';' : '",'}`
+      }))
     )
   }
 
@@ -393,32 +396,23 @@ export function useTheme() {
   const setInverted = (invert: boolean) => {
     inverted.value = invert
     useHead({ htmlAttrs: { style: { '--color-inverted': inverted.value ? '1' : '0' } } })
-    // toast.info('Inverted: ' + getInverted())
+    toast.info('Inverted: ' + getInverted())
     /* updateTheme()
     toast.info('Inverted colors: ' + getInverted())
     console.log('cssColorVars.value', cssColorVars.value) */
   }
 
   const updateTheme = () => {
-    console.log('Current theme:', theme.value)
-    cssColorVars.value = getColorVars(baseColors, colormap.value, true)
+    cssColorVars.value = getColorVars(baseColors, getColormapWithDefaults(colormap.value), true)
     cssFontVars.value = getFontVars(font.value, headings.value, true)
     console.log('Current colors:', cssColorVars.value)
     useHead({ htmlAttrs: { style: cssColorVars.value.concat(cssFontVars.value) } })
-    // const newAppConfig = useAppConfig().cssVars
-
-    //convert colorVars to css vars
-    // const cssVars = Object.fromEntries(
-    //  Object.entries(colorVars).map(([key, value]) => [`--color-${key.replace(/_/g, '-')}`, value])
-    //)
-    // newAppConfig['--color-primary-base'] = 'oklch(60% 0.25 264)'
-    // updateAppConfig(newAppConfig)
-    // console.log('new CSSVars: ', useAppConfig().cssVars)
   }
 
   const getThemeVars = (id: number) => {
-    const colors = getColorVars(themes[id].baseColors, themes[id].colormap, true)
-    const fonts = getFontVars(themes[id].font, themes[id].heading, true)
+    // Use the specific theme's baseColors for pinning logic, not the global state
+    const colors = getColorVars(themes[id].baseColors, getColormapWithDefaults(themes[id].colormap), true)
+    const fonts = getFontVars(themes[id].font, themes[id].headings, true)
     const theme_invert = themes[id].inverted ? '1' : '0'
     const ThemeCssVars = colors.concat(fonts).map((v) => v.replace('var(--color-inverted)', theme_invert))
     return ThemeCssVars
@@ -429,45 +423,6 @@ export function useTheme() {
       return cssColorVars.value.concat(cssFontVars.value).map((v) => v.replace('var(--color-inverted)', getInverted()))
     }
     return cssColorVars.value.concat(cssFontVars.value)
-  }
-
-  const getConfigJson = () => {
-    const newConfig = { baseColors: {} as any, colormap: [] as any }
-    if (font.value !== theme.value.font) Object.assign(newConfig, { font: font.value })
-    if (headings.value !== theme.value.headings) Object.assign(newConfig, { headings: headings.value })
-    if (inverted.value !== theme.value.inverted) Object.assign(newConfig, { inverted: inverted.value })
-    if (baseColors.primary !== theme.value.baseColors.primary)
-      Object.assign(newConfig.baseColors, { primary: baseColors.primary })
-    if (baseColors.secondary !== theme.value.baseColors.secondary)
-      Object.assign(newConfig.baseColors, { secondary: baseColors.secondary })
-    if (baseColors.warning !== theme.value.baseColors.warning)
-      Object.assign(newConfig.baseColors, { warning: baseColors.warning })
-    if (baseColors.positive !== theme.value.baseColors.positive)
-      Object.assign(newConfig.baseColors, { positive: baseColors.positive })
-    if (baseColors.negative !== theme.value.baseColors.negative)
-      Object.assign(newConfig.baseColors, { negative: baseColors.negative })
-    if (baseColors.neutral !== theme.value.baseColors.neutral)
-      Object.assign(newConfig.baseColors, { neutral: baseColors.neutral })
-
-    // only add those entries in colormap that are different from the colormap of the loaded theme
-    const currentColormap = colormap.value
-    const loadedColormap = getColormapWithDefaults(theme.value.colormap)
-    for (const [key, value] of Object.entries(currentColormap)) {
-      if (JSON.stringify(value) !== JSON.stringify(loadedColormap[key])) {
-        Object.assign(newConfig.colormap, { [key]: value })
-      }
-    }
-    // delete null entries from colormap
-    newConfig.colormap = newConfig.colormap.filter((c) => c != null)
-
-    // delete baseColors if empty
-    if (Object.keys(newConfig.baseColors).length === 0) delete newConfig.baseColors
-    // delete colormap if empty
-    if (newConfig.colormap.length === 0) delete newConfig.colormap
-
-    // if no changes were made, return empty json
-    if (Object.keys(newConfig).length === 0) return '{}'
-    return JSON.stringify(newConfig, null, 2)
   }
 
   const getTsVars = () => {
@@ -513,6 +468,88 @@ export function useTheme() {
     return user?.value?.id || Boolean(userCookie.value)
   }) */
 
+  const loadThemeConfig = (themeConfigJson: string) => {
+    try {
+      if (!themeConfigJson || themeConfigJson.trim() === '' || themeConfigJson.trim() === '{}') {
+        return
+      }
+
+      const config = JSON.parse(themeConfigJson)
+
+      // Apply font settings if provided
+      if (config.font !== undefined) {
+        font.value = config.font
+      }
+      if (config.headings !== undefined) {
+        headings.value = config.headings
+      }
+
+      // Apply inverted setting if provided
+      if (config.inverted !== undefined) {
+        inverted.value = config.inverted
+      }
+
+      // Apply base colors if provided (merge with current theme defaults)
+      if (config.baseColors) {
+        if (config.baseColors.primary !== undefined) {
+          baseColors.primary = config.baseColors.primary
+        }
+        if (config.baseColors.secondary !== undefined) {
+          baseColors.secondary = config.baseColors.secondary
+        }
+        if (config.baseColors.warning !== undefined) {
+          baseColors.warning = config.baseColors.warning
+        }
+        if (config.baseColors.positive !== undefined) {
+          baseColors.positive = config.baseColors.positive
+        }
+        if (config.baseColors.negative !== undefined) {
+          baseColors.negative = config.baseColors.negative
+        }
+        if (config.baseColors.neutral !== undefined) {
+          baseColors.neutral = config.baseColors.neutral.endsWith('.001')
+            ? config.baseColors.neutral.slice(0, -4)
+            : config.baseColors.neutral
+          baseColors.gray = config.baseColors.neutral + '.001'
+        }
+      }
+
+      // Apply colormap if provided (merge with defaults)
+      if (config.colormap && Array.isArray(config.colormap)) {
+        // Merge config colormap with current colormap
+        config.colormap.forEach((configColor: any) => {
+          const existingIndex = colormap.value.findIndex(c => c.name === configColor.name)
+          if (existingIndex >= 0) {
+            // Update existing colormap entry
+            colormap.value[existingIndex] = { ...colormap.value[existingIndex], ...configColor }
+          } else {
+            // Add new colormap entry
+            colormap.value.push(configColor)
+          }
+        })
+      }
+
+      // Apply the theme changes
+      updateTheme()
+    } catch (error) {
+      console.error('Failed to load theme config:', error)
+      console.error('Invalid theme config JSON:', themeConfigJson)
+    }
+  }
+
+  const toggleTheming = (enable: boolean = true) => {
+    const wasEnabled = enabled.value
+    enabled.value = enable
+    
+    // Only update theme when enabling for the first time, not on subsequent calls
+    if (enable && !wasEnabled) {
+      updateTheme()
+    }
+  }
+
+  // Don't auto-initialize to theme 0 - let the application decide which theme to load
+  // initTheme(0)
+
   return {
     baseColors,
     colormap,
@@ -521,15 +558,15 @@ export function useTheme() {
     font,
     headings,
     inverted,
-    loading,
+    hasLoaded,
+    shouldInitialize,
+    isEnabled,
     updateTheme,
-    getThemeId,
     loadTheme,
     initTheme,
     getCssVars,
     getTsVars,
     setInverted,
     getThemeVars,
-    getConfigJson,
   }
 }

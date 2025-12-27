@@ -40,3 +40,6 @@ apps/home/_intern
 !.env.example
 !.env.test.example
 .vscode/.server-controller-port.log
+_meta
+_meta
+demo-data.db

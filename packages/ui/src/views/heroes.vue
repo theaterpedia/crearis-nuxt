@@ -50,6 +50,33 @@
           </Column>
         </Columns>
       </Hero>
+
+      <Hero
+        :contentAlignY="contentAlignY"
+        :heightTmp="height"
+        imgTmpAlignX="cover"
+        :imgTmpAlignY="imgTmpAlignY"
+        
+        contentType="left"
+        contentWidth="fixed"
+        imgTmp="https://pruvious.com/uploads/dasei/banner.jpg"
+      >
+        <Banner themeColor="primary" option="bauchbinde">
+          <Prose>
+            <h2><strong>Bauchbinde: Left-Aligned Content</strong></h2>
+            <p>
+              This hero demonstrates the "Bauchbinde" layout style, combining
+              <code>contentType="left"</code> with <code>contentWidth="fixed"</code>.
+            </p>
+            <p>
+              The content is fixed at 80% of the hero width and aligned to the left with 
+              no margins. This creates a broadcast-style lower-third overlay perfect for 
+              news tickers and announcements.
+            </p>
+            <Button size="small" variant="plain">Learn More</Button>
+          </Prose>
+        </Banner>
+      </Hero>
     </Main>
 
     <button @click="settingsVisible = !settingsVisible" class="toggle">

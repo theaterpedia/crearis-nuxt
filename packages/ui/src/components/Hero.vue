@@ -6,6 +6,7 @@
       `hero-align-content-${contentAlignY}`,
       bottomline ? 'hero-bottomline' : '',
     ]"
+    :style="contentType === 'left' ? 'padding-left: 0rem' : ''"
   >
     <div class="hero-cover">
       <div
@@ -42,7 +43,7 @@
 
     <div class="hero-content" :class="[`hero-content-${contentWidth}`, `hero-content-${contentType}`]">
       <Container>
-        <slot />
+        <slot/>
       </Container>
     </div>
   </div>
@@ -105,7 +106,7 @@ defineProps({
    * Defines the width of the content.
    */
   contentWidth: {
-    type: String as PropType<'short' | 'full'>,
+    type: String as PropType<'short' | 'fixed' | 'full'>,
     default: 'short',
   },
 
@@ -130,9 +131,10 @@ defineProps({
    *
    * - `text` - Applies standard padding like in sections.
    * - `banner` - Sticks the content to the edges on phone screens.
+   * - `left` - Content aligned to the left with more padding on the right side.
    */
   contentType: {
-    type: String as PropType<'text' | 'banner'>,
+    type: String as PropType<'text' | 'banner' | 'left'>,
     default: 'text',
   },
 })
@@ -185,7 +187,7 @@ defineProps({
   right: 0;
   bottom: 0;
   left: 0;
-  height: 1rem;
+  height: var(--bottomline-hero);
   background-color: var(--color-primary-bg);
 }
 
@@ -241,8 +243,20 @@ defineProps({
   max-width: 50rem; /* 800px */
 }
 
+.hero-content-fixed {
+  width: 80%;
+}
+
 .hero-content-full {
   width: 100%;
+}
+
+/* Left content type: remove Container's auto margins and left padding */
+.hero-content-left .container {
+  margin-left: 0;
+  padding-left: 0;
+  padding-right: 8rem;
+  padding-bottom: 1.75rem;
 }
 
 @media (max-width: 767px) {
@@ -256,6 +270,15 @@ defineProps({
 
   .hero-content-text > * {
     padding: 1.75rem 1rem;
+  }
+
+  .hero-content-fixed {
+    width: 100%;
+  }
+
+  .hero-content-left .container {
+    padding-left: 0;
+    padding-right: 1rem;
   }
 }
 </style>

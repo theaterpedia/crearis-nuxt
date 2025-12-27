@@ -54,24 +54,6 @@ export default defineCollection({
         required: false,
       },
     },
-    theme: {
-      type: 'number',
-      options: {
-        default: 0,
-        min: 0,
-        max: 7,
-        step: 1,
-        required: true,
-      },
-    },
-    themeConfig: {
-      type: 'text-area',
-      options: {
-        multiline: true,
-        description: 'Custom theme configuration in JSON format',
-        required: false,
-      },
-    },
     copyrightText: {
       type: 'text',
       options: {

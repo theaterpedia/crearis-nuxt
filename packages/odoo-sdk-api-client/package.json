@@ -33,6 +33,7 @@
     "@graphql-codegen/cli": "^5.0.3",
     "eslint": "^8.45.0",
     "jsdom": "^17.0.0",
+    "rollup": "^4.52.3",
     "typescript": "^5.1.6"
   },
   "files": [

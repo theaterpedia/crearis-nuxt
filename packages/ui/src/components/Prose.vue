@@ -157,6 +157,26 @@
   color: var(--color-secondary-contrast);
 }
 
+.prose :where(.neutral) {
+  --color-contrast: var(--color-contrast);
+  color: var(--color-contrast);
+}
+
+.prose :where(.positive) {
+  --color-contrast: var(--color-positive-contrast);
+  color: var(--color-positive-contrast);
+}
+
+.prose :where(.negative) {
+  --color-contrast: var(--color-negative-contrast);
+  color: var(--color-negative-contrast);
+}
+
+.prose :where(.warning) {
+  --color-contrast: var(--color-warning-contrast);
+  color: var(--color-warning-contrast);
+}
+
 .prose :where(.dimmed) {
   --color-contrast: var(--color-muted-contrast);
   color: var(--color-muted-contrast);

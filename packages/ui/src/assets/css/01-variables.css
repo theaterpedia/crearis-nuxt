@@ -1,9 +1,27 @@
 :root {
   --theme-shadow: 0.2rem 0.2rem 0.6rem hsla(110, 10%, 0%, 0.65);
-  --radius: 0.5rem;
+  --radius-none: 0rem;
+  --radius-small: 0.25rem;
+  --radius-medium: 0.5rem;
+  --radius-large: 1rem;
+  --border-none: none;
+  --border-small: 0.0625rem;
+  --border-medium: 0.125rem;
+  --border-large: 0.25rem;
+  --bottomline-none: 0rem;
+  --bottomline-small: 0.25rem;
+  --bottomline-medium: 0.5rem;
+  --bottomline-large: 1rem;
+  --transparency-none: 1;
+  --transparency-small: 0.85;
+  --transparency-medium: 0.7;
+  --transparency-large: 0.5;
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
   --duration: 150ms;
   --transition: all var(--duration) var(--ease);
+  /*--radius: var(--radius-medium) ... and a lot more
+  -> 00-theme.ts > shall not be expoted here,
+  -> export via package/themes/theme.ts */
 }
 
 .dark {

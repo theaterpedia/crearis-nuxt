@@ -44,7 +44,7 @@
   margin-left: auto;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 30rem) {
   .timeline::before {
     display: none;
   }
@@ -65,6 +65,7 @@
 
   .timeline :deep() > li > div {
     width: 100%;
+    margin-left: 0 !important;
   }
 }
 </style>

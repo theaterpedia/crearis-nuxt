@@ -9,8 +9,11 @@ const stories = pageLikeCollection({
   additionalPublicPagesFields: [
     'author',
     'imgTmp',
-    'heading',
-    'teaser',
+    // 'heading',
+    'teaserText',
+    'headerType',
+    'headerSize',
+    'formatOptions',
     'inBanner',
     'heightTmp',
     'contentAlignY',
@@ -31,13 +34,13 @@ const stories = pageLikeCollection({
         label: 'Bild: URL',
       },
     },
-    heading: {
+    /* heading: {
       type: 'text',
       options: {
         label: 'Heading',
       },
-    },
-    teaser: {
+    }, */
+    teaserText: {
       type: 'text',
       options: {
         label: 'Teaser',
@@ -51,21 +54,20 @@ const stories = pageLikeCollection({
         populate: true,
       },
     },
-    heroType: {
-      type: 'record',
+    headerType: {
+      type: 'select',
       options: {
-        collection: 'herotypes',
-        fields: ['name', 'description'],
-        placeholder: 'Select a hero type',
-        populate: true,
+        choices: { simple: 'simple', columns: 'Text-Bild (2 Spalten)', banner: 'Banner medium', cover: 'Cover Fullsize', bauchbinde: 'Bauchbinde' },
+        default: 'simple',
+        label: 'Header Typ',
       },
     },
-    heroHeight: {
+    headerSize: {
       type: 'select',
       options: {
         choices: { full: 'full', prominent: 'prominent', medium: 'medium', mini: 'mini' },
         default: 'prominent',
-        label: 'Hero Höhe',
+        label: 'Header Höhe',
       },
     },
     formatOptions: {

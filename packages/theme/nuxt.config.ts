@@ -16,7 +16,8 @@ export default defineNuxtConfig({
   colorMode: {
     fallback: colorVars['inverted'] === '1' ? 'dark' : 'light',
     preference: colorVars['inverted'] === '1' ? 'dark' : 'light',
-    storageKey: 'color-mode',
+    // Disable persistence so theme system controls dark/light mode
+    storageKey: false, // Disables localStorage persistence
     hid: 'nuxt-color-mode-script',
     globalName: '__NUXT_COLOR_MODE__',
   },
