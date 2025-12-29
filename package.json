@@ -30,7 +30,8 @@
     "build:ui": "pnpm --filter=ui build",
     "build:home": "pnpm --filter=home build",
     "format": "prettier --write .",
-    "postinstall": "pnpm prepare:sfui && pnpm build:ui && pnpm prepare && pnpm run codegen",
+    "postinstall": "pnpm build:ui",
+    "postinstallfull": "pnpm build:ui && pnpm prepare && pnpm run codegen",
     "test": "vitest",
     "testui": "vitest --ui"
   },
