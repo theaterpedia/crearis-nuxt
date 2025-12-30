@@ -98,6 +98,11 @@ check_prerequisites() {
         errors=$((errors + 1))
     fi
     
+    # CRITICAL: Check PM2 user (must be pruvious, never root!)
+    if ! check_pm2_user "$DEPLOY_USER"; then
+        errors=$((errors + 1))
+    fi
+    
     # Check PostgreSQL client (warning only)
     check_postgres_client || true
     

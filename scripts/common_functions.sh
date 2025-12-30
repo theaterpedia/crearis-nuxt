@@ -205,6 +205,52 @@ check_pm2() {
     return 0
 }
 
+# Check if PM2 daemon is running as correct user
+# CRITICAL: PM2 must NEVER be run as root!
+check_pm2_user() {
+    local expected_user="${1:-pruvious}"
+    local current_user=$(whoami)
+    
+    # CRITICAL CHECK: Never allow PM2 operations as root
+    if [[ $EUID -eq 0 ]]; then
+        error "═══════════════════════════════════════════════════════════"
+        error "CRITICAL: PM2 MUST NEVER BE RUN AS ROOT!"
+        error "═══════════════════════════════════════════════════════════"
+        error ""
+        error "Running PM2 as root will:"
+        error "  • Create a separate PM2 daemon under root"
+        error "  • Cause permission conflicts with the pruvious PM2 daemon"
+        error "  • Make processes inaccessible to the correct user"
+        error "  • Break all existing PM2 process management"
+        error ""
+        error "Current user: root"
+        error "Required user: $expected_user"
+        echo ""
+        echo -e "${YELLOW}ALWAYS run PM2 commands as $expected_user:${NC}"
+        echo -e "  ${GREEN}sudo -u $expected_user pm2 <command>${NC}"
+        echo ""
+        echo -e "${YELLOW}To fix if PM2 was started as root:${NC}"
+        echo -e "  ${GREEN}pm2 kill${NC}  (as root to kill root daemon)"
+        echo -e "  ${GREEN}sudo -u $expected_user pm2 list${NC}  (restart as correct user)"
+        echo ""
+        return 1
+    fi
+    
+    # Check if running as expected user
+    if [[ "$current_user" != "$expected_user" ]]; then
+        error "PM2 must be run as '$expected_user' user"
+        error "Current user: $current_user"
+        echo ""
+        echo -e "${YELLOW}Run as:${NC}"
+        echo -e "  ${GREEN}sudo -u $expected_user bash $0${NC}"
+        echo ""
+        return 1
+    fi
+    
+    success "PM2 user validation passed (running as $expected_user) ✓"
+    return 0
+}
+
 # Check if directory exists
 check_directory() {
     local dir="$1"

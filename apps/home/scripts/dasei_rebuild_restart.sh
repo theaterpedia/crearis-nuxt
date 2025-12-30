@@ -109,6 +109,11 @@ initialize() {
         exit 1
     fi
     
+    # CRITICAL: Check PM2 user (must be pruvious, never root!)
+    if ! check_pm2_user "$DEPLOY_USER"; then
+        exit 1
+    fi
+    
     # Display configuration
     info "Source: $SOURCE_DIR"
     info "Live: $LIVE_DIR"

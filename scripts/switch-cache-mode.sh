@@ -70,6 +70,13 @@ check_prerequisites_for_switch() {
         exit 1
     fi
     
+    # CRITICAL: Check PM2 user when running PM2 commands
+    # This check ensures we never accidentally use root's PM2
+    if ! check_pm2_user "$DEPLOY_USER"; then
+        error "PM2 user validation failed"
+        exit 1
+    fi
+    
     # Check Nginx installed
     if ! command_exists nginx; then
         error "Nginx not installed"
