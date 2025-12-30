@@ -90,21 +90,19 @@ export function renderMdProp(content: string, htag: string = 'h3', mailbody: boo
   const lines = content.split('\n')
   var heading = ''
   var body = ''
+  var startIndex = 0
   // check if first line is a heading
   if (lines[0].startsWith('#')) {
     // render as heading
     heading = lines[0].replace(/#*/g, '').trim()
     // remove first line
     lines.shift()
-  } else {
-    // render as paragraph
-    body = `<p>${content}</p>\n`
   }
-  for (let i = 1; i < lines.length; i++) {
+  for (let i = startIndex; i < lines.length; i++) {
     // check if line is a list
     if (lines[i].startsWith('- ')) {
       // render as list
-      if (i === 1 || !lines[i - 1].startsWith('- ')) {
+      if (i === 0 || !lines[i - 1].startsWith('- ')) {
         body += `<ul>\n`
       }
       body += `<li>${lines[i].replace('- ', '')}</li>\n`

@@ -2,7 +2,7 @@
 navigation: false
 navigation_highlight: /ausbildung-theaterpaedagogik/einstiege
 shortcode: m18b
-heading: "**Einstiege ins Theaterspiel** München & Burgstallmühle 8.3.2026 - 1.12.2026 // Blockseminarverlauf"
+heading: "**Einstiege ins Theaterspiel** Burgstallmühle 8.3.2026 - 1.12.2026 // Blockseminarverlauf"
 start: 2026-03-08
 end: 2026-12-01
 ctype: course
@@ -48,7 +48,7 @@ details:
 product:
  header: |
   ## 6 Kurseinheiten in 3 Blocks
-  In 6 prägnanten Einheiten wirst Du beide Wege erleben, verstehen und selber anleiten: Du lernst die Methoden, die Leitungshaltung und typische Abläufe. Egal, welche Vorerfahrungen Du mitbringst sind wir sicher, dass Du dabei viel mitnehmen wirst.
+  In prägnanten Einheiten erlebst Du beide Wege, verstehst die Zusammenhänge und leitest selber an: Du lernst die Methoden, die Leitungshaltung und typische Abläufe. Egal, welche Vorerfahrungen Du mitbringst sind wir sicher, dass Du dabei viel mitnehmen wirst.
  footer: |
   ## MÄR - DEZ 2026 // Burgstallmühle **Einstiege ins Theaterspiel**
 items: 
@@ -58,12 +58,11 @@ items:
   tag: Do., 15.1. 18:00-20:00 online
   title: Kursinfo **Online-Teaser Einstiege ins Theaterspiel**
   image: 
-   url: ''
-   caption: Theaterpädagogik AA
+   url: https://res.cloudinary.com/little-papillon/image/upload/c_crop,h_850,w_1200,x_310,y_130/v1594701917/dasei/einstiege_lampe_nora.jpg
+   caption: Theaterpädagogik E. Allerdings als Lampe
   body: |
    Du erwägst schon länger in die Theaterpädagogik einzusteigen? Du suchst nach qualifizierter Ausbildung in diesem Bereich? Vielleicht bist du bereits fest entschlossen, bei DAS Ei zu starten? 
-   Dann melde dich an, zum unverbindlichen Online-Teaser!
-   Hier erfährst du alles über unsere Philosophie, kannst deine Fragen direkt im Gespräch klären und erhältst wichtige Infos zum nächsten Kursstart.
+   Dann melde dich an zum unverbindlichen Online-Teaser!
   start: 2026-01-15T18:00
   ende: 2026-01-15T20:00
   ort: online (MS Teams, Link wird rechtzeitig zugeschickt)
@@ -75,7 +74,7 @@ items:
   tag: So., 8.3. ganztags + 1 Abend online
   title: Praxis, Theorie & Ausbildung bei DAS Ei **Basistag Theaterpädagogik**
   image: 
-   url: https://res.cloudinary.com/little-papillon/image/upload/w_400//v1619714053/dasei/freundschaft_vhfgz1.png
+   url: https://res.cloudinary.com/little-papillon/image/upload/v1676101506/dasei/700_dasei2022_I8A7903_cvtigl.jpg
    caption: Theaterpädagogik A0
   body: |
    Am Basistag erlebst Du die grundsätzlichen Zusammenhänge der Theaterpädagogik von DAS Ei konzentriert und ganz praktisch am eigenen Leib. Du erarbeitest Dir ausgehend von drei Zwischenreflexionen ein Grundverständnis der Module

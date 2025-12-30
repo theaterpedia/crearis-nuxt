@@ -1,14 +1,14 @@
 ---
 navigation: false
 navigation_highlight: /ausbildung-theaterpaedagogik/aufbaustufe
-shortcode: z15a
-heading: "ab 2.2026: AUSPROBIEREN + BERATEN"
-start: 2026-02-01
-end: 2026-09-30
+shortcode: z15
+heading: "ANMELDUNG Aufbaustufe Theaterpädagogik (BuT)"
+start: 2026-09-01
+end: 2028-08-01
 ctype: course
 tag: course
-description: Weiterbildung Theaterpädagogik - Kurs M17B Burgstallmühle 29.5 - 16.12.2025 // Blockseminarverlauf Burgstallmühle
-title: Einstiege ins Theaterspiel
+description: Weiterbildung Theaterpädagogik - Aufbaustufe Theaterpädagogik (BuT) 2026-28
+title: Aufbaustufe Theaterpädagogik (BuT) 2026-28
 cssclasses:
   - course
 views:
@@ -18,16 +18,18 @@ details:
  programm:
   title: Programm & Struktur
   header: |
-   ## Programm & Struktur
+      Die Konditionen der DIREKTANMELDUNG sind ab 20. SEPT 2025 verfügbar.
   info:
    struktur: |
-    - **Orientierungsprogramm** 10 UE
-    - **2 oder 4 Einheiten** _44 oder 88 UE_
-    - **SUMME** 54 - 98 UE
+    ### Struktur
+    - **Basistag** 10 UE
+    - **5 Einheiten A1-A5** _110 UE_
+    - **SUMME** mind. 120 UE
    beratung: |
     #### Beratung
     - bei Kursanmeldung Beratung zur Frage, ob eher Blockprogramm oder Tageskursverlauf sinnvoll ist
-    - im Okt 2024 Beratung zur Fortsetzung Grundlagenbildung Kurse M16 oder N16, sowie bei Bedarf Aufbaustufe Theaterpädagog:in (BuT)
+    - im Okt 2025 Beratung zur Fortsetzung Grundlagenbildung Kurse M17 oder N17
+    - Fortsetzung Aufbaustufe möglich mit Abschluss Theaterpädagog:in (BuT) bis Juli 2028  
  konditionen:
   title: Kosten & Konditionen
   header: |
@@ -46,7 +48,8 @@ details:
     -danach Bezahlung A1/A2 (29.5 bis 1.6.2025) obligatorisch, bis 11.6.2025 kostenfreies Storno der Teilnahme A3-A5
 product:
  header: |
-  Probiere das Team und das Programm aus. Stelle aus drei Beratungsformaten und fünf Praxiseinheiten deinen Orientierungsprozess zusammen. Jede Veranstaltung gibt einen Einblick in ein spezifisches Thema der Aufbaustufe.
+  Die exakten Konditionen der Direktanmeldung sind ab 20. SEPT 2025 verfügbar.
+  Für einen Überblick siehe: Abschluss Theaterpädagogik (BuT)
  footer: |
   ## September - Dezember 2024 // München, Nürnberg **Einstiege ins Theaterspiel**
 items:
@@ -54,7 +57,7 @@ items:
     ctype: event
     shortcode: az
     title: Online-Information und Beratung **INFO-Teaser Aufbaustufe Theaterpädadgogik (BuT)**
-    tag: DO 23.10. 18:00-20:00 WEB (MS Teams)
+    tag: 23.10.2025 18:00-20:00 WEB (MS Teams)
     image:
       url: https://res.cloudinary.com/little-papillon/image/upload/c_crop,h_1050,q_60,w_1390,x_50,y_50/v1756048022/dasei/das_glas_voll_machen_h34pwb.png
       caption: das Glas voll machen
@@ -67,144 +70,6 @@ items:
     ablauf: |
       DO 18:00-20:00 _online_
     mit: Hans Dönitz (Rosalin Hertrich, Cornelia Jung)
-  a0_1276:
-    ctype: event
-    shortcode: a0
-    title: Praxis, Theorie & Ausbildung bei DAS Ei **Theaterpedia-Konferenz**
-    tag: DO-SO 20.-23. NOV München
-    image:
-      url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_500,h_500,g_auto/v1666847011/pedia_ipsum/core/theaterpedia.jpg
-      caption: 'Theaterpedia: Theaterpädagogik suchen und finden'
-    body: |
-      Auf der Theaterpedia-Konferenz sind das Team von DAS Ei und viele Absolvent:innen der Aufbaustufe Theaterpädagogik (BuT) von DAS Ei anwesend.
-    start: 2025-11-20T18:00
-    ende: 2025-11-23T15:00
-    ort: |
-      Eine-Welt-Haus
-      Schwanthaler Str. 81
-      80336 München
-    ablauf: |
-      DO 18:00-21:30
-      FR 09:30-19:30
-      SA 09:00-19:00 (danach Party)
-      SO 09:30-15:00
-    mit: Hans Dönitz, Team DAS Ei
-  b7_1178:
-    ctype: event
-    shortcode: b7
-    tag: FR 30.1-SO 1.2 München
-    title: an der Grenze zwischen Performance und Bildungsarbeit **bewegte Themenarbeit**
-    image:
-      url: https://res.cloudinary.com/little-papillon/image/upload/v1676100759/dasei/555_dasei2022_I8A6982_iz3kod.jpg
-      caption: bewegte Themenarbeit
-    body: |
-      ''
-    start: 2026-01-30T18:00
-    ende: 2026-02-01T15:00
-    ort: |
-      Schwanthaler Str 91
-      80336 München
-    ablauf: |
-      Fr. 18:30-21:30
-      SA 09:00-18:00
-      SO 09:30-15:00
-    mit: Rosalin Hertrich
-  b8_1178:
-    ctype: event
-    shortcode: b8
-    tag: FR 30.1-SO 1.2 Nürnberg
-    title: Szenische Themenarbeit und mehr **Forumtheater**
-    image:
-      url: https://res.cloudinary.com/little-papillon/image/upload/v1756050714/dasei/forumtheater_qe78af.jpg
-      caption: Forumtheater
-    body: |
-      ''
-    start: 2026-01-30T18:00
-    ende: 2026-02-01T15:00
-    ort: |
-      Tanzerei
-      Kaiserstr. 81
-      90766 Fürth
-    ablauf: |
-      Fr. 18:30-21:30
-      SA 09:00-18:00
-      SO 09:30-15:00
-    mit: Christine Oppel
-  t1_1190:
-    ctype: event
-    shortcode: t1
-    title: Profilorientierung 'Theatrales Lernen' **Thematische Warm-Ups**
-    tag: FR 27.2 - SO 1.3.2026 Fürth/Nürnberg
-    image:
-      url: https://res.cloudinary.com/little-papillon/image/upload/v1676100503/dasei/377_dasei2022_I8A6515_p6aee7.jpg
-      caption: Thematische Warm-Ups
-    body: |
-      ''
-    start: 2026-02-27T18:00
-    ende: 2026-03-01T15:00
-    ort: |
-      Tanzerei
-      Kaiserstr. 81
-      90766 Fürth
-    ablauf: |
-      Fr. 18:30-21:30
-      SA 09:00-18:00
-      SO 09:00-15:00
-    mit: Cornelia Jung
-  t2_1192:
-    ctype: event
-    shortcode: t2
-    title: Online-Information und Beratung **INFO-Teaser Theatrales Lernen**
-    tag: 16.4.2026 18:00-20:00 WEB (MS Teams)
-    image:
-      url: https://res.cloudinary.com/little-papillon/image/upload/v1756050487/dasei/profil_theatrales_lernen_t6em6q.png
-      caption: Theatrales Lernen
-    body: |
-      ''
-    start: 2026-04-16T18:00
-    ende: 2026-04-16T20:00
-    ort: |
-      Online (MS Teams)
-    ablauf: |
-      Di. 18:00-20:00 _online_
-    mit: Cornelia Jung
-  r1_1190:
-    ctype: event
-    shortcode: r1
-    title: Profilorientierung 'Performance & Interkult. Theater' **die künstlerische Aktion**
-    tag: SA 4. - SO 5.7.2026 München
-    image:
-      url: https://res.cloudinary.com/little-papillon/image/upload/v1676100655/dasei/412_dasei2022_I8A6597_b0seuo.jpg
-      caption: die künstlerische Aktion
-    body: |
-      ''
-    start: 2026-07-04T09:30
-    ende: 2026-07-05T18:00
-    ort: |
-      Schwanthaler Str 91
-      80336 München
-    ablauf: |
-      Fr. 18:30-21:30
-      SA 09:00-18:00
-      SO 09:00-15:00
-    mit: Rosalin Hertrich
-  r2_1192:
-    ctype: event
-    shortcode: r2
-    title: Online-Information und Beratung **INFO-Teaser 'Performance & Interkult. Theater'**
-    tag: 23.7.2026 18:00-20:00 WEB (MS Teams)
-    image:
-      url: https://res.cloudinary.com/little-papillon/image/upload/v1756050680/dasei/profil_performance_spx8p8.png
-      caption: Performance & Interkult. Theater
-    body: |
-      ''
-    start: 2026-07-23T18:00
-    ende: 2026-07-23T20:00
-    ort: |
-      Online (MS Teams)
-    ablauf: |
-      Di. 18:00-20:00 _online_
-    mit: Rosalin Hertrich
 ---
 > [!data-hero] ## **Einstiege ins Theaterspiel** M16E Mue 6.10.2024 - 30.07.2025 // Sonntags & Online
 
