@@ -1,13 +1,13 @@
 ---
 navigation: false
 navigation_highlight: /ausbildung-theaterpaedagogik/einstiege
-shortcode: m18e
+shortcode: m18w
 heading: "**Einstiege ins Theaterspiel** München 8.3.2026 - 1.12.2026 // Tageskursverlauf"
 start: 2026-03-08
 end: 2026-12-01
 ctype: course
 tag: course
-description: Weiterbildung Theaterpädagogik - Kurs M18E München 8.3 - 1.12.2026 // Tageskursverlauf München
+description: Weiterbildung Theaterpädagogik - Kurs M18W München 8.3 - 1.12.2026 // Tageskursverlauf München
 title: Einstiege ins Theaterspiel
 cssclasses:
   - course
