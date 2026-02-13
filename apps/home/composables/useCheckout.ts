@@ -22,6 +22,7 @@ const CHECKOUT_MUTATION = `
   mutation Checkout($checkout: CheckoutInput!) {
     checkout(checkout: $checkout) {
       success
+      checkoutType
       error
       order { id name }
       partner { id email }
@@ -34,19 +35,20 @@ const CHECKOUT_MUTATION = `
 /**
  * Checkout composable for Odoo GraphQL integration.
  * 
- * @param productRef - Product SKU (e.g. "MOD-A", "MOD-B", "MOD-C", "MOD-D")
- *                     Must match `default_code` in Odoo product.template
+ * @param productRef - Product shortcode (e.g. "m18w", "z15e") or SKU ("MOD-A")
+ *                     Odoo resolves shortcodes via _parse_product_ref()
  * 
  * @example
  * ```vue
  * <script setup>
- * const checkout = useCheckout('MOD-A')
+ * const checkout = useCheckout('m18w')
  * 
  * // Set contact info
  * checkout.setContact({ email: 'test@example.com', vorname: 'Max', nachname: 'Mustermann' })
  * 
  * // Submit
  * const result = await checkout.submit()
+ * // result.checkoutType === 'auto' | 'manual_review'
  * </script>
  * ```
  */
@@ -66,13 +68,13 @@ export function useCheckout(productRef: string) {
       ort: '',
       mobil: '',
     },
-    path: undefined,
     acceptances: {
       terms: false,
       privacy: false,
       cancellation: false,
     },
     notes: '',
+    requestFullCourse: false,
     isSubmitting: false,
     result: undefined,
   })
@@ -98,8 +100,8 @@ export function useCheckout(productRef: string) {
     Object.assign(state.contact, contact)
   }
   
-  const setPath = (path: CheckoutState['path']) => {
-    state.path = path
+  const setRequestFullCourse = (value: boolean) => {
+    state.requestFullCourse = value
   }
   
   const setAcceptances = (acceptances: Partial<CheckoutState['acceptances']>) => {
@@ -121,13 +123,18 @@ export function useCheckout(productRef: string) {
   /**
    * Submit checkout to Odoo GraphQL endpoint.
    * 
-   * Creates:
+   * For 'auto' tier (m/n + w/x shortcodes):
    * - Partner (or finds existing by email)
    * - Sale Order with package product
    * - Event registrations for all package events
    * - Sends confirmation email
    * 
-   * @returns CheckoutResult with success/error and created entity IDs
+   * For 'manual_review' tier (z*, module flags, single events):
+   * - Partner created/found
+   * - Manager notification email sent
+   * - Customer receives "1-2 Werktage" email
+   * 
+   * @returns CheckoutResult with success/error, checkoutType, and created entity IDs
    */
   const submit = async (): Promise<CheckoutResult> => {
     if (!canSubmit.value) {
@@ -152,11 +159,11 @@ export function useCheckout(productRef: string) {
         ort: state.contact.ort || undefined,
         mobil: state.contact.mobil || undefined,
       },
-      path: state.path,
       notes: state.notes || undefined,
       acceptTerms: state.acceptances.terms,
       acceptPrivacy: state.acceptances.privacy,
       acceptCancellation: state.acceptances.cancellation,
+      requestFullCourse: state.requestFullCourse || undefined,
     }
     
     try {
@@ -201,9 +208,9 @@ export function useCheckout(productRef: string) {
   const reset = () => {
     state.step = 1
     state.contact = { email: '', vorname: '', nachname: '', strasse: '', plz: '', ort: '', mobil: '' }
-    state.path = undefined
     state.acceptances = { terms: false, privacy: false, cancellation: false }
     state.notes = ''
+    state.requestFullCourse = false
     state.result = undefined
   }
   
@@ -218,7 +225,7 @@ export function useCheckout(productRef: string) {
     
     // Actions
     setContact,
-    setPath,
+    setRequestFullCourse,
     setAcceptances,
     setNotes,
     nextStep,

@@ -198,9 +198,6 @@ const handle_checkout = async () => {
     })
     checkout.setNotes(checksAndSummary.value.anmerkungen || '')
     
-    // TODO: Set path based on user selection (muenchen_block, nuernberg_block, etc.)
-    // checkout.setPath('muenchen_block')
-    
     const result = await checkout.submit()
     
     if (!result.success) {
@@ -209,6 +206,14 @@ const handle_checkout = async () => {
     }
     
     console.log('[DataViewDetails] Checkout successful:', result)
+    console.log('[DataViewDetails] checkoutType:', result.checkoutType)
+    
+    // Show tier-specific confirmation message
+    if (result.checkoutType === 'manual_review') {
+      alert('Vielen Dank! Ihre Anmeldung wird innerhalb von 1-2 Werktagen bearbeitet. Sie erhalten eine Bestätigung per E-Mail.')
+    } else {
+      alert('Ihre Buchung wurde bestätigt. Sie erhalten eine Bestätigung per E-Mail.')
+    }
     return
   }
   

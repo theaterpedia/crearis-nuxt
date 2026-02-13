@@ -124,11 +124,11 @@ export interface CheckoutContactInput {
 export interface CheckoutInput {
   productRef: string
   contact: CheckoutContactInput
-  path?: 'muenchen_block' | 'muenchen_day' | 'nuernberg_block' | 'nuernberg_day'
   notes?: string
   acceptTerms: boolean
   acceptPrivacy: boolean
   acceptCancellation: boolean
+  requestFullCourse?: boolean
 }
 
 /**
@@ -136,11 +136,12 @@ export interface CheckoutInput {
  */
 export interface CheckoutResult {
   success: boolean
+  checkoutType?: 'auto' | 'manual_review'
   error?: string
   order?: { id: number; name: string }
   partner?: { id: number; email: string }
-  registrations?: number
-  packageLines?: number
+  registrations?: number[]
+  packageLines?: number[]
 }
 
 /**
@@ -149,13 +150,13 @@ export interface CheckoutResult {
 export interface CheckoutState {
   step: number
   contact: CheckoutContactInput
-  path?: CheckoutInput['path']
   acceptances: {
     terms: boolean
     privacy: boolean
     cancellation: boolean
   }
   notes: string
+  requestFullCourse: boolean
   isSubmitting: boolean
   result?: CheckoutResult
 }
