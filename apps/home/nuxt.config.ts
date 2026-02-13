@@ -6,6 +6,13 @@ export default defineNuxtConfig({
   imports: { transform: { exclude: [/\/packages\/ui\//] } },
   modules: ['@nuxt/content', '@nuxt/image', 'nuxt-viewport'],
   routeRules: { '/': { prerender: true } },
+  runtimeConfig: {
+    public: {
+      // Odoo GraphQL endpoint for checkout
+      // Production: https://service.dasei.eu/graphql/vsf
+      odooGraphqlUrl: process.env.NUXT_PUBLIC_ODOO_GRAPHQL_URL || '',
+    },
+  },
   nitro: {
     plugins: ['plugins/content.ts'],
     prerender: {
@@ -15,3 +22,4 @@ export default defineNuxtConfig({
     },
   },
 })
+

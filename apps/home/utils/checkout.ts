@@ -98,4 +98,64 @@ export interface Product {
   ctype?: string
   shortcode?: string
   meta_product?: string
+  /** Product SKU for Odoo checkout (e.g. "MOD-A", "MOD-B") */
+  sku?: string
+}
+
+// --- GraphQL Checkout Types (Odoo integration) ---
+
+/**
+ * Contact info for GraphQL CheckoutInput
+ * Maps to CheckoutContactInput in Odoo schema
+ */
+export interface CheckoutContactInput {
+  email: string
+  vorname: string
+  nachname: string
+  strasse?: string
+  plz?: string
+  ort?: string
+  mobil?: string
+}
+
+/**
+ * Input for GraphQL Checkout mutation
+ */
+export interface CheckoutInput {
+  productRef: string
+  contact: CheckoutContactInput
+  path?: 'muenchen_block' | 'muenchen_day' | 'nuernberg_block' | 'nuernberg_day'
+  notes?: string
+  acceptTerms: boolean
+  acceptPrivacy: boolean
+  acceptCancellation: boolean
+}
+
+/**
+ * Result from GraphQL Checkout mutation
+ */
+export interface CheckoutResult {
+  success: boolean
+  error?: string
+  order?: { id: number; name: string }
+  partner?: { id: number; email: string }
+  registrations?: number
+  packageLines?: number
+}
+
+/**
+ * State for useCheckout composable
+ */
+export interface CheckoutState {
+  step: number
+  contact: CheckoutContactInput
+  path?: CheckoutInput['path']
+  acceptances: {
+    terms: boolean
+    privacy: boolean
+    cancellation: boolean
+  }
+  notes: string
+  isSubmitting: boolean
+  result?: CheckoutResult
 }

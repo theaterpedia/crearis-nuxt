@@ -2,9 +2,10 @@
 <script lang="ts" setup>
 import { Hero, Prose } from '#components'
 import { SfIconPerson, SfIconTune, SfIconArrowBack, SfIconShoppingCartCheckout, SfIconViewList, SfIconInfo } from '#components'
-import { ref, onMounted, computed } from 'vue'
-import type {  CheckoutStep, Product, FormContactInformationProps, CheckoutRecord } from '../../utils/checkout'
+import { ref, onMounted, computed, watch } from 'vue'
+import type { CheckoutStep, Product, FormContactInformationProps, CheckoutRecord, FormChecksAndSummaryProps } from '../../utils/checkout'
 import { StepperDescription, StepperIndicator, StepperItem, StepperRoot, StepperSeparator, StepperTitle, StepperTrigger } from 'radix-vue'
+import { useCheckout } from '~/composables/useCheckout'
 /* This belongs to the DataView + DataViewTab component
 - it should NOT be availabe in the component-spec
 */
@@ -61,6 +62,15 @@ const checksAndSummary = ref<FormChecksAndSummaryProps>({
   ruecktritt: false,
   anmerkungen: '',
 })
+
+// Derive productRef for Odoo GraphQL checkout
+// Priority: sku > meta_product > shortcode > id
+const productRef = computed(() => {
+  return props.product.sku || props.product.meta_product || props.product.shortcode || props.product.id || ''
+})
+
+// Initialize Odoo checkout composable (only used when productRef is available)
+const checkout = productRef.value ? useCheckout(productRef.value) : null
 
 const checkoutRecord: CheckoutRecord = {
   basistag: '-',
@@ -168,8 +178,43 @@ const handle_checkout = async () => {
   checkoutRecord.ende = props.product.ende ? props.product.ende.toString() : ''
   checkoutRecord.actionstep = props.product.id ? props.product.id : props.product.shortcode ? props.product.shortcode : ''
   checkoutRecord.json = JSON.stringify(checkoutRecord)
+  
+  // Use Odoo GraphQL checkout if available and configured
+  if (checkout && productRef.value) {
+    // Sync form state to composable
+    checkout.setContact({
+      email: contactInfo.value.email || '',
+      vorname: contactInfo.value.vorname || '',
+      nachname: contactInfo.value.nachname || '',
+      strasse: contactInfo.value.strasse,
+      plz: contactInfo.value.plz,
+      ort: contactInfo.value.ort,
+      mobil: contactInfo.value.mobil,
+    })
+    checkout.setAcceptances({
+      terms: checksAndSummary.value.agb || false,
+      privacy: checksAndSummary.value.datenschutz || false,
+      cancellation: checksAndSummary.value.ruecktritt || false,
+    })
+    checkout.setNotes(checksAndSummary.value.anmerkungen || '')
+    
+    // TODO: Set path based on user selection (muenchen_block, nuernberg_block, etc.)
+    // checkout.setPath('muenchen_block')
+    
+    const result = await checkout.submit()
+    
+    if (!result.success) {
+      console.error('[DataViewDetails] Checkout failed:', result.error)
+      throw new Error(result.error || 'Checkout failed')
+    }
+    
+    console.log('[DataViewDetails] Checkout successful:', result)
+    return
+  }
+  
+  // Fallback to Power Automate (legacy) — updated URL 2026-02
   // old link: https://prod-53.westeurope.logic.azure.com:443/workflows/e24e854998a44b8990cb883f006b0612/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=lQRSV83cnOJ69qBn_SWojAazlEcoZu8yntN4m_ZhFec
-  // new link: https://default430c53e6651e45efa53c004ea96dd2.16.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/e24e854998a44b8990cb883f006b0612/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=dW-If8W3p85RTFP0mE2PD-r0sgu9opFXOmmwKuJ7xwU
+  console.warn('[DataViewDetails] Using legacy Power Automate checkout. Configure NUXT_PUBLIC_ODOO_GRAPHQL_URL to use Odoo.')
   const data = await $fetch('https://default430c53e6651e45efa53c004ea96dd2.16.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/e24e854998a44b8990cb883f006b0612/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=dW-If8W3p85RTFP0mE2PD-r0sgu9opFXOmmwKuJ7xwU', {
       method: 'post',
       body: checkoutRecord,
