@@ -7,6 +7,10 @@
 dist
 tmp
 
+demo-data.db
+_export
+_odoo_python
+
 # Pruvious dev/build outputs
 .autoload.sql
 .pruvious
