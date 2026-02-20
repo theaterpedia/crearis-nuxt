@@ -55,7 +55,7 @@ items:
  aa_188:
   ctype: event
   shortcode: aa
-  tag: Do., 15.1. 18:00-20:00 online
+  tag: Do., 5.3. 18:00-20:00 online
   title: Kursinfo **Online-Teaser Einstiege ins Theaterspiel**
   image: 
    url: https://res.cloudinary.com/little-papillon/image/upload/c_crop,h_850,w_1200,x_310,y_130/v1594701917/dasei/einstiege_lampe_nora.jpg
@@ -63,8 +63,8 @@ items:
   body: |
    Du erwägst schon länger in die Theaterpädagogik einzusteigen? Du suchst nach qualifizierter Ausbildung in diesem Bereich? Vielleicht bist du bereits fest entschlossen, bei DAS Ei zu starten? 
    Dann melde dich an zum unverbindlichen Online-Teaser!
-  start: 2026-01-15T18:00
-  ende: 2026-01-15T20:00
+  start: 2026-03-05T18:00
+  ende: 2026-03-05T20:00
   ort: online (MS Teams, Link wird rechtzeitig zugeschickt)
   ablauf: DO 18:00-20:00 online
   mit: Hans Dönitz
