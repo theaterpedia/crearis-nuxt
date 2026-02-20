@@ -69,8 +69,14 @@ const productRef = computed(() => {
   return props.product.sku || props.product.meta_product || props.product.shortcode || props.product.id || ''
 })
 
-// Initialize Odoo checkout composable (only used when productRef is available)
-const checkout = productRef.value ? useCheckout(productRef.value) : null
+// Lazy checkout initialization - will be created on first use if productRef is available
+let checkout: ReturnType<typeof useCheckout> | null = null
+const getCheckout = () => {
+  if (!checkout && productRef.value) {
+    checkout = useCheckout(productRef.value)
+  }
+  return checkout
+}
 
 const checkoutRecord: CheckoutRecord = {
   basistag: '-',
@@ -180,9 +186,11 @@ const handle_checkout = async () => {
   checkoutRecord.json = JSON.stringify(checkoutRecord)
   
   // Use Odoo GraphQL checkout if available and configured
-  if (checkout && productRef.value) {
+  const odooCheckout = getCheckout()
+  if (odooCheckout && productRef.value) {
+    console.log('[DataViewDetails] Using Odoo checkout with productRef:', productRef.value)
     // Sync form state to composable
-    checkout.setContact({
+    odooCheckout.setContact({
       email: contactInfo.value.email || '',
       vorname: contactInfo.value.vorname || '',
       nachname: contactInfo.value.nachname || '',
@@ -191,14 +199,14 @@ const handle_checkout = async () => {
       ort: contactInfo.value.ort,
       mobil: contactInfo.value.mobil,
     })
-    checkout.setAcceptances({
+    odooCheckout.setAcceptances({
       terms: checksAndSummary.value.agb || false,
       privacy: checksAndSummary.value.datenschutz || false,
       cancellation: checksAndSummary.value.ruecktritt || false,
     })
-    checkout.setNotes(checksAndSummary.value.anmerkungen || '')
+    odooCheckout.setNotes(checksAndSummary.value.anmerkungen || '')
     
-    const result = await checkout.submit()
+    const result = await odooCheckout.submit()
     
     if (!result.success) {
       console.error('[DataViewDetails] Checkout failed:', result.error)

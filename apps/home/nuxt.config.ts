@@ -9,8 +9,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       // Odoo GraphQL endpoint for checkout
-      // Production: https://service.dasei.eu/graphql/vsf
-      odooGraphqlUrl: process.env.NUXT_PUBLIC_ODOO_GRAPHQL_URL || '',
+      // Hardcoded fallback ensures checkout works even if env var not set at build time
+      odooGraphqlUrl: process.env.NUXT_PUBLIC_ODOO_GRAPHQL_URL || 'https://service.dasei.eu/graphql/vsf',
     },
   },
   nitro: {
