@@ -1,7 +1,7 @@
 ---
 navigation: false
 navigation_highlight: /ausbildung-theaterpaedagogik/aufbaustufe
-shortcode: z15a
+shortcode: z15v
 heading: "BERATEN & AUSPROBIEREN"
 start: 2026-02-01
 end: 2026-09-30
@@ -17,7 +17,7 @@ views:
 #
 # ── CN IMPLEMENTATION NOTES ──────────────────────────────────────────────
 # SAC Persona: RIKE 3b (Beratungspfad / late entry)
-# Shortcode: z15a (orientation, no product booking — contact form only)
+# Shortcode: z15v (orientation, no product booking — contact form only)
 # Checkout tier: manual_review (contact request, no sale.order)
 # Stepper: 1 custom + 2 standard (kontakt + checks) = 3 steps total
 #
@@ -28,7 +28,7 @@ views:
 #   3. checks — AGB/Datenschutz (existing component)
 #
 # Entered via 4th tab on /ausbildung-theaterpaedagogik/aufbaustufe
-# No bundle resolution needed — z15a triggers manual_review in CO
+# No bundle resolution needed — z15v triggers manual_review in CO
 # Result: partner created + manager notification email
 #
 # Upload placeholder: "bitte per Email schicken an: service@dasei.eu"

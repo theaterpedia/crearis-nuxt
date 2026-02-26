@@ -1,7 +1,7 @@
 ---
 navigation: false
 navigation_highlight: /ausbildung-theaterpaedagogik/aufbaustufe
-shortcode: z15a
+shortcode: z15v
 heading: "ab 2.2026: AUSPROBIEREN + BERATEN"
 start: 2026-02-01
 end: 2026-09-30

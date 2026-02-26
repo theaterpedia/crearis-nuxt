@@ -353,11 +353,10 @@ const getRootPath = (root: string | undefined) => {
         <StepperTrigger aria-describedby="undefined" class="inline-flex items-center fill-neutral-400 group-data-[disabled]:fill-neutral-600 group-data-[state=completed]:fill-primary group-data-[state=active]:fill-primary-contrast justify-center rounded-full w-10 h-10 shrink-0 focus:shadow-[0_0_0_2px] focus:shadow-black focus:outline-none">
           <StepperIndicator :step="index" class="bg-neutral-200 group-data-[disabled]:bg-accent group-data-[state=completed]:bg-neutral-50 group-data-[state=active]:bg-primary">
             <SfIconViewList class="w-5 h-5" size="lg" v-if="index === 0" />
-            <SfIconTune size="lg" v-else-if="index === 1" />
-            <SfIconPerson size="lg" v-else-if="index === 2" />
             <SfIconShoppingCartCheckout size="lg" v-else-if="index === allsteps.length-1" />
+            <SfIconPerson size="lg" v-else-if="index === allsteps.length-2" />
             <!-- SfIconEmail size="lg" v-else-if="index === allsteps.length-1" / -->
-            <SfIconInfo size="lg" v-else />
+            <SfIconTune size="lg" v-else />
           </StepperIndicator>
           <div class="absolute text-center top-full left-0 w-full mt-2">
             <StepperTitle :class="index + 1 === activestep ? 'text-primary' : 'text-neutral-300'" class="font-medium text-neutral-400 group-data-[disabled]:text-neutral-600">

@@ -41,12 +41,17 @@ details:
     info:
       struktur: |
         ### Struktur
-        - **E1 Seminarwoche** _40 UE_ — Praxis, Theorie & Reflexion (Herbst 2026)
-        - **E2 Kompaktwoche** _40 UE_ — Vertiefung & Transfer (Frühjahr 2027)
-        - **SUMME** 80 UE
+        - **E1 Seminarwoche** Praxis, Theorie & Reflexion (Herbst 2026)
+        - **E2 Kompaktwoche** Vertiefung & Transfer (Frühjahr 2027)
+        - **+ 2 Seminare** aus dem Offenen Programm (freie Wahl)
+        - **SUMME** 80 UE + 2 Seminare
       hinweis: |
-        #### Hinweis
-        Die Vertiefung kann einzeln gebucht werden. Sie ist auch Bestandteil der vollständigen Aufbaustufe (Profil Theatrales Lernen oder Profil Performance & Interkult. Theater).
+        #### Erweiterung möglich
+        Nach der Vertiefung kannst Du Dich für ein **Profiljahr** (Theatrales Lernen oder Performance & Interkult. Theater) und die **Abschlussphase** entscheiden.
+        
+        - Erweiterung buchbar bis **28. Februar 2027**
+        - Profilwahl nach den Info-Teasern T0/R0 (DEZ 26 - FEB 27)
+        - Persönliche **Beratung** ist Teil der Vertiefung
   konditionen:
     title: Kosten & Konditionen
     header: |
@@ -54,12 +59,22 @@ details:
     info:
       kosten: |
         ### Kosten
-        - **Modul E: Vertiefung** € 660,00
-        - Ratenzahlung möglich (2 Raten)
+        - **Anmeldegebühr** € 80,00
+        - **Vertiefung (E1 + E2)** 6 Raten × € 220,00
+        - **Offenes Programm** 2 Raten × € 220,00
+        - **SUMME** € 1.840,00
+        
+        Ratenzahlung: SEP 2026 - APR 2027
       storno: |
-        ### Widerruf & Storno
-        - 14-tägiges Widerrufsrecht ab Datum der Anmeldung
-        - Stornobedingungen gemäß AGB
+        ### Storno & Frühbuchung
+        - Frühbuchung bis 10.04.26: 1 Seminar Offenes Programm frei
+        - Storno-Option: 1 Rate bis 31.08.26
+        - Kündigung: 2 extra Raten
+        - Bereits gebuchte Seminare → Erstattung
+      erweiterung: |
+        ### Erweiterungsoptionen (später buchbar)
+        - **Profiljahr** (Profil + K2-K3) 12 Raten × € 220,00 = € 2.640,00
+        - **Abschlussphase** (K4-K6 + P1-P6) 9 Raten × € 220,00 = € 1.980,00
 product:
   header: |
     Die Vertiefung (Modul E) umfasst zwei intensive Seminarwochen: Du vertiefst die Methoden aus der Grundstufe und erhältst wichtige didaktische Werkzeuge für deine theaterpädagogische Praxis.
