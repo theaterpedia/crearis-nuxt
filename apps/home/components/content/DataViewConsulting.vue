@@ -153,7 +153,7 @@
           <div v-else-if="consulting.state.step === 2">
             <h3 class="text-lg font-bold mb-4">Kontaktdaten</h3>
             
-            <form @submit.prevent="handleContactSubmit" class="space-y-4">
+            <form @submit.prevent="handleContactSubmit" class="space-y-4 flex flex-col h-full">
               <div class="flex gap-4">
                 <label class="flex-1">
                   <UiFormLabel>Vorname *</UiFormLabel>
@@ -186,21 +186,22 @@
               </label>
               
               <label class="block">
-                <UiFormLabel>Telefon (optional)</UiFormLabel>
+                <UiFormLabel>Telefon *</UiFormLabel>
                 <SfInput 
                   v-model="consulting.state.contact.mobil" 
                   name="mobil" 
-                  type="tel" 
+                  type="tel"
+                  required
                 />
               </label>
               
-              <label class="block">
+              <label class="block flex-1 flex flex-col">
                 <UiFormLabel>Anmerkungen (optional)</UiFormLabel>
                 <SfTextarea 
                   v-model="consulting.state.notes" 
                   name="notes"
                   placeholder="z.B. konkrete Fragen oder Themen für das Gespräch"
-                  :rows="3"
+                  class="flex-1 min-h-[80px]"
                 />
               </label>
               
@@ -220,13 +221,30 @@
                   Zurück
                 </SfButton>
                 <SfButton 
-                  type="submit"
+                  type="button"
+                  @click="handleContactSubmit"
+                  @click.native="() => console.log('[DEBUG] Native click on SfButton')"
+                  @mousedown="() => console.log('[DEBUG] Mousedown on SfButton')"
                   :disabled="!consulting.isContactValid.value || consulting.isSubmitting.value"
                   style="background-color: var(--color-primary-bg); color: var(--color-primary-contrast)"
                 >
                   <SfLoaderCircular v-if="consulting.isSubmitting.value" size="sm" class="mr-2" />
                   Termin buchen
                 </SfButton>
+              </div>
+              <!-- Debug panel -->
+              <div class="mt-4 p-2 bg-gray-200 text-xs font-mono">
+                <p>DEBUG: isContactValid={{ consulting.isContactValid.value }}</p>
+                <p>DEBUG: isSubmitting={{ consulting.isSubmitting.value }}</p>
+                <p>DEBUG: canSubmit={{ consulting.canSubmit.value }}</p>
+                <p>DEBUG: selectedSlot={{ consulting.selectedSlot.value ? 'SET' : 'NULL' }}</p>
+                <button 
+                  type="button"
+                  class="mt-2 bg-blue-500 text-white px-3 py-1"
+                  @click="() => { console.log('[DEBUG] Plain button clicked'); handleContactSubmit(); }"
+                >
+                  TEST: Direct Call
+                </button>
               </div>
             </form>
           </div>
@@ -334,7 +352,22 @@ const formatDateRange = (start: Date, end: Date): string => {
 
 // Handle contact form submission
 const handleContactSubmit = async () => {
-  await consulting.submit()
+  console.log('=== [Consulting DEBUG] handleContactSubmit() CALLED ===')
+  console.log('[Consulting DEBUG] Current step:', consulting.state.step)
+  console.log('[Consulting DEBUG] isContactValid:', consulting.isContactValid.value)
+  console.log('[Consulting DEBUG] isSubmitting:', consulting.isSubmitting.value)
+  console.log('[Consulting DEBUG] canSubmit:', consulting.canSubmit.value)
+  console.log('[Consulting DEBUG] Selected slot:', JSON.stringify(consulting.selectedSlot.value, null, 2))
+  console.log('[Consulting DEBUG] Contact state:', JSON.stringify(consulting.state.contact, null, 2))
+  console.log('[Consulting DEBUG] Notes:', consulting.state.notes)
+  
+  try {
+    console.log('[Consulting DEBUG] Calling consulting.submit()...')
+    const result = await consulting.submit()
+    console.log('[Consulting DEBUG] Submit returned:', JSON.stringify(result, null, 2))
+  } catch (err) {
+    console.error('[Consulting DEBUG] Submit threw error:', err)
+  }
 }
 
 // Fetch slots on mount
@@ -349,6 +382,5 @@ onMounted(async () => {
   box-shadow:
     0px 4px 6px 1px rgba(0, 0, 0, 0.1),
     0px 2px 4px -1px rgba(0, 0, 0, 0.06);
-  border-radius: 0.5rem;
 }
 </style>

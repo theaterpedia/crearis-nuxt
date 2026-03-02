@@ -190,8 +190,8 @@ export function useConsultingSlots(options: {
   
   // Computed validators
   const isContactValid = computed(() => {
-    const { email, vorname, nachname } = state.contact
-    return email.includes('@') && vorname.length > 1 && nachname.length > 1
+    const { email, vorname, nachname, mobil } = state.contact
+    return email.includes('@') && vorname.length > 1 && nachname.length > 1 && (mobil?.length ?? 0) > 5
   })
   
   const canProceedToContact = computed(() => {
@@ -288,20 +288,41 @@ export function useConsultingSlots(options: {
   }
   
   const submit = async (): Promise<ConsultingBookingResult> => {
+    console.log('[useConsultingSlots] submit() called')
+    console.log('[useConsultingSlots] canSubmit:', canSubmit.value)
+    console.log('[useConsultingSlots] graphqlUrl:', graphqlUrl)
+    
     if (!canSubmit.value) {
+      console.log('[useConsultingSlots] Cannot submit - validation failed')
       return { success: false, error: 'Bitte alle Felder ausfüllen' }
     }
     
     if (!graphqlUrl) {
+      console.log('[useConsultingSlots] No graphqlUrl configured')
       return { success: false, error: 'Booking not configured' }
     }
     
     if (!state.selectedSlot) {
+      console.log('[useConsultingSlots] No slot selected')
       return { success: false, error: 'Kein Termin ausgewählt' }
     }
     
     state.isSubmitting = true
     state.error = null
+    
+    const variables = {
+      slotKey: state.selectedSlot.slotKey,
+      start: state.selectedSlot.start,
+      hostId: state.selectedSlot.hostId,
+      contact: {
+        email: state.contact.email,
+        vorname: state.contact.vorname,
+        nachname: state.contact.nachname,
+        mobil: state.contact.mobil || undefined,
+      },
+      notes: state.notes || undefined,
+    }
+    console.log('[useConsultingSlots] Mutation variables:', variables)
     
     try {
       const response = await fetch(graphqlUrl, {
@@ -309,22 +330,12 @@ export function useConsultingSlots(options: {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           query: BOOK_CONSULTING_SLOT_MUTATION,
-          variables: {
-            slotKey: state.selectedSlot.slotKey,
-            start: state.selectedSlot.start,
-            hostId: state.selectedSlot.hostId,
-            contact: {
-              email: state.contact.email,
-              vorname: state.contact.vorname,
-              nachname: state.contact.nachname,
-              mobil: state.contact.mobil || undefined,
-            },
-            notes: state.notes || undefined,
-          },
+          variables,
         }),
       })
       
       const json = await response.json()
+      console.log('[useConsultingSlots] GraphQL response:', json)
       
       if (json.errors) {
         const result: ConsultingBookingResult = {
