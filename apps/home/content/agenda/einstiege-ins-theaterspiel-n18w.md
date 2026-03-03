@@ -74,7 +74,7 @@ items:
  a0_160:
   ctype: event
   shortcode: a0
-  tag: Sa., 7.3. ganztags + 1 Abend online
+  tag: Sa., 18.4. ganztags + 1 Abend online
   title: Praxis, Theorie & Ausbildung bei DAS Ei **Basistag Theaterpädagogik**
   image: 
    url: https://res.cloudinary.com/little-papillon/image/upload/v1676101506/dasei/700_dasei2022_I8A7903_cvtigl.jpg

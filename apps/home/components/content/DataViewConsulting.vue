@@ -111,7 +111,7 @@
                   <button
                     v-for="slot in slots"
                     :key="slot.slotKey"
-                    @click="consulting.selectSlot(slot)"
+                    @click="selectSlotAndAdvance(slot)"
                     :class="[
                       'px-4 py-2 rounded-lg border-2 transition-all',
                       consulting.selectedSlot.value?.slotKey === slot.slotKey
@@ -207,7 +207,7 @@
               
               <!-- Selected Slot Reminder -->
               <div class="p-4 bg-neutral-100 rounded-lg">
-                <p class="text-sm text-neutral-600">Termin:</p>
+                <p class="text-sm text-neutral-600">Termin mit: {{ consulting.selectedSlot.value!.hostName }}</p>
                 <p class="font-semibold">
                   {{ consulting.formatDate(consulting.selectedSlot.value!.start) }}, 
                   {{ consulting.formatTime(consulting.selectedSlot.value!.start) }} Uhr
@@ -337,6 +337,12 @@ const steps = [
 const formatDateRange = (start: Date, end: Date): string => {
   const opts: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'long' }
   return `${start.toLocaleDateString('de-DE', opts)} – ${end.toLocaleDateString('de-DE', opts)}`
+}
+
+// Select slot and auto-advance to step 2
+const selectSlotAndAdvance = (slot: any) => {
+  consulting.selectSlot(slot)
+  consulting.nextStep()
 }
 
 // Handle contact form submission
