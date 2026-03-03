@@ -223,28 +223,12 @@
                 <SfButton 
                   type="button"
                   @click="handleContactSubmit"
-                  @click.native="() => console.log('[DEBUG] Native click on SfButton')"
-                  @mousedown="() => console.log('[DEBUG] Mousedown on SfButton')"
                   :disabled="!consulting.isContactValid.value || consulting.isSubmitting.value"
                   style="background-color: var(--color-primary-bg); color: var(--color-primary-contrast)"
                 >
                   <SfLoaderCircular v-if="consulting.isSubmitting.value" size="sm" class="mr-2" />
                   Termin buchen
                 </SfButton>
-              </div>
-              <!-- Debug panel -->
-              <div class="mt-4 p-2 bg-gray-200 text-xs font-mono">
-                <p>DEBUG: isContactValid={{ consulting.isContactValid.value }}</p>
-                <p>DEBUG: isSubmitting={{ consulting.isSubmitting.value }}</p>
-                <p>DEBUG: canSubmit={{ consulting.canSubmit.value }}</p>
-                <p>DEBUG: selectedSlot={{ consulting.selectedSlot.value ? 'SET' : 'NULL' }}</p>
-                <button 
-                  type="button"
-                  class="mt-2 bg-blue-500 text-white px-3 py-1"
-                  @click="() => { console.log('[DEBUG] Plain button clicked'); handleContactSubmit(); }"
-                >
-                  TEST: Direct Call
-                </button>
               </div>
             </form>
           </div>
@@ -268,6 +252,11 @@
                   {{ consulting.result.value.start ? consulting.formatTime(consulting.result.value.start) : '' }} Uhr
                 </p>
                 <p class="text-neutral-600">mit {{ consulting.result.value.hostName }}</p>
+              </div>
+              <!-- User's message fragment -->
+              <div v-if="consulting.state.notes" class="mt-4 p-4 bg-primary-50 border border-primary-200 rounded-lg text-left max-w-md mx-auto">
+                <p class="text-sm text-neutral-600 mb-1">Deine Nachricht:</p>
+                <p class="text-neutral-800 whitespace-pre-wrap">{{ consulting.state.notes }}</p>
               </div>
               <div class="mt-8">
                 <SfButton as="a" href="/" variant="secondary">
@@ -352,22 +341,7 @@ const formatDateRange = (start: Date, end: Date): string => {
 
 // Handle contact form submission
 const handleContactSubmit = async () => {
-  console.log('=== [Consulting DEBUG] handleContactSubmit() CALLED ===')
-  console.log('[Consulting DEBUG] Current step:', consulting.state.step)
-  console.log('[Consulting DEBUG] isContactValid:', consulting.isContactValid.value)
-  console.log('[Consulting DEBUG] isSubmitting:', consulting.isSubmitting.value)
-  console.log('[Consulting DEBUG] canSubmit:', consulting.canSubmit.value)
-  console.log('[Consulting DEBUG] Selected slot:', JSON.stringify(consulting.selectedSlot.value, null, 2))
-  console.log('[Consulting DEBUG] Contact state:', JSON.stringify(consulting.state.contact, null, 2))
-  console.log('[Consulting DEBUG] Notes:', consulting.state.notes)
-  
-  try {
-    console.log('[Consulting DEBUG] Calling consulting.submit()...')
-    const result = await consulting.submit()
-    console.log('[Consulting DEBUG] Submit returned:', JSON.stringify(result, null, 2))
-  } catch (err) {
-    console.error('[Consulting DEBUG] Submit threw error:', err)
-  }
+  await consulting.submit()
 }
 
 // Fetch slots on mount

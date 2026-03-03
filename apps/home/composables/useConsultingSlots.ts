@@ -9,6 +9,22 @@
 
 import { ref, computed, reactive } from 'vue'
 
+// Timezone constant for Germany
+const DISPLAY_TIMEZONE = 'Europe/Berlin'
+
+/**
+ * Parse Odoo datetime string and return a proper Date object.
+ * Odoo returns datetimes in UTC but often without explicit 'Z' suffix.
+ * This function ensures consistent UTC interpretation.
+ */
+function parseOdooDateTime(isoString: string): Date {
+  // If no timezone marker, treat as UTC by appending 'Z'
+  if (!isoString.endsWith('Z') && !isoString.includes('+') && !isoString.includes('-', 10)) {
+    return new Date(isoString + 'Z')
+  }
+  return new Date(isoString)
+}
+
 // GraphQL queries/mutations
 const CONSULTING_SLOTS_QUERY = `
   query ConsultingSlots($domainCode: String!, $weeks: Int) {
@@ -161,21 +177,36 @@ export function useConsultingSlots(options: {
     result: null,
   })
   
-  // Computed: filter slots by date range
+  // Minimum frontrunning time in ms (30 minutes)
+  // Slots starting within 30 min cannot be booked (gives Odoo user time to react)
+  const MIN_BOOKING_LEAD_TIME_MS = 30 * 60 * 1000
+  
+  // Computed: filter slots by date range AND enforce 30-min frontrunning
   const filteredSlots = computed(() => {
+    const nowMs = Date.now()
+    const minBookableTimeMs = nowMs + MIN_BOOKING_LEAD_TIME_MS
+    
     return state.slots.filter(slot => {
-      const slotDate = new Date(slot.start)
-      return slotDate >= startDate && slotDate <= endDate
+      // Parse slot time as UTC (Odoo stores in UTC)
+      const slotDate = parseOdooDateTime(slot.start)
+      const slotMs = slotDate.getTime()
+      
+      // Must be within requested date range
+      if (slotDate < startDate || slotDate > endDate) return false
+      // Must be at least 30 minutes from now (UTC comparison)
+      if (slotMs < minBookableTimeMs) return false
+      return true
     })
   })
   
-  // Computed: group slots by date for UI
+  // Computed: group slots by date for UI (grouped by Europe/Berlin date)
   const slotsByDate = computed(() => {
     const groups: Record<string, ConsultingSlot[]> = {}
     
     for (const slot of filteredSlots.value) {
-      const date = new Date(slot.start)
-      const dateKey = date.toISOString().split('T')[0] // YYYY-MM-DD
+      const date = parseOdooDateTime(slot.start)
+      // Get date string in Europe/Berlin timezone for proper grouping
+      const dateKey = date.toLocaleDateString('sv-SE', { timeZone: DISPLAY_TIMEZONE }) // YYYY-MM-DD format
       
       if (!groups[dateKey]) {
         groups[dateKey] = []
@@ -202,20 +233,22 @@ export function useConsultingSlots(options: {
     return state.selectedSlot !== null && isContactValid.value && !state.isSubmitting
   })
   
-  // Format date for display (German locale)
+  // Format date for display (German locale, Europe/Berlin timezone)
   const formatDate = (isoDate: string): string => {
-    const date = new Date(isoDate)
+    const date = parseOdooDateTime(isoDate)
     return date.toLocaleDateString('de-DE', {
+      timeZone: DISPLAY_TIMEZONE,
       weekday: 'long',
       day: 'numeric',
       month: 'long',
     })
   }
   
-  // Format time for display
+  // Format time for display (Europe/Berlin timezone)
   const formatTime = (isoDate: string): string => {
-    const date = new Date(isoDate)
+    const date = parseOdooDateTime(isoDate)
     return date.toLocaleTimeString('de-DE', {
+      timeZone: DISPLAY_TIMEZONE,
       hour: '2-digit',
       minute: '2-digit',
     })
@@ -288,22 +321,15 @@ export function useConsultingSlots(options: {
   }
   
   const submit = async (): Promise<ConsultingBookingResult> => {
-    console.log('[useConsultingSlots] submit() called')
-    console.log('[useConsultingSlots] canSubmit:', canSubmit.value)
-    console.log('[useConsultingSlots] graphqlUrl:', graphqlUrl)
-    
     if (!canSubmit.value) {
-      console.log('[useConsultingSlots] Cannot submit - validation failed')
       return { success: false, error: 'Bitte alle Felder ausfüllen' }
     }
     
     if (!graphqlUrl) {
-      console.log('[useConsultingSlots] No graphqlUrl configured')
       return { success: false, error: 'Booking not configured' }
     }
     
     if (!state.selectedSlot) {
-      console.log('[useConsultingSlots] No slot selected')
       return { success: false, error: 'Kein Termin ausgewählt' }
     }
     
@@ -322,7 +348,6 @@ export function useConsultingSlots(options: {
       },
       notes: state.notes || undefined,
     }
-    console.log('[useConsultingSlots] Mutation variables:', variables)
     
     try {
       const response = await fetch(graphqlUrl, {
@@ -335,7 +360,6 @@ export function useConsultingSlots(options: {
       })
       
       const json = await response.json()
-      console.log('[useConsultingSlots] GraphQL response:', json)
       
       if (json.errors) {
         const result: ConsultingBookingResult = {
