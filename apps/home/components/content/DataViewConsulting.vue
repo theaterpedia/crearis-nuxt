@@ -317,6 +317,30 @@ const props = defineProps({
     type: Date,
     default: undefined,
   },
+  /**
+   * Pre-selected consultation categories from URL.
+   * Example: ['prerequisites', 'topics', 'custom']
+   */
+  categories: {
+    type: Array as PropType<string[]>,
+    default: () => [],
+  },
+  /**
+   * Product shortcode/reference from URL.
+   * Example: 'm18w'
+   */
+  productRef: {
+    type: String,
+    default: undefined,
+  },
+  /**
+   * Pre-filled freeform text per category from URL.
+   * Example: { prerequisites: 'My question about prerequisites' }
+   */
+  freeformText: {
+    type: Object as PropType<Record<string, string>>,
+    default: () => ({}),
+  },
 })
 
 // Initialize consulting composable
@@ -324,6 +348,9 @@ const consulting = useConsultingSlots({
   preset: props.preset,
   startDate: props.startDate,
   endDate: props.endDate,
+  categories: props.categories,
+  productRef: props.productRef,
+  freeformText: props.freeformText,
 })
 
 // Stepper configuration

@@ -45,6 +45,7 @@ const BOOK_CONSULTING_SLOT_MUTATION = `
     $start: String!
     $hostId: Int!
     $contact: ConsultingContactInput!
+    $consultation: ConsultingCategoryInput
     $notes: String
   ) {
     bookConsultingSlot(
@@ -52,6 +53,7 @@ const BOOK_CONSULTING_SLOT_MUTATION = `
       start: $start
       hostId: $hostId
       contact: $contact
+      consultation: $consultation
       notes: $notes
     ) {
       success
@@ -80,6 +82,15 @@ export interface ConsultingContactInput {
   mobil?: string
 }
 
+/**
+ * Input for consultation categories and freeform text.
+ * Passed to GraphQL mutation for logging to calendar event + chatter.
+ */
+export interface ConsultingCategoryInput {
+  categories: string[]
+  freeformText?: Record<string, string>
+}
+
 export interface ConsultingBookingResult {
   success: boolean
   meetingId?: number
@@ -93,6 +104,8 @@ export interface ConsultingState {
   slots: ConsultingSlot[]
   selectedSlot: ConsultingSlot | null
   contact: ConsultingContactInput
+  consultation: ConsultingCategoryInput
+  productRef: string | null
   notes: string
   isLoading: boolean
   isSubmitting: boolean
@@ -143,6 +156,9 @@ export function useConsultingSlots(options: {
   preset?: ConsultingPreset
   startDate?: Date
   endDate?: Date
+  categories?: string[]
+  productRef?: string
+  freeformText?: Record<string, string>
 } = {}) {
   const config = useRuntimeConfig()
   const graphqlUrl = config.public.odooGraphqlUrl as string
@@ -159,6 +175,11 @@ export function useConsultingSlots(options: {
   const startDate = options.startDate || now
   const endDate = options.endDate || defaultEnd
   
+  // Pre-filled consultation data from URL params
+  const initialCategories = options.categories || []
+  const initialProductRef = options.productRef || null
+  const initialFreeformText = options.freeformText || {}
+  
   // Reactive state
   const state = reactive<ConsultingState>({
     step: 1,
@@ -170,6 +191,11 @@ export function useConsultingSlots(options: {
       nachname: '',
       mobil: '',
     },
+    consultation: {
+      categories: [...initialCategories],
+      freeformText: { ...initialFreeformText },
+    },
+    productRef: initialProductRef,
     notes: '',
     isLoading: false,
     isSubmitting: false,
@@ -346,6 +372,12 @@ export function useConsultingSlots(options: {
         nachname: state.contact.nachname,
         mobil: state.contact.mobil || undefined,
       },
+      consultation: state.consultation.categories.length > 0 ? {
+        categories: state.consultation.categories,
+        freeformText: Object.keys(state.consultation.freeformText || {}).length > 0 
+          ? state.consultation.freeformText 
+          : undefined,
+      } : undefined,
       notes: state.notes || undefined,
     }
     
@@ -394,9 +426,36 @@ export function useConsultingSlots(options: {
     state.step = 1
     state.selectedSlot = null
     state.contact = { email: '', vorname: '', nachname: '', mobil: '' }
+    state.consultation = { categories: [], freeformText: {} }
+    state.productRef = null
     state.notes = ''
     state.error = null
     state.result = null
+  }
+  
+  const setConsultation = (consultation: Partial<ConsultingCategoryInput>) => {
+    if (consultation.categories) {
+      state.consultation.categories = [...consultation.categories]
+    }
+    if (consultation.freeformText) {
+      state.consultation.freeformText = { ...consultation.freeformText }
+    }
+  }
+  
+  const toggleCategory = (category: string) => {
+    const index = state.consultation.categories.indexOf(category)
+    if (index === -1) {
+      state.consultation.categories.push(category)
+    } else {
+      state.consultation.categories.splice(index, 1)
+    }
+  }
+  
+  const setCategoryFreeform = (category: string, text: string) => {
+    if (!state.consultation.freeformText) {
+      state.consultation.freeformText = {}
+    }
+    state.consultation.freeformText[category] = text
   }
   
   return {
@@ -412,6 +471,8 @@ export function useConsultingSlots(options: {
     filteredSlots,
     slotsByDate,
     selectedSlot: computed(() => state.selectedSlot),
+    consultation: computed(() => state.consultation),
+    productRef: computed(() => state.productRef),
     isLoading: computed(() => state.isLoading),
     isSubmitting: computed(() => state.isSubmitting),
     error: computed(() => state.error),
@@ -432,6 +493,9 @@ export function useConsultingSlots(options: {
     clearSelection,
     setContact,
     setNotes,
+    setConsultation,
+    toggleCategory,
+    setCategoryFreeform,
     nextStep,
     prevStep,
     submit,
