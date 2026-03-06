@@ -5,12 +5,15 @@
  * - Contact information collection
  * - Path selection (München/Nürnberg, Block/Day)
  * - Terms acceptance
- * - Submission to Odoo GraphQL endpoint
+ * - Submission via server proxy (/api/graphql) to Odoo GraphQL
+ * 
+ * Server proxy avoids CORS issues and keeps GraphQL endpoint private.
  * 
  * @see _meta/Act26/02-06-SNAPSHOT_nuxt_graphql_integration.md#3.2
+ * @see apps/home/server/api/graphql.post.ts
  */
 
-import { ref, computed, reactive, readonly } from 'vue'
+import { computed, reactive, readonly } from 'vue'
 import type { 
   CheckoutInput, 
   CheckoutResult, 
@@ -53,9 +56,6 @@ const CHECKOUT_MUTATION = `
  * ```
  */
 export function useCheckout(productRef: string) {
-  const config = useRuntimeConfig()
-  const graphqlUrl = config.public.odooGraphqlUrl as string
-  
   // Reactive state
   const state = reactive<CheckoutState>({
     step: 1,
@@ -141,11 +141,6 @@ export function useCheckout(productRef: string) {
       return { success: false, error: 'Validation failed: Please fill all required fields and accept terms.' }
     }
     
-    if (!graphqlUrl) {
-      console.error('[useCheckout] NUXT_PUBLIC_ODOO_GRAPHQL_URL not configured')
-      return { success: false, error: 'Checkout not configured. Please contact support.' }
-    }
-    
     state.isSubmitting = true
     
     const input: CheckoutInput = {
@@ -167,7 +162,9 @@ export function useCheckout(productRef: string) {
     }
     
     try {
-      const response = await fetch(graphqlUrl, {
+      // Use server-side proxy to avoid CORS issues
+      // Server route forwards to Odoo GraphQL via NUXT_PUBLIC_ODOO_GRAPHQL_URL
+      const response = await fetch('/api/graphql', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -191,7 +188,15 @@ export function useCheckout(productRef: string) {
         return state.result as CheckoutResult
       }
       
-      state.result = json.data.checkout
+      const result = json.data?.checkout
+      
+      if (!result?.success) {
+        console.error('[useCheckout] Checkout failed:', result?.error)
+        state.result = result || { success: false, error: 'No response' }
+        return state.result as CheckoutResult
+      }
+      
+      state.result = result
       return state.result as CheckoutResult
       
     } catch (error) {

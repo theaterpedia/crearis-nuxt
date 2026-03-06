@@ -146,8 +146,10 @@ const handle_completestep = () => {
     .then(() => {
       allsteps.value[activestep.value - 1].completed = true
     })
-    .catch(() => {
-      alert('Es kam leider zu einem Fehler bei der Anmeldung (technisches Problem). Bitte melde dich per eMail an: service@dasei.eu.')
+    .catch((err) => {
+      const errorMsg = err instanceof Error ? err.message : 'Unbekannter Fehler'
+      console.error('[DataViewDetails] Checkout error:', errorMsg)
+      alert(`Fehler bei der Anmeldung: ${errorMsg}\n\nBitte melde dich per eMail an: service@dasei.eu`)
     })
   } else if(stepProps.value.name === 'kontakt') {
     handle_update_contact()

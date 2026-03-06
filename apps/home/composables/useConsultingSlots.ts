@@ -4,7 +4,10 @@
  * Fetches available 15-minute consulting slots from exec domainusers
  * and handles booking via GraphQL mutations.
  * 
+ * Uses server-side proxy (/api/graphql) to avoid CORS issues.
+ * 
  * @see _meta/Act26/03-02-SCS_consulting_slots.md
+ * @see apps/home/server/api/graphql.post.ts
  */
 
 import { ref, computed, reactive } from 'vue'
@@ -160,9 +163,6 @@ export function useConsultingSlots(options: {
   productRef?: string
   freeformText?: Record<string, string>
 } = {}) {
-  const config = useRuntimeConfig()
-  const graphqlUrl = config.public.odooGraphqlUrl as string
-  
   // Resolve preset with default
   const preset = options.preset || 'einstieg'
   const presetConfig = PRESET_CONFIG[preset] || PRESET_CONFIG.einstieg
@@ -282,16 +282,11 @@ export function useConsultingSlots(options: {
   
   // Actions
   const fetchSlots = async (): Promise<void> => {
-    if (!graphqlUrl) {
-      state.error = 'GraphQL endpoint not configured'
-      return
-    }
-    
     state.isLoading = true
     state.error = null
     
     try {
-      const response = await fetch(graphqlUrl, {
+      const response = await fetch('/api/graphql', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -302,6 +297,10 @@ export function useConsultingSlots(options: {
           },
         }),
       })
+      
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`)
+      }
       
       const json = await response.json()
       
@@ -351,10 +350,6 @@ export function useConsultingSlots(options: {
       return { success: false, error: 'Bitte alle Felder ausfüllen' }
     }
     
-    if (!graphqlUrl) {
-      return { success: false, error: 'Booking not configured' }
-    }
-    
     if (!state.selectedSlot) {
       return { success: false, error: 'Kein Termin ausgewählt' }
     }
@@ -382,7 +377,7 @@ export function useConsultingSlots(options: {
     }
     
     try {
-      const response = await fetch(graphqlUrl, {
+      const response = await fetch('/api/graphql', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -390,6 +385,10 @@ export function useConsultingSlots(options: {
           variables,
         }),
       })
+      
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`)
+      }
       
       const json = await response.json()
       
