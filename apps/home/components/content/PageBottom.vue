@@ -4,7 +4,7 @@
     :height-tmp="height"
     :content-align-y="contentAlign"
     :content-width="contentWidth"
-    :img-tmp="image"
+    :img-tmp="effectiveImage"
     :img-tmp-height="imageHeight"
     :img-tmp-gravity="imageGravity"
     :overlay="computedOverlay"

@@ -73,6 +73,28 @@
       >
         Anmeldung und Konditionen
       </ButtonTmp>
+      <PageBottom
+        v-if="pageBottom"
+        :topline="pageBottom.topline !== false"
+        :heightTmp="pageBottom.height || 'medium'"
+        :contentAlignY="pageBottom.content_y || 'top'"
+        :contentWidth="pageBottom.content_width || 'full'"
+        :imgTmp="pageBottomImage"
+        :imgTmpGravity="pageBottom.image_gravity || 'south'"
+        :overlay="pageBottomOverlay"
+      >
+        <ConsultingDialog
+          v-if="pageBottom.consulting"
+          :title="pageBottom.consulting.title"
+          :overline="pageBottom.consulting.overline"
+          :description="pageBottom.consulting.description"
+          :productRef="page._path"
+        />
+        <div v-else-if="pageBottom.heading || pageBottom.teaser">
+          <Heading v-if="pageBottom.heading" :content="pageBottom.heading" is="h2" />
+          <MdBlock v-if="pageBottom.teaser" :content="pageBottom.teaser" htag="p" />
+        </div>
+      </PageBottom>
     </Main>
   </Box>
 
@@ -81,6 +103,9 @@
 
 <script lang="ts" setup>
 import { NuxtLink } from '#components'
+import { PageBottom } from '@crearis/ui'
+import { getoverlay } from '@crearis/theme/utils/BackgroundHelpers'
+import { provide, computed } from 'vue'
 const { page } = useContent()
 
 const image = page.value.image
@@ -88,6 +113,25 @@ const image = page.value.image
   : { src: 'https://pruvious.com/uploads/dasei/banner.jpg', alt: 'DAS Ei' }
 const hero = page.value.hero ? page.value.hero : undefined
 const details = page.value.details ? true : false
+const pageBottom = page.value.pageBottom ? page.value.pageBottom : undefined
+
+// Provide hero image so PageBottom can inherit it if needed
+provide('heroImage', image.src)
+
+// Compute PageBottom image (inherit from hero or use explicit)
+const pageBottomImage = computed(() => {
+  if (!pageBottom) return undefined
+  if (pageBottom.inherit_hero_image !== false) {
+    return image.src
+  }
+  return pageBottom.image
+})
+
+// Compute PageBottom overlay
+const pageBottomOverlay = computed(() => {
+  if (!pageBottom) return undefined
+  return getoverlay(pageBottom.gradient_type || 'none', pageBottom.gradient_depth || 0.8)
+})
 
 const route = useRoute()
 // const hideFolders = ['/blog/', '/agenda/']
