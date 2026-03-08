@@ -86,12 +86,21 @@ export interface ConsultingContactInput {
 }
 
 /**
- * Input for consultation categories and freeform text.
+ * Single category selection with optional predefined options and freeform text.
+ */
+export interface CategorySelectionInput {
+  category: string
+  options?: string[]
+  text?: string
+}
+
+/**
+ * Input for consultation categories.
  * Passed to GraphQL mutation for logging to calendar event + chatter.
  */
 export interface ConsultingCategoryInput {
-  categories: string[]
-  freeformText?: Record<string, string>
+  selections: CategorySelectionInput[]
+  callType: 'video' | 'phone'
 }
 
 export interface ConsultingBookingResult {
@@ -160,9 +169,8 @@ export function useConsultingSlots(options: {
   preset?: ConsultingPreset
   startDate?: Date
   endDate?: Date
-  categories?: string[]
+  selections?: CategorySelectionInput[]
   productRef?: string
-  freeformText?: Record<string, string>
 } = {}) {
   // Resolve preset with default
   const preset = options.preset || 'einstieg'
@@ -177,9 +185,8 @@ export function useConsultingSlots(options: {
   const endDate = options.endDate || defaultEnd
   
   // Pre-filled consultation data from URL params
-  const initialCategories = options.categories || []
+  const initialSelections = options.selections || []
   const initialProductRef = options.productRef || null
-  const initialFreeformText = options.freeformText || {}
   
   // Reactive state
   const state = reactive<ConsultingState>({
@@ -194,8 +201,8 @@ export function useConsultingSlots(options: {
       mobil: '',
     },
     consultation: {
-      categories: [...initialCategories],
-      freeformText: { ...initialFreeformText },
+      selections: [...initialSelections],
+      callType: 'video',
     },
     productRef: initialProductRef,
     notes: '',
@@ -372,17 +379,15 @@ export function useConsultingSlots(options: {
         nachname: state.contact.nachname,
         mobil: state.contact.mobil || undefined,
       },
-      consultation: state.consultation.categories.length > 0 ? {
-        categories: state.consultation.categories,
-        freeformText: Object.keys(state.consultation.freeformText || {}).length > 0 
-          ? state.consultation.freeformText 
-          : undefined,
+      consultation: state.consultation.selections.length > 0 ? {
+        selections: state.consultation.selections.map(sel => ({
+          category: sel.category,
+          options: sel.options && sel.options.length > 0 ? sel.options : undefined,
+          text: sel.text || undefined,
+        })),
+        callType: state.consultation.callType,
       } : undefined,
-      // Include callType in notes until GraphQL schema supports it
-      notes: [
-        state.callType === 'phone' ? '[Telefon-Beratung gewünscht]' : '[Video-Call gewünscht]',
-        state.notes,
-      ].filter(Boolean).join('\n') || undefined,
+      notes: state.notes || undefined,
     }
     
     try {
@@ -434,7 +439,7 @@ export function useConsultingSlots(options: {
     state.step = 1
     state.selectedSlot = null
     state.contact = { email: '', vorname: '', nachname: '', mobil: '' }
-    state.consultation = { categories: [], freeformText: {} }
+    state.consultation = { selections: [], callType: 'video' }
     state.productRef = null
     state.notes = ''
     state.error = null
@@ -442,28 +447,54 @@ export function useConsultingSlots(options: {
   }
   
   const setConsultation = (consultation: Partial<ConsultingCategoryInput>) => {
-    if (consultation.categories) {
-      state.consultation.categories = [...consultation.categories]
+    if (consultation.selections) {
+      state.consultation.selections = [...consultation.selections]
     }
-    if (consultation.freeformText) {
-      state.consultation.freeformText = { ...consultation.freeformText }
+    if (consultation.callType) {
+      state.consultation.callType = consultation.callType
     }
   }
   
   const toggleCategory = (category: string) => {
-    const index = state.consultation.categories.indexOf(category)
+    const index = state.consultation.selections.findIndex(s => s.category === category)
     if (index === -1) {
-      state.consultation.categories.push(category)
+      state.consultation.selections.push({ category, options: [], text: undefined })
     } else {
-      state.consultation.categories.splice(index, 1)
+      state.consultation.selections.splice(index, 1)
     }
   }
   
   const setCategoryFreeform = (category: string, text: string) => {
-    if (!state.consultation.freeformText) {
-      state.consultation.freeformText = {}
+    const sel = state.consultation.selections.find(s => s.category === category)
+    if (sel) {
+      sel.text = text || undefined
+    } else {
+      state.consultation.selections.push({ category, options: [], text: text || undefined })
     }
-    state.consultation.freeformText[category] = text
+  }
+  
+  const setCategoryOptions = (category: string, options: string[]) => {
+    const sel = state.consultation.selections.find(s => s.category === category)
+    if (sel) {
+      sel.options = options
+    } else {
+      state.consultation.selections.push({ category, options, text: undefined })
+    }
+  }
+  
+  const toggleCategoryOption = (category: string, option: string) => {
+    let sel = state.consultation.selections.find(s => s.category === category)
+    if (!sel) {
+      sel = { category, options: [], text: undefined }
+      state.consultation.selections.push(sel)
+    }
+    if (!sel.options) sel.options = []
+    const idx = sel.options.indexOf(option)
+    if (idx === -1) {
+      sel.options.push(option)
+    } else {
+      sel.options.splice(idx, 1)
+    }
   }
   
   return {
@@ -504,6 +535,8 @@ export function useConsultingSlots(options: {
     setConsultation,
     toggleCategory,
     setCategoryFreeform,
+    setCategoryOptions,
+    toggleCategoryOption,
     nextStep,
     prevStep,
     submit,

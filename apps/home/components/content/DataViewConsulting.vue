@@ -56,13 +56,16 @@
             <!-- Step 1: Categories summary -->
             <template v-if="consulting.state.step === 1">
               <Prose>
-                <template v-if="categories.length > 0">
+                <template v-if="selections.length > 0">
                   <h3>Deine Themen</h3>
                   <ul>
-                    <li v-for="cat in categories" :key="cat">
-                      <strong>{{ categoryLabels[cat] || cat }}</strong>
-                      <span v-if="freeformText[cat]" class="block text-sm text-neutral-600 mt-1">
-                        „{{ freeformText[cat] }}"
+                    <li v-for="sel in selections" :key="sel.category">
+                      <strong>{{ categoryLabels[sel.category] || sel.category }}</strong>
+                      <span v-if="sel.options?.length" class="block text-sm text-neutral-500">
+                        {{ sel.options.join(', ') }}
+                      </span>
+                      <span v-if="sel.text" class="block text-sm text-neutral-600 mt-1">
+                        „{{ sel.text }}"
                       </span>
                     </li>
                   </ul>
@@ -119,10 +122,15 @@
                   <span class="text-sm text-neutral-500">Modus:</span><br>
                   <strong>{{ consulting.state.callType === 'video' ? 'Video-Call (MS Teams)' : 'Telefon' }}</strong>
                 </p>
-                <template v-if="categories.length > 0">
+                <template v-if="selections.length > 0">
                   <p class="text-sm text-neutral-500 mb-1">Themen:</p>
                   <ul class="text-sm">
-                    <li v-for="cat in categories" :key="cat">{{ categoryLabels[cat] || cat }}</li>
+                    <li v-for="sel in selections" :key="sel.category">
+                      {{ categoryLabels[sel.category] || sel.category }}
+                      <span v-if="sel.options?.length" class="text-neutral-500">
+                        ({{ sel.options.join(', ') }})
+                      </span>
+                    </li>
                   </ul>
                 </template>
               </Prose>
@@ -418,7 +426,7 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted } from 'vue'
+import { computed, onMounted } from 'vue'
 import { StepperRoot, StepperItem, StepperTrigger, StepperIndicator, StepperTitle, StepperSeparator } from 'radix-vue'
 import { 
   SfButton, 
@@ -452,11 +460,11 @@ const props = defineProps({
     default: undefined,
   },
   /**
-   * Pre-selected consultation categories from URL.
-   * Example: ['prerequisites', 'topics', 'custom']
+   * Pre-selected consultation selections from URL.
+   * Example: [{ category: 'schedules', options: ['blockverlauf'], text: 'My question' }]
    */
-  categories: {
-    type: Array as PropType<string[]>,
+  selections: {
+    type: Array as PropType<Array<{ category: string; options?: string[]; text?: string }>>,
     default: () => [],
   },
   /**
@@ -467,14 +475,6 @@ const props = defineProps({
     type: String,
     default: undefined,
   },
-  /**
-   * Pre-filled freeform text per category from URL.
-   * Example: { prerequisites: 'My question about prerequisites' }
-   */
-  freeformText: {
-    type: Object as PropType<Record<string, string>>,
-    default: () => ({}),
-  },
 })
 
 // Initialize consulting composable
@@ -482,9 +482,8 @@ const consulting = useConsultingSlots({
   preset: props.preset,
   startDate: props.startDate,
   endDate: props.endDate,
-  categories: props.categories,
+  selections: props.selections,
   productRef: props.productRef,
-  freeformText: props.freeformText,
 })
 
 // Stepper configuration
@@ -503,6 +502,9 @@ const categoryLabels: Record<string, string> = {
   schedules: 'Verläufe',
   custom: 'Individuell',
 }
+
+// Computed: selections for template access
+const selections = computed(() => consulting.state.consultation.selections)
 
 // Format date range for display
 const formatDateRange = (start: Date, end: Date): string => {

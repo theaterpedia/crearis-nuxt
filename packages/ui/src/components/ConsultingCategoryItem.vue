@@ -43,6 +43,34 @@
         <slot />
       </div>
 
+      <!-- Options (checkboxes or radios) -->
+      <div v-if="options && options.length > 0" class="consulting-category-options">
+        <label 
+          v-for="opt in options" 
+          :key="opt.key" 
+          class="consulting-category-option"
+        >
+          <input
+            v-if="optionType === 'radio'"
+            type="radio"
+            :name="`${name}-options`"
+            :value="opt.key"
+            :checked="selectedOptions.length === 1 && selectedOptions[0] === opt.key"
+            @change="handleRadioChange(opt.key)"
+            class="consulting-category-option-input"
+          />
+          <input
+            v-else
+            type="checkbox"
+            :value="opt.key"
+            :checked="selectedOptions.includes(opt.key)"
+            @change="handleCheckboxToggle(opt.key)"
+            class="consulting-category-option-input"
+          />
+          <span class="consulting-category-option-label">{{ opt.label }}</span>
+        </label>
+      </div>
+
       <div class="consulting-category-input">
         <label :for="inputId" class="consulting-category-input-label">{{ inputLabel }}</label>
         <textarea
@@ -61,7 +89,12 @@
 
 <script lang="ts" setup>
 import { nanoid } from 'nanoid'
-import { computed, onMounted, ref, watch } from 'vue'
+import { computed, onMounted, ref, watch, type PropType } from 'vue'
+
+export interface CategoryOption {
+  key: string
+  label: string
+}
 
 const props = defineProps({
   /**
@@ -85,6 +118,31 @@ const props = defineProps({
    */
   overline: {
     type: String,
+  },
+
+  /**
+   * Predefined options within this category.
+   */
+  options: {
+    type: Array as PropType<CategoryOption[]>,
+    default: () => [],
+  },
+
+  /**
+   * How to render options: 'checkbox' (multiple) or 'radio' (single).
+   * @default 'checkbox'
+   */
+  optionType: {
+    type: String as PropType<'checkbox' | 'radio'>,
+    default: 'checkbox',
+  },
+
+  /**
+   * Currently selected option keys.
+   */
+  selectedOptions: {
+    type: Array as PropType<string[]>,
+    default: () => [],
   },
 
   /**
@@ -128,6 +186,7 @@ const props = defineProps({
 const emit = defineEmits<{
   'update:modelValue': [boolean]
   'update:freeformText': [string]
+  'update:selectedOptions': [string[]]
 }>()
 
 const inputId = ref(`${props.name}-input`)
@@ -146,6 +205,21 @@ const handleToggle = () => {
 const handleFreeformInput = (event: Event) => {
   const target = event.target as HTMLTextAreaElement
   emit('update:freeformText', target.value)
+}
+
+const handleCheckboxToggle = (optionKey: string) => {
+  const current = [...props.selectedOptions]
+  const idx = current.indexOf(optionKey)
+  if (idx === -1) {
+    current.push(optionKey)
+  } else {
+    current.splice(idx, 1)
+  }
+  emit('update:selectedOptions', current)
+}
+
+const handleRadioChange = (optionKey: string) => {
+  emit('update:selectedOptions', [optionKey])
 }
 </script>
 
@@ -299,6 +373,33 @@ const handleFreeformInput = (event: Event) => {
 
 .consulting-category-textarea::placeholder {
   color: oklch(from var(--color-contrast) l c h / 40%);
+}
+
+.consulting-category-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.consulting-category-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  padding: 0.375rem 0;
+}
+
+.consulting-category-option-input {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  accent-color: var(--color-primary-bg);
+  cursor: pointer;
+}
+
+.consulting-category-option-label {
+  font-size: 0.9375rem;
+  color: var(--color-contrast);
 }
 
 @media (max-width: 767px) {

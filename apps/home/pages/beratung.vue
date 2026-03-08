@@ -5,9 +5,8 @@
         :preset="preset" 
         :startDate="startDate" 
         :endDate="endDate"
-        :categories="categories"
+        :selections="selections"
         :product-ref="productRef"
-        :freeform-text="freeformText"
       />
     </NuxtLayout>
   </div>
@@ -45,30 +44,29 @@ const parseDate = (dateStr: string | undefined, fallback: Date): Date => {
 const startDate = parseDate(route.query.start as string | undefined, now)
 const endDate = parseDate(route.query.end as string | undefined, defaultEnd)
 
-// NEW: Parse categories from URL (comma-separated)
-// Example: ?categories=prerequisites,topics,custom
-const categoriesParam = route.query.categories as string | undefined
-const categories: string[] = categoriesParam 
-  ? categoriesParam.split(',').filter(Boolean) 
-  : []
+// Parse selections from URL (JSON-encoded)
+// Example: ?selections=%5B%7B%22category%22%3A%22schedules%22%2C%22options%22%3A%5B%22blockverlauf%22%5D%7D%5D
+interface SelectionInput {
+  category: string
+  options?: string[]
+  text?: string
+}
 
-// NEW: Parse product ref from URL
-// Example: ?product=m18w
-const productRef = route.query.product as string | undefined
-
-// NEW: Parse freeform notes from URL (JSON-encoded)
-// Example: ?notes=%7B%22prerequisites%22%3A%22My%20question%22%7D
-const notesParam = route.query.notes as string | undefined
-const freeformText: Record<string, string> = (() => {
-  if (!notesParam) return {}
+const selectionsParam = route.query.selections as string | undefined
+const selections: SelectionInput[] = (() => {
+  if (!selectionsParam) return []
   try {
-    const decoded = decodeURIComponent(notesParam)
-    return JSON.parse(decoded) as Record<string, string>
+    const decoded = decodeURIComponent(selectionsParam)
+    return JSON.parse(decoded) as SelectionInput[]
   } catch {
-    console.warn('[beratung] Failed to parse notes param:', notesParam)
-    return {}
+    console.warn('[beratung] Failed to parse selections param:', selectionsParam)
+    return []
   }
 })()
+
+// Parse product ref from URL
+// Example: ?product=m18w
+const productRef = route.query.product as string | undefined
 
 // Set up navigation
 const mainMenu = useMainMenu()

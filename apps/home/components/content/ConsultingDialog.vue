@@ -13,10 +13,13 @@
         :name="category.key"
         :title="category.label"
         :overline="category.overline"
+        :options="category.options"
+        :option-type="category.optionType || 'checkbox'"
         :input-label="category.inputLabel || 'Ihre Frage oder Anmerkung'"
         :input-placeholder="category.inputPlaceholder || 'Optional: Beschreiben Sie Ihr Anliegen...'"
         v-model="selectedCategories[category.key]"
         v-model:freeform-text="freeformTexts[category.key]"
+        v-model:selected-options="selectedOptions[category.key]"
       >
         <template v-if="category.teaser">
           {{ category.teaser }}
@@ -46,6 +49,11 @@ import { computed, reactive, type PropType } from 'vue'
 import { useRouter } from 'vue-router'
 import { ConsultingCategoryItem } from '@crearis/ui'
 
+export interface CategoryOption {
+  key: string
+  label: string
+}
+
 export interface ConsultingCategory {
   /** Unique key for this category */
   key: string
@@ -59,6 +67,10 @@ export interface ConsultingCategory {
   inputLabel?: string
   /** Custom input placeholder */
   inputPlaceholder?: string
+  /** How to render options: 'checkbox' (multiple) or 'radio' (single) */
+  optionType?: 'checkbox' | 'radio'
+  /** Predefined options for this category */
+  options?: CategoryOption[]
 }
 
 const props = defineProps({
@@ -95,7 +107,18 @@ const props = defineProps({
       { key: 'prerequisites', label: 'Voraussetzungen', overline: 'Zulassung & Anerkennung' },
       { key: 'terms_and_options', label: 'Zahlungsbedingungen', overline: 'Kosten & Optionen' },
       { key: 'topics', label: 'Profile', overline: 'Themenschwerpunkte' },
-      { key: 'schedules', label: 'Verläufe', overline: 'Termine & Zeitplanung' },
+      { 
+        key: 'schedules', 
+        label: 'Verläufe', 
+        overline: 'Termine & Zeitplanung',
+        optionType: 'checkbox',
+        options: [
+          { key: 'blockverlauf', label: 'Blockseminar-Verlauf' },
+          { key: 'tageskurs', label: 'Tageskurs (wöchentlich)' },
+          { key: 'intensivkurs', label: 'Intensivkurs' },
+          { key: 'pausieren', label: 'Pausieren / Unterbrechen' },
+        ],
+      },
       { key: 'custom', label: 'Individuell', overline: 'Besondere Fragen' },
     ],
   },
@@ -151,8 +174,11 @@ const props = defineProps({
 
 const emit = defineEmits<{
   'start-beratung': [{
-    categories: string[]
-    freeformText: Record<string, string>
+    selections: Array<{
+      category: string
+      options?: string[]
+      text?: string
+    }>
     productRef?: string
   }]
 }>()
@@ -167,6 +193,11 @@ const selectedCategories = reactive<Record<string, boolean>>(
 // Reactive state for freeform texts
 const freeformTexts = reactive<Record<string, string>>(
   Object.fromEntries(props.categories.map(c => [c.key, '']))
+)
+
+// Reactive state for selected options per category
+const selectedOptions = reactive<Record<string, string[]>>(
+  Object.fromEntries(props.categories.map(c => [c.key, []]))
 )
 
 // Check if at least one category is selected
@@ -188,14 +219,22 @@ const getNonEmptyFreeformText = (): Record<string, string> => {
   )
 }
 
-const handleStartBeratung = () => {
+// Build selections array for the new schema
+const buildSelections = () => {
   const categories = getSelectedKeys()
-  const freeformText = getNonEmptyFreeformText()
+  return categories.map(cat => ({
+    category: cat,
+    options: selectedOptions[cat]?.length > 0 ? selectedOptions[cat] : undefined,
+    text: freeformTexts[cat]?.trim() || undefined,
+  }))
+}
+
+const handleStartBeratung = () => {
+  const selections = buildSelections()
 
   // Emit event for parent handling
   emit('start-beratung', {
-    categories,
-    freeformText,
+    selections,
     productRef: props.productRef,
   })
 
@@ -203,17 +242,13 @@ const handleStartBeratung = () => {
   if (props.navigateOnCta) {
     const params = new URLSearchParams()
     
-    if (categories.length > 0) {
-      params.set('categories', categories.join(','))
+    if (selections.length > 0) {
+      // Pass selections as JSON for the stepper to parse
+      params.set('selections', encodeURIComponent(JSON.stringify(selections)))
     }
     
     if (props.productRef) {
       params.set('product', props.productRef)
-    }
-    
-    // Encode freeform text as JSON if not empty
-    if (Object.keys(freeformText).length > 0) {
-      params.set('notes', encodeURIComponent(JSON.stringify(freeformText)))
     }
 
     const query = params.toString()
