@@ -5,7 +5,7 @@
         :content="consulting.presetConfig.title"
         is="h3"
       />
-      <p class="text-neutral-600 mt-2">{{ consulting.presetConfig.description }}</p>
+      <p class="text-neutral-600 mt-2">Fragen und Antworten</p>
     </SectionContainer>
 
     <!-- Stepper Navigation -->
@@ -28,7 +28,8 @@
             class="bg-neutral-200 group-data-[disabled]:bg-accent group-data-[state=completed]:bg-neutral-50 group-data-[state=active]:bg-primary"
           >
             <SfIconCalendar v-if="index === 0" size="lg" />
-            <SfIconPerson v-else-if="index === 1" size="lg" />
+            <SfIconTune v-else-if="index === 1" size="lg" />
+            <SfIconPerson v-else-if="index === 2" size="lg" />
             <SfIconCheck v-else size="lg" />
           </StepperIndicator>
           <div class="absolute text-center top-full left-0 w-full mt-2">
@@ -49,22 +50,91 @@
 
     <SectionContainer>
       <Columns gap="medium">
-        <!-- Left: Info/Context -->
+        <!-- Left: Info/Context (changes per step) -->
         <Column>
           <div class="bg-neutral-50 p-6 rounded-lg">
-            <Prose>
-              <h2>Online-Beratung buchen</h2>
-              <p>
-                Wähle einen freien Termin für ein 15-minütiges Beratungsgespräch. 
-                Nach der Buchung erhältst du eine Bestätigung mit dem Video-Call-Link per E-Mail.
-              </p>
-              <h3>So funktioniert's</h3>
-              <ol>
-                <li>Wähle einen passenden Termin</li>
-                <li>Gib deine Kontaktdaten ein</li>
-                <li>Du erhältst eine Bestätigung per E-Mail</li>
-              </ol>
-            </Prose>
+            <!-- Step 1: Categories summary -->
+            <template v-if="consulting.state.step === 1">
+              <Prose>
+                <template v-if="categories.length > 0">
+                  <h3>Deine Themen</h3>
+                  <ul>
+                    <li v-for="cat in categories" :key="cat">
+                      <strong>{{ categoryLabels[cat] || cat }}</strong>
+                      <span v-if="freeformText[cat]" class="block text-sm text-neutral-600 mt-1">
+                        „{{ freeformText[cat] }}"
+                      </span>
+                    </li>
+                  </ul>
+                </template>
+                <template v-else>
+                  <p class="text-neutral-500">
+                    Wähle einen freien Termin für ein 15-minütiges Beratungsgespräch.
+                  </p>
+                </template>
+              </Prose>
+            </template>
+
+            <!-- Step 2: Consultant info -->
+            <template v-else-if="consulting.state.step === 2">
+              <div class="flex items-start gap-4">
+                <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <SfIconPerson class="w-8 h-8 text-primary" />
+                </div>
+                <div>
+                  <p class="text-sm text-neutral-500 uppercase tracking-wide">Dein Berater</p>
+                  <h3 class="text-xl font-bold">{{ consulting.selectedSlot.value?.hostName }}</h3>
+                  <p class="text-sm text-neutral-600 mt-2">
+                    {{ consulting.formatDate(consulting.selectedSlot.value?.start || '') }}<br>
+                    {{ consulting.formatTime(consulting.selectedSlot.value?.start || '') }} Uhr
+                  </p>
+                </div>
+              </div>
+              <Prose class="mt-4">
+                <p class="text-sm text-neutral-600">
+                  Im nächsten Schritt wählst du, wie du erreichbar sein möchtest: 
+                  Video-Call (empfohlen) oder Telefon.
+                </p>
+              </Prose>
+            </template>
+
+            <!-- Step 3: Full summary before checkout -->
+            <template v-else-if="consulting.state.step === 3">
+              <Prose>
+                <h2>Zusammenfassung</h2>
+                <p v-if="productRef">
+                  <span class="text-sm text-neutral-500">Kurs:</span><br>
+                  <strong>{{ productRef }}</strong>
+                </p>
+                <p>
+                  <span class="text-sm text-neutral-500">Termin:</span><br>
+                  <strong>{{ consulting.formatDate(consulting.selectedSlot.value?.start || '') }}</strong>,
+                  {{ consulting.formatTime(consulting.selectedSlot.value?.start || '') }} Uhr
+                </p>
+                <p>
+                  <span class="text-sm text-neutral-500">Berater:</span><br>
+                  <strong>{{ consulting.selectedSlot.value?.hostName }}</strong>
+                </p>
+                <p>
+                  <span class="text-sm text-neutral-500">Modus:</span><br>
+                  <strong>{{ consulting.state.callType === 'video' ? 'Video-Call (MS Teams)' : 'Telefon' }}</strong>
+                </p>
+                <template v-if="categories.length > 0">
+                  <p class="text-sm text-neutral-500 mb-1">Themen:</p>
+                  <ul class="text-sm">
+                    <li v-for="cat in categories" :key="cat">{{ categoryLabels[cat] || cat }}</li>
+                  </ul>
+                </template>
+              </Prose>
+            </template>
+
+            <!-- Step 4: Confirmation (minimal left panel) -->
+            <template v-else>
+              <Prose>
+                <h2>Vielen Dank!</h2>
+                <p>Deine Beratung wurde gebucht.</p>
+              </Prose>
+            </template>
           </div>
         </Column>
 
@@ -149,8 +219,80 @@
             </div>
           </div>
           
-          <!-- Step 2: Contact Information -->
+          <!-- Step 2: Call Options -->
           <div v-else-if="consulting.state.step === 2">
+            <h3 class="text-lg font-bold mb-4">Gesprächsoptionen</h3>
+            
+            <div class="space-y-4">
+              <p class="text-neutral-600">Wie möchtest du beraten werden?</p>
+              
+              <!-- Video Call Option -->
+              <label 
+                :class="[
+                  'flex items-start gap-4 p-4 rounded-lg border-2 cursor-pointer transition-all',
+                  consulting.state.callType === 'video' 
+                    ? 'border-primary bg-primary-50' 
+                    : 'border-neutral-200 bg-white hover:border-neutral-300'
+                ]"
+              >
+                <input 
+                  type="radio" 
+                  name="callType" 
+                  value="video" 
+                  v-model="consulting.state.callType"
+                  class="mt-1"
+                >
+                <div>
+                  <span class="font-semibold block">Video-Call (empfohlen)</span>
+                  <span class="text-sm text-neutral-600">
+                    Du erhältst einen Microsoft Teams Link per E-Mail. 
+                    Bildschirmfreigabe für Dokumente möglich.
+                  </span>
+                </div>
+              </label>
+              
+              <!-- Phone Call Option -->
+              <label 
+                :class="[
+                  'flex items-start gap-4 p-4 rounded-lg border-2 cursor-pointer transition-all',
+                  consulting.state.callType === 'phone' 
+                    ? 'border-primary bg-primary-50' 
+                    : 'border-neutral-200 bg-white hover:border-neutral-300'
+                ]"
+              >
+                <input 
+                  type="radio" 
+                  name="callType" 
+                  value="phone" 
+                  v-model="consulting.state.callType"
+                  class="mt-1"
+                >
+                <div>
+                  <span class="font-semibold block">Telefon</span>
+                  <span class="text-sm text-neutral-600">
+                    Wir rufen dich zur vereinbarten Zeit an.
+                  </span>
+                </div>
+              </label>
+            </div>
+            
+            <!-- Navigation -->
+            <div class="flex justify-between mt-6">
+              <SfButton @click="consulting.prevStep()" type="button" variant="secondary">
+                <SfIconArrowBack size="sm" class="mr-1" />
+                Zurück
+              </SfButton>
+              <SfButton 
+                @click="consulting.nextStep()"
+                style="background-color: var(--color-primary-bg); color: var(--color-primary-contrast)"
+              >
+                Weiter
+              </SfButton>
+            </div>
+          </div>
+          
+          <!-- Step 3: Contact Information -->
+          <div v-else-if="consulting.state.step === 3">
             <h3 class="text-lg font-bold mb-4">Kontaktdaten</h3>
             
             <form @submit.prevent="handleContactSubmit" class="space-y-4 flex flex-col h-full">
@@ -195,7 +337,7 @@
                 />
               </label>
               
-              <label class="block flex-1 flex flex-col">
+              <label class="flex-1 flex flex-col">
                 <UiFormLabel>Anmerkungen (optional)</UiFormLabel>
                 <SfTextarea 
                   v-model="consulting.state.notes" 
@@ -204,15 +346,6 @@
                   class="flex-1 min-h-[80px]"
                 />
               </label>
-              
-              <!-- Selected Slot Reminder -->
-              <div class="p-4 bg-neutral-100 rounded-lg">
-                <p class="text-sm text-neutral-600">Termin mit: {{ consulting.selectedSlot.value!.hostName }}</p>
-                <p class="font-semibold">
-                  {{ consulting.formatDate(consulting.selectedSlot.value!.start) }}, 
-                  {{ consulting.formatTime(consulting.selectedSlot.value!.start) }} Uhr
-                </p>
-              </div>
               
               <!-- Navigation -->
               <div class="flex justify-between mt-6">
@@ -233,8 +366,8 @@
             </form>
           </div>
           
-          <!-- Step 3: Confirmation -->
-          <div v-else-if="consulting.state.step === 3 || consulting.state.step === 4">
+          <!-- Step 4: Confirmation -->
+          <div v-else-if="consulting.state.step === 4 || consulting.state.step === 5">
             <!-- Success -->
             <div v-if="consulting.result.value?.success" class="text-center py-8">
               <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -297,6 +430,7 @@ import {
   SfIconPerson,
   SfIconCheck,
   SfIconClose,
+  SfIconTune,
   Prose,
 } from '#components'
 import { useConsultingSlots, type ConsultingPreset } from '~/composables/useConsultingSlots'
@@ -356,9 +490,19 @@ const consulting = useConsultingSlots({
 // Stepper configuration
 const steps = [
   { title: 'Termin', name: 'slot' },
+  { title: 'Optionen', name: 'options' },
   { title: 'Kontakt', name: 'contact' },
   { title: 'Bestätigung', name: 'confirm' },
 ]
+
+// Category labels for display
+const categoryLabels: Record<string, string> = {
+  prerequisites: 'Voraussetzungen',
+  terms_and_options: 'Zahlungsbedingungen',
+  topics: 'Profile',
+  schedules: 'Verläufe',
+  custom: 'Individuell',
+}
 
 // Format date range for display
 const formatDateRange = (start: Date, end: Date): string => {

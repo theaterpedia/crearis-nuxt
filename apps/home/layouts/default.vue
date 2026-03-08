@@ -24,17 +24,17 @@
           :imgTmpAlignY="hero.image_focus_y"
         >
           <Component
-            :card="hero.content === 'banner' && page._path?.startsWith('/agenda')"
+            :card="hero.content === 'banner' && page?._path?.startsWith('/agenda')"
             :is="hero.content === 'banner' ? 'Banner' : 'div'"
             transparent
           >
             <Heading
-              v-if="page.heading || page.title"
-              :content="page.heading ? page.heading : page.title"
+              v-if="page?.heading || page?.title"
+              :content="page?.heading ? page.heading : page?.title"
               is="h1"
             ></Heading>
-            <br v-if="(page.heading || page.title) && page.teaser" />
-            <MdBlock v-if="page.teaser" :content="page.teaser" :htag="page.heading ? 'h3' : 'h1'" />
+            <br v-if="(page?.heading || page?.title) && page?.teaser" />
+            <MdBlock v-if="page?.teaser" :content="page.teaser" :htag="page?.heading ? 'h3' : 'h1'" />
             <div v-if="hero.cta || hero.link">
               <ButtonTmp
                 v-if="hero.cta"
@@ -57,11 +57,11 @@
         </Hero>
         <SectionContainer v-else>
           <Heading
-            v-if="page.heading || page.title"
-            :content="page.heading ? page.heading : page.title"
+            v-if="page?.heading || page?.title"
+            :content="page?.heading ? page.heading : page?.title"
             is="h1"
           ></Heading>
-          <MdBlock v-if="page.teaser" :content="page.teaser" :htag="page.heading ? 'h3' : 'h1'" />
+          <MdBlock v-if="page?.teaser" :content="page.teaser" :htag="page?.heading ? 'h3' : 'h1'" />
         </SectionContainer>
       </slot>
       <slot />
@@ -88,7 +88,7 @@
           :title="pageBottom.consulting.title"
           :overline="pageBottom.consulting.overline"
           :description="pageBottom.consulting.description"
-          :productRef="page._path"
+          :productRef="page?._path"
         />
         <div v-else-if="pageBottom.heading || pageBottom.teaser">
           <Heading v-if="pageBottom.heading" :content="pageBottom.heading" is="h2" />
@@ -108,12 +108,12 @@ import { getoverlay } from '@crearis/theme/utils/BackgroundHelpers'
 import { provide, computed } from 'vue'
 const { page } = useContent()
 
-const image = page.value.image
+const image = page.value?.image
   ? page.value.image
   : { src: 'https://pruvious.com/uploads/dasei/banner.jpg', alt: 'DAS Ei' }
-const hero = page.value.hero ? page.value.hero : undefined
-const details = page.value.details ? true : false
-const pageBottom = page.value.pageBottom ? page.value.pageBottom : undefined
+const hero = page.value?.hero ? page.value.hero : undefined
+const details = page.value?.details ? true : false
+const pageBottom = page.value?.pageBottom ? page.value.pageBottom : undefined
 
 // Provide hero image so PageBottom can inherit it if needed
 provide('heroImage', image.src)

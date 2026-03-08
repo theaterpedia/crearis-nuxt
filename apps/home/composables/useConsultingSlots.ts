@@ -106,6 +106,7 @@ export interface ConsultingState {
   step: number
   slots: ConsultingSlot[]
   selectedSlot: ConsultingSlot | null
+  callType: 'video' | 'phone'
   contact: ConsultingContactInput
   consultation: ConsultingCategoryInput
   productRef: string | null
@@ -185,6 +186,7 @@ export function useConsultingSlots(options: {
     step: 1,
     slots: [],
     selectedSlot: null,
+    callType: 'video',
     contact: {
       email: '',
       vorname: '',
@@ -336,8 +338,11 @@ export function useConsultingSlots(options: {
   const nextStep = () => {
     if (state.step === 1 && canProceedToContact.value) {
       state.step = 2
-    } else if (state.step === 2 && isContactValid.value) {
+    } else if (state.step === 2) {
+      // Options step - always can proceed
       state.step = 3
+    } else if (state.step === 3 && isContactValid.value) {
+      state.step = 4
     }
   }
   
@@ -373,7 +378,11 @@ export function useConsultingSlots(options: {
           ? state.consultation.freeformText 
           : undefined,
       } : undefined,
-      notes: state.notes || undefined,
+      // Include callType in notes until GraphQL schema supports it
+      notes: [
+        state.callType === 'phone' ? '[Telefon-Beratung gewünscht]' : '[Video-Call gewünscht]',
+        state.notes,
+      ].filter(Boolean).join('\n') || undefined,
     }
     
     try {
