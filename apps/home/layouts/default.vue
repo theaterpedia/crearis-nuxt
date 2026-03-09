@@ -88,7 +88,8 @@
           :title="pageBottom.consulting.title"
           :overline="pageBottom.consulting.overline"
           :description="pageBottom.consulting.description"
-          :productRef="page?._path"
+          :productRef="route.query.tab as string || undefined"
+          :domainCode="pageBottom.consulting.domainCode"
         />
         <div v-else-if="pageBottom.heading || pageBottom.teaser">
           <Heading v-if="pageBottom.heading" :content="pageBottom.heading" is="h2" />

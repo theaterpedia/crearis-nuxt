@@ -38,6 +38,7 @@ const CONSULTING_SLOTS_QUERY = `
       duration
       hostName
       hostId
+      photoUrl
     }
   }
 `
@@ -50,6 +51,9 @@ const BOOK_CONSULTING_SLOT_MUTATION = `
     $contact: ConsultingContactInput!
     $consultation: ConsultingCategoryInput
     $notes: String
+    $allowCancellation: Boolean
+    $productSlug: String
+    $domainCode: String
   ) {
     bookConsultingSlot(
       slotKey: $slotKey
@@ -58,6 +62,9 @@ const BOOK_CONSULTING_SLOT_MUTATION = `
       contact: $contact
       consultation: $consultation
       notes: $notes
+      allowCancellation: $allowCancellation
+      productSlug: $productSlug
+      domainCode: $domainCode
     ) {
       success
       meetingId
@@ -76,6 +83,7 @@ export interface ConsultingSlot {
   duration: number   // hours (0.25 = 15min)
   hostName: string
   hostId: number
+  photoUrl?: string  // Consultant photo URL
 }
 
 export interface ConsultingContactInput {
@@ -120,6 +128,7 @@ export interface ConsultingState {
   consultation: ConsultingCategoryInput
   productRef: string | null
   notes: string
+  allowCancellation: boolean
   isLoading: boolean
   isSubmitting: boolean
   error: string | null
@@ -171,10 +180,14 @@ export function useConsultingSlots(options: {
   endDate?: Date
   selections?: CategorySelectionInput[]
   productRef?: string
+  domainCode?: string
 } = {}) {
   // Resolve preset with default
   const preset = options.preset || 'einstieg'
   const presetConfig = PRESET_CONFIG[preset] || PRESET_CONFIG.einstieg
+  
+  // Domain code: explicit override or from preset
+  const domainCode = options.domainCode || presetConfig.domainCode
   
   // Date range defaults: now through next 7 days
   const now = new Date()
@@ -206,6 +219,7 @@ export function useConsultingSlots(options: {
     },
     productRef: initialProductRef,
     notes: '',
+    allowCancellation: false,
     isLoading: false,
     isSubmitting: false,
     error: null,
@@ -301,7 +315,7 @@ export function useConsultingSlots(options: {
         body: JSON.stringify({
           query: CONSULTING_SLOTS_QUERY,
           variables: {
-            domainCode: presetConfig.domainCode,
+            domainCode: domainCode, // Use override or preset
             weeks: 3, // Fetch 3 weeks, filter client-side
           },
         }),
@@ -388,6 +402,9 @@ export function useConsultingSlots(options: {
         callType: state.consultation.callType,
       } : undefined,
       notes: state.notes || undefined,
+      allowCancellation: state.allowCancellation || undefined,
+      productSlug: state.productRef || undefined,
+      domainCode: domainCode,
     }
     
     try {
@@ -442,6 +459,7 @@ export function useConsultingSlots(options: {
     state.consultation = { selections: [], callType: 'video' }
     state.productRef = null
     state.notes = ''
+    state.allowCancellation = false
     state.error = null
     state.result = null
   }

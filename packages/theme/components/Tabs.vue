@@ -15,23 +15,59 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted, watch, nextTick } from 'vue'
+import { ref, onMounted, watch, nextTick, provide } from 'vue'
+const route = useRoute()
+const router = useRouter()
+
 const activeTab = ref(0)
 const tabTitles = ref<string[]>([])
+const tabKeys = ref<string[]>([])
 const tabContent = ref<HTMLDivElement | null>(null)
+
+// Provide active tab key for child components (e.g., PageBottom/ConsultingDialog)
+const activeTabKey = computed(() => tabKeys.value[activeTab.value] || '')
+provide('activeTabKey', activeTabKey)
 
 const slots = defineSlots<{
   default(): any
 }>()
 
 onMounted(() => {
-  tabTitles.value = [...(slots.default!()[0].children as any)].map((tab: any) => tab.props.title)
-  // tabTitles.value = [...(slots.default!()[0].children as any)].map((tab: any) => tab.props.title)
+  const children = [...(slots.default!()[0].children as any)]
+  tabTitles.value = children.map((tab: any) => tab.props.title)
+  // Extract tab keys from title (e.g., "M18W **München**" → "m18w")
+  tabKeys.value = children.map((tab: any) => {
+    const title = tab.props.title || ''
+    const match = title.match(/^([A-Za-z0-9]+)/)
+    return match ? match[1].toLowerCase() : ''
+  })
+  
+  // Initialize from URL param ?tab=m18w
+  const tabParam = route.query.tab as string | undefined
+  if (tabParam) {
+    const idx = tabKeys.value.findIndex(k => k === tabParam.toLowerCase())
+    if (idx !== -1) {
+      activeTab.value = idx
+    }
+  }
+  
+  // Always ensure URL has tab param (set default if missing)
+  const currentKey = tabKeys.value[activeTab.value]
+  if (currentKey && route.query.tab !== currentKey) {
+    router.replace({ query: { ...route.query, tab: currentKey } })
+  }
 })
 
-watch(activeTab, () => {
+watch(activeTab, (newIdx) => {
+  // Update display
   for (const [i, el] of [...tabContent.value!.children].entries()) {
     ;(el as HTMLElement).style.display = i === activeTab.value ? 'block' : 'none'
+  }
+  
+  // Update URL param
+  const key = tabKeys.value[newIdx]
+  if (key) {
+    router.replace({ query: { ...route.query, tab: key } })
   }
 })
 

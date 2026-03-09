@@ -81,11 +81,17 @@
             <!-- Step 2: Consultant info -->
             <template v-else-if="consulting.state.step === 2">
               <div class="flex items-start gap-4">
-                <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <SfIconPerson class="w-8 h-8 text-primary" />
+                <div class="w-32 h-32 rounded-full flex-shrink-0 overflow-hidden bg-primary-100 flex items-center justify-center">
+                  <img 
+                    v-if="consulting.selectedSlot.value?.photoUrl" 
+                    :src="consulting.selectedSlot.value.photoUrl" 
+                    :alt="consulting.selectedSlot.value?.hostName"
+                    class="w-full h-full object-cover"
+                  />
+                  <SfIconPerson v-else class="w-16 h-16 text-primary" />
                 </div>
                 <div>
-                  <p class="text-sm text-neutral-500 uppercase tracking-wide">Dein Berater</p>
+                  <p class="text-sm text-neutral-500 uppercase tracking-wide">Fragen & Antworten mit</p>
                   <h3 class="text-xl font-bold">{{ consulting.selectedSlot.value?.hostName }}</h3>
                   <p class="text-sm text-neutral-600 mt-2">
                     {{ consulting.formatDate(consulting.selectedSlot.value?.start || '') }}<br>
@@ -95,8 +101,9 @@
               </div>
               <Prose class="mt-4">
                 <p class="text-sm text-neutral-600">
-                  Im nächsten Schritt wählst du, wie du erreichbar sein möchtest: 
-                  Video-Call (empfohlen) oder Telefon.
+                  Wie wollen wir reden?<br>
+                  - per Video-Call (empfohlen)<br>
+                  - oder am Telefon
                 </p>
               </Prose>
             </template>
@@ -232,8 +239,6 @@
             <h3 class="text-lg font-bold mb-4">Gesprächsoptionen</h3>
             
             <div class="space-y-4">
-              <p class="text-neutral-600">Wie möchtest du beraten werden?</p>
-              
               <!-- Video Call Option -->
               <label 
                 :class="[
@@ -251,7 +256,7 @@
                   class="mt-1"
                 >
                 <div>
-                  <span class="font-semibold block">Video-Call (empfohlen)</span>
+                  <span class="font-semibold block">Video-Call</span>
                   <span class="text-sm text-neutral-600">
                     Du erhältst einen Microsoft Teams Link per E-Mail. 
                     Bildschirmfreigabe für Dokumente möglich.
@@ -278,10 +283,27 @@
                 <div>
                   <span class="font-semibold block">Telefon</span>
                   <span class="text-sm text-neutral-600">
-                    Wir rufen dich zur vereinbarten Zeit an.
+                    Ich rufe dich zur vereinbarten Zeit an.
                   </span>
                 </div>
               </label>
+              
+              <!-- Cancellation Option (only for slots > 3.5 days ahead) -->
+              <div v-if="canShowCancellationOption" class="mt-4 p-4 bg-neutral-100 rounded-lg">
+                <label class="flex items-start gap-3 cursor-pointer">
+                  <input 
+                    type="checkbox" 
+                    v-model="consulting.state.allowCancellation"
+                    class="mt-1 rounded"
+                  >
+                  <span class="text-sm text-neutral-700">
+                    Ich möchte den Termin ggf. selbst absagen können
+                    <span class="block text-xs text-neutral-500 mt-1">
+                      (Bei kurzfristigen Absagen &lt; 6h bitte direkt kontaktieren)
+                    </span>
+                  </span>
+                </label>
+              </div>
             </div>
             
             <!-- Navigation -->
@@ -475,6 +497,14 @@ const props = defineProps({
     type: String,
     default: undefined,
   },
+  /**
+   * Domain code override for GraphQL.
+   * Example: 'dasei1'
+   */
+  domainCode: {
+    type: String,
+    default: undefined,
+  },
 })
 
 // Initialize consulting composable
@@ -484,6 +514,7 @@ const consulting = useConsultingSlots({
   endDate: props.endDate,
   selections: props.selections,
   productRef: props.productRef,
+  domainCode: props.domainCode,
 })
 
 // Stepper configuration
@@ -505,6 +536,16 @@ const categoryLabels: Record<string, string> = {
 
 // Computed: selections for template access
 const selections = computed(() => consulting.state.consultation.selections)
+
+// Computed: check if selected slot is more than 3.5 days (84 hours) from now
+const canShowCancellationOption = computed(() => {
+  const slot = consulting.selectedSlot.value
+  if (!slot) return false
+  const slotTime = new Date(slot.start).getTime()
+  const now = Date.now()
+  const hoursUntilSlot = (slotTime - now) / (1000 * 60 * 60)
+  return hoursUntilSlot > 84 // 3.5 days = 84 hours
+})
 
 // Format date range for display
 const formatDateRange = (start: Date, end: Date): string => {

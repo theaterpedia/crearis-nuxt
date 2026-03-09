@@ -7,6 +7,7 @@
         :endDate="endDate"
         :selections="selections"
         :product-ref="productRef"
+        :domain-code="domainCode"
       />
     </NuxtLayout>
   </div>
@@ -67,6 +68,10 @@ const selections: SelectionInput[] = (() => {
 // Parse product ref from URL
 // Example: ?product=m18w
 const productRef = route.query.product as string | undefined
+
+// Parse domain code from URL
+// Example: ?domain=dasei1
+const domainCode = route.query.domain as string | undefined
 
 // Set up navigation
 const mainMenu = useMainMenu()

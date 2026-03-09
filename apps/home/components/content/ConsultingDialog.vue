@@ -131,6 +131,14 @@ const props = defineProps({
   },
 
   /**
+   * Domain code for GraphQL (for URL param).
+   * Example: 'dasei1'
+   */
+  domainCode: {
+    type: String,
+  },
+
+  /**
    * Label for the primary CTA button.
    *
    * @default 'Beratung starten'
@@ -249,6 +257,10 @@ const handleStartBeratung = () => {
     
     if (props.productRef) {
       params.set('product', props.productRef)
+    }
+    
+    if (props.domainCode) {
+      params.set('domain', props.domainCode)
     }
 
     const query = params.toString()
