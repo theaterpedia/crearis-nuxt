@@ -2,10 +2,29 @@
   <details
     :open="isOpen"
     class="consulting-category"
-    :class="{ 'consulting-category-checked': isOpen }"
+    :class="[
+      `consulting-category--${variant}`,
+      { 'consulting-category-checked': isOpen }
+    ]"
   >
     <summary @click.prevent="handleToggle" class="consulting-category-summary">
-      <span class="consulting-category-checkbox">
+      <!-- Default variant: chevron on left -->
+      <span v-if="variant === 'default'" class="consulting-category-chevron" :class="{ 'consulting-category-chevron-open': isOpen }">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <polyline points="9 6 15 12 9 18"></polyline>
+        </svg>
+      </span>
+      
+      <!-- Rounded variant: checkbox on left -->
+      <span v-if="variant === 'roundedBorders'" class="consulting-category-checkbox">
         <svg
           v-if="isOpen"
           xmlns="http://www.w3.org/2000/svg"
@@ -19,11 +38,14 @@
           <polyline points="20 6 9 17 4 12"></polyline>
         </svg>
       </span>
+      
       <div class="consulting-category-header">
         <span v-if="overline" class="consulting-category-overline">{{ overline }}</span>
         <span class="consulting-category-title">{{ title }}</span>
       </div>
-      <span class="consulting-category-chevron" :class="{ 'consulting-category-chevron-open': isOpen }">
+      
+      <!-- Rounded variant: chevron on right -->
+      <span v-if="variant === 'roundedBorders'" class="consulting-category-chevron" :class="{ 'consulting-category-chevron-open': isOpen }">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -43,45 +65,47 @@
         <slot />
       </div>
 
-      <!-- Options (checkboxes or radios) -->
-      <div v-if="options && options.length > 0" class="consulting-category-options">
-        <label 
-          v-for="opt in options" 
-          :key="opt.key" 
-          class="consulting-category-option"
-        >
-          <input
-            v-if="optionType === 'radio'"
-            type="radio"
-            :name="`${name}-options`"
-            :value="opt.key"
-            :checked="selectedOptions.length === 1 && selectedOptions[0] === opt.key"
-            @change="handleRadioChange(opt.key)"
-            class="consulting-category-option-input"
-          />
-          <input
-            v-else
-            type="checkbox"
-            :value="opt.key"
-            :checked="selectedOptions.includes(opt.key)"
-            @change="handleCheckboxToggle(opt.key)"
-            class="consulting-category-option-input"
-          />
-          <span class="consulting-category-option-label">{{ opt.label }}</span>
-        </label>
-      </div>
+      <div class="consulting-category-content-grid">
+        <!-- Options (checkboxes or radios) -->
+        <div v-if="options && options.length > 0" class="consulting-category-options">
+          <label 
+            v-for="opt in options" 
+            :key="opt.key" 
+            class="consulting-category-option"
+          >
+            <input
+              v-if="optionType === 'radio'"
+              type="radio"
+              :name="`${name}-options`"
+              :value="opt.key"
+              :checked="selectedOptions.length === 1 && selectedOptions[0] === opt.key"
+              @change="handleRadioChange(opt.key)"
+              class="consulting-category-option-input"
+            />
+            <input
+              v-else
+              type="checkbox"
+              :value="opt.key"
+              :checked="selectedOptions.includes(opt.key)"
+              @change="handleCheckboxToggle(opt.key)"
+              class="consulting-category-option-input"
+            />
+            <span class="consulting-category-option-label">{{ opt.label }}</span>
+          </label>
+        </div>
 
-      <div class="consulting-category-input">
-        <label :for="inputId" class="consulting-category-input-label">{{ inputLabel }}</label>
-        <textarea
-          :id="inputId"
-          :name="`${name}-freeform`"
-          :placeholder="inputPlaceholder"
-          :value="freeformValue"
-          @input="handleFreeformInput"
-          class="consulting-category-textarea"
-          rows="3"
-        />
+        <div class="consulting-category-input">
+          <label :for="inputId" class="consulting-category-input-label">{{ inputLabel }}</label>
+          <textarea
+            :id="inputId"
+            :name="`${name}-freeform`"
+            :placeholder="inputPlaceholder"
+            :value="freeformValue"
+            @input="handleFreeformInput"
+            class="consulting-category-textarea"
+            rows="3"
+          />
+        </div>
       </div>
     </div>
   </details>
@@ -97,6 +121,17 @@ export interface CategoryOption {
 }
 
 const props = defineProps({
+  /**
+   * Visual style variant.
+   * - 'default': minimal borders, chevron left, no checkbox
+   * - 'roundedBorders': full borders, checkbox left, chevron right
+   * @default 'default'
+   */
+  variant: {
+    type: String as PropType<'default' | 'roundedBorders'>,
+    default: 'default',
+  },
+
   /**
    * Unique key for this category (e.g., 'prerequisites', 'terms_and_options').
    */
@@ -225,37 +260,38 @@ const handleRadioChange = (optionKey: string) => {
 
 <style scoped>
 .consulting-category {
-  border: 1px solid var(--color-border);
-  border-radius: 0.5rem;
   transition: var(--transition);
   transition-property: border-color, box-shadow;
   background-color: var(--color-bg);
 }
 
-.consulting-category:hover {
+/* ========================================
+   VARIANT: roundedBorders (original style)
+   ======================================== */
+
+.consulting-category--roundedBorders {
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+}
+
+.consulting-category--roundedBorders:hover {
   border-color: var(--color-input);
 }
 
-.consulting-category-checked {
+.consulting-category--roundedBorders.consulting-category-checked {
   border-color: var(--color-primary-bg);
   box-shadow: 0 0 0 1px var(--color-primary-bg);
 }
 
-.consulting-category-summary {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
+.consulting-category--roundedBorders .consulting-category-summary {
   padding: 1rem;
-  cursor: pointer;
-  list-style: none;
-  user-select: none;
 }
 
-.consulting-category-summary::-webkit-details-marker {
-  display: none;
+.consulting-category--roundedBorders .consulting-category-content {
+  padding: 0 1rem 1rem;
 }
 
-.consulting-category-checkbox {
+.consulting-category--roundedBorders .consulting-category-checkbox {
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -269,15 +305,91 @@ const handleRadioChange = (optionKey: string) => {
   transition-property: background-color, border-color;
 }
 
-.consulting-category-checked .consulting-category-checkbox {
+.consulting-category--roundedBorders.consulting-category-checked .consulting-category-checkbox {
   background-color: var(--color-primary-bg);
   border-color: var(--color-primary-bg);
   color: var(--color-primary-contrast);
 }
 
-.consulting-category-checkbox svg {
+.consulting-category--roundedBorders .consulting-category-checkbox svg {
   width: 0.875rem;
   height: 0.875rem;
+}
+
+.consulting-category--roundedBorders .consulting-category-chevron-open {
+  transform: rotate(180deg);
+}
+
+/* ========================================
+   VARIANT: default (new minimal style)
+   ======================================== */
+
+.consulting-category--default {
+  border: none;
+  border-radius: 0;
+}
+
+.consulting-category--default.consulting-category-checked {
+  border-left: 4px solid var(--color-primary-bg);
+  border-top: 1px solid oklch(from var(--color-contrast) l c h / 20%);
+  border-right: 1px solid oklch(from var(--color-contrast) l c h / 20%);
+  border-bottom: 1px solid oklch(from var(--color-contrast) l c h / 20%);
+}
+
+.consulting-category--default .consulting-category-summary {
+  padding: 0.5rem 0;
+  gap: 0.5rem;
+}
+
+.consulting-category--default.consulting-category-checked .consulting-category-summary {
+  padding: 0.75rem 1rem;
+}
+
+.consulting-category--default .consulting-category-title {
+  color: oklch(from var(--color-contrast) l c h / 60%);
+  transition: var(--transition);
+  transition-property: color;
+}
+
+.consulting-category--default.consulting-category-checked .consulting-category-title {
+  color: var(--color-contrast);
+}
+
+.consulting-category--default .consulting-category-overline {
+  color: oklch(from var(--color-contrast) l c h / 40%);
+}
+
+.consulting-category--default.consulting-category-checked .consulting-category-overline {
+  color: oklch(from var(--color-contrast) l c h / 60%);
+}
+
+.consulting-category--default .consulting-category-chevron {
+  transform: rotate(0deg);
+}
+
+.consulting-category--default .consulting-category-chevron-open {
+  transform: rotate(90deg);
+}
+
+.consulting-category--default .consulting-category-content {
+  padding: 0 1rem 1rem;
+}
+
+/* ========================================
+   SHARED STYLES
+   ======================================== */
+
+.consulting-category-summary {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+
+.consulting-category-summary::-webkit-details-marker {
+  display: none;
 }
 
 .consulting-category-header {
@@ -312,7 +424,6 @@ const handleRadioChange = (optionKey: string) => {
 }
 
 .consulting-category-chevron-open {
-  transform: rotate(180deg);
   color: var(--color-primary-bg);
 }
 
@@ -322,7 +433,6 @@ const handleRadioChange = (optionKey: string) => {
 }
 
 .consulting-category-content {
-  padding: 0 1rem 1rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -335,6 +445,43 @@ const handleRadioChange = (optionKey: string) => {
   font-size: 0.9375rem;
   line-height: 1.5;
   color: oklch(from var(--color-contrast) l c h / 80%);
+}
+
+.consulting-category-teaser:empty {
+  display: none;
+}
+
+.consulting-category-content-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.consulting-category-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.consulting-category-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  padding: 0.375rem 0;
+}
+
+.consulting-category-option-input {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  accent-color: var(--color-primary-bg);
+  cursor: pointer;
+}
+
+.consulting-category-option-label {
+  font-size: 0.9375rem;
+  color: var(--color-contrast);
 }
 
 .consulting-category-input {
@@ -375,39 +522,29 @@ const handleRadioChange = (optionKey: string) => {
   color: oklch(from var(--color-contrast) l c h / 40%);
 }
 
-.consulting-category-options {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
+/* ========================================
+   RESPONSIVE: Desktop 2-column layout
+   ======================================== */
 
-.consulting-category-option {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-  padding: 0.375rem 0;
-}
-
-.consulting-category-option-input {
-  flex-shrink: 0;
-  width: 1rem;
-  height: 1rem;
-  accent-color: var(--color-primary-bg);
-  cursor: pointer;
-}
-
-.consulting-category-option-label {
-  font-size: 0.9375rem;
-  color: var(--color-contrast);
+@media (min-width: 1024px) {
+  .consulting-category-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  
+  /* If no options, let input span full width */
+  .consulting-category-content-grid > .consulting-category-input:only-child {
+    grid-column: 1 / -1;
+  }
 }
 
 @media (max-width: 767px) {
-  .consulting-category-summary {
+  .consulting-category--roundedBorders .consulting-category-summary {
     padding: 0.875rem;
   }
 
-  .consulting-category-content {
+  .consulting-category--roundedBorders .consulting-category-content {
     padding: 0 0.875rem 0.875rem;
   }
 }

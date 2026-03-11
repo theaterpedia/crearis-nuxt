@@ -85,11 +85,17 @@
       >
         <ConsultingDialog
           v-if="pageBottom.consulting"
+          :variant="pageBottom.consulting.variant || 'default'"
           :title="pageBottom.consulting.title"
           :overline="pageBottom.consulting.overline"
           :description="pageBottom.consulting.description"
           :productRef="route.query.tab as string || undefined"
           :domainCode="pageBottom.consulting.domainCode"
+          :callPhone="pageBottom.consulting.callPhone"
+          :callLabel="pageBottom.consulting.callLabel"
+          :email="pageBottom.consulting.email"
+          :emailLabel="pageBottom.consulting.emailLabel"
+          :categories="pageBottom.consulting.categories"
         />
         <div v-else-if="pageBottom.heading || pageBottom.teaser">
           <Heading v-if="pageBottom.heading" :content="pageBottom.heading" is="h2" />
