@@ -55,6 +55,23 @@ details:
         Für eine ausführliche persönliche Beratung melde dich direkt bei uns:
         **service@dasei.eu**
         Wenn du Unterlagen hast (Lebenslauf, Zertifikate), schicke sie bitte per Email an: **service@dasei.eu**
+consulting:
+  intro: |
+    Du hast Grundlagen bei einem anderen Institut absolviert?
+    Willkommen! So funktioniert dein Einstieg:
+  process_steps: |
+    1. Fülle das Kontaktformular aus
+    2. Wir rufen dich zurück (1-2 Werktage)
+    3. Beratungsgespräch: Was musst du nachholen?
+    4. Individueller Vertrag
+  upload_note: |
+    Falls du Unterlagen hast, kannst du sie jetzt schon einreichen:
+    - Berufsabschluss (Zeugnis/Zertifikat) → bitte per Email an service@dasei.eu
+    - Bescheinigung Grundlagen (anderes Institut) → bitte per Email an service@dasei.eu
+  cta:
+    submit: Absenden
+  success:
+    submit: Danke! Wir melden uns in 1-2 Werktagen bei dir.
 product:
   header: |
     Probiere das Team und das Programm aus. Stelle aus Beratungsformaten und Praxiseinheiten deinen Orientierungsprozess zusammen. Jede Veranstaltung gibt einen Einblick in ein spezifisches Thema der Aufbaustufe.

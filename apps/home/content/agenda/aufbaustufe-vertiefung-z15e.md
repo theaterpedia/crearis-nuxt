@@ -75,6 +75,25 @@ details:
         ### Erweiterungsoptionen (später buchbar)
         - **Profiljahr** (Profil + K2-K3) 12 Raten × € 220,00 = € 2.640,00
         - **Abschlussphase** (K4-K6 + P1-P6) 9 Raten × € 220,00 = € 1.980,00
+consulting:
+  intro: Schreib uns — wir melden uns innerhalb von 2 Werktagen.
+  extension_note: |
+    💡 Nach der Vertiefung entscheidest du, ob du ein Profil (Theatrales Lernen oder Performance) buchst.
+  categories:
+    - key: vertiefung_info
+      label: Vertiefung — Was erwartet mich?
+    - key: zahlung
+      label: Zahlungsplan & Raten
+    - key: storno
+      label: Stornierung & Frühbuchung
+    - key: erweiterung
+      label: Erweiterung — Profil & Abschluss
+  cta:
+    email: per Email klären
+    call: direkt klären (Videocall oder Telefon)
+  success:
+    email: ✨ abgeschickt! Wir melden uns bei dir.
+    call: Bis bald! Wir rufen dich an.
 product:
   header: |
     Die Vertiefung (Modul E) umfasst zwei intensive Seminarwochen: Du vertiefst die Methoden aus der Grundstufe und erhältst wichtige didaktische Werkzeuge für deine theaterpädagogische Praxis.

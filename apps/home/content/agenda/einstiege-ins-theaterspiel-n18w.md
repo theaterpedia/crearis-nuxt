@@ -47,7 +47,26 @@ details:
    storno: |
     ### Widerruf & Storno
     - 14 Tage Widerruf
-    - bis 10 Tage nach 1. Präsenzveranstaltung kostenfreies Storno A1-A5
+    - Bis 10 Tage nach der ersten Teilnahme an A1-A5 kann die weitere Teilnahme ohne Storno gekündigt werden.
+consulting:
+  intro: Schreib uns — wir melden uns innerhalb von 2 Werktagen.
+  categories:
+    - key: orientation
+      label: Orientierung & Einstieg
+    - key: basistag
+      label: Basistag (A0) — Was erwartet mich?
+    - key: zahlung
+      label: Zahlungsplan & Raten
+    - key: storno
+      label: Stornierung & Abmeldung
+    - key: termine
+      label: Termine & Ablauf
+  cta:
+    email: per Email klären
+    call: direkt klären (Videocall oder Telefon)
+  success:
+    email: ✨ abgeschickt! Wir melden uns bei dir.
+    call: Bis bald! Wir rufen dich an.
 product:
  header: |
   ## 6 Kurseinheiten
