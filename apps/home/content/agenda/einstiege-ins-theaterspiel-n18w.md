@@ -51,16 +51,27 @@ details:
 consulting:
   intro: Schreib uns — wir melden uns innerhalb von 2 Werktagen.
   categories:
-    - key: orientation
-      label: Orientierung & Einstieg
-    - key: basistag
-      label: Basistag (A0) — Was erwartet mich?
-    - key: zahlung
-      label: Zahlungsplan & Raten
-    - key: storno
-      label: Stornierung & Abmeldung
-    - key: termine
+    - key: terms_and_options
+      label: Kosten & Zahlungsbedingungen
+      options:
+        - Zahlungsplan
+        - Stornierung
+        - Ratenzahlung
+    - key: prerequisites
+      label: Voraussetzungen
+      options:
+        - Wer kann teilnehmen?
+        - Basistag (A0) — Was erwartet mich?
+    - key: schedules
       label: Termine & Ablauf
+      options:
+        - Programmstruktur
+        - Nachholung
+    - key: topics
+      label: Fortsetzung
+      options:
+        - Grundlagenbildung (Module B-D)
+        - Aufbaustufe (BuT)
   cta:
     email: per Email klären
     call: direkt klären (Videocall oder Telefon)

@@ -80,14 +80,34 @@ consulting:
   extension_note: |
     💡 Nach der Vertiefung entscheidest du, ob du ein Profil (Theatrales Lernen oder Performance) buchst.
   categories:
-    - key: vertiefung_info
-      label: Vertiefung — Was erwartet mich?
-    - key: zahlung
-      label: Zahlungsplan & Raten
-    - key: storno
-      label: Stornierung & Frühbuchung
-    - key: erweiterung
-      label: Erweiterung — Profil & Abschluss
+    - key: terms_and_options
+      label: Zahlungsbedingungen
+      options:
+        - Frühbucherrabatt
+        - Stornierung & Pausieren
+        - Zahlungsplan
+        - Härtefall
+    - key: prerequisites
+      label: Quereinstieg und Anerkennung
+      options:
+        - Zulassung
+        - Bildungs- und Berufsabschlüsse
+        - Anerkennung von Praxiserfahrung
+        - Grundlagenbildung extern
+        - Erfülle ich die Voraussetzungen?
+    - key: schedules
+      label: Verläufe
+      options:
+        - Vertiefung / Einstiegsphase
+        - Offenes Programm
+        - Nachholung
+        - Letzter Einstieg
+    - key: topics
+      label: Profile
+      options:
+        - Performance
+        - Theatrales Lernen
+        - Profilwechsel
   cta:
     email: per Email klären
     call: direkt klären (Videocall oder Telefon)
