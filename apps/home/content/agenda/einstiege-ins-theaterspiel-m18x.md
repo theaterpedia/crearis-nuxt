@@ -90,9 +90,10 @@ consulting:
           url: /ausbildung-theaterpaedagogik/grundlagenbildung
         - label: Aufbaustufe (BuT)
           url: /ausbildung-theaterpaedagogik/aufbaustufe
-  cta:
-    email: per Email klären
-    call: direkt klären (Videocall oder Telefon)
+  email: service@dasei.eu
+  emailLabel: per Email klären
+  callPhone: "+49 911 7808476"
+  callLabel: direkt klären (Videocall oder Telefon)
   success:
     email: ✨ abgeschickt! Wir melden uns bei dir.
     call: Bis bald! Wir rufen dich an.

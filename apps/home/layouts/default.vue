@@ -96,6 +96,7 @@
           :email="pageBottom.consulting.email"
           :emailLabel="pageBottom.consulting.emailLabel"
           :categories="pageBottom.consulting.categories"
+          :success="pageBottom.consulting.success"
         />
         <div v-else-if="pageBottom.heading || pageBottom.teaser">
           <Heading v-if="pageBottom.heading" :content="pageBottom.heading" is="h2" />

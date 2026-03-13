@@ -119,9 +119,10 @@ consulting:
         - label: Profil Theatrales Lernen
           url: /ausbildung-theaterpaedagogik/aufbaustufe/profil_theatrales_lernen
         - Profilwechsel — bis wann möglich?
-  cta:
-    email: per Email klären
-    call: direkt klären (Videocall oder Telefon)
+  email: service@dasei.eu
+  emailLabel: per Email klären
+  callPhone: "+49 911 7808476"
+  callLabel: direkt klären (Videocall oder Telefon)
   success:
     email: ✨ abgeschickt! Wir melden uns bei dir.
     call: Bis bald! Wir rufen dich an.

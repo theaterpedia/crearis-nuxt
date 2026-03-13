@@ -46,6 +46,48 @@ details:
     -14-tägiges Widerrufsrecht ab Datum der Anmeldung
     -bis 5.5.2025 kostenfreies Storno
     -danach Bezahlung A1/A2 (29.5 bis 1.6.2025) obligatorisch, bis 11.6.2025 kostenfreies Storno der Teilnahme A3-A5
+consulting:
+  intro: Schreib uns — wir melden uns innerhalb von 2 Werktagen.
+  domainCode: dasei3
+  categories:
+    - key: prerequisites
+      label: Voraussetzungen
+      teaser: Grundlagen-Abschluss (BuT) oder vergleichbare Qualifikation erforderlich.
+      options:
+        - Welche Grundlagen-Abschlüsse werden anerkannt?
+        - Anerkennung externer Grundlagen (anderes Institut)?
+        - Kann ich Module nachholen?
+    - key: terms_and_options
+      label: Kosten & Förderung
+      teaser: Ratenzahlung möglich. Für Solo-Selbstständige ggf. KOMPASS-Förderung.
+      options:
+        - Zahlungsplan
+        - Ratenzahlung
+        - label: Fördermöglichkeiten
+          url: /blog/aktuelles/foerdermoeglichkeiten-29
+    - key: profiles
+      label: Profile
+      teaser: Theatrales Lernen oder Performance & Interkult. Theater.
+      options:
+        - label: Profil Theatrales Lernen
+          url: /ausbildung-theaterpaedagogik/aufbaustufe/profil_theatrales_lernen
+        - label: Profil Performance
+          url: /ausbildung-theaterpaedagogik/aufbaustufe/profil_performance
+        - Profilwechsel — bis wann möglich?
+    - key: schedules
+      label: Termine & Ablauf
+      teaser: Modulare Struktur über 2 Jahre.
+      options:
+        - Programmstruktur (E1/E2, F, G)
+        - Praxisprojekt-Anforderungen
+        - Kann ich pausieren?
+  email: service@dasei.eu
+  emailLabel: per Email klären
+  callPhone: "+49 911 7808476"
+  callLabel: direkt klären (Videocall oder Telefon)
+  success:
+    email: ✨ abgeschickt! Wir melden uns bei dir.
+    call: Bis bald! Wir rufen dich an.
 product:
  header: |
   Die exakten Konditionen der Direktanmeldung sind ab 20. SEPT 2025 verfügbar.

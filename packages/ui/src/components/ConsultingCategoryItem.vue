@@ -90,7 +90,16 @@
               @change="handleCheckboxToggle(opt.key)"
               class="consulting-category-option-input"
             />
-            <span class="consulting-category-option-label">{{ opt.label }}</span>
+            <!-- URL-enabled option: render as link -->
+            <a
+              v-if="opt.url"
+              :href="opt.url"
+              target="_blank"
+              class="consulting-category-option-label consulting-category-option-link"
+              @click.stop
+            >{{ opt.label }}</a>
+            <!-- Plain option: render as span -->
+            <span v-else class="consulting-category-option-label">{{ opt.label }}</span>
           </label>
         </div>
 
@@ -118,6 +127,7 @@ import { computed, onMounted, ref, watch, type PropType } from 'vue'
 export interface CategoryOption {
   key: string
   label: string
+  url?: string  // Optional URL for clickable options
 }
 
 const props = defineProps({
@@ -482,6 +492,17 @@ const handleRadioChange = (optionKey: string) => {
 .consulting-category-option-label {
   font-size: 0.9375rem;
   color: var(--color-contrast);
+}
+
+.consulting-category-option-link {
+  color: var(--color-primary-bg);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.consulting-category-option-link:hover {
+  color: var(--color-primary-bg-hover, var(--color-primary-bg));
+  text-decoration-thickness: 2px;
 }
 
 .consulting-category-input {

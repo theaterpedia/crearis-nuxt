@@ -8,7 +8,7 @@
 
     <div class="consulting-dialog-categories">
       <ConsultingCategoryItem
-        v-for="category in categories"
+        v-for="category in normalizedCategories"
         :key="category.key"
         :name="category.key"
         :title="category.label"
@@ -34,14 +34,14 @@
         <svg class="consulting-dialog-success-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
-        <span class="consulting-dialog-success-text">{{ successMessage }}</span>
+        <span class="consulting-dialog-success-text">{{ finalSuccessMessage }}</span>
       </div>
 
       <!-- Default CTA buttons -->
       <template v-else-if="!showEmailForm">
         <div class="consulting-dialog-cta-row">
           <a
-            v-if="callPhone"
+            v-if="callPhone && variant !== 'email-only'"
             :href="`tel:${callPhone}`"
             class="consulting-dialog-cta consulting-dialog-cta--call"
           >
@@ -118,6 +118,7 @@ import { ConsultingCategoryItem } from '@crearis/ui'
 export interface CategoryOption {
   key: string
   label: string
+  url?: string  // Optional URL for clickable options
 }
 
 export interface ConsultingCategory {
@@ -148,7 +149,7 @@ const props = defineProps({
    * @default 'default'
    */
   variant: {
-    type: String as PropType<'default' | 'roundedBorders'>,
+    type: String as PropType<'default' | 'roundedBorders' | 'email-only'>,
     default: 'default',
   },
 
@@ -326,10 +327,21 @@ const props = defineProps({
    * Success message after email is sent.
    *
    * @default 'Vielen Dank! Wir melden uns bei dir.'
+   * @deprecated Use `success.email` instead
    */
   successMessage: {
     type: String,
     default: 'Vielen Dank! Wir melden uns bei dir.',
+  },
+
+  /**
+   * Success messages for different lanes.
+   * - success.email: shown after email form submission
+   * - success.call: shown after call CTA click (if applicable)
+   */
+  success: {
+    type: Object as PropType<{ email?: string; call?: string }>,
+    default: () => ({}),
   },
 
   /**
@@ -383,6 +395,22 @@ const emailFrom = ref('')
 const sendingEmail = ref(false)
 const emailSent = ref(false)
 
+// Normalize YAML options: convert strings and {label, url} objects to {key, label, url?} format
+const normalizeOption = (opt: string | { label: string; url?: string }, index: number): CategoryOption => {
+  if (typeof opt === 'string') {
+    return { key: `opt_${index}`, label: opt }
+  }
+  return { key: `opt_${index}`, label: opt.label, url: opt.url }
+}
+
+// Normalized categories with properly formatted options
+const normalizedCategories = computed(() => {
+  return props.categories.map(cat => ({
+    ...cat,
+    options: cat.options?.map((opt, i) => normalizeOption(opt as any, i)) || []
+  }))
+})
+
 // Reactive state for selected categories (checkboxes)
 const selectedCategories = reactive<Record<string, boolean>>(
   Object.fromEntries(props.categories.map(c => [c.key, false]))
@@ -401,6 +429,11 @@ const selectedOptions = reactive<Record<string, string[]>>(
 // Check if at least one category is selected
 const hasSelection = computed(() => {
   return Object.values(selectedCategories).some(v => v)
+})
+
+// Final success message: prefer YAML success.email, fallback to successMessage prop
+const finalSuccessMessage = computed(() => {
+  return props.success?.email || props.successMessage
 })
 
 // Get selected category keys
