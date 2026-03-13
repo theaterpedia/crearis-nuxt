@@ -81,33 +81,44 @@ consulting:
     💡 Nach der Vertiefung entscheidest du, ob du ein Profil (Theatrales Lernen oder Performance) buchst.
   categories:
     - key: terms_and_options
-      label: Zahlungsbedingungen
+      label: Finanzierung
+      teaser: Frühbucher- und Paketrabatte. KOMPASS-Förderung für Solo-Selbstständige möglich.
       options:
         - Frühbucherrabatt
         - Stornierung & Pausieren
         - Zahlungsplan
         - Härtefall
+        - label: KOMPASS-Förderung (Solo-Selbstständige)
+          url: /blog/aktuelles/dasei-unterstuetzt-kompass-foerderung-27
+        - label: Fördermöglichkeiten Überblick
+          url: /blog/aktuelles/foerdermoeglichkeiten-29
     - key: prerequisites
-      label: Quereinstieg und Anerkennung
+      label: Zulassung & Quereinstieg
+      teaser: Grundlagenbildung + A-B-C-D Kriterien. Quereinstieg möglich.
       options:
-        - Zulassung
+        - Zulassung (A-B-C-D Kriterien)
         - Bildungs- und Berufsabschlüsse
         - Anerkennung von Praxiserfahrung
-        - Grundlagenbildung extern
+        - Grundlagenbildung extern (BuT-Institute)
         - Erfülle ich die Voraussetzungen?
     - key: schedules
       label: Verläufe
+      teaser: 3-Phasen-Modell. Vertiefung ab SEP 2026 buchbar.
       options:
-        - Vertiefung / Einstiegsphase
+        - label: Vertiefung (Einstiegsphase)
+          url: /ausbildung-theaterpaedagogik/aufbaustufe
         - Offenes Programm
         - Nachholung
         - Letzter Einstieg
     - key: topics
       label: Profile
+      teaser: Theatrales Lernen oder Performance & Interkult. Theater.
       options:
-        - Performance
-        - Theatrales Lernen
-        - Profilwechsel
+        - label: Profil Performance
+          url: /ausbildung-theaterpaedagogik/aufbaustufe/profil_performance
+        - label: Profil Theatrales Lernen
+          url: /ausbildung-theaterpaedagogik/aufbaustufe/profil_theatrales_lernen
+        - Profilwechsel — bis wann möglich?
   cta:
     email: per Email klären
     call: direkt klären (Videocall oder Telefon)

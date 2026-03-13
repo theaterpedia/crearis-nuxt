@@ -53,34 +53,43 @@ consulting:
   intro: Schreib uns — wir melden uns innerhalb von 2 Werktagen.
   categories:
     - key: terms_and_options
-      label: Kosten & Zahlungsbedingungen
+      label: Kosten & Förderung
+      teaser: Ratenzahlung ab €220. Für Solo-Selbstständige ggf. KOMPASS-Förderung möglich.
       options:
         - Zahlungsplan
         - Stornierung
         - Ratenzahlung
-        - Fördermöglichkeiten
+        - label: Fördermöglichkeiten
+          url: /blog/aktuelles/foerdermoeglichkeiten-29
     - key: prerequisites
       label: Voraussetzungen
+      teaser: Keine Vorerfahrung nötig — alle Praxisfelder willkommen.
       options:
         - Wer kann teilnehmen?
         - Basistag (A0) — Was erwartet mich?
         - Wie ist die Teilnehmer:innen-Struktur (Praxisfelder, Alter)?
     - key: schedules
       label: Termine & Ablauf
+      teaser: 3 Varianten — Tageskurs München, Tageskurs Nürnberg, Blockseminare.
       options:
         - Programmstruktur
         - Nachholung
         - Wann ist der letzte Einstieg (dieses Jahr)?
-        - Blockseminarverlauf
-        - Tageskursverlauf
+        - label: Blockseminarverlauf
+          url: /ausbildung-theaterpaedagogik/kurs_einstiege_ins_theaterspiel
+        - label: Tageskursverlauf
+          url: /ausbildung-theaterpaedagogik/kurs_einstiege_ins_theaterspiel
     - key: topics
       label: Inhalte
+      teaser: Elementare und Szenische Animation — zwei Wege für einfache Anfänge.
       options:
         - Was lerne ich im Schwerpunkt 'Elementare Animation'?
         - Was lerne ich im Schwerpunkt 'Szenische Animation'?
         - Fortbildungsbescheinigung
-        - Fortsetzung als 'Grundlagenbildung' (Module B-D)
-        - Aufbaustufe (BuT)
+        - label: Fortsetzung als 'Grundlagenbildung' (Module B-D)
+          url: /ausbildung-theaterpaedagogik/grundlagenbildung
+        - label: Aufbaustufe (BuT)
+          url: /ausbildung-theaterpaedagogik/aufbaustufe
   cta:
     email: per Email klären
     call: direkt klären (Videocall oder Telefon)
