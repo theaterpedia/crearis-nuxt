@@ -45,6 +45,48 @@ details:
     - Frist: 1.3.2026
     - **5 Kursraten A1-A5** 5 Raten x € 220,00
     - Zahlung: 2 Raten 1. Mai, 2 Raten 1. Sept, 1 Rate 1. Nov 2026
+   storno: |
+    ### Widerruf & Storno
+    - 14 Tage Widerruf
+    - Bis 10 Tage nach der ersten Teilnahme an A1-A5 kann die weitere Teilnahme ohne Storno gekündigt werden.
+consulting:
+  intro: Schreib uns — wir melden uns innerhalb von 2 Werktagen.
+  categories:
+    - key: terms_and_options
+      label: Kosten & Zahlungsbedingungen
+      options:
+        - Zahlungsplan
+        - Stornierung
+        - Ratenzahlung
+        - Fördermöglichkeiten
+    - key: prerequisites
+      label: Voraussetzungen
+      options:
+        - Wer kann teilnehmen?
+        - Basistag (A0) — Was erwartet mich?
+        - Wie ist die Teilnehmer:innen-Struktur (Praxisfelder, Alter)?
+    - key: schedules
+      label: Termine & Ablauf
+      options:
+        - Programmstruktur
+        - Nachholung
+        - Wann ist der letzte Einstieg (dieses Jahr)?
+        - Blockseminarverlauf
+        - Tageskursverlauf
+    - key: topics
+      label: Inhalte
+      options:
+        - Was lerne ich im Schwerpunkt 'Elementare Animation'?
+        - Was lerne ich im Schwerpunkt 'Szenische Animation'?
+        - Fortbildungsbescheinigung
+        - Fortsetzung als 'Grundlagenbildung' (Module B-D)
+        - Aufbaustufe (BuT)
+  cta:
+    email: per Email klären
+    call: direkt klären (Videocall oder Telefon)
+  success:
+    email: ✨ abgeschickt! Wir melden uns bei dir.
+    call: Bis bald! Wir rufen dich an.
 product:
  header: |
   ## 6 Kurseinheiten in 3 Blocks

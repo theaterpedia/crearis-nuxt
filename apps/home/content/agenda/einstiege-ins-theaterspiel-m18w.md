@@ -47,7 +47,45 @@ details:
    storno: |
     ### Widerruf & Storno
     - 14 Tage Widerruf
-    - bis 10 Tage nach 1. Präsenzveranstaltung kostenfreies Storno A1-A5
+    - Bis 10 Tage nach der ersten Teilnahme an A1-A5 kann die weitere Teilnahme ohne Storno gekündigt werden.
+consulting:
+  intro: Schreib uns — wir melden uns innerhalb von 2 Werktagen.
+  categories:
+    - key: terms_and_options
+      label: Kosten & Zahlungsbedingungen
+      options:
+        - Zahlungsplan
+        - Stornierung
+        - Ratenzahlung
+        - Fördermöglichkeiten
+    - key: prerequisites
+      label: Voraussetzungen
+      options:
+        - Wer kann teilnehmen?
+        - Basistag (A0) — Was erwartet mich?
+        - Wie ist die Teilnehmer:innen-Struktur (Praxisfelder, Alter)?
+    - key: schedules
+      label: Termine & Ablauf
+      options:
+        - Programmstruktur
+        - Nachholung
+        - Wann ist der letzte Einstieg (dieses Jahr)?
+        - Blockseminarverlauf
+        - Tageskursverlauf
+    - key: topics
+      label: Inhalte
+      options:
+        - Was lerne ich im Schwerpunkt 'Elementare Animation'?
+        - Was lerne ich im Schwerpunkt 'Szenische Animation'?
+        - Fortbildungsbescheinigung
+        - Fortsetzung als 'Grundlagenbildung' (Module B-D)
+        - Aufbaustufe (BuT)
+  cta:
+    email: per Email klären
+    call: direkt klären (Videocall oder Telefon)
+  success:
+    email: ✨ abgeschickt! Wir melden uns bei dir.
+    call: Bis bald! Wir rufen dich an.
 product:
  header: |
   ## 6 Kurseinheiten
