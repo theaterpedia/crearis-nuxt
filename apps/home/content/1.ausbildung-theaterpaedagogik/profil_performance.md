@@ -1,4 +1,5 @@
 ---
+navigation: false
 title: Profil Performance & Interk. Theater
 heading: 'Aufbaustufe Theaterpädagogik (BuT): VERTIEFUNG **Profil Performance & Interkult. Theater** FEB 2027 - JUL 2028 // zeitgenössische Theaterpädagogik // Schwerpunkt München'
 description: FEB 2027 - JUL 2028 // zeitgenössische Theaterpädagogik // Schwerpunkt München

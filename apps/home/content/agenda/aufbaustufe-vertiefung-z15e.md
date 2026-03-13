@@ -115,9 +115,9 @@ consulting:
       teaser: Theatrales Lernen oder Performance & Interkult. Theater.
       options:
         - label: Profil Performance
-          url: /ausbildung-theaterpaedagogik/aufbaustufe/profil_performance
+          url: /ausbildung-theaterpaedagogik/profil_performance
         - label: Profil Theatrales Lernen
-          url: /ausbildung-theaterpaedagogik/aufbaustufe/profil_theatrales_lernen
+          url: /ausbildung-theaterpaedagogik/profil_theatrales_lernen
         - Profilwechsel — bis wann möglich?
   email: service@dasei.eu
   emailLabel: per Email klären

@@ -1,4 +1,5 @@
 ---
+navigation: false
 title: Profil Theatrales Lernen
 heading: 'Aufbaustufe Theaterpädagogik (BuT): VERTIEFUNG **Profil Theatrales Lernen** FEB 2027 - JUL 2028 // zielgruppen-orientierte Theaterpädagogik // Schwerpunkt Nürnberg'
 description: FEB 2027 - JUL 2028 // praxisorientierte Theaterpädagogik // Schwerpunkt Nürnberg
@@ -34,11 +35,11 @@ icon: 'lucide:info'
 
 > [!columns|gap=small]
 >> [!column|width=3/5]
->> ### **Wie können wir Kindern und Jugendlichen eine Stimme in unserer herausfordernden Gesellschaft verleihen?**
+>> ### **Wie können wir Kindern und Jugendlichen eine Stimme in unserer herausfordernden Gesellschaft verleihen?**
 >> - Wenn es scheint als gäbe es einfache Antworten auf komplexe Fragen.
 >> - Wenn es scheint als werde diese Stimme nicht gehört und Beteiligung unmöglich.
 >>
->> Wir verstehen Theaterspiel als zentrale Ressource für persönliche Resilienz, kritische Reflexion, Empathie und Selbstwirksamkeit.
+>> Wir verstehen Theaterspiel als zentrale Ressource für persönliche Resilienz, kritische Reflexion, Empathie und Selbstwirksamkeit.
 >
 >> [!column|width=2/5 fill=true]
 >> ![Theatrales Lernen: Theateraufführung](https://res.cloudinary.com/little-papillon/image/upload/v1594666955/dasei/geister_mittel_theatrales_lernen.jpg)
@@ -52,7 +53,7 @@ icon: 'lucide:info'
 >> [!column|width=1/2]
 >> - Du bist bereits Spielleiter:in oder bist momentan in der Weiterbildung hierfür (Beim Ei oder wo anders)
 >> - Du bist, KünstlerIn, LehrerIn, Kulturpädagogin mit Berufserfahrung
->> - Du möchtest inklusive Theaterarbeit umsetzen 
+>> - Du möchtest inklusive Theaterarbeit umsetzen 
 >> - Du suchst nach partizipativer, postdramatischer und pädagogisch fundierter Theaterpädagogik mit Kindern, Jugendlichen und anderen gesellschaftlichen Zielgruppen?
 >
 >> [!column|width=1/2]

@@ -70,9 +70,9 @@ consulting:
       teaser: Theatrales Lernen oder Performance & Interkult. Theater.
       options:
         - label: Profil Theatrales Lernen
-          url: /ausbildung-theaterpaedagogik/aufbaustufe/profil_theatrales_lernen
+          url: /ausbildung-theaterpaedagogik/profil_theatrales_lernen
         - label: Profil Performance
-          url: /ausbildung-theaterpaedagogik/aufbaustufe/profil_performance
+          url: /ausbildung-theaterpaedagogik/profil_performance
         - Profilwechsel — bis wann möglich?
     - key: schedules
       label: Termine & Ablauf
