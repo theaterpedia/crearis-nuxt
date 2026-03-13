@@ -81,7 +81,8 @@ consulting:
     💡 Nach der Vertiefung entscheidest du, ob du ein Profil (Theatrales Lernen oder Performance) buchst.
   categories:
     - key: terms_and_options
-      label: Finanzierung
+      overline: Kosten & Optionen 2
+      label: Finanzierung 2
       teaser: Frühbucher- und Paketrabatte. KOMPASS-Förderung für Solo-Selbstständige möglich.
       options:
         - Frühbucherrabatt
@@ -93,6 +94,7 @@ consulting:
         - label: Fördermöglichkeiten Überblick
           url: /blog/aktuelles/foerdermoeglichkeiten-29
     - key: prerequisites
+      overline: Zulassung & Anerkennung
       label: Zulassung & Quereinstieg
       teaser: Grundlagenbildung + A-B-C-D Kriterien. Quereinstieg möglich.
       options:
@@ -102,6 +104,7 @@ consulting:
         - Grundlagenbildung extern (BuT-Institute)
         - Erfülle ich die Voraussetzungen?
     - key: schedules
+      overline: Termine & Zeitplanung
       label: Verläufe
       teaser: 3-Phasen-Modell. Vertiefung ab SEP 2026 buchbar.
       options:
@@ -111,6 +114,7 @@ consulting:
         - Nachholung
         - Letzter Einstieg
     - key: topics
+      overline: Themenschwerpunkte
       label: Profile
       teaser: Theatrales Lernen oder Performance & Interkult. Theater.
       options:

@@ -98,6 +98,10 @@ export interface ConsultingContactInput {
  */
 export interface CategorySelectionInput {
   category: string
+  /** Display label (passed from YAML config) */
+  label?: string
+  /** Overline text (passed from YAML config) */
+  overline?: string
   options?: string[]
   text?: string
 }
@@ -136,22 +140,17 @@ export interface ConsultingState {
 }
 
 // Preset configurations
-export type ConsultingPreset = 'einstieg' | 'grundlagen' | 'aufbau'
+export type ConsultingPreset = 'default' | 'newsletter'
 
 export const PRESET_CONFIG: Record<ConsultingPreset, { title: string; description: string; domainCode: string }> = {
-  einstieg: {
-    title: 'Beratung: Einstiege ins Theaterspiel',
-    description: 'Online-Beratung zur Fortbildung "Einstiege ins Theaterspiel"',
+  default: {
+    title: 'Beratung',
+    description: 'Online-Beratung',
     domainCode: 'dasei',
   },
-  grundlagen: {
-    title: 'Beratung: Grundlagenbildung',
-    description: 'Online-Beratung zur Grundlagenbildung Theaterpädagogik',
-    domainCode: 'dasei',
-  },
-  aufbau: {
-    title: 'Beratung: Aufbaustufe',
-    description: 'Online-Beratung zur Aufbaustufe Theaterpädagogik (BuT)',
+  newsletter: {
+    title: 'Newsletter',
+    description: 'Newsletter-Anmeldung',
     domainCode: 'dasei',
   },
 }
@@ -159,7 +158,7 @@ export const PRESET_CONFIG: Record<ConsultingPreset, { title: string; descriptio
 /**
  * Composable for consulting slot booking.
  * 
- * @param options.preset - Consulting context ('einstieg', 'grundlagen', 'aufbau')
+ * @param options.preset - Consulting context ('default', 'newsletter')
  * @param options.startDate - Filter slots from this date (default: now)
  * @param options.endDate - Filter slots until this date (default: now + 7 days)
  * 
@@ -167,7 +166,7 @@ export const PRESET_CONFIG: Record<ConsultingPreset, { title: string; descriptio
  * ```vue
  * <script setup>
  * const route = useRoute()
- * const preset = (route.query.preset as string) || 'einstieg'
+ * const preset = (route.query.preset as string) || 'default'
  * const consulting = useConsultingSlots({ preset })
  * 
  * await consulting.fetchSlots()
@@ -183,8 +182,8 @@ export function useConsultingSlots(options: {
   domainCode?: string
 } = {}) {
   // Resolve preset with default
-  const preset = options.preset || 'einstieg'
-  const presetConfig = PRESET_CONFIG[preset] || PRESET_CONFIG.einstieg
+  const preset = options.preset || 'default'
+  const presetConfig = PRESET_CONFIG[preset] || PRESET_CONFIG.default
   
   // Domain code: explicit override or from preset
   const domainCode = options.domainCode || presetConfig.domainCode

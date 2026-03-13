@@ -2,7 +2,7 @@
   <div>
     <SectionContainer background="accent">
       <Heading
-        :content="consulting.presetConfig.title"
+        :content="pageTitle"
         is="h3"
       />
       <p class="text-neutral-600 mt-2">Fragen und Antworten</p>
@@ -60,7 +60,7 @@
                   <h3>Deine Themen</h3>
                   <ul>
                     <li v-for="sel in selections" :key="sel.category">
-                      <strong>{{ categoryLabels[sel.category] || sel.category }}</strong>
+                      <strong>{{ getCategoryLabel(sel) }}</strong>
                       <span v-if="sel.options?.length" class="block text-sm text-neutral-500">
                         {{ sel.options.join(', ') }}
                       </span>
@@ -133,7 +133,7 @@
                   <p class="text-sm text-neutral-500 mb-1">Themen:</p>
                   <ul class="text-sm">
                     <li v-for="sel in selections" :key="sel.category">
-                      {{ categoryLabels[sel.category] || sel.category }}
+                      {{ getCategoryLabel(sel) }}
                       <span v-if="sel.options?.length" class="text-neutral-500">
                         ({{ sel.options.join(', ') }})
                       </span>
@@ -471,7 +471,7 @@ const SfIconCalendar = SfIconCalendarToday
 const props = defineProps({
   preset: {
     type: String as PropType<ConsultingPreset>,
-    default: 'einstieg',
+    default: 'default',
   },
   startDate: {
     type: Date,
@@ -483,10 +483,10 @@ const props = defineProps({
   },
   /**
    * Pre-selected consultation selections from URL.
-   * Example: [{ category: 'schedules', options: ['blockverlauf'], text: 'My question' }]
+   * Example: [{ category: 'schedules', label: 'Verläufe', options: ['blockverlauf'], text: 'My question' }]
    */
   selections: {
-    type: Array as PropType<Array<{ category: string; options?: string[]; text?: string }>>,
+    type: Array as PropType<Array<{ category: string; label?: string; overline?: string; options?: string[]; text?: string }>>,
     default: () => [],
   },
   /**
@@ -505,6 +505,22 @@ const props = defineProps({
     type: String,
     default: undefined,
   },
+  /**
+   * Title override for the page heading.
+   * Example: 'Vertiefung' → displays as 'Beratung: Vertiefung'
+   */
+  title: {
+    type: String,
+    default: undefined,
+  },
+})
+
+// Computed page title (override or from preset)
+const pageTitle = computed(() => {
+  if (props.title) {
+    return `Beratung: ${props.title}`
+  }
+  return consulting.presetConfig.title
 })
 
 // Initialize consulting composable
@@ -525,13 +541,18 @@ const steps = [
   { title: 'Bestätigung', name: 'confirm' },
 ]
 
-// Category labels for display
-const categoryLabels: Record<string, string> = {
+// Fallback category labels (used when label not passed in selection)
+const fallbackCategoryLabels: Record<string, string> = {
   prerequisites: 'Voraussetzungen',
   terms_and_options: 'Zahlungsbedingungen',
   topics: 'Profile',
   schedules: 'Verläufe',
   custom: 'Individuell',
+}
+
+// Get label for a selection (prefer passed label, fallback to hardcoded)
+const getCategoryLabel = (sel: { category: string; label?: string }) => {
+  return sel.label || fallbackCategoryLabels[sel.category] || sel.category
 }
 
 // Computed: selections for template access

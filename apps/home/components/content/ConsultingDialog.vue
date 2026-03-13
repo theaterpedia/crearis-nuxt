@@ -1,117 +1,137 @@
 <template>
-  <div class="consulting-dialog">
+  <div class="consulting-dialog" :class="{ 'consulting-dialog--fancy': fancy, 'has-active': hasSelection }">
     <div class="consulting-dialog-header">
-      <span v-if="overline" class="consulting-dialog-overline">{{ overline }}</span>
+      <span v-if="computedOverline" class="consulting-dialog-overline">{{ computedOverline }}</span>
       <h2 class="consulting-dialog-title">{{ title }}</h2>
       <p v-if="description" class="consulting-dialog-description">{{ description }}</p>
     </div>
 
-    <div class="consulting-dialog-categories">
-      <ConsultingCategoryItem
-        v-for="category in normalizedCategories"
-        :key="category.key"
-        :name="category.key"
-        :title="category.label"
-        :overline="category.overline"
-        :options="category.options"
-        :option-type="category.optionType || 'checkbox'"
-        :input-label="category.inputLabel || 'Deine Frage oder Anmerkung'"
-        :input-placeholder="category.inputPlaceholder || 'Optional: Beschreibe Dein Anliegen...'"
-        :variant="variant"
-        v-model="selectedCategories[category.key]"
-        v-model:freeform-text="freeformTexts[category.key]"
-        v-model:selected-options="selectedOptions[category.key]"
-      >
-        <template v-if="category.teaser">
-          {{ category.teaser }}
-        </template>
-      </ConsultingCategoryItem>
-    </div>
-
-    <div class="consulting-dialog-actions">
-      <!-- Success state: replaces entire actions section -->
-      <div v-if="emailSent" class="consulting-dialog-success">
-        <svg class="consulting-dialog-success-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-        <span class="consulting-dialog-success-text">{{ finalSuccessMessage }}</span>
+    <div class="consulting-dialog-body">
+      <!-- Left rail for fancy mode -->
+      <div v-if="fancy" class="consulting-dialog-rail">
+        <div class="consulting-dialog-rail-line" :class="{ 'is-active': hasSelection }"></div>
       </div>
 
-      <!-- Default CTA buttons -->
-      <template v-else-if="!showEmailForm">
-        <div class="consulting-dialog-cta-row">
-          <a
-            v-if="callPhone && variant !== 'email-only'"
-            :href="`tel:${callPhone}`"
-            class="consulting-dialog-cta consulting-dialog-cta--call"
+      <div class="consulting-dialog-main">
+        <div class="consulting-dialog-categories">
+          <div 
+            v-for="(category, index) in normalizedCategories"
+            :key="category.key"
+            class="consulting-dialog-category-wrapper"
+            :class="{ 
+              'is-expanded': selectedCategories[category.key],
+              'has-active-above': hasActiveAbove(index)
+            }"
           >
-            <svg class="consulting-dialog-cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-            {{ callLabel }}
-          </a>
-          <button
-            v-if="email"
-            type="button"
-            :disabled="!hasSelection"
-            @click="showEmailForm = true"
-            class="consulting-dialog-cta consulting-dialog-cta--email"
-          >
-            <svg class="consulting-dialog-cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-            {{ emailLabel }}
-          </button>
+            <ConsultingCategoryItem
+              :name="category.key"
+              :title="category.label"
+              :overline="category.overline"
+              :options="category.options"
+              :option-type="category.optionType || 'checkbox'"
+              :input-label="category.inputLabel || 'Deine Frage oder Anmerkung'"
+              :input-placeholder="category.inputPlaceholder || 'Optional: Beschreibe Dein Anliegen...'"
+              :variant="categoryVariant"
+              :expansion-delay="300"
+              v-model="selectedCategories[category.key]"
+              v-model:freeform-text="freeformTexts[category.key]"
+              v-model:selected-options="selectedOptions[category.key]"
+            >
+              <template v-if="category.teaser">
+                {{ category.teaser }}
+              </template>
+            </ConsultingCategoryItem>
+          </div>
         </div>
 
-        <p v-if="!hasSelection" class="consulting-dialog-hint">
-          {{ hintNoSelection }}
-        </p>
-      </template>
+        <div class="consulting-dialog-actions">
+          <!-- Success state: replaces entire actions section -->
+          <div v-if="emailSent" class="consulting-dialog-success">
+            <svg class="consulting-dialog-success-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span class="consulting-dialog-success-text">{{ finalSuccessMessage }}</span>
+          </div>
 
-      <!-- Inline email form -->
-      <template v-else>
-        <form class="consulting-dialog-email-form" @submit.prevent="handleSendEmail">
-          <div class="consulting-dialog-email-field">
-            <label for="email-from" class="consulting-dialog-email-label">{{ emailFromLabel }}</label>
-            <input
-              id="email-from"
-              v-model="emailFrom"
-              type="email"
-              required
-              :placeholder="emailFromPlaceholder"
-              class="consulting-dialog-email-input"
-            />
-          </div>
-          <div class="consulting-dialog-email-actions">
-            <button
-              type="submit"
-              :disabled="!emailFrom || sendingEmail"
-              class="consulting-dialog-cta consulting-dialog-cta--send"
-            >
-              <template v-if="sendingEmail">
-                {{ sendingLabel }}
-              </template>
-              <template v-else>
-                {{ sendLabel }}
-              </template>
-            </button>
-            <button
-              type="button"
-              @click="showEmailForm = false; emailFrom = ''"
-              class="consulting-dialog-cancel"
-            >
-              {{ cancelLabel }}
-            </button>
-          </div>
-        </form>
-      </template>
+          <!-- Default CTA buttons -->
+          <template v-else-if="!showEmailForm">
+            <div class="consulting-dialog-cta-wrapper" :class="{ 'is-active': ctaVisualActive }">
+              <!-- Simple arrow connector in fancy mode -->
+              <span v-if="fancy" class="consulting-dialog-cta-arrow">└ &gt;</span>
+              <div class="consulting-dialog-cta-row">
+                <button
+                  v-if="variant !== 'email-only'"
+                  type="button"
+                  :disabled="!hasSelection"
+                  @click="handleStartBeratung"
+                  class="consulting-dialog-cta consulting-dialog-cta--book"
+                >
+                  <svg class="consulting-dialog-cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                  {{ callLabel }}
+                </button>
+                <button
+                  v-if="email"
+                  type="button"
+                  :disabled="!hasSelection"
+                  @click="showEmailForm = true"
+                  class="consulting-dialog-cta consulting-dialog-cta--email"
+                >
+                  <svg class="consulting-dialog-cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                  {{ emailLabel }}
+                </button>
+              </div>
+            </div>
+          </template>
+
+          <!-- Inline email form -->
+          <template v-else>
+            <form class="consulting-dialog-email-form" @submit.prevent="handleSendEmail">
+              <div class="consulting-dialog-email-field">
+                <label for="email-from" class="consulting-dialog-email-label">{{ emailFromLabel }}</label>
+                <input
+                  id="email-from"
+                  v-model="emailFrom"
+                  type="email"
+                  required
+                  :placeholder="emailFromPlaceholder"
+                  class="consulting-dialog-email-input"
+                />
+              </div>
+              <div class="consulting-dialog-email-actions">
+                <button
+                  type="submit"
+                  :disabled="!emailFrom || sendingEmail"
+                  class="consulting-dialog-cta consulting-dialog-cta--send"
+                >
+                  <template v-if="sendingEmail">
+                    {{ sendingLabel }}
+                  </template>
+                  <template v-else>
+                    {{ sendLabel }}
+                  </template>
+                </button>
+                <button
+                  type="button"
+                  @click="showEmailForm = false; emailFrom = ''"
+                  class="consulting-dialog-cancel"
+                >
+                  {{ cancelLabel }}
+                </button>
+              </div>
+            </form>
+          </template>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { computed, reactive, ref, type PropType } from 'vue'
+import { computed, reactive, ref, watch, type PropType } from 'vue'
 import { useRouter } from 'vue-router'
 import { ConsultingCategoryItem } from '@crearis/ui'
 
@@ -151,6 +171,33 @@ const props = defineProps({
   variant: {
     type: String as PropType<'default' | 'roundedBorders' | 'email-only'>,
     default: 'default',
+  },
+
+  /**
+   * Enable fancy mode with visual rail and connector lines.
+   * When true, active categories expand left and a dotted line connects them to the CTA.
+   * 
+   * @default true
+   */
+  fancy: {
+    type: Boolean,
+    default: true,
+  },
+
+  /**
+   * Page title for dynamic overline text.
+   * If provided and overline not set, generates "Beratung zu: {pageTitle}"
+   */
+  pageTitle: {
+    type: String,
+  },
+
+  /**
+   * Navigation highlight path for /beratung route.
+   * If provided, the navigation menu will highlight this path.
+   */
+  navHighlight: {
+    type: String,
   },
 
   /**
@@ -248,11 +295,11 @@ const props = defineProps({
   /**
    * Label for the call CTA button.
    *
-   * @default 'Anrufen'
+   * @default 'Beratung per Videocall (oder Telefon)'
    */
   callLabel: {
     type: String,
-    default: 'Anrufen',
+    default: 'Beratung per Videocall (oder Telefon)',
   },
 
   /**
@@ -266,11 +313,11 @@ const props = defineProps({
   /**
    * Label for the email CTA button.
    *
-   * @default 'Email schreiben'
+   * @default 'per Email klären'
    */
   emailLabel: {
     type: String,
-    default: 'Email schreiben',
+    default: 'per Email klären',
   },
 
   /**
@@ -411,6 +458,24 @@ const normalizedCategories = computed(() => {
   }))
 })
 
+// Variant for category items (email-only maps to default)
+const categoryVariant = computed(() => {
+  return props.variant === 'email-only' ? 'default' : props.variant
+})
+
+// Computed overline: use overline prop, or generate from pageTitle
+const computedOverline = computed(() => {
+  if (props.overline) return props.overline
+  if (props.pageTitle) return `Beratung zu: ${props.pageTitle}`
+  return null
+})
+
+// Check if any category above the given index is selected (for dotted line logic)
+const hasActiveAbove = (index: number): boolean => {
+  const categories = props.categories.slice(0, index)
+  return categories.some(cat => selectedCategories[cat.key])
+}
+
 // Reactive state for selected categories (checkboxes)
 const selectedCategories = reactive<Record<string, boolean>>(
   Object.fromEntries(props.categories.map(c => [c.key, false]))
@@ -429,6 +494,22 @@ const selectedOptions = reactive<Record<string, string[]>>(
 // Check if at least one category is selected
 const hasSelection = computed(() => {
   return Object.values(selectedCategories).some(v => v)
+})
+
+// Visual state for CTA active styling (separate from hasSelection for transition timing)
+const ctaVisualActive = ref(false)
+
+// Watch hasSelection for staggered transitions
+watch(hasSelection, (isActive) => {
+  if (isActive) {
+    // Entering active: CTA lights up first, then category expands after 300ms
+    ctaVisualActive.value = true
+  } else {
+    // Entering inactive: category collapses immediately, CTA dims after 300ms
+    setTimeout(() => {
+      ctaVisualActive.value = false
+    }, 300)
+  }
 })
 
 // Final success message: prefer YAML success.email, fallback to successMessage prop
@@ -453,11 +534,26 @@ const getNonEmptyFreeformText = (): Record<string, string> => {
 // Build selections array for the new schema
 const buildSelections = () => {
   const categories = getSelectedKeys()
-  return categories.map(cat => ({
-    category: cat,
-    options: selectedOptions[cat]?.length > 0 ? selectedOptions[cat] : undefined,
-    text: freeformTexts[cat]?.trim() || undefined,
-  }))
+  return categories.map(cat => {
+    // Find the category config to get label/overline
+    const catConfig = props.categories.find(c => c.key === cat)
+    const normalizedCat = normalizedCategories.value.find(c => c.key === cat)
+    
+    // Map option keys back to labels
+    const selectedKeys = selectedOptions[cat] || []
+    const optionLabels = selectedKeys.map(optKey => {
+      const opt = normalizedCat?.options?.find(o => o.key === optKey)
+      return opt?.label || optKey
+    })
+    
+    return {
+      category: cat,
+      label: catConfig?.label,
+      overline: catConfig?.overline,
+      options: optionLabels.length > 0 ? optionLabels : undefined,
+      text: freeformTexts[cat]?.trim() || undefined,
+    }
+  })
 }
 
 const handleStartBeratung = () => {
@@ -484,6 +580,16 @@ const handleStartBeratung = () => {
     
     if (props.domainCode) {
       params.set('domain', props.domainCode)
+    }
+    
+    // Pass page title for /beratung heading
+    if (props.pageTitle) {
+      params.set('title', props.pageTitle)
+    }
+    
+    // Pass navigation highlight path
+    if (props.navHighlight) {
+      params.set('navHighlight', props.navHighlight)
     }
 
     const query = params.toString()
@@ -554,7 +660,7 @@ const handleSendEmail = async () => {
 .consulting-dialog-categories {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.25rem;
 }
 
 .consulting-dialog-actions {
@@ -572,30 +678,20 @@ const handleSendEmail = async () => {
   gap: 0.5rem;
   min-width: 12rem;
   padding: 0.875rem 2rem;
-  background-color: var(--color-primary-bg);
-  color: var(--color-primary-contrast);
+  background-color: var(--color-muted);
+  color: oklch(from var(--color-contrast) l c h / 40%);
   border: none;
   border-radius: 0.375rem;
   font-size: 1rem;
   font-weight: 500;
-  cursor: pointer;
+  cursor: not-allowed;
   text-decoration: none;
-  transition: var(--transition);
-  transition-property: background-color, box-shadow, opacity;
-}
-
-.consulting-dialog-cta:hover:not(:disabled) {
-  background-color: oklch(from var(--color-primary-bg) calc(l - 0.05) c h);
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.15s ease;
 }
 
 .consulting-dialog-cta:focus {
   outline: none;
   box-shadow: 0 0 0 0.125rem var(--color-ring);
-}
-
-.consulting-dialog-cta:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
 }
 
 .consulting-dialog-cta-icon {
@@ -610,28 +706,49 @@ const handleSendEmail = async () => {
   gap: 0.75rem;
 }
 
-.consulting-dialog-cta--call {
-  background-color: var(--color-primary-bg);
-  color: var(--color-primary-contrast);
-}
-
+/* Inactive state: both buttons grey with light text */
+.consulting-dialog-cta--book,
 .consulting-dialog-cta--email {
   background-color: var(--color-muted);
-  color: var(--color-contrast);
+  color: oklch(from var(--color-contrast) l c h / 40%);
 }
 
-.consulting-dialog-cta--email:hover:not(:disabled) {
+/* Active state: book button gets primary color */
+.consulting-dialog-cta-row.is-active .consulting-dialog-cta--book {
+  background-color: var(--color-primary-bg);
+  color: var(--color-primary-contrast);
+  cursor: pointer;
+}
+
+.consulting-dialog-cta-row.is-active .consulting-dialog-cta--book:hover {
+  background-color: oklch(from var(--color-primary-bg) calc(l - 0.05) c h);
+}
+
+/* Active state: email button gets muted background with full contrast text */
+.consulting-dialog-cta-row.is-active .consulting-dialog-cta--email {
+  background-color: var(--color-muted);
+  color: var(--color-contrast);
+  cursor: pointer;
+}
+
+.consulting-dialog-cta-row.is-active .consulting-dialog-cta--email:hover {
   background-color: oklch(from var(--color-muted) calc(l - 0.05) c h);
 }
 
 .consulting-dialog-cta--send {
   flex: 1;
+  background-color: var(--color-primary-bg);
+  color: var(--color-primary-contrast);
+  cursor: pointer;
 }
 
-.consulting-dialog-hint {
-  margin: 0;
-  font-size: 0.875rem;
-  color: oklch(from var(--color-contrast) l c h / 60%);
+.consulting-dialog-cta--send:hover:not(:disabled) {
+  background-color: oklch(from var(--color-primary-bg) calc(l - 0.05) c h);
+}
+
+.consulting-dialog-cta--send:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 /* Email form */
@@ -747,6 +864,169 @@ const handleSendEmail = async () => {
 
   .consulting-dialog-cancel {
     width: 100%;
+  }
+}
+
+/* ========================================
+   FANCY MODE: Rail + Visual Connectors
+   ======================================== */
+
+/* Rail width and positioning constants */
+.consulting-dialog--fancy {
+  --rail-width: 0.125rem;
+  --rail-line-width: 2px;
+  --rail-offset: 0;
+}
+
+.consulting-dialog-body {
+  display: flex;
+  position: relative;
+}
+
+.consulting-dialog-rail {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 50%;
+  width: var(--rail-line-width);
+  display: flex;
+  justify-content: center;
+}
+
+.consulting-dialog-rail-line {
+  width: var(--rail-line-width);
+  height: 100%;
+  background: transparent;
+  transition: background 0.3s ease;
+}
+
+/* When any category is active, show dotted line */
+.consulting-dialog--fancy.has-active .consulting-dialog-rail-line {
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--color-primary-bg) 0,
+    var(--color-primary-bg) 4px,
+    transparent 4px,
+    transparent 8px
+  );
+}
+
+.consulting-dialog-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* No extra margin in fancy mode - align with title */
+.consulting-dialog--fancy .consulting-dialog-main {
+  margin-left: 0;
+}
+
+/* Categories wrapper in fancy mode */
+.consulting-dialog--fancy .consulting-dialog-categories {
+  position: relative;
+}
+
+/* Individual category wrapper for expansion effect */
+.consulting-dialog-category-wrapper {
+  position: relative;
+  transition: margin-left 150ms ease-out, padding-left 150ms ease-out;
+}
+
+/* Collapsed categories in fancy mode: indent to align chevrons with expanded */
+.consulting-dialog--fancy .consulting-dialog-category-wrapper {
+  margin-left: 1rem;
+}
+
+/* Active/expanded categories: no indent, align with title */
+.consulting-dialog--fancy .consulting-dialog-category-wrapper.is-expanded {
+  margin-left: 0;
+}
+
+/* Categories with active above but NOT expanded: show continuation line */
+.consulting-dialog--fancy .consulting-dialog-category-wrapper.has-active-above:not(.is-expanded)::before {
+  content: '';
+  position: absolute;
+  left: -1rem;
+  top: 0;
+  bottom: 0;
+  width: var(--rail-line-width);
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--color-primary-bg) 0,
+    var(--color-primary-bg) 4px,
+    transparent 4px,
+    transparent 8px
+  );
+}
+
+/* CTA wrapper for connector */
+.consulting-dialog-cta-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Simple arrow text */
+.consulting-dialog-cta-arrow {
+  font-family: monospace;
+  font-size: 1rem;
+  font-weight: 900;
+  color: var(--color-primary-bg);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+}
+
+/* Show arrow when active */
+.consulting-dialog-cta-wrapper.is-active .consulting-dialog-cta-arrow {
+  opacity: 1;
+}
+
+/* Active state for CTA wrapper */
+.consulting-dialog-cta-wrapper.is-active .consulting-dialog-cta--book {
+  background-color: var(--color-primary-bg);
+  color: var(--color-primary-contrast);
+  cursor: pointer;
+}
+
+.consulting-dialog-cta-wrapper.is-active .consulting-dialog-cta--book:hover {
+  background-color: oklch(from var(--color-primary-bg) calc(l - 0.05) c h);
+}
+
+.consulting-dialog-cta-wrapper.is-active .consulting-dialog-cta--email {
+  background-color: var(--color-muted);
+  color: var(--color-contrast);
+  cursor: pointer;
+}
+
+.consulting-dialog-cta-wrapper.is-active .consulting-dialog-cta--email:hover {
+  background-color: oklch(from var(--color-muted) calc(l - 0.05) c h);
+}
+
+/* No extra shift for CTA in fancy mode */
+.consulting-dialog--fancy .consulting-dialog-cta-wrapper {
+  /* Align with content */
+}
+
+/* Mobile: disable fancy effects */
+@media (max-width: 767px) {
+  .consulting-dialog-rail {
+    display: none;
+  }
+
+  .consulting-dialog--fancy .consulting-dialog-category-wrapper {
+    margin-left: 0;
+  }
+
+  .consulting-dialog--fancy .consulting-dialog-category-wrapper.has-active-above::before {
+    display: none;
+  }
+
+  .consulting-dialog-cta-arrow {
+    display: none;
   }
 }
 </style>
