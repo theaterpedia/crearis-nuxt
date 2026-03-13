@@ -57,20 +57,28 @@ consulting:
         - Zahlungsplan
         - Stornierung
         - Ratenzahlung
+        - Fördermöglichkeiten
     - key: prerequisites
       label: Voraussetzungen
       options:
         - Wer kann teilnehmen?
         - Basistag (A0) — Was erwartet mich?
+        - Wie ist die Teilnehmer:innen-Struktur (Praxisfelder, Alter)?
     - key: schedules
       label: Termine & Ablauf
       options:
         - Programmstruktur
         - Nachholung
+        - Wann ist der letzte Einstieg (dieses Jahr)?
+        - Blockseminarverlauf
+        - Tageskursverlauf
     - key: topics
-      label: Fortsetzung
+      label: Inhalte
       options:
-        - Grundlagenbildung (Module B-D)
+        - Was lerne ich im Schwerpunkt 'Elementare Animation'?
+        - Was lerne ich im Schwerpunkt 'Szenische Animation'?
+        - Fortbildungsbescheinigung
+        - Fortsetzung als 'Grundlagenbildung' (Module B-D)
         - Aufbaustufe (BuT)
   cta:
     email: per Email klären
