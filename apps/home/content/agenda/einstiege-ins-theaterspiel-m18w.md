@@ -50,6 +50,7 @@ details:
     - Bis 10 Tage nach der ersten Teilnahme an A1-A5 kann die weitere Teilnahme ohne Storno gekündigt werden.
 consulting:
   intro: Schreib uns — wir melden uns innerhalb von 2 Werktagen.
+  domainCode: dasei1
   categories:
     - key: terms_and_options
       label: Kosten & Förderung

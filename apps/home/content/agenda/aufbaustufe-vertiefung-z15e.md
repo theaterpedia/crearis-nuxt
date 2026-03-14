@@ -77,6 +77,7 @@ details:
         - **Abschlussphase** (K4-K6 + P1-P6) 9 Raten × € 220,00 = € 1.980,00
 consulting:
   intro: Schreib uns — wir melden uns innerhalb von 2 Werktagen.
+  domainCode: dasei3
   extension_note: |
     💡 Nach der Vertiefung entscheidest du, ob du ein Profil (Theatrales Lernen oder Performance) buchst.
   categories:
