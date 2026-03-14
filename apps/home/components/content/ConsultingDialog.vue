@@ -58,7 +58,7 @@
             <div class="consulting-dialog-cta-wrapper" :class="{ 'is-active': ctaVisualActive }">
               <!-- Simple arrow connector in fancy mode -->
               <span v-if="fancy" class="consulting-dialog-cta-arrow">└ &gt;</span>
-              <div class="consulting-dialog-cta-row">
+              <div class="consulting-dialog-cta-row" :class="{ 'email-only': variant === 'email-only' }">
                 <button
                   v-if="variant !== 'email-only'"
                   type="button"
@@ -481,6 +481,7 @@ const lastName = ref('')
 const emailFrom = ref('')
 const sendingEmail = ref(false)
 const emailSent = ref(false)
+const partialSuccessInfo = ref<{ skippedLabels: string[] } | null>(null)
 
 // Normalize YAML options: convert strings and {label, url} objects to {key, label, url?} format
 const normalizeOption = (opt: string | { label: string; url?: string }, index: number): CategoryOption => {
@@ -566,8 +567,14 @@ watch(hasSelection, (isActive) => {
 })
 
 // Final success message: prefer YAML success.email, fallback to successMessage prop
+// If partial success, append skipped category info
 const finalSuccessMessage = computed(() => {
-  return props.success?.email || props.successMessage
+  const base = props.success?.email || props.successMessage
+  if (partialSuccessInfo.value?.skippedLabels.length) {
+    const skipped = partialSuccessInfo.value.skippedLabels.join(', ')
+    return `${base} (Nicht gesendet: ${skipped} — bitte separat anfragen)`
+  }
+  return base
 })
 
 // Get selected category keys
@@ -657,17 +664,32 @@ const handleSendEmail = async () => {
   if (!firstName.value || !lastName.value || !emailFrom.value || !effectiveDomainCode.value) return
   
   sendingEmail.value = true
-  const selections = buildSelections()
+  partialSuccessInfo.value = null
+  
+  const allSelections = buildSelections()
+  
+  // Filter selections to only include categories matching effectiveDomainCode
+  // Categories without domainCode are always included
+  const selectionsToSend = allSelections.filter(sel => {
+    const catConfig = props.categories.find(c => c.key === sel.category)
+    return !catConfig?.domainCode || catConfig.domainCode === effectiveDomainCode.value
+  })
+  
+  // Track skipped categories (different domainCode)
+  const skippedSelections = allSelections.filter(sel => {
+    const catConfig = props.categories.find(c => c.key === sel.category)
+    return catConfig?.domainCode && catConfig.domainCode !== effectiveDomainCode.value
+  })
 
   try {
-    // Call GraphQL mutation
+    // Call GraphQL mutation with filtered selections
     const result = await createEmailInquiry({
       contact: {
         vorname: firstName.value,
         nachname: lastName.value,
         email: emailFrom.value,
       },
-      selections,
+      selections: selectionsToSend,
       domainCode: effectiveDomainCode.value,
       productSlug: props.productRef,
     })
@@ -678,13 +700,20 @@ const handleSendEmail = async () => {
       return
     }
 
+    // Set partial success info if any categories were skipped
+    if (skippedSelections.length > 0) {
+      partialSuccessInfo.value = {
+        skippedLabels: skippedSelections.map(s => s.label || s.category)
+      }
+    }
+
     // Emit event for any parent listeners (backwards compat)
     emit('send-email', {
       firstName: firstName.value,
       lastName: lastName.value,
       from: emailFrom.value,
       to: props.email || '',
-      selections,
+      selections: selectionsToSend,
       productRef: props.productRef,
       domainCode: effectiveDomainCode.value,
     })
@@ -813,6 +842,18 @@ const handleSendEmail = async () => {
 
 .consulting-dialog-cta-row.is-active .consulting-dialog-cta--email:hover {
   background-color: oklch(from var(--color-muted) calc(l - 0.05) c h);
+}
+
+/* Email-only mode: email button becomes primary (no book button present) */
+.consulting-dialog-cta-row.is-active.email-only .consulting-dialog-cta--email,
+.consulting-dialog-cta-wrapper.is-active .consulting-dialog-cta-row.email-only .consulting-dialog-cta--email {
+  background-color: var(--color-primary-bg);
+  color: var(--color-primary-contrast);
+}
+
+.consulting-dialog-cta-row.is-active.email-only .consulting-dialog-cta--email:hover,
+.consulting-dialog-cta-wrapper.is-active .consulting-dialog-cta-row.email-only .consulting-dialog-cta--email:hover {
+  background-color: oklch(from var(--color-primary-bg) calc(l - 0.05) c h);
 }
 
 .consulting-dialog-cta--send {

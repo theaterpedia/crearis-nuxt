@@ -120,8 +120,9 @@
       >
         <ConsultingDialog
           :variant="consultingConfig.variant || 'email-only'"
-          :fancy="false"
+          :fancy="consultingConfig.fancy !== false"
           :title="consultingConfig.title || 'Fragen?'"
+          :overline="consultingConfig.overline"
           :pageTitle="page?.title"
           :navHighlight="route.path"
           :description="consultingConfig.description || consultingConfig.intro"
@@ -218,8 +219,9 @@ const CONSULTING_PRESETS: Record<ConsultingCtype, ConsultingPreset> = {
     emailLabel: 'Nachricht senden',
     title: 'Fragen oder Vorschläge?',
     intro: 'Schreib uns direkt — wir melden uns.',
-    domainCode: 'dasei',  // General domain
+    domainCode: 'dasei',  // General domain (category can override)
     consultationType: 'contact_inquiry',
+    fancy: true,
     success: {
       email: '✨ Nachricht gesendet!',
     },
@@ -255,16 +257,18 @@ const CONSULTING_PRESETS: Record<ConsultingCtype, ConsultingPreset> = {
 // 3. ctype-based preset (event, product, contact, newsletter)
 // 4. null (no consulting shown)
 const consultingConfig = computed(() => {
-  // Explicit configs take priority
+  // Explicit pageBottom.consulting takes full priority
   if (pageBottom?.consulting) return pageBottom.consulting
-  if (page.value?.consulting) return page.value.consulting
   
-  // ctype-based presets
+  // ctype-based presets with page.consulting merge
   const ctype = page.value?.ctype as ConsultingCtype | undefined
   if (ctype && ctype in CONSULTING_PRESETS) {
     const preset = CONSULTING_PRESETS[ctype]
+    const pageConsulting = page.value?.consulting || {}
+    
     return {
       ...preset,
+      ...pageConsulting,  // Page YAML overrides preset defaults
       productRef: page.value?.id || page.value?.shortcode,
       // For contact ctype: use team member for overline
       ...(ctype === 'contact' && page.value?.teamMember && {
@@ -273,6 +277,9 @@ const consultingConfig = computed(() => {
       }),
     }
   }
+  
+  // Standalone page.consulting (no ctype preset)
+  if (page.value?.consulting) return page.value.consulting
   
   return null
 })
