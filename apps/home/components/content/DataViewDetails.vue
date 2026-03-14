@@ -484,7 +484,23 @@ const getRootPath = (root: string | undefined) => {
         </div> 
       </Column>
     </Columns>
-    </SectionContainer>       
+    </SectionContainer>
+
+    <!-- Single-event consulting (email-only) -->
+    <SectionContainer v-if="product.consulting" background="default" class="mt-8">
+      <ConsultingDialog
+        :variant="product.consulting.variant || 'email-only'"
+        :fancy="false"
+        :title="product.consulting.title || 'Fragen?'"
+        :description="product.consulting.intro"
+        :productRef="product.consulting.productRef || product.id"
+        :domainCode="product.consulting.domainCode"
+        :email="product.consulting.email"
+        :emailLabel="product.consulting.emailLabel"
+        :categories="product.consulting.categories || []"
+        :success="product.consulting.success"
+      />
+    </SectionContainer>
   </div>
 </template>
 

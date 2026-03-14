@@ -90,6 +90,30 @@
           <!-- Inline email form -->
           <template v-else>
             <form class="consulting-dialog-email-form" @submit.prevent="handleSendEmail">
+              <div class="consulting-dialog-email-name-row">
+                <div class="consulting-dialog-email-field consulting-dialog-email-field--half">
+                  <label for="email-firstname" class="consulting-dialog-email-label">Vorname</label>
+                  <input
+                    id="email-firstname"
+                    v-model="firstName"
+                    type="text"
+                    required
+                    placeholder="Max"
+                    class="consulting-dialog-email-input"
+                  />
+                </div>
+                <div class="consulting-dialog-email-field consulting-dialog-email-field--half">
+                  <label for="email-lastname" class="consulting-dialog-email-label">Nachname</label>
+                  <input
+                    id="email-lastname"
+                    v-model="lastName"
+                    type="text"
+                    required
+                    placeholder="Mustermann"
+                    class="consulting-dialog-email-input"
+                  />
+                </div>
+              </div>
               <div class="consulting-dialog-email-field">
                 <label for="email-from" class="consulting-dialog-email-label">{{ emailFromLabel }}</label>
                 <input
@@ -104,7 +128,7 @@
               <div class="consulting-dialog-email-actions">
                 <button
                   type="submit"
-                  :disabled="!emailFrom || sendingEmail"
+                  :disabled="!firstName || !lastName || !emailFrom || sendingEmail"
                   class="consulting-dialog-cta consulting-dialog-cta--send"
                 >
                   <template v-if="sendingEmail">
@@ -116,7 +140,7 @@
                 </button>
                 <button
                   type="button"
-                  @click="showEmailForm = false; emailFrom = ''"
+                  @click="showEmailForm = false; firstName = ''; lastName = ''; emailFrom = ''"
                   class="consulting-dialog-cancel"
                 >
                   {{ cancelLabel }}
@@ -134,6 +158,7 @@
 import { computed, reactive, ref, watch, type PropType } from 'vue'
 import { useRouter } from 'vue-router'
 import { ConsultingCategoryItem } from '@crearis/ui'
+import { createEmailInquiry } from '~/composables/useConsultingSlots'
 
 export interface CategoryOption {
   key: string
@@ -158,6 +183,8 @@ export interface ConsultingCategory {
   optionType?: 'checkbox' | 'radio'
   /** Predefined options for this category */
   options?: CategoryOption[]
+  /** Domain code override for this category (e.g., 'dasei2' for Grundstufe topics) */
+  domainCode?: string
 }
 
 const props = defineProps({
@@ -261,6 +288,14 @@ const props = defineProps({
    * Example: 'dasei1'
    */
   domainCode: {
+    type: String,
+  },
+
+  /**
+   * Consultation type for CO routing.
+   * Example: 'event_inquiry', 'purchase_consultation', 'newsletter_subscription'
+   */
+  consultationType: {
     type: String,
   },
 
@@ -423,6 +458,8 @@ const emit = defineEmits<{
     productRef?: string
   }]
   'send-email': [{
+    firstName: string
+    lastName: string
     from: string
     to: string
     selections: Array<{
@@ -431,6 +468,7 @@ const emit = defineEmits<{
       text?: string
     }>
     productRef?: string
+    domainCode?: string
   }]
 }>()
 
@@ -438,6 +476,8 @@ const router = useRouter()
 
 // Email form state
 const showEmailForm = ref(false)
+const firstName = ref('')
+const lastName = ref('')
 const emailFrom = ref('')
 const sendingEmail = ref(false)
 const emailSent = ref(false)
@@ -466,7 +506,11 @@ const categoryVariant = computed(() => {
 // Computed overline: use overline prop, or generate from pageTitle
 const computedOverline = computed(() => {
   if (props.overline) return props.overline
-  if (props.pageTitle) return `Beratung zu: ${props.pageTitle}`
+  if (props.pageTitle) {
+    // Use "mit" for contact type, "zu" for others
+    const preposition = props.consultationType === 'contact_inquiry' ? 'mit' : 'zu'
+    return `Beratung ${preposition}: ${props.pageTitle}`
+  }
   return null
 })
 
@@ -480,6 +524,15 @@ const hasActiveAbove = (index: number): boolean => {
 const selectedCategories = reactive<Record<string, boolean>>(
   Object.fromEntries(props.categories.map(c => [c.key, false]))
 )
+
+// Effective domainCode: pick from first selected category with domainCode, or use prop default
+const effectiveDomainCode = computed(() => {
+  // Find first selected category that has a domainCode
+  const selectedWithDomain = props.categories.find(
+    cat => selectedCategories[cat.key] && cat.domainCode
+  )
+  return selectedWithDomain?.domainCode || props.domainCode
+})
 
 // Reactive state for freeform texts
 const freeformTexts = reactive<Record<string, string>>(
@@ -578,8 +631,9 @@ const handleStartBeratung = () => {
       params.set('product', props.productRef)
     }
     
-    if (props.domainCode) {
-      params.set('domain', props.domainCode)
+    // Use effectiveDomainCode (category override or prop fallback)
+    if (effectiveDomainCode.value) {
+      params.set('domain', effectiveDomainCode.value)
     }
     
     // Pass page title for /beratung heading
@@ -600,26 +654,52 @@ const handleStartBeratung = () => {
 }
 
 const handleSendEmail = async () => {
-  if (!emailFrom.value || !props.email) return
+  if (!firstName.value || !lastName.value || !emailFrom.value || !effectiveDomainCode.value) return
   
   sendingEmail.value = true
   const selections = buildSelections()
 
-  // Emit event for parent handling (actual email sending happens there)
-  emit('send-email', {
-    from: emailFrom.value,
-    to: props.email,
-    selections,
-    productRef: props.productRef,
-  })
+  try {
+    // Call GraphQL mutation
+    const result = await createEmailInquiry({
+      contact: {
+        vorname: firstName.value,
+        nachname: lastName.value,
+        email: emailFrom.value,
+      },
+      selections,
+      domainCode: effectiveDomainCode.value,
+      productSlug: props.productRef,
+    })
 
-  // Simulate brief delay for UX
-  await new Promise(resolve => setTimeout(resolve, 500))
+    if (!result.success) {
+      console.error('Email inquiry failed:', result.error)
+      // TODO: Show error toast
+      return
+    }
 
-  sendingEmail.value = false
-  showEmailForm.value = false
-  emailSent.value = true
-  emailFrom.value = ''
+    // Emit event for any parent listeners (backwards compat)
+    emit('send-email', {
+      firstName: firstName.value,
+      lastName: lastName.value,
+      from: emailFrom.value,
+      to: props.email || '',
+      selections,
+      productRef: props.productRef,
+      domainCode: effectiveDomainCode.value,
+    })
+
+    showEmailForm.value = false
+    emailSent.value = true
+    firstName.value = ''
+    lastName.value = ''
+    emailFrom.value = ''
+  } catch (err) {
+    console.error('Email inquiry error:', err)
+    // TODO: Show error toast
+  } finally {
+    sendingEmail.value = false
+  }
 }
 </script>
 
@@ -764,6 +844,16 @@ const handleSendEmail = async () => {
   display: flex;
   flex-direction: column;
   gap: 0.375rem;
+}
+
+.consulting-dialog-email-name-row {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.consulting-dialog-email-field--half {
+  flex: 1;
+  min-width: 0;
 }
 
 .consulting-dialog-email-label {

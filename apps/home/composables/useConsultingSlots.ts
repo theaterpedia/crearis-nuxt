@@ -75,6 +75,88 @@ const BOOK_CONSULTING_SLOT_MUTATION = `
   }
 `
 
+const CREATE_EMAIL_INQUIRY_MUTATION = `
+  mutation CreateEmailInquiry(
+    $contact: ConsultingContactInput!
+    $consultation: ConsultingCategoryInput
+    $domainCode: String!
+    $productSlug: String
+  ) {
+    createEmailInquiry(
+      contact: $contact
+      consultation: $consultation
+      domainCode: $domainCode
+      productSlug: $productSlug
+    ) {
+      success
+      leadId
+      error
+    }
+  }
+`
+
+/**
+ * Result from createEmailInquiry mutation.
+ */
+export interface EmailInquiryResult {
+  success: boolean
+  leadId?: number
+  error?: string
+}
+
+/**
+ * Standalone function to create an email inquiry.
+ * Used by ConsultingDialog email lane (not via stepper).
+ * 
+ * @see D80 in _meta/Act26/03-10-S2L_SUB_ui_D.md
+ */
+export async function createEmailInquiry(params: {
+  contact: ConsultingContactInput
+  selections?: CategorySelectionInput[]
+  domainCode: string
+  productSlug?: string
+}): Promise<EmailInquiryResult> {
+  const variables = {
+    contact: params.contact,
+    consultation: params.selections?.length ? {
+      selections: params.selections,
+    } : undefined,
+    domainCode: params.domainCode,
+    productSlug: params.productSlug || undefined,
+  }
+
+  try {
+    const response = await fetch('/api/graphql', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        query: CREATE_EMAIL_INQUIRY_MUTATION,
+        variables,
+      }),
+    })
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}: ${response.statusText}`)
+    }
+
+    const json = await response.json()
+
+    if (json.errors) {
+      return {
+        success: false,
+        error: json.errors[0]?.message || 'Email inquiry failed',
+      }
+    }
+
+    return json.data?.createEmailInquiry as EmailInquiryResult
+  } catch (err) {
+    return {
+      success: false,
+      error: err instanceof Error ? err.message : 'Network error',
+    }
+  }
+}
+
 // Types
 export interface ConsultingSlot {
   slotKey: string

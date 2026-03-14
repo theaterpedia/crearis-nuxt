@@ -84,27 +84,55 @@
         :overlay="pageBottomOverlay"
       >
         <ConsultingDialog
-          v-if="pageBottom.consulting"
-          :variant="pageBottom.consulting.variant || 'default'"
-          :fancy="pageBottom.consulting.fancy !== false"
-          :title="pageBottom.consulting.title"
-          :overline="pageBottom.consulting.overline"
+          v-if="consultingConfig"
+          :variant="consultingConfig.variant || 'default'"
+          :fancy="consultingConfig.fancy !== false"
+          :title="consultingConfig.title"
+          :overline="consultingConfig.overline"
           :pageTitle="page?.title"
           :navHighlight="route.path"
-          :description="pageBottom.consulting.description"
-          :productRef="pageBottom.consulting.productRef || route.query.tab as string || undefined"
-          :domainCode="pageBottom.consulting.domainCode"
-          :callPhone="pageBottom.consulting.callPhone"
-          :callLabel="pageBottom.consulting.callLabel"
-          :email="pageBottom.consulting.email"
-          :emailLabel="pageBottom.consulting.emailLabel"
-          :categories="pageBottom.consulting.categories"
-          :success="pageBottom.consulting.success"
+          :description="consultingConfig.description || consultingConfig.intro"
+          :productRef="consultingConfig.productRef || route.query.tab as string || undefined"
+          :domainCode="consultingConfig.domainCode"
+          :consultationType="consultingConfig.consultationType"
+          :callPhone="consultingConfig.callPhone"
+          :callLabel="consultingConfig.callLabel"
+          :email="consultingConfig.email"
+          :emailLabel="consultingConfig.emailLabel"
+          :categories="consultingConfig.categories || []"
+          :success="consultingConfig.success"
         />
         <div v-else-if="pageBottom.heading || pageBottom.teaser">
           <Heading v-if="pageBottom.heading" :content="pageBottom.heading" is="h2" />
           <MdBlock v-if="pageBottom.teaser" :content="pageBottom.teaser" htag="p" />
         </div>
+      </PageBottom>
+      <!-- Minimal PageBottom for events without explicit pageBottom -->
+      <PageBottom
+        v-else-if="consultingConfig"
+        :topline="false"
+        heightTmp="mini"
+        contentAlignY="center"
+        contentWidth="full"
+        :imgTmp="image.src"
+        imgTmpGravity="center"
+        :overlay="getoverlay('bottom', 0.7)"
+      >
+        <ConsultingDialog
+          :variant="consultingConfig.variant || 'email-only'"
+          :fancy="false"
+          :title="consultingConfig.title || 'Fragen?'"
+          :pageTitle="page?.title"
+          :navHighlight="route.path"
+          :description="consultingConfig.description || consultingConfig.intro"
+          :productRef="consultingConfig.productRef || page?.id"
+          :domainCode="consultingConfig.domainCode"
+          :consultationType="consultingConfig.consultationType"
+          :email="consultingConfig.email"
+          :emailLabel="consultingConfig.emailLabel"
+          :categories="consultingConfig.categories || []"
+          :success="consultingConfig.success"
+        />
       </PageBottom>
     </Main>
   </Box>
@@ -125,6 +153,129 @@ const image = page.value?.image
 const hero = page.value?.hero ? page.value.hero : undefined
 const details = page.value?.details ? true : false
 const pageBottom = page.value?.pageBottom ? page.value.pageBottom : undefined
+
+/**
+ * Consulting presets by content type (ctype).
+ * 
+ * | ctype       | Use case                          | Variant     | Behavior                        |
+ * |-------------|-----------------------------------|-------------|---------------------------------|
+ * | event       | Single events (workshops, etc.)   | email-only  | → crm.lead, event context       |
+ * | product     | Course pages (Einstiege, etc.)    | dual-lane   | → /beratung stepper             |
+ * | contact     | Team page                         | email-only  | → Route to specific team member |
+ * | newsletter  | Blog/footer subscription          | email-only  | → Mailing list (consultationType: newsletter) |
+ * | default     | Fallback for undefined ctype      | email-only  | → General inquiry               |
+ */
+type ConsultingCtype = 'event' | 'product' | 'contact' | 'newsletter' | 'default'
+
+interface ConsultingPreset {
+  variant: 'email-only' | 'dual-lane'
+  email: string
+  emailLabel: string
+  callLabel?: string
+  callPhone?: string
+  title?: string
+  intro?: string
+  domainCode: string
+  consultationType?: string  // For CO routing
+  fancy?: boolean
+  success: {
+    email: string
+    call?: string
+  }
+}
+
+const CONSULTING_PRESETS: Record<ConsultingCtype, ConsultingPreset> = {
+  event: {
+    variant: 'email-only',
+    email: 'service@dasei.eu',
+    emailLabel: 'Fragen?',
+    intro: 'Wir melden uns innerhalb von 2 Werktagen.',
+    domainCode: 'dasei2',  // Events typically Grundstufe
+    consultationType: 'event_inquiry',
+    success: {
+      email: '✨ abgeschickt! Wir melden uns bei dir.',
+    },
+  },
+  product: {
+    variant: 'dual-lane',
+    email: 'service@dasei.eu',
+    emailLabel: 'per Email klären',
+    callLabel: 'direkt klären',
+    callPhone: '+49 911 7808476',
+    title: 'FRAGEN und ANTWORTEN',
+    intro: 'Wähle deine Themen und Punkte, lass uns konkreter werden.',
+    domainCode: 'dasei3',  // Products typically Aufbaustufe
+    consultationType: 'purchase_consultation',
+    fancy: true,
+    success: {
+      email: '✨ abgeschickt! Wir melden uns bei dir.',
+      call: 'Bis bald! Wir rufen dich an.',
+    },
+  },
+  contact: {
+    variant: 'email-only',
+    email: 'service@dasei.eu',
+    emailLabel: 'Nachricht senden',
+    title: 'Fragen oder Vorschläge?',
+    intro: 'Schreib uns direkt — wir melden uns.',
+    domainCode: 'dasei',  // General domain
+    consultationType: 'contact_inquiry',
+    success: {
+      email: '✨ Nachricht gesendet!',
+    },
+  },
+  newsletter: {
+    variant: 'email-only',
+    email: 'service@dasei.eu',
+    emailLabel: 'Anmelden',
+    title: 'Newsletter',
+    intro: 'Bleib auf dem Laufenden zu Events und Programmen.',
+    domainCode: 'dasei',
+    consultationType: 'newsletter_subscription',
+    success: {
+      email: '✅ Angemeldet! Du erhältst eine Bestätigung per Email.',
+    },
+  },
+  default: {
+    variant: 'email-only',
+    email: 'service@dasei.eu',
+    emailLabel: 'Kontakt',
+    intro: 'Wir melden uns innerhalb von 2 Werktagen.',
+    domainCode: 'dasei',
+    consultationType: 'general_inquiry',
+    success: {
+      email: '✨ abgeschickt! Wir melden uns bei dir.',
+    },
+  },
+}
+
+// Compute consulting config with fallback chain:
+// 1. pageBottom.consulting (explicit per-page)
+// 2. page.consulting (top-level YAML)
+// 3. ctype-based preset (event, product, contact, newsletter)
+// 4. null (no consulting shown)
+const consultingConfig = computed(() => {
+  // Explicit configs take priority
+  if (pageBottom?.consulting) return pageBottom.consulting
+  if (page.value?.consulting) return page.value.consulting
+  
+  // ctype-based presets
+  const ctype = page.value?.ctype as ConsultingCtype | undefined
+  if (ctype && ctype in CONSULTING_PRESETS) {
+    const preset = CONSULTING_PRESETS[ctype]
+    return {
+      ...preset,
+      productRef: page.value?.id || page.value?.shortcode,
+      // For contact ctype: use team member for overline
+      ...(ctype === 'contact' && page.value?.teamMember && {
+        teamMember: page.value.teamMember,
+        overline: `${page.value.teamMember} kontaktieren`,
+      }),
+    }
+  }
+  
+  return null
+})
 
 // Provide hero image so PageBottom can inherit it if needed
 provide('heroImage', image.src)

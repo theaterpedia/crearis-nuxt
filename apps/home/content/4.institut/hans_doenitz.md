@@ -1,8 +1,50 @@
 ---
 title: Hans Dönitz
+id: hans_doenitz
 heading: 30 Jahre freie Theaterpädagogik in Bayern **Theaterpädagogisches Institut**
 description: Willkommen bei DAS Ei - Wir entwickeln und erforschen Theaterpädagogik. Über unsere Workshops und das Ausbildungsprogramm kannst Du daran teilhaben.
 icon: 'lucide:info'
+ctype: contact
+teamMember: Hans Dönitz
+consulting:
+  categories:
+    - key: ausbildung
+      label: Ausbildungsprogramm
+      teaser: Fragen zu Einstiege, Grundlagen oder Aufbaustufe
+      domainCode: dasei3
+      options:
+        - Einstiege ins Theaterspiel
+        - Grundlagenbildung (BuT)
+        - Aufbaustufe / Vertiefung
+        - Individuelles Programm
+    - key: forschung
+      label: Forschung & Kooperation
+      teaser: Raumlauflabor, Modellprojekte, Publikationen
+      domainCode: dasei4
+      options:
+        - Forschungsprojekte
+        - Kooperationsanfrage
+        - Publikationen & Downloads
+    - key: schwerpunkte
+      label: Arbeitsschwerpunkte
+      teaser: Theaterpädagogik und Demokratie / Digitalisierung
+      domainCode: dasei4
+      options:
+        - Theaterpädagogik und Demokratie
+        - Theaterpädagogik und Digitalisierung
+    - key: verein
+      label: Verein & Mitgliedschaft
+      teaser: DAS Ei e.V., Vorstand, Jugendverband
+      domainCode: dasei0
+      options:
+        - Vereinsmitgliedschaft
+        - Vorstand & Organe
+        - Jugendverband
+        - Cojc gGmbH
+    - key: sonstiges
+      label: Sonstiges
+      teaser: Allgemeine Anfragen
+      domainCode: dasei
 image:
   alt: Hans Dönitz und Eleanora Allerdings
   src: https://res.cloudinary.com/little-papillon/image/upload/c_crop,g_north_west,h_900,w_1050,x_200,y_30/c_scale,w_710/v1594667214/dasei/mit_theater_grenzen_bewegen_cajbv4.png
@@ -20,7 +62,7 @@ image:
 >> <br>
 >> 
 >> ## **Hans Dönitz**
->> Wir entwickeln und erforschen Theaterpädagogik. Über unsere Workshops und das Ausbildungsprogramm kannst Du daran teilhaben.
+>> Hans entwickelt und erforscht Theaterpädagogik. Über unsere Workshops und das Ausbildungsprogramm kannst Du daran teilhaben.
 >> 
 >> Bei Interesse an unserem Programm schreibst Du am besten direkt eine Email an: [info@dasei.eu](mailto:info@dasei.eu)  
 >> Oder noch besser: Du vereinbarst direkt ein Telefonat zur unverbindlichen Beratung unter: 0911/7808476.
