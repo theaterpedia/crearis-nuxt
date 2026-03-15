@@ -40,11 +40,14 @@ const CHECKOUT_MUTATION = `
  * 
  * @param productRef - Product shortcode (e.g. "m18w", "z15e") or SKU ("MOD-A")
  *                     Odoo resolves shortcodes via _parse_product_ref()
+ * @param domainCode - Optional domain code for SaaS config lookup (e.g. "dasei1")
+ *                     Determines which website config Odoo uses to interpret the shortcode
  * 
  * @example
  * ```vue
  * <script setup>
- * const checkout = useCheckout('m18w')
+ * // With domain code (SaaS-ready)
+ * const checkout = useCheckout('m18w', 'dasei1')
  * 
  * // Set contact info
  * checkout.setContact({ email: 'test@example.com', vorname: 'Max', nachname: 'Mustermann' })
@@ -54,8 +57,10 @@ const CHECKOUT_MUTATION = `
  * // result.checkoutType === 'auto' | 'manual_review'
  * </script>
  * ```
+ * 
+ * @see _meta/Whitepaper/products_dasei_abcd.md#SaaS Architecture
  */
-export function useCheckout(productRef: string) {
+export function useCheckout(productRef: string, domainCode?: string) {
   // Reactive state
   const state = reactive<CheckoutState>({
     step: 1,
@@ -145,6 +150,7 @@ export function useCheckout(productRef: string) {
     
     const input: CheckoutInput = {
       productRef,
+      domainCode: domainCode || undefined,  // SaaS: determines which config applies
       contact: {
         email: state.contact.email,
         vorname: state.contact.vorname,

@@ -1,6 +1,7 @@
 ---
 navigation: false
 navigation_highlight: /ausbildung-theaterpaedagogik/aufbaustufe
+domainCode: dasei3
 shortcode: z15r
 heading: "Aufbaustufe Theaterpädagogik (BuT) **Profil Performance & Interkult. Theater**"
 start: 2027-02-01
@@ -40,7 +41,6 @@ details:
     siehe [Abschluss Theaterpädagogik (BuT)](/ausbildung-theaterpaedagogik/berufsabschluss_theaterpaedagogik_but)
 consulting:
   intro: Schreib uns — wir melden uns innerhalb von 2 Werktagen.
-  domainCode: dasei3
   categories:
     - key: prerequisites
       label: Voraussetzungen

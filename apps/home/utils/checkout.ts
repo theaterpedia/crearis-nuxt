@@ -123,6 +123,7 @@ export interface CheckoutContactInput {
  */
 export interface CheckoutInput {
   productRef: string
+  domainCode?: string  // SaaS: determines which website config applies
   contact: CheckoutContactInput
   notes?: string
   acceptTerms: boolean

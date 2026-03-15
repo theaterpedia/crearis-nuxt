@@ -1,6 +1,7 @@
 ---
 navigation: false
 navigation_highlight: /ausbildung-theaterpaedagogik/aufbaustufe
+domainCode: dasei3
 shortcode: z15
 heading: "ANMELDUNG Aufbaustufe Theaterpädagogik (BuT)"
 start: 2026-09-01
@@ -48,7 +49,6 @@ details:
     -danach Bezahlung A1/A2 (29.5 bis 1.6.2025) obligatorisch, bis 11.6.2025 kostenfreies Storno der Teilnahme A3-A5
 consulting:
   intro: Schreib uns — wir melden uns innerhalb von 2 Werktagen.
-  domainCode: dasei3
   categories:
     - key: prerequisites
       label: Voraussetzungen

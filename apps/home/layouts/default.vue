@@ -93,7 +93,7 @@
           :navHighlight="route.path"
           :description="consultingConfig.description || consultingConfig.intro"
           :productRef="consultingConfig.productRef || route.query.tab as string || undefined"
-          :domainCode="consultingConfig.domainCode"
+          :domainCode="effectiveDomainCode || consultingConfig.domainCode"
           :consultationType="consultingConfig.consultationType"
           :callPhone="consultingConfig.callPhone"
           :callLabel="consultingConfig.callLabel"
@@ -127,7 +127,7 @@
           :navHighlight="route.path"
           :description="consultingConfig.description || consultingConfig.intro"
           :productRef="consultingConfig.productRef || page?.id"
-          :domainCode="consultingConfig.domainCode"
+          :domainCode="effectiveDomainCode || consultingConfig.domainCode"
           :consultationType="consultingConfig.consultationType"
           :email="consultingConfig.email"
           :emailLabel="consultingConfig.emailLabel"
@@ -154,6 +154,32 @@ const image = page.value?.image
 const hero = page.value?.hero ? page.value.hero : undefined
 const details = page.value?.details ? true : false
 const pageBottom = page.value?.pageBottom ? page.value.pageBottom : undefined
+
+const route = useRoute()
+
+/**
+ * Effective domainCode for the current page.
+ * 
+ * Priority chain (first defined wins):
+ * 1. URL query param (?domain=dasei3) — deep-links from Odoo CRM
+ * 2. Root-level YAML: page.domainCode — explicit page context
+ * 3. Preset fallback from ctype — default for content type
+ * 
+ * @see _meta/Whitepaper/products_dasei_abcd.md#SaaS Architecture
+ */
+const effectiveDomainCode = computed(() => {
+  // 1. URL override (deep-linking from Odoo CRM)
+  if (route.query.domain) return route.query.domain as string
+  
+  // 2. Root-level page.domainCode (explicit YAML)
+  if (page.value?.domainCode) return page.value.domainCode as string
+  
+  // 3. Nested consulting.domainCode (legacy, will be migrated)
+  if (page.value?.consulting?.domainCode) return page.value.consulting.domainCode as string
+  
+  // 4. Preset-based fallback (from consultingConfig)
+  return null
+})
 
 /**
  * Consulting presets by content type (ctype).
@@ -193,6 +219,34 @@ const CONSULTING_PRESETS: Record<ConsultingCtype, ConsultingPreset> = {
     intro: 'Wir melden uns innerhalb von 2 Werktagen.',
     domainCode: 'dasei2',  // Events typically Grundstufe
     consultationType: 'event_inquiry',
+    fancy: true,
+    categories: [
+      {
+        key: 'teilnahme',
+        label: 'Teilnahme',
+        teaser: 'Anmeldung, Voraussetzungen, Ablauf',
+        options: [
+          'Anmeldung & Buchung',
+          'Voraussetzungen',
+          'Ablauf & Programm',
+        ],
+      },
+      {
+        key: 'termin',
+        label: 'Termin & Ort',
+        teaser: 'Zeiten, Anfahrt, Unterkunft',
+        options: [
+          'Genaue Zeiten',
+          'Anfahrt & Parken',
+          'Unterkunft',
+        ],
+      },
+      {
+        key: 'sonstiges',
+        label: 'Sonstiges',
+        teaser: 'Weitere Fragen',
+      },
+    ],
     success: {
       email: '✨ abgeschickt! Wir melden uns bei dir.',
     },
@@ -302,7 +356,6 @@ const pageBottomOverlay = computed(() => {
   return getoverlay(pageBottom.gradient_type || 'none', pageBottom.gradient_depth || 0.8)
 })
 
-const route = useRoute()
 // const hideFolders = ['/blog/', '/agenda/']
 // .filter((item) => !hideFolders.includes(item.link!)) // filter out items that are in the hideFolders list
 

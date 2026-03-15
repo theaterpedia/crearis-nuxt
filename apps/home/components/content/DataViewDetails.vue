@@ -69,11 +69,17 @@ const productRef = computed(() => {
   return props.product.sku || props.product.meta_product || props.product.shortcode || props.product.id || ''
 })
 
+// Derive domainCode for SaaS config lookup
+// Priority: root-level > nested consulting.domainCode
+const domainCode = computed(() => {
+  return props.product.domainCode || props.product.consulting?.domainCode || undefined
+})
+
 // Lazy checkout initialization - will be created on first use if productRef is available
 let checkout: ReturnType<typeof useCheckout> | null = null
 const getCheckout = () => {
   if (!checkout && productRef.value) {
-    checkout = useCheckout(productRef.value)
+    checkout = useCheckout(productRef.value, domainCode.value)
   }
   return checkout
 }

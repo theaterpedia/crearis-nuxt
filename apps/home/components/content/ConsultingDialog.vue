@@ -125,6 +125,14 @@
                   class="consulting-dialog-email-input"
                 />
               </div>
+              <!-- Error display -->
+              <div v-if="emailError" class="consulting-dialog-error">
+                <svg class="consulting-dialog-error-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <span class="consulting-dialog-error-text">{{ emailError }}</span>
+              </div>
+
               <div class="consulting-dialog-email-actions">
                 <button
                   type="submit"
@@ -140,7 +148,7 @@
                 </button>
                 <button
                   type="button"
-                  @click="showEmailForm = false; firstName = ''; lastName = ''; emailFrom = ''"
+                  @click="showEmailForm = false; firstName = ''; lastName = ''; emailFrom = ''; emailError = null"
                   class="consulting-dialog-cancel"
                 >
                   {{ cancelLabel }}
@@ -481,6 +489,7 @@ const lastName = ref('')
 const emailFrom = ref('')
 const sendingEmail = ref(false)
 const emailSent = ref(false)
+const emailError = ref<string | null>(null)
 const partialSuccessInfo = ref<{ skippedLabels: string[] } | null>(null)
 
 // Normalize YAML options: convert strings and {label, url} objects to {key, label, url?} format
@@ -664,6 +673,7 @@ const handleSendEmail = async () => {
   if (!firstName.value || !lastName.value || !emailFrom.value || !effectiveDomainCode.value) return
   
   sendingEmail.value = true
+  emailError.value = null
   partialSuccessInfo.value = null
   
   const allSelections = buildSelections()
@@ -696,7 +706,7 @@ const handleSendEmail = async () => {
 
     if (!result.success) {
       console.error('Email inquiry failed:', result.error)
-      // TODO: Show error toast
+      emailError.value = result.error || 'Anfrage konnte nicht gesendet werden. Bitte versuche es später erneut.'
       return
     }
 
@@ -725,7 +735,7 @@ const handleSendEmail = async () => {
     emailFrom.value = ''
   } catch (err) {
     console.error('Email inquiry error:', err)
-    // TODO: Show error toast
+    emailError.value = 'Netzwerkfehler. Bitte prüfe deine Verbindung und versuche es erneut.'
   } finally {
     sendingEmail.value = false
   }
@@ -969,6 +979,31 @@ const handleSendEmail = async () => {
   font-size: 1rem;
   font-weight: 500;
   color: var(--color-contrast);
+}
+
+/* Error state */
+.consulting-dialog-error {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  background-color: oklch(0.95 0.03 25);
+  border: 1px solid oklch(0.7 0.15 25);
+  border-radius: 0.375rem;
+}
+
+.consulting-dialog-error-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  color: oklch(0.5 0.2 25);
+}
+
+.consulting-dialog-error-text {
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: oklch(0.35 0.15 25);
 }
 
 @media (max-width: 767px) {

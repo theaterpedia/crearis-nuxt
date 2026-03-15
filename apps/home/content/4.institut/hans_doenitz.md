@@ -20,7 +20,7 @@ consulting:
     - key: forschung
       label: Forschung & Kooperation
       teaser: Raumlauflabor, Modellprojekte, Publikationen
-      domainCode: dasei4
+      domainCode: dasei
       options:
         - Forschungsprojekte
         - Kooperationsanfrage
@@ -28,7 +28,7 @@ consulting:
     - key: schwerpunkte
       label: Arbeitsschwerpunkte
       teaser: Theaterpädagogik und Demokratie / Digitalisierung
-      domainCode: dasei4
+      domainCode: dasei
       options:
         - Theaterpädagogik und Demokratie
         - Theaterpädagogik und Digitalisierung
