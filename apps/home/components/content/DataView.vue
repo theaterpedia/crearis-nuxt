@@ -45,7 +45,7 @@ defineProps({
    * typically undefined (if defined it overwrites the heading-entry of the src)
    */
   heading: {
-    type: String as PropType<'default' | 'muted' | 'accent'>,
+    type: String,
   },
   /**
    *

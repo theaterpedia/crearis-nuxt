@@ -151,9 +151,11 @@ function parseMarks(text: string) {
  * ```
  */
 function parseTabs(text: string) {
-  return text.replace(/^(\s*)~~~tabs\s*\n(.*?)\n\s*~~~\s*$/gms, (_, spaces, content) => {
+  return text.replace(/^(\s*)~~~tabs(?:\s+(mode=\w+))?\s*\n(.*?)\n\s*~~~\s*$/gms, (_, spaces, modeParam, content) => {
     const indent = '  '.repeat(resolveIndent(spaces))
-    var output = `\n::data-view-tabs{:tabs='[`
+    // Parse mode parameter (default: 'tabs')
+    const mode = modeParam?.split('=')[1] || 'tabs'
+    var output = `\n::data-view-tabs{:mode='${mode}' :tabs='[`
     var tab: string = ''
 
     for (const line of content.split('\n')) {
