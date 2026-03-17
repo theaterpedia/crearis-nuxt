@@ -53,7 +53,7 @@ defineProps({
    * @default 'default'
    */
   view: {
-    type: String as PropType<'product' | 'details'>,
+    type: String as PropType<'product' | 'details' | 'checkout'>,
     default: 'product',
   },
   /**

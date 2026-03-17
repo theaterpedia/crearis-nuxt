@@ -2,6 +2,9 @@
   <!-- Stepper mode: inline stepper with variant selector in header -->
   <StepperSection v-if="mode === 'stepper'" :tabs="tabs" />
 
+  <!-- Checkout mode: slider with variant selector and CTA below -->
+  <CheckoutSection v-else-if="mode === 'checkout'" :tabs="tabs" />
+
   <!-- Default tabs mode: traditional tabbed interface -->
   <Tabs v-else>
     <Tab v-for="(tab, index) in tabs" :active="index === 0" :key="index" :title="tab.title">
@@ -28,6 +31,7 @@
 import { type PropType } from 'vue'
 import DataView from './DataView.vue'
 import StepperSection from './StepperSection.vue'
+import CheckoutSection from './CheckoutSection.vue'
 
 /** Tab item structure from parseTabs() */
 interface TabItem {
@@ -44,9 +48,10 @@ defineProps({
    * Rendering mode for tabs
    * - 'tabs' (default): Traditional tabbed interface
    * - 'stepper': Inline stepper with variant selector in header
+   * - 'checkout': Slider with variant selector and CTA below
    */
   mode: {
-    type: String as PropType<'tabs' | 'stepper'>,
+    type: String as PropType<'tabs' | 'stepper' | 'checkout'>,
     default: 'tabs',
   },
   /**
