@@ -1,6 +1,6 @@
 <template>
-  <!-- Checkout mode: 2-column layout with variant selector + checkout stepper -->
-  <CheckoutSection v-if="mode === 'checkout'" :tabs="tabs" />
+  <!-- Stepper mode: inline stepper with variant selector in header -->
+  <StepperSection v-if="mode === 'stepper'" :tabs="tabs" />
 
   <!-- Default tabs mode: traditional tabbed interface -->
   <Tabs v-else>
@@ -27,7 +27,7 @@
 
 import { type PropType } from 'vue'
 import DataView from './DataView.vue'
-import CheckoutSection from './CheckoutSection.vue'
+import StepperSection from './StepperSection.vue'
 
 /** Tab item structure from parseTabs() */
 interface TabItem {
@@ -43,10 +43,10 @@ defineProps({
   /**
    * Rendering mode for tabs
    * - 'tabs' (default): Traditional tabbed interface
-   * - 'checkout': 2-column layout with variant selector + checkout stepper
+   * - 'stepper': Inline stepper with variant selector in header
    */
   mode: {
-    type: String as PropType<'tabs' | 'checkout'>,
+    type: String as PropType<'tabs' | 'stepper'>,
     default: 'tabs',
   },
   /**
