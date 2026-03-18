@@ -41,11 +41,11 @@ details:
     info:
       struktur: |
         ### Dein Programm SEP 2026 – FEB 2027
-        - **E1 Seminarwoche** „Dicht an der Grenze" — 6 Tage, Burgstallmühle
-        - **E2 Workshop** „Offene Themen – offene Gruppen?" — 5 Tage, München
-        - **+ 2 Seminare** aus dem Offenen Programm (freie Wahl)
-        - **+ 5 Online-Sessions** monatlich, 2h (Reflexion & Austausch)
-        - **+ 3 Coaching-Sessions** persönlich, flexibel terminierbar
+        - **E1 Seminarwoche** 6 Tage, Burgstallmühle
+        - **E2 Workshop** 5 Tage, München
+        - **+ 2 Seminare** Offenes Programm (freie Wahl)
+        - **+ 5 Online-Sessions** monatlich, 2h
+        - **+ 3 Coaching-Sessions** flexibel terminierbar
         - **SUMME** ca. 160 UE über 5 Monate
       hinweis: |
         #### Erweiterung möglich
@@ -61,11 +61,9 @@ details:
     info:
       kosten: |
         ### Kosten
-        | Posten | Betrag |
-        |--------|--------|
-        | Anmeldegebühr (einmalig) | € 80,00 |
-        | 8 Kursraten × € 220,00 | € 1.760,00 |
-        | **GESAMT** | **€ 1.840,00** |
+        - **Anmeldegebühr (einmalig)** € 80,00
+        - **8 Kursraten × € 220,00** € 1.760,00
+        - **GESAMT** € 1.840,00
         
         Ratenzahlung: SEP 2026 – APR 2027 (monatlich)
       storno: |
@@ -94,7 +92,7 @@ consulting:
     - key: terms_and_options
       overline: Kosten & Optionen
       label: Finanzierung
-      teaser: "EUR 1.840 in 8 Raten. Frühbucher bis 10.04. spart EUR 220. Härtefall-Regelung möglich, KOMPASS für Solo-Selbstständige."
+      teaser: "EUR 1.840 in 8 Raten (€ 80 Anmeldegebühr + 8 × € 220). Bei Frühbuchung bis 10.04.26 sparst du € 220 — das sind nur 7 Raten. Storno bis 10 Tage nach E1 ohne Zusatzkosten. Bei finanziellen Engpässen gibt es eine Härtefall-Regelung, und für Solo-Selbstständige prüfen wir KOMPASS-Förderung."
       options:
         - Frühbucherrabatt
         - Stornierung & Pausieren
@@ -107,7 +105,7 @@ consulting:
     - key: prerequisites
       overline: Zulassung & Anerkennung
       label: Zulassung & Quereinstieg
-      teaser: "Grundlagenbildung abgeschlossen + A-B-C-D Kriterien erfüllen. Quereinstieg möglich, Anerkennung von Praxiserfahrung."
+      teaser: "Voraussetzung: abgeschlossene Grundlagenbildung (bei DAS Ei oder BuT-Institut) plus eines der Kriterien A-B-C-D — pädagogische/therapeutische Ausbildung, künstlerische Ausbildung, Studium oder 3+ Jahre Vollzeittätigkeit. Quereinstieg mit Praxiserfahrung möglich; wir erkennen auch externe Grundlagenbildung an."
       options:
         - Zulassung (A-B-C-D Kriterien)
         - Bildungs- und Berufsabschlüsse
@@ -117,7 +115,7 @@ consulting:
     - key: schedules
       overline: Termine & Zeitplanung
       label: Verläufe
-      teaser: "E1 im September, E2 im Januar, 2 Offene dazwischen. Profilwahl bis Februar 2027. Nachholung flexibel möglich."
+      teaser: "Kompakt in 5 Monaten: E1 Ende September (Burgstallmühle, 6 Tage), E2 im Januar (München, 5 Tage), dazwischen 2 Wochenenden aus dem Offenen Programm. Nachholung flexibel möglich. Profilwahl bis Februar 2027 — du entscheidest erst nach der Vertiefung, wie es weitergeht."
       options:
         - label: Vertiefung (Einstiegsphase)
           url: /ausbildung-theaterpaedagogik/aufbaustufe
@@ -127,7 +125,7 @@ consulting:
     - key: topics
       overline: Themenschwerpunkte
       label: Profile
-      teaser: "Nach der Vertiefung wählst du: Theatrales Lernen (Schule, Bildung) oder Performance & Interkult. Theater (Kunst, Inszenierung)."
+      teaser: "Nach der Vertiefung wählst du dein Profil: Theatrales Lernen richtet sich an Schule, Bildung, Vermittlung. Performance & Interkult. Theater fokussiert auf Kunst, Inszenierung, interkulturelle Praxis. Die Profilwahl ist nicht Teil dieses Vertrages — du entscheidest erst, wenn du E1 und E2 erlebt hast."
       options:
         - label: Profil Performance
           url: /ausbildung-theaterpaedagogik/profil_performance
@@ -149,14 +147,14 @@ product:
 items:
   e1_blind:
     ctype: event
-    shortcode: e1
-    title: Du erlebst, bevor du verstehst. **Seminarwoche E1**
+    shortcode: E1
+    title: "Blind geführt — Vertrauen **Dicht an der Grenze**"
     tag: SEP 30 – OKT 5, 2026 · Burgstallmühle
     image:
-      url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_1344,h_756,g_auto,q_auto,f_auto/dasei/E1_slide1_blind_gefuehrt.jpg
+      url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_400,h_400,g_auto,q_auto,f_auto/dasei/E1_slide1_blind_gefuehrt.jpg
       caption: Blind geführt — Vertrauen als Methode
     body: |
-      Blind geführt durch den Raum — Vertrauen als Methode. In E1 durchläufst du den vollständigen Themen- und Gruppenprozess der Szenischen Themenarbeit. 6 Tage auf der Burgstallmühle in der Fränkischen Schweiz.
+      Du wirst blind durch den Raum geführt — und erlebst dabei Vertrauen als Methode. Das ist E1: Der vollständige Themen- und Gruppenprozess der Szenischen Themenarbeit. 6 intensive Tage auf der Burgstallmühle in der Fränkischen Schweiz.
     start: 2026-09-30T17:00
     ende: 2026-10-05T14:00
     ort: |
@@ -169,14 +167,14 @@ items:
     mit: Hans Dönitz, Rosalin Hertrich
   e1_rollenspiel:
     ctype: event
-    shortcode: e1
-    title: Themen, die dich beschäftigen — szenisch bearbeitet.
+    shortcode: E1
+    title: "Rollenspiel ohne Textvorlage **Szenische Themenarbeit**"
     tag: E1 · „Dicht an der Grenze" · 6 Tage
     image:
-      url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_1344,h_756,g_auto,q_auto,f_auto/dasei/305_dasei2022_grundlagen.jpg
+      url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_400,h_400,g_auto,q_auto,f_auto/dasei/305_dasei2022_grundlagen.jpg
       caption: Rollenspiel ohne Textvorlage
     body: |
-      Rollenspiel ohne Textvorlage: Geschichten Raum geben, Perspektiven wechseln. „Dicht an der Grenze" meint auch: dicht an dem, was wirklich wichtig ist.
+      „Dicht an der Grenze" — das meint auch: dicht an dem, was wirklich wichtig ist. Keine komplizierten Übungen, keine Textvorlagen. Du gibst Geschichten Raum, wechselst Perspektiven, und lernst, wie Themen szenisch bearbeitet werden.
     start: 2026-09-30T17:00
     ende: 2026-10-05T14:00
     ort: |
@@ -187,14 +185,14 @@ items:
     mit: Hans Dönitz, Rosalin Hertrich
   e2_bewegung:
     ctype: event
-    shortcode: e2
-    title: Bewegung bringt Themen in Fluss. **Workshop E2**
+    shortcode: E2
+    title: "Bewegte Themenarbeit **Offene Themen – offene Gruppen?**"
     tag: JAN 7–11, 2027 · München
     image:
-      url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_1344,h_756,g_auto,q_auto,f_auto/dasei/E2_bewegte_themenarbeit.jpg
+      url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_400,h_400,g_auto,q_auto,f_auto/dasei/E2_bewegte_themenarbeit.jpg
       caption: Bewegte Themenarbeit
     body: |
-      Bewegte Themenarbeit: Wenn der Raum zum Denkwerkzeug wird. In E2 fokussierst du auf den Transfer — wie gestaltest du solche Prozesse selbst?
+      Bewegung bringt Themen in Fluss — der Raum wird zum Denkwerkzeug. In E2 fokussierst du auf Transfer: Wie gestaltest du solche Prozesse selbst? In deiner Praxis, mit deinen Gruppen, mit offenen Themen?
     start: 2027-01-07T09:00
     ende: 2027-01-11T17:00
     ort: |
@@ -204,14 +202,14 @@ items:
     mit: Hans Dönitz, Rosalin Hertrich
   e2_soziometrie:
     ctype: event
-    shortcode: e2
-    title: Wo stehst du? Die Gruppe wird sichtbar.
+    shortcode: E2
+    title: "Soziometrische Verfahren **Transfer & Methodik**"
     tag: E2 · „Offene Themen – offene Gruppen?" · 5 Tage
     image:
-      url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_1344,h_756,g_auto,q_auto,f_auto/dasei/E2_Soziometrie.jpg
+      url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_400,h_400,g_auto,q_auto,f_auto/dasei/E2_Soziometrie.jpg
       caption: Soziometrische Verfahren
     body: |
-      Soziometrische Verfahren: Positionen abfragen, Unterschiede zeigen, ins Gespräch kommen. E2 bringt die Werkzeuge für deine eigene Praxis.
+      Wo stehst du? Soziometrische Verfahren machen die Gruppe sichtbar: Positionen abfragen, Unterschiede zeigen, ins Gespräch kommen. E2 bringt dir die Werkzeuge für deine eigene Praxis.
     start: 2027-01-07T09:00
     ende: 2027-01-11T17:00
     ort: |
@@ -221,14 +219,17 @@ items:
     mit: Hans Dönitz, Rosalin Hertrich
   offenes_wellenmodell:
     ctype: event
-    shortcode: k1
-    title: Wann mache ich was? Das Wellenmodell als Kompass.
+    shortcode: OP
+    title: "Praktische Didaktik **Wochenenden**"
     tag: Offenes Programm · freie Wahl
     image:
-      url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_1344,h_756,g_auto,q_auto,f_auto/dasei/K1_praktische_didaktik_wellenmodell.jpg
+      url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_400,h_400,g_auto,q_auto,f_auto/dasei/K1_praktische_didaktik_wellenmodell.jpg
       caption: Praktische Didaktik — Wellenmodell
     body: |
-      Praktische Didaktik für Theaterpädagog:innen: Wie du Prozesse strukturierst, ohne sie zu erdrücken. Das Offene Programm bietet dir freie Wahl — wir empfehlen LC „Soziometrie".
+      Wann mache ich was? Das Wellenmodell wird dein Kompass. Praktische Didaktik für Theaterpädagog:innen: Wie du Prozesse strukturierst, ohne sie zu erdrücken. Das Offene Programm bietet dir freie Wahl.
+      - Empfehlung: LC „Soziometrie"
+      - Alternative: LA „Anfänge verstehen"
+      - Oder: RD „Verkörperungen"
     start: 2026-10-01
     ende: 2027-02-28
     ort: |
@@ -238,14 +239,17 @@ items:
     mit: Verschiedene Dozent:innen
   offenes_programm:
     ctype: event
-    shortcode: k1
-    title: Dein Programm, deine Schwerpunkte.
+    shortcode: OP
+    title: "Dein Programm **2 Wochenenden**"
     tag: + 2 Seminare aus dem Offenen Programm
     image:
-      url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_1344,h_756,g_auto,q_auto,f_auto/dasei/Offenes_Programm.jpg
+      url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_400,h_400,g_auto,q_auto,f_auto/dasei/Offenes_Programm.jpg
       caption: Offenes Programm — freie Wahl
     body: |
-      LA, LC, RD oder ein anderes Wochenendseminar: Du wählst aus dem Offenen Programm, was dich interessiert. Die 2 Seminare sind Teil deiner Vertiefung — keine Zusatzkosten.
+      LA, LC, RD oder ein anderes Wochenendseminar: Du wählst aus dem Offenen Programm, was dich interessiert. Die 2 Seminare sind Teil deiner Vertiefung — sie kosten nichts extra.
+      - 2 Wochenenden, frei wählbar
+      - Termine laufend (OKT 2026 – FEB 2027)
+      - München oder Nürnberg
     start: 2026-10-01
     ende: 2027-02-28
     ort: |
@@ -255,18 +259,18 @@ items:
     mit: Empfehlung: LC „Soziometrie"
   erweiterung:
     ctype: pricing
-    shortcode: aufbaustufe
-    title: Nach der Vertiefung — Profil oder Pause?
+    shortcode: AS
+    title: "Nach der Vertiefung **Profiljahr oder Abschluss**"
     tag: Erweiterung buchbar bis FEB 2027
     image:
-      url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_1344,h_756,g_auto,q_auto,f_auto/dasei/E_vertiefung_modelle_der_szenischen_themenarbeit.jpg
+      url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_400,h_400,g_auto,q_auto,f_auto/dasei/E_vertiefung_modelle_der_szenischen_themenarbeit.jpg
       caption: Erweiterung zur vollen Aufbaustufe
     body: |
       **Du entscheidest bis Februar 2027:**
       
-      - **Profiljahr (Phase 2):** 12 Raten × € 220 = € 2.640
-      - **Abschlussphase (Phase 3):** 9 Raten × € 220 = € 1.980
-      - **Frühbucher bis 31.10.26:** € 440 Ersparnis auf die gesamte Aufbaustufe
+      - **Profiljahr (Phase 2)** 12 Raten × € 220 = € 2.640
+      - **Abschlussphase (Phase 3)** 9 Raten × € 220 = € 1.980
+      - **Frühbucher bis 31.10.26** € 440 Ersparnis auf die gesamte Aufbaustufe
       
       → [Aufbaustufe anschauen](/ausbildung-theaterpaedagogik/aufbaustufe)
 ---

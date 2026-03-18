@@ -26,35 +26,31 @@
     </Slider>
 
     <!-- Checkout box below slider -->
-    <Section background="muted">
-      <Container>
-        <div class="checkout-box">
-          <!-- Left column: pricing -->
-          <div class="checkout-left">
-            <div v-if="pricing" class="pricing-section">
-              <h4 class="section-label">Kosten & Konditionen</h4>
-              <Catalog>
-                <Prose>
-                  <div v-html="pricing" />
-                </Prose>
-              </Catalog>
-            </div>
-          </div>
+    <div class="checkout-box">
+      <!-- Left column: pricing -->
+      <Section v-if="pricing" background="accent">
+        <Container>
+          <h4 class="section-label">Kosten & Konditionen</h4>
+          <Catalog>
+            <Prose>
+              <div v-html="pricing" />
+            </Prose>
+          </Catalog>
+        </Container>
+      </Section>
 
-          <!-- Right column: CTA button -->
-          <div class="checkout-right">
-            <Button
-              variant="primary"
-              size="medium"
-              class="checkout-cta"
-              @click="handleCheckout"
-            >
-              Details & Buchung
-            </Button>
-          </div>
-        </div>
-      </Container>
-    </Section>
+      <!-- Right column: CTA button -->
+      <div class="checkout-right">
+        <Button
+          variant="primary"
+          size="medium"
+          class="checkout-cta"
+          @click="handleCheckout"
+        >
+          Details & Buchung
+        </Button>
+      </div>
+    </div>
   </ContentRenderer>
 </template>
 
@@ -133,12 +129,6 @@ const handleCheckout = () => {
   padding: 1.5rem 0;
 }
 
-.checkout-left {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
 .checkout-right {
   display: flex;
   align-items: center;
@@ -149,7 +139,6 @@ const handleCheckout = () => {
   font-size: 0.875rem;
   font-weight: 600;
   margin-bottom: 0.75rem;
-  color: var(--color-contrast);
   text-transform: uppercase;
   letter-spacing: 0.025em;
 }
