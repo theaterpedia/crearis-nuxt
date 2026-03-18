@@ -1,13 +1,13 @@
 ---
 navigation: false
-navigation_highlight: /ausbildung-theaterpaedagogik/aufbaustufe
+navigation_highlight: /ausbildung-theaterpaedagogik/vertiefung
 shortcode: z15e
 heading: "VERTIEFUNG Theaterpädagogik"
-start: 2026-09-01
-end: 2027-08-01
+start: 2026-09-30
+end: 2027-02-28
 ctype: course
 tag: course
-description: Aufbaustufe Theaterpädagogik (BuT) - Modul E Vertiefung 2026-27
+description: Aufbaustufe Theaterpädagogik (BuT) - Modul E Vertiefung SEP 2026 – FEB 2027
 title: Vertiefung Theaterpädagogik
 cssclasses:
   - course
@@ -40,17 +40,19 @@ details:
       ## Vertiefung: Modul E
     info:
       struktur: |
-        ### Struktur
-        - **E1 Seminarwoche** Praxis, Theorie & Reflexion (Herbst 2026)
-        - **E2 Kompaktwoche** Vertiefung & Transfer (Frühjahr 2027)
+        ### Dein Programm SEP 2026 – FEB 2027
+        - **E1 Seminarwoche** „Dicht an der Grenze" — 6 Tage, Burgstallmühle
+        - **E2 Workshop** „Offene Themen – offene Gruppen?" — 5 Tage, München
         - **+ 2 Seminare** aus dem Offenen Programm (freie Wahl)
-        - **SUMME** 80 UE + 2 Seminare
+        - **+ 5 Online-Sessions** monatlich, 2h (Reflexion & Austausch)
+        - **+ 3 Coaching-Sessions** persönlich, flexibel terminierbar
+        - **SUMME** ca. 160 UE über 5 Monate
       hinweis: |
         #### Erweiterung möglich
         Nach der Vertiefung kannst Du Dich für ein **Profiljahr** (Theatrales Lernen oder Performance & Interkult. Theater) und die **Abschlussphase** entscheiden.
         
         - Erweiterung buchbar bis **28. Februar 2027**
-        - Profilwahl nach den Info-Teasern T0/R0 (DEZ 26 - FEB 27)
+        - Profilwahl nach den Info-Teasern T0/R0 (DEZ 26 – FEB 27)
         - Persönliche **Beratung** ist Teil der Vertiefung
   konditionen:
     title: Kosten & Konditionen
@@ -59,30 +61,40 @@ details:
     info:
       kosten: |
         ### Kosten
-        - **Anmeldegebühr** € 80,00
-        - **Vertiefung (E1 + E2)** 6 Raten × € 220,00
-        - **Offenes Programm** 2 Raten × € 220,00
-        - **SUMME** € 1.840,00
+        | Posten | Betrag |
+        |--------|--------|
+        | Anmeldegebühr (einmalig) | € 80,00 |
+        | 8 Kursraten × € 220,00 | € 1.760,00 |
+        | **GESAMT** | **€ 1.840,00** |
         
-        Ratenzahlung: SEP 2026 - APR 2027
+        Ratenzahlung: SEP 2026 – APR 2027 (monatlich)
       storno: |
-        ### Storno & Frühbuchung
-        - Frühbuchung bis 10.04.26: 1 Seminar Offenes Programm frei
-        - Storno-Option: 1 Rate bis 31.08.26
-        - Kündigung: 2 extra Raten
+        ### Frühbuchung & Storno
+        - **Frühbuchung bis 10.04.26:** 1 Seminar Offenes Programm frei → nur 7 Raten = **€ 1.620**
+        - **Storno bis 10 Tage nach E1:** Kündigung ohne zusätzliche Kosten
+        - **Kündigung nach E1:** € 220 Stornogebühr
         - Bereits gebuchte Seminare → Erstattung
       erweiterung: |
         ### Erweiterungsoptionen (später buchbar)
         - **Profiljahr** (Profil + K2-K3) 12 Raten × € 220,00 = € 2.640,00
         - **Abschlussphase** (K4-K6 + P1-P6) 9 Raten × € 220,00 = € 1.980,00
+        - **Frühbucher Aufbaustufe** bis 31.10.26: € 440 Ersparnis
+      uebernachtung: |
+        ### Übernachtung E1 (Burgstallmühle)
+        Übernachtung + Verpflegung direkt vor Ort bezahlen:
+        - Saalübernachtung: € 15/Nacht
+        - Mehrbettzimmer: € 25–35/Nacht
+        - Einzelzimmer: € 50/Nacht (begrenzt)
 consulting:
   intro: Schreib uns — wir melden uns innerhalb von 2 Werktagen.
   extension_note: |
     💡 Nach der Vertiefung entscheidest du, ob du ein Profil (Theatrales Lernen oder Performance) buchst.
   categories:
+    fancy: true
     - key: terms_and_options
+      overline: Kosten & Optionen
       label: Finanzierung
-      teaser: Frühbucher- und Paketrabatte. KOMPASS-Förderung für Solo-Selbstständige möglich.
+      teaser: "EUR 1.840 in 8 Raten. Frühbucher bis 10.04. spart EUR 220. Härtefall-Regelung möglich, KOMPASS für Solo-Selbstständige."
       options:
         - Frühbucherrabatt
         - Stornierung & Pausieren
@@ -93,8 +105,9 @@ consulting:
         - label: Fördermöglichkeiten Überblick
           url: /blog/aktuelles/foerdermoeglichkeiten-29
     - key: prerequisites
+      overline: Zulassung & Anerkennung
       label: Zulassung & Quereinstieg
-      teaser: Grundlagenbildung + A-B-C-D Kriterien. Quereinstieg möglich.
+      teaser: "Grundlagenbildung abgeschlossen + A-B-C-D Kriterien erfüllen. Quereinstieg möglich, Anerkennung von Praxiserfahrung."
       options:
         - Zulassung (A-B-C-D Kriterien)
         - Bildungs- und Berufsabschlüsse
@@ -102,8 +115,9 @@ consulting:
         - Grundlagenbildung extern (BuT-Institute)
         - Erfülle ich die Voraussetzungen?
     - key: schedules
+      overline: Termine & Zeitplanung
       label: Verläufe
-      teaser: 3-Phasen-Modell. Vertiefung ab SEP 2026 buchbar.
+      teaser: "E1 im September, E2 im Januar, 2 Offene dazwischen. Profilwahl bis Februar 2027. Nachholung flexibel möglich."
       options:
         - label: Vertiefung (Einstiegsphase)
           url: /ausbildung-theaterpaedagogik/aufbaustufe
@@ -111,8 +125,9 @@ consulting:
         - Nachholung
         - Letzter Einstieg
     - key: topics
+      overline: Themenschwerpunkte
       label: Profile
-      teaser: Theatrales Lernen oder Performance & Interkult. Theater.
+      teaser: "Nach der Vertiefung wählst du: Theatrales Lernen (Schule, Bildung) oder Performance & Interkult. Theater (Kunst, Inszenierung)."
       options:
         - label: Profil Performance
           url: /ausbildung-theaterpaedagogik/profil_performance
@@ -128,48 +143,131 @@ consulting:
     call: Bis bald! Wir rufen dich an.
 product:
   header: |
-    Die Vertiefung (Modul E) umfasst zwei intensive Seminarwochen: Du vertiefst die Methoden aus der Grundstufe und erhältst wichtige didaktische Werkzeuge für deine theaterpädagogische Praxis.
+    Die Vertiefung (Modul E) umfasst zwei intensive Seminarwochen plus persönliches Coaching: Du vertiefst die Methoden aus der Grundstufe und erhältst wichtige didaktische Werkzeuge für deine theaterpädagogische Praxis.
   footer: |
-    ## September 2026 - August 2027 **Vertiefung Theaterpädagogik**
-#
-# ── CN TODO: Items need real E1/E2 event data from CO/RH ────────────────
-# Stub events below — dates/locations TBD
-# ─────────────────────────────────────────────────────────────────────────
-#
+    ## September 2026 – Februar 2027 **Vertiefung Theaterpädagogik**
 items:
-  e1_stub:
+  e1_blind:
     ctype: event
     shortcode: e1
-    title: Praxis, Theorie & Reflexion **Seminarwoche E1**
-    tag: HERBST 2026 — Datum + Ort TBD
+    title: Du erlebst, bevor du verstehst. **Seminarwoche E1**
+    tag: SEP 30 – OKT 5, 2026 · Burgstallmühle
     image:
-      url: https://res.cloudinary.com/little-papillon/image/upload/c_crop,h_1050,q_60,w_1390,x_50,y_50/v1756048022/dasei/das_glas_voll_machen_h34pwb.png
-      caption: Vertiefung E1
+      url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_1344,h_756,g_auto,q_auto,f_auto/dasei/E1_slide1_blind_gefuehrt.jpg
+      caption: Blind geführt — Vertrauen als Methode
     body: |
-      Du durchläufst den Themen- und Gruppenprozess einer Seminarwoche und lernst die Methoden als Teilnehmer:in kennen. Anschließend reflektieren wir den thematischen Selbsterfahrungs- und Gruppenprozess.
-    start: 2026-10-01T09:00
-    ende: 2026-10-05T18:00
+      Blind geführt durch den Raum — Vertrauen als Methode. In E1 durchläufst du den vollständigen Themen- und Gruppenprozess der Szenischen Themenarbeit. 6 Tage auf der Burgstallmühle in der Fränkischen Schweiz.
+    start: 2026-09-30T17:00
+    ende: 2026-10-05T14:00
     ort: |
-      TBD
+      Burgstallmühle
+      Burgstallmühle 1
+      91338 Igensdorf
     ablauf: |
-      MO-FR 09:00-18:00 (5 Tage)
-    mit: TBD
-  e2_stub:
+      MI 30.09. Anreise bis 16:00, Beginn 17:00
+      MO 05.10. Ende ca. 14:00 nach Mittagessen
+    mit: Hans Dönitz, Rosalin Hertrich
+  e1_rollenspiel:
+    ctype: event
+    shortcode: e1
+    title: Themen, die dich beschäftigen — szenisch bearbeitet.
+    tag: E1 · „Dicht an der Grenze" · 6 Tage
+    image:
+      url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_1344,h_756,g_auto,q_auto,f_auto/dasei/305_dasei2022_grundlagen.jpg
+      caption: Rollenspiel ohne Textvorlage
+    body: |
+      Rollenspiel ohne Textvorlage: Geschichten Raum geben, Perspektiven wechseln. „Dicht an der Grenze" meint auch: dicht an dem, was wirklich wichtig ist.
+    start: 2026-09-30T17:00
+    ende: 2026-10-05T14:00
+    ort: |
+      Burgstallmühle, Fränkische Schweiz
+    ablauf: |
+      6 Tage / 5 Nächte
+      Übernachtung + Verpflegung vor Ort
+    mit: Hans Dönitz, Rosalin Hertrich
+  e2_bewegung:
     ctype: event
     shortcode: e2
-    title: Vertiefung & Transfer **Kompaktwoche E2**
-    tag: FRÜHJAHR 2027 — Datum + Ort TBD
+    title: Bewegung bringt Themen in Fluss. **Workshop E2**
+    tag: JAN 7–11, 2027 · München
     image:
-      url: https://res.cloudinary.com/little-papillon/image/upload/c_crop,h_1050,q_60,w_1390,x_50,y_50/v1756048022/dasei/das_glas_voll_machen_h34pwb.png
-      caption: Vertiefung E2
+      url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_1344,h_756,g_auto,q_auto,f_auto/dasei/E2_bewegte_themenarbeit.jpg
+      caption: Bewegte Themenarbeit
     body: |
-      Die zweite Seminarwoche vertieft die Erkenntnisse aus E1 und fokussiert auf den Transfer in die eigene Praxis.
-    start: 2027-03-01T09:00
-    ende: 2027-03-05T18:00
+      Bewegte Themenarbeit: Wenn der Raum zum Denkwerkzeug wird. In E2 fokussierst du auf den Transfer — wie gestaltest du solche Prozesse selbst?
+    start: 2027-01-07T09:00
+    ende: 2027-01-11T17:00
     ort: |
-      TBD
+      München (Seminarraum TBD)
     ablauf: |
-      MO-FR 09:00-18:00 (5 Tage)
-    mit: TBD
+      MI-SO 09:00-17:00 (5 Tage)
+    mit: Hans Dönitz, Rosalin Hertrich
+  e2_soziometrie:
+    ctype: event
+    shortcode: e2
+    title: Wo stehst du? Die Gruppe wird sichtbar.
+    tag: E2 · „Offene Themen – offene Gruppen?" · 5 Tage
+    image:
+      url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_1344,h_756,g_auto,q_auto,f_auto/dasei/E2_Soziometrie.jpg
+      caption: Soziometrische Verfahren
+    body: |
+      Soziometrische Verfahren: Positionen abfragen, Unterschiede zeigen, ins Gespräch kommen. E2 bringt die Werkzeuge für deine eigene Praxis.
+    start: 2027-01-07T09:00
+    ende: 2027-01-11T17:00
+    ort: |
+      München
+    ablauf: |
+      Workshop- und Kursformate
+    mit: Hans Dönitz, Rosalin Hertrich
+  offenes_wellenmodell:
+    ctype: event
+    shortcode: k1
+    title: Wann mache ich was? Das Wellenmodell als Kompass.
+    tag: Offenes Programm · freie Wahl
+    image:
+      url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_1344,h_756,g_auto,q_auto,f_auto/dasei/K1_praktische_didaktik_wellenmodell.jpg
+      caption: Praktische Didaktik — Wellenmodell
+    body: |
+      Praktische Didaktik für Theaterpädagog:innen: Wie du Prozesse strukturierst, ohne sie zu erdrücken. Das Offene Programm bietet dir freie Wahl — wir empfehlen LC „Soziometrie".
+    start: 2026-10-01
+    ende: 2027-02-28
+    ort: |
+      Seminartermine siehe dasei.eu/agenda
+    ablauf: |
+      2 Wochenendseminare (freie Wahl aus LA, LC, RD etc.)
+    mit: Verschiedene Dozent:innen
+  offenes_programm:
+    ctype: event
+    shortcode: k1
+    title: Dein Programm, deine Schwerpunkte.
+    tag: + 2 Seminare aus dem Offenen Programm
+    image:
+      url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_1344,h_756,g_auto,q_auto,f_auto/dasei/Offenes_Programm.jpg
+      caption: Offenes Programm — freie Wahl
+    body: |
+      LA, LC, RD oder ein anderes Wochenendseminar: Du wählst aus dem Offenen Programm, was dich interessiert. Die 2 Seminare sind Teil deiner Vertiefung — keine Zusatzkosten.
+    start: 2026-10-01
+    ende: 2027-02-28
+    ort: |
+      München oder Nürnberg
+    ablauf: |
+      z.B. LC Soziometrie (Empfehlung)
+    mit: Empfehlung: LC „Soziometrie"
+  erweiterung:
+    ctype: pricing
+    shortcode: aufbaustufe
+    title: Nach der Vertiefung — Profil oder Pause?
+    tag: Erweiterung buchbar bis FEB 2027
+    image:
+      url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_1344,h_756,g_auto,q_auto,f_auto/dasei/E_vertiefung_modelle_der_szenischen_themenarbeit.jpg
+      caption: Erweiterung zur vollen Aufbaustufe
+    body: |
+      **Du entscheidest bis Februar 2027:**
+      
+      - **Profiljahr (Phase 2):** 12 Raten × € 220 = € 2.640
+      - **Abschlussphase (Phase 3):** 9 Raten × € 220 = € 1.980
+      - **Frühbucher bis 31.10.26:** € 440 Ersparnis auf die gesamte Aufbaustufe
+      
+      → [Aufbaustufe anschauen](/ausbildung-theaterpaedagogik/aufbaustufe)
 ---
 <!-- PUBLISH-FROM-HERE -->
