@@ -86,6 +86,7 @@
         <ConsultingDialog
           v-if="pageBottom.consulting"
           :variant="pageBottom.consulting.variant || 'default'"
+          :fancy="pageBottom.consulting.fancy || false"
           :title="pageBottom.consulting.title"
           :overline="pageBottom.consulting.overline"
           :description="pageBottom.consulting.description"

@@ -89,8 +89,8 @@ consulting:
   intro: Schreib uns — wir melden uns innerhalb von 2 Werktagen.
   extension_note: |
     💡 Nach der Vertiefung entscheidest du, ob du ein Profil (Theatrales Lernen oder Performance) buchst.
+  fancy: true
   categories:
-    fancy: true
     - key: terms_and_options
       overline: Kosten & Optionen
       label: Finanzierung

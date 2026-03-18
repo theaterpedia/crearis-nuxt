@@ -496,7 +496,7 @@ const getRootPath = (root: string | undefined) => {
     <SectionContainer v-if="product.consulting" background="default" class="mt-8">
       <ConsultingDialog
         :variant="product.consulting.variant || 'email-only'"
-        :fancy="false"
+        :fancy="product.consulting.fancy || false"
         :title="product.consulting.title || 'Fragen?'"
         :description="product.consulting.intro"
         :productRef="product.consulting.productRef || product.id"
