@@ -60,13 +60,12 @@
       </span>
     </summary>
 
-    <div class="consulting-category-content-wrapper">
-      <div class="consulting-category-content">
-        <div v-if="$slots.default" class="consulting-category-teaser">
-          <slot />
-        </div>
+    <div class="consulting-category-content">
+      <div v-if="$slots.default" class="consulting-category-teaser">
+        <slot />
+      </div>
 
-        <div class="consulting-category-content-grid">
+      <div class="consulting-category-content-grid">
         <!-- Options (checkboxes or radios) -->
         <div v-if="options && options.length > 0" class="consulting-category-options">
           <label 
@@ -117,7 +116,6 @@
           />
         </div>
       </div>
-    </div>
     </div>
   </details>
 </template>
@@ -228,16 +226,6 @@ const props = defineProps({
     type: String,
     default: '',
   },
-
-  /**
-   * Delay in ms before expanding the category after activation.
-   * 0 = no delay (immediate expansion)
-   * @default 0
-   */
-  expansionDelay: {
-    type: Number,
-    default: 0,
-  },
 })
 
 const emit = defineEmits<{
@@ -252,29 +240,7 @@ onMounted(() => {
   inputId.value = `${props.name}-${nanoid(6)}`
 })
 
-// Visual expansion state (may be delayed from modelValue)
-const visuallyOpen = ref(props.modelValue)
-let expansionTimeout: ReturnType<typeof setTimeout> | null = null
-
-watch(() => props.modelValue, (newVal) => {
-  // Clear any pending timeout
-  if (expansionTimeout) {
-    clearTimeout(expansionTimeout)
-    expansionTimeout = null
-  }
-
-  if (newVal && props.expansionDelay > 0) {
-    // Activating with delay: wait before expanding
-    expansionTimeout = setTimeout(() => {
-      visuallyOpen.value = true
-    }, props.expansionDelay)
-  } else {
-    // Deactivating or no delay: immediate
-    visuallyOpen.value = newVal
-  }
-})
-
-const isOpen = computed(() => visuallyOpen.value)
+const isOpen = computed(() => props.modelValue)
 const freeformValue = computed(() => props.freeformText)
 
 const handleToggle = () => {
@@ -476,19 +442,7 @@ const handleRadioChange = (optionKey: string) => {
   height: 1.25rem;
 }
 
-/* Animated expansion using grid-template-rows trick */
-.consulting-category-content-wrapper {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 150ms ease-out;
-}
-
-.consulting-category-checked .consulting-category-content-wrapper {
-  grid-template-rows: 1fr;
-}
-
 .consulting-category-content {
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   gap: 1rem;
