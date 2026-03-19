@@ -27,9 +27,7 @@ pageBottom:
   topline: true
   content_y: top
   inherit_hero_image: false
-  image:
-    src: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_1920,h_1080,g_south,q_auto,f_auto/dasei/esther_eleanora_macchiato.jpg
-    alt: Esther und Eleanora — Dein Regie-Team
+  image: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_1920,h_1080,g_south,q_auto,f_auto/dasei/esther_eleanora_macchiato.jpg
   image_gravity: south
   gradient_type: bottom
   gradient_depth: 0.7
