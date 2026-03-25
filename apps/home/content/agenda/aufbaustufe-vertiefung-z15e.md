@@ -290,7 +290,7 @@ items:
       München oder Nürnberg
     ablauf: |
       z.B. LC Soziometrie (Empfehlung)
-    mit: Empfehlung: LC „Soziometrie"
+    mit: 'Empfehlung: LC „Soziometrie"'
   erweiterung:
     ctype: pricing
     shortcode: AS
