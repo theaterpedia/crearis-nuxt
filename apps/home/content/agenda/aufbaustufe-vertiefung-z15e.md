@@ -68,7 +68,7 @@ details:
         Ratenzahlung: SEP 2026 – APR 2027 (monatlich)
       storno: |
         ### Frühbuchung & Storno
-        - **Frühbuchung bis 10.04.26:** 1 Seminar Offenes Programm frei → nur 7 Raten = **€ 1.620**
+        - **Frühbuchung bis 10.04.26:** 1 zusätzl. Seminar Offenes Programm frei
         - **Storno bis 10 Tage nach E1:** Kündigung ohne zusätzliche Kosten
         - **Kündigung nach E1:** € 220 Stornogebühr
         - Bereits gebuchte Seminare → Erstattung
@@ -92,7 +92,7 @@ consulting:
     - key: terms_and_options
       overline: Kosten & Optionen
       label: Finanzierung
-      teaser: "EUR 1.840 in 8 Raten (€ 80 Anmeldegebühr + 8 × € 220). Bei Frühbuchung bis 10.04.26 sparst du € 220 — das sind nur 7 Raten. Storno bis 10 Tage nach E1 ohne Zusatzkosten. Bei finanziellen Engpässen gibt es eine Härtefall-Regelung, und für Solo-Selbstständige prüfen wir KOMPASS-Förderung."
+      teaser: "EUR 1.840 in 8 Raten (€ 80 Anmeldegebühr + 8 × € 220). Bei Frühbuchung bis 10.04.26 ist ein zusätzliches Seminar aus dem Offenen Programm inkludiert (im Wert € 220, auch später noch belegbar). Storno bis 10 Tage nach E1 ohne Zusatzkosten. Bei finanziellen Engpässen gibt es eine Härtefall-Regelung, und für Solo-Selbstständige prüfen wir KOMPASS-Förderung."
       options:
         - Frühbucherrabatt
         - Stornierung & Pausieren
@@ -148,13 +148,17 @@ items:
   e1_blind:
     ctype: event
     shortcode: E1
-    title: "Blind geführt — Vertrauen **Dicht an der Grenze**"
-    tag: SEP 30 – OKT 5, 2026 · Burgstallmühle
+    title: "Das Format Seminarwoche **Dicht an der Grenze**"
+    tag: "1. OKT 09:00 – 5. OKT 16:00 · Burgstallmühle · Anreise: 30. SEP abends"
     image:
       url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_400,h_400,g_auto,q_auto,f_auto/dasei/E1_slide1_blind_gefuehrt.jpg
       caption: Blind geführt — Vertrauen als Methode
     body: |
-      Du wirst blind durch den Raum geführt — und erlebst dabei Vertrauen als Methode. Das ist E1: Der vollständige Themen- und Gruppenprozess der Szenischen Themenarbeit. 6 intensive Tage auf der Burgstallmühle in der Fränkischen Schweiz.
+      "Die praktische Seminarwoche (4,5 Tage) zum Thema Demokratie durchläufst du zunächst als Teilnehmer:in. 
+
+      Anschließend (auch im online-Programm) wird der Prozess ausführlich reflektiert und mit Theorie gefüllt. Du vertiefst Methoden der szen. Themenarbeit, Soziometrie, Körperarbeit und lernst didaktische Werkzeuge anzuwenden (z.B. TZI, Tiefendimensionen).  
+      
+      Inhalte: Themen- & Kennenlernprozess initiieren, Methoden der Szen. Themenarbeit: Standbilder, Denkmal, Rollenspiel, Bewegte Themenarbeit & Körperarbeit, Methoden von Augusto Boal, Deep Democracy, Open Space" 
     start: 2026-09-30T17:00
     ende: 2026-10-05T14:00
     ort: |
@@ -165,34 +169,63 @@ items:
       MI 30.09. Anreise bis 16:00, Beginn 17:00
       MO 05.10. Ende ca. 14:00 nach Mittagessen
     mit: Hans Dönitz, Rosalin Hertrich
-  e1_rollenspiel:
+  k1_didaktik_und_theorie_teil1:
     ctype: event
-    shortcode: E1
-    title: "Rollenspiel ohne Textvorlage **Szenische Themenarbeit**"
-    tag: E1 · „Dicht an der Grenze" · 6 Tage
+    shortcode: K1
+    title: Planung & Reflexion von Lernprozessen  **Didaktik & Theorie**
+    tag: "Digitalprogramm 
+    Mit Recording & Skript"
+    image:
+      url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_400,h_400,g_auto,q_auto,f_auto/dasei/K1_praktische_didaktik_wellenmodell.jpg
+      caption: Praktische Didaktik — Wellenmodell
+    body: |
+      "Im begleitenden online-Programm verbinden wir Reflexionen aus der durchlaufenen Praxis mit prägnanten Theorie Inputs. 
+      Di 22.9. 18:00-20:00 Einführung & Organisation 
+      Do 8.10. 18:30-21:45 Reflexion “Labor-Box” & TZI 
+      Do 15.10. 18:30-21:45 Rollende Planung & Kontrakt  
+      Di 3.11. 18:00-20:00 Input TZI & 3-Spalten-Modell 
+      Do 10.12. 18:30-21:45 Input Soziometrie & Konzeption"
+    start: 2026-09-22
+    ende: 2027-02-28
+    ort: |
+      Seminartermine siehe dasei.eu/agenda
+    ablauf: |
+      7 Online-Einheiten
+    mit: Hans Dönitz, Rosalin Hertrich  
+  offenes_programm:
+    ctype: event
+    title: "Wähle flexibel 2 Seminare **Offenes Programm**"
+    tag: Wahlprogramm  
     image:
       url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_400,h_400,g_auto,q_auto,f_auto/dasei/305_dasei2022_grundlagen.jpg
       caption: Rollenspiel ohne Textvorlage
     body: |
-      „Dicht an der Grenze" — das meint auch: dicht an dem, was wirklich wichtig ist. Keine komplizierten Übungen, keine Textvorlagen. Du gibst Geschichten Raum, wechselst Perspektiven, und lernst, wie Themen szenisch bearbeitet werden.
+      „Vor-Programm 2026
+      - **LD** 1.-3.5. Elementare Animation im Praxisfeld
+      - **LA** 15.-17.5. Thematische Warm Ups
+      - **RA** 3.-5.7. Die künstlerische Aktion
+
+      Begleitend 2026/27
+      - **LR** 11.-13.12.26 Eine Rolle – viele Gesichter
+      - **B7** 23.-24.1.27 Forumtheater
+      - **B8** 23.-24.1.27 Bewegte Themenarbeit"
     start: 2026-09-30T17:00
     ende: 2026-10-05T14:00
     ort: |
-      Burgstallmühle, Fränkische Schweiz
+      München, Nürnberg, Fürth
     ablauf: |
-      6 Tage / 5 Nächte
-      Übernachtung + Verpflegung vor Ort
+      auf Anfrage
     mit: Hans Dönitz, Rosalin Hertrich
   e2_bewegung:
     ctype: event
     shortcode: E2
-    title: "Bewegte Themenarbeit **Offene Themen – offene Gruppen?**"
-    tag: JAN 7–11, 2027 · München
+    title: "Workshop- & Kursformat **Offene Themen – offene Gruppen?**"
+    tag: "6. JAN 13:00 – 10. JAN 16:00  München" 
     image:
-      url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_400,h_400,g_auto,q_auto,f_auto/dasei/E2_bewegte_themenarbeit.jpg
-      caption: Bewegte Themenarbeit
+      url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_400,h_400,g_auto,q_auto,f_auto/dasei/E2_Soziometrie.jpg
+      caption: Soziometrische Aufstellung
     body: |
-      Bewegung bringt Themen in Fluss — der Raum wird zum Denkwerkzeug. In E2 fokussierst du auf Transfer: Wie gestaltest du solche Prozesse selbst? In deiner Praxis, mit deinen Gruppen, mit offenen Themen?
+      "Kursteilnehmende übernehmen Anleitungen im Kurs- und Workshopformat und erhalten Feedback. Dies dient dem Wissenstransfer von Theorie und Praxis. Praktische Einheiten demonstrieren die Tiefendimensionen des Lernens / Anwendung von Soziometrie, bewegter Themenarbeit und 3-Spalten-Didaktik."
     start: 2027-01-07T09:00
     ende: 2027-01-11T17:00
     ort: |
@@ -200,6 +233,27 @@ items:
     ablauf: |
       MI-SO 09:00-17:00 (5 Tage)
     mit: Hans Dönitz, Rosalin Hertrich
+  k1_didaktik_und_theorie_teil2:
+    ctype: event
+    shortcode: K1
+    title: Planung & Reflexion von Lernprozessen (Teil 2)  **Didaktik & Theorie**
+    tag: "Digitalprogramm 
+    Mit Recording & Skript"
+    image:
+      url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_400,h_400,g_auto,q_auto,f_auto/dasei/E2_bewegte_themenarbeit.jpg
+      caption: Bewegte Themenarbeit
+    body: |
+      "Im begleitenden online-Programm verbinden wir Reflexionen aus der durchlaufenen Praxis mit prägnanten Theorie Inputs. 
+
+      Di 19.1. 18:00-20:00 Vertiefung: 3-Spalten Modell 
+      Do 18.2. 18:30-21:45 Tiefendimensionen des Lernens"
+    start: 2026-09-22
+    ende: 2027-02-28
+    ort: |
+      Seminartermine siehe dasei.eu/agenda
+    ablauf: |
+      7 Online-Einheiten
+    mit: Hans Dönitz, Rosalin Hertrich 
   e2_soziometrie:
     ctype: event
     shortcode: E2
@@ -217,26 +271,6 @@ items:
     ablauf: |
       Workshop- und Kursformate
     mit: Hans Dönitz, Rosalin Hertrich
-  offenes_wellenmodell:
-    ctype: event
-    shortcode: OP
-    title: "Praktische Didaktik **Wochenenden**"
-    tag: Offenes Programm · freie Wahl
-    image:
-      url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_400,h_400,g_auto,q_auto,f_auto/dasei/K1_praktische_didaktik_wellenmodell.jpg
-      caption: Praktische Didaktik — Wellenmodell
-    body: |
-      Wann mache ich was? Das Wellenmodell wird dein Kompass. Praktische Didaktik für Theaterpädagog:innen: Wie du Prozesse strukturierst, ohne sie zu erdrücken. Das Offene Programm bietet dir freie Wahl.
-      - Empfehlung: LC „Soziometrie"
-      - Alternative: LA „Anfänge verstehen"
-      - Oder: RD „Verkörperungen"
-    start: 2026-10-01
-    ende: 2027-02-28
-    ort: |
-      Seminartermine siehe dasei.eu/agenda
-    ablauf: |
-      2 Wochenendseminare (freie Wahl aus LA, LC, RD etc.)
-    mit: Verschiedene Dozent:innen
   offenes_programm:
     ctype: event
     shortcode: OP
