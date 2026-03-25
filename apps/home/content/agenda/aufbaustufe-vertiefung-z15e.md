@@ -154,11 +154,11 @@ items:
       url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_400,h_400,g_auto,q_auto,f_auto/dasei/E1_slide1_blind_gefuehrt.jpg
       caption: Blind geführt — Vertrauen als Methode
     body: |
-      "Die praktische Seminarwoche (4,5 Tage) zum Thema Demokratie durchläufst du zunächst als Teilnehmer:in. 
+      Die praktische Seminarwoche (4,5 Tage) zum Thema Demokratie durchläufst du zunächst als Teilnehmer:in. 
 
       Anschließend (auch im online-Programm) wird der Prozess ausführlich reflektiert und mit Theorie gefüllt. Du vertiefst Methoden der szen. Themenarbeit, Soziometrie, Körperarbeit und lernst didaktische Werkzeuge anzuwenden (z.B. TZI, Tiefendimensionen).  
       
-      Inhalte: Themen- & Kennenlernprozess initiieren, Methoden der Szen. Themenarbeit: Standbilder, Denkmal, Rollenspiel, Bewegte Themenarbeit & Körperarbeit, Methoden von Augusto Boal, Deep Democracy, Open Space" 
+      Inhalte: Themen- & Kennenlernprozess initiieren, Methoden der Szen. Themenarbeit: Standbilder, Denkmal, Rollenspiel, Bewegte Themenarbeit & Körperarbeit, Methoden von Augusto Boal, Deep Democracy, Open Space 
     start: 2026-09-30T17:00
     ende: 2026-10-05T14:00
     ort: |
@@ -173,18 +173,17 @@ items:
     ctype: event
     shortcode: K1
     title: Planung & Reflexion von Lernprozessen  **Didaktik & Theorie**
-    tag: "Digitalprogramm 
-    Mit Recording & Skript"
+    tag: "Digitalprogramm - mit Recording & Skript"
     image:
       url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_400,h_400,g_auto,q_auto,f_auto/dasei/K1_praktische_didaktik_wellenmodell.jpg
       caption: Praktische Didaktik — Wellenmodell
     body: |
-      "Im begleitenden online-Programm verbinden wir Reflexionen aus der durchlaufenen Praxis mit prägnanten Theorie Inputs. 
-      Di 22.9. 18:00-20:00 Einführung & Organisation 
-      Do 8.10. 18:30-21:45 Reflexion “Labor-Box” & TZI 
-      Do 15.10. 18:30-21:45 Rollende Planung & Kontrakt  
-      Di 3.11. 18:00-20:00 Input TZI & 3-Spalten-Modell 
-      Do 10.12. 18:30-21:45 Input Soziometrie & Konzeption"
+      Im begleitenden online-Programm verbinden wir Reflexionen aus der durchlaufenen Praxis mit prägnanten Theorie Inputs. 
+      - Di 22.9. 18:00-20:00 Einführung & Organisation 
+      - Do 8.10. 18:30-21:45 Reflexion “Labor-Box” & TZI 
+      - Do 15.10. 18:30-21:45 Rollende Planung & Kontrakt  
+      - Di 3.11. 18:00-20:00 Input TZI & 3-Spalten-Modell 
+      - Do 10.12. 18:30-21:45 Input Soziometrie & Konzeption
     start: 2026-09-22
     ende: 2027-02-28
     ort: |
@@ -194,21 +193,16 @@ items:
     mit: Hans Dönitz, Rosalin Hertrich  
   offenes_programm:
     ctype: event
+    shortcode: 
     title: "Wähle flexibel 2 Seminare **Offenes Programm**"
     tag: Wahlprogramm  
     image:
       url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_400,h_400,g_auto,q_auto,f_auto/dasei/305_dasei2022_grundlagen.jpg
       caption: Rollenspiel ohne Textvorlage
     body: |
-      „Vor-Programm 2026
-      - **LD** 1.-3.5. Elementare Animation im Praxisfeld
-      - **LA** 15.-17.5. Thematische Warm Ups
-      - **RA** 3.-5.7. Die künstlerische Aktion
+      **Vor-Programm 2026** <br><br>**LD** 1.-3.5. Elementare Animation im Praxisfeld <br>**LA** 15.-17.5. Thematische Warm Ups <br> **RA** 3.-5.7. Die künstlerische Aktion
 
-      Begleitend 2026/27
-      - **LR** 11.-13.12.26 Eine Rolle – viele Gesichter
-      - **B7** 23.-24.1.27 Forumtheater
-      - **B8** 23.-24.1.27 Bewegte Themenarbeit"
+      **Begleitend 2026/27** <br><br>**LR** 11.-13.12.26 Eine Rolle – viele Gesichter<br>**B7** 23.-24.1.27 Forumtheater<br>**B8** 23.-24.1.27 Bewegte Themenarbeit
     start: 2026-09-30T17:00
     ende: 2026-10-05T14:00
     ort: |
@@ -225,9 +219,9 @@ items:
       url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_400,h_400,g_auto,q_auto,f_auto/dasei/E2_Soziometrie.jpg
       caption: Soziometrische Aufstellung
     body: |
-      "Kursteilnehmende übernehmen Anleitungen im Kurs- und Workshopformat und erhalten Feedback. Dies dient dem Wissenstransfer von Theorie und Praxis. Praktische Einheiten demonstrieren die Tiefendimensionen des Lernens / Anwendung von Soziometrie, bewegter Themenarbeit und 3-Spalten-Didaktik."
-    start: 2027-01-07T09:00
-    ende: 2027-01-11T17:00
+      Kursteilnehmende übernehmen Anleitungen im Kurs- und Workshopformat und erhalten Feedback. Dies dient dem Wissenstransfer von Theorie und Praxis. Praktische Einheiten demonstrieren die Tiefendimensionen des Lernens / Anwendung von Soziometrie, bewegter Themenarbeit und 3-Spalten-Didaktik.
+    start: 2027-01-07
+    ende: 2027-01-11
     ort: |
       München (Seminarraum TBD)
     ablauf: |
@@ -237,16 +231,14 @@ items:
     ctype: event
     shortcode: K1
     title: Planung & Reflexion von Lernprozessen (Teil 2)  **Didaktik & Theorie**
-    tag: "Digitalprogramm 
-    Mit Recording & Skript"
+    tag: Digitalprogramm - mit Recording & Skript
     image:
       url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_400,h_400,g_auto,q_auto,f_auto/dasei/E2_bewegte_themenarbeit.jpg
       caption: Bewegte Themenarbeit
     body: |
-      "Im begleitenden online-Programm verbinden wir Reflexionen aus der durchlaufenen Praxis mit prägnanten Theorie Inputs. 
-
-      Di 19.1. 18:00-20:00 Vertiefung: 3-Spalten Modell 
-      Do 18.2. 18:30-21:45 Tiefendimensionen des Lernens"
+      Im begleitenden online-Programm verbinden wir Reflexionen aus der durchlaufenen Praxis mit prägnanten Theorie Inputs: 
+      - Di 19.1. 18:00-20:00 Vertiefung: 3-Spalten Modell 
+      - Do 18.2. 18:30-21:45 Tiefendimensionen des Lernens
     start: 2026-09-22
     ende: 2027-02-28
     ort: |
@@ -271,41 +263,17 @@ items:
     ablauf: |
       Workshop- und Kursformate
     mit: Hans Dönitz, Rosalin Hertrich
-  offenes_programm:
-    ctype: event
-    shortcode: OP
-    title: "Dein Programm **2 Wochenenden**"
-    tag: + 2 Seminare aus dem Offenen Programm
-    image:
-      url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_400,h_400,g_auto,q_auto,f_auto/dasei/Offenes_Programm.jpg
-      caption: Offenes Programm — freie Wahl
-    body: |
-      LA, LC, RD oder ein anderes Wochenendseminar: Du wählst aus dem Offenen Programm, was dich interessiert. Die 2 Seminare sind Teil deiner Vertiefung — sie kosten nichts extra.
-      - 2 Wochenenden, frei wählbar
-      - Termine laufend (OKT 2026 – FEB 2027)
-      - München oder Nürnberg
-    start: 2026-10-01
-    ende: 2027-02-28
-    ort: |
-      München oder Nürnberg
-    ablauf: |
-      z.B. LC Soziometrie (Empfehlung)
-    mit: 'Empfehlung: LC „Soziometrie"'
   erweiterung:
     ctype: pricing
-    shortcode: AS
-    title: "Nach der Vertiefung **Profiljahr oder Abschluss**"
-    tag: Erweiterung buchbar bis FEB 2027
+    shortcode: Z15
+    title: "Das Glas voll machen **Profiljahr und Berufsabschluss**"
+    tag: bis FEB 2027 erweitern zur Aufbaustufe Theaterpädagogik (BuT) 
     image:
-      url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_400,h_400,g_auto,q_auto,f_auto/dasei/E_vertiefung_modelle_der_szenischen_themenarbeit.jpg
+      url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_400,h_400,g_auto,q_auto,f_auto/dasei/Offenes_Programm.jpg
       caption: Erweiterung zur vollen Aufbaustufe
     body: |
-      **Du entscheidest bis Februar 2027:**
+      Du entscheidest bis Februar 2027 wie es weiter geht.<br>Pausieren?<br>Erstmal nur ins Profil? <br>→ Theatrales Lernen: https://dasei.eu/ausbildung-theaterpaedagogik/profil_theatrales_lernen <br>→ Performance & interkulturelles Theater: https://dasei.eu/ausbildung-theaterpaedagogik/profil_performance <br>
       
-      - **Profiljahr (Phase 2)** 12 Raten × € 220 = € 2.640
-      - **Abschlussphase (Phase 3)** 9 Raten × € 220 = € 1.980
-      - **Frühbucher bis 31.10.26** € 440 Ersparnis auf die gesamte Aufbaustufe
-      
-      → [Aufbaustufe anschauen](/ausbildung-theaterpaedagogik/aufbaustufe)
+      Für die Komplettbuchung bis zum Berufsabschluss Theaterpädagogik (BuT), beachte Zugangsvoraussetzungen & Frühbuchungskonditionen.<br>→ Aufbaustufe anschauen: https://dasei.eu/ausbildung-theaterpaedagogik/aufbaustufe
 ---
 <!-- PUBLISH-FROM-HERE -->
