@@ -328,6 +328,32 @@ const shortcodeTitle = (shortcode: String | undefined, title: String) => {
   return `_${shortcode.toUpperCase()}_ ${title}`
 }
 
+// Convert to plain inline format for h4 headings: "K1: Overline (Headline...)" 
+const oneLineTitle = (shortcode: String | undefined, title: String, maxLength: number = 50) => {
+  // Extract overline (before **) and headline (inside **)
+  const match = title.match(/^(.*)\*\*([^*]+)\*\*$/)
+  const prefix = shortcode ? `${shortcode.toUpperCase()}: ` : ''
+  
+  if (match) {
+    const overline = match[1].trim()
+    const headline = match[2].trim()
+    const baseText = prefix + overline + ' '
+    const availableForHeadline = maxLength - baseText.length - 2 // account for ()
+    
+    if (headline.length > availableForHeadline) {
+      return baseText + '(' + headline.slice(0, availableForHeadline - 3) + '...)'
+    }
+    return baseText + '(' + headline + ')'
+  }
+  
+  // Fallback: no bold pattern found, just use title as-is
+  const fullText = prefix + title
+  if (fullText.length > maxLength) {
+    return fullText.slice(0, maxLength - 3) + '...'
+  }
+  return fullText
+}
+
 // Filter out items with ctype starting with 'slide_' from left panel
 const filteredItems = computed(() => {
   if (!props.product.items) return []
@@ -335,6 +361,95 @@ const filteredItems = computed(() => {
     (item: any) => !item.ctype || !item.ctype.startsWith('slide_')
   )
 })
+
+// Helper: check if date ranges overlap (for ctype:lines stacking)
+const datesOverlap = (a: any, b: any): boolean => {
+  // If either item has no dates, treat as "always overlapping"
+  if (!a.date_start || !a.date_end || !b.date_start || !b.date_end) {
+    return true
+  }
+  return new Date(a.date_start) <= new Date(b.date_end) && 
+         new Date(b.date_start) <= new Date(a.date_end)
+}
+
+// Group consecutive ctype:lines items into timeline cards
+// - Max 3 items per card, only if dates overlap
+// - Regular items (ctype:event etc.) become single-item cards
+interface TimelineCard {
+  items: any[]
+  isLinesCard: boolean
+  ueValues: (number | null)[]  // Individual UE values for display
+  totalUe: number | null       // Sum if ALL items have numeric ue
+}
+
+const groupedTimelineItems = computed((): TimelineCard[] => {
+  const items = filteredItems.value
+  const cards: TimelineCard[] = []
+  let i = 0
+  
+  while (i < items.length) {
+    const item = items[i]
+    
+    if (item.ctype === 'lines') {
+      // Start a new lines card
+      const cardItems = [item]
+      i++
+      
+      // Try to add up to 2 more items (max 3 total)
+      while (i < items.length && 
+             items[i].ctype === 'lines' && 
+             cardItems.length < 3) {
+        const nextItem = items[i]
+        // Check overlap with last item in cardItems
+        if (datesOverlap(cardItems[cardItems.length - 1], nextItem)) {
+          cardItems.push(nextItem)
+          i++
+        } else {
+          break // No overlap, start new card
+        }
+      }
+      
+      // Collect UE values
+      const ueValues = cardItems.map(item => 
+        typeof item.ue === 'number' ? item.ue : null
+      )
+      
+      // Calculate total UE only if ALL items have numeric ue
+      let totalUe: number | null = null
+      if (ueValues.every(ue => ue !== null)) {
+        totalUe = ueValues.reduce((sum, ue) => sum! + ue!, 0)
+      }
+      
+      cards.push({
+        items: cardItems,
+        isLinesCard: true,
+        ueValues,
+        totalUe,
+      })
+    } else {
+      // Regular item (event, etc.) - single-item card
+      cards.push({
+        items: [item],
+        isLinesCard: false,
+        ueValues: [],
+        totalUe: null,
+      })
+      i++
+    }
+  }
+  
+  return cards
+})
+
+// Format UE summary line for stacked items: "_80 UE_ + _75 UE_ = _155 UE_"
+const formatUeSummary = (ueValues: (number | null)[], totalUe: number | null): string => {
+  if (totalUe === null || ueValues.length === 0) return ''
+  if (ueValues.length === 1) {
+    return `_${ueValues[0]} UE_`
+  }
+  const parts = ueValues.map(ue => `_${ue} UE_`).join(' + ')
+  return `${parts} = _${totalUe} UE_`
+}
 
 const getRootPath = (root: string | undefined) => {
   if (!root) return ''
@@ -387,7 +502,7 @@ const getRootPath = (root: string | undefined) => {
     </StepperRoot> 
     <SectionContainer>
     <Columns gap="medium" stackReverse>
-      <Column>
+      <Column class="timeline-column">
         <ContentQuery v-slot="{ data }" :path="product.meta_product ? getRootPath(product.root) : src" find="one">
           <ContentRenderer :value="data">
             <Hero
@@ -414,21 +529,72 @@ const getRootPath = (root: string | undefined) => {
             </Hero>
           </ContentRenderer>
         </ContentQuery>
-        <SectionContainer
-          v-for="(item, index) in filteredItems"
-          :background="index === 2 || index === 4 ? 'accent' : 'muted'"
-          :key="index"
-        >
-          <Heading v-if="item.title" :content="item.shortcode ? shortcodeTitle(item.shortcode, item.title) : item.title" is="h3" />
-          <columns gap="small">
-            <column width="2/5" style="line-height: 1.62em">
-              <p>{{ item.tag }}</p>
-            </column>
-            <column>
-              <MdBlock v-if="item.schedule" :content="item.schedule" htag="h3" narrow style="margin-top: -0.3em" />
-            </column>
-          </columns>
-        </SectionContainer>
+        
+        <!-- Timeline cards: grouped ctype:lines or single items -->
+        <template v-for="(card, cardIndex) in groupedTimelineItems" :key="cardIndex">
+          <!-- Lines card: multiple stacked ctype:lines items -->
+          <SectionContainer
+            v-if="card.isLinesCard"
+            :background="cardIndex === 2 || cardIndex === 4 ? 'accent' : 'muted'"
+            narrow
+          >
+            <template v-for="(item, itemIndex) in card.items" :key="itemIndex">
+              <!-- First item: full heading (h3, twoliner twocolums pattern) -->
+              <template v-if="itemIndex === 0">
+                <Heading 
+                  v-if="item.title" 
+                  :content="item.shortcode ? shortcodeTitle(item.shortcode, item.title) : item.title" 
+                  is="h3" 
+                />
+              </template>
+              <!-- 2nd/3rd items: smaller inline heading (h4) -->
+              <template v-else>
+                <Heading 
+                  v-if="item.title" 
+                  :content="oneLineTitle(item.shortcode, item.title)" 
+                  is="h4"
+                  style="margin-top: 1.5rem"
+                />
+              </template>
+              
+              <!-- Schedule with dotted-leader styling via CatBlock -->
+              <CatBlock 
+                v-if="item.schedule" 
+                :content="item.schedule" 
+                htag="h4" 
+                style="margin-top: 0.25rem" 
+              />
+            </template>
+            
+            <!-- UE summary at card-bottom (only if all items have numeric ue) -->
+            <Prose v-if="card.totalUe !== null" style="margin-top: 1rem">
+              <p class="ue-summary">
+                <em v-html="formatUeSummary(card.ueValues, card.totalUe).replace(/_([^_]+)_/g, '<em>$1</em>')"></em>
+              </p>
+            </Prose>
+          </SectionContainer>
+          
+          <!-- Regular card: single event item -->
+          <SectionContainer
+            v-else
+            :background="cardIndex === 2 || cardIndex === 4 ? 'accent' : 'muted'"
+            narrow
+          >
+            <Heading 
+              v-if="card.items[0].title" 
+              :content="card.items[0].shortcode ? shortcodeTitle(card.items[0].shortcode, card.items[0].title) : card.items[0].title" 
+              is="h3" 
+            />
+            <columns gap="small">
+              <column width="2/5" style="line-height: 1.62em">
+                <p>{{ card.items[0].tag }}</p>
+              </column>
+              <column>
+                <MdBlock v-if="card.items[0].schedule" :content="card.items[0].schedule" htag="h3" narrow style="margin-top: -0.3em" />
+              </column>
+            </columns>
+          </SectionContainer>
+        </template>
       </Column>
       <Column class="checkout-card bg-neutral-50">
         <MdBlock v-if="stepProps.header" :content="stepProps.header" htag="h3" />
@@ -524,5 +690,31 @@ const getRootPath = (root: string | undefined) => {
   box-shadow:
     0px 4px 6px 1px rgba(0, 0, 0, 0.1),
     0px 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* UE summary for ctype:lines cards - subtle formal note */
+.ue-summary {
+  font-size: 0.875rem;
+  color: var(--color-muted-contrast);
+  opacity: 0.7;
+  border-top: 1px solid var(--color-border);
+  padding-top: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.ue-summary em {
+  font-style: normal;
+  font-weight: 500;
+}
+
+/* Timeline cards only: muted styling for shortcode and headline */
+.timeline-column :deep(.shortcode-float) {
+  opacity: 0.55;
+}
+.timeline-column :deep(.heading.twoliner strong) {
+  opacity: 0.75;
+}
+.timeline-column :deep(h4) {
+  opacity: 0.75;
 }
 </style>

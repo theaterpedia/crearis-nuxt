@@ -2,7 +2,7 @@
 navigation: false
 navigation_highlight: /ausbildung-theaterpaedagogik/aufbaustufe
 shortcode: z15t
-heading: "AUFBAUSTUFE THEATERPÄDAGOGIK (BuT) **Profil Theatrales Lernen**"
+heading: "**AUFBAUSTUFE THEATERPÄDAGOGIK (BuT)** Profil Theatrales Lernen"
 date_start: 2026-09-30
 end: 2028-08-31
 ctype: course
@@ -161,30 +161,10 @@ items:
       ---
 
       ggf. noch ein Kommentar, Zusammenfassung …
-  e1_blind:
-    ctype: event
-    shortcode: E1
-    title: "Blind geführt — Vertrauen **Dicht an der Grenze**"
-    tag: SEP 30 – OKT 5, 2026 · Burgstallmühle
-    image:
-      url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_400,h_400,g_auto,q_auto,f_auto/dasei/E1_slide1_blind_gefuehrt.jpg
-      caption: Blind geführt — Vertrauen als Methode
-    body: |
-      Du wirst blind durch den Raum geführt — und erlebst dabei Vertrauen als Methode. Das ist E1: Der vollständige Themen- und Gruppenprozess der Szenischen Themenarbeit. 6 intensive Tage auf der Burgstallmühle in der Fränkischen Schweiz.
-    date_start: 2026-09-30T17:00
-    date_end: 2026-10-05T14:00
-    location: |
-      Burgstallmühle
-      Burgstallmühle 1
-      91338 Igensdorf
-    schedule: |
-      MI 30.09. Anreise bis 16:00, Beginn 17:00
-      MO 05.10. Ende ca. 14:00 nach Mittagessen
-    instructors: Hans Dönitz, Rosalin Hertrich
   z15e_vertiefung:
     ctype: lines
-    shortcode: Z15E
-    title: "Vertiefung **Modelle der Szenischen Themenarbeit**"
+    shortcode: E
+    title: "Modelle der Szenischen Themenarbeit **Vertiefung**"
     tag: 1. OKT 09:00 – 5. OKT 16:00 · Burgstallmühle <br> 6. JAN 13:00 – 10. JAN 16:00  München
     image:
       url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_400,h_400,g_auto,q_auto,f_auto/dasei/E1_slide1_blind_gefuehrt.jpg
@@ -198,11 +178,12 @@ items:
       Inhalte: Themen- & Kennenlernprozess initiieren, Methoden der Szen. Themenarbeit: Standbilder, Soziometrie, Rollenspiel, Bewegte Themenarbeit, Körperarbeit, Methoden von Augusto Boal, Deep Democracy, Open Space"
     date_start: 2026-09-22
     date_end: 2027-02-28
+    ue: 108
     location: |
       Burgstallmühle, München
     schedule: |
-      Teil 1: 1.-5. OKT Übernachtung + Verpflegung vor Ort
-      Teil 2: Seminartage mit Mittagspause
+      - **Teil 1** 1.-5. OKT Übernachtung + Verpflegung vor Ort
+      - **Teil 2** Seminartage mit Mittagspause
     instructors: Hans Dönitz, Rosalin Hertrich
   k1_didaktik_und_theorie:
     ctype: lines
@@ -221,6 +202,7 @@ items:
       - Do 10.12. 18:30-21:45 Input Soziometrie & Konzeption
     date_start: 2026-09-22
     date_end: 2027-02-28
+    ue: 28
     location: |
       Seminartermine siehe dasei.eu/agenda
     schedule: |
