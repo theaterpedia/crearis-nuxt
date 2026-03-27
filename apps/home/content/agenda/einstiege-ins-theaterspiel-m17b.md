@@ -3,7 +3,7 @@ navigation: false
 navigation_highlight: /ausbildung-theaterpaedagogik/einstiege
 shortcode: m17b
 heading: "**Einstiege ins Theaterspiel** Burgstallmühle 25.9 - 16.12.2025 // Blockseminarverlauf"
-start: 2025-09-25
+date_start: 2025-09-25
 end: 2025-12-16
 ctype: course
 tag: course
@@ -63,15 +63,15 @@ items:
    caption: Theaterpädagogik Szenische Lesung
   body: |
    Du erarbeitest dir spezifische Techniken, die es dir ermöglichen, unmittelbar in verschiedene Rollen zu schlüpfen. Für das teilnehmende Publikum bringst du auf diese Weise die Magie einer Geschichte zum Vorschein und interagierst als Animationsfigur. Die durch sie vermittelten Erlebnissen, können zum Auftakt eines Theaterstücks werden.
-  start: 2025-09-25T19:00
-  ende: 2025-09-26T18:30
-  ort: |
+  date_start: 2025-09-25T19:00
+  date_end: 2025-09-26T18:30
+  location: |
    Burgstallmühle 1
    91572 Bechhofen
-  ablauf: |
+  schedule: |
    Do. 19:00-21:30
    Fr. 09:00-18:30
-  mit: Kathrin Jung
+  instructors: Kathrin Jung
  a5_1294:
   ctype: event
   shortcode: a5
@@ -82,16 +82,16 @@ items:
    caption: Theaterpädagogik Figurenkarussell
   body: |
    Mithilfe des Figurenkarussells animierst du das teilnehmende Publikum aktiv in das Bühnengeschehen einzusteigen. Mühelos und ohne Umschweife gelingt es so, Zuschauende zu Mitspielenden zu machen. Wurde eine Rolle von einem oder mehreren Teilnehmenden übernommen, dreht sich das Figurenkarussell zur nächsten Figur.
-  start: 2025-09-26T09:00
-  ende: 2025-09-30T21:00
-  ort: |
+  date_start: 2025-09-26T09:00
+  date_end: 2025-09-30T21:00
+  location: |
    Burgstallmühle 1
    91572 Bechhofen
-  ablauf: |
+  schedule: |
    Sa. 09:00-18:00
    So. 09:00-15:00
    Di. 18:00-21:00 _online_
-  mit: Kathrin Jung
+  instructors: Kathrin Jung
  a1_1178:
   ctype: event
   shortcode: a1
@@ -102,16 +102,16 @@ items:
    caption: Theaterpädagogik Kreisanimation
   body: |
    Den Einstieg in die elementare Animation bilden die Kreisspiele: Hier kommen Grundregeln und -phänomene von interaktivem Spiel sehr deutlich zum Vorschein. Zunächst beschäftigen wir uns mit den einfachen und offensichtlichen Impulsen entlang der Kreisbahn und quer durch die Kreismitte und lernen dann, zahlreiche Grundanforderungen des Theaterspiels im Kreisspiel zu trainieren.
-  start: 2025-10-10T18:00
-  ende: 2025-10-14T21:00
-  ort: |
+  date_start: 2025-10-10T18:00
+  date_end: 2025-10-14T21:00
+  location: |
    Schwanthalerstraße 91
    80336 München
-  ablauf: |
+  schedule: |
    Fr. 18:00-20:00 _online_
    So. 09:30-19:00
    Di. 18:00-21:00 _online_
-  mit: Hans Dönitz 
+  instructors: Hans Dönitz 
  a2_1190:
   ctype: event
   shortcode: a2 
@@ -122,16 +122,16 @@ items:
    caption: Foto die Bühne kommt von selbst
   body: |
    Wenn Du gelernt hast, die Interaktion der Gruppe im Kreis freizusetzen, entstehen fast von selbst 'Bühnenmomente'. Mit dem Zwei-Kreise-Modell lernst Du diese Momente gezielt zu gestalten und verbindest das Theaterpotential einfacher Animationen zu einem bühnenreifen Setting: Der Kreis öffnet sich zum Halbkreis und gibt in der Mitte eine Spielfläche frei.
-  start: 2025-10-24T18:00
-  ende: 2025-10-28T21:00
-  ort: |
+  date_start: 2025-10-24T18:00
+  date_end: 2025-10-28T21:00
+  location: |
    Schwanthalerstraße 91
    80336 München
-  ablauf: |
+  schedule: |
    Fr. 18:00-20:00 _online_
    So. 09:30-19:00
    Di. 18:00-21:00 _online_
-  mit: Hans Dönitz
+  instructors: Hans Dönitz
  a0_1328:
   ctype: event
   shortcode: a0
@@ -145,15 +145,15 @@ items:
    - Einstiege ins Theaterspiel (Modul A)
    - Szenische Themenarbeit (Modul B)
    - Pädagogische Regie (Modul C)
-  start: 2025-10-31T18:00
-  ende: 2025-11-02T19:00
-  ort: |
+  date_start: 2025-10-31T18:00
+  date_end: 2025-11-02T19:00
+  location: |
    Schwanthalerstraße 91
    80336 München
-  ablauf: |
+  schedule: |
    Fr. 18:00-20:00 _online_
    So. 09:30-19:00
-  mit: Cornelia Jung
+  instructors: Cornelia Jung
  a3_1346:
   ctype: event
   shortcode: a3
@@ -164,16 +164,16 @@ items:
    caption: Foto den Fuß setzen
   body: |
    Nichts kann das Ganz-Auf-Sicht-Gestellt-Sein der Bühnensituation besser vorwegnehmen, als ein einfacher 'Raumlauf'; Jene Übung, in der sich Teilnehmer mit einem konkreten 'Geh-Auftrag' kreuz und quer durch den Raum bewegen. Ein gründliches Verstehen des Geschehens ist nicht nur hilfreich, um den Raumlauf ordentlich anleiten zu können, sondern eröffnet immer neue Einblicke auf das Agieren im Bühnenraum.
-  start: 2025-12-06T09:30
-  ende: 2025-12-16T21:00
-  ort: |
+  date_start: 2025-12-06T09:30
+  date_end: 2025-12-16T21:00
+  location: |
    Schwanthalerstraße 91
    80336 München
-  ablauf: |
+  schedule: |
    Sa. 09:30-18:30
    So. 09:00-15:00
    Di., 16.12 18:00-21:00 _online_
-  mit: Hans Dönitz
+  instructors: Hans Dönitz
 ---
 > [!data-hero] ## **Einstiege ins Theaterspiel** M16E Mue 6.10.2024 - 30.07.2025 // Sonntags & Online
 

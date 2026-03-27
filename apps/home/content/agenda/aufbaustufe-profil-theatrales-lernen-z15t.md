@@ -3,7 +3,7 @@ navigation: false
 navigation_highlight: /ausbildung-theaterpaedagogik/aufbaustufe
 shortcode: z15t
 heading: "AUFBAUSTUFE THEATERPÄDAGOGIK (BuT) **Profil Theatrales Lernen**"
-start: 2026-09-30
+date_start: 2026-09-30
 end: 2028-08-31
 ctype: course
 tag: course
@@ -133,6 +133,34 @@ product:
   footer: |
     ## September 2026 – August 2028 **Aufbaustufe Profil Theatrales Lernen**
 items:
+  course_summary:
+    ctype: slide_2cols
+    title: "**Programmbestandteile**"
+    body: |
+      **Vertiefung**
+      E1: das Format „Seminarwoche"
+      K1: praktische Didaktik Theaterpädagogik
+      E2: das Workshop- & Kursformat
+
+      **Profiljahr**
+      X?: Theaterpedia-Konferenz
+      T1: Profilkolloquium „Theatrales Lernen"
+      TA + TB: Praxisprojekt 1: Grundschule
+      Offenes Programm: Methodisch-Didaktische Vertiefung
+      K2 + K4: Geschichte & Theorie der Theaterpädagogik
+
+      ---
+
+      **Abschluss**
+      K6: Digitale Infrastruktur - Websites in der Theaterpädagogik
+      K3 + K5: Organisation und Finanzierung
+      P2: Abschluss-Projekte
+      P3 + P5: Deine Abschlussarbeit Deine Website
+      P6: Praktische Prüfung
+
+      ---
+
+      ggf. noch ein Kommentar, Zusammenfassung …
   e1_blind:
     ctype: event
     shortcode: E1
@@ -143,68 +171,61 @@ items:
       caption: Blind geführt — Vertrauen als Methode
     body: |
       Du wirst blind durch den Raum geführt — und erlebst dabei Vertrauen als Methode. Das ist E1: Der vollständige Themen- und Gruppenprozess der Szenischen Themenarbeit. 6 intensive Tage auf der Burgstallmühle in der Fränkischen Schweiz.
-    start: 2026-09-30T17:00
-    ende: 2026-10-05T14:00
-    ort: |
+    date_start: 2026-09-30T17:00
+    date_end: 2026-10-05T14:00
+    location: |
       Burgstallmühle
       Burgstallmühle 1
       91338 Igensdorf
-    ablauf: |
+    schedule: |
       MI 30.09. Anreise bis 16:00, Beginn 17:00
       MO 05.10. Ende ca. 14:00 nach Mittagessen
-    mit: Hans Dönitz, Rosalin Hertrich
-  e1_rollenspiel:
-    ctype: event
-    shortcode: E1
-    title: "Rollenspiel ohne Textvorlage **Szenische Themenarbeit**"
-    tag: E1 · „Dicht an der Grenze" · 6 Tage
+    instructors: Hans Dönitz, Rosalin Hertrich
+  z15e_vertiefung:
+    ctype: lines
+    shortcode: Z15E
+    title: "Vertiefung **Modelle der Szenischen Themenarbeit**"
+    tag: 1. OKT 09:00 – 5. OKT 16:00 · Burgstallmühle <br> 6. JAN 13:00 – 10. JAN 16:00  München
     image:
-      url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_400,h_400,g_auto,q_auto,f_auto/dasei/305_dasei2022_grundlagen.jpg
-      caption: Rollenspiel ohne Textvorlage
+      url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_400,h_400,g_auto,q_auto,f_auto/dasei/E1_slide1_blind_gefuehrt.jpg
+      caption: Blind geführt — Vertrauen als Methode
     body: |
-      „Dicht an der Grenze" — das meint auch: dicht an dem, was wirklich wichtig ist. Keine komplizierten Übungen, keine Textvorlagen. Du gibst Geschichten Raum, wechselst Perspektiven, und lernst, wie Themen szenisch bearbeitet werden.
-    start: 2026-09-30T17:00
-    ende: 2026-10-05T14:00
-    ort: |
-      Burgstallmühle, Fränkische Schweiz
-    ablauf: |
-      6 Tage / 5 Nächte
-      Übernachtung + Verpflegung vor Ort
-    mit: Hans Dönitz, Rosalin Hertrich
-  e2_bewegung:
-    ctype: event
-    shortcode: E2
-    title: "Bewegte Themenarbeit **Offene Themen – offene Gruppen?**"
-    tag: JAN 7–11, 2027 · München
+      "Die praktische Seminarwoche (4,5 Tage) zum Thema Demokratie durchläufst du zunächst als Teilnehmer:in. 
+      
+      **E1** 1.-5.10. „Dicht an der Grenze“ - praktische Seminarwoche (4,5 Tage) zum Thema Demokratie
+      **E2** 6.-10.1. „Offene Themen – Offene Gruppen“ – Workshop- & Kursformat
+      
+      Inhalte: Themen- & Kennenlernprozess initiieren, Methoden der Szen. Themenarbeit: Standbilder, Soziometrie, Rollenspiel, Bewegte Themenarbeit, Körperarbeit, Methoden von Augusto Boal, Deep Democracy, Open Space"
+    date_start: 2026-09-22
+    date_end: 2027-02-28
+    location: |
+      Burgstallmühle, München
+    schedule: |
+      Teil 1: 1.-5. OKT Übernachtung + Verpflegung vor Ort
+      Teil 2: Seminartage mit Mittagspause
+    instructors: Hans Dönitz, Rosalin Hertrich
+  k1_didaktik_und_theorie:
+    ctype: lines
+    shortcode: K1
+    title: Planung & Reflexion von Lernprozessen  **Didaktik & Theorie**
+    tag: "Digitalprogramm - mit Recording & Skript"
     image:
-      url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_400,h_400,g_auto,q_auto,f_auto/dasei/E2_bewegte_themenarbeit.jpg
-      caption: Bewegte Themenarbeit
+      url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_400,h_400,g_auto,q_auto,f_auto/dasei/K1_praktische_didaktik_wellenmodell.jpg
+      caption: Praktische Didaktik — Wellenmodell
     body: |
-      Bewegung bringt Themen in Fluss — der Raum wird zum Denkwerkzeug. In E2 fokussierst du auf Transfer: Wie gestaltest du solche Prozesse selbst? In deiner Praxis, mit deinen Gruppen, mit offenen Themen?
-    start: 2027-01-07T09:00
-    ende: 2027-01-11T17:00
-    ort: |
-      München (Seminarraum TBD)
-    ablauf: |
-      MI-SO 09:00-17:00 (5 Tage)
-    mit: Hans Dönitz, Rosalin Hertrich
-  e2_soziometrie:
-    ctype: event
-    shortcode: E2
-    title: "Soziometrische Verfahren **Transfer & Methodik**"
-    tag: E2 · „Offene Themen – offene Gruppen?" · 5 Tage
-    image:
-      url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_400,h_400,g_auto,q_auto,f_auto/dasei/E2_Soziometrie.jpg
-      caption: Soziometrische Verfahren
-    body: |
-      Wo stehst du? Soziometrische Verfahren machen die Gruppe sichtbar: Positionen abfragen, Unterschiede zeigen, ins Gespräch kommen. E2 bringt dir die Werkzeuge für deine eigene Praxis.
-    start: 2027-01-07T09:00
-    ende: 2027-01-11T17:00
-    ort: |
-      München
-    ablauf: |
-      Workshop- und Kursformate
-    mit: Hans Dönitz, Rosalin Hertrich
+      Im begleitenden online-Programm verbinden wir Reflexionen aus der durchlaufenen Praxis mit prägnanten Theorie Inputs. 
+      - Di 22.9. 18:00-20:00 Einführung & Organisation 
+      - Do 8.10. 18:30-21:45 Reflexion “Labor-Box” & TZI 
+      - Do 15.10. 18:30-21:45 Rollende Planung & Kontrakt  
+      - Di 3.11. 18:00-20:00 Input TZI & 3-Spalten-Modell 
+      - Do 10.12. 18:30-21:45 Input Soziometrie & Konzeption
+    date_start: 2026-09-22
+    date_end: 2027-02-28
+    location: |
+      Seminartermine siehe dasei.eu/agenda
+    schedule: |
+      7 Online-Einheiten
+    instructors: Hans Dönitz, Rosalin Hertrich  
   t1_intro:
     ctype: event
     shortcode: T1
@@ -215,13 +236,13 @@ items:
       caption: Zielgruppenorientierte Theaterpädagogik
     body: |
       Theatrale Lernprozesse eröffnen Räume für Perspektivwechsel, Rollenübernahme und kritische Reflexion. Das Profil vermittelt dir, wie du Theater als Methode für Schule, Bildung und soziale Arbeit einsetzt.
-    start: 2027-03-01
-    ende: 2028-08-31
-    ort: |
+    date_start: 2027-03-01
+    date_end: 2028-08-31
+    location: |
       Schwerpunkt Nürnberg
-    ablauf: |
+    schedule: |
       5 Seminarwochen T1–T5 über 18 Monate
-    mit: Cornelia Jung, Hans Dönitz
+    instructors: Cornelia Jung, Hans Dönitz
   t2_coaching:
     ctype: event
     shortcode: T2
@@ -232,13 +253,13 @@ items:
       caption: Cornelia Jung — Profilleitung Theatrales Lernen
     body: |
       „Conny ist die beste Dozentin, die ich je hatte — total klar strukturiert, super vorbereitet." (Mattis, Absolvent 2026). Cornelia Jung leitet das Profil Theatrales Lernen — für alle, die Klarheit und Struktur schätzen.
-    start: 2027-03-01
-    ende: 2028-08-31
-    ort: |
+    date_start: 2027-03-01
+    date_end: 2028-08-31
+    location: |
       Nürnberg
-    ablauf: |
+    schedule: |
       Coaching und Kolloquium im Profilverlauf
-    mit: Cornelia Jung
+    instructors: Cornelia Jung
   t3_praxisprojekte:
     ctype: event
     shortcode: T3
@@ -249,13 +270,13 @@ items:
       caption: Praxisprojekte mit Zielgruppen
     body: |
       Dein Praxisprojekt ist das Herzstück der Aufbaustufe: Eine Schulprojektwoche, ein Theaterkurs in der Jugendhilfe, ein Workshop mit Senior:innen. Du leitest selbst — mit Begleitung und Reflexion im Profil.
-    start: 2027-09-01
-    ende: 2028-06-30
-    ort: |
+    date_start: 2027-09-01
+    date_end: 2028-06-30
+    location: |
       Dein Praxisfeld
-    ablauf: |
+    schedule: |
       Mind. 40 UE eigene Praxis
-    mit: Begleitung durch Profilteam
+    instructors: Begleitung durch Profilteam
   t4_didaktik:
     ctype: event
     shortcode: T4
@@ -266,13 +287,13 @@ items:
       caption: Zielgruppenorientierte Didaktik
     body: |
       Wie arbeitest du mit vulnerablen Gruppen? Das Profil vermittelt dir zielgruppenorientierte Didaktik — inklusive sensibler Themen wie Schutzkonzepte, Grenzen setzen und partizipative Prozessgestaltung.
-    start: 2028-01-01
-    ende: 2028-06-30
-    ort: |
+    date_start: 2028-01-01
+    date_end: 2028-06-30
+    location: |
       Nürnberg
-    ablauf: |
+    schedule: |
       Seminarwochen T4 und T5
-    mit: Cornelia Jung, Christine Oppel
+    instructors: Cornelia Jung, Christine Oppel
   p2_praxisprojekt:
     ctype: event
     shortcode: P2
@@ -283,13 +304,13 @@ items:
       caption: Praxisprojekt — eigene Leitung
     body: |
       Das Praxisprojekt ist dein Meisterstück: Du entwickelst ein theaterpädagogisches Projekt für eine Zielgruppe deiner Wahl, führst es durch (mind. 40 UE) und reflektierst es im Profilkolloquium.
-    start: 2027-09-01
-    ende: 2028-06-30
-    ort: |
+    date_start: 2027-09-01
+    date_end: 2028-06-30
+    location: |
       Dein Praxisfeld
-    ablauf: |
+    schedule: |
       Details erfährst du in T3
-    mit: Begleitung durch Profilteam
+    instructors: Begleitung durch Profilteam
   p3_abschlussarbeit:
     ctype: event
     shortcode: P3
@@ -300,13 +321,13 @@ items:
       caption: Abschlussarbeit — Theorie und Praxis
     body: |
       In der Abschlussarbeit verbindest du dein Praxisprojekt mit theoretischer Reflexion. Du dokumentierst deinen Prozess, analysierst deine Methodik und entwickelst deine eigene theaterpädagogische Position.
-    start: 2028-01-01
-    ende: 2028-06-30
-    ort: |
+    date_start: 2028-01-01
+    date_end: 2028-06-30
+    location: |
       Schriftliche Arbeit
-    ablauf: |
+    schedule: |
       Begleitung im Profilverlauf
-    mit: Cornelia Jung
+    instructors: Cornelia Jung
   p6_praxispruefung:
     ctype: event
     shortcode: P6
@@ -317,13 +338,13 @@ items:
       caption: Praktische Prüfung — Abschlusskolloquium
     body: |
       Die praktische Prüfung ist der letzte Schritt: Du präsentierst dein Projekt, diskutierst deine Methodik und zeigst deine Leitungskompetenz. Das Kolloquium findet im Rahmen von T5 statt.
-    start: 2028-06-01
-    ende: 2028-08-31
-    ort: |
+    date_start: 2028-06-01
+    date_end: 2028-08-31
+    location: |
       Nürnberg
-    ablauf: |
+    schedule: |
       Im Rahmen T5
-    mit: Prüfungskommission
+    instructors: Prüfungskommission
   berufsabschluss:
     ctype: pricing
     shortcode: AS

@@ -3,7 +3,7 @@ navigation: false
 navigation_highlight: /ausbildung-theaterpaedagogik/vertiefung
 shortcode: z15e
 heading: "VERTIEFUNG Theaterpädagogik"
-start: 2026-09-30
+date_start: 2026-09-30
 end: 2027-02-28
 ctype: course
 tag: course
@@ -159,18 +159,18 @@ items:
       Anschließend (auch im online-Programm) wird der Prozess ausführlich reflektiert und mit Theorie gefüllt. Du vertiefst Methoden der szen. Themenarbeit, Soziometrie, Körperarbeit und lernst didaktische Werkzeuge anzuwenden (z.B. TZI, Tiefendimensionen).  
       
       Inhalte: Themen- & Kennenlernprozess initiieren, Methoden der Szen. Themenarbeit: Standbilder, Denkmal, Rollenspiel, Bewegte Themenarbeit & Körperarbeit, Methoden von Augusto Boal, Deep Democracy, Open Space 
-    start: 2026-09-30T17:00
-    ende: 2026-10-05T14:00
-    ort: |
+    date_start: 2026-09-30T17:00
+    date_end: 2026-10-05T14:00
+    location: |
       Burgstallmühle
       Burgstallmühle 1
       91338 Igensdorf
-    ablauf: |
+    schedule: |
       MI 30.09. Anreise bis 16:00, Beginn 17:00
       MO 05.10. Ende ca. 14:00 nach Mittagessen
-    mit: Hans Dönitz, Rosalin Hertrich
+    instructors: Hans Dönitz, Rosalin Hertrich
   k1_didaktik_und_theorie_teil1:
-    ctype: event
+    ctype: schedule
     shortcode: K1
     title: Planung & Reflexion von Lernprozessen  **Didaktik & Theorie**
     tag: "Digitalprogramm - mit Recording & Skript"
@@ -184,13 +184,13 @@ items:
       - Do 15.10. 18:30-21:45 Rollende Planung & Kontrakt  
       - Di 3.11. 18:00-20:00 Input TZI & 3-Spalten-Modell 
       - Do 10.12. 18:30-21:45 Input Soziometrie & Konzeption
-    start: 2026-09-22
-    ende: 2027-02-28
-    ort: |
+    date_start: 2026-09-22
+    date_end: 2027-02-28
+    location: |
       Seminartermine siehe dasei.eu/agenda
-    ablauf: |
+    schedule: |
       7 Online-Einheiten
-    mit: Hans Dönitz, Rosalin Hertrich  
+    instructors: Hans Dönitz, Rosalin Hertrich  
   offenes_programm:
     ctype: event
     shortcode: 
@@ -203,13 +203,13 @@ items:
       **Vor-Programm 2026** <br><br>**LD** 1.-3.5. Elementare Animation im Praxisfeld <br>**LA** 15.-17.5. Thematische Warm Ups <br> **RA** 3.-5.7. Die künstlerische Aktion
 
       **Begleitend 2026/27** <br><br>**LR** 11.-13.12.26 Eine Rolle – viele Gesichter<br>**B7** 23.-24.1.27 Forumtheater<br>**B8** 23.-24.1.27 Bewegte Themenarbeit
-    start: 2026-09-30T17:00
-    ende: 2026-10-05T14:00
-    ort: |
+    date_start: 2026-09-30T17:00
+    date_end: 2026-10-05T14:00
+    location: |
       München, Nürnberg, Fürth
-    ablauf: |
+    schedule: |
       auf Anfrage
-    mit: Hans Dönitz, Rosalin Hertrich
+    instructors: Hans Dönitz, Rosalin Hertrich
   e2_bewegung:
     ctype: event
     shortcode: E2
@@ -220,13 +220,13 @@ items:
       caption: Soziometrische Aufstellung
     body: |
       Kursteilnehmende übernehmen Anleitungen im Kurs- und Workshopformat und erhalten Feedback. Dies dient dem Wissenstransfer von Theorie und Praxis. Praktische Einheiten demonstrieren die Tiefendimensionen des Lernens / Anwendung von Soziometrie, bewegter Themenarbeit und 3-Spalten-Didaktik.
-    start: 2027-01-07
-    ende: 2027-01-11
-    ort: |
+    date_start: 2027-01-07
+    date_end: 2027-01-11
+    location: |
       München (Seminarraum TBD)
-    ablauf: |
+    schedule: |
       MI-SO 09:00-17:00 (5 Tage)
-    mit: Hans Dönitz, Rosalin Hertrich
+    instructors: Hans Dönitz, Rosalin Hertrich
   k1_didaktik_und_theorie_teil2:
     ctype: event
     shortcode: K1
@@ -239,13 +239,13 @@ items:
       Im begleitenden online-Programm verbinden wir Reflexionen aus der durchlaufenen Praxis mit prägnanten Theorie Inputs: 
       - Di 19.1. 18:00-20:00 Vertiefung: 3-Spalten Modell 
       - Do 18.2. 18:30-21:45 Tiefendimensionen des Lernens
-    start: 2026-09-22
-    ende: 2027-02-28
-    ort: |
+    date_start: 2026-09-22
+    date_end: 2027-02-28
+    location: |
       Seminartermine siehe dasei.eu/agenda
-    ablauf: |
+    schedule: |
       7 Online-Einheiten
-    mit: Hans Dönitz, Rosalin Hertrich 
+    instructors: Hans Dönitz, Rosalin Hertrich 
   e2_soziometrie:
     ctype: event
     shortcode: E2
@@ -256,13 +256,13 @@ items:
       caption: Soziometrische Verfahren
     body: |
       Wo stehst du? Soziometrische Verfahren machen die Gruppe sichtbar: Positionen abfragen, Unterschiede zeigen, ins Gespräch kommen. E2 bringt dir die Werkzeuge für deine eigene Praxis.
-    start: 2027-01-07T09:00
-    ende: 2027-01-11T17:00
-    ort: |
+    date_start: 2027-01-07T09:00
+    date_end: 2027-01-11T17:00
+    location: |
       München
-    ablauf: |
+    schedule: |
       Workshop- und Kursformate
-    mit: Hans Dönitz, Rosalin Hertrich
+    instructors: Hans Dönitz, Rosalin Hertrich
   erweiterung:
     ctype: pricing
     shortcode: Z15

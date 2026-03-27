@@ -3,7 +3,7 @@ navigation: false
 navigation_highlight: /ausbildung-theaterpaedagogik/einstiege
 shortcode: m18x
 heading: "**Einstiege ins Theaterspiel** Burgstallmühle 8.3.2026 - 1.12.2026 // Blockseminarverlauf"
-start: 2026-03-08
+date_start: 2026-03-08
 end: 2026-12-01
 ctype: course
 tag: course
@@ -116,11 +116,11 @@ items:
   body: |
    Du erwägst schon länger in die Theaterpädagogik einzusteigen? Du suchst nach qualifizierter Ausbildung in diesem Bereich? Vielleicht bist du bereits fest entschlossen, bei DAS Ei zu starten? 
    Dann melde dich an zum unverbindlichen Online-Teaser!
-  start: 2026-03-05T18:00
-  ende: 2026-03-05T20:00
-  ort: online (MS Teams, Link wird rechtzeitig zugeschickt)
-  ablauf: DO 18:00-20:00 online
-  mit: Hans Dönitz
+  date_start: 2026-03-05T18:00
+  date_end: 2026-03-05T20:00
+  location: online (MS Teams, Link wird rechtzeitig zugeschickt)
+  schedule: DO 18:00-20:00 online
+  instructors: Hans Dönitz
  a0_154:
   ctype: event
   shortcode: a0
@@ -134,15 +134,15 @@ items:
    - Einstiege ins Theaterspiel (Modul A)
    - Szenische Themenarbeit (Modul B)
    - Pädagogische Regie (Modul C)
-  start: 2026-03-08T08:00
-  ende: 2026-03-08T18:00
-  ort: |
+  date_start: 2026-03-08T08:00
+  date_end: 2026-03-08T18:00
+  location: |
    Schwanthalerstraße 91
    80336 München
-  ablauf: |
+  schedule: |
    FR 18:00-20:00 online
    SO 09:30-18:30
-  mit: Kathrin Jung
+  instructors: Kathrin Jung
  a1_158:
   ctype: event
   shortcode: a1
@@ -153,15 +153,15 @@ items:
    caption: Theaterpädagogik Kreisanimation
   body: |
    Den Einstieg in die elementare Animation bilden die Kreisspiele. Hier kommen Grundregeln und -phänomene von interaktivem Spiel sehr deutlich zum Vorschein. Zunächst beschäftigen wir uns mit den einfachen und offensichtlichen Impulsen entlang der Kreisbahn und quer durch die Kreismitte und lernen dann, zahlreiche Grundanforderungen des Theaterspiels im Kreisspiel zu trainieren.
-  start: 2026-05-14T19:00
-  ende: 2026-05-15T18:30
-  ort: |
+  date_start: 2026-05-14T19:00
+  date_end: 2026-05-15T18:30
+  location: |
    Burgstallmühle 1
    91572 Bechhofen
-  ablauf: |
+  schedule: |
    Do. 19:00-21:30
    Fr. 09:00-18:30
-  mit: Hans Dönitz
+  instructors: Hans Dönitz
  a2_158:
   ctype: event
   shortcode: a2
@@ -172,16 +172,16 @@ items:
    caption: Foto die Bühne kommt von selbst
   body: |
    Wenn Du gelernt hast, die Interaktion der Gruppe im Kreis freizusetzen, entstehen fast von selbst Bühnenmomente. Mit dem Zwei-Kreise-Modell lernst Du diese Momente gezielt zu gestalten und verbindest das Theaterpotential einfacher Animationen zu einem bühnenreifen Setting. Der Kreis öffnet sich zum Halbkreis und gibt in der Mitte eine Spielfläche frei.
-  start: 2026-05-16T09:00
-  ende: 2026-05-17T15:00
-  ort: |
+  date_start: 2026-05-16T09:00
+  date_end: 2026-05-17T15:00
+  location: |
    Burgstallmühle 1
    91572 Bechhofen
-  ablauf: |
+  schedule: |
    Sa. 09:00-18:00
    So. 09:00-15:00
    Di. 18:00-21:00 online
-  mit: Hans Dönitz
+  instructors: Hans Dönitz
  a4_164:
   ctype: event
   shortcode: a4
@@ -192,15 +192,15 @@ items:
    caption: Theaterpädagogik Szenische Lesung
   body: |
    Du erarbeitest dir spezifische Techniken, die es dir ermöglichen, unmittelbar in verschiedene Rollen zu schlüpfen. Für das teilnehmende Publikum bringst du auf diese Weise die Magie einer Geschichte zum Vorschein und interagierst als Animationsfigur. Die durch sie vermittelten Erlebnissen, können zum Auftakt eines Theaterstücks werden.
-  start: 2026-09-24T19:00
-  ende: 2026-09-25T18:30
-  ort: |
+  date_start: 2026-09-24T19:00
+  date_end: 2026-09-25T18:30
+  location: |
    Burgstallmühle 1
    91572 Bechhofen
-  ablauf: |
+  schedule: |
    Do. 19:00-21:30
    Fr. 09:00-18:30
-  mit: Kathrin Jung
+  instructors: Kathrin Jung
  a5_164:
   ctype: event
   shortcode: a5
@@ -211,16 +211,16 @@ items:
    caption: Theaterpädagogik Figurenkarussell
   body: |
    Mithilfe des Figurenkarussells animierst du das teilnehmende Publikum aktiv in das Bühnengeschehen einzusteigen. Mühelos und ohne Umschweife gelingt es so, Zuschauende zu Mitspielenden zu machen. Wurde eine Rolle von einem oder mehreren Teilnehmenden übernommen, dreht sich das Figurenkarussell zur nächsten Figur.
-  start: 2026-09-26T09:00
-  ende: 2026-09-27T15:00
-  ort: |
+  date_start: 2026-09-26T09:00
+  date_end: 2026-09-27T15:00
+  location: |
    Burgstallmühle 1
    91572 Bechhofen
-  ablauf: |
+  schedule: |
    Sa. 09:00-18:00
    So. 09:00-15:00
    Di. 18:00-21:00 online
-  mit: Kathrin Jung
+  instructors: Kathrin Jung
  a3_168:
   ctype: event
   shortcode: a3
@@ -231,17 +231,17 @@ items:
    caption: Theaterpädagogik den Fuß setzen
   body: |
    Nichts kann das Ganz-Auf-Sicht-Gestellt-Sein der Bühnensituation besser vorwegnehmen, als ein einfacher Raumlauf - Jene Übung, in der sich Teilnehmer mit einem konkreten Geh-Auftrag kreuz und quer durch den Raum bewegen. Ein gründliches Verstehen des Geschehens ist nicht nur hilfreich, um den Raumlauf ordentlich anleiten zu können, sondern eröffnet immer neue Einblicke auf das Agieren im Bühnenraum.
-  start: 2026-11-28T09:30
-  ende: 2026-11-29T16:00
-  ort: |
+  date_start: 2026-11-28T09:30
+  date_end: 2026-11-29T16:00
+  location: |
    Schwanthalerstraße 91
    80336 München
-  ablauf: |
+  schedule: |
    FR 18:00-20:00 online
    SA 09:30-18:30
    SO 10:00-16:00
    DI 8.12 online
-  mit: Hans Dönitz
+  instructors: Hans Dönitz
 ---
 Einstiege ins Theaterspiel - Blockseminarverlauf München & Burgstallmühle
 

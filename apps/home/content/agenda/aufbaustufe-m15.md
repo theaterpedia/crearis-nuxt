@@ -4,7 +4,7 @@ navigation_highlight: /ausbildung-theaterpaedagogik/aufbaustufe
 domainCode: dasei3
 shortcode: z15
 heading: "ANMELDUNG Aufbaustufe Theaterpädagogik (BuT)"
-start: 2026-09-01
+date_start: 2026-09-01
 end: 2028-08-01
 ctype: course
 tag: course
@@ -105,13 +105,13 @@ items:
       caption: das Glas voll machen
     body: |
       Gesamtüberblick über die Struktur der Aufbaustufe Theaterpädagogik (BuT) 2026-2028 und der beiden Profile "Theatrales Lernen" und "Performance und Interkult. Theater". Fragen und Antworten.
-    start: 2025-10-23T18:00
-    ende: 2025-10-23T20:00
-    ort: |
+    date_start: 2025-10-23T18:00
+    date_end: 2025-10-23T20:00
+    location: |
       ONLINE (MS Teams)
-    ablauf: |
+    schedule: |
       DO 18:00-20:00 _online_
-    mit: Hans Dönitz (Rosalin Hertrich, Cornelia Jung)
+    instructors: Hans Dönitz (Rosalin Hertrich, Cornelia Jung)
 ---
 > [!data-hero] ## **Einstiege ins Theaterspiel** M16E Mue 6.10.2024 - 30.07.2025 // Sonntags & Online
 

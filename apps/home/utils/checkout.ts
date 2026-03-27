@@ -84,12 +84,12 @@ export interface Product {
   description?: string
   hero?: Object
   image?: string
-  start?: Date
-  ende?: Date
-  ort?: string
+  date_start?: Date
+  date_end?: Date
+  location?: string
   body?: string
-  mit?: string
-  ablauf?: string
+  instructors?: string
+  schedule?: string
   items?: Product[]
   views?: string[]
   details?: Record<string, CheckoutInfo>

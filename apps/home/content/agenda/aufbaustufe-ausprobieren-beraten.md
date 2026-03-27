@@ -3,7 +3,7 @@ navigation: false
 navigation_highlight: /ausbildung-theaterpaedagogik/aufbaustufe
 shortcode: z15v
 heading: "ab 2.2026: AUSPROBIEREN + BERATEN"
-start: 2026-02-01
+date_start: 2026-02-01
 end: 2026-09-30
 ctype: course
 tag: course
@@ -60,13 +60,13 @@ items:
       caption: das Glas voll machen
     body: |
       Gesamtüberblick über die Struktur der Aufbaustufe Theaterpädagogik (BuT) 2026-2028 und der beiden Profile "Theatrales Lernen" und "Performance und Interkult. Theater". Fragen und Antworten.
-    start: 2025-10-23T18:00
-    ende: 2025-10-23T20:00
-    ort: |
+    date_start: 2025-10-23T18:00
+    date_end: 2025-10-23T20:00
+    location: |
       ONLINE (MS Teams)
-    ablauf: |
+    schedule: |
       DO 18:00-20:00 _online_
-    mit: Hans Dönitz (Rosalin Hertrich, Cornelia Jung)
+    instructors: Hans Dönitz (Rosalin Hertrich, Cornelia Jung)
   a0_1276:
     ctype: event
     shortcode: a0
@@ -77,18 +77,18 @@ items:
       caption: 'Theaterpedia: Theaterpädagogik suchen und finden'
     body: |
       Auf der Theaterpedia-Konferenz sind das Team von DAS Ei und viele Absolvent:innen der Aufbaustufe Theaterpädagogik (BuT) von DAS Ei anwesend.
-    start: 2025-11-20T18:00
-    ende: 2025-11-23T15:00
-    ort: |
+    date_start: 2025-11-20T18:00
+    date_end: 2025-11-23T15:00
+    location: |
       Eine-Welt-Haus
       Schwanthaler Str. 81
       80336 München
-    ablauf: |
+    schedule: |
       DO 18:00-21:30
       FR 09:30-19:30
       SA 09:00-19:00 (danach Party)
       SO 09:30-15:00
-    mit: Hans Dönitz, Team DAS Ei
+    instructors: Hans Dönitz, Team DAS Ei
   b7_1178:
     ctype: event
     shortcode: b7
@@ -99,16 +99,16 @@ items:
       caption: bewegte Themenarbeit
     body: |
       ''
-    start: 2026-01-30T18:00
-    ende: 2026-02-01T15:00
-    ort: |
+    date_start: 2026-01-30T18:00
+    date_end: 2026-02-01T15:00
+    location: |
       Schwanthaler Str 91
       80336 München
-    ablauf: |
+    schedule: |
       Fr. 18:30-21:30
       SA 09:00-18:00
       SO 09:30-15:00
-    mit: Rosalin Hertrich
+    instructors: Rosalin Hertrich
   b8_1178:
     ctype: event
     shortcode: b8
@@ -119,17 +119,17 @@ items:
       caption: Forumtheater
     body: |
       ''
-    start: 2026-01-30T18:00
-    ende: 2026-02-01T15:00
-    ort: |
+    date_start: 2026-01-30T18:00
+    date_end: 2026-02-01T15:00
+    location: |
       Tanzerei
       Kaiserstr. 81
       90766 Fürth
-    ablauf: |
+    schedule: |
       Fr. 18:30-21:30
       SA 09:00-18:00
       SO 09:30-15:00
-    mit: Christine Oppel
+    instructors: Christine Oppel
   t1_1190:
     ctype: event
     shortcode: t1
@@ -140,17 +140,17 @@ items:
       caption: Thematische Warm-Ups
     body: |
       ''
-    start: 2026-02-27T18:00
-    ende: 2026-03-01T15:00
-    ort: |
+    date_start: 2026-02-27T18:00
+    date_end: 2026-03-01T15:00
+    location: |
       Tanzerei
       Kaiserstr. 81
       90766 Fürth
-    ablauf: |
+    schedule: |
       Fr. 18:30-21:30
       SA 09:00-18:00
       SO 09:00-15:00
-    mit: Cornelia Jung
+    instructors: Cornelia Jung
   t2_1192:
     ctype: event
     shortcode: t2
@@ -161,13 +161,13 @@ items:
       caption: Theatrales Lernen
     body: |
       ''
-    start: 2026-04-16T18:00
-    ende: 2026-04-16T20:00
-    ort: |
+    date_start: 2026-04-16T18:00
+    date_end: 2026-04-16T20:00
+    location: |
       Online (MS Teams)
-    ablauf: |
+    schedule: |
       Di. 18:00-20:00 _online_
-    mit: Cornelia Jung
+    instructors: Cornelia Jung
   r1_1190:
     ctype: event
     shortcode: r1
@@ -178,16 +178,16 @@ items:
       caption: die künstlerische Aktion
     body: |
       ''
-    start: 2026-07-04T09:30
-    ende: 2026-07-05T18:00
-    ort: |
+    date_start: 2026-07-04T09:30
+    date_end: 2026-07-05T18:00
+    location: |
       Schwanthaler Str 91
       80336 München
-    ablauf: |
+    schedule: |
       Fr. 18:30-21:30
       SA 09:00-18:00
       SO 09:00-15:00
-    mit: Rosalin Hertrich
+    instructors: Rosalin Hertrich
   r2_1192:
     ctype: event
     shortcode: r2
@@ -198,13 +198,13 @@ items:
       caption: Performance & Interkult. Theater
     body: |
       ''
-    start: 2026-07-23T18:00
-    ende: 2026-07-23T20:00
-    ort: |
+    date_start: 2026-07-23T18:00
+    date_end: 2026-07-23T20:00
+    location: |
       Online (MS Teams)
-    ablauf: |
+    schedule: |
       Di. 18:00-20:00 _online_
-    mit: Rosalin Hertrich
+    instructors: Rosalin Hertrich
 ---
 > [!data-hero] ## **Einstiege ins Theaterspiel** M16E Mue 6.10.2024 - 30.07.2025 // Sonntags & Online
 

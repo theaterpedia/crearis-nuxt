@@ -3,7 +3,7 @@ navigation: false
 navigation_highlight: /ausbildung-theaterpaedagogik/paedagogische_regie
 shortcode: m17c
 heading: "**Pädagogische Regie** JUN - DEZ 2026 // Modul C Einzelbuchung"
-start: 2026-06-05
+date_start: 2026-06-05
 end: 2026-12-04
 ctype: course
 tag: course
@@ -132,10 +132,10 @@ items:
       caption: Theorie der Pädagogischen Regie
     body: |
       Was unterscheidet Pädagogische Regie von klassischer Theaterregie? Wie gestaltest du Probenprozesse, die die Gruppe stärken statt sie anzuleiten? Die theoretischen Grundlagen — kompakt und praxisnah.
-    start: 2026-06-05T18:00
-    ende: 2026-06-07T15:00
-    ort: Seminarzentrum Burgstallmühle
-    mit: Esther Schöttke
+    date_start: 2026-06-05T18:00
+    date_end: 2026-06-07T15:00
+    location: Seminarzentrum Burgstallmühle
+    instructors: Esther Schöttke
   c2_m17c:
     ctype: event
     shortcode: C2
@@ -146,15 +146,15 @@ items:
       caption: Esther Schöttke in der Theaterfabrik
     body: |
       Von der ersten Idee zur öffentlichen Aufführung — in sieben Tagen. Im Juni entwickelst du mit der Gruppe ein eigenes Stück und bringst es auf die Bühne der Kofferfabrik Fürth. Keine Simulation. Echtes Theater.
-    start: 2026-06-05T18:00
-    ende: 2026-07-21T21:00
-    ort: |
+    date_start: 2026-06-05T18:00
+    date_end: 2026-07-21T21:00
+    location: |
       Burgstallmühle (JUN)
       Kofferfabrik Fürth (JUL)
-    ablauf: |
+    schedule: |
       FR 5.6. - SO 7.6. Burgstallmühle
       FR 18.7. - MO 21.7. Produktion + Aufführung
-    mit: Esther Schöttke, Eleanora Allerdings
+    instructors: Esther Schöttke, Eleanora Allerdings
   c3_m17c:
     ctype: event
     shortcode: C3
@@ -165,12 +165,12 @@ items:
       caption: Durchlaufproben in der Gruppe
     body: |
       Du übernimmst die Regie — im Wechsel mit anderen. Szenen improvisieren, strukturieren, proben. Lernen, wann du eingreifst und wann du loslässt. Die zweite Produktion vertieft, was du im ersten Zyklus begonnen hast.
-    start: 2026-09-10T18:00
-    ende: 2026-10-05T21:00
-    ort: |
+    date_start: 2026-09-10T18:00
+    date_end: 2026-10-05T21:00
+    location: |
       Burgstallmühle
       Kofferfabrik Fürth
-    mit: Esther Schöttke
+    instructors: Esther Schöttke
   c5_m17c:
     ctype: event
     shortcode: C5
@@ -181,12 +181,12 @@ items:
       caption: Eleanora Allerdings bei der Recherche
     body: |
       Im dritten Zyklus arbeitest du mit Textvorlagen. Wie gehst du von einem bestehenden Text zu einer lebendigen Inszenierung? Recherche, Adaption, szenische Umsetzung — Eleanora begleitet die Recherchephase.
-    start: 2026-10-15T18:00
-    ende: 2026-11-16T21:00
-    ort: |
+    date_start: 2026-10-15T18:00
+    date_end: 2026-11-16T21:00
+    location: |
       EineWeltHaus München
       Kofferfabrik Fürth
-    mit: Eleanora Allerdings, Esther Schöttke
+    instructors: Eleanora Allerdings, Esther Schöttke
   c7_m17c:
     ctype: event
     shortcode: C7
@@ -197,10 +197,10 @@ items:
       caption: Choreographische Mittel in der Regie
     body: |
       Wie bewegst du eine Gruppe im Raum? Choreographische Grundlagen für Theaterpädagog:innen — kein Tanz, sondern Raumgestaltung. Wo stehen die Spieler:innen? Wohin bewegen sie sich? Warum?
-    start: 2026-11-01T10:00
-    ende: 2026-11-02T16:00
-    ort: EineWeltHaus München
-    mit: Eleanora Allerdings
+    date_start: 2026-11-01T10:00
+    date_end: 2026-11-02T16:00
+    location: EineWeltHaus München
+    instructors: Eleanora Allerdings
   c8_m17c:
     ctype: event
     shortcode: C8
@@ -211,13 +211,13 @@ items:
       caption: "Esther und Eleanora: Besprechung im Regie-Team"
     body: |
       Drei Produktionszyklen, drei öffentliche Aufführungen, eine Abschlusspräsentation. Esther und Eleanora begleiten dich — als Dozentinnen und als Feedback-Partnerinnen. "Wir fangen dort an, wo du bist."
-    start: 2026-12-03T10:00
-    ende: 2026-12-04T16:00
-    ort: EineWeltHaus München
-    ablauf: |
+    date_start: 2026-12-03T10:00
+    date_end: 2026-12-04T16:00
+    location: EineWeltHaus München
+    schedule: |
       DO 3.12. 10:00-18:00
       FR 4.12. 10:00-16:00
-    mit: Esther Schöttke, Eleanora Allerdings, Hans Dönitz
+    instructors: Esther Schöttke, Eleanora Allerdings, Hans Dönitz
 ---
 Pädagogische Regie — Modul C Einzelbuchung. JUN - DEZ 2026, ca. 200 UE.
 

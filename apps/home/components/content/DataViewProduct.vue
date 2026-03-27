@@ -9,7 +9,30 @@
     <MdBlock v-if="data.product?.header" :content="data.product?.header" htag="h2" />
     <Slider>
       <Slide v-for="(item, index) in data.items">
-        <Columns gap="small">
+        <!-- slide_2cols: Two-column layout with vertical separator -->
+        <div v-if="item.ctype === 'slide_2cols'" class="slide-2cols">
+          <Heading v-if="item.title" :content="item.title" is="h2" class="slide-2cols-title" />
+          <div class="slide-2cols-content">
+            <div class="slide-2cols-left">
+              <Prose>
+                <div v-html="renderMdProp(getSlide2ColsLeft(item.body), 'h4')" />
+              </Prose>
+            </div>
+            <div class="slide-2cols-divider"></div>
+            <div class="slide-2cols-right">
+              <Prose>
+                <div v-html="renderMdProp(getSlide2ColsRight(item.body), 'h4')" />
+              </Prose>
+              <div v-if="getSlide2ColsFooter(item.body)" class="slide-2cols-footer">
+                <Prose>
+                  <div v-html="renderMdProp(getSlide2ColsFooter(item.body), 'h4')" />
+                </Prose>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Default slide layout -->
+        <Columns v-else gap="small">
           <Column v-if="item.image" width="1/5">
             <img :src="item.image.url" />
             <p>{{ item.tag }}</p>
@@ -79,4 +102,70 @@ const shortcodeTitle = (shortcode: string | undefined, title: string) => {
   return `_${shortcode.toUpperCase()}_ ${title}`
 }
 const default_heading = '## Default Heading'
+
+// slide_2cols helpers: split body by '---' delimiter
+const getSlide2ColsLeft = (body: string) => {
+  if (!body) return ''
+  const parts = body.split(/^---$/m)
+  return parts[0]?.trim() || ''
+}
+
+const getSlide2ColsRight = (body: string) => {
+  if (!body) return ''
+  const parts = body.split(/^---$/m)
+  return parts[1]?.trim() || ''
+}
+
+const getSlide2ColsFooter = (body: string) => {
+  if (!body) return ''
+  const parts = body.split(/^---$/m)
+  return parts[2]?.trim() || ''
+}
 </script>
+
+<style scoped>
+/* slide_2cols: Two-column bordered layout */
+.slide-2cols {
+  border: 2px solid var(--color-contrast, currentColor);
+  padding: 1.5rem;
+}
+
+.slide-2cols-title {
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--color-contrast, currentColor);
+}
+
+.slide-2cols-content {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.slide-2cols-left,
+.slide-2cols-right {
+  flex: 1;
+}
+
+.slide-2cols-divider {
+  width: 2px;
+  background-color: var(--color-contrast, currentColor);
+  flex-shrink: 0;
+}
+
+.slide-2cols-footer {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 2px solid var(--color-contrast, currentColor);
+}
+
+@media (max-width: 768px) {
+  .slide-2cols-content {
+    flex-direction: column;
+  }
+  
+  .slide-2cols-divider {
+    width: 100%;
+    height: 2px;
+  }
+}
+</style>

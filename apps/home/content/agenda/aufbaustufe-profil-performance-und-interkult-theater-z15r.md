@@ -3,7 +3,7 @@ navigation: false
 navigation_highlight: /ausbildung-theaterpaedagogik/aufbaustufe
 shortcode: z15r
 heading: "AUFBAUSTUFE THEATERPÄDAGOGIK (BuT) **Profil Performance & Interkult. Theater**"
-start: 2026-09-30
+date_start: 2026-09-30
 end: 2028-08-31
 ctype: course
 tag: course
@@ -147,16 +147,16 @@ items:
       caption: Blind geführt — Vertrauen als Methode
     body: |
       Du wirst blind durch den Raum geführt — und erlebst dabei Vertrauen als Methode. Das ist E1: Der vollständige Themen- und Gruppenprozess der Szenischen Themenarbeit. 6 intensive Tage auf der Burgstallmühle in der Fränkischen Schweiz.
-    start: 2026-09-30T17:00
-    ende: 2026-10-05T14:00
-    ort: |
+    date_start: 2026-09-30T17:00
+    date_end: 2026-10-05T14:00
+    location: |
       Burgstallmühle
       Burgstallmühle 1
       91338 Igensdorf
-    ablauf: |
+    schedule: |
       MI 30.09. Anreise bis 16:00, Beginn 17:00
       MO 05.10. Ende ca. 14:00 nach Mittagessen
-    mit: Hans Dönitz, Rosalin Hertrich
+    instructors: Hans Dönitz, Rosalin Hertrich
   e1_rollenspiel:
     ctype: event
     shortcode: E1
@@ -167,14 +167,14 @@ items:
       caption: Rollenspiel ohne Textvorlage
     body: |
       „Dicht an der Grenze" — das meint auch: dicht an dem, was wirklich wichtig ist. Keine komplizierten Übungen, keine Textvorlagen. Du gibst Geschichten Raum, wechselst Perspektiven, und lernst, wie Themen szenisch bearbeitet werden.
-    start: 2026-09-30T17:00
-    ende: 2026-10-05T14:00
-    ort: |
+    date_start: 2026-09-30T17:00
+    date_end: 2026-10-05T14:00
+    location: |
       Burgstallmühle, Fränkische Schweiz
-    ablauf: |
+    schedule: |
       6 Tage / 5 Nächte
       Übernachtung + Verpflegung vor Ort
-    mit: Hans Dönitz, Rosalin Hertrich
+    instructors: Hans Dönitz, Rosalin Hertrich
   e2_bewegung:
     ctype: event
     shortcode: E2
@@ -185,13 +185,13 @@ items:
       caption: Bewegte Themenarbeit
     body: |
       Bewegung bringt Themen in Fluss — der Raum wird zum Denkwerkzeug. In E2 fokussierst du auf Transfer: Wie gestaltest du solche Prozesse selbst? In deiner Praxis, mit deinen Gruppen, mit offenen Themen?
-    start: 2027-01-07T09:00
-    ende: 2027-01-11T17:00
-    ort: |
+    date_start: 2027-01-07T09:00
+    date_end: 2027-01-11T17:00
+    location: |
       München (Seminarraum TBD)
-    ablauf: |
+    schedule: |
       MI-SO 09:00-17:00 (5 Tage)
-    mit: Hans Dönitz, Rosalin Hertrich
+    instructors: Hans Dönitz, Rosalin Hertrich
   e2_soziometrie:
     ctype: event
     shortcode: E2
@@ -202,13 +202,13 @@ items:
       caption: Soziometrische Verfahren
     body: |
       Wo stehst du? Soziometrische Verfahren machen die Gruppe sichtbar: Positionen abfragen, Unterschiede zeigen, ins Gespräch kommen. E2 bringt dir die Werkzeuge für deine eigene Praxis.
-    start: 2027-01-07T09:00
-    ende: 2027-01-11T17:00
-    ort: |
+    date_start: 2027-01-07T09:00
+    date_end: 2027-01-11T17:00
+    location: |
       München
-    ablauf: |
+    schedule: |
       Workshop- und Kursformate
-    mit: Hans Dönitz, Rosalin Hertrich
+    instructors: Hans Dönitz, Rosalin Hertrich
   r1_profil_intro:
     ctype: event
     shortcode: R1
@@ -219,13 +219,13 @@ items:
       caption: Performance & Interkulturelles Theater
     body: |
       Im Feld zwischen Kunst, Aktivismus und Bildung haben sich neue Ansätze der Teilhabe entwickelt. Das Profil vermittelt dir Performance-Diskurse, Site Specific Work und dokumentarische Methoden. Schwerpunkt München.
-    start: 2027-03-01
-    ende: 2028-08-31
-    ort: |
+    date_start: 2027-03-01
+    date_end: 2028-08-31
+    location: |
       Schwerpunkt München
-    ablauf: |
+    schedule: |
       R1–R2, RA, H1–H3, F1–F3, K2–K6 über 18 Monate
-    mit: Rosalin Hertrich, Eleanora Allerdings, Hans Dönitz
+    instructors: Rosalin Hertrich, Eleanora Allerdings, Hans Dönitz
   h_physisches_theater:
     ctype: event
     shortcode: H1
@@ -236,13 +236,13 @@ items:
       caption: Eleanora Allerdings — Physisches Theater
     body: |
       Was passiert, wenn eine Gruppe ohne Text, nur mit Bewegung, ein Thema bearbeitet? Physisches Theater (H1–H3) überrascht: Terminologie, Inszenieren, Aufführen — in drei intensiven Seminarwochen.
-    start: 2027-03-01
-    ende: 2027-12-31
-    ort: |
+    date_start: 2027-03-01
+    date_end: 2027-12-31
+    location: |
       München
-    ablauf: |
+    schedule: |
       3 Seminarwochen H1, H2, H3
-    mit: Eleanora Allerdings
+    instructors: Eleanora Allerdings
   r2_site_specific:
     ctype: event
     shortcode: R2
@@ -253,13 +253,13 @@ items:
       caption: Profilkolloquium — Performance-Diskurse
     body: |
       Performance-Diskurse: Verkörperung, Diversität, Habitus-Theorie und De-Mechanisierung. Im Profilkolloquium verbindest du kritische Theorie mit künstlerischer Praxis — begleitet von Rosalin Hertrich.
-    start: 2027-03-01
-    ende: 2027-12-31
-    ort: |
+    date_start: 2027-03-01
+    date_end: 2027-12-31
+    location: |
       München
-    ablauf: |
+    schedule: |
       Theorietermine + Site Specific Praxis
-    mit: Rosalin Hertrich
+    instructors: Rosalin Hertrich
   f_doku_theater:
     ctype: event
     shortcode: F1
@@ -270,13 +270,13 @@ items:
       caption: Dokumentarisches Theater
     body: |
       Dokumentarisches Theater (F1–F3): Du recherchierst, führst Interviews, trägst Material zusammen und verdichtest es szenisch. Dein Abschlussprojekt kann daraus entstehen — Geschichten nicht erzählen, sondern Räume schaffen.
-    start: 2027-09-01
-    ende: 2028-02-28
-    ort: |
+    date_start: 2027-09-01
+    date_end: 2028-02-28
+    location: |
       München
-    ablauf: |
+    schedule: |
       F1 Recherche, F2 Szenische Dokumentation, F3 Aufführung
-    mit: Eleanora Allerdings, Rosalin Hertrich
+    instructors: Eleanora Allerdings, Rosalin Hertrich
   p2_praxisprojekt:
     ctype: event
     shortcode: P2
@@ -287,13 +287,13 @@ items:
       caption: Praxisprojekt — eigene Leitung
     body: |
       Das Praxisprojekt ist dein Meisterstück: Eine Performance im öffentlichen Raum, ein dokumentarisches Projekt mit einer Community, eine Site Specific Arbeit. Du leitest selbst — mit Begleitung und Reflexion im Profil.
-    start: 2027-09-01
-    ende: 2028-06-30
-    ort: |
+    date_start: 2027-09-01
+    date_end: 2028-06-30
+    location: |
       Dein Praxisfeld
-    ablauf: |
+    schedule: |
       Details erfährst du in K4
-    mit: Begleitung durch Profilteam
+    instructors: Begleitung durch Profilteam
   p3_abschlussarbeit:
     ctype: event
     shortcode: P3
@@ -304,13 +304,13 @@ items:
       caption: Abschlussarbeit — Theorie und Praxis
     body: |
       In der Abschlussarbeit verbindest du dein Praxisprojekt mit theoretischer Reflexion. Du dokumentierst deinen Prozess, analysierst deine Methodik und entwickelst deine eigene künstlerische Position.
-    start: 2028-01-01
-    ende: 2028-06-30
-    ort: |
+    date_start: 2028-01-01
+    date_end: 2028-06-30
+    location: |
       Schriftliche Arbeit
-    ablauf: |
+    schedule: |
       Begleitung im Profilverlauf
-    mit: Rosalin Hertrich
+    instructors: Rosalin Hertrich
   p6_praxispruefung:
     ctype: event
     shortcode: P6
@@ -321,13 +321,13 @@ items:
       caption: Praktische Prüfung — Abschlusskolloquium
     body: |
       Die praktische Prüfung ist der letzte Schritt: Du präsentierst dein Projekt, diskutierst deine Methodik und zeigst deine Leitungskompetenz. Das Kolloquium findet im Rahmen von K6 statt.
-    start: 2028-06-01
-    ende: 2028-08-31
-    ort: |
+    date_start: 2028-06-01
+    date_end: 2028-08-31
+    location: |
       München
-    ablauf: |
+    schedule: |
       Im Rahmen K6
-    mit: Prüfungskommission
+    instructors: Prüfungskommission
   berufsabschluss:
     ctype: pricing
     shortcode: AS

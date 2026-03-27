@@ -3,7 +3,7 @@ navigation: false
 navigation_highlight: /ausbildung-theaterpaedagogik/aufbaustufe
 shortcode: z15v
 heading: "BERATEN & AUSPROBIEREN"
-start: 2026-02-01
+date_start: 2026-02-01
 end: 2026-09-30
 ctype: course
 tag: course
@@ -93,13 +93,13 @@ items:
       caption: das Glas voll machen
     body: |
       Gesamtüberblick über die Struktur der Aufbaustufe Theaterpädagogik (BuT) 2026-2028 und der beiden Profile "Theatrales Lernen" und "Performance und Interkult. Theater". Fragen und Antworten.
-    start: 2025-10-23T18:00
-    ende: 2025-10-23T20:00
-    ort: |
+    date_start: 2025-10-23T18:00
+    date_end: 2025-10-23T20:00
+    location: |
       ONLINE (MS Teams)
-    ablauf: |
+    schedule: |
       DO 18:00-20:00 _online_
-    mit: Hans Dönitz (Rosalin Hertrich, Cornelia Jung)
+    instructors: Hans Dönitz (Rosalin Hertrich, Cornelia Jung)
   a0_1276:
     ctype: event
     shortcode: a0
@@ -110,18 +110,18 @@ items:
       caption: 'Theaterpedia: Theaterpädagogik suchen und finden'
     body: |
       Auf der Theaterpedia-Konferenz sind das Team von DAS Ei und viele Absolvent:innen der Aufbaustufe Theaterpädagogik (BuT) von DAS Ei anwesend. [PLACEHOLDER — HA will redo this content]
-    start: 2025-11-20T18:00
-    ende: 2025-11-23T15:00
-    ort: |
+    date_start: 2025-11-20T18:00
+    date_end: 2025-11-23T15:00
+    location: |
       Eine-Welt-Haus
       Schwanthaler Str. 81
       80336 München
-    ablauf: |
+    schedule: |
       DO 18:00-21:30
       FR 09:30-19:30
       SA 09:00-19:00 (danach Party)
       SO 09:30-15:00
-    mit: Hans Dönitz, Team DAS Ei
+    instructors: Hans Dönitz, Team DAS Ei
   t1_1190:
     ctype: event
     shortcode: t1
@@ -132,17 +132,17 @@ items:
       caption: Thematische Warm-Ups
     body: |
       Profilorientierung: Ein Wochenende lang die Methoden und Inhalte des Profils "Theatrales Lernen" erleben und ausprobieren.
-    start: 2026-02-27T18:00
-    ende: 2026-03-01T15:00
-    ort: |
+    date_start: 2026-02-27T18:00
+    date_end: 2026-03-01T15:00
+    location: |
       Tanzerei
       Kaiserstr. 81
       90766 Fürth
-    ablauf: |
+    schedule: |
       Fr. 18:30-21:30
       SA 09:00-18:00
       SO 09:00-15:00
-    mit: Cornelia Jung
+    instructors: Cornelia Jung
   r1_1190:
     ctype: event
     shortcode: r1
@@ -153,15 +153,15 @@ items:
       caption: die künstlerische Aktion
     body: |
       Profilorientierung: Ein Wochenende lang die Methoden und Inhalte des Profils "Performance und Interkult. Theater" erleben und ausprobieren.
-    start: 2026-07-04T09:30
-    ende: 2026-07-05T18:00
-    ort: |
+    date_start: 2026-07-04T09:30
+    date_end: 2026-07-05T18:00
+    location: |
       Schwanthaler Str 91
       80336 München
-    ablauf: |
+    schedule: |
       Fr. 18:30-21:30
       SA 09:00-18:00
       SO 09:00-15:00
-    mit: Rosalin Hertrich
+    instructors: Rosalin Hertrich
 ---
 <!-- PUBLISH-FROM-HERE -->

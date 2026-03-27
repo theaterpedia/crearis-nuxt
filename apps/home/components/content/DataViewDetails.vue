@@ -188,8 +188,8 @@ const handle_update_contact = () => {
 
 const handle_checkout = async () => {
   checkoutRecord.anmerkungen = checksAndSummary.value.anmerkungen ?? ''
-  checkoutRecord.start = props.product.start ? props.product.start.toString() : ''
-  checkoutRecord.ende = props.product.ende ? props.product.ende.toString() : ''
+  checkoutRecord.start = props.product.date_start ? props.product.date_start.toString() : ''
+  checkoutRecord.ende = props.product.date_end ? props.product.date_end.toString() : ''
   checkoutRecord.actionstep = props.product.id ? props.product.id : props.product.shortcode ? props.product.shortcode : ''
   checkoutRecord.json = JSON.stringify(checkoutRecord)
   
@@ -328,6 +328,14 @@ const shortcodeTitle = (shortcode: String | undefined, title: String) => {
   return `_${shortcode.toUpperCase()}_ ${title}`
 }
 
+// Filter out items with ctype starting with 'slide_' from left panel
+const filteredItems = computed(() => {
+  if (!props.product.items) return []
+  return Object.values(props.product.items).filter(
+    (item: any) => !item.ctype || !item.ctype.startsWith('slide_')
+  )
+})
+
 const getRootPath = (root: string | undefined) => {
   if (!root) return ''
   if (root.startsWith('/')) return root
@@ -407,7 +415,7 @@ const getRootPath = (root: string | undefined) => {
           </ContentRenderer>
         </ContentQuery>
         <SectionContainer
-          v-for="(item, index) in product.items"
+          v-for="(item, index) in filteredItems"
           :background="index === 2 || index === 4 ? 'accent' : 'muted'"
           :key="index"
         >
@@ -417,7 +425,7 @@ const getRootPath = (root: string | undefined) => {
               <p>{{ item.tag }}</p>
             </column>
             <column>
-              <MdBlock v-if="item.ablauf" :content="item.ablauf" htag="h3" narrow style="margin-top: -0.3em" />
+              <MdBlock v-if="item.schedule" :content="item.schedule" htag="h3" narrow style="margin-top: -0.3em" />
             </column>
           </columns>
         </SectionContainer>
