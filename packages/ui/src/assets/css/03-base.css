@@ -82,6 +82,17 @@ a {
   text-decoration: none;
 }
 
+/* Left-align and pad H2s that precede checkout mode tabs */
+h2:has(~ .checkout-wrapper) {
+  text-align: left;
+  padding-left: 2.75rem; /* matches Container padding */
+}
+@media (max-width: 767px) {
+  h2:has(~ .checkout-wrapper) {
+    padding-left: 1rem; /* matches Container mobile padding */
+  }
+}
+
 strong {
   font-weight: 600;
 }

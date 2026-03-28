@@ -1,10 +1,11 @@
 <template>
-  <!-- Slider for selected variant -->
-  <ContentQuery v-if="selectedSrc" v-slot="{ data }" :path="selectedSrc" :key="selectedSrc" find="one">
-    <DataViewProduct :data="data" :src="selectedSrc" />
+  <div class="checkout-wrapper">
+    <!-- Slider for selected variant -->
+    <ContentQuery v-if="selectedSrc" v-slot="{ data }" :path="selectedSrc" :key="selectedSrc" find="one">
+      <DataViewProduct :data="data" :src="selectedSrc" mode="checkout" />
 
-    <!-- Checkout box below slider -->
-    <Section background="muted">
+      <!-- Checkout box below slider -->
+      <Section background="muted">
       <Container>
         <div class="checkout-box">
           <!-- Left column: variants + pricing -->
@@ -44,7 +45,8 @@
         </div>
       </Container>
     </Section>
-  </ContentQuery>
+    </ContentQuery>
+  </div>
 </template>
 
 <script lang="ts" setup>
