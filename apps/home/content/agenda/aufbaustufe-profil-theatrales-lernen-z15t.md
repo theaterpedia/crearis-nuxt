@@ -128,35 +128,36 @@ consulting:
     email: ✨ abgeschickt! Wir melden uns bei dir.
     call: Bis bald! Wir rufen dich an.
 product:
-  header: |
-    Die Aufbaustufe Theatrales Lernen führt zum Berufsabschluss Theaterpädagog:in (BuT)® — in zwei Jahren mit Schwerpunkt auf zielgruppenorientierter Theaterpädagogik für Schule, Bildung und soziale Arbeit.
+  header: Zielgruppenorientierte Theaterpädagogik für Schule, Bildung und soziale Arbeit. Theatrale Lernprozesse eröffnen Räume für Perspektivwechsel, Rollenübernahme und kritische Reflexion — das Profil vermittelt dir, wie du das methodisch umsetzt.
   footer: |
     ## September 2026 – August 2028 **Aufbaustufe Profil Theatrales Lernen**
+  link:
+    title: → Mehr zum Profil Theatrales Lernen
+    to: 'profil_theatrales_lernen'    
 items:
   course_summary:
     ctype: slide_2cols
     title: "**Programmbestandteile**"
     body: |
       **Vertiefung**
-      E1: das Format „Seminarwoche"
-      K1: praktische Didaktik Theaterpädagogik
-      E2: das Workshop- & Kursformat
+      - **E1** das Format „Seminarwoche"
+      - **K1** praktische Didaktik Theaterpädagogik
+      - **E2** das Workshop- & Kursformat
 
       **Profiljahr**
-      X?: Theaterpedia-Konferenz
-      T1: Profilkolloquium „Theatrales Lernen"
-      TA + TB: Praxisprojekt 1: Grundschule
-      Offenes Programm: Methodisch-Didaktische Vertiefung
-      K2 + K4: Geschichte & Theorie der Theaterpädagogik
+      - **X?** Theaterpedia-Konferenz
+      - **T1** Profilkolloquium „Theatrales Lernen"
+      - **TA + TB** Praxisprojekt 1: Grundschule
+      - **Offenes Programm** Methodisch-Didaktische Vertiefung
+      - **K2 + K4** Geschichte & Theorie der Theaterpädagogik
 
       ---
 
       **Abschluss**
-      K6: Digitale Infrastruktur - Websites in der Theaterpädagogik
-      K3 + K5: Organisation und Finanzierung
-      P2: Abschluss-Projekte
-      P3 + P5: Deine Abschlussarbeit Deine Website
-      P6: Praktische Prüfung
+      - **K6** Digitale Infrastruktur - Websites in der Theaterpädagogik
+      - **K3 + K5** Organisation und Finanzierung
+      - **P2** Abschluss-Projekte
+      - **P3 + P5** Deine Abschlussarbeit Deine Website<br>P6: Praktische Prüfung
 
       ---
 

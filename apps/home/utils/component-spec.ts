@@ -103,6 +103,11 @@ export const componentSpecs: Record<string, ComponentSpec> = {
     isPageComponent: false,
     allowsProse: true,
   },
+  AnchorLine: {
+    isPageComponent: false,
+    isParent: false,
+    allowsProse: false,
+  },
   Banner: {
     isPageComponent: true,
     isParent: true,

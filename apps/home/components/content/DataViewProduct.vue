@@ -107,10 +107,6 @@
         </Slide>
       </Slider>
     </template>
-
-    <ButtonTmp :to="{ path: '/details', props: src, query: { src: `/${src}` } }" id="cta" style="margin-top: 3em">
-      Anmeldung und Konditionen
-    </ButtonTmp>
   </ContentRenderer>
 </template>
 

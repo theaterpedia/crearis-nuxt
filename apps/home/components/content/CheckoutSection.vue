@@ -4,47 +4,48 @@
     <ContentQuery v-if="selectedSrc" v-slot="{ data }" :path="selectedSrc" :key="selectedSrc" find="one">
       <DataViewProduct :data="data" :src="selectedSrc" mode="checkout" />
 
-      <!-- Checkout box below slider -->
+      <!-- Variant selector in white section, visually connected to slider -->
+      <div class="variant-selector-section">
+        <Container>
+          <h4 class="section-label section-label--selector">{{ computedSelectorLabel }}</h4>
+          <ProductVariantSelector
+            v-model="selectedSrc"
+            :variants="parsedVariants"
+            @update:model-value="onVariantChange"
+          />
+        </Container>
+      </div>
+
+      <!-- Pricing + CTA in muted section -->
       <Section background="muted">
-      <Container>
-        <div class="checkout-box">
-          <!-- Left column: variants + pricing -->
-          <div class="checkout-left">
-            <!-- Variant selector -->
-            <div class="variant-section">
-              <h4 class="section-label">Terminauswahl</h4>
-              <ProductVariantSelector
-                v-model="selectedSrc"
-                :variants="parsedVariants"
-                @update:model-value="onVariantChange"
-              />
+        <Container>
+          <div class="checkout-box">
+            <!-- Left column: pricing -->
+            <div class="checkout-left">
+              <div v-if="getPricing(data)" class="pricing-section">
+                <h4 class="section-label">Kosten & Konditionen</h4>
+                <Catalog>
+                  <Prose>
+                    <div v-html="getPricing(data)" />
+                  </Prose>
+                </Catalog>
+              </div>
             </div>
 
-            <!-- Pricing box -->
-            <div v-if="getPricing(data)" class="pricing-section">
-              <h4 class="section-label">Kosten & Konditionen</h4>
-              <Catalog>
-                <Prose>
-                  <div v-html="getPricing(data)" />
-                </Prose>
-              </Catalog>
+            <!-- Right column: CTA button -->
+            <div class="checkout-right">
+              <Button
+                variant="primary"
+                size="medium"
+                class="checkout-cta"
+                @click="handleCheckout"
+              >
+                Details & Buchung
+              </Button>
             </div>
           </div>
-
-          <!-- Right column: CTA button -->
-          <div class="checkout-right">
-            <Button
-              variant="primary"
-              size="medium"
-              class="checkout-cta"
-              @click="handleCheckout"
-            >
-              Details & Buchung
-            </Button>
-          </div>
-        </div>
-      </Container>
-    </Section>
+        </Container>
+      </Section>
     </ContentQuery>
   </div>
 </template>
@@ -82,10 +83,30 @@ const props = defineProps({
     type: Array as PropType<TabItem[]>,
     required: true,
   },
+  /**
+   * Label for the variant selector section.
+   * If not provided, auto-detects based on route:
+   * - 'aufbaustufe' pages → 'Profilauswahl'
+   * - 'einstiege' pages → 'Kursverlauf'
+   * - default → 'Terminauswahl'
+   */
+  selectorLabel: {
+    type: String,
+    default: undefined,
+  },
 })
 
 const route = useRoute()
 const router = useRouter()
+
+// Auto-detect selector label based on route path
+const computedSelectorLabel = computed(() => {
+  if (props.selectorLabel) return props.selectorLabel
+  const path = route.path.toLowerCase()
+  if (path.includes('aufbaustufe')) return 'Profilauswahl'
+  if (path.includes('einstiege')) return 'Kursverlauf'
+  return 'Terminauswahl'
+})
 
 // Parse tab titles to extract shortcode and subline
 // Format: "M18W **München**" → { shortcode: "M18W", subline: "München" }
@@ -137,16 +158,24 @@ const getInitialSrc = (): string => {
 
 const selectedSrc = ref(getInitialSrc())
 
-// Update URL when variant changes
-const onVariantChange = (newSrc: string) => {
+// Update URL when variant changes and scroll to #buchen after content renders
+const onVariantChange = async (newSrc: string) => {
   const shortcode = findShortcodeBySrc(newSrc)
   if (shortcode) {
-    router.replace({
+    // Update URL without hash - don't let router scroll yet
+    await router.replace({
       query: {
         ...route.query,
         product: shortcode.toLowerCase(),
       },
     })
+    // Wait for content to re-render (ContentQuery + DataViewProduct), then scroll
+    setTimeout(() => {
+      const anchor = document.getElementById('buchen')
+      if (anchor) {
+        anchor.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+    }, 150) // Small delay to allow slider content to load
   }
 }
 
@@ -205,6 +234,12 @@ const handleCheckout = () => {
   justify-content: center;
 }
 
+.variant-selector-section {
+  background-color: #fff;
+  padding-top: 0.5rem; /* 8px */
+  padding-bottom: 1.75rem;
+}
+
 .section-label {
   font-size: 0.875rem;
   font-weight: 600;
@@ -212,6 +247,10 @@ const handleCheckout = () => {
   color: var(--color-contrast);
   text-transform: uppercase;
   letter-spacing: 0.025em;
+}
+
+.section-label--selector {
+  margin-bottom: 0.375rem; /* Half of normal */
 }
 
 .checkout-cta {

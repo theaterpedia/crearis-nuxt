@@ -65,14 +65,7 @@
         </SectionContainer>
       </slot>
       <slot />
-      <ButtonTmp
-        v-if="details"
-        :to="{ path: '/details', props: route.path, query: { src: route.path } }"
-        id="cta"
-        style="margin-top: 3em"
-      >
-        Anmeldung und Konditionen
-      </ButtonTmp>
+      <!-- NOTE: "Anmeldung und Konditionen" button removed - replaced by CheckoutSection CTA and hero anchor scrolling -->
       <PageBottom
         v-if="pageBottom"
         :topline="pageBottom.topline !== false"
