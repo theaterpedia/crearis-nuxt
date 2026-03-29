@@ -149,7 +149,7 @@ watch(
   align-items: center;
   width: 100vw;
   height: 2.75rem;
-  padding: 0 1rem;
+  padding: 0 1rem 0 0; /* No left padding - hamburger in corner */
   background-color: oklch(var(--color-card-bg) l c h / 48%);
   color: var(--color-card-contrast);
 }
@@ -159,8 +159,10 @@ watch(
   justify-content: center;
   align-items: center;
   gap: 1em;
-  width: 2em;
-  height: 2em;
+  width: 2.75rem;
+  height: 2.75rem;
+  background-color: var(--color-primary-bg);
+  color: var(--color-primary-contrast);
 }
 
 .sidebar-mobile-button:last-child {

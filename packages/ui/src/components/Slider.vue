@@ -170,7 +170,7 @@ onUnmounted(() => {
 }
 @media (max-width: 767px) {
   .slider.first-slide-left {
-    margin-left: -1rem; /* matches Container mobile padding */
+    margin-left: 0; /* Mobile: use default padding */
   }
 }
 

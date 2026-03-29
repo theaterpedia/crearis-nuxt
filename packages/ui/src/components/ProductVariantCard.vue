@@ -217,17 +217,18 @@ defineEmits<{
     aspect-ratio: 16 / 10;
   }
 
-  /* Long subline on mobile: 58/42 split for 2-line subline */
+  /* Long subline on mobile: constrain width to force 2-line wrap */
   .product-variant-card.subline-long {
     aspect-ratio: 16 / 10;
+    max-width: 115px;
   }
 
   .product-variant-card.subline-long .card-top {
-    flex: 1.4; /* ~58% */
+    flex: 1; /* 50% */
   }
 
   .product-variant-card.subline-long .card-bottom {
-    flex: 1; /* ~42% */
+    flex: 1; /* 50% */
     padding-top: 0;
     padding-bottom: 0;
   }
@@ -236,6 +237,9 @@ defineEmits<{
     white-space: normal;
     word-wrap: break-word;
     overflow-wrap: break-word;
+    font-size: 0.65rem !important; /* Override inline style, ~7% smaller */
+    line-height: 1.1;
+    width: 100%; /* Force width constraint so text wraps */
   }
 }
 </style>

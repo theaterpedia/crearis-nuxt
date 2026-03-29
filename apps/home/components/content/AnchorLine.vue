@@ -132,4 +132,11 @@ onUnmounted(() => {
   height: 0;
   margin-top: 0; /* Reset negative margin when inside a section */
 }
+
+/* Mobile: anchor-line matches hamburger menu height (2.75rem = 44px) */
+@media (max-width: 1023px) {
+  .anchor-line:not(.anchor-line--inline) {
+    height: 2.75rem;
+  }
+}
 </style>

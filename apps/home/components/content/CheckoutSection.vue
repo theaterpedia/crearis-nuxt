@@ -253,6 +253,13 @@ const handleCheckout = () => {
   margin-bottom: 0.375rem; /* Half of normal */
 }
 
+/* Mobile: hide selector label */
+@media (max-width: 767px) {
+  .section-label--selector {
+    display: none;
+  }
+}
+
 .checkout-cta {
   width: 100%;
   max-width: 280px;

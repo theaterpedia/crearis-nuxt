@@ -47,7 +47,7 @@
         <Columns v-else gap="small">
           <Column v-if="item.image" width="1/5">
             <img :src="item.image.url" />
-            <p>{{ item.tag }}</p>
+            <p class="slide-tag">{{ item.tag }}</p>
           </Column>
           <Column>
             <Heading v-if="item.title" :content="shortcodeTitle(item.shortcode, item.title)" is="h3" />
@@ -95,7 +95,7 @@
           <Columns v-else gap="small">
             <Column v-if="item.image" width="1/5">
               <img :src="item.image.url" />
-              <p>{{ item.tag }}</p>
+              <p class="slide-tag">{{ item.tag }}</p>
             </Column>
             <Column>
               <Heading v-if="item.title" :content="shortcodeTitle(item.shortcode, item.title)" is="h3" />
@@ -259,7 +259,8 @@ const getSlide2ColsFooter = (body: string) => {
   border-top: 2px solid var(--color-contrast, currentColor);
 }
 
-@media (max-width: 768px) {
+/* Mobile: hide product.header, product.link, slide_2cols title/footer/divider, taglines */
+@media (max-width: 767px) {
   .slide-2cols {
     border: none;
     padding: 0;
@@ -268,10 +269,26 @@ const getSlide2ColsFooter = (body: string) => {
   .slide-2cols-content {
     flex-direction: column;
   }
+
+  .checkout-product-header,
+  .product-link {
+    display: none !important;
+  }
+  
+  .slide-2cols-title {
+    display: none;
+  }
   
   .slide-2cols-divider {
-    width: 100%;
-    height: 2px;
+    display: none;
+  }
+  
+  .slide-2cols-footer {
+    display: none;
+  }
+  
+  .slide-tag {
+    display: none;
   }
 }
 
