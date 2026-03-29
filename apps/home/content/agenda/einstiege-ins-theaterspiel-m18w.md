@@ -2,12 +2,12 @@
 navigation: false
 navigation_highlight: /ausbildung-theaterpaedagogik/einstiege
 shortcode: m18w
-heading: "**Einstiege ins Theaterspiel** München 8.3.2026 - 1.12.2026 // Tageskursverlauf"
-date_start: 2026-03-08
+heading: "**Einstiege ins Theaterspiel** München 19.4 - 1.12.2026 // Tageskursverlauf"
+date_start: 2026-04-19
 end: 2026-12-01
 ctype: course
 tag: course
-description: Weiterbildung Theaterpädagogik - Kurs M18W München 8.3 - 1.12.2026 // Tageskursverlauf München
+description: Weiterbildung Theaterpädagogik - Kurs M18W München 19.4 - 1.12.2026 // Tageskursverlauf München
 title: Einstiege ins Theaterspiel
 cssclasses:
   - course
@@ -102,12 +102,12 @@ product:
   ## 6 Kurseinheiten
   In prägnanten Einheiten erlebst Du beide Wege, verstehst die Zusammenhänge und leitest selber an: Du lernst die Methoden, die Leitungshaltung und typische Abläufe.
  footer: |
-  ## MÄR - DEZ 2026 // München **Einstiege ins Theaterspiel**
+  ## JUN - DEZ 2026 // München **Einstiege ins Theaterspiel**
 items: 
  aa_188:
   ctype: event
   shortcode: aa
-  tag: Do., 5.3. 18:00-20:00 online
+  tag: Do., 9.4. 18:00-20:00 online
   title: Kursinfo **Online-Teaser Einstiege ins Theaterspiel**
   image: 
    url: https://res.cloudinary.com/little-papillon/image/upload/c_crop,h_850,w_1200,x_310,y_130/v1594701917/dasei/einstiege_lampe_nora.jpg
@@ -115,15 +115,15 @@ items:
   body: |
    Du erwägst schon länger in die Theaterpädagogik einzusteigen? Du suchst nach qualifizierter Ausbildung in diesem Bereich? Vielleicht bist du bereits fest entschlossen, bei DAS Ei zu starten? 
    Dann melde dich an zum unverbindlichen Online-Teaser!
-  date_start: 2026-03-05T18:00
-  date_end: 2026-03-05T20:00
+  date_start: 2026-04-09T18:00
+  date_end: 2026-04-09T20:00
   location: online (MS Teams, Link wird rechtzeitig zugeschickt)
   schedule: DO 18:00-20:00 online
   instructors: Hans Dönitz
  a0_154:
   ctype: event
   shortcode: a0
-  tag: So., 8.3. ganztags + 1 Abend online
+  tag: So., 19.4. ganztags + 1 Abend online
   title: Praxis, Theorie & Ausbildung bei DAS Ei **Basistag Theaterpädagogik**
   image: 
    url: https://res.cloudinary.com/little-papillon/image/upload/v1676101506/dasei/700_dasei2022_I8A7903_cvtigl.jpg
@@ -133,8 +133,8 @@ items:
    - Einstiege ins Theaterspiel (Modul A)
    - Szenische Themenarbeit (Modul B)
    - Pädagogische Regie (Modul C)
-  date_start: 2026-03-08T09:30
-  date_end: 2026-03-08T18:30
+  date_start: 2026-04-19T09:30
+  date_end: 2026-04-19T18:30
   location: |
    Schwanthalerstraße 91
    80336 München

@@ -2,7 +2,7 @@
 navigation: false
 navigation_highlight: /ausbildung-theaterpaedagogik/einstiege
 shortcode: n18w
-heading: "**Einstiege ins Theaterspiel** Nürnberg 7.3.2026 - 8.12.2026 // Tageskursverlauf"
+heading: "**Einstiege ins Theaterspiel** Nürnberg 18.4 - 8.12 // Tageskurs"
 date_start: 2026-03-07
 end: 2026-12-08
 ctype: course
@@ -107,7 +107,7 @@ items:
  aa_188:
   ctype: event
   shortcode: aa
-  tag: Do., 5.3. 18:00-20:00 online
+  tag: Do., 9.4. 18:00-20:00 online
   title: Kursinfo **Online-Teaser Einstiege ins Theaterspiel**
   image: 
    url: https://res.cloudinary.com/little-papillon/image/upload/c_crop,h_850,w_1200,x_310,y_130/v1594701917/dasei/einstiege_lampe_nora.jpg
@@ -133,8 +133,8 @@ items:
    - Einstiege ins Theaterspiel (Modul A)
    - Szenische Themenarbeit (Modul B)
    - Pädagogische Regie (Modul C)
-  date_start: 2026-03-07T09:00
-  date_end: 2026-03-07T18:00
+  date_start: 2026-04-18T09:00
+  date_end: 2026-04-18T18:00
   location: |
    Kaiserstr. 175 (Tanzerei)
    80763 Fürth

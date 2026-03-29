@@ -19,7 +19,7 @@
         </NuxtLink>
       </template>
     </div>
-    <Slider v-if="mode === 'checkout'" class="checkout-slider" :first-slide-section="true" @slideChange="onSlideChange">
+    <Slider v-if="mode === 'checkout'" class="checkout-slider" :first-slide-section="true" :theme="theme" @slideChange="onSlideChange">
       <Slide v-for="(item, index) in itemsArray" :key="index">
         <!-- slide_2cols: Two-column layout with vertical separator -->
         <div v-if="item.ctype === 'slide_2cols'" class="slide-2cols">
@@ -161,6 +161,14 @@ const props = defineProps({
   src: {
     type: String,
     required: true,
+  },
+  /**
+   * Theme variant for slider styling adjustments.
+   * - 'dasei': Circle activator on mobile (2/5 visible, overlaying slide)
+   */
+  theme: {
+    type: String as PropType<'dasei' | undefined>,
+    default: undefined,
   },
 })
 

@@ -2,7 +2,7 @@
   <div class="checkout-wrapper">
     <!-- Slider for selected variant -->
     <ContentQuery v-if="selectedSrc" v-slot="{ data }" :path="selectedSrc" :key="selectedSrc" find="one">
-      <DataViewProduct :data="data" :src="selectedSrc" mode="checkout" />
+      <DataViewProduct :data="data" :src="selectedSrc" mode="checkout" theme="dasei" />
 
       <!-- Variant selector in white section, visually connected to slider -->
       <div class="variant-selector-section">

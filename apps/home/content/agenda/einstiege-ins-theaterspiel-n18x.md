@@ -2,12 +2,12 @@
 navigation: false
 navigation_highlight: /ausbildung-theaterpaedagogik/einstiege
 shortcode: n18x
-heading: "**Einstiege ins Theaterspiel** Burgstallmühle 7.3.2026 - 6.12.2026 // Blockseminarverlauf"
-date_start: 2026-03-07
+heading: "**Einstiege ins Theaterspiel** Burgstallmühle 14.5 - 6.12 // Blockseminar"
+date_start: 2026-05-14
 end: 2026-12-06
 ctype: course
 tag: course
-description: Weiterbildung Theaterpädagogik - Kurs N18X Burgstallmühle 7.3 - 6.12.2026 // Blockseminarverlauf
+description: Weiterbildung Theaterpädagogik - Kurs N18X Burgstallmühle 14.5 - 6.12.2026 // Blockseminarverlauf
 title: Einstiege ins Theaterspiel
 cssclasses:
   - course
@@ -108,7 +108,7 @@ items:
  aa_189:
   ctype: event
   shortcode: aa
-  tag: Do., 5.3. 18:00-20:00 online
+  tag: Do., 9.4. 18:00-20:00 online
   title: Kursinfo **Online-Teaser Einstiege ins Theaterspiel**
   image: 
    url: https://res.cloudinary.com/little-papillon/image/upload/c_crop,h_850,w_1200,x_310,y_130/v1594701917/dasei/einstiege_lampe_nora.jpg
@@ -124,7 +124,7 @@ items:
  a0_155:
   ctype: event
   shortcode: a0
-  tag: Sa., 7.3. ganztags + 1 Abend online
+  tag: Sa., 18.4. ganztags + 1 Abend online
   title: Praxis, Theorie & Ausbildung bei DAS Ei **Basistag Theaterpädagogik**
   image: 
    url: https://res.cloudinary.com/little-papillon/image/upload/v1676101506/dasei/700_dasei2022_I8A7903_cvtigl.jpg
@@ -134,8 +134,8 @@ items:
    - Einstiege ins Theaterspiel (Modul A)
    - Szenische Themenarbeit (Modul B)
    - Pädagogische Regie (Modul C)
-  date_start: 2026-03-07T09:00
-  date_end: 2026-03-07T18:00
+  date_start: 2026-04-18T09:00
+  date_end: 2026-04-18T18:00
   location: |
    Kaiserstr. 175 (Tanzerei)
    90763 Fürth

@@ -1,5 +1,5 @@
 <template>
-  <div class="slider" :class="{ 'first-slide-left': firstSlideLeft && isFirstSlide, 'first-slide-section': firstSlideSection && isFirstSlide, 'is-first-slide': isFirstSlide }">
+  <div class="slider" :class="[{ 'first-slide-left': firstSlideLeft && isFirstSlide, 'first-slide-section': firstSlideSection && isFirstSlide, 'is-first-slide': isFirstSlide }, theme ? `slider--${theme}` : '']">
     <div ref="root" class="slider-inner swiper-container">
       <div class="slider-wrapper swiper-wrapper">
         <slot />
@@ -32,7 +32,7 @@
 import Swiper from 'swiper'
 import 'swiper/css'
 import { Keyboard, Mousewheel, Navigation, Pagination } from 'swiper/modules'
-import { onMounted, onUnmounted, ref, computed } from 'vue'
+import { onMounted, onUnmounted, ref, computed, type PropType } from 'vue'
 
 const props = defineProps({
   /**
@@ -50,6 +50,15 @@ const props = defineProps({
   firstSlideSection: {
     type: Boolean,
     default: false,
+  },
+  /**
+   * Theme variant for styling adjustments.
+   * - 'dasei': Circle activator on mobile (2/5 visible, overlaying slide)
+   * @default undefined
+   */
+  theme: {
+    type: String as PropType<'dasei' | undefined>,
+    default: undefined,
   },
 })
 
@@ -287,6 +296,27 @@ onUnmounted(() => {
   
   .slider.is-first-slide .slider-navigation button:last-child {
     width: 1.7rem; /* Narrow on mobile */
+  }
+  
+  /* Dasei theme: Circle activator overlaying slide, 2/5 visible (clipped right) */
+  .slider--dasei.is-first-slide.first-slide-section .slider-navigation {
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  .slider--dasei.is-first-slide.first-slide-section .slider-navigation button:last-child {
+    position: relative;
+    top: auto;
+    bottom: auto;
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 50%;
+    margin-right: -1.75rem;
+    background-color: var(--color-primary-bg);
+    color: var(--color-primary-contrast);
+    border: none;
+    /* Shift icon to visible center (offset = margin / 2) */
+    padding-right: 0.875rem;
   }
 }
 
