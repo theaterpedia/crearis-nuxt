@@ -95,4 +95,11 @@ defineEmits<{
   flex-shrink: 0;
   scroll-snap-align: start;
 }
+
+/* Mobile: tighter gap */
+@media (max-width: 767px) {
+  .selector-scroll {
+    gap: 0.5rem;
+  }
+}
 </style>

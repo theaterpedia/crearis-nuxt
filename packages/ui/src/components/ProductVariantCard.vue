@@ -1,7 +1,10 @@
 <template>
   <button
     class="product-variant-card"
-    :class="{ active: isActive }"
+    :class="[
+      { active: isActive },
+      sublineClass
+    ]"
     type="button"
     @click="$emit('select')"
   >
@@ -10,13 +13,15 @@
     </div>
     <div class="card-separator"></div>
     <div class="card-bottom">
-      <span class="subline">{{ subline }}</span>
+      <span class="subline" :style="sublineStyle">{{ subline }}</span>
       <span v-if="price" class="price">{{ price }}</span>
     </div>
   </button>
 </template>
 
 <script lang="ts" setup>
+import { computed } from 'vue'
+
 /**
  * ProductVariantCard - Mini-card for variant selection in checkout
  *
@@ -24,9 +29,13 @@
  * - Top 66%: Primary fill (active) or neutral-100 (inactive), BIG shortcode
  * - Yellow 2px separator line
  * - Bottom 33%: White background, smaller subline + optional price
+ *
+ * Responsive subline handling:
+ * - >18 chars: 16:8 aspect ratio, condensed font, minimal padding
+ * - >24 chars: additional 20% font size reduction
  */
 
-defineProps({
+const props = defineProps({
   /**
    * The variant shortcode (e.g., "M18W")
    * Displayed prominently in the top section
@@ -58,6 +67,22 @@ defineProps({
     type: String,
     default: undefined,
   },
+})
+
+// Determine subline length class for responsive styling
+const sublineClass = computed(() => {
+  const len = props.subline.length
+  if (len > 24) return 'subline-long'
+  if (len > 20) return 'subline-medium'
+  return ''
+})
+
+// Inline style for font-size when subline is long
+const sublineStyle = computed(() => {
+  if (props.subline.length > 24) {
+    return { fontSize: '0.7rem' }
+  }
+  return {}
 })
 
 defineEmits<{
@@ -127,7 +152,7 @@ defineEmits<{
   align-items: center;
   justify-content: center;
   background: var(--color-card-bg);
-  padding: 0.25rem 0.5rem;
+  padding: 0.25rem 0.125rem;
   gap: 0.125rem;
 }
 
@@ -142,5 +167,75 @@ defineEmits<{
 .price {
   font-size: 0.75rem;
   color: var(--color-dimmed);
+}
+
+/* Medium subline (>20 chars): wider card, condensed font */
+.product-variant-card.subline-medium {
+  aspect-ratio: 16 / 8;
+}
+
+.product-variant-card.subline-medium .subline {
+  font-stretch: condensed;
+  letter-spacing: -0.02em;
+}
+
+/* Long subline (>24 chars): same as medium + smaller font */
+.product-variant-card.subline-long {
+  aspect-ratio: 16 / 8;
+}
+
+.product-variant-card.subline-long .subline {
+  font-stretch: condensed;
+  letter-spacing: -0.02em;
+}
+
+/* Mobile: scale down ~25-30%, use 16:10 aspect ratio */
+@media (max-width: 767px) {
+  .product-variant-card {
+    min-width: 100px;
+    aspect-ratio: 16 / 10;
+  }
+
+  .shortcode {
+    font-size: 1.1rem;
+  }
+
+  .subline {
+    font-size: 0.7rem;
+  }
+
+  .price {
+    font-size: 0.6rem;
+  }
+
+  .card-separator {
+    height: 1.5px;
+  }
+
+  /* Medium subline on mobile: keep same as base mobile */
+  .product-variant-card.subline-medium {
+    aspect-ratio: 16 / 10;
+  }
+
+  /* Long subline on mobile: 58/42 split for 2-line subline */
+  .product-variant-card.subline-long {
+    aspect-ratio: 16 / 10;
+  }
+
+  .product-variant-card.subline-long .card-top {
+    flex: 1.4; /* ~58% */
+  }
+
+  .product-variant-card.subline-long .card-bottom {
+    flex: 1; /* ~42% */
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .product-variant-card.subline-long .subline {
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
 }
 </style>
