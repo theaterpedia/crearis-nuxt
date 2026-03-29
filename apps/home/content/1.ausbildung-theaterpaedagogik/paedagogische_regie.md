@@ -24,7 +24,7 @@ image:
   src: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_1920,h_1080,g_auto,q_auto,f_auto/dasei/paedagogische_regie.jpg
 pageBottom:
   height: medium
-  topline: true
+  anchorline: true
   content_y: top
   inherit_hero_image: false
   image: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_1920,h_1080,g_south,q_auto,f_auto/dasei/esther_eleanora_macchiato.jpg

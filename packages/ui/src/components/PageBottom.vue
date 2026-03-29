@@ -1,27 +1,39 @@
 <template>
   <div
+    ref="pageBottomEl"
     class="page-bottom"
     :class="[
       `page-bottom-${heightTmp}`,
       `page-bottom-align-content-${contentAlignY}`,
-      topline ? 'page-bottom-topline' : '',
+      `page-bottom-effect-${effect}`,
+      { 'page-bottom-interaction': interaction },
     ]"
   >
-    <div class="page-bottom-cover">
+    <!-- AnchorLine replaces the old CSS ::before topline -->
+    <AnchorLine
+      v-if="computedAnchorline"
+      :anchor="anchor"
+      :variant="anchorlineVariant"
+      :sticky="!interaction"
+      class="page-bottom-anchorline"
+    />
+
+    <div class="page-bottom-cover" :style="coverStyle">
       <div
-        v-if="imgTmp"
+        v-if="imgTmp && !interaction"
         class="page-bottom-cover-image"
         :style="{
           backgroundImage: `url(${computedImageUrl})`,
           backgroundPositionX: imgTmpAlignX,
           backgroundPositionY: imgTmpAlignY,
           backgroundSize: 'cover',
+          opacity: imageOpacity,
         }"
       >
         <div v-if="overlay" class="page-bottom-cover-overlay" :style="{ background: overlay }"></div>
       </div>
       <div v-else class="page-bottom-cover-bg">
-        <div v-if="overlay" class="page-bottom-cover-overlay" :style="{ background: overlay }"></div>
+        <div v-if="overlay && !interaction" class="page-bottom-cover-overlay" :style="{ background: overlay }"></div>
       </div>
     </div>
 
@@ -34,8 +46,10 @@
 </template>
 
 <script lang="ts" setup>
-import { type PropType, computed } from 'vue'
+import { type PropType, computed, ref, provide, onMounted, onUnmounted } from 'vue'
 import Container from './Container.vue'
+import AnchorLine from './AnchorLine.vue'
+import { pageBottomContextKey, type PageBottomContext } from './PageBottomContext'
 
 const props = defineProps({
   /**
@@ -107,14 +121,39 @@ const props = defineProps({
   },
 
   /**
-   * Displays an accent divider line at the top of the page-bottom.
-   * Inverse of Hero's bottomline.
+   * Anchor line at top of page-bottom.
+   * - false: no anchor line
+   * - true: anchor line with 'accent' variant (default)
+   * - 'accent' | 'primary' | 'default' | 'muted': specific variant
    *
    * @default true
    */
-  topline: {
-    type: Boolean,
+  anchorline: {
+    type: [Boolean, String] as PropType<boolean | 'accent' | 'primary' | 'default' | 'muted'>,
     default: true,
+  },
+
+  /**
+   * The anchor ID for the anchorline element.
+   * Used for scroll-to navigation.
+   *
+   * @default 'pagebottom'
+   */
+  anchor: {
+    type: String,
+    default: 'pagebottom',
+  },
+
+  /**
+   * Background effect mode.
+   * - 'appear': Image fades in as user scrolls (default, cleaner for interaction)
+   * - 'scroll': Image scrolls with parallax effect (original behavior)
+   *
+   * @default 'appear'
+   */
+  effect: {
+    type: String as PropType<'appear' | 'scroll'>,
+    default: 'appear',
   },
 
   /**
@@ -136,6 +175,45 @@ const props = defineProps({
     type: String as PropType<'top' | 'bottom' | 'center'>,
     default: 'top',
   },
+})
+
+// Interaction state - provided to child components
+const interaction = ref(false)
+const setInteraction = (value: boolean) => {
+  interaction.value = value
+}
+
+// Provide context to children (ConsultingDialog)
+provide(pageBottomContextKey, {
+  interaction,
+  setInteraction,
+  anchor: props.anchor,
+})
+
+// Element ref for scroll detection
+const pageBottomEl = ref<HTMLElement | null>(null)
+
+// Image opacity for 'appear' effect
+const imageOpacity = ref(0)
+const scrollProgress = ref(0)
+
+// Compute anchorline visibility and variant
+const computedAnchorline = computed(() => props.anchorline !== false)
+const anchorlineVariant = computed(() => {
+  if (props.anchorline === true) return 'accent'
+  if (props.anchorline === false) return 'invisible'
+  return props.anchorline
+})
+
+// Cover style - disables scroll effect when effect='appear' or interaction is active
+const coverStyle = computed(() => {
+  if (props.effect === 'appear' || interaction.value) {
+    return {
+      position: 'absolute' as const,
+      height: '100%',
+    }
+  }
+  return {}
 })
 
 /**
@@ -165,6 +243,40 @@ const computedImageUrl = computed(() => {
   const path = props.imgTmp.startsWith('/') ? props.imgTmp.slice(1) : props.imgTmp
 
   return `${cloudinaryBase}/${transforms}/v1/${path}`
+})
+
+// Scroll handler for 'appear' effect
+const handleScroll = () => {
+  if (props.effect !== 'appear' || !pageBottomEl.value || interaction.value) {
+    imageOpacity.value = 0
+    return
+  }
+
+  const rect = pageBottomEl.value.getBoundingClientRect()
+  const viewportHeight = window.innerHeight
+
+  // Calculate how much of PageBottom is visible
+  // When top of PageBottom is at bottom of viewport: 0%
+  // When top of PageBottom is at top of viewport: 100%
+  const visibleTop = Math.max(0, viewportHeight - rect.top)
+  const totalHeight = rect.height
+
+  // Progress from 0 (not visible) to 1 (50% scrolled into view)
+  // Image starts fading in when 50% of the content has scrolled off top
+  const progress = Math.min(1, Math.max(0, (visibleTop / totalHeight - 0.5) * 2))
+  scrollProgress.value = progress
+  imageOpacity.value = progress
+}
+
+onMounted(() => {
+  if (props.effect === 'appear') {
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll() // Initial check
+  }
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
 })
 </script>
 
@@ -206,19 +318,16 @@ const computedImageUrl = computed(() => {
   justify-content: flex-end;
 }
 
-/* Accent divider at TOP (inverse of Hero's bottomline) */
-.page-bottom-topline::before {
-  content: '';
+/* AnchorLine positioning at absolute top */
+.page-bottom-anchorline {
   position: absolute;
-  right: 0;
   top: 0;
   left: 0;
-  height: 1rem;
-  background-color: var(--color-primary-bg);
-  z-index: 2;
+  right: 0;
+  z-index: 10;
 }
 
-/* Cover extends UPWARD (inverse of Hero) */
+/* Cover - default behavior for 'scroll' effect */
 .page-bottom-cover {
   position: absolute;
   bottom: 0;
@@ -228,7 +337,17 @@ const computedImageUrl = computed(() => {
   transform: translate3d(0, 0, 0);
 }
 
-/* Background sticks to BOTTOM (inverse of Hero's top: 0) */
+/* 'appear' effect: cover is static, no scroll */
+.page-bottom-effect-appear .page-bottom-cover {
+  height: 100%;
+}
+
+/* Interaction mode: suppress all background effects */
+.page-bottom-interaction .page-bottom-cover {
+  height: 100%;
+}
+
+/* Background sticks to BOTTOM for 'scroll' effect */
 .page-bottom-cover-image,
 .page-bottom-cover-bg {
   position: sticky;
@@ -237,6 +356,21 @@ const computedImageUrl = computed(() => {
   height: 50%;
   background-repeat: no-repeat;
   background-color: var(--color-muted);
+}
+
+/* 'appear' effect: static positioning, full height */
+.page-bottom-effect-appear .page-bottom-cover-image,
+.page-bottom-effect-appear .page-bottom-cover-bg {
+  position: relative;
+  height: 100%;
+  transition: opacity 0.5s ease;
+}
+
+/* Interaction mode: static, muted bg only */
+.page-bottom-interaction .page-bottom-cover-image,
+.page-bottom-interaction .page-bottom-cover-bg {
+  position: relative;
+  height: 100%;
 }
 
 .page-bottom-cover-image {

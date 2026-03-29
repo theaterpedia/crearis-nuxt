@@ -1,6 +1,6 @@
 <template>
   <PageBottom
-    :topline="topline"
+    :anchorline="anchorline"
     :height-tmp="height"
     :content-align-y="contentAlign"
     :content-width="contentWidth"
@@ -20,12 +20,13 @@ import { computed, inject, type PropType } from 'vue'
 
 const props = defineProps({
   /**
-   * Displays an accent divider line at the top of the page-bottom.
+   * Displays the AnchorLine at the top.
+   * true = 'accent' variant.
    *
    * @default true
    */
-  topline: {
-    type: Boolean,
+  anchorline: {
+    type: [Boolean, String] as PropType<boolean | 'accent' | 'primary' | 'default' | 'muted'>,
     default: true,
   },
 

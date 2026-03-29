@@ -163,9 +163,9 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, reactive, ref, watch, type PropType } from 'vue'
+import { computed, reactive, ref, watch, inject, type PropType } from 'vue'
 import { useRouter } from 'vue-router'
-import { ConsultingCategoryItem } from '@crearis/ui'
+import { ConsultingCategoryItem, pageBottomContextKey, type PageBottomContext } from '@crearis/ui'
 import { createEmailInquiry } from '~/composables/useConsultingSlots'
 
 export interface CategoryOption {
@@ -482,6 +482,9 @@ const emit = defineEmits<{
 
 const router = useRouter()
 
+// Optional PageBottom context - provides enhanced behavior when inside PageBottom
+const pageBottomContext = inject<PageBottomContext | undefined>(pageBottomContextKey, undefined)
+
 // Email form state
 const showEmailForm = ref(false)
 const firstName = ref('')
@@ -567,11 +570,29 @@ watch(hasSelection, (isActive) => {
   if (isActive) {
     // Entering active: CTA lights up first, then category expands after 300ms
     ctaVisualActive.value = true
+    
+    // Extended: notify PageBottom of interaction mode
+    if (pageBottomContext) {
+      pageBottomContext.setInteraction(true)
+      
+      // Wait for category expand transition, then scroll to anchor
+      setTimeout(() => {
+        const anchor = document.getElementById(pageBottomContext.anchor)
+        if (anchor) {
+          anchor.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+      }, 350) // Slightly longer than 300ms expansion delay
+    }
   } else {
     // Entering inactive: category collapses immediately, CTA dims after 300ms
     setTimeout(() => {
       ctaVisualActive.value = false
     }, 300)
+    
+    // Extended: notify PageBottom to exit interaction mode
+    if (pageBottomContext) {
+      pageBottomContext.setInteraction(false)
+    }
   }
 })
 

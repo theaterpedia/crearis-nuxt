@@ -69,7 +69,9 @@
       <!-- NOTE: "Anmeldung und Konditionen" button removed - replaced by CheckoutSection CTA and hero anchor scrolling -->
       <PageBottom
         v-if="pageBottom"
-        :topline="pageBottom.topline !== false"
+        :anchorline="computedAnchorline"
+        :anchor="pageBottom.anchor || 'pagebottom'"
+        :effect="pageBottom.effect || 'appear'"
         :heightTmp="pageBottom.height || 'medium'"
         :contentAlignY="pageBottom.content_y || 'top'"
         :contentWidth="pageBottom.content_width || 'full'"
@@ -134,6 +136,15 @@ const pageBottomImage = computed(() => {
 const pageBottomOverlay = computed(() => {
   if (!pageBottom) return undefined
   return getoverlay(pageBottom.gradient_type || 'none', pageBottom.gradient_depth || 0.8)
+})
+
+// Compute anchorline variant from YAML config
+const computedAnchorline = computed(() => {
+  if (!pageBottom) return 'accent'
+  if (pageBottom.anchorline === undefined) return 'accent'
+  if (pageBottom.anchorline === false) return false
+  if (pageBottom.anchorline === true) return 'accent'
+  return pageBottom.anchorline // 'accent' | 'primary' | 'default' | 'muted'
 })
 
 const route = useRoute()
