@@ -1,5 +1,5 @@
 <template>
-  <div class="slider" :class="{ 'first-slide-left': firstSlideLeft && isFirstSlide, 'first-slide-section': firstSlideSection && isFirstSlide }">
+  <div class="slider" :class="{ 'first-slide-left': firstSlideLeft && isFirstSlide, 'first-slide-section': firstSlideSection && isFirstSlide, 'is-first-slide': isFirstSlide }">
     <div ref="root" class="slider-inner swiper-container">
       <div class="slider-wrapper swiper-wrapper">
         <slot />
@@ -273,6 +273,20 @@ onUnmounted(() => {
 @media (max-width: 1023px) {
   .slider-navigation {
     display: none;
+  }
+  
+  /* Show next button on first slide only */
+  .slider.is-first-slide .slider-navigation {
+    display: flex;
+    z-index: 10; /* Above slide content */
+  }
+  
+  .slider.is-first-slide .slider-navigation button:first-child {
+    display: none; /* Hide prev button */
+  }
+  
+  .slider.is-first-slide .slider-navigation button:last-child {
+    width: 1.7rem; /* Narrow on mobile */
   }
 }
 

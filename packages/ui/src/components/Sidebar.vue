@@ -1,5 +1,5 @@
 <template>
-  <div class="sidebar">
+  <div class="sidebar" :class="[theme ? `sidebar--${theme}` : '']">
     <div class="sidebar-mobile-header">
       <button @click="isOpen = true" aria-label="Menü öffnen" class="sidebar-mobile-button">
         <svg
@@ -83,7 +83,7 @@
 
 <script lang="ts" setup>
 import { onKeyStroke } from '@vueuse/core'
-import { watch } from 'vue'
+import { watch, type PropType } from 'vue'
 import { useRoute } from 'vue-router'
 import { useSidebar } from '../composables/useSidebar'
 
@@ -108,6 +108,16 @@ defineProps({
    * The text to display in the footer.
    */
   footerText: String,
+
+  /**
+   * Theme variant for styling adjustments.
+   * - 'dasei': Quarter-circle hamburger button
+   * @default undefined
+   */
+  theme: {
+    type: String as PropType<'dasei' | undefined>,
+    default: undefined,
+  },
 })
 
 const { isOpen } = useSidebar()
@@ -152,6 +162,7 @@ watch(
   padding: 0 1rem 0 0; /* No left padding - hamburger in corner */
   background-color: oklch(var(--color-card-bg) l c h / 48%);
   color: var(--color-card-contrast);
+  overflow: hidden; /* Clip oversized elements */
 }
 
 .sidebar-mobile-button {
@@ -163,6 +174,35 @@ watch(
   height: 2.75rem;
   background-color: var(--color-primary-bg);
   color: var(--color-primary-contrast);
+}
+
+/* Dasei theme: 2/5 circle hamburger (bottom-right visible, left/top clipped) */
+.sidebar--dasei .sidebar-mobile-button:first-child {
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 50%;
+  margin-left: -1.75rem;
+  margin-top: -1.75rem;
+  /* Shift icon to visible center (offset = margin / 2) */
+  padding-left: 0.875rem;
+  padding-top: 0.875rem;
+}
+
+/* Dasei theme: close button mirrors hamburger (bottom-left visible, right/top clipped) */
+.sidebar--dasei .sidebar-top .sidebar-mobile-button {
+  position: absolute;
+  right: -3.5rem; /* 1.75rem parent padding + 1.75rem to hang off edge */
+  top: -1.75rem;
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 50%;
+  /* Shift icon to visible center (offset for clipped portion) */
+  padding-right: 0.875rem;
+  padding-top: 0.875rem;
+}
+
+.sidebar--dasei .sidebar-top {
+  position: relative;
 }
 
 .sidebar-mobile-button:last-child {

@@ -1,6 +1,7 @@
 <template>
   <Box>
     <Sidebar
+      theme="dasei"
       footerText="30 Jahre Theaterädagogik Bayern"
       logo="https://pruvious.com/uploads/logo-dasei.svg"
       logoAlt="DAS Ei"
