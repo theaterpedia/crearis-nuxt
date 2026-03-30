@@ -4,6 +4,15 @@
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
   --duration: 150ms;
   --transition: all var(--duration) var(--ease);
+
+  /* Footer height for PageBottom effect calculation */
+  --footer-min-height: 10rem;
+}
+
+@media (max-width: 767px) {
+  :root {
+    --footer-min-height: 15rem;
+  }
 }
 
 .dark {

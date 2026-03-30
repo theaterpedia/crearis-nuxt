@@ -1,8 +1,6 @@
 <template>
   <PageBottom
     :anchorline="anchorline"
-    :height-tmp="height"
-    :content-align-y="contentAlign"
     :content-width="contentWidth"
     :img-tmp="effectiveImage"
     :img-tmp-height="imageHeight"
@@ -28,26 +26,6 @@ const props = defineProps({
   anchorline: {
     type: [Boolean, String] as PropType<boolean | 'accent' | 'primary' | 'default' | 'muted'>,
     default: true,
-  },
-
-  /**
-   * Defines the height of the page-bottom section.
-   *
-   * @default 'medium'
-   */
-  height: {
-    type: String as PropType<'full' | 'prominent' | 'medium' | 'mini'>,
-    default: 'medium',
-  },
-
-  /**
-   * Defines the vertical alignment of the content.
-   *
-   * @default 'top'
-   */
-  contentAlign: {
-    type: String as PropType<'top' | 'bottom' | 'center'>,
-    default: 'top',
   },
 
   /**

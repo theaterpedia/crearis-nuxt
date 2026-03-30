@@ -7,6 +7,11 @@ export default defineNuxtConfig({
   modules: ['@nuxt/content', '@nuxt/image', 'nuxt-viewport'],
   routeRules: { '/': { prerender: true } },
   runtimeConfig: {
+    // Server-side only config
+    // parseVerbose: undefined = auto (dev: true, prod: false)
+    // parseVerbose: true = always verbose
+    // parseVerbose: false = always quiet
+    parseVerbose: false,
     public: {
       // Odoo GraphQL endpoint for checkout
       // Hardcoded fallback ensures checkout works even if env var not set at build time

@@ -2,7 +2,18 @@ import consola from 'consola'
 import { pascalCase } from 'scule'
 import type { ComponentSpec } from './component-spec'
 import { componentSpecs } from './component-spec'
-const logVerbose = true
+
+// Verbose logging - can be configured via setParseVerbose()
+// Default: undefined (will be set by content.ts based on env)
+let logVerbose = false
+
+/**
+ * Configure verbose logging for the markdown parser.
+ * Called from content.ts with runtime config value.
+ */
+export function setParseVerbose(verbose: boolean) {
+  logVerbose = verbose
+}
 
 /**
  *

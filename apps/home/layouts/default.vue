@@ -72,12 +72,11 @@
         :anchorline="computedAnchorline"
         :anchor="pageBottom.anchor || 'pagebottom'"
         :effect="pageBottom.effect || 'appear'"
-        :heightTmp="pageBottom.height || 'medium'"
-        :contentAlignY="pageBottom.content_y || 'top'"
         :contentWidth="pageBottom.content_width || 'full'"
         :imgTmp="pageBottomImage"
         :imgTmpGravity="pageBottom.image_gravity || 'south'"
         :overlay="pageBottomOverlay"
+        :claim="pageBottom.claim"
       >
         <ConsultingDialog
           v-if="pageBottom.consulting"

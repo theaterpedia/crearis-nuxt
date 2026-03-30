@@ -3,13 +3,11 @@
     ref="pageBottomEl"
     class="page-bottom"
     :class="[
-      `page-bottom-${heightTmp}`,
-      `page-bottom-align-content-${contentAlignY}`,
       `page-bottom-effect-${effect}`,
       { 'page-bottom-interaction': interaction },
     ]"
   >
-    <!-- AnchorLine replaces the old CSS ::before topline -->
+    <!-- AnchorLine at top - sticky when not in interaction mode -->
     <AnchorLine
       v-if="computedAnchorline"
       :anchor="anchor"
@@ -18,51 +16,74 @@
       class="page-bottom-anchorline"
     />
 
-    <div class="page-bottom-cover" :style="coverStyle">
+    <!-- Slot area: ConsultingDialog and other content -->
+    <div ref="slotEl" class="page-bottom-slot" :class="[`page-bottom-slot-${contentWidth}`]">
+      <Container>
+        <slot />
+      </Container>
+    </div>
+
+    <!-- Bottom effect div: background image with scroll-reveal (appear) or fixed background (uncover) -->
+    <div
+      v-if="!interaction && (imgTmp || claim)"
+      ref="effectEl"
+      class="page-bottom-effect"
+      :class="{ 'page-bottom-effect-has-image': !!imgTmp }"
+      :style="effect === 'uncover' && imgTmp ? {
+        backgroundImage: `url(${computedImageUrl})`,
+        backgroundPositionX: imgTmpAlignX,
+        backgroundPositionY: imgTmpAlignY,
+      } : undefined"
+      :data-visible="imageVisible"
+      :data-fully-visible="imageFullyVisible"
+    >
+      <!-- Background image layer - only for 'appear' effect -->
       <div
-        v-if="imgTmp && !interaction"
-        class="page-bottom-cover-image"
+        v-if="effect === 'appear' && imgTmp"
+        class="page-bottom-effect-image"
         :style="{
           backgroundImage: `url(${computedImageUrl})`,
           backgroundPositionX: imgTmpAlignX,
           backgroundPositionY: imgTmpAlignY,
-          backgroundSize: 'cover',
-          opacity: imageOpacity,
         }"
       >
-        <div v-if="overlay" class="page-bottom-cover-overlay" :style="{ background: overlay }"></div>
+        <div v-if="overlay" class="page-bottom-effect-overlay" :style="{ background: overlay }"></div>
       </div>
-      <div v-else class="page-bottom-cover-bg">
-        <div v-if="overlay && !interaction" class="page-bottom-cover-overlay" :style="{ background: overlay }"></div>
-      </div>
-    </div>
 
-    <div class="page-bottom-content" :class="[`page-bottom-content-${contentWidth}`]">
-      <Container>
-        <slot />
-      </Container>
+      <!-- Overlay for 'uncover' effect -->
+      <div v-if="effect === 'uncover' && overlay" class="page-bottom-effect-overlay" :style="{ background: overlay }"></div>
+
+      <!-- Claim text -->
+      <div
+        v-if="claim"
+        class="page-bottom-claim"
+        :class="[
+          `page-bottom-claim-${claim.orientation || 'left'}`,
+          `page-bottom-claim-effect-${claim.effect || 'fade'}`,
+        ]"
+        :data-claim-visible="claimVisible"
+      >
+        <Container>
+          <p class="page-bottom-claim-text">{{ claim.text }}</p>
+        </Container>
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { type PropType, computed, ref, provide, onMounted, onUnmounted } from 'vue'
+import { type PropType, computed, ref, provide, onMounted, onUnmounted, watch } from 'vue'
 import Container from './Container.vue'
 import AnchorLine from './AnchorLine.vue'
 import { pageBottomContextKey, type PageBottomContext } from './PageBottomContext'
 
-const props = defineProps({
-  /**
-   * Defines the height of the page-bottom section.
-   * Mirrors Hero.vue height options.
-   *
-   * @default 'medium'
-   */
-  heightTmp: {
-    type: String as PropType<'full' | 'prominent' | 'medium' | 'mini'>,
-    default: 'medium',
-  },
+interface ClaimConfig {
+  text: string
+  orientation?: 'left' | 'right'
+  effect?: 'fade' | 'slide' | 'typewriter'
+}
 
+const props = defineProps({
   /**
    * The URL or Cloudinary path of the background image.
    * If cloudinary path (starts with /), will apply cloudinary transforms.
@@ -146,18 +167,19 @@ const props = defineProps({
 
   /**
    * Background effect mode.
-   * - 'appear': Image fades in as user scrolls (default, cleaner for interaction)
-   * - 'scroll': Image scrolls with parallax effect (original behavior)
+   * - 'appear': Image fades in as user scrolls (default)
+   * - 'uncover': Image sits behind entire PageBottom, effect div is translucent
+   * - 'scroll': Image scrolls with parallax effect
    *
    * @default 'appear'
    */
   effect: {
-    type: String as PropType<'appear' | 'scroll'>,
+    type: String as PropType<'appear' | 'uncover' | 'scroll'>,
     default: 'appear',
   },
 
   /**
-   * Defines the width of the content.
+   * Defines the width of the slot content.
    *
    * @default 'full'
    */
@@ -167,13 +189,13 @@ const props = defineProps({
   },
 
   /**
-   * Defines the vertical alignment of the content.
-   *
-   * @default 'top'
+   * Claim configuration for text at bottom of effect area.
+   * - text: The claim text to display
+   * - orientation: 'left' | 'right' (default: 'left')
+   * - effect: 'fade' | 'slide' | 'typewriter' (default: 'fade')
    */
-  contentAlignY: {
-    type: String as PropType<'top' | 'bottom' | 'center'>,
-    default: 'top',
+  claim: {
+    type: Object as PropType<ClaimConfig>,
   },
 })
 
@@ -190,12 +212,15 @@ provide(pageBottomContextKey, {
   anchor: props.anchor,
 })
 
-// Element ref for scroll detection
+// Element refs
 const pageBottomEl = ref<HTMLElement | null>(null)
+const slotEl = ref<HTMLElement | null>(null)
+const effectEl = ref<HTMLElement | null>(null)
 
-// Image opacity for 'appear' effect
-const imageOpacity = ref(0)
-const scrollProgress = ref(0)
+// Visibility state for scroll effect
+const imageVisible = ref(false)
+const imageFullyVisible = ref(false)
+const claimVisible = ref(false)
 
 // Compute anchorline visibility and variant
 const computedAnchorline = computed(() => props.anchorline !== false)
@@ -203,17 +228,6 @@ const anchorlineVariant = computed(() => {
   if (props.anchorline === true) return 'accent'
   if (props.anchorline === false) return 'invisible'
   return props.anchorline
-})
-
-// Cover style - disables scroll effect when effect='appear' or interaction is active
-const coverStyle = computed(() => {
-  if (props.effect === 'appear' || interaction.value) {
-    return {
-      position: 'absolute' as const,
-      height: '100%',
-    }
-  }
-  return {}
 })
 
 /**
@@ -245,38 +259,62 @@ const computedImageUrl = computed(() => {
   return `${cloudinaryBase}/${transforms}/v1/${path}`
 })
 
-// Scroll handler for 'appear' effect
-const handleScroll = () => {
-  if (props.effect !== 'appear' || !pageBottomEl.value || interaction.value) {
-    imageOpacity.value = 0
-    return
-  }
+// IntersectionObserver for 'appear' effect scroll-based visibility
+let observer: IntersectionObserver | null = null
 
-  const rect = pageBottomEl.value.getBoundingClientRect()
-  const viewportHeight = window.innerHeight
+const setupObserver = () => {
+  if (!effectEl.value || props.effect !== 'appear') return
 
-  // Calculate how much of PageBottom is visible
-  // When top of PageBottom is at bottom of viewport: 0%
-  // When top of PageBottom is at top of viewport: 100%
-  const visibleTop = Math.max(0, viewportHeight - rect.top)
-  const totalHeight = rect.height
+  observer = new IntersectionObserver(
+    (entries) => {
+      const entry = entries[0]
+      if (!entry) return
 
-  // Progress from 0 (not visible) to 1 (50% scrolled into view)
-  // Image starts fading in when 50% of the content has scrolled off top
-  const progress = Math.min(1, Math.max(0, (visibleTop / totalHeight - 0.5) * 2))
-  scrollProgress.value = progress
-  imageOpacity.value = progress
+      const ratio = entry.intersectionRatio
+
+      // Image starts appearing at 50% visibility, fully visible at 80%
+      imageVisible.value = ratio >= 0.5
+      imageFullyVisible.value = ratio >= 0.8
+
+      // Claim appears at 90% visibility
+      claimVisible.value = ratio >= 0.9
+    },
+    {
+      threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0],
+    }
+  )
+
+  observer.observe(effectEl.value)
 }
 
-onMounted(() => {
-  if (props.effect === 'appear') {
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    handleScroll() // Initial check
+const cleanupObserver = () => {
+  if (observer) {
+    observer.disconnect()
+    observer = null
+  }
+}
+
+// Watch for interaction changes to reset visibility
+watch(interaction, (isInteracting) => {
+  if (isInteracting) {
+    cleanupObserver()
+    imageVisible.value = false
+    imageFullyVisible.value = false
+    claimVisible.value = false
+  } else {
+    // Re-setup scroll detection when exiting interaction mode
+    setTimeout(() => {
+      setupObserver()
+    }, 100)
   }
 })
 
+onMounted(() => {
+  setupObserver()
+})
+
 onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll)
+  cleanupObserver()
 })
 </script>
 
@@ -285,128 +323,158 @@ onUnmounted(() => {
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  padding: 6.25rem 0;
-  overflow: clip;
 }
 
-.page-bottom-full {
-  min-height: 100vh;
-}
-
-.page-bottom-prominent {
-  min-height: 75vh;
-}
-
-.page-bottom-medium {
-  min-height: 50vh;
-}
-
-.page-bottom-mini {
-  min-height: 25vh;
-}
-
-.page-bottom-align-content-top {
-  justify-content: flex-start;
-}
-
-.page-bottom-align-content-center {
-  justify-content: center;
-}
-
-.page-bottom-align-content-bottom {
-  justify-content: flex-end;
-}
-
-/* AnchorLine positioning at absolute top */
+/* AnchorLine positioning */
 .page-bottom-anchorline {
-  position: absolute;
+  position: sticky;
   top: 0;
   left: 0;
   right: 0;
   z-index: 10;
 }
 
-/* Cover - default behavior for 'scroll' effect */
-.page-bottom-cover {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 200%;
-  transform: translate3d(0, 0, 0);
-}
-
-/* 'appear' effect: cover is static, no scroll */
-.page-bottom-effect-appear .page-bottom-cover {
-  height: 100%;
-}
-
-/* Interaction mode: suppress all background effects */
-.page-bottom-interaction .page-bottom-cover {
-  height: 100%;
-}
-
-/* Background sticks to BOTTOM for 'scroll' effect */
-.page-bottom-cover-image,
-.page-bottom-cover-bg {
-  position: sticky;
-  bottom: 0;
-  width: 100%;
-  height: 50%;
-  background-repeat: no-repeat;
-  background-color: var(--color-muted);
-}
-
-/* 'appear' effect: static positioning, full height */
-.page-bottom-effect-appear .page-bottom-cover-image,
-.page-bottom-effect-appear .page-bottom-cover-bg {
-  position: relative;
-  height: 100%;
-  transition: opacity 0.5s ease;
-}
-
-/* Interaction mode: static, muted bg only */
-.page-bottom-interaction .page-bottom-cover-image,
-.page-bottom-interaction .page-bottom-cover-bg {
-  position: relative;
-  height: 100%;
-}
-
-.page-bottom-cover-image {
-  background-size: cover;
-}
-
-.page-bottom-cover-overlay {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-
-.page-bottom-content {
+/* Slot area - content like ConsultingDialog */
+.page-bottom-slot {
   position: relative;
   z-index: 1;
-  padding: 0 1rem;
+  padding: 2rem 1rem;
+  background-color: var(--color-bg);
 }
 
-.page-bottom-content-short {
-  min-width: 23rem; /* 368px */
-  max-width: 50rem; /* 800px */
+.page-bottom-slot-short {
+  min-width: 23rem;
+  max-width: 50rem;
 }
 
-.page-bottom-content-full {
+.page-bottom-slot-full {
   width: 100%;
+}
+
+/* Bottom effect div - full viewport minus footer */
+.page-bottom-effect {
+  position: relative;
+  height: calc(100svh - var(--footer-min-height));
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--color-bg);
+}
+
+/* Background image - fades in based on scroll visibility */
+.page-bottom-effect-image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 0.6s var(--ease);
+}
+
+/* Image visible at 50% scroll */
+.page-bottom-effect[data-visible="true"] .page-bottom-effect-image {
+  opacity: 0.5;
+}
+
+/* Image fully visible at 80% scroll */
+.page-bottom-effect[data-fully-visible="true"] .page-bottom-effect-image {
+  opacity: 1;
+}
+
+.page-bottom-effect-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+/* Claim positioning */
+.page-bottom-claim {
+  position: absolute;
+  bottom: 10%;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+}
+
+.page-bottom-claim-text {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-primary-contrast, #fff);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  max-width: 40rem;
+}
+
+/* Claim orientation */
+.page-bottom-claim-left .page-bottom-claim-text {
+  text-align: left;
+}
+
+.page-bottom-claim-right .page-bottom-claim-text {
+  text-align: right;
+  margin-left: auto;
+}
+
+/* Claim effects */
+.page-bottom-claim-effect-fade[data-claim-visible="true"] {
+  opacity: 1;
+}
+
+.page-bottom-claim-effect-slide {
+  transform: translateX(-2rem);
+}
+
+.page-bottom-claim-effect-slide.page-bottom-claim-right {
+  transform: translateX(2rem);
+}
+
+.page-bottom-claim-effect-slide[data-claim-visible="true"] {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.page-bottom-claim-effect-typewriter .page-bottom-claim-text {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+  transition: width 1s steps(40, end);
+}
+
+.page-bottom-claim-effect-typewriter[data-claim-visible="true"] .page-bottom-claim-text {
+  opacity: 1;
+  width: 100%;
+}
+
+/* Scroll effect mode (parallax) */
+.page-bottom-effect-scroll .page-bottom-effect {
+  height: 200%;
+}
+
+.page-bottom-effect-scroll .page-bottom-effect-image {
+  position: sticky;
+  bottom: 0;
+  height: 50%;
+  opacity: 1;
+}
+
+/* Interaction mode: hide effect area completely */
+.page-bottom-interaction .page-bottom-effect {
+  display: none;
+}
+
+/* Uncover effect: CSS-only with background-attachment: fixed */
+.page-bottom-effect-uncover .page-bottom-effect {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 @media (max-width: 767px) {
-  .page-bottom {
-    padding: 4rem 0;
+  .page-bottom-slot {
+    padding: 1.5rem 0;
   }
 
-  .page-bottom-content {
-    padding: 0;
+  .page-bottom-claim-text {
+    font-size: 1.25rem;
   }
 }
 </style>

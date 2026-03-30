@@ -19,6 +19,7 @@ import Container from './Container.vue'
   --color-muted-contrast: var(--color-accent-contrast);
   --link: var(--color-primary-base);
   width: 100%;
+  min-height: var(--footer-min-height);
   background-color: var(--color-accent-bg);
   color: var(--color-accent-contrast);
 }

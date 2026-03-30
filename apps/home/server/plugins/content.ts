@@ -1,7 +1,16 @@
 import consola from 'consola'
-import { parse } from '~/utils/parse'
+import { parse, setParseVerbose } from '~/utils/parse'
 
 export default defineNitroPlugin((nitroApp) => {
+  // Configure parse verbose logging based on runtime config
+  // undefined = auto (dev: true, prod: false), true/false = explicit
+  const config = useRuntimeConfig()
+  const isDev = process.dev
+  const verboseSetting = config.parseVerbose
+  const verbose = verboseSetting === undefined ? isDev : Boolean(verboseSetting)
+  setParseVerbose(verbose)
+  if (verbose) consola.info('[NITRO] Parse verbose logging enabled')
+
   nitroApp.hooks.hook('content:file:beforeParse', (file) => {
     // Filter out non-markdown files
     if (!file._id?.endsWith('.md')) {
