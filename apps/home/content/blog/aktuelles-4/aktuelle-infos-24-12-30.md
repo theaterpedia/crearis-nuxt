@@ -1,5 +1,5 @@
 ---
-id: 26
+id: 31
 heading: "**aktuelle Infos 30.12.2024** der monatliche Newsletter DAS Ei"
 description: der monatliche Newsletter DAS Ei
 title: # aktuelle Infos 30.12

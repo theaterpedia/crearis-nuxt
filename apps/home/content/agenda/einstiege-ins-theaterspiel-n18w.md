@@ -137,7 +137,7 @@ items:
   date_end: 2026-04-18T18:00
   location: |
    Kaiserstr. 175 (Tanzerei)
-   80763 Fürth
+   90763 Fürth
   schedule: |
    FR 18:00-20:00 online
    SO 09:00-18:00

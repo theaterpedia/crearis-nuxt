@@ -1,5 +1,5 @@
 ---
-id: 26
+id: 30
 heading: "**Praxisbericht** im Wald, da braut sich was zusammen"
 description: Wie fünf Auszubildende des „Theatralen Lernens“ mit Förderschüler:innen ein Stück auf die Bretter brachten.
 title: im Wald, da braut sich was zusammen
