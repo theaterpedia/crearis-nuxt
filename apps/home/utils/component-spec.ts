@@ -150,6 +150,11 @@ export const componentSpecs: Record<string, ComponentSpec> = {
     isParent: false,
     allowsProse: false,
   },
+  DetailsPanel: {
+    isPageComponent: true,
+    isParent: true,
+    allowsProse: true, // needed for mode=body
+  },
   FormTmp: {
     isPageComponent: false,
     isParent: true,

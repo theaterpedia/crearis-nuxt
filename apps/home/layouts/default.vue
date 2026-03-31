@@ -40,7 +40,7 @@
               <ButtonTmp
                 v-if="hero.cta"
                 :size="hero.content_width === 'full' ? 'medium' : 'small'"
-                :to="hero.cta.link ? hero.cta.link : '#cta'"
+                :to="heroCTALink"
                 variant="plain"
               >
                 {{ hero.cta.title }}
@@ -75,6 +75,8 @@
         :contentWidth="pageBottom.content_width || 'full'"
         :imgTmp="pageBottomImage"
         :imgTmpGravity="pageBottom.image_gravity || 'south'"
+        :imgTmpAlignX="pageBottom.image_align_x || hero?.image_focus_x || 'center'"
+        :imgTmpAlignY="pageBottom.image_align_y || 'bottom'"
         :overlay="pageBottomOverlay"
         :claim="pageBottom.claim"
       >
@@ -102,7 +104,7 @@
     </Main>
   </Box>
 
-  <FooterDasei />
+  <FooterDasei :hideClaim="!!pageBottom?.claim" />
 </template>
 
 <script lang="ts" setup>
@@ -122,13 +124,16 @@ const pageBottom = page.value?.pageBottom ? page.value.pageBottom : undefined
 // Provide hero image so PageBottom can inherit it if needed
 provide('heroImage', image.src)
 
-// Compute PageBottom image (inherit from hero or use explicit)
+// Compute PageBottom image (inherit from hero or use explicit imgTmp)
 const pageBottomImage = computed(() => {
   if (!pageBottom) return undefined
+  // Explicit imgTmp takes precedence
+  if (pageBottom.imgTmp) return pageBottom.imgTmp
+  // Inherit from hero unless explicitly disabled
   if (pageBottom.inherit_hero_image !== false) {
     return image.src
   }
-  return pageBottom.image
+  return undefined
 })
 
 // Compute PageBottom overlay
@@ -145,6 +150,27 @@ const computedAnchorline = computed(() => {
   if (pageBottom.anchorline === true) return 'accent'
   return pageBottom.anchorline // 'accent' | 'primary' | 'default' | 'muted'
 })
+
+// Check if #buchen anchor exists in page body (SSR-safe)
+const hasBuchenAnchor = computed(() => {
+  const bodyStr = JSON.stringify(page.value?.body || {})
+  return bodyStr.includes('"anchor":"buchen"') || bodyStr.includes('anchor=buchen')
+})
+
+// Compute details/checkout link: #buchen if exists > /details?src={path}
+const detailsLink = computed(() => {
+  if (hasBuchenAnchor.value) return '#buchen'
+  return `/details?src=${page.value?._path}`
+})
+
+// Compute hero CTA link: explicit link > detailsLink fallback
+const heroCTALink = computed(() => {
+  if (hero?.cta?.link) return hero.cta.link
+  return detailsLink.value
+})
+
+// Provide detailsLink for ButtonTmp components in content
+provide('detailsLink', detailsLink)
 
 const route = useRoute()
 // const hideFolders = ['/blog/', '/agenda/']

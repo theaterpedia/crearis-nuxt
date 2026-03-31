@@ -15,6 +15,7 @@
 
 <script lang="ts" setup>
 import { Heading } from '@crearis/ui'
+import { computed } from 'vue'
 
 const props = defineProps({
   /**
@@ -67,8 +68,16 @@ const extractContent = (content: string) => {
   return { heading, body }
 }
 
-const { heading, body } = extractContent(props.content)
-const { headline, overline, subline, tags, shortcode } = extractHeading(heading)
+// Make extraction reactive so it updates when props.content changes (e.g., after hydration)
+const extracted = computed(() => extractContent(props.content))
+const heading = computed(() => extracted.value.heading)
+const body = computed(() => extracted.value.body)
+const headingParts = computed(() => extractHeading(heading.value))
+const headline = computed(() => headingParts.value.headline)
+const overline = computed(() => headingParts.value.overline)
+const subline = computed(() => headingParts.value.subline)
+const tags = computed(() => headingParts.value.tags)
+const shortcode = computed(() => headingParts.value.shortcode)
 </script>
 
 <style scoped>
