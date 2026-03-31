@@ -7,8 +7,8 @@
       :title="`details.${step || 'first'}.info is missing or empty`" 
     />
     
-    <!-- mode=default or mode=slide: split info keys into 2 columns -->
-    <template v-else-if="mode === 'default' || mode === 'slide'">
+    <!-- mode=default or mode=slide: split info keys into 2 columns (only if no sidebar content) -->
+    <template v-else-if="(mode === 'default' || mode === 'slide') && !hasSidebarContent">
       <h3 v-if="mode === 'slide'" class="details-panel__slide-heading">{{ slideHeading }}</h3>
       
       <Columns v-if="infoKeys.length > 1" gap="medium">
