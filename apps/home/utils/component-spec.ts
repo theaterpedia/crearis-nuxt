@@ -155,6 +155,11 @@ export const componentSpecs: Record<string, ComponentSpec> = {
     isParent: true,
     allowsProse: true, // needed for mode=body
   },
+  EventSiblings: {
+    isPageComponent: true,
+    isParent: false,
+    allowsProse: false,
+  },
   FormTmp: {
     isPageComponent: false,
     isParent: true,

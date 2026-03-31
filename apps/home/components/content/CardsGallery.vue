@@ -4,8 +4,20 @@
     <br v-if="$slots.default" />
     <ContentList v-slot="{ list }" :query="query">
       <Columns gap="small" wrap>
-        <template v-for="page in list" :key="page.path">
-          <Component :data="page" :is="`card-${card_suffix}`" />
+        <!-- Grouped display for agenda with repeating events -->
+        <template v-if="preset === 'agenda' && groupRepeating">
+          <template v-for="group in getGroupedEvents(list)" :key="group.key">
+            <!-- Single event - use regular card -->
+            <CardEvent v-if="group.events.length === 1" :data="group.events[0]" />
+            <!-- Multiple events - use grouped card with date chips -->
+            <CardEventGrouped v-else :events="group.events" />
+          </template>
+        </template>
+        <!-- Non-grouped display (blog or groupRepeating=false) -->
+        <template v-else>
+          <template v-for="page in list" :key="page.path">
+            <Component :data="page" :is="`card-${card_suffix}`" />
+          </template>
         </template>
       </Columns>
     </ContentList>
@@ -13,6 +25,7 @@
 </template>
 
 <script lang="ts" setup>
+import { groupEventsByShortcode, getFirstUpcoming, type EventContent } from '~/composables/useRepeatingEvents'
 /*
 can be a PageComponent Only on Level 0 (we might implement it as a TabComponent as well)
 */
@@ -48,12 +61,12 @@ const props = defineProps({
     type: String as PropType<'agenda' | 'blog'>,
     default: 'agenda',
   },
-    /**
+  /**
    *
    *
    * @default ''
    */
-   subfolder: {
+  subfolder: {
     type: String,
     default: '',
   },
@@ -82,6 +95,16 @@ const props = defineProps({
     type: String,
     required: false,
   },
+  /**
+   * Group repeating events (same shortcode) into single cards with date chips.
+   * Only applies to agenda preset.
+   * 
+   * @default true
+   */
+  groupRepeating: {
+    type: Boolean,
+    default: true,
+  },
 })
 
 const card_suffix = props.preset === 'agenda' ? 'event' : 'post'
@@ -91,6 +114,35 @@ const getPath = (folder: 'agenda' | 'blog' | string | undefined) => {
   if (!folder) return ''
   if (props.subfolder === '') return folder.startsWith('/') ? folder : `/${folder}`
   return `${folder.startsWith('/') ? '' : '/'}${folder}${props.subfolder.startsWith('/') ? '' : '/'}${props.subfolder}`
+}
+
+interface EventGroup {
+  key: string
+  events: EventContent[]
+}
+
+/**
+ * Group events by shortcode for repeating event display
+ * Returns array sorted by first upcoming event date
+ */
+function getGroupedEvents(list: EventContent[]): EventGroup[] {
+  const grouped = groupEventsByShortcode(list)
+  const result: EventGroup[] = []
+  
+  for (const [key, events] of grouped) {
+    result.push({ key, events })
+  }
+  
+  // Sort groups by the first upcoming event's date
+  result.sort((a, b) => {
+    const firstA = getFirstUpcoming(a.events)
+    const firstB = getFirstUpcoming(b.events)
+    const dateA = firstA?.date_start ? new Date(firstA.date_start).getTime() : 0
+    const dateB = firstB?.date_start ? new Date(firstB.date_start).getTime() : 0
+    return dateA - dateB
+  })
+  
+  return result
 }
 
 import type { QueryBuilderParams } from '@nuxt/content'
@@ -104,7 +156,7 @@ const where =
 const query: QueryBuilderParams = {
   path: getPath(folder),
   where: where,
-  limit: props.max_items,
+  limit: props.groupRepeating ? 100 : props.max_items, // Need more items when grouping
   sort: props.preset === 'agenda' ? [{ start: 1 }] : props.preset === 'blog' ? [{ date: -1 }] : [],
 }
 </script>
