@@ -160,6 +160,16 @@ export const componentSpecs: Record<string, ComponentSpec> = {
     isParent: false,
     allowsProse: false,
   },
+  InstructorsList: {
+    isPageComponent: true,
+    isParent: false,
+    allowsProse: false,
+  },
+  RelatedContent: {
+    isPageComponent: true,
+    isParent: false,
+    allowsProse: false,
+  },
   FormTmp: {
     isPageComponent: false,
     isParent: true,
