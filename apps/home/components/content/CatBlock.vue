@@ -9,7 +9,9 @@
       :subline="subline ? subline : ''"
       :tags="tags ? tags : ''"
     />
-    <Catalog v-html="body" />
+    <Catalog>
+      <div v-html="body" />
+    </Catalog>
   </div>
 </template>
 
@@ -81,8 +83,23 @@ const shortcode = computed(() => headingParts.value.shortcode)
 </script>
 
 <style scoped>
-/* cloned (WITHOUT '> prose' ) from packages/ui/src/components/Catalog.vue */
-.catalog :deep() > ul > li:has(strong) {
+/* Target content inside the Catalog component */
+:deep(.catalog) {
+  max-width: 28em; /* 448px */
+}
+
+@media (max-width: 420px) {
+  :deep(.catalog) {
+    max-width: 22em; /* 352px */
+  }
+}
+
+:deep(.catalog) p {
+  padding-top: 0.8rem;
+  font-weight: 300;
+}
+
+:deep(.catalog) ul > li:has(strong) {
   display: flex;
   align-items: flex-end;
   white-space: nowrap;
@@ -91,30 +108,15 @@ const shortcode = computed(() => headingParts.value.shortcode)
   padding: 0;
 }
 
-.catalog :deep() {
-  max-width: 28em; /* 448px */
-}
-
-@media (max-width: 420px) {
-  .catalog :deep() {
-    max-width: 22em; /* 352px */
-  }
-}
-
-.catalog :deep() p {
-  padding-top: 0.8rem;
-  font-weight: 300;
-}
-
-.catalog :deep() > ul > li {
+:deep(.catalog) ul > li {
   margin-bottom: 0.2rem;
 }
 
-.catalog :deep() > ul > li + li {
+:deep(.catalog) ul > li + li {
   margin-top: 0.25rem;
 }
 
-.catalog :deep() > ul > li > :where(strong, mark):first-child {
+:deep(.catalog) ul > li > :where(strong, mark):first-child {
   margin-top: 0.3rem;
   flex: 1;
   display: flex;
@@ -123,7 +125,7 @@ const shortcode = computed(() => headingParts.value.shortcode)
   font-weight: 400;
 }
 
-.catalog :deep() > ul > li > strong:first-child::after {
+:deep(.catalog) ul > li > strong:first-child::after {
   content: '';
   flex: 1;
   display: block;
@@ -133,11 +135,11 @@ const shortcode = computed(() => headingParts.value.shortcode)
   background-color: var(--color-border);
 }
 
-.catalog .prose :deep() > ul > li > mark:first-child {
+:deep(.catalog .prose) ul > li > mark:first-child {
   margin-top: 0.5rem;
 }
 
-.catalog :deep() > ul > li svg {
+:deep(.catalog) ul > li svg {
   font-size: 1.5em;
 }
 </style>

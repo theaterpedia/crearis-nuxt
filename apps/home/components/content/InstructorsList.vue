@@ -60,6 +60,7 @@ interface ProfileData {
   id?: string
   title?: string
   teamMember?: string
+  tagline?: string
   image?: { src?: string; alt?: string }
   consulting?: object
 }
@@ -137,6 +138,7 @@ function getInitials(name?: string): string {
 
 function getDefaultBody(profile?: ProfileData): string {
   if (!profile?.title) return ''
+  if (profile.tagline) return profile.tagline
   return `${profile.title} ist Dozent:in bei DAS Ei.`
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="hasRelated" class="related-content">
+  <div v-if="hasRelated" :class="['related-content', { 'related-content--sidebar': sidebar }]">
     <h3 v-if="showHeading" class="related-content__heading">{{ heading }}</h3>
     
     <!-- Related Events -->
@@ -131,6 +131,13 @@ const props = defineProps({
     type: String as PropType<'events' | 'courses' | 'posts' | undefined>,
     default: undefined,
   },
+  /**
+   * Sidebar mode: enables compact styles for 768-839px viewport
+   */
+  sidebar: {
+    type: Boolean,
+    default: false,
+  },
 })
 
 // Which sections to show based on type prop
@@ -203,6 +210,15 @@ const resolvedCourses = computed(() => {
   padding: 2rem 0;
 }
 
+.related-content--sidebar {
+  padding: 0;
+}
+
+/* Sidebar mode: remove card min-width constraint */
+.related-content--sidebar .related-content__card {
+  min-width: 0;
+}
+
 .related-content__heading {
   font-size: 1.25rem;
   font-weight: 600;
@@ -233,7 +249,8 @@ const resolvedCourses = computed(() => {
   text-decoration: none;
   color: inherit;
   transition: background-color 0.15s ease;
-  max-width: 20rem;
+  min-width: 380px;
+  max-width: 430px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
@@ -307,5 +324,32 @@ const resolvedCourses = computed(() => {
   font-weight: 600;
   line-height: 1.3;
   margin: 0;
+}
+
+/* Compact cards in sidebar at narrow 2-col viewports */
+@media (min-width: 768px) and (max-width: 887px),
+       (min-width: 1024px) and (max-width: 1179px) {
+  .related-content--sidebar .related-content__section {
+    max-width: 280px;
+  }
+  
+  .related-content--sidebar .related-content__card {
+    max-width: 280px;
+  }
+  
+  .related-content--sidebar .related-content__image {
+    display: none;
+  }
+  
+  .related-content--sidebar .related-content__text :deep(.prose h4.heading strong) {
+    font-size: 1rem !important; /* 16px */
+  }
+}
+
+/* Mobile: compact headline at narrow viewport */
+@media (max-width: 440px) {
+  .related-content .related-content__text :deep(.prose h4.heading strong) {
+    font-size: 1rem !important; /* 16px */
+  }
 }
 </style>

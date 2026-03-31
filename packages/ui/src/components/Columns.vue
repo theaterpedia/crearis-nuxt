@@ -96,11 +96,11 @@ defineProps({
 }
 
 .columns-small {
-  gap: 1.75rem; /* 28px */
+  gap: 1.625rem; /* 26px */
 }
 
 .columns-small:not(.columns-transparent) {
-  --column-padding: 1.75rem; /* 28px */
+  --column-padding: 1.625rem; /* 26px */
 }
 
 .columns-medium {

@@ -78,7 +78,7 @@
     
     <!-- Sidebar mode: info left, related content right (events/courses/posts flags) -->
     <template v-else-if="hasSidebarContent">
-      <Columns gap="medium">
+      <Columns gap="medium" class="details-panel__sidebar-columns">
         <Column width="1/2">
           <template v-for="(value, key) in info" :key="key">
             <CatBlock :content="value" htag="h4" style="padding-bottom: 1rem" />
@@ -89,13 +89,13 @@
           <EventSiblings v-if="events" class="details-panel__sidebar-section" />
           
           <!-- Related events from YAML -->
-          <RelatedContent v-if="events" type="events" class="details-panel__sidebar-section" />
+          <RelatedContent v-if="events" type="events" sidebar class="details-panel__sidebar-section" />
           
           <!-- Related courses from YAML -->
-          <RelatedContent v-if="courses" type="courses" class="details-panel__sidebar-section" />
+          <RelatedContent v-if="courses" type="courses" sidebar class="details-panel__sidebar-section" />
           
           <!-- Related posts from YAML -->
-          <RelatedContent v-if="posts" type="posts" class="details-panel__sidebar-section" />
+          <RelatedContent v-if="posts" type="posts" sidebar class="details-panel__sidebar-section" />
         </Column>
       </Columns>
       
@@ -282,5 +282,31 @@ const hasInfo = computed(() => {
 .details-panel__sidebar-section :deep(.related-content) {
   padding-top: 0 !important;
   padding-bottom: 0 !important;
+}
+
+/* 768-887px: Force 2-col with minimal gap */
+@media (min-width: 768px) and (max-width: 887px) {
+  .details-panel__sidebar-columns {
+    flex-wrap: nowrap !important;
+    gap: 0.625rem !important; /* 10px */
+  }
+}
+
+/* 1024-1179px: Reduce gap to prevent overflow to 1-col */
+@media (min-width: 1024px) and (max-width: 1179px) {
+  .details-panel__sidebar-columns {
+    gap: 1.75rem !important; /* 28px instead of 56px */
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1059px) {
+  .details-panel__sidebar-columns :deep(> :first-child) {
+    max-width: 400px;
+  }
+}
+
+/* Remove Column min-width constraint for 2-col layout at all tablet+ viewports */
+.details-panel__sidebar-columns :deep(.column) {
+  min-width: 0 !important;
 }
 </style>

@@ -1,7 +1,8 @@
 ---
 title: Hans Dönitz
 id: hans_doenitz
-heading: 30 Jahre freie Theaterpädagogik in Bayern **Theaterpädagogisches Institut**
+heading: "**Wege entstehen beim Gehen** Elementare Animation | Szenische Themenarbeit | Digitalisierung"
+tagline: "Elem. Animation | Szen. Themenarbeit | Theaterpedia"
 description: Willkommen bei DAS Ei - Wir entwickeln und erforschen Theaterpädagogik. Über unsere Workshops und das Ausbildungsprogramm kannst Du daran teilhaben.
 icon: 'lucide:info'
 ctype: contact

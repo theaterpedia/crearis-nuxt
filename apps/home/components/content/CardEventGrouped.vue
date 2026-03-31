@@ -44,6 +44,7 @@ import { computed } from 'vue'
 import {
   generateTagExtract,
   getFirstUpcoming,
+  isValidEvent,
   type EventContent,
 } from '~/composables/useRepeatingEvents'
 
@@ -72,11 +73,14 @@ const primaryEvent = computed(() => {
 
 // Sort events by date and dedupe by tag-extract
 const sortedEvents = computed(() => {
-  const sorted = [...props.events].sort((a, b) => {
-    const dateA = a.date_start ? new Date(a.date_start).getTime() : 0
-    const dateB = b.date_start ? new Date(b.date_start).getTime() : 0
-    return dateA - dateB
-  })
+  // Filter out invalid events (missing ctype or drafts) and sort by date
+  const sorted = [...props.events]
+    .filter(isValidEvent)
+    .sort((a, b) => {
+      const dateA = a.date_start ? new Date(a.date_start).getTime() : 0
+      const dateB = b.date_start ? new Date(b.date_start).getTime() : 0
+      return dateA - dateB
+    })
   
   // Dedupe by tag-extract (keeps first occurrence)
   const seen = new Set<string>()
