@@ -23,6 +23,7 @@ import { NuxtLink } from '#components'
 import {
   generateTagExtract,
   getShortcode,
+  filterEventsByDateRange,
   type EventContent,
 } from '~/composables/useRepeatingEvents'
 
@@ -65,16 +66,19 @@ const { data: allSiblings } = await useAsyncData(
   { watch: [shortcode] }
 )
 
-// Filter to same shortcode and exclude current page
+// Filter to same shortcode, exclude current page, and filter by date range
 const siblings = computed(() => {
   if (!allSiblings.value || !shortcode.value) return []
   const currentPath = page.value?._path
   
-  return (allSiblings.value as EventContent[])
+  const sameShortcode = (allSiblings.value as EventContent[])
     .filter(event => {
       const eventShortcode = getShortcode(event.id)
       return eventShortcode === shortcode.value && event._path !== currentPath
     })
+  
+  // Filter to future events within 20 months
+  return filterEventsByDateRange(sameShortcode)
     .sort((a, b) => {
       const dateA = a.date_start ? new Date(a.date_start).getTime() : 0
       const dateB = b.date_start ? new Date(b.date_start).getTime() : 0

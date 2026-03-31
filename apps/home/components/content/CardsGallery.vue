@@ -25,7 +25,7 @@
 </template>
 
 <script lang="ts" setup>
-import { groupEventsByShortcode, getFirstUpcoming, type EventContent } from '~/composables/useRepeatingEvents'
+import { groupEventsByShortcode, getFirstUpcoming, filterEventsByDateRange, type EventContent } from '~/composables/useRepeatingEvents'
 /*
 can be a PageComponent Only on Level 0 (we might implement it as a TabComponent as well)
 */
@@ -124,9 +124,12 @@ interface EventGroup {
 /**
  * Group events by shortcode for repeating event display
  * Returns array sorted by first upcoming event date
+ * Filters to future events within 20 months
  */
 function getGroupedEvents(list: EventContent[]): EventGroup[] {
-  const grouped = groupEventsByShortcode(list)
+  // Filter to relevant date range first
+  const filtered = filterEventsByDateRange(list)
+  const grouped = groupEventsByShortcode(filtered)
   const result: EventGroup[] = []
   
   for (const [key, events] of grouped) {

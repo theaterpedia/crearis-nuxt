@@ -157,6 +157,31 @@ export interface EventContent {
 }
 
 /**
+ * Filter events to relevant date range
+ * - Future events only (date_start >= today)
+ * - Max 20 months into future
+ */
+export function filterEventsByDateRange(
+  events: EventContent[],
+  options: { now?: Date; maxMonths?: number } = {}
+): EventContent[] {
+  const { now = new Date(), maxMonths = 20 } = options
+  
+  // Start of today (midnight)
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate())
+  
+  // Max date: 20 months from now
+  const maxDate = new Date(today)
+  maxDate.setMonth(maxDate.getMonth() + maxMonths)
+  
+  return events.filter(event => {
+    if (!event.date_start) return false
+    const eventDate = new Date(event.date_start)
+    return eventDate >= today && eventDate <= maxDate
+  })
+}
+
+/**
  * Group events by shortcode
  * Returns map of shortcode → array of events
  */

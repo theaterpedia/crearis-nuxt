@@ -70,19 +70,28 @@ const primaryEvent = computed(() => {
   return getFirstUpcoming(props.events) || props.events[0]
 })
 
-const hasMultipleDates = computed(() => props.events.length > 1)
-
-// Sort events by date and limit to MAX_VISIBLE_CHIPS
+// Sort events by date and dedupe by tag-extract
 const sortedEvents = computed(() => {
-  return [...props.events].sort((a, b) => {
+  const sorted = [...props.events].sort((a, b) => {
     const dateA = a.date_start ? new Date(a.date_start).getTime() : 0
     const dateB = b.date_start ? new Date(b.date_start).getTime() : 0
     return dateA - dateB
   })
+  
+  // Dedupe by tag-extract (keeps first occurrence)
+  const seen = new Set<string>()
+  return sorted.filter(event => {
+    const tag = generateTagExtract(event)
+    if (seen.has(tag)) return false
+    seen.add(tag)
+    return true
+  })
 })
 
+const hasMultipleDates = computed(() => sortedEvents.value.length > 1)
+
 const visibleEvents = computed(() => sortedEvents.value.slice(0, MAX_VISIBLE_CHIPS))
-const overflowCount = computed(() => Math.max(0, props.events.length - MAX_VISIBLE_CHIPS))
+const overflowCount = computed(() => Math.max(0, sortedEvents.value.length - MAX_VISIBLE_CHIPS))
 
 function getTagExtract(event: EventContent): string {
   return generateTagExtract(event) || event.title || ''
