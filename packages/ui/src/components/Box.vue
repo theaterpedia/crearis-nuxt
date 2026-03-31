@@ -22,6 +22,8 @@ defineProps({
 
 <style scoped>
 .box {
+  /* Sidebar width for child components to consume (e.g., PageBottom fixed backgrounds) */
+  --sidebar-width: 18.125rem; /* 290px */
   position: relative;
   display: flex;
   align-items: flex-start;
@@ -36,6 +38,10 @@ defineProps({
 }
 
 @media (max-width: 1023px) {
+  .box {
+    --sidebar-width: 0px; /* No sidebar offset on mobile */
+  }
+
   .box-centered {
     flex-direction: column;
   }

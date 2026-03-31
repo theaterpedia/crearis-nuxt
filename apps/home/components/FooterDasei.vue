@@ -1,6 +1,6 @@
 <template>
-  <Footer>
-    <p>© 2024 DAS Ei</p>
+  <Footer :hideClaim="hideClaim">
+    <p>© 2026 DAS Ei</p>
 
     <ul>
       <li><NuxtLink to="/impressum">Impressum</NuxtLink></li>
@@ -17,8 +17,22 @@
       <li><NuxtLink to="/institut">Institut</NuxtLink></li>
     </ul>
 
-    <Prose>
-      <p class="h3 primary"><strong>30 Jahre Theaterpädagogik in Bayern.</strong></p>
-    </Prose>
+    <template #claim>
+      <Prose>
+        <p class="h3 primary"><strong>30 Jahre Theaterpädagogik in Bayern.</strong></p>
+      </Prose>
+    </template>
   </Footer>
 </template>
+
+<script lang="ts" setup>
+defineProps({
+  /**
+   * Hide the footer claim when PageBottom already shows a claim.
+   */
+  hideClaim: {
+    type: Boolean,
+    default: false,
+  },
+})
+</script>

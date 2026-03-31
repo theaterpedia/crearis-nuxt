@@ -3,6 +3,7 @@
     <Container>
       <div class="footer-inner">
         <slot />
+        <slot v-if="!hideClaim" name="claim" />
       </div>
     </Container>
   </div>
@@ -10,6 +11,19 @@
 
 <script lang="ts" setup>
 import Container from './Container.vue'
+
+defineProps({
+  /**
+   * Hide the claim slot content.
+   * Used when PageBottom already displays a claim.
+   *
+   * @default false
+   */
+  hideClaim: {
+    type: Boolean,
+    default: false,
+  },
+})
 </script>
 
 <style scoped>

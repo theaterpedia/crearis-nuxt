@@ -31,7 +31,7 @@
       :class="{ 'page-bottom-effect-has-image': !!imgTmp }"
       :style="effect === 'uncover' && imgTmp ? {
         backgroundImage: `url(${computedImageUrl})`,
-        backgroundPositionX: imgTmpAlignX,
+        backgroundPositionX: uncoverBgPositionX,
         backgroundPositionY: imgTmpAlignY,
       } : undefined"
       :data-visible="imageVisible"
@@ -60,6 +60,7 @@
         :class="[
           `page-bottom-claim-${claim.orientation || 'left'}`,
           `page-bottom-claim-effect-${claim.effect || 'fade'}`,
+          claim.light ? 'page-bottom-claim-light' : 'page-bottom-claim-dark',
         ]"
         :data-claim-visible="claimVisible"
       >
@@ -67,6 +68,18 @@
           <p class="page-bottom-claim-text">{{ claim.text }}</p>
         </Container>
       </div>
+
+      <!-- Scroll-to-top button: 3/5th circle, south cutoff -->
+      <button
+        class="page-bottom-scroll-top"
+        :class="[`page-bottom-scroll-top-${claim?.orientation || 'left'}`]"
+        aria-label="Nach oben scrollen"
+        @click="scrollToTop"
+      >
+        <svg fill="currentColor" height="32" viewBox="0 0 256 256" width="32" xmlns="http://www.w3.org/2000/svg">
+          <path d="M213.66,165.66a8,8,0,0,1-11.32,0L128,91.31,53.66,165.66a8,8,0,0,1-11.32-11.32l80-80a8,8,0,0,1,11.32,0l80,80A8,8,0,0,1,213.66,165.66Z"></path>
+        </svg>
+      </button>
     </div>
   </div>
 </template>
@@ -81,6 +94,7 @@ interface ClaimConfig {
   text: string
   orientation?: 'left' | 'right'
   effect?: 'fade' | 'slide' | 'typewriter'
+  light?: boolean
 }
 
 const props = defineProps({
@@ -231,6 +245,20 @@ const anchorlineVariant = computed(() => {
 })
 
 /**
+ * Compute background-position-x for uncover effect.
+ * When using 'center' with fixed backgrounds, offset by half the sidebar width
+ * to account for viewport-relative positioning.
+ */
+const uncoverBgPositionX = computed(() => {
+  if (props.effect !== 'uncover') return props.imgTmpAlignX
+  if (props.imgTmpAlignX === 'center') {
+    // Use CSS calc to offset by half sidebar width (defined in Box.vue)
+    return 'calc(50% + var(--sidebar-width, 0px) / 2)'
+  }
+  return props.imgTmpAlignX
+})
+
+/**
  * Compute cloudinary URL if imgTmp is a path (starts with /).
  * Otherwise return imgTmp as-is (full URL).
  */
@@ -259,11 +287,17 @@ const computedImageUrl = computed(() => {
   return `${cloudinaryBase}/${transforms}/v1/${path}`
 })
 
-// IntersectionObserver for 'appear' effect scroll-based visibility
+// IntersectionObserver for scroll-based visibility
 let observer: IntersectionObserver | null = null
 
 const setupObserver = () => {
-  if (!effectEl.value || props.effect !== 'appear') return
+  if (!effectEl.value) return
+
+  // For 'uncover' and 'scroll' effects, set visible immediately when in viewport
+  // For 'appear' effect, use intersection thresholds for gradual fade
+  const thresholds = props.effect === 'appear'
+    ? [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+    : [0, 0.1, 0.5, 0.9]
 
   observer = new IntersectionObserver(
     (entries) => {
@@ -272,16 +306,20 @@ const setupObserver = () => {
 
       const ratio = entry.intersectionRatio
 
-      // Image starts appearing at 50% visibility, fully visible at 80%
-      imageVisible.value = ratio >= 0.5
-      imageFullyVisible.value = ratio >= 0.8
-
-      // Claim appears at 90% visibility
-      claimVisible.value = ratio >= 0.9
+      if (props.effect === 'appear') {
+        // Image starts appearing at 50% visibility, fully visible at 80%
+        imageVisible.value = ratio >= 0.5
+        imageFullyVisible.value = ratio >= 0.8
+        // Claim appears at 90% visibility
+        claimVisible.value = ratio >= 0.9
+      } else {
+        // For uncover/scroll: visible as soon as element enters viewport
+        imageVisible.value = ratio > 0.1
+        imageFullyVisible.value = ratio >= 0.5
+        claimVisible.value = ratio >= 0.5
+      }
     },
-    {
-      threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0],
-    }
+    { threshold: thresholds }
   )
 
   observer.observe(effectEl.value)
@@ -308,6 +346,11 @@ watch(interaction, (isInteracting) => {
     }, 100)
   }
 })
+
+// Scroll to top function
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+}
 
 onMounted(() => {
   setupObserver()
@@ -388,25 +431,71 @@ onUnmounted(() => {
 /* Claim positioning */
 .page-bottom-claim {
   position: absolute;
-  bottom: 10%;
-  left: 0;
-  right: 0;
+  bottom: 5%;
   z-index: 2;
   opacity: 0;
-  transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+  /* 2s delay after visibility, then 500ms fade */
+  transition: opacity 0.5s var(--ease) 2s, transform 0.5s var(--ease) 2s;
 }
 
 .page-bottom-claim-text {
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--color-primary-contrast, #fff);
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
   max-width: 40rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.25rem;
 }
 
-/* Claim orientation */
+/* Claim text color: light=false (default) → dark text for light images */
+.page-bottom-claim-dark .page-bottom-claim-text {
+  color: var(--color-contrast);
+  background-color: rgba(255, 255, 255, 0.15);
+  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
+}
+
+/* Claim text color: light=true → light text for dark images */
+.page-bottom-claim-light .page-bottom-claim-text {
+  color: var(--color-bg);
+  background-color: rgba(0, 0, 0, 0.15);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Theme-aware swap: when in inverted context, swap the variables */
+/* Uses calc with --color-inverted (0 or 1) to conditionally blend */
+@supports (color: color-mix(in oklch, red, blue)) {
+  .page-bottom-claim-dark .page-bottom-claim-text {
+    /* inverted=0: contrast (dark), inverted=1: bg (dark) */
+    color: color-mix(
+      in oklch,
+      var(--color-contrast) calc((1 - var(--color-inverted)) * 100%),
+      var(--color-bg) calc(var(--color-inverted) * 100%)
+    );
+  }
+
+  .page-bottom-claim-light .page-bottom-claim-text {
+    /* inverted=0: bg (light), inverted=1: contrast (light) */
+    color: color-mix(
+      in oklch,
+      var(--color-bg) calc((1 - var(--color-inverted)) * 100%),
+      var(--color-contrast) calc(var(--color-inverted) * 100%)
+    );
+  }
+}
+
+/* Claim orientation: positioned to leave room for scroll-to-top on opposite side */
+.page-bottom-claim-left {
+  left: 2rem;
+  right: auto;
+}
+
 .page-bottom-claim-left .page-bottom-claim-text {
   text-align: left;
+}
+
+.page-bottom-claim-right {
+  right: 2rem;
+  left: auto;
 }
 
 .page-bottom-claim-right .page-bottom-claim-text {
@@ -439,8 +528,11 @@ onUnmounted(() => {
   transition: width 1s steps(40, end);
 }
 
-.page-bottom-claim-effect-typewriter[data-claim-visible="true"] .page-bottom-claim-text {
+.page-bottom-claim-effect-typewriter[data-claim-visible="true"] {
   opacity: 1;
+}
+
+.page-bottom-claim-effect-typewriter[data-claim-visible="true"] .page-bottom-claim-text {
   width: 100%;
 }
 
@@ -468,6 +560,53 @@ onUnmounted(() => {
   background-attachment: fixed;
 }
 
+/* Scroll-to-top button: 3/5th circle with south cutoff */
+.page-bottom-scroll-top {
+  position: absolute;
+  bottom: 0;
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 50%;
+  background-color: var(--color-primary-bg);
+  color: var(--color-primary-contrast);
+  border: none;
+  cursor: pointer;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* South cutoff: hide bottom 2/5 (40% of 4.5rem = 1.8rem) */
+  margin-bottom: -1.8rem;
+  /* Shift icon up to compensate for cutoff */
+  padding-bottom: 0.9rem;
+  /* Initial state: hidden */
+  opacity: 0;
+  pointer-events: none;
+  /* 5s delay after visibility, then 300ms fade */
+  transition: opacity 0.3s var(--ease) 5s;
+}
+
+.page-bottom-scroll-top:hover {
+  background-color: var(--color-primary-hover, var(--color-primary-bg));
+}
+
+/* Show button when effect is visible */
+.page-bottom-effect[data-visible="true"] .page-bottom-scroll-top {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Desktop: button on OPPOSITE side of claim (outside) */
+.page-bottom-scroll-top-left {
+  right: 2rem;
+  left: auto;
+}
+
+.page-bottom-scroll-top-right {
+  left: 2rem;
+  right: auto;
+}
+
 @media (max-width: 767px) {
   .page-bottom-slot {
     padding: 1.5rem 0;
@@ -475,6 +614,26 @@ onUnmounted(() => {
 
   .page-bottom-claim-text {
     font-size: 1.25rem;
+  }
+
+  /* Mobile: claim and button positioning */
+  .page-bottom-claim-left {
+    left: 0.33rem;
+  }
+
+  .page-bottom-claim-right {
+    right: 0.33rem;
+  }
+
+  /* Mobile: button stays on opposite side of claim */
+  .page-bottom-scroll-top-left {
+    right: 0.33rem;
+    left: auto;
+  }
+
+  .page-bottom-scroll-top-right {
+    left: 0.33rem;
+    right: auto;
   }
 }
 </style>

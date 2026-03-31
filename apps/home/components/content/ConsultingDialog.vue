@@ -770,6 +770,11 @@ const handleSendEmail = async () => {
   gap: 1.5rem;
 }
 
+/* When activated, ensure enough height for scroll-to-anchor to work */
+.consulting-dialog.has-active {
+  min-height: 100vh;
+}
+
 .consulting-dialog-header {
   display: flex;
   flex-direction: column;

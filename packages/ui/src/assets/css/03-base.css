@@ -13,6 +13,10 @@
   color: var(--selection-foreground, var(--color-primary-contrast));
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   min-height: 100vh;
   margin: 0;
