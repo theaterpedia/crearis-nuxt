@@ -16,8 +16,16 @@
             <img :src="event.image.src" :alt="event.image?.alt || event.title" />
           </div>
           <div class="related-content__text">
-            <span class="related-content__tag">{{ event.tag || 'Event' }}</span>
-            <span class="related-content__title">{{ event.title }}</span>
+            <Heading 
+              v-if="event.heading" 
+              :content="event.heading" 
+              is="h4" 
+              card 
+            />
+            <template v-else>
+              <span class="related-content__tag">{{ event.tag || 'Event' }}</span>
+              <span class="related-content__title">{{ event.title }}</span>
+            </template>
           </div>
         </NuxtLink>
       </div>
@@ -37,8 +45,16 @@
             <img :src="post.image.src" :alt="post.image?.alt || post.title" />
           </div>
           <div class="related-content__text">
-            <span class="related-content__tag">{{ post.blog || 'Blog' }}</span>
-            <span class="related-content__title">{{ post.title }}</span>
+            <Heading 
+              v-if="post.heading" 
+              :content="post.heading" 
+              is="h4" 
+              card 
+            />
+            <template v-else>
+              <span class="related-content__tag">{{ post.blog || 'Blog' }}</span>
+              <span class="related-content__title">{{ post.title }}</span>
+            </template>
           </div>
         </NuxtLink>
       </div>
@@ -58,8 +74,16 @@
             <img :src="course.image.src" :alt="course.image?.alt || course.title" />
           </div>
           <div class="related-content__text">
-            <span class="related-content__tag">Kurs</span>
-            <span class="related-content__title">{{ course.title }}</span>
+            <Heading 
+              v-if="course.heading" 
+              :content="course.heading" 
+              is="h4" 
+              card 
+            />
+            <template v-else>
+              <span class="related-content__tag">Kurs</span>
+              <span class="related-content__title">{{ course.title }}</span>
+            </template>
           </div>
         </NuxtLink>
       </div>
@@ -82,6 +106,7 @@ interface ContentItem {
   id?: string | number
   shortcode?: string
   title?: string
+  heading?: string
   tag?: string
   blog?: string
   image?: { src?: string; alt?: string }
@@ -261,5 +286,26 @@ const resolvedCourses = computed(() => {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+/* Heading component styling within cards */
+.related-content__text :deep(.heading) {
+  margin: 0;
+  padding: 0;
+}
+
+.related-content__text :deep(.heading .overline) {
+  font-size: 0.75rem;
+  color: var(--color-text-muted, #666);
+  font-weight: 400;
+  display: block;
+  line-height: 1.3;
+}
+
+.related-content__text :deep(.heading h4) {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 0;
 }
 </style>

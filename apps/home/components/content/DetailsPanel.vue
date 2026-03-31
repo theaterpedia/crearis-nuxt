@@ -280,6 +280,7 @@ const hasInfo = computed(() => {
 /* Override nested component padding for sidebar context */
 .details-panel__sidebar-section :deep(.event-siblings),
 .details-panel__sidebar-section :deep(.related-content) {
-  padding: 0;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
 }
 </style>
