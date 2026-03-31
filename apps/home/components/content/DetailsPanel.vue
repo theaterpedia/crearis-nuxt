@@ -1,5 +1,5 @@
 <template>
-  <SectionContainer :background="background">
+  <SectionContainer :background="background" :flush="hasSidebarContent">
     <!-- Fallback: MissingComponent if info is missing or empty -->
     <MissingComponent 
       v-if="!hasInfo" 

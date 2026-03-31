@@ -1,9 +1,12 @@
 <template>
-  <Section :background="background" :class="{ 'section-narrow': narrow }">
-    <Container v-if="!narrow">
+  <Section :background="background" :class="{ 'section-narrow': narrow, 'section-flush': flush }">
+    <Container v-if="!narrow && !flush">
       <ContentSlot />
     </Container>
-    <div v-else class="narrow-container">
+    <div v-else-if="narrow" class="narrow-container">
+      <ContentSlot />
+    </div>
+    <div v-else>
       <ContentSlot />
     </div>
   </Section>
@@ -28,6 +31,16 @@ defineProps({
    * @default false
    */
   narrow: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * Removes Container wrapper (no 44px horizontal padding).
+   * Use when parent already provides containment.
+   *
+   * @default false
+   */
+  flush: {
     type: Boolean,
     default: false,
   },
