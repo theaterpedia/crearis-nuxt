@@ -1,9 +1,10 @@
 <template>
   <div v-if="hasRelated" class="related-content">
-    <h3 class="related-content__heading">{{ heading }}</h3>
+    <h3 v-if="showHeading" class="related-content__heading">{{ heading }}</h3>
     
     <!-- Related Events -->
-    <div v-if="resolvedEvents.length > 0" class="related-content__section">
+    <div v-if="showEvents && resolvedEvents.length > 0" class="related-content__section">
+      <div class="related-content__section-label">Ähnliche Veranstaltungen</div>
       <div class="related-content__items">
         <NuxtLink
           v-for="event in resolvedEvents"
@@ -23,7 +24,8 @@
     </div>
     
     <!-- Related Posts -->
-    <div v-if="resolvedPosts.length > 0" class="related-content__section">
+    <div v-if="showPosts && resolvedPosts.length > 0" class="related-content__section">
+      <div class="related-content__section-label">Passende Beiträge</div>
       <div class="related-content__items">
         <NuxtLink
           v-for="post in resolvedPosts"
@@ -43,7 +45,8 @@
     </div>
     
     <!-- Related Courses -->
-    <div v-if="resolvedCourses.length > 0" class="related-content__section">
+    <div v-if="showCourses && resolvedCourses.length > 0" class="related-content__section">
+      <div class="related-content__section-label">Ausbildungen</div>
       <div class="related-content__items">
         <NuxtLink
           v-for="course in resolvedCourses"
@@ -88,14 +91,28 @@ const { page } = useContent()
 
 const props = defineProps({
   /**
-   * Heading text
+   * Heading text (shown when type is not set)
    * @default 'Siehe auch'
    */
   heading: {
     type: String,
     default: 'Siehe auch',
   },
+  /**
+   * Filter to single type: 'events', 'courses', 'posts'
+   * When set, only shows that section without main heading
+   */
+  type: {
+    type: String as PropType<'events' | 'courses' | 'posts' | undefined>,
+    default: undefined,
+  },
 })
+
+// Which sections to show based on type prop
+const showEvents = computed(() => !props.type || props.type === 'events')
+const showCourses = computed(() => !props.type || props.type === 'courses')
+const showPosts = computed(() => !props.type || props.type === 'posts')
+const showHeading = computed(() => !props.type) // Only show main heading when showing all
 
 // Get related spec from page frontmatter
 const relatedSpec = computed<RelatedSpec>(() => {
@@ -104,6 +121,9 @@ const relatedSpec = computed<RelatedSpec>(() => {
 
 const hasRelated = computed(() => {
   const r = relatedSpec.value
+  if (props.type === 'events') return (r.events?.length || 0) > 0
+  if (props.type === 'courses') return (r.courses?.length || 0) > 0
+  if (props.type === 'posts') return (r.posts?.length || 0) > 0
   return (r.events?.length || 0) + (r.posts?.length || 0) + (r.courses?.length || 0) > 0
 })
 
@@ -215,6 +235,15 @@ const resolvedCourses = computed(() => {
   flex-direction: column;
   gap: 0.25rem;
   min-width: 0;
+}
+
+.related-content__section-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-muted, #666);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
 }
 
 .related-content__tag {

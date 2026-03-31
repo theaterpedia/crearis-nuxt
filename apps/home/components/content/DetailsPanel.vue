@@ -75,6 +75,36 @@
         </ButtonTmp>
       </div>
     </template>
+    
+    <!-- Sidebar mode: info left, related content right (events/courses/posts flags) -->
+    <template v-else-if="hasSidebarContent">
+      <Columns gap="medium">
+        <Column width="1/2">
+          <template v-for="(value, key) in info" :key="key">
+            <CatBlock :content="value" htag="h4" style="padding-bottom: 1rem" />
+          </template>
+        </Column>
+        <Column width="1/2">
+          <!-- Event siblings (dates) - only for event pages with siblings -->
+          <EventSiblings v-if="events" class="details-panel__sidebar-section" />
+          
+          <!-- Related events from YAML -->
+          <RelatedContent v-if="events" type="events" class="details-panel__sidebar-section" />
+          
+          <!-- Related courses from YAML -->
+          <RelatedContent v-if="courses" type="courses" class="details-panel__sidebar-section" />
+          
+          <!-- Related posts from YAML -->
+          <RelatedContent v-if="posts" type="posts" class="details-panel__sidebar-section" />
+        </Column>
+      </Columns>
+      
+      <div v-if="button" class="details-panel__button">
+        <ButtonTmp :toDetails="true" :variant="buttonVariant">
+          {{ buttonLabel }}
+        </ButtonTmp>
+      </div>
+    </template>
   </SectionContainer>
 </template>
 
@@ -152,6 +182,38 @@ const props = defineProps({
     type: String as PropType<'default' | 'muted' | 'accent'>,
     default: 'default',
   },
+
+  /**
+   * Show related events + event siblings in right sidebar.
+   * @default false
+   */
+  events: {
+    type: Boolean,
+    default: false,
+  },
+
+  /**
+   * Show related courses in right sidebar.
+   * @default false
+   */
+  courses: {
+    type: Boolean,
+    default: false,
+  },
+
+  /**
+   * Show related posts in right sidebar.
+   * @default false
+   */
+  posts: {
+    type: Boolean,
+    default: false,
+  },
+})
+
+// Check if any sidebar content is requested
+const hasSidebarContent = computed(() => {
+  return props.events || props.courses || props.posts
 })
 
 // Get the step info object
@@ -205,5 +267,19 @@ const hasInfo = computed(() => {
   border-radius: 0.5rem;
   text-align: center;
   color: var(--color-muted-contrast);
+}
+
+.details-panel__sidebar-section {
+  margin-bottom: 1.5rem;
+}
+
+.details-panel__sidebar-section:last-child {
+  margin-bottom: 0;
+}
+
+/* Override nested component padding for sidebar context */
+.details-panel__sidebar-section :deep(.event-siblings),
+.details-panel__sidebar-section :deep(.related-content) {
+  padding: 0;
 }
 </style>
