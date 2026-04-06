@@ -137,9 +137,9 @@ product:
   footer: |
     ## September 2026 – August 2028 **Aufbaustufe Profil Performance & Interkult. Theater**
 items:
-  e1_blind:
+  e1_1:
     ctype: event
-    shortcode: E1
+    shortcode: e1
     title: "Blind geführt — Vertrauen **Dicht an der Grenze**"
     tag: SEP 30 – OKT 5, 2026 · Burgstallmühle
     image:
@@ -147,16 +147,17 @@ items:
       caption: Blind geführt — Vertrauen als Methode
     body: |
       Du wirst blind durch den Raum geführt — und erlebst dabei Vertrauen als Methode. Das ist E1: Der vollständige Themen- und Gruppenprozess der Szenischen Themenarbeit. 6 intensive Tage auf der Burgstallmühle in der Fränkischen Schweiz.
-    date_start: 2026-09-30T17:00
-    date_end: 2026-10-05T14:00
-    location: |
-      Burgstallmühle
-      Burgstallmühle 1
-      91338 Igensdorf
+    date_start: "2026-10-01T09:00"
+    date_end: "2026-10-05T16:00"
+    location: "Burgstallmühle 1, Voggendorf (bei Bechhofen), 91572 Burgstallmühle / Voggendorf"
     schedule: |
-      MI 30.09. Anreise bis 16:00, Beginn 17:00
-      MO 05.10. Ende ca. 14:00 nach Mittagessen
-    instructors: Hans Dönitz, Rosalin Hertrich
+     DO: 09:00-18:30
+     FR: 09:00–18:30
+     SA: 09:00-18:30
+     SO: 09:00-15:00
+     MO: 09:00-16:00
+     Anreise: MI abend
+    instructors: Hans Dönitz
   e1_rollenspiel:
     ctype: event
     shortcode: E1
@@ -175,9 +176,9 @@ items:
       6 Tage / 5 Nächte
       Übernachtung + Verpflegung vor Ort
     instructors: Hans Dönitz, Rosalin Hertrich
-  e2_bewegung:
+  e2_69:
     ctype: event
-    shortcode: E2
+    shortcode: e2
     title: "Bewegte Themenarbeit **Offene Themen – offene Gruppen?**"
     tag: JAN 7–11, 2027 · München
     image:
@@ -185,13 +186,16 @@ items:
       caption: Bewegte Themenarbeit
     body: |
       Bewegung bringt Themen in Fluss — der Raum wird zum Denkwerkzeug. In E2 fokussierst du auf Transfer: Wie gestaltest du solche Prozesse selbst? In deiner Praxis, mit deinen Gruppen, mit offenen Themen?
-    date_start: 2027-01-07T09:00
-    date_end: 2027-01-11T17:00
-    location: |
-      München (Seminarraum TBD)
+    date_start: "2027-01-06T14:00"
+    date_end: "2027-01-10T15:00"
+    location: "Kaiserstr. 177, 90763 Nürnberg/Fürth"
     schedule: |
-      MI-SO 09:00-17:00 (5 Tage)
-    instructors: Hans Dönitz, Rosalin Hertrich
+     MI: 14:00-20:00
+     DO: 09:00-18:30
+     FR: 09:00–18:30
+     SA: 09:00-18:30
+     SO: 09:00-15:00
+    instructors: Hans Dönitz
   e2_soziometrie:
     ctype: event
     shortcode: E2

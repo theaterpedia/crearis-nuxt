@@ -104,7 +104,7 @@ product:
  footer: |
   ## JUN - DEZ 2026 // München **Einstiege ins Theaterspiel**
 items: 
- aa_188:
+ aa_56:
   ctype: event
   shortcode: aa
   tag: Do., 9.4. 18:00-20:00 online
@@ -115,12 +115,12 @@ items:
   body: |
    Du erwägst schon länger in die Theaterpädagogik einzusteigen? Du suchst nach qualifizierter Ausbildung in diesem Bereich? Vielleicht bist du bereits fest entschlossen, bei DAS Ei zu starten? 
    Dann melde dich an zum unverbindlichen Online-Teaser!
-  date_start: 2026-04-09T18:00
-  date_end: 2026-04-09T20:00
+  date_start: "2026-04-09T18:00"
+  date_end: "2026-04-09T20:00"
   location: online (MS Teams, Link wird rechtzeitig zugeschickt)
-  schedule: DO 18:00-20:00 online
+  schedule: "DO 18:00-20:00 _online_"
   instructors: Hans Dönitz
- a0_154:
+ a0_33:
   ctype: event
   shortcode: a0
   tag: So., 19.4. ganztags + 1 Abend online
@@ -133,16 +133,14 @@ items:
    - Einstiege ins Theaterspiel (Modul A)
    - Szenische Themenarbeit (Modul B)
    - Pädagogische Regie (Modul C)
-  date_start: 2026-04-19T09:30
-  date_end: 2026-04-19T18:30
-  location: |
-   Schwanthalerstraße 91
-   80336 München
+  date_start: "2026-04-19T09:30"
+  date_end: "2026-04-19T18:30"
+  location: "Schwanthalerstraße 91, 80336 München"
   schedule: |
-   FR 18:00-20:00 online
+   FR 18:00-20:00 _online_
    SO 09:30-18:30
-  instructors: Kathrin Jung
- a4_165:
+  instructors: Hans Dönitz
+ a4_29:
   ctype: event
   shortcode: a4
   tag: So., 28.6. ganztags + 2 Abende online
@@ -152,17 +150,15 @@ items:
    caption: Theaterpädagogik A4
   body: |
    Du erarbeitest dir spezifische Techniken, die es dir ermöglichen, unmittelbar in verschiedene Rollen zu schlüpfen. Für das teilnehmende Publikum bringst du auf diese Weise die Magie einer Geschichte zum Vorschein und interagierst als Animationsfigur. Die durch sie vermittelten Erlebnissen, können zum Auftakt eines Theaterstücks werden.
-  date_start: 2026-06-28T09:00
-  date_end: 2026-06-28T18:00
-  location: |
-   Schwanthalerstraße 91
-   80336 München
+  date_start: "2026-06-28T09:30"
+  date_end: "2026-06-28T18:30"
+  location: "Schwanthalerstr. 80, 80336 München"
   schedule: |
    FR 18:00-20:00 online
    SO 09:30-18:30
    DI 18:00-21:00 online
   instructors: Cornelia Jung
- a5_166:
+ a5_30:
   ctype: event
   shortcode: a5
   tag: So., 26.7. ganztags + 2 Abende online
@@ -172,17 +168,15 @@ items:
    caption: Theaterpädagogik A5
   body: |
    Mithilfe des Figurenkarussells animierst du das teilnehmende Publikum aktiv in das Bühnengeschehen einzusteigen. Mühelos und ohne Umschweife gelingt es so, Zuschauende zu Mitspielenden zu machen. Wurde eine Rolle von einem oder mehreren Teilnehmenden übernommen, dreht sich das Figurenkarussell zur nächsten Figur.
-  date_start: 2026-07-26T09:00
-  date_end: 2026-07-26T18:00
-  location: |
-   Schwanthalerstraße 91
-   80336 München
+  date_start: "2026-07-26T09:30"
+  date_end: "2026-07-26T18:30"
+  location: "Schwanthalerstraße 91, 80336 München"
   schedule: |
    FR 18:00-20:00 online
    SO 09:30-18:30
    DI 18:00-21:00 online
   instructors: Cornelia Jung
- a1_176:
+ a1_40:
   ctype: event
   shortcode: a1
   tag: So., 11.10. ganztags + 2 Abende online
@@ -192,17 +186,15 @@ items:
    caption: Theaterpädagogik Kreisanimation
   body: |
    Den Einstieg in die elementare Animation bilden die Kreisspiele. Hier kommen Grundregeln und -phänomene von interaktivem Spiel sehr deutlich zum Vorschein. Zunächst beschäftigen wir uns mit den einfachen und offensichtlichen Impulsen entlang der Kreisbahn und quer durch die Kreismitte und lernen dann, zahlreiche Grundanforderungen des Theaterspiels im Kreisspiel zu trainieren.
-  date_start: 2026-10-11T09:00
-  date_end: 2026-10-11T18:00
-  location: |
-   Schwanthalerstraße 91
-   80336 München
+  date_start: "2026-10-11T09:30"
+  date_end: "2026-10-11T18:30"
+  location: "Schwanthalerstraße 91, 80336 München"
   schedule: |
    FR 18:00-20:00 online
    SO 09:30-18:30
    DI 18:00-21:00 online
   instructors: Hans Dönitz
- a2_172:
+ a2_36:
   ctype: event
   shortcode: a2
   tag: So., 25.10. ganztags + 2 Abende online
@@ -212,17 +204,15 @@ items:
    caption: Foto die Bühne kommt von selbst
   body: |
    Wenn Du gelernt hast, die Interaktion der Gruppe im Kreis freizusetzen, entstehen fast von selbst Bühnenmomente. Mit dem Zwei-Kreise-Modell lernst Du diese Momente gezielt zu gestalten und verbindest das Theaterpotential einfacher Animationen zu einem bühnenreifen Setting. Der Kreis öffnet sich zum Halbkreis und gibt in der Mitte eine Spielfläche frei.
-  date_start: 2026-10-25T09:00
-  date_end: 2026-10-25T18:00
-  location: |
-   Schwanthalerstraße 91
-   80336 München
+  date_start: "2026-10-25T09:30"
+  date_end: "2026-10-25T18:30"
+  location: "Schwanthalerstraße 91, 80336 München"
   schedule: |
    FR 18:00-20:00 online
    SO 09:30-18:30
    DI 18:00-21:00 online
   instructors: Hans Dönitz
- a3_168:
+ a3_31:
   ctype: event
   shortcode: a3
   tag: Sa., 28.11. bis So., 29.11 + 2 Abende online
@@ -232,16 +222,14 @@ items:
    caption: Theaterpädagogik A3
   body: |
    Nichts kann das Ganz-Auf-Sicht-Gestellt-Sein der Bühnensituation besser vorwegnehmen, als ein einfacher Raumlauf - Jene Übung, in der sich Teilnehmer mit einem konkreten Geh-Auftrag kreuz und quer durch den Raum bewegen. Ein gründliches Verstehen des Geschehens ist nicht nur hilfreich, um den Raumlauf ordentlich anleiten zu können, sondern eröffnet immer neue Einblicke auf das Agieren im Bühnenraum.
-  date_start: 2026-11-28T09:30
-  date_end: 2026-11-29T16:00
-  location: |
-   Schwanthalerstraße 91
-   80336 München
+  date_start: "2026-11-28T09:15"
+  date_end: "2026-11-29T15:00"
+  location: "Schwanthalerstraße 91, 80336 München"
   schedule: |
    FR 18:00-20:00 online
-   SA 09:30-18:30
-   SO 10:00-16:00
-   DI 8.12 18:00-21:00 online
+   SA 09:15-18:15
+   SO 09:00-15:00
+   DI 18:00-21:00 online
   instructors: Hans Dönitz
 ---
 Einstiege ins Theaterspiel - Tageskursverlauf München

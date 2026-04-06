@@ -105,7 +105,7 @@ product:
  footer: |
   ## MÄR - DEZ 2026 // Burgstallmühle & Nürnberg **Einstiege ins Theaterspiel**
 items: 
- aa_189:
+ aa_56:
   ctype: event
   shortcode: aa
   tag: Do., 9.4. 18:00-20:00 online
@@ -116,12 +116,12 @@ items:
   body: |
    Du erwägst schon länger in die Theaterpädagogik einzusteigen? Du suchst nach qualifizierter Ausbildung in diesem Bereich? Vielleicht bist du bereits fest entschlossen, bei DAS Ei zu starten? 
    Dann melde dich an zum unverbindlichen Online-Teaser!
-  date_start: 2026-03-05T18:00
-  date_end: 2026-03-05T20:00
+  date_start: "2026-04-09T18:00"
+  date_end: "2026-04-09T20:00"
   location: online (MS Teams, Link wird rechtzeitig zugeschickt)
-  schedule: DO 18:00-20:00 online
+  schedule: "DO 18:00-20:00 _online_"
   instructors: Hans Dönitz
- a0_155:
+ a0_66:
   ctype: event
   shortcode: a0
   tag: Sa., 18.4. ganztags + 1 Abend online
@@ -134,16 +134,14 @@ items:
    - Einstiege ins Theaterspiel (Modul A)
    - Szenische Themenarbeit (Modul B)
    - Pädagogische Regie (Modul C)
-  date_start: 2026-04-18T09:00
-  date_end: 2026-04-18T18:00
-  location: |
-   Kaiserstr. 175 (Tanzerei)
-   90763 Fürth
+  date_start: "2026-04-18T09:00"
+  date_end: "2026-04-18T18:00"
+  location: "Kaiserstr. 177, 90763 Nürnberg/Fürth"
   schedule: |
-   FR 18:00-20:00 online
+   Durchführung ist optional bei ausreichendd Teilnehmer:innen // FR 18:00-20:00 _online_
    SA 09:00-18:00
-  instructors: Kathrin Jung
- a1_159:
+  instructors: Hans Dönitz
+ a1_21:
   ctype: event
   shortcode: a1
   tag: Do., 14.5. bis So., 17.5 (Seminarhaus)
@@ -153,14 +151,15 @@ items:
    caption: Theaterpädagogik Kreisanimation
   body: |
    Den Einstieg in die elementare Animation bilden die Kreisspiele. Hier kommen Grundregeln und -phänomene von interaktivem Spiel sehr deutlich zum Vorschein. Zunächst beschäftigen wir uns mit den einfachen und offensichtlichen Impulsen entlang der Kreisbahn und quer durch die Kreismitte und lernen dann, zahlreiche Grundanforderungen des Theaterspiels im Kreisspiel zu trainieren.
-  date_start: 2026-05-14T19:00
-  date_end: 2026-05-15T18:30
-  location: |
-   Burgstallmühle 1
-   91572 Bechhofen
+  date_start: "2026-05-14T19:00"
+  date_end: "2026-05-17T15:00"
+  location: "Burgstallmühle 1, Voggendorf (bei Bechhofen), 91572 Burgstallmühle / Voggendorf"
   schedule: |
-   Do. 19:00-21:30
-   Fr. 09:00-18:30
+   DO 19:00-21:00
+   FR 09:00-18:00
+   SA 09:00-18:00
+   SO 09:00-15:00
+   Di. 18:00-21:00 ONLINE
   instructors: Hans Dönitz
  a2_159:
   ctype: event
@@ -182,7 +181,7 @@ items:
    So. 09:00-15:00
    Di. 18:00-21:00 online
   instructors: Hans Dönitz
- a4_165:
+ a4_28:
   ctype: event
   shortcode: a4
   tag: Do., 24.9. bis So., 27.9 (Seminarhaus)
@@ -192,14 +191,15 @@ items:
    caption: Theaterpädagogik Szenische Lesung
   body: |
    Du erarbeitest dir spezifische Techniken, die es dir ermöglichen, unmittelbar in verschiedene Rollen zu schlüpfen. Für das teilnehmende Publikum bringst du auf diese Weise die Magie einer Geschichte zum Vorschein und interagierst als Animationsfigur. Die durch sie vermittelten Erlebnissen, können zum Auftakt eines Theaterstücks werden.
-  date_start: 2026-09-24T19:00
-  date_end: 2026-09-25T18:30
-  location: |
-   Burgstallmühle 1
-   91572 Bechhofen
+  date_start: "2026-09-24T19:00"
+  date_end: "2026-09-27T15:00"
+  location: "Burgstallmühle 1, Voggendorf (bei Bechhofen), 91572 Burgstallmühle / Voggendorf"
   schedule: |
-   Do. 19:00-21:30
-   Fr. 09:00-18:30
+   DO 19:00-21:00
+   FR 09:00-18:00
+   SA 09:00-18:00
+   SO 09:00-15:00
+   Di. 18:00-21:00 ONLINE
   instructors: Kathrin Jung
  a5_165:
   ctype: event
@@ -221,7 +221,7 @@ items:
    So. 09:00-15:00
    Di. 18:00-21:00 online
   instructors: Kathrin Jung
- a3_169:
+ a3_22:
   ctype: event
   shortcode: a3
   tag: Sa., 5.12. bis So., 6.12 + 2 Abende online
@@ -231,16 +231,14 @@ items:
    caption: Theaterpädagogik den Fuß setzen
   body: |
    Nichts kann das Ganz-Auf-Sicht-Gestellt-Sein der Bühnensituation besser vorwegnehmen, als ein einfacher Raumlauf - Jene Übung, in der sich Teilnehmer mit einem konkreten Geh-Auftrag kreuz und quer durch den Raum bewegen. Ein gründliches Verstehen des Geschehens ist nicht nur hilfreich, um den Raumlauf ordentlich anleiten zu können, sondern eröffnet immer neue Einblicke auf das Agieren im Bühnenraum.
-  date_start: 2026-12-05T09:30
-  date_end: 2026-12-06T16:00
-  location: |
-   Kaiserstr. 175 (Tanzerei)
-   90763 Fürth
+  date_start: "2026-12-05T09:30"
+  date_end: "2026-12-06T15:00"
+  location: "Kaiserstr. 177, 90763 Nürnberg/Fürth"
   schedule: |
-   FR 18:00-20:00 online
+   FR 18:00-20:00 _online_
    SA 09:30-18:30
-   SO 10:00-16:00
-   DI 15.12 online
+   SO 09:00-15:00
+   DI 8.12 18:00-21:00 _online_
   instructors: Hans Dönitz
 ---
 Einstiege ins Theaterspiel - Blockseminarverlauf Nürnberg & Burgstallmühle
