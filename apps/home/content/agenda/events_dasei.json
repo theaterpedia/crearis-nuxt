@@ -1,0 +1,3784 @@
+{
+  "events": [
+    {
+      "key": "a0_25",
+      "shortcode": "a0",
+      "heading": "Praxis, Theorie & Ausbildung bei DAS Ei **Basistag Theaterpädagogik**",
+      "date_start": "2026-10-31 09:30:00",
+      "date_end": "2026-10-31 18:30:00",
+      "hasOnlineSessions": true,
+      "homedomain": "dasei",
+      "instructor": "Cornelia Jung",
+      "venue": "Institut Kineo",
+      "teasertext": "Am Basistag erlebst Du die grundsätzlichen Zusammenhänge der Theaterpädagogik von DAS Ei konzentriert und ganz praktisch am eigenen Leib. Du erarbeitest Dir ausgehend von drei Zwischenreflexionen ein Grundverständnis der Module\r\n- Einstiege in’s Theaterspiel (Modul A)\r\n- Szenische Themenarbeit (Modul B)\r\n- Pädagogische Regie (Modul C)",
+      "teachingUnits": 13,
+      "venueFormatted": "Schwanthalerstraße 91, 80336 München",
+      "venueStreet": "Schwanthalerstraße 91",
+      "venueZip": "80336",
+      "venueCity": "München",
+      "schedule": "FR 18:00-20:00 _online_\r\nSA 09:30-18:30",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "FRI",
+          "date": "2026-10-30",
+          "startTime": "18:00",
+          "endTime": "20:00",
+          "locationHint": "Online"
+        },
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2026-10-31",
+          "startTime": "09:30",
+          "endTime": "18:30"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "issues": {
+          "resolved": true,
+          "log": [
+            "2026-04-05 missing_start_time auto-detected during import",
+            "2026-04-05 missing_end_time auto-detected during import",
+            "2026-04-06 cleared_missing_end_time auto-resolved on re-import",
+            "2026-04-06 cleared_missing_start_time auto-resolved on re-import"
+          ]
+        },
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "a0_32",
+      "shortcode": "a0",
+      "heading": "Praxis, Theorie & Ausbildung bei DAS Ei **Basistag Theaterpädagogik**",
+      "date_start": "2026-09-12 09:00:00",
+      "date_end": "2026-09-12 18:00:00",
+      "hasOnlineSessions": true,
+      "homedomain": "dasei",
+      "instructor": "Kathrin Jung",
+      "venue": "Tanzerei",
+      "teasertext": "Am Basistag erlebst Du die grundsätzlichen Zusammenhänge der Theaterpädagogik von DAS Ei konzentriert und ganz praktisch am eigenen Leib. Du erarbeitest Dir ausgehend von drei Zwischenreflexionen ein Grundverständnis der Module\r\n- Einstiege in’s Theaterspiel (Modul A)\r\n- Szenische Themenarbeit (Modul B)\r\n- Pädagogische Regie (Modul C)",
+      "teachingUnits": 13,
+      "venueFormatted": "Kaiserstr. 177, 90763 Nürnberg/Fürth",
+      "venueStreet": "Kaiserstr. 177",
+      "venueZip": "90763",
+      "venueCity": "Nürnberg/Fürth",
+      "schedule": "FR 18:00-20:00 _online_\r\nSA 09:00-18:00",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "FRI",
+          "date": "2026-09-11",
+          "startTime": "18:00",
+          "endTime": "20:00",
+          "locationHint": "Online"
+        },
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2026-09-12",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "issues": {
+          "resolved": true,
+          "log": [
+            "2026-04-05 missing_start_time auto-detected during import",
+            "2026-04-05 missing_end_time auto-detected during import",
+            "2026-04-06 cleared_missing_end_time auto-resolved on re-import",
+            "2026-04-06 cleared_missing_start_time auto-resolved on re-import"
+          ]
+        },
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "a0_33",
+      "shortcode": "a0",
+      "heading": "Praxis, Theorie & Ausbildung bei DAS Ei **Basistag Theaterpädagogik**",
+      "date_start": "2026-04-19 09:30:00",
+      "date_end": "2026-04-19 18:30:00",
+      "hasOnlineSessions": true,
+      "homedomain": "dasei",
+      "instructor": "Hans Dönitz",
+      "venue": "Institut Kineo",
+      "teasertext": "Am Basistag erlebst Du die grundsätzlichen Zusammenhänge der Theaterpädagogik von DAS Ei konzentriert und ganz praktisch am eigenen Leib. Du erarbeitest Dir ausgehend von drei Zwischenreflexionen ein Grundverständnis der Module\r\n- Einstiege in’s Theaterspiel (Modul A)\r\n- Szenische Themenarbeit (Modul B)\r\n- Pädagogische Regie (Modul C)",
+      "teachingUnits": 13,
+      "venueFormatted": "Schwanthalerstraße 91, 80336 München",
+      "venueStreet": "Schwanthalerstraße 91",
+      "venueZip": "80336",
+      "venueCity": "München",
+      "schedule": "FR 18:00-20:00 _online_\r\nSO 09:30-18:30",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2026-04-19",
+          "startTime": "09:30",
+          "endTime": "18:30"
+        },
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "FRI",
+          "startTime": "18:00",
+          "endTime": "20:00",
+          "locationHint": "Online"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "a0_37",
+      "shortcode": "a0",
+      "heading": "Praxis, Theorie & Ausbildung bei DAS Ei **Basistag Theaterpädagogik**",
+      "date_start": "2026-07-19 09:30:00",
+      "date_end": "2026-07-19 18:30:00",
+      "hasOnlineSessions": true,
+      "homedomain": "dasei",
+      "instructor": "Hans Dönitz",
+      "venue": "Institut Kineo",
+      "teasertext": "Am Basistag erlebst Du die grundsätzlichen Zusammenhänge der Theaterpädagogik von DAS Ei konzentriert und ganz praktisch am eigenen Leib. Du erarbeitest Dir ausgehend von drei Zwischenreflexionen ein Grundverständnis der Module\r\n- Einstiege in’s Theaterspiel (Modul A)\r\n- Szenische Themenarbeit (Modul B)\r\n- Pädagogische Regie (Modul C)",
+      "teachingUnits": 13,
+      "venueFormatted": "Schwanthalerstraße 91, 80336 München",
+      "venueStreet": "Schwanthalerstraße 91",
+      "venueZip": "80336",
+      "venueCity": "München",
+      "schedule": "FR 18:00-20:00 _online_\r\nSO 09:30-18:30",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2026-07-19",
+          "startTime": "09:30",
+          "endTime": "18:30"
+        },
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "FRI",
+          "startTime": "18:00",
+          "endTime": "20:00",
+          "locationHint": "Online"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "a0_38",
+      "shortcode": "a0",
+      "heading": "Praxis, Theorie & Ausbildung bei DAS Ei **Basistag Theaterpädagogik**",
+      "date_start": "2026-06-13 09:00:00",
+      "date_end": "2026-06-13 18:00:00",
+      "hasOnlineSessions": true,
+      "homedomain": "dasei",
+      "instructor": "Cornelia Jung",
+      "venue": "",
+      "teasertext": "Am Basistag erlebst Du die grundsätzlichen Zusammenhänge der Theaterpädagogik von DAS Ei konzentriert und ganz praktisch am eigenen Leib. Du erarbeitest Dir ausgehend von drei Zwischenreflexionen ein Grundverständnis der Module\r\n- Einstiege in’s Theaterspiel (Modul A)\r\n- Szenische Themenarbeit (Modul B)\r\n- Pädagogische Regie (Modul C)",
+      "teachingUnits": 13,
+      "venueFormatted": "",
+      "venueStreet": "",
+      "venueZip": "",
+      "venueCity": "",
+      "schedule": "FR 18:00-20:00 _online_\r\nSA 09:00-18:00",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2026-06-13",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "FRI",
+          "startTime": "18:00",
+          "endTime": "20:00",
+          "locationHint": "Online"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "a0_48",
+      "shortcode": "a0",
+      "heading": "Praxis, Theorie & Ausbildung bei DAS Ei **Basistag Theaterpädagogik**",
+      "date_start": "2026-06-14 09:00:00",
+      "date_end": "2026-06-14 18:00:00",
+      "hasOnlineSessions": true,
+      "homedomain": "dasei",
+      "instructor": "Cornelia Jung",
+      "venue": "Institut Kineo",
+      "teasertext": "Am Basistag erlebst Du die grundsätzlichen Zusammenhänge der Theaterpädagogik von DAS Ei konzentriert und ganz praktisch am eigenen Leib. Du erarbeitest Dir ausgehend von drei Zwischenreflexionen ein Grundverständnis der Module\r\n- Einstiege in’s Theaterspiel (Modul A)\r\n- Szenische Themenarbeit (Modul B)\r\n- Pädagogische Regie (Modul C)",
+      "teachingUnits": 13,
+      "venueFormatted": "Schwanthalerstraße 91, 80336 München",
+      "venueStreet": "Schwanthalerstraße 91",
+      "venueZip": "80336",
+      "venueCity": "München",
+      "schedule": "FR 18:00-20:00 _online_\r\nSO 09:00-18:00",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "FRI",
+          "date": "2026-06-12",
+          "startTime": "18:00",
+          "endTime": "20:00",
+          "locationHint": "Online"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2026-06-14",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "issues": {
+          "resolved": true,
+          "log": [
+            "2026-04-05 missing_start_time auto-detected during import",
+            "2026-04-05 missing_end_time auto-detected during import",
+            "2026-04-06 cleared_missing_end_time auto-resolved on re-import",
+            "2026-04-06 cleared_missing_start_time auto-resolved on re-import"
+          ]
+        },
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "a0_66",
+      "shortcode": "a0",
+      "heading": "Praxis, Theorie & Ausbildung bei DAS Ei **Basistag Theaterpädagogik**",
+      "date_start": "2026-04-18 09:00:00",
+      "date_end": "2026-04-18 18:00:00",
+      "hasOnlineSessions": true,
+      "homedomain": "dasei",
+      "instructor": "Hans Dönitz",
+      "venue": "Tanzerei",
+      "teasertext": "Am Basistag erlebst Du die grundsätzlichen Zusammenhänge der Theaterpädagogik von DAS Ei konzentriert und ganz praktisch am eigenen Leib. Du erarbeitest Dir ausgehend von drei Zwischenreflexionen ein Grundverständnis der Module\r\n- Einstiege in’s Theaterspiel (Modul A)\r\n- Szenische Themenarbeit (Modul B)\r\n- Pädagogische Regie (Modul C)",
+      "teachingUnits": 13,
+      "venueFormatted": "Kaiserstr. 177, 90763 Nürnberg/Fürth",
+      "venueStreet": "Kaiserstr. 177",
+      "venueZip": "90763",
+      "venueCity": "Nürnberg/Fürth",
+      "schedule": "Durchführung ist optional bei ausreichendd Teilnehmer:innen // FR 18:00-20:00 _online_\r\nSA 09:00-18:00",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2026-04-18",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "FRI",
+          "startTime": "18:00",
+          "endTime": "20:00",
+          "locationHint": "Online"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "a1_21",
+      "shortcode": "a1",
+      "heading": "Einführung in die Kreisanimation **Am Anfang war der Kreis**",
+      "date_start": "2026-05-14 19:00:00",
+      "date_end": "2026-05-17 15:00:00",
+      "hasOnlineSessions": false,
+      "homedomain": "dasei",
+      "instructor": "Hans Dönitz",
+      "venue": "Burgstallmühle",
+      "teasertext": "Den Einstieg in die elementare Animation bilden die Kreisspiele. Hier kommen Grundregeln und -phänomene von interaktivem Spiel sehr deutlich zum Vorschein. Zunächst beschäftigen wir uns mit den einfachen und offensichtlichen Impulsen entlang der Kreisbahn und quer durch die Kreismitte und lernen dann, zahlreiche Grundanforderungen des Theaterspiels im Kreisspiel zu trainieren.",
+      "teachingUnits": 17,
+      "venueFormatted": "Burgstallmühle 1, Voggendorf (bei Bechhofen), 91572 Burgstallmühle / Voggendorf",
+      "venueStreet": "Burgstallmühle 1, Voggendorf (bei Bechhofen)",
+      "venueZip": "91572",
+      "venueCity": "Burgstallmühle / Voggendorf",
+      "schedule": "DO 19:00-21:00\r\nFR 09:00-18:00\r\nSA 09:00-18:00\r\nSO 09:00-15:00\r\nDi. 18:00-21:00 ONLINE",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "THU",
+          "date": "2026-05-14",
+          "startTime": "19:00",
+          "endTime": "21:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "FRI",
+          "date": "2026-05-15",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2026-05-16",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2026-05-17",
+          "startTime": "09:00",
+          "endTime": "15:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "a1_40",
+      "shortcode": "a1",
+      "heading": "Einführung in die Kreisanimation **Am Anfang war der Kreis**",
+      "date_start": "2026-10-11 09:30:00",
+      "date_end": "2026-10-11 18:30:00",
+      "hasOnlineSessions": true,
+      "homedomain": "dasei",
+      "instructor": "Hans Dönitz",
+      "venue": "Institut Kineo",
+      "teasertext": "Den Einstieg in die elementare Animation bilden die Kreisspiele. Hier kommen Grundregeln und -phänomene von interaktivem Spiel sehr deutlich zum Vorschein. Zunächst beschäftigen wir uns mit den einfachen und offensichtlichen Impulsen entlang der Kreisbahn und quer durch die Kreismitte und lernen dann, zahlreiche Grundanforderungen des Theaterspiels im Kreisspiel zu trainieren.",
+      "teachingUnits": 17,
+      "venueFormatted": "Schwanthalerstraße 91, 80336 München",
+      "venueStreet": "Schwanthalerstraße 91",
+      "venueZip": "80336",
+      "venueCity": "München",
+      "schedule": "FR 18:00-20:00 online\r\nSO 09:30-18:30\r\nDI 18:00-21:00 online",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2026-10-11",
+          "startTime": "09:30",
+          "endTime": "18:30"
+        },
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "FRI",
+          "startTime": "18:00",
+          "endTime": "20:00"
+        },
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "TUE",
+          "startTime": "18:00",
+          "endTime": "21:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "a1_42",
+      "shortcode": "a1",
+      "heading": "Einführung in die Kreisanimation **Am Anfang war der Kreis**",
+      "date_start": "2027-05-06 19:00:00",
+      "date_end": "2027-05-09 15:00:00",
+      "hasOnlineSessions": false,
+      "homedomain": "dasei",
+      "instructor": "Hans Dönitz",
+      "venue": "Burgstallmühle",
+      "teasertext": "Den Einstieg in die elementare Animation bilden die Kreisspiele. Hier kommen Grundregeln und -phänomene von interaktivem Spiel sehr deutlich zum Vorschein. Zunächst beschäftigen wir uns mit den einfachen und offensichtlichen Impulsen entlang der Kreisbahn und quer durch die Kreismitte und lernen dann, zahlreiche Grundanforderungen des Theaterspiels im Kreisspiel zu trainieren.",
+      "teachingUnits": 17,
+      "venueFormatted": "Burgstallmühle 1, Voggendorf (bei Bechhofen), 91572 Burgstallmühle / Voggendorf",
+      "venueStreet": "Burgstallmühle 1, Voggendorf (bei Bechhofen)",
+      "venueZip": "91572",
+      "venueCity": "Burgstallmühle / Voggendorf",
+      "schedule": "DO 19:00-21:00\r\nFR 09:00-18:00\r\nSA 09:00-18:00\r\nSO 09:00-15:00\r\nDi. 18:00-21:00 ONLINE",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "THU",
+          "date": "2027-05-06",
+          "startTime": "19:00",
+          "endTime": "21:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "FRI",
+          "date": "2027-05-07",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2027-05-08",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2027-05-09",
+          "startTime": "09:00",
+          "endTime": "15:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "a1_88",
+      "shortcode": "a1",
+      "heading": "Einführung in die Kreisanimation **Am Anfang war der Kreis**",
+      "date_start": "2026-10-10 09:00:00",
+      "date_end": "2026-10-10 18:00:00",
+      "hasOnlineSessions": true,
+      "homedomain": "dasei",
+      "instructor": "Hans Dönitz",
+      "venue": "Tanzerei",
+      "teasertext": "Den Einstieg in die elementare Animation bilden die Kreisspiele. Hier kommen Grundregeln und -phänomene von interaktivem Spiel sehr deutlich zum Vorschein. Zunächst beschäftigen wir uns mit den einfachen und offensichtlichen Impulsen entlang der Kreisbahn und quer durch die Kreismitte und lernen dann, zahlreiche Grundanforderungen des Theaterspiels im Kreisspiel zu trainieren.",
+      "teachingUnits": 17,
+      "venueFormatted": "Kaiserstr. 177, 90763 Nürnberg/Fürth",
+      "venueStreet": "Kaiserstr. 177",
+      "venueZip": "90763",
+      "venueCity": "Nürnberg/Fürth",
+      "schedule": "FR 18:00-20:00 online\r\nSA 09:00-18:00\r\nDI 18:00-21:00 online",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2026-10-10",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "FRI",
+          "startTime": "18:00",
+          "endTime": "20:00"
+        },
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "TUE",
+          "startTime": "18:00",
+          "endTime": "21:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "issues": {
+          "resolved": true,
+          "log": [
+            "2026-04-05 missing_start_time auto-detected during import",
+            "2026-04-05 missing_end_time auto-detected during import",
+            "2026-04-06 cleared_missing_end_time auto-resolved on re-import",
+            "2026-04-06 cleared_missing_start_time auto-resolved on re-import"
+          ]
+        },
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "a2_26",
+      "shortcode": "a2",
+      "heading": "Arbeiten mit dem Zwei-Kreise-Modell **Die Bühne kommt von selbst**",
+      "date_start": "2026-10-23 18:00:00",
+      "date_end": "2026-10-27 21:00:00",
+      "hasOnlineSessions": true,
+      "homedomain": "dasei",
+      "instructor": "Hans Dönitz",
+      "venue": "Tanzerei",
+      "teasertext": "Wenn Du gelernt hast, die Interaktion der Gruppe im Kreis freizusetzen, entstehen fast von selbst 'Bühnenmomente'. Mit dem Zwei-Kreise-Modell lernst Du diese Momente gezielt zu gestalten und verbindest das Theaterpotential einfacher Animationen zu einem bühnenreifen Setting. Der Kreis öffnet sich zum Halbkreis und gibt in der Mitte eine Spielfläche frei.",
+      "teachingUnits": 17,
+      "venueFormatted": "Kaiserstr. 177, 90763 Nürnberg/Fürth",
+      "venueStreet": "Kaiserstr. 177",
+      "venueZip": "90763",
+      "venueCity": "Nürnberg/Fürth",
+      "schedule": "FR 18:00-20:00 online\r\nSO 09:00-18:00\r\nDI 18:00-21:00 online",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "FRI",
+          "date": "2026-10-23",
+          "startTime": "18:00",
+          "endTime": "20:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2026-10-25",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "TUE",
+          "date": "2026-10-27",
+          "startTime": "18:00",
+          "endTime": "21:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "issues": {
+          "resolved": true,
+          "log": [
+            "2026-04-05 missing_start_time auto-detected during import",
+            "2026-04-05 missing_end_time auto-detected during import",
+            "2026-04-06 fixed: date_start→first session (FRI online), date_end→last session (TUE online); locked"
+          ]
+        },
+        "updated": "2026-04-06",
+        "locked": true
+      }
+    },
+    {
+      "key": "a2_36",
+      "shortcode": "a2",
+      "heading": "Arbeiten mit dem Zwei-Kreise-Modell **Die Bühne kommt von selbst**",
+      "date_start": "2026-10-25 09:30:00",
+      "date_end": "2026-10-25 18:30:00",
+      "hasOnlineSessions": true,
+      "homedomain": "dasei",
+      "instructor": "Hans Dönitz",
+      "venue": "Institut Kineo",
+      "teasertext": "Wenn Du gelernt hast, die Interaktion der Gruppe im Kreis freizusetzen, entstehen fast von selbst 'Bühnenmomente'. Mit dem Zwei-Kreise-Modell lernst Du diese Momente gezielt zu gestalten und verbindest das Theaterpotential einfacher Animationen zu einem bühnenreifen Setting. Der Kreis öffnet sich zum Halbkreis und gibt in der Mitte eine Spielfläche frei.",
+      "teachingUnits": 17,
+      "venueFormatted": "Schwanthalerstraße 91, 80336 München",
+      "venueStreet": "Schwanthalerstraße 91",
+      "venueZip": "80336",
+      "venueCity": "München",
+      "schedule": "FR 18:00-20:00 online\r\nSO 09:30-18:30\r\nDI 18:00-21:00 online",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2026-10-25",
+          "startTime": "09:30",
+          "endTime": "18:30"
+        },
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "FRI",
+          "startTime": "18:00",
+          "endTime": "20:00"
+        },
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "TUE",
+          "startTime": "18:00",
+          "endTime": "21:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "a3_22",
+      "shortcode": "a3",
+      "heading": "Einführung in Raumlauf-Animation und Didaktik des Improvisationstrainings **Wege entstehen beim Gehen**",
+      "date_start": "2026-12-05 09:30:00",
+      "date_end": "2026-12-06 15:00:00",
+      "hasOnlineSessions": true,
+      "homedomain": "dasei",
+      "instructor": "Hans Dönitz",
+      "venue": "Tanzerei",
+      "teasertext": "Nichts kann das Ganz-Auf-Sicht-Gestellt-Sein der Bühnensituation besser vorwegnehmen, als ein einfacher 'Raumlauf' - Jene Übung, in der sich Teilnehmer mit einem konkreten 'Geh-Auftrag' kreuz und quer durch den Raum bewegen. Ein gründliches Verstehen des Geschehens ist nicht nur hilfreich, um den Raumlauf ordentlich anleiten zu können, sondern eröffnet immer neue Einblicke auf das Agieren im Bühnenraum.",
+      "teachingUnits": 22,
+      "venueFormatted": "Kaiserstr. 177, 90763 Nürnberg/Fürth",
+      "venueStreet": "Kaiserstr. 177",
+      "venueZip": "90763",
+      "venueCity": "Nürnberg/Fürth",
+      "schedule": "FR 18:00-20:00 _online_\r\nSA 09:30-18:30\r\nSO 09:00-15:00\r\nDI 8.12 18:00-21:00 _online_",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2026-12-05",
+          "startTime": "09:30",
+          "endTime": "18:30"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2026-12-06",
+          "startTime": "09:00",
+          "endTime": "15:00"
+        },
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "TUE",
+          "date": "2026-12-08",
+          "startTime": "18:00",
+          "endTime": "21:00",
+          "locationHint": "Online"
+        },
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "FRI",
+          "startTime": "18:00",
+          "endTime": "20:00",
+          "locationHint": "Online"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "a3_31",
+      "shortcode": "a3",
+      "heading": "Einführung in Raumlauf-Animation und Didaktik des Improvisationstrainings **Wege entstehen beim Gehen**",
+      "date_start": "2026-11-28 09:15:00",
+      "date_end": "2026-11-29 15:00:00",
+      "hasOnlineSessions": true,
+      "homedomain": "dasei",
+      "instructor": "Hans Dönitz",
+      "venue": "Institut Kineo",
+      "teasertext": "Nichts kann das Ganz-Auf-Sicht-Gestellt-Sein der Bühnensituation besser vorwegnehmen, als ein einfacher 'Raumlauf' - Jene Übung, in der sich Teilnehmer mit einem konkreten 'Geh-Auftrag' kreuz und quer durch den Raum bewegen. Ein gründliches Verstehen des Geschehens ist nicht nur hilfreich, um den Raumlauf ordentlich anleiten zu können, sondern eröffnet immer neue Einblicke auf das Agieren im Bühnenraum.",
+      "teachingUnits": 22,
+      "venueFormatted": "Schwanthalerstraße 91, 80336 München",
+      "venueStreet": "Schwanthalerstraße 91",
+      "venueZip": "80336",
+      "venueCity": "München",
+      "schedule": "FR 18:00-20:00 online\r\nSA 09:15-18:15\r\nSO 09:00-15:00\r\nDI 18:00-21:00 online",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2026-11-28",
+          "startTime": "09:15",
+          "endTime": "18:15"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2026-11-29",
+          "startTime": "09:00",
+          "endTime": "15:00"
+        },
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "TUE",
+          "startTime": "18:00",
+          "endTime": "21:00"
+        },
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "FRI",
+          "startTime": "18:00",
+          "endTime": "20:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "a4_24",
+      "shortcode": "a4",
+      "heading": "Präsentation einer Geschichte **Szenische Lesung**",
+      "date_start": "2026-06-26 18:00:00",
+      "date_end": "2026-06-30 21:00:00",
+      "hasOnlineSessions": true,
+      "homedomain": "dasei",
+      "instructor": "Cornelia Jung",
+      "venue": "Tanzerei",
+      "teasertext": "Du erarbeitest dir spezifische Techniken, die es dir ermöglichen, unmittelbar in verschiedene Rollen zu schlüpfen. Für das teilnehmende Publikum bringst du auf diese Weise die Magie einer Geschichte zum Vorschein und interagierst als Animationsfigur. Die durch sie vermittelten Erlebnissen, können zum Auftakt eines Theaterstücks werden.",
+      "teachingUnits": 17,
+      "venueFormatted": "Kaiserstr. 177, 90763 Nürnberg/Fürth",
+      "venueStreet": "Kaiserstr. 177",
+      "venueZip": "90763",
+      "venueCity": "Nürnberg/Fürth",
+      "schedule": "FR 18:00-20:00 online\r\nSO 09:00-18:00\r\nDI 18:00-21:00 online",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "FRI",
+          "date": "2026-06-26",
+          "startTime": "18:00",
+          "endTime": "20:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2026-06-28",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "TUE",
+          "date": "2026-06-30",
+          "startTime": "18:00",
+          "endTime": "21:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "issues": {
+          "resolved": true,
+          "log": [
+            "2026-04-05 missing_start_time auto-detected during import",
+            "2026-04-05 missing_end_time auto-detected during import",
+            "2026-04-06 fixed: date_start→first session (FRI online), date_end→last session (TUE online); locked"
+          ]
+        },
+        "updated": "2026-04-06",
+        "locked": true
+      }
+    },
+    {
+      "key": "a4_28",
+      "shortcode": "a4",
+      "heading": "Präsentation einer Geschichte **Szenische Lesung**",
+      "date_start": "2026-09-24 19:00:00",
+      "date_end": "2026-09-27 15:00:00",
+      "hasOnlineSessions": false,
+      "homedomain": "dasei",
+      "instructor": "Kathrin Jung",
+      "venue": "Burgstallmühle",
+      "teasertext": "Du erarbeitest dir spezifische Techniken, die es dir ermöglichen, unmittelbar in verschiedene Rollen zu schlüpfen. Für das teilnehmende Publikum bringst du auf diese Weise die Magie einer Geschichte zum Vorschein und interagierst als Animationsfigur. Die durch sie vermittelten Erlebnissen, können zum Auftakt eines Theaterstücks werden.",
+      "teachingUnits": 17,
+      "venueFormatted": "Burgstallmühle 1, Voggendorf (bei Bechhofen), 91572 Burgstallmühle / Voggendorf",
+      "venueStreet": "Burgstallmühle 1, Voggendorf (bei Bechhofen)",
+      "venueZip": "91572",
+      "venueCity": "Burgstallmühle / Voggendorf",
+      "schedule": "DO 19:00-21:00\r\nFR 09:00-18:00\r\nSA 09:00-18:00\r\nSO 09:00-15:00\r\nDi. 18:00-21:00 ONLINE",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "THU",
+          "date": "2026-09-24",
+          "startTime": "19:00",
+          "endTime": "21:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "FRI",
+          "date": "2026-09-25",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2026-09-26",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2026-09-27",
+          "startTime": "09:00",
+          "endTime": "15:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "a4_29",
+      "shortcode": "a4",
+      "heading": "Präsentation einer Geschichte **Szenische Lesung**",
+      "date_start": "2026-06-28 09:30:00",
+      "date_end": "2026-06-28 18:30:00",
+      "hasOnlineSessions": true,
+      "homedomain": "dasei",
+      "instructor": "Cornelia Jung",
+      "venue": "Eine Welt Haus",
+      "teasertext": "Du erarbeitest dir spezifische Techniken, die es dir ermöglichen, unmittelbar in verschiedene Rollen zu schlüpfen. Für das teilnehmende Publikum bringst du auf diese Weise die Magie einer Geschichte zum Vorschein und interagierst als Animationsfigur. Die durch sie vermittelten Erlebnissen, können zum Auftakt eines Theaterstücks werden.",
+      "teachingUnits": 17,
+      "venueFormatted": "Schwanthalerstr. 80, 80336 München",
+      "venueStreet": "Schwanthalerstr. 80",
+      "venueZip": "80336",
+      "venueCity": "München",
+      "schedule": "FR 18:00-20:00 online\r\nSO 09:30-18:30\r\nDI 18:00-21:00 online",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2026-06-28",
+          "startTime": "09:30",
+          "endTime": "18:30"
+        },
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "TUE",
+          "startTime": "18:00",
+          "endTime": "21:00"
+        },
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "FRI",
+          "startTime": "18:00",
+          "endTime": "20:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "a4_41",
+      "shortcode": "a4",
+      "heading": "Präsentation einer Geschichte **Szenische Lesung**",
+      "date_start": "2027-09-23 19:00:00",
+      "date_end": "2027-09-26 15:00:00",
+      "hasOnlineSessions": false,
+      "homedomain": "dasei",
+      "instructor": "Kathrin Jung",
+      "venue": "Burgstallmühle",
+      "teasertext": "Du erarbeitest dir spezifische Techniken, die es dir ermöglichen, unmittelbar in verschiedene Rollen zu schlüpfen. Für das teilnehmende Publikum bringst du auf diese Weise die Magie einer Geschichte zum Vorschein und interagierst als Animationsfigur. Die durch sie vermittelten Erlebnissen, können zum Auftakt eines Theaterstücks werden.",
+      "teachingUnits": 17,
+      "venueFormatted": "Burgstallmühle 1, Voggendorf (bei Bechhofen), 91572 Burgstallmühle / Voggendorf",
+      "venueStreet": "Burgstallmühle 1, Voggendorf (bei Bechhofen)",
+      "venueZip": "91572",
+      "venueCity": "Burgstallmühle / Voggendorf",
+      "schedule": "DO 19:00-21:00\r\nFR 09:00-18:00\r\nSA 09:00-18:00\r\nSO 09:00-15:00\r\nDi. 18:00-21:00 ONLINE",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "THU",
+          "date": "2027-09-23",
+          "startTime": "19:00",
+          "endTime": "21:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "FRI",
+          "date": "2027-09-24",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2027-09-25",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2027-09-26",
+          "startTime": "09:00",
+          "endTime": "15:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "a5_30",
+      "shortcode": "a5",
+      "heading": "Stückentwicklung basierend auf Mitspieltheater **Figurenkarussell**",
+      "date_start": "2026-07-26 09:30:00",
+      "date_end": "2026-07-26 18:30:00",
+      "hasOnlineSessions": true,
+      "homedomain": "dasei",
+      "instructor": "Cornelia Jung",
+      "venue": "Institut Kineo",
+      "teasertext": "Mithilfe des Figurenkarussells animierst du das teilnehmende Publikum aktiv in das Bühnengeschehen einzusteigen. Mühelos und ohne Umschweife gelingt es so, Zuschauende zu Mitspielenden zu machen. Wurde eine Rolle von einem oder mehreren Teilnehmenden übernommen, dreht sich das Figurenkarussell zur nächsten Figur.",
+      "teachingUnits": 17,
+      "venueFormatted": "Schwanthalerstraße 91, 80336 München",
+      "venueStreet": "Schwanthalerstraße 91",
+      "venueZip": "80336",
+      "venueCity": "München",
+      "schedule": "FR 18:00-20:00 online\r\nSO 09:30-18:30\r\nDI 18:00-21:00 online",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "FRI",
+          "date": "2026-07-24",
+          "startTime": "18:00",
+          "endTime": "20:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2026-07-26",
+          "startTime": "09:30",
+          "endTime": "18:30"
+        },
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "TUE",
+          "date": "2026-07-28",
+          "startTime": "18:00",
+          "endTime": "21:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "a5_47",
+      "shortcode": "a5",
+      "heading": "Stückentwicklung basierend auf Mitspieltheater **Figurenkarussell**",
+      "date_start": "2026-07-24 18:00:00",
+      "date_end": "2026-07-28 21:00:00",
+      "hasOnlineSessions": true,
+      "homedomain": "dasei",
+      "instructor": "Cornelia Jung",
+      "venue": "Tanzerei",
+      "teasertext": "Mithilfe des Figurenkarussells animierst du das teilnehmende Publikum aktiv in das Bühnengeschehen einzusteigen. Mühelos und ohne Umschweife gelingt es so, Zuschauende zu Mitspielenden zu machen. Wurde eine Rolle von einem oder mehreren Teilnehmenden übernommen, dreht sich das Figurenkarussell zur nächsten Figur.",
+      "teachingUnits": 17,
+      "venueFormatted": "Kaiserstr. 177, 90763 Nürnberg/Fürth",
+      "venueStreet": "Kaiserstr. 177",
+      "venueZip": "90763",
+      "venueCity": "Nürnberg/Fürth",
+      "schedule": "FR 18:00-20:00 online\r\nSO 09:00-18:00\r\nDI 18:00-21:00 online",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "FRI",
+          "date": "2026-07-24",
+          "startTime": "18:00",
+          "endTime": "20:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2026-07-26",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "TUE",
+          "date": "2026-07-28",
+          "startTime": "18:00",
+          "endTime": "21:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "issues": {
+          "resolved": true,
+          "log": [
+            "2026-04-05 missing_start_time auto-detected during import",
+            "2026-04-05 missing_end_time auto-detected during import",
+            "2026-04-06 fixed: date_start→first session (FRI online), date_end→last session (TUE online); locked"
+          ]
+        },
+        "updated": "2026-04-06",
+        "locked": true
+      }
+    },
+    {
+      "key": "aa_56",
+      "shortcode": "aa",
+      "heading": "Kurseinstieg **Online-Teaser \"Einstiege ins Theaterspiel\"**",
+      "date_start": "2026-04-09 18:00:00",
+      "date_end": "2026-04-09 20:00:00",
+      "hasOnlineSessions": true,
+      "homedomain": "dasei",
+      "instructor": "Hans Dönitz",
+      "venue": "",
+      "teasertext": "Du erwägst schon länger in die Theaterpädagogik einzusteigen? Du suchst nach qualifizierter Ausbildung in diesem Bereich? Vielleicht bist du bereits fest entschlossen, bei DAS Ei zu starten? \r\nDann melde dich an, zum unverbindlichen Online-Teaser!\r\nHier erfährst du alles über unsere Philosophie, kannst deine Fragen direkt im Gespräch klären und erhältst wichtige Infos zum nächsten Kursstart.",
+      "teachingUnits": 0,
+      "venueFormatted": "",
+      "venueStreet": "",
+      "venueZip": "",
+      "venueCity": "",
+      "schedule": "DO 18:00-20:00 _online_",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "THU",
+          "date": "2026-04-09",
+          "startTime": "18:00",
+          "endTime": "20:00",
+          "locationHint": "Online"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "aa_57",
+      "shortcode": "aa",
+      "heading": "Kurseinstieg **Online-Teaser \"Einstiege ins Theaterspiel\"**",
+      "date_start": "2026-04-30 18:00:00",
+      "date_end": "2026-04-30 20:00:00",
+      "hasOnlineSessions": true,
+      "homedomain": "dasei",
+      "instructor": "Hans Dönitz",
+      "venue": "",
+      "teasertext": "Du erwägst schon länger in die Theaterpädagogik einzusteigen? Du suchst nach qualifizierter Ausbildung in diesem Bereich? Vielleicht bist du bereits fest entschlossen, bei DAS Ei zu starten? \r\nDann melde dich an, zum unverbindlichen Online-Teaser!\r\nHier erfährst du alles über unsere Philosophie, kannst deine Fragen direkt im Gespräch klären und erhältst wichtige Infos zum nächsten Kursstart.",
+      "teachingUnits": 0,
+      "venueFormatted": "",
+      "venueStreet": "",
+      "venueZip": "",
+      "venueCity": "",
+      "schedule": "DO 18:00-20:00 _online_",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "THU",
+          "date": "2026-04-30",
+          "startTime": "18:00",
+          "endTime": "20:00",
+          "locationHint": "Online"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "aa_58",
+      "shortcode": "aa",
+      "heading": "Kurseinstieg **Online-Teaser \"Einstiege ins Theaterspiel\"**",
+      "date_start": "2026-05-21 18:00:00",
+      "date_end": "2026-05-21 20:00:00",
+      "hasOnlineSessions": true,
+      "homedomain": "dasei",
+      "instructor": "Hans Dönitz",
+      "venue": "",
+      "teasertext": "Du erwägst schon länger in die Theaterpädagogik einzusteigen? Du suchst nach qualifizierter Ausbildung in diesem Bereich? Vielleicht bist du bereits fest entschlossen, bei DAS Ei zu starten? \r\nDann melde dich an, zum unverbindlichen Online-Teaser!\r\nHier erfährst du alles über unsere Philosophie, kannst deine Fragen direkt im Gespräch klären und erhältst wichtige Infos zum nächsten Kursstart.",
+      "teachingUnits": 0,
+      "venueFormatted": "",
+      "venueStreet": "",
+      "venueZip": "",
+      "venueCity": "",
+      "schedule": "DO 18:00-20:00 _online_",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "THU",
+          "date": "2026-05-21",
+          "startTime": "18:00",
+          "endTime": "20:00",
+          "locationHint": "Online"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "aa_59",
+      "shortcode": "aa",
+      "heading": "Kurseinstieg **Online-Teaser \"Einstiege ins Theaterspiel\"**",
+      "date_start": "2026-06-18 18:00:00",
+      "date_end": "2026-06-18 20:00:00",
+      "hasOnlineSessions": true,
+      "homedomain": "dasei",
+      "instructor": "Hans Dönitz",
+      "venue": "",
+      "teasertext": "Du erwägst schon länger in die Theaterpädagogik einzusteigen? Du suchst nach qualifizierter Ausbildung in diesem Bereich? Vielleicht bist du bereits fest entschlossen, bei DAS Ei zu starten? \r\nDann melde dich an, zum unverbindlichen Online-Teaser!\r\nHier erfährst du alles über unsere Philosophie, kannst deine Fragen direkt im Gespräch klären und erhältst wichtige Infos zum nächsten Kursstart.",
+      "teachingUnits": 0,
+      "venueFormatted": "",
+      "venueStreet": "",
+      "venueZip": "",
+      "venueCity": "",
+      "schedule": "DO 18:00-20:00 _online_",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "THU",
+          "date": "2026-06-18",
+          "startTime": "18:00",
+          "endTime": "20:00",
+          "locationHint": "Online"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "aa_60",
+      "shortcode": "aa",
+      "heading": "Kurseinstieg **Online-Teaser \"Einstiege ins Theaterspiel\"**",
+      "date_start": "2026-07-23 18:00:00",
+      "date_end": "2026-07-23 20:00:00",
+      "hasOnlineSessions": true,
+      "homedomain": "dasei",
+      "instructor": "Hans Dönitz",
+      "venue": "",
+      "teasertext": "Du erwägst schon länger in die Theaterpädagogik einzusteigen? Du suchst nach qualifizierter Ausbildung in diesem Bereich? Vielleicht bist du bereits fest entschlossen, bei DAS Ei zu starten? \r\nDann melde dich an, zum unverbindlichen Online-Teaser!\r\nHier erfährst du alles über unsere Philosophie, kannst deine Fragen direkt im Gespräch klären und erhältst wichtige Infos zum nächsten Kursstart.",
+      "teachingUnits": 0,
+      "venueFormatted": "",
+      "venueStreet": "",
+      "venueZip": "",
+      "venueCity": "",
+      "schedule": "DO 18:00-20:00 _online_",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "THU",
+          "date": "2026-07-23",
+          "startTime": "18:00",
+          "endTime": "20:00",
+          "locationHint": "Online"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "aa_61",
+      "shortcode": "aa",
+      "heading": "Kurseinstieg **Online-Teaser \"Einstiege ins Theaterspiel\"**",
+      "date_start": "2026-08-27 18:00:00",
+      "date_end": "2026-08-27 20:00:00",
+      "hasOnlineSessions": true,
+      "homedomain": "dasei",
+      "instructor": "Hans Dönitz",
+      "venue": "",
+      "teasertext": "Du erwägst schon länger in die Theaterpädagogik einzusteigen? Du suchst nach qualifizierter Ausbildung in diesem Bereich? Vielleicht bist du bereits fest entschlossen, bei DAS Ei zu starten? \r\nDann melde dich an, zum unverbindlichen Online-Teaser!\r\nHier erfährst du alles über unsere Philosophie, kannst deine Fragen direkt im Gespräch klären und erhältst wichtige Infos zum nächsten Kursstart.",
+      "teachingUnits": 0,
+      "venueFormatted": "",
+      "venueStreet": "",
+      "venueZip": "",
+      "venueCity": "",
+      "schedule": "DO 18:00-20:00 _online_",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "THU",
+          "date": "2026-08-27",
+          "startTime": "18:00",
+          "endTime": "20:00",
+          "locationHint": "Online"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "aa_62",
+      "shortcode": "aa",
+      "heading": "Kurseinstieg **Online-Teaser \"Einstiege ins Theaterspiel\"**",
+      "date_start": "2026-09-24 18:00:00",
+      "date_end": "2026-09-24 20:00:00",
+      "hasOnlineSessions": true,
+      "homedomain": "dasei",
+      "instructor": "Hans Dönitz",
+      "venue": "",
+      "teasertext": "Du erwägst schon länger in die Theaterpädagogik einzusteigen? Du suchst nach qualifizierter Ausbildung in diesem Bereich? Vielleicht bist du bereits fest entschlossen, bei DAS Ei zu starten? \r\nDann melde dich an, zum unverbindlichen Online-Teaser!\r\nHier erfährst du alles über unsere Philosophie, kannst deine Fragen direkt im Gespräch klären und erhältst wichtige Infos zum nächsten Kursstart.",
+      "teachingUnits": 0,
+      "venueFormatted": "",
+      "venueStreet": "",
+      "venueZip": "",
+      "venueCity": "",
+      "schedule": "DO 18:00-20:00 _online_",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "THU",
+          "date": "2026-09-24",
+          "startTime": "18:00",
+          "endTime": "20:00",
+          "locationHint": "Online"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "aa_63",
+      "shortcode": "aa",
+      "heading": "Kurseinstieg **Online-Teaser \"Einstiege ins Theaterspiel\"**",
+      "date_start": "2026-10-22 18:00:00",
+      "date_end": "2026-10-22 20:00:00",
+      "hasOnlineSessions": true,
+      "homedomain": "dasei",
+      "instructor": "Hans Dönitz",
+      "venue": "",
+      "teasertext": "Du erwägst schon länger in die Theaterpädagogik einzusteigen? Du suchst nach qualifizierter Ausbildung in diesem Bereich? Vielleicht bist du bereits fest entschlossen, bei DAS Ei zu starten? \r\nDann melde dich an, zum unverbindlichen Online-Teaser!\r\nHier erfährst du alles über unsere Philosophie, kannst deine Fragen direkt im Gespräch klären und erhältst wichtige Infos zum nächsten Kursstart.",
+      "teachingUnits": 0,
+      "venueFormatted": "",
+      "venueStreet": "",
+      "venueZip": "",
+      "venueCity": "",
+      "schedule": "DO 18:00-20:00 _online_",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "THU",
+          "date": "2026-10-22",
+          "startTime": "18:00",
+          "endTime": "20:00",
+          "locationHint": "Online"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "issues": {
+          "resolved": true,
+          "log": [
+            "2026-04-05 missing_end_time auto-detected during import",
+            "2026-04-06 cleared_missing_end_time auto-resolved on re-import"
+          ]
+        },
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "aa_64",
+      "shortcode": "aa",
+      "heading": "Kurseinstieg **Online-Teaser \"Einstiege ins Theaterspiel\"**",
+      "date_start": "2026-11-19 18:00:00",
+      "date_end": "2026-11-19 20:00:00",
+      "hasOnlineSessions": true,
+      "homedomain": "dasei",
+      "instructor": "Hans Dönitz",
+      "venue": "",
+      "teasertext": "Du erwägst schon länger in die Theaterpädagogik einzusteigen? Du suchst nach qualifizierter Ausbildung in diesem Bereich? Vielleicht bist du bereits fest entschlossen, bei DAS Ei zu starten? \r\nDann melde dich an, zum unverbindlichen Online-Teaser!\r\nHier erfährst du alles über unsere Philosophie, kannst deine Fragen direkt im Gespräch klären und erhältst wichtige Infos zum nächsten Kursstart.",
+      "teachingUnits": 0,
+      "venueFormatted": "",
+      "venueStreet": "",
+      "venueZip": "",
+      "venueCity": "",
+      "schedule": "DO 18:00-20:00 _online_",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "THU",
+          "date": "2026-11-19",
+          "startTime": "18:00",
+          "endTime": "20:00",
+          "locationHint": "Online"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "aa_65",
+      "shortcode": "aa",
+      "heading": "Kurseinstieg **Online-Teaser \"Einstiege ins Theaterspiel\"**",
+      "date_start": "2027-01-07 18:00:00",
+      "date_end": "2027-01-07 20:00:00",
+      "hasOnlineSessions": true,
+      "homedomain": "dasei",
+      "instructor": "Hans Dönitz",
+      "venue": "",
+      "teasertext": "Du erwägst schon länger in die Theaterpädagogik einzusteigen? Du suchst nach qualifizierter Ausbildung in diesem Bereich? Vielleicht bist du bereits fest entschlossen, bei DAS Ei zu starten? \r\nDann melde dich an, zum unverbindlichen Online-Teaser!\r\nHier erfährst du alles über unsere Philosophie, kannst deine Fragen direkt im Gespräch klären und erhältst wichtige Infos zum nächsten Kursstart.",
+      "teachingUnits": 0,
+      "venueFormatted": "",
+      "venueStreet": "",
+      "venueZip": "",
+      "venueCity": "",
+      "schedule": "DO 18:00-20:00 _online_",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "THU",
+          "date": "2027-01-07",
+          "startTime": "18:00",
+          "endTime": "20:00",
+          "locationHint": "Online"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "az_39",
+      "shortcode": "az",
+      "heading": "1. Orientierungsgespräch mit Institutsleitung DAS Ei **Orientierungsgespräch/Beratung**",
+      "date_start": "2026-10-15 09:00:00",
+      "date_end": "2026-11-10 09:00:00",
+      "hasOnlineSessions": false,
+      "homedomain": "dasei",
+      "instructor": "Hans Dönitz",
+      "venue": "",
+      "teasertext": "1. Orientierungsgespräch/Beratung\r\npersönlicher Seminarplan Grundlagenbildung (Optionen / Fortbildung 5 Wochenenden / Vollanmeldung)",
+      "teachingUnits": 0,
+      "venueFormatted": "",
+      "venueStreet": "",
+      "venueZip": "",
+      "venueCity": "",
+      "schedule": "_individuell_ | individueller (Telefon-) Termin",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "THU",
+          "date": "2026-10-15",
+          "startTime": "09:00",
+          "endTime": "09:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "issues": {
+          "resolved": true,
+          "log": [
+            "2026-04-05 missing_end_time auto-detected during import",
+            "2026-04-06 locked as-is: end date is booking window, not a session"
+          ]
+        },
+        "updated": "2026-04-06",
+        "locked": true
+      }
+    },
+    {
+      "key": "b2_27",
+      "shortcode": "b2",
+      "heading": "Szenische Themenarbeit mit kreativen Bildern **Klischees, Situationen & Skulpturen**",
+      "date_start": "2027-02-25 19:00:00",
+      "date_end": "2027-02-28 15:00:00",
+      "hasOnlineSessions": false,
+      "homedomain": "dasei",
+      "instructor": "Hans Dönitz",
+      "venue": "Burgstallmühle",
+      "teasertext": "Wir lernen, Einstiege und Ausstiege mit spielerischen Standbildern zu gestalten, innere Haltungen, Veränderungen und Ergebnisse sichtbar zu machen.",
+      "teachingUnits": 24,
+      "venueFormatted": "Burgstallmühle 1, Voggendorf (bei Bechhofen), 91572 Burgstallmühle / Voggendorf",
+      "venueStreet": "Burgstallmühle 1, Voggendorf (bei Bechhofen)",
+      "venueZip": "91572",
+      "venueCity": "Burgstallmühle / Voggendorf",
+      "schedule": "DO 19:00-21:00\r\nFR 09:00-18:00\r\nSA 09:00-18:00\r\nSO 09:00-15:00\r\nDi. 18:00-21:00 ONLINE",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "THU",
+          "date": "2027-02-25",
+          "startTime": "19:00",
+          "endTime": "21:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "FRI",
+          "date": "2027-02-26",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2027-02-27",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2027-02-28",
+          "startTime": "09:00",
+          "endTime": "15:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "b5_14",
+      "shortcode": "b5",
+      "heading": "Selbsterfahrung in der Fremdrolle **Problemzentriertes Rollenspiel**",
+      "date_start": "2026-04-23 19:00:00",
+      "date_end": "2026-04-26 15:00:00",
+      "hasOnlineSessions": false,
+      "homedomain": "dasei",
+      "instructor": "Christine Oppel",
+      "venue": "Burgstallmühle",
+      "teasertext": "An diesem WE wird der Fokus kleiner, persönlicher. Anhand fiktiver, sozialer Konflikte werden Situationskarten entwickelt und Rollenspiele angelegt. In der Auswertung fließen dann sämtliche Betrachtungen, nämlich aus der Rolle der Spieler:innen und der Beobachter:innen ein.  Im übenden Rollenspiel kannst du Verhaltensänderungen und Ziele ausprobieren und Lösungsmöglichkeiten mit der Gruppe erarbeiten.",
+      "teachingUnits": 37,
+      "venueFormatted": "Burgstallmühle 1, Voggendorf (bei Bechhofen), 91572 Burgstallmühle / Voggendorf",
+      "venueStreet": "Burgstallmühle 1, Voggendorf (bei Bechhofen)",
+      "venueZip": "91572",
+      "venueCity": "Burgstallmühle / Voggendorf",
+      "schedule": "DO 19:00-21:00\r\nFR 09:00-18:00\r\nSA 09:00-18:00\r\nSO 09:00-15:00\r\nDi. 18:00-21:00 ONLINE",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "THU",
+          "date": "2026-04-23",
+          "startTime": "19:00",
+          "endTime": "21:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "FRI",
+          "date": "2026-04-24",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2026-04-25",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2026-04-26",
+          "startTime": "09:00",
+          "endTime": "15:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "b5_35",
+      "shortcode": "b5",
+      "heading": "Selbsterfahrung in der Fremdrolle **Problemzentriertes Rollenspiel**",
+      "date_start": "2027-04-22 19:00:00",
+      "date_end": "2027-04-25 15:00:00",
+      "hasOnlineSessions": false,
+      "homedomain": "dasei",
+      "instructor": "Christine Oppel",
+      "venue": "Burgstallmühle",
+      "teasertext": "An diesem WE wird der Fokus kleiner, persönlicher. Anhand fiktiver, sozialer Konflikte werden Situationskarten entwickelt und Rollenspiele angelegt. In der Auswertung fließen dann sämtliche Betrachtungen, nämlich aus der Rolle der Spieler:innen und der Beobachter:innen ein.  Im übenden Rollenspiel kannst du Verhaltensänderungen und Ziele ausprobieren und Lösungsmöglichkeiten mit der Gruppe erarbeiten.",
+      "teachingUnits": 37,
+      "venueFormatted": "Burgstallmühle 1, Voggendorf (bei Bechhofen), 91572 Burgstallmühle / Voggendorf",
+      "venueStreet": "Burgstallmühle 1, Voggendorf (bei Bechhofen)",
+      "venueZip": "91572",
+      "venueCity": "Burgstallmühle / Voggendorf",
+      "schedule": "DO 19:00-21:00\r\nFR 09:00-18:00\r\nSA 09:00-18:00\r\nSO 09:00-15:00\r\nDi. 18:00-21:00 ONLINE",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "THU",
+          "date": "2027-04-22",
+          "startTime": "19:00",
+          "endTime": "21:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "FRI",
+          "date": "2027-04-23",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2027-04-24",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2027-04-25",
+          "startTime": "09:00",
+          "endTime": "15:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "b7_70",
+      "shortcode": "b7",
+      "heading": "Eine Bühne voll Erfahrung **Forumtheater**",
+      "date_start": "2027-01-23 09:15:00",
+      "date_end": "2027-01-24 15:00:00",
+      "hasOnlineSessions": true,
+      "homedomain": "dasei",
+      "instructor": "Christine Oppel",
+      "venue": "Tanzerei",
+      "teasertext": "Die Methode des Forumtheaters nach Augusto Boal lässt Theaterpädagog*innen zu Jokern werden und das Publikum zu ZuSchauspielenden. Eine soziale Situation der Unterdrückung wird sichtbar und nachfühlbar auf die Bühne gestellt. Vom Rollenspiel zum Schauspiel. Diese Wiederholbarkeit der zugespitzten Konfliktsituation ermöglicht das Ausprobieren vielerlei Lösungswege.",
+      "teachingUnits": 24,
+      "venueFormatted": "Kaiserstr. 177, 90763 Nürnberg/Fürth",
+      "venueStreet": "Kaiserstr. 177",
+      "venueZip": "90763",
+      "venueCity": "Nürnberg/Fürth",
+      "schedule": "FR 18:00-20:00 online\r\nSA 09:15-18:15\r\nSO 09:00-15:00\r\nDI 18:00-21:00 online",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2027-01-23",
+          "startTime": "09:15",
+          "endTime": "18:15"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2027-01-24",
+          "startTime": "09:00",
+          "endTime": "15:00"
+        },
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "TUE",
+          "startTime": "18:00",
+          "endTime": "21:00"
+        },
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "FRI",
+          "startTime": "18:00",
+          "endTime": "20:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "b7_94",
+      "shortcode": "b7",
+      "heading": "Eine Bühne voll Erfahrung **Forumtheater**",
+      "date_start": "2028-01-22 09:15:00",
+      "date_end": "2028-01-23 15:00:00",
+      "hasOnlineSessions": true,
+      "homedomain": "dasei",
+      "instructor": "Christine Oppel",
+      "venue": "Tanzerei",
+      "teasertext": "Die Methode des Forumtheaters nach Augusto Boal lässt Theaterpädagog*innen zu Jokern werden und das Publikum zu ZuSchauspielenden. Eine soziale Situation der Unterdrückung wird sichtbar und nachfühlbar auf die Bühne gestellt. Vom Rollenspiel zum Schauspiel. Diese Wiederholbarkeit der zugespitzten Konfliktsituation ermöglicht das Ausprobieren vielerlei Lösungswege.",
+      "teachingUnits": 24,
+      "venueFormatted": "Kaiserstr. 177, 90763 Nürnberg/Fürth",
+      "venueStreet": "Kaiserstr. 177",
+      "venueZip": "90763",
+      "venueCity": "Nürnberg/Fürth",
+      "schedule": "FR 18:00-20:00 online\r\nSA 09:15-18:15\r\nSO 09:00-15:00\r\nDI 18:00-21:00 online",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2028-01-22",
+          "startTime": "09:15",
+          "endTime": "18:15"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2028-01-23",
+          "startTime": "09:00",
+          "endTime": "15:00"
+        },
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "TUE",
+          "startTime": "18:00",
+          "endTime": "21:00"
+        },
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "FRI",
+          "startTime": "18:00",
+          "endTime": "20:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "b8_71",
+      "shortcode": "b8",
+      "heading": "Bilder werden lebendig **Bewegte Themenarbeit**",
+      "date_start": "2027-01-23 09:15:00",
+      "date_end": "2027-01-24 15:00:00",
+      "hasOnlineSessions": true,
+      "homedomain": "dasei",
+      "instructor": "Rosalin Hertrich",
+      "venue": "Institut Kineo",
+      "teasertext": "",
+      "teachingUnits": 24,
+      "venueFormatted": "Schwanthalerstraße 91, 80336 München",
+      "venueStreet": "Schwanthalerstraße 91",
+      "venueZip": "80336",
+      "venueCity": "München",
+      "schedule": "FR 18:00-20:00 online\r\nSA 09:15-18:15\r\nSO 09:00-15:00\r\nDI 18:00-21:00 online",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2027-01-23",
+          "startTime": "09:15",
+          "endTime": "18:15"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2027-01-24",
+          "startTime": "09:00",
+          "endTime": "15:00"
+        },
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "TUE",
+          "startTime": "18:00",
+          "endTime": "21:00"
+        },
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "FRI",
+          "startTime": "18:00",
+          "endTime": "20:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "bx_17",
+      "shortcode": "bx",
+      "heading": "Begleitetes Praxisprojekt in der Grundschule **Basisprojekt „Freundschaft“**",
+      "date_start": "2026-06-29 07:45:00",
+      "date_end": "2026-06-30 16:30:00",
+      "hasOnlineSessions": false,
+      "homedomain": "dasei",
+      "instructor": "Hans Dönitz",
+      "venue": "",
+      "teasertext": "Der Kurs schließt das Basisjahr mit einem gemeinsam durchgeführten Projekt in der Grundschule ab. Du arbeitest Solo oder im Duo nach einer der Methoden aus Modul A oder Modul B mit einer Gruppe von ca. 10 Kindern zu einem für sie zentralen Thema. Wir begleiten diesen Prozess in Vorbereitung und Durchführung.",
+      "teachingUnits": 37,
+      "venueFormatted": "",
+      "venueStreet": "",
+      "venueZip": "",
+      "venueCity": "",
+      "schedule": "GROßRAUM MÜNCHEN\r\nMO 7:45-17:00\r\nDI 7:45-16:30",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "MON",
+          "date": "2026-06-29",
+          "startTime": "07:45",
+          "endTime": "17:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "TUE",
+          "date": "2026-06-30",
+          "startTime": "07:45",
+          "endTime": "16:30"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "bx_8",
+      "shortcode": "bx",
+      "heading": "Begleitetes Praxisprojekt in der Grundschule **Basisprojekt „Freundschaft“**",
+      "date_start": "2026-02-03 19:30:00",
+      "date_end": "2026-06-23 21:00:00",
+      "hasOnlineSessions": false,
+      "homedomain": "dasei",
+      "instructor": "Hans Dönitz",
+      "venue": "",
+      "teasertext": "Der Kurs schließt das Basisjahr mit einem gemeinsam durchgeführten Projekt in der Grundschule ab. Du arbeitest Solo oder im Duo nach einer der Methoden aus Modul A oder Modul B mit einer Gruppe von ca. 10 Kindern zu einem für sie zentralen Thema. Wir begleiten diesen Prozess in Vorbereitung und Durchführung.",
+      "teachingUnits": 37,
+      "venueFormatted": "",
+      "venueStreet": "",
+      "venueZip": "",
+      "venueCity": "",
+      "schedule": "DI 3.2 19:30-21:00\r\nDI 17.3 19:30-21:00\r\nDI 31.3 19:30-21:00\r\nDI 5.5 19:30-21:00\r\n(DI 2.6 19:30-21:00*)\r\nDI 23.6 19:30-21:00",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "TUE",
+          "date": "2026-02-03",
+          "startTime": "19:30",
+          "endTime": "21:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "TUE",
+          "date": "2026-03-17",
+          "startTime": "19:30",
+          "endTime": "21:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "TUE",
+          "date": "2026-03-31",
+          "startTime": "19:30",
+          "endTime": "21:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "TUE",
+          "date": "2026-05-05",
+          "startTime": "19:30",
+          "endTime": "21:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "TUE",
+          "date": "2026-06-02",
+          "startTime": "19:30",
+          "endTime": "21:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "TUE",
+          "date": "2026-06-23",
+          "startTime": "19:30",
+          "endTime": "21:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "issues": {
+          "resolved": true,
+          "log": [
+            "2026-04-05 missing_agendalines auto-detected during import",
+            "2026-04-06 cleared_missing_agendalines auto-resolved on re-import",
+            "2026-04-06 missing_start_time auto-detected during import",
+            "2026-04-06 cleared_missing_start_time auto-resolved on re-import"
+          ]
+        },
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "c0_53",
+      "shortcode": "c0",
+      "heading": "Das Fundament entsteht **Theoretische Einführung**",
+      "date_start": "2026-06-02 19:00:00",
+      "date_end": "2026-06-02 20:30:00",
+      "hasOnlineSessions": false,
+      "homedomain": "dasei",
+      "instructor": "Esther Sambale",
+      "venue": "",
+      "teasertext": "Du lernst zwei verschiedene konzeptionelle Ansätze kennen:   \r\nIm episch-dramatischen Modell erfährst du, wie du eine Geschichte spannend erzählen kannst (C1-C4). Im performativ-postdramatischen Modell erarbeitet ihr eine szenische Collage und beleuchtet ein Thema aus verschiedenen Perspektiven (C5-C8). JedeR Teilnehmende wird sowohl in die Leitungsverantwortung (Regie) gehen als auch als Spieler:in die Bühne betreten.",
+      "teachingUnits": 8,
+      "venueFormatted": "",
+      "venueStreet": "",
+      "venueZip": "",
+      "venueCity": "",
+      "schedule": "THEORIE-ERSATZ-SEMINAR:\r\n19:00-20:30 Uhr",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "TUE",
+          "date": "2026-06-02",
+          "startTime": "19:00",
+          "endTime": "20:30"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "issues": {
+          "resolved": true,
+          "log": [
+            "2026-04-05 missing_agendalines auto-detected during import",
+            "2026-04-06 cleared_missing_agendalines auto-resolved on re-import"
+          ]
+        },
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "c0_6",
+      "shortcode": "c0",
+      "heading": "Das Fundament entsteht **Theoretische Einführung**",
+      "date_start": "2026-05-09 09:00:00",
+      "date_end": "2026-05-09 12:00:00",
+      "hasOnlineSessions": false,
+      "homedomain": "dasei",
+      "instructor": "Esther Sambale",
+      "venue": "",
+      "teasertext": "Du lernst zwei verschiedene konzeptionelle Ansätze kennen:   \r\nIm episch-dramatischen Modell erfährst du, wie du eine Geschichte spannend erzählen kannst (C1-C4). Im performativ-postdramatischen Modell erarbeitet ihr eine szenische Collage und beleuchtet ein Thema aus verschiedenen Perspektiven (C5-C8). JedeR Teilnehmende wird sowohl in die Leitungsverantwortung (Regie) gehen als auch als Spieler:in die Bühne betreten.",
+      "teachingUnits": 8,
+      "venueFormatted": "",
+      "venueStreet": "",
+      "venueZip": "",
+      "venueCity": "",
+      "schedule": "THEORIE-SEMINAR:\r\n09:00-12:00 / 14:00-16:00 Uhr",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2026-05-09",
+          "startTime": "09:00",
+          "endTime": "12:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2026-05-09",
+          "startTime": "14:00",
+          "endTime": "16:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "issues": {
+          "resolved": true,
+          "log": [
+            "2026-04-05 missing_agendalines auto-detected during import",
+            "2026-04-06 cleared_missing_agendalines auto-resolved on re-import"
+          ]
+        },
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "c1_10",
+      "shortcode": "c1",
+      "heading": "Welche Themen verbindet die Gruppe **Initiierung**",
+      "date_start": "2026-06-12 15:00:00",
+      "date_end": "2026-06-14 16:00:00",
+      "hasOnlineSessions": true,
+      "homedomain": "dasei",
+      "instructor": "Esther Sambale",
+      "venue": "Eine Welt Haus",
+      "teasertext": "Ein gemeinsames Erlebnis schweißt die Gruppe für die bevorstehende Theaterproduktion zusammen. Ein kreativer Konsensprozess ermöglicht die kritische Auseinandersetzung mit dem Thema. Hier beginnt die Identifikation mit dem entstehenden Stück und dem Ensemble.",
+      "teachingUnits": 32,
+      "venueFormatted": "Schwanthalerstr. 80, 80336 München",
+      "venueStreet": "Schwanthalerstr. 80",
+      "venueZip": "80336",
+      "venueCity": "München",
+      "schedule": "FR 15:00-21:00*\r\nSA 09:00-18:00\r\nSO 09:00-16:00\r\nDI 18:00-20:00 _online_",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "FRI",
+          "date": "2026-06-12",
+          "startTime": "15:00",
+          "endTime": "21:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2026-06-13",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2026-06-14",
+          "startTime": "09:00",
+          "endTime": "16:00"
+        },
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "TUE",
+          "startTime": "18:00",
+          "endTime": "20:00",
+          "locationHint": "Online"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "c3_11",
+      "shortcode": "c3",
+      "heading": "Die Geschichte wird lebendig **Inszenierung über die Stimme**",
+      "date_start": "2026-07-22 16:00:00",
+      "date_end": "2026-07-26 18:00:00",
+      "hasOnlineSessions": false,
+      "homedomain": "dasei",
+      "instructor": "Esther Sambale",
+      "venue": "",
+      "teasertext": "In einer kreativen Phase experimentieren die Teilnehmenden mit Stimme, Klang und Bedeutung. Sie stellen biographische Bezüge her und können nun ihre Rolle sprachlich gestalten.",
+      "teachingUnits": 52,
+      "venueFormatted": "",
+      "venueStreet": "",
+      "venueZip": "",
+      "venueCity": "",
+      "schedule": "MI 16:00-21:00 _KOFFERFABRIK_\r\nDO 15:00-21:00*\r\nFR 14:00-20:00*\r\nSA 09:00-18:00\r\nSO 09:00-18:00\r\nDI nach Aufführg. 18:00-20:00 online: Reflexion",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "WED",
+          "date": "2026-07-22",
+          "startTime": "16:00",
+          "endTime": "21:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "THU",
+          "date": "2026-07-23",
+          "startTime": "15:00",
+          "endTime": "21:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "FRI",
+          "date": "2026-07-24",
+          "startTime": "14:00",
+          "endTime": "20:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2026-07-25",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2026-07-26",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "c5_15",
+      "shortcode": "c5",
+      "heading": "szenisches Material zu 2-3 Themen generieren **Kreativer Prozess in der Stückentwicklung**",
+      "date_start": "2026-09-18 19:00:00",
+      "date_end": "2026-09-20 15:00:00",
+      "hasOnlineSessions": false,
+      "homedomain": "dasei",
+      "instructor": "Eleanora Allerdings",
+      "venue": "Tanzerei",
+      "teasertext": "Angelehnt an den RSVP Zyklus von Anna und Leonhard Halprin lernt die Gruppe ein Verfahren zur kreativen Produktion szenischen Materials kennen. Das Format „szenische Collage“  wird in seinen Grundelementen vorgestellt.",
+      "teachingUnits": 24,
+      "venueFormatted": "Kaiserstr. 177, 90763 Nürnberg/Fürth",
+      "venueStreet": "Kaiserstr. 177",
+      "venueZip": "90763",
+      "venueCity": "Nürnberg/Fürth",
+      "schedule": "FR 19:00-21:30\r\nSA 09:00-18:00\r\nSO 09:00-15:00",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "FRI",
+          "date": "2026-09-18",
+          "startTime": "19:00",
+          "endTime": "21:30"
+        },
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2026-09-19",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2026-09-20",
+          "startTime": "09:00",
+          "endTime": "15:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "c6_12",
+      "shortcode": "c6",
+      "heading": "Erforschung und Entscheidung des Themas der Collage **Szenisches Material generieren im Zyklusmodell - 1**",
+      "date_start": "2026-10-23 19:00:00",
+      "date_end": "2026-10-25 15:00:00",
+      "hasOnlineSessions": false,
+      "homedomain": "dasei",
+      "instructor": "Eleanora Allerdings",
+      "venue": "Eine Welt Haus",
+      "teasertext": "Ausgehend vom Zyklusmodell (s.C5) erarbeitest du szenisches Material mit den Schwerpunkten Bewegung - Körper und Raum, unter anderem legen wir eine Choreografie an. Du erlebst dich als Spieler:in, die aktiv ihre Ideen zu inhaltlichen und gestalterischen Aspekten einbringen kann.",
+      "teachingUnits": 24,
+      "venueFormatted": "Schwanthalerstr. 80, 80336 München",
+      "venueStreet": "Schwanthalerstr. 80",
+      "venueZip": "80336",
+      "venueCity": "München",
+      "schedule": "FR 19:00-21:30\r\nSA 09:00-18:00\r\nSO 09:00-15:00",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "FRI",
+          "date": "2026-10-23",
+          "startTime": "19:00",
+          "endTime": "21:30"
+        },
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2026-10-24",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2026-10-25",
+          "startTime": "09:00",
+          "endTime": "15:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "c7_18",
+      "shortcode": "c7",
+      "heading": "Schwerpunkte Text, Stimme, Audio **Szenisches Material generieren im Zyklusmodell - 2**",
+      "date_start": "2026-11-26 09:00:00",
+      "date_end": "2026-11-29 18:00:00",
+      "hasOnlineSessions": false,
+      "homedomain": "dasei",
+      "instructor": "Eleanora Allerdings",
+      "venue": "Eine Welt Haus",
+      "teasertext": "Wir arbeiten mit der Generierung von Text sowie experimentellen Umgangsweisen mit Text und Stimme (z.B. chorische Elemente) und dem Einsatz verschiedener akustischer Mittel. Zunehmend fokussieren wir auf dramaturgische Gesichtspunkte der entstehenden Inszenierung.",
+      "teachingUnits": 32,
+      "venueFormatted": "Schwanthalerstr. 80, 80336 München",
+      "venueStreet": "Schwanthalerstr. 80",
+      "venueZip": "80336",
+      "venueCity": "München",
+      "schedule": "",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "THU",
+          "date": "2026-11-26",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "FRI",
+          "date": "2026-11-27",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2026-11-28",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2026-11-29",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "issues": {
+          "resolved": true,
+          "log": [
+            "2026-04-05 missing_agendalines auto-detected during import",
+            "2026-04-06 cleared_missing_agendalines auto-resolved on re-import"
+          ]
+        },
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "d2_13",
+      "shortcode": "d2",
+      "heading": "Repetitorium zu den Modulen A-C **Das Theaterpädagogische Dreieck**",
+      "date_start": "2027-04-08 19:00:00",
+      "date_end": "2027-04-11 15:00:00",
+      "hasOnlineSessions": false,
+      "homedomain": "dasei",
+      "instructor": "Hans Dönitz",
+      "venue": "Burgstallmühle",
+      "teasertext": "Du hast in den Module A, B und C drei in sich stimmige Teilbereiche der Theaterpädagogik kennengelernt. Im Repetitorium führen wir uns diese zunächst noch einmal vor Augen und entdecken dann das ‚Theaterpädagogische Dreieck‘ - die Zusammenhänge und Unterschiede zwischen A, B und C.",
+      "teachingUnits": 24,
+      "venueFormatted": "Burgstallmühle 1, Voggendorf (bei Bechhofen), 91572 Burgstallmühle / Voggendorf",
+      "venueStreet": "Burgstallmühle 1, Voggendorf (bei Bechhofen)",
+      "venueZip": "91572",
+      "venueCity": "Burgstallmühle / Voggendorf",
+      "schedule": "DO 19:00-21:00\r\nFR 09:00-18:00\r\nSA 09:00-18:00\r\nSO 09:00-15:00\r\nDi. 18:00-21:00 ONLINE",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "THU",
+          "date": "2027-04-08",
+          "startTime": "19:00",
+          "endTime": "21:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "FRI",
+          "date": "2027-04-09",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2027-04-10",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2027-04-11",
+          "startTime": "09:00",
+          "endTime": "15:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "d4_4",
+      "shortcode": "d4",
+      "heading": "Drei Konzepte mit Jugendlichen und Fachkräften **Alles eine Frage der Anleitung?**",
+      "date_start": "2026-06-20 09:00:00",
+      "date_end": "2026-06-21 15:00:00",
+      "hasOnlineSessions": true,
+      "homedomain": "dasei",
+      "instructor": "Hans Dönitz",
+      "venue": "Tanzerei",
+      "teasertext": "Die Anforderungen an Theaterpädagog:innen in der Arbeit mit Jugendlichen sind so vielschichtig wie die Zielgruppe selber.\r\nIm steten Wechselspiel von Widerstand und Flow, Genderfragen, Vertrauen und Abgrenzung erproben wir jeweils ein Animations-, Moderations- und Inszenierungs-Konzept. \r\nAbschließend fragen wir nach der Übertragbarkeit der gewonnenen Erkenntnisse auf das Spektrum der beruflichen Bildung.",
+      "teachingUnits": 24,
+      "venueFormatted": "Kaiserstr. 177, 90763 Nürnberg/Fürth",
+      "venueStreet": "Kaiserstr. 177",
+      "venueZip": "90763",
+      "venueCity": "Nürnberg/Fürth",
+      "schedule": "FR 19.6 18:00-20:00 _online_\r\nSA 09:00-18:00 FÜRTH\r\nSO 09:00-15:00 FÜRTH\r\nDI 23.6 18:00-20:00 _online_",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "FRI",
+          "date": "2026-06-19",
+          "startTime": "18:00",
+          "endTime": "20:00",
+          "locationHint": "Online"
+        },
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2026-06-20",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2026-06-21",
+          "startTime": "09:00",
+          "endTime": "15:00"
+        },
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "TUE",
+          "date": "2026-06-23",
+          "startTime": "18:00",
+          "endTime": "20:00",
+          "locationHint": "Online"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "issues": {
+          "resolved": true,
+          "log": [
+            "2026-04-05 missing_start_time auto-detected during import",
+            "2026-04-06 cleared_missing_start_time auto-resolved on re-import"
+          ]
+        },
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "d4_5",
+      "shortcode": "d4",
+      "heading": "Drei Konzepte mit Jugendlichen und Fachkräften **Alles eine Frage der Anleitung?**",
+      "date_start": "2026-06-27 09:00:00",
+      "date_end": "2026-06-28 15:00:00",
+      "hasOnlineSessions": true,
+      "homedomain": "dasei",
+      "instructor": "Hans Dönitz",
+      "venue": "Institut Kineo",
+      "teasertext": "Die Anforderungen an Theaterpädagog:innen in der Arbeit mit Jugendlichen sind so vielschichtig wie die Zielgruppe selber.\r\nIm steten Wechselspiel von Widerstand und Flow, Genderfragen, Vertrauen und Abgrenzung erproben wir jeweils ein Animations-, Moderations- und Inszenierungs-Konzept. \r\nAbschließend fragen wir nach der Übertragbarkeit der gewonnenen Erkenntnisse auf das Spektrum der beruflichen Bildung.",
+      "teachingUnits": 24,
+      "venueFormatted": "Schwanthalerstraße 91, 80336 München",
+      "venueStreet": "Schwanthalerstraße 91",
+      "venueZip": "80336",
+      "venueCity": "München",
+      "schedule": "FR 19.6 18:00-20:00 _online_\r\nDI 23.6 18:00-20:00 _online_\r\nSA 28.6 09:00-18:00 Mü/Kineo\r\nSO 28.6 09:00-15:00 Mü/Kineo",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "FRI",
+          "date": "2026-06-19",
+          "startTime": "18:00",
+          "endTime": "20:00",
+          "locationHint": "Online"
+        },
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "TUE",
+          "date": "2026-06-23",
+          "startTime": "18:00",
+          "endTime": "20:00",
+          "locationHint": "Online"
+        },
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2026-06-28",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2026-06-28",
+          "startTime": "09:00",
+          "endTime": "15:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06",
+        "issues": {
+          "resolved": true,
+          "log": [
+            "2026-04-06 missing_start_time auto-detected during import",
+            "2026-04-06 fixed: date_start→SA presence 06-27 from schedule; locked"
+          ]
+        },
+        "locked": true
+      }
+    },
+    {
+      "key": "e1_1",
+      "shortcode": "e1",
+      "heading": "Das Format Seminarwoche **Dicht an der Grenze**",
+      "date_start": "2026-10-01 09:00:00",
+      "date_end": "2026-10-05 16:00:00",
+      "hasOnlineSessions": false,
+      "homedomain": "dasei",
+      "instructor": "Hans Dönitz",
+      "venue": "Burgstallmühle",
+      "teasertext": "Die praktische Seminarwoche, mit welcher die Aufbaustufe startet, sehen wir als Urform der szenischen Themenarbeit. Themen- und Gruppenprozess werden in voller Entfaltung, ohne Unterbrechungen\r\ndurchlaufen. Anschließend visualisieren und reflektieren wir Schritt für Schritt den durchlaufenen Prozess und schaffen Platz für einen intensiven Diskurs zu Fragen der praktischen Anleitung, der Wirkungsweise\r\neinzelner Verfahren und der theoretischen Verortung.\r\nHierbei spielen Werkzeuge aus der TZI eine wichtige Rolle, ebenso die Tiefendimensionen des Lernens, die Lernprozesse und Phänomene wie Selbsterfahrung greifbar machen.",
+      "teachingUnits": 58,
+      "venueFormatted": "Burgstallmühle 1, Voggendorf (bei Bechhofen), 91572 Burgstallmühle / Voggendorf",
+      "venueStreet": "Burgstallmühle 1, Voggendorf (bei Bechhofen)",
+      "venueZip": "91572",
+      "venueCity": "Burgstallmühle / Voggendorf",
+      "schedule": "DO: 09:00-18:30\r\nFR: 09:00–18:30\r\nSA: 09:00-18:30\r\nSO: 09:00-15:00\r\nMO: 09:00-16:00\r\nAnreise: MI abend",
+      "agendaLines": [
+        {
+          "type": "Info",
+          "weekday": "WED",
+          "date": "2026-09-30"
+        },
+        {
+          "type": "Session",
+          "weekday": "THU",
+          "date": "2026-10-01",
+          "startTime": "09:00",
+          "endTime": "18:30"
+        },
+        {
+          "type": "Session",
+          "weekday": "FRI",
+          "date": "2026-10-02",
+          "startTime": "09:00",
+          "endTime": "18:30"
+        },
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2026-10-03",
+          "startTime": "09:00",
+          "endTime": "18:30"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2026-10-04",
+          "startTime": "09:00",
+          "endTime": "15:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "MON",
+          "date": "2026-10-05",
+          "startTime": "09:00",
+          "endTime": "16:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "e2_69",
+      "shortcode": "e2",
+      "heading": "Workshop- und Kursformat **Offene Themen - offene Gruppen?**",
+      "date_start": "2027-01-06 14:00:00",
+      "date_end": "2027-01-10 15:00:00",
+      "hasOnlineSessions": false,
+      "homedomain": "dasei",
+      "instructor": "Hans Dönitz",
+      "venue": "Tanzerei",
+      "teasertext": "Im zweiten Block startet die Gruppe mit didaktischen Übungen zur Kurs- und Workshopkonzeption. Anschließend bearbeiten die Ausbildungsteilnehmenden zwei der wichtigsten Kurzformen der szenischen Themenarbeit. Während der eintägige Workshop oft eine thematische Initiierung leistet, wird der fortlaufende Kurs oft z.B. arbeitsbegleitend zur fortdauernden Etablierung eines Reflexionsrahmens eingesetzt.",
+      "teachingUnits": 48,
+      "venueFormatted": "Kaiserstr. 177, 90763 Nürnberg/Fürth",
+      "venueStreet": "Kaiserstr. 177",
+      "venueZip": "90763",
+      "venueCity": "Nürnberg/Fürth",
+      "schedule": "MI: 14:00-20:00\r\nDO: 09:00-18:30\r\nFR: 09:00–18:30\r\nSA: 09:00-18:30\r\nSO: 09:00-15:00",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "WED",
+          "date": "2027-01-06",
+          "startTime": "14:00",
+          "endTime": "20:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "THU",
+          "date": "2027-01-07",
+          "startTime": "09:00",
+          "endTime": "18:30"
+        },
+        {
+          "type": "Session",
+          "weekday": "FRI",
+          "date": "2027-01-08",
+          "startTime": "09:00",
+          "endTime": "18:30"
+        },
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2027-01-09",
+          "startTime": "09:00",
+          "endTime": "18:30"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2027-01-10",
+          "startTime": "09:00",
+          "endTime": "15:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "issues": {
+          "resolved": true,
+          "log": [
+            "2026-04-05 missing_agendalines auto-detected during import",
+            "2026-04-06 cleared_missing_agendalines auto-resolved on re-import"
+          ]
+        },
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "h1_73",
+      "shortcode": "h1",
+      "heading": "Physisches Theater: Terminologie und Konzepte **Das Vokabular**",
+      "date_start": "2027-07-02 19:00:00",
+      "date_end": "2027-07-04 15:00:00",
+      "hasOnlineSessions": false,
+      "homedomain": "dasei",
+      "instructor": "Eleanora Allerdings",
+      "venue": "Mue: H-Lingg",
+      "teasertext": "Wie geht das? Atmosphären, Bilder, Geschichten entstehen lassen nur mit Körper, Raum, Bewegung. Welche Beschränkungen erlegt uns das auf, welche Freiheiten verschafft es uns? Wir untersuchen Begriffe, die Bewegung beschreiben, anweisen oder hervorlocken und beschäftigen uns mit verschiedenen Konzepten zeitgenössischen physischen Theaters.",
+      "teachingUnits": 24,
+      "venueFormatted": "Lachdach Atelier, Hermann-Lingg-Str. 2 / 3. Stock, 80336 München",
+      "venueStreet": "Lachdach Atelier, Hermann-Lingg-Str. 2 / 3. Stock",
+      "venueZip": "80336",
+      "venueCity": "München",
+      "schedule": "FR 19:00-21:30\r\nSA 09:00-18:00\r\nSO 09:00-15:00",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "FRI",
+          "date": "2027-07-02",
+          "startTime": "19:00",
+          "endTime": "21:30"
+        },
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2027-07-03",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2027-07-04",
+          "startTime": "09:00",
+          "endTime": "15:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "h2_19",
+      "shortcode": "h2",
+      "heading": "Physisches Theater: Physisch inszenieren **Denken in Bewegung**",
+      "date_start": "2027-09-05 09:00:00",
+      "date_end": "2027-09-12 19:00:00",
+      "hasOnlineSessions": false,
+      "homedomain": "dasei",
+      "instructor": "Eleanora Allerdings",
+      "venue": "Burgstallmühle",
+      "teasertext": "In dieser sehr intensiven Phase erarbeitet die Gruppe zwei Inszenierungen zu zwei unterschiedlichen Thematiken. Ein jeweils spezifisches Bewegungstraining legt die Grundlage dafür. Experimentell finden wir zu\r\nBewegungsvokabular und Ästhetik, die zum Thema und den Spielenden passen.",
+      "teachingUnits": 92,
+      "venueFormatted": "Burgstallmühle 1, Voggendorf (bei Bechhofen), 91572 Burgstallmühle / Voggendorf",
+      "venueStreet": "Burgstallmühle 1, Voggendorf (bei Bechhofen)",
+      "venueZip": "91572",
+      "venueCity": "Burgstallmühle / Voggendorf",
+      "schedule": "täglich 9:00-19:00 Uhr mit großer Pause",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2027-09-05",
+          "startTime": "09:00",
+          "endTime": "19:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "MON",
+          "date": "2027-09-06",
+          "startTime": "09:00",
+          "endTime": "19:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "TUE",
+          "date": "2027-09-07",
+          "startTime": "09:00",
+          "endTime": "19:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "WED",
+          "date": "2027-09-08",
+          "startTime": "09:00",
+          "endTime": "19:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "THU",
+          "date": "2027-09-09",
+          "startTime": "09:00",
+          "endTime": "19:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "FRI",
+          "date": "2027-09-10",
+          "startTime": "09:00",
+          "endTime": "19:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2027-09-11",
+          "startTime": "09:00",
+          "endTime": "19:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2027-09-12",
+          "startTime": "09:00",
+          "endTime": "19:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "issues": {
+          "resolved": true,
+          "log": [
+            "2026-04-05 missing_agendalines auto-detected during import",
+            "2026-04-06 cleared_missing_agendalines auto-resolved on re-import"
+          ]
+        },
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "k2_72",
+      "shortcode": "k2",
+      "heading": "Theorie und Geschichte der Theaterpädagogik **War 1789 der Anfang?**",
+      "date_start": "2027-04-30 18:00:00",
+      "date_end": "2027-05-02 12:00:00",
+      "hasOnlineSessions": true,
+      "homedomain": "dasei",
+      "instructor": "Hans Dönitz",
+      "venue": "",
+      "teasertext": "Rund um die Franz. Revolution und den Fall der Mauer 200 Jahre später haben sich in Europa entscheidende Bewegungen geformt, die maßgeblich auch auf die entstehende Theaterpädagogik eingewirkt haben.",
+      "teachingUnits": 24,
+      "venueFormatted": "",
+      "venueStreet": "",
+      "venueZip": "",
+      "venueCity": "",
+      "schedule": "FR 18:00-21:00 _online_\r\nSA 09:00-12:00 _online_\r\nSO 09:00-12:00 _online_\r\nDI 18:00-21:00 _online_",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "FRI",
+          "date": "2027-04-30",
+          "startTime": "18:00",
+          "endTime": "21:00",
+          "locationHint": "Online"
+        },
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "SAT",
+          "date": "2027-05-01",
+          "startTime": "09:00",
+          "endTime": "12:00",
+          "locationHint": "Online"
+        },
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "SUN",
+          "date": "2027-05-02",
+          "startTime": "09:00",
+          "endTime": "12:00",
+          "locationHint": "Online"
+        },
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "TUE",
+          "startTime": "18:00",
+          "endTime": "21:00",
+          "locationHint": "Online"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "k3_74",
+      "shortcode": "k3",
+      "heading": "Management theaterpädagogischer Formate und Projekte **Eine Woche hat 7 Tage**",
+      "date_start": "2027-07-16 18:00:00",
+      "date_end": "2027-07-18 15:00:00",
+      "hasOnlineSessions": false,
+      "homedomain": "dasei",
+      "instructor": "Hans Dönitz",
+      "venue": "Tanzerei",
+      "teasertext": "Wir bilden aufbauend auf den drei Grundgrößen Kurs-, Projekt- und Workshopformat klare Abläufe des Entscheidens und Organisierens.",
+      "teachingUnits": 24,
+      "venueFormatted": "Kaiserstr. 177, 90763 Nürnberg/Fürth",
+      "venueStreet": "Kaiserstr. 177",
+      "venueZip": "90763",
+      "venueCity": "Nürnberg/Fürth",
+      "schedule": "FR 18:00-21:30\r\nSA 8:45-18:00\r\nSO 8:45-15:00",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "FRI",
+          "date": "2027-07-16",
+          "startTime": "18:00",
+          "endTime": "21:30"
+        },
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2027-07-17",
+          "startTime": "08:45",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2027-07-18",
+          "startTime": "08:45",
+          "endTime": "15:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "k4_75",
+      "shortcode": "k4",
+      "heading": "Lektüre-Seminar Theaterpädagogische Didaktik **Das didaktische Dreieck**",
+      "date_start": "2028-01-21 17:00:00",
+      "date_end": "2028-01-23 15:00:00",
+      "hasOnlineSessions": false,
+      "homedomain": "dasei",
+      "instructor": "Hans Dönitz",
+      "venue": "Nbg: freie Szene",
+      "teasertext": "Wir gehen zurück in die 3 Module A-B-C der Grundlagenbildung, verbinden sie mit dem TZI-Modell zur Gruppendynamik und stellen Bezüge zur allgemeinen deutschsprachigen Theorie der Theaterpädagogik her.",
+      "teachingUnits": 24,
+      "venueFormatted": "Gibitzenhofstr. 62, Hinterhaus, 2.OG, Nürnberg",
+      "venueStreet": "Gibitzenhofstr. 62, Hinterhaus, 2.OG",
+      "venueZip": "",
+      "venueCity": "Nürnberg",
+      "schedule": "FR 17:00-21:30\r\nSA 8:45-18:00\r\nSO 8:45-15:00",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "FRI",
+          "date": "2028-01-21",
+          "startTime": "17:00",
+          "endTime": "21:30"
+        },
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2028-01-22",
+          "startTime": "08:45",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2028-01-23",
+          "startTime": "08:45",
+          "endTime": "15:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "k6_84",
+      "shortcode": "k6",
+      "heading": "Websites in der Theaterpädagogik **Digitale Infrastruktur**",
+      "date_start": "2027-09-21 18:00:00",
+      "date_end": "2027-12-14 09:00:00",
+      "hasOnlineSessions": true,
+      "homedomain": "dasei",
+      "instructor": "Hans Dönitz",
+      "venue": "",
+      "teasertext": "Vor Kurzem noch wie ‚Aufkleber‘ im Internet platzierte Websites entwickeln sich zum Dreh- und Angelpunkt einer zeitgemäßen Professionalität.",
+      "teachingUnits": 24,
+      "venueFormatted": "",
+      "venueStreet": "",
+      "venueZip": "",
+      "venueCity": "",
+      "schedule": "8 Termine online je 3h DI 18:00-21:00",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "TUE",
+          "date": "2027-09-21",
+          "startTime": "18:00",
+          "endTime": "21:00"
+        },
+        {
+          "type": "Info",
+          "locationHint": "Details auf Anfrage"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "issues": {
+          "resolved": true,
+          "log": [
+            "2026-04-05 missing_end_time auto-detected during import",
+            "2026-04-06 added Info line \"Details auf Anfrage\" for remaining sessions; locked"
+          ]
+        },
+        "updated": "2026-04-06",
+        "locked": true
+      }
+    },
+    {
+      "key": "la_49",
+      "shortcode": "la",
+      "heading": "Anfänge verstehen und gestalten **Thematische Warm Ups**",
+      "date_start": "2026-05-15 19:00:00",
+      "date_end": "2026-05-17 15:00:00",
+      "hasOnlineSessions": false,
+      "homedomain": "dasei",
+      "instructor": "Cornelia Jung",
+      "venue": "Tanzerei",
+      "teasertext": "Anfänge sind emotional anstrengend und bedürfen bewusster Gestaltung, um kreative Gruppenprozesse in Gang zu bringen. Das Seminar befasst sich mit den spezifischen Herausforderungen klassischer Anfangssituationen in der Theaterarbeit.",
+      "teachingUnits": 21,
+      "venueFormatted": "Kaiserstr. 177, 90763 Nürnberg/Fürth",
+      "venueStreet": "Kaiserstr. 177",
+      "venueZip": "90763",
+      "venueCity": "Nürnberg/Fürth",
+      "schedule": "FR 19:00-21:30\r\nSA 09:00-18:00\r\nSO 09:00-15:00",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "FRI",
+          "date": "2026-05-15",
+          "startTime": "19:00",
+          "endTime": "21:30"
+        },
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2026-05-16",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2026-05-17",
+          "startTime": "09:00",
+          "endTime": "15:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "la_92",
+      "shortcode": "la",
+      "heading": "Anfänge verstehen und gestalten **Thematische Warm Ups**",
+      "date_start": "2028-03-17 19:00:00",
+      "date_end": "2028-03-19 15:00:00",
+      "hasOnlineSessions": false,
+      "homedomain": "dasei",
+      "instructor": "Cornelia Jung",
+      "venue": "Tanzerei",
+      "teasertext": "Anfänge sind emotional anstrengend und bedürfen bewusster Gestaltung, um kreative Gruppenprozesse in Gang zu bringen. Das Seminar befasst sich mit den spezifischen Herausforderungen klassischer Anfangssituationen in der Theaterarbeit.",
+      "teachingUnits": 21,
+      "venueFormatted": "Kaiserstr. 177, 90763 Nürnberg/Fürth",
+      "venueStreet": "Kaiserstr. 177",
+      "venueZip": "90763",
+      "venueCity": "Nürnberg/Fürth",
+      "schedule": "FR 19:00-21:30\r\nSA 09:00-18:00\r\nSO 09:00-15:00",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "FRI",
+          "date": "2028-03-17",
+          "startTime": "19:00",
+          "endTime": "21:30"
+        },
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2028-03-18",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2028-03-19",
+          "startTime": "09:00",
+          "endTime": "15:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "lb_44",
+      "shortcode": "lb",
+      "heading": "Wie der Prozess zum Ergebnis wird **3 Impros mit Elementarer Animation**",
+      "date_start": "2027-04-24 09:15:00",
+      "date_end": "2027-04-25 15:00:00",
+      "hasOnlineSessions": true,
+      "homedomain": "dasei",
+      "instructor": "Hans Dönitz",
+      "venue": "Tanzerei",
+      "teasertext": "Wir wiederholen zunächst Grundlagen der Elementaren Animation. Anschließend lernen wir am Beispiel von drei bekannten Endlos-Spielen aus dem Improtheater, wie wir schrittweise eine Dauer-Improvisation etablieren. Geeignet für verschiedenste Zielgruppen.",
+      "teachingUnits": 24,
+      "venueFormatted": "Kaiserstr. 177, 90763 Nürnberg/Fürth",
+      "venueStreet": "Kaiserstr. 177",
+      "venueZip": "90763",
+      "venueCity": "Nürnberg/Fürth",
+      "schedule": "FR 18:00-20:00 online\r\nSA 09:15-18:15\r\nSO 09:00-15:00\r\nDI 18:00-21:00 online",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2027-04-24",
+          "startTime": "09:15",
+          "endTime": "18:15"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2027-04-25",
+          "startTime": "09:00",
+          "endTime": "15:00"
+        },
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "FRI",
+          "startTime": "18:00",
+          "endTime": "20:00"
+        },
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "TUE",
+          "startTime": "18:00",
+          "endTime": "21:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "ld_43",
+      "shortcode": "ld",
+      "heading": "Das Zwei Kreise-Modell in der Anwendung **Elementare Animation im Praxisfeld**",
+      "date_start": "2026-05-01 18:00:00",
+      "date_end": "2026-05-03 14:00:00",
+      "hasOnlineSessions": true,
+      "homedomain": "dasei",
+      "instructor": "Hans Dönitz",
+      "venue": "Tanzerei",
+      "teasertext": "Wir erspielen uns drei Animations-Konzepte der Elementaren Animation und diskutieren die Anwendungsmöglichkeiten:\r\n• das Bauernhof-Spiel für Kinder im Übergang von Krippe zu Kindergarten\r\n• Jugendliche machen Hip-Hop-Theater\r\n• Einstiegsanimation aus dem Bereich Fachkräfte & Unternehmenstheater",
+      "teachingUnits": 24,
+      "venueFormatted": "Kaiserstr. 177, 90763 Nürnberg/Fürth",
+      "venueStreet": "Kaiserstr. 177",
+      "venueZip": "90763",
+      "venueCity": "Nürnberg/Fürth",
+      "schedule": "FR 18:00-21:00\r\nSA 09:00-18:00\r\nSO 09:00-14:00\r\nDI 5.5 18:00-19:30 _online_",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "FRI",
+          "date": "2026-05-01",
+          "startTime": "18:00",
+          "endTime": "21:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2026-05-02",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2026-05-03",
+          "startTime": "09:00",
+          "endTime": "14:00"
+        },
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "TUE",
+          "date": "2026-05-05",
+          "startTime": "18:00",
+          "endTime": "19:30",
+          "locationHint": "Online"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "issues": {
+          "resolved": true,
+          "log": [
+            "2026-04-05 missing_agendalines auto-detected during import",
+            "2026-04-06 cleared_missing_agendalines auto-resolved on re-import"
+          ]
+        },
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "ld_90",
+      "shortcode": "ld",
+      "heading": "Das Zwei Kreise-Modell in der Anwendung **Elementare Animation im Praxisfeld**",
+      "date_start": "2028-04-29 09:15:00",
+      "date_end": "2028-04-30 15:00:00",
+      "hasOnlineSessions": true,
+      "homedomain": "dasei",
+      "instructor": "Hans Dönitz",
+      "venue": "Tanzerei",
+      "teasertext": "Wir erspielen uns drei Animations-Konzepte der Elementaren Animation und diskutieren die Anwendungsmöglichkeiten:\r\n• das Bauernhof-Spiel für Kinder im Übergang von Krippe zu Kindergarten\r\n• Jugendliche machen Hip-Hop-Theater\r\n• Einstiegsanimation aus dem Bereich Fachkräfte & Unternehmenstheater",
+      "teachingUnits": 24,
+      "venueFormatted": "Kaiserstr. 177, 90763 Nürnberg/Fürth",
+      "venueStreet": "Kaiserstr. 177",
+      "venueZip": "90763",
+      "venueCity": "Nürnberg/Fürth",
+      "schedule": "FR 18:00-20:00 online\r\nSA 09:15-18:15\r\nSO 09:00-15:00\r\nDI 18:00-21:00 online",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2028-04-29",
+          "startTime": "09:15",
+          "endTime": "18:15"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2028-04-30",
+          "startTime": "09:00",
+          "endTime": "15:00"
+        },
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "FRI",
+          "startTime": "18:00",
+          "endTime": "20:00"
+        },
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "TUE",
+          "startTime": "18:00",
+          "endTime": "21:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "lh_7",
+      "shortcode": "lh",
+      "heading": "Čojč Pädagogik Diversität **Čojč Pädagogik: Diversität und gesellschaftliche Bildung**",
+      "date_start": "2026-06-04 18:00:00",
+      "date_end": "2026-06-07 15:00:00",
+      "hasOnlineSessions": false,
+      "homedomain": "dasei",
+      "instructor": "Eleanora Allerdings",
+      "venue": "",
+      "teasertext": "Für: Aktive in der deutsch-tschechischen Jugendarbeit, \r\nin der interkulturellen Jugendarbeit, Pädagog*innen  - Gastprogramm, ausgerichtet von Cojc GmbH, Infos und Anmeldung www.cojc.eu",
+      "teachingUnits": 0,
+      "venueFormatted": "",
+      "venueStreet": "",
+      "venueZip": "",
+      "venueCity": "",
+      "schedule": "DO 18:00-21:00\r\nFR 09:00-18:00\r\nSA 09:00-18:00\r\nSO 09:00-15:00",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "THU",
+          "date": "2026-06-04",
+          "startTime": "18:00",
+          "endTime": "21:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "FRI",
+          "date": "2026-06-05",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2026-06-06",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2026-06-07",
+          "startTime": "09:00",
+          "endTime": "15:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "lr_52",
+      "shortcode": "lr",
+      "heading": "Methodenworkshop zur Rollenerarbeitung **eine Rolle - viele Gesichter**",
+      "date_start": "2026-12-11 19:00:00",
+      "date_end": "2026-12-13 15:00:00",
+      "hasOnlineSessions": false,
+      "homedomain": "dasei",
+      "instructor": "Cornelia Jung",
+      "venue": "",
+      "teasertext": "Der Workshop unternimmt den Versuch, sich vermeintlich sperriger (Schul-)Lektüre inszenatorisch zu nähern. Die Erprobung unterschiedlicher Techniken der Rolleneinfühlung sowie postdramatische Zugänge zur Rolle zu schaffen, sind Kernziele des Workshops. Wie finde ich das Grundthema einer Figur? Wie kann ich ihre Eigenschaften, ihre Emotionen, Macken herausarbeiten und im nächsten Schritt abstrakt, choreographisch oder szenographisch bearbeiten?",
+      "teachingUnits": 24,
+      "venueFormatted": "",
+      "venueStreet": "",
+      "venueZip": "",
+      "venueCity": "",
+      "schedule": "FR 19:00-21:30\r\nSA 09:00-18:00\r\nSO 09:00-15:00",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "FRI",
+          "date": "2026-12-11",
+          "startTime": "19:00",
+          "endTime": "21:30"
+        },
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2026-12-12",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2026-12-13",
+          "startTime": "09:00",
+          "endTime": "15:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "p1_85",
+      "shortcode": "p1",
+      "heading": "Mitwirkung und selbstverantwortete Erkundungen im Praxisfeld **Erfahrungen im Praxisfeld**",
+      "date_start": "2027-09-15 09:00:00",
+      "date_end": "2028-06-09 09:00:00",
+      "hasOnlineSessions": false,
+      "homedomain": "dasei",
+      "instructor": "",
+      "venue": "",
+      "teasertext": "Praktikum, Assistenz, Mitarbeit, freiberufliche Projekte (Bescheinigung mit Gutachten erforderlich)",
+      "teachingUnits": 150,
+      "venueFormatted": "",
+      "venueStreet": "",
+      "venueZip": "",
+      "venueCity": "",
+      "schedule": "",
+      "agendaLines": [],
+      "meta": {
+        "created": "2026-04-05",
+        "issues": {
+          "resolved": true,
+          "log": [
+            "2026-04-05 missing_agendalines auto-detected during import",
+            "2026-04-06 locked by human — no sessions by nature"
+          ]
+        },
+        "updated": "2026-04-05",
+        "locked": true
+      }
+    },
+    {
+      "key": "p2_86",
+      "shortcode": "p2",
+      "heading": "abschließendes selbstverantwortetes Praxisprojekt mit einer Zielgruppe im Kurs-, Workshop- oder Projektformat **Eigenes Praxisprojekt**",
+      "date_start": "2027-09-15 09:00:00",
+      "date_end": "2028-06-11 09:00:00",
+      "hasOnlineSessions": false,
+      "homedomain": "dasei",
+      "instructor": "",
+      "venue": "",
+      "teasertext": "Das eigene Praxisfeld soll möglichst in den letzten 1,5 Jahren vor BuT-Prüfung angesetzt werden (optimal: Start nach Termin K1). Ein in der Grundstufe bereits angelegtes Projekt kann aufgegriffen und fortgesetzt werden.",
+      "teachingUnits": 110,
+      "venueFormatted": "",
+      "venueStreet": "",
+      "venueZip": "",
+      "venueCity": "",
+      "schedule": "",
+      "agendaLines": [],
+      "meta": {
+        "created": "2026-04-05",
+        "issues": {
+          "resolved": true,
+          "log": [
+            "2026-04-05 missing_agendalines auto-detected during import",
+            "2026-04-06 locked by human — no sessions by nature"
+          ]
+        },
+        "updated": "2026-04-05",
+        "locked": true
+      }
+    },
+    {
+      "key": "p3_76",
+      "shortcode": "p3",
+      "heading": "fachtheoretische Ausarbeitung zu einem selbstgestellten Thema 30-40 S. (Abgabefrist) **Abschlussarbeit**",
+      "date_start": "2028-05-10 09:00:00",
+      "date_end": "2028-05-10 09:00:00",
+      "hasOnlineSessions": false,
+      "homedomain": "dasei",
+      "instructor": "",
+      "venue": "",
+      "teasertext": "",
+      "teachingUnits": 40,
+      "venueFormatted": "",
+      "venueStreet": "",
+      "venueZip": "",
+      "venueCity": "",
+      "schedule": "",
+      "agendaLines": [],
+      "meta": {
+        "created": "2026-04-05",
+        "issues": {
+          "resolved": true,
+          "log": [
+            "2026-04-05 missing_agendalines auto-detected during import",
+            "2026-04-06 locked by human — no sessions by nature"
+          ]
+        },
+        "updated": "2026-04-05",
+        "locked": true
+      }
+    },
+    {
+      "key": "r0_51",
+      "shortcode": "r0",
+      "heading": "Struktur und Schwerpunkte des Aufbau-Profils im Überblick **Info-Teaser \"Profil Performance und Interkult. Theater\"**",
+      "date_start": "2026-06-10 19:30:00",
+      "date_end": "2026-06-10 21:30:00",
+      "hasOnlineSessions": true,
+      "homedomain": "dasei",
+      "instructor": "Rosalin Hertrich",
+      "venue": "",
+      "teasertext": "Du erhältst an einem Online-Abend einen kompakten Überblick zum Profil 'Theatrales Lernen'.",
+      "teachingUnits": 3,
+      "venueFormatted": "",
+      "venueStreet": "",
+      "venueZip": "",
+      "venueCity": "",
+      "schedule": "MI 19:30-21:30 _online_",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "WED",
+          "date": "2026-06-10",
+          "startTime": "19:30",
+          "endTime": "21:30",
+          "locationHint": "Online"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "r0_54",
+      "shortcode": "r0",
+      "heading": "Struktur und Schwerpunkte des Aufbau-Profils im Überblick **Info-Teaser \"Profil Performance und Interkult. Theater\"**",
+      "date_start": "2026-07-15 19:30:00",
+      "date_end": "2026-07-15 21:30:00",
+      "hasOnlineSessions": true,
+      "homedomain": "dasei",
+      "instructor": "Rosalin Hertrich",
+      "venue": "",
+      "teasertext": "Du erhältst an einem Online-Abend einen kompakten Überblick zum Profil 'Theatrales Lernen'.",
+      "teachingUnits": 3,
+      "venueFormatted": "",
+      "venueStreet": "",
+      "venueZip": "",
+      "venueCity": "",
+      "schedule": "MI 19:30-21:30 _online_",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "provider": "Microsoft Teams",
+          "weekday": "WED",
+          "date": "2026-07-15",
+          "startTime": "19:30",
+          "endTime": "21:30",
+          "locationHint": "Online"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "r1_80",
+      "shortcode": "r1",
+      "heading": "Theoretische Grundlagen **Profilkolloquium 1**",
+      "date_start": "2027-02-19 19:00:00",
+      "date_end": "2027-02-21 15:00:00",
+      "hasOnlineSessions": false,
+      "homedomain": "dasei",
+      "instructor": "Rosalin Hertrich",
+      "venue": "Mue: Stachus",
+      "teasertext": "Erste Theorieimpulse verorten die Theaterpraxis in Diskursen rund um Gender-, Identitäts- und Machtfragen. Auch das Verhältnis von Kunst und Alltag in der Theaterpädagogik ist zentral für die reflexive Auseinandersetzung in diesem Lektüreseminar.",
+      "teachingUnits": 21,
+      "venueFormatted": "München",
+      "venueStreet": "",
+      "venueZip": "",
+      "venueCity": "München",
+      "schedule": "FR 19:00-21:30\r\nSA 09:00-18:00\r\nSO 09:00-15:00",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "FRI",
+          "date": "2027-02-19",
+          "startTime": "19:00",
+          "endTime": "21:30"
+        },
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2027-02-20",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2027-02-21",
+          "startTime": "09:00",
+          "endTime": "15:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "r2_82",
+      "shortcode": "r2",
+      "heading": "Coaching im Monatsturnus **Online Profiltreffen**",
+      "date_start": "2027-02-25 19:00:00",
+      "date_end": "2027-10-31 08:00:00",
+      "hasOnlineSessions": false,
+      "homedomain": "dasei",
+      "instructor": "Rosalin Hertrich",
+      "venue": "",
+      "teasertext": "Einmal im Monat findet online der Jour Fixe statt. Die Teilnehmenden des Profils treffen sich begleitend zu den Seminaren. Hier klären wir organisatorische Fragen, geben Inputs zu theoretischen Rahmungen und es ist Zeit für offenen Austausch & Lektüretreffen. Zentral stehen aber auch Beratungsprozesse zu Themen wie Anleitungsprüfung, Praxisprojekte und Abschlussarbeit…",
+      "teachingUnits": 0,
+      "venueFormatted": "",
+      "venueStreet": "",
+      "venueZip": "",
+      "venueCity": "",
+      "schedule": "einmal monatlich jeweils DO 19:00-21:00",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "THU",
+          "date": "2027-02-25",
+          "startTime": "19:00",
+          "endTime": "21:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "issues": {
+          "resolved": true,
+          "log": [
+            "2026-04-05 missing_start_time auto-detected during import",
+            "2026-04-05 missing_end_time auto-detected during import",
+            "2026-04-06 fixed: date_start→2027-02-25 per user instruction; locked"
+          ]
+        },
+        "updated": "2026-04-06",
+        "locked": true
+      }
+    },
+    {
+      "key": "ra_20",
+      "shortcode": "ra",
+      "heading": "Ursprünge der Performance Kunst **Die Künstlerische Aktion**",
+      "date_start": "2026-07-03 19:00:00",
+      "date_end": "2026-07-05 15:00:00",
+      "hasOnlineSessions": false,
+      "homedomain": "dasei",
+      "instructor": "Rosalin Hertrich",
+      "venue": "Eine Welt Haus",
+      "teasertext": "Josef Beuys, Yoko Ono, Marina Abramovic…\r\nIn diesem Workshop werden Beispiele aus der Performance-Kunst-Geschichte vorgestellt.\r\nDavon inspiriert entwickeln die Teilnehmenden eigene Performances.",
+      "teachingUnits": 24,
+      "venueFormatted": "Schwanthalerstr. 80, 80336 München",
+      "venueStreet": "Schwanthalerstr. 80",
+      "venueZip": "80336",
+      "venueCity": "München",
+      "schedule": "FR 19:00-21:30\r\nSA 09:00-18:00\r\nSO 09:00-15:00",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "FRI",
+          "date": "2026-07-03",
+          "startTime": "19:00",
+          "endTime": "21:30"
+        },
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2026-07-04",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2026-07-05",
+          "startTime": "09:00",
+          "endTime": "15:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "issues": {
+          "resolved": true,
+          "log": [
+            "2026-04-05 missing_end_time auto-detected during import",
+            "2026-04-06 cleared_missing_end_time auto-resolved on re-import"
+          ]
+        },
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "rd_91",
+      "shortcode": "rd",
+      "heading": "Zwischen Butoh und Embodiment **Verkörperungen**",
+      "date_start": "2028-02-25 18:15:00",
+      "date_end": "2028-02-27 15:00:00",
+      "hasOnlineSessions": false,
+      "homedomain": "dasei",
+      "instructor": "Rosalin Hertrich",
+      "venue": "Eine Welt Haus",
+      "teasertext": "In der Performance Kunst sind körperliche Grenzerfahrungen zentral. Wir begeben uns auf die Spurensuche unserer Existenz. Bilder, philosophische Überlegungen und Persönlichkeiten aus dem japanischen Butoh dienen uns als Inspirationsquelle.",
+      "teachingUnits": 21,
+      "venueFormatted": "Schwanthalerstr. 80, 80336 München",
+      "venueStreet": "Schwanthalerstr. 80",
+      "venueZip": "80336",
+      "venueCity": "München",
+      "schedule": "FR 18:15-21:30\r\nSA 09:00-18:00\r\nSO 09:00-15:00",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "FRI",
+          "date": "2028-02-25",
+          "startTime": "18:15",
+          "endTime": "21:30"
+        },
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2028-02-26",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2028-02-27",
+          "startTime": "09:00",
+          "endTime": "15:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "rd_93",
+      "shortcode": "rd",
+      "heading": "Zwischen Butoh und Embodiment **Verkörperungen**",
+      "date_start": "2027-06-04 19:00:00",
+      "date_end": "2027-06-06 15:00:00",
+      "hasOnlineSessions": false,
+      "homedomain": "dasei",
+      "instructor": "Cornelia Jung",
+      "venue": "Tanzerei",
+      "teasertext": "In der Performance Kunst sind körperliche Grenzerfahrungen zentral. Wir begeben uns auf die Spurensuche unserer Existenz. Bilder, philosophische Überlegungen und Persönlichkeiten aus dem japanischen Butoh dienen uns als Inspirationsquelle.",
+      "teachingUnits": 21,
+      "venueFormatted": "Kaiserstr. 177, 90763 Nürnberg/Fürth",
+      "venueStreet": "Kaiserstr. 177",
+      "venueZip": "90763",
+      "venueCity": "Nürnberg/Fürth",
+      "schedule": "FR 19:00-21:30\r\nSA 09:00-18:00\r\nSO 09:00-15:00",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "FRI",
+          "date": "2027-06-04",
+          "startTime": "19:00",
+          "endTime": "21:30"
+        },
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2027-06-05",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2027-06-06",
+          "startTime": "09:00",
+          "endTime": "15:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "t1_89",
+      "shortcode": "t1",
+      "heading": "Theoretische Grundlagen **Profilkolloquium 1**",
+      "date_start": "2027-02-19 19:00:00",
+      "date_end": "2027-02-21 15:00:00",
+      "hasOnlineSessions": false,
+      "homedomain": "dasei",
+      "instructor": "Cornelia Jung",
+      "venue": "Tanzerei",
+      "teasertext": "Anhand ausgewählter Literatur diskutieren wir Grundbegriffe des Theatralen Lernens und setzen uns zudem mit unterschiedlichen Perspektiven auf Theater mit Kindern und Jugendlichen auseinander.",
+      "teachingUnits": 21,
+      "venueFormatted": "Kaiserstr. 177, 90763 Nürnberg/Fürth",
+      "venueStreet": "Kaiserstr. 177",
+      "venueZip": "90763",
+      "venueCity": "Nürnberg/Fürth",
+      "schedule": "FR 19:00-21:30\r\nSA 09:00-18:00\r\nSO 09:00-15:00",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "FRI",
+          "date": "2027-02-19",
+          "startTime": "19:00",
+          "endTime": "21:30"
+        },
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2027-02-20",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2027-02-21",
+          "startTime": "09:00",
+          "endTime": "15:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "t2_87",
+      "shortcode": "t2",
+      "heading": "Coaching-Turnus **Online Profiltreffen**",
+      "date_start": "2027-02-23 18:00:00",
+      "date_end": "2027-10-30 09:00:00",
+      "hasOnlineSessions": false,
+      "homedomain": "dasei",
+      "instructor": "Cornelia Jung",
+      "venue": "",
+      "teasertext": "Alle zwei Monate findet online der Jour Fixe statt. Die Teilnehmenden des Profils treffen sich begleitend zu den Seminaren. Hier klären wir organisatorische Fragen, geben Inputs zu theoretischen Rahmungen und es ist Zeit für offenen Austausch & Lektüretreffen. Zentral stehen aber auch Beratungsprozesse zu Themen wie Anleitungsprüfung, Praxisprojekte und Abschlussarbeit…",
+      "teachingUnits": 12,
+      "venueFormatted": "",
+      "venueStreet": "",
+      "venueZip": "",
+      "venueCity": "",
+      "schedule": "_info_ alle 6 Wochen jeweils Dienstag 18:00-19:30",
+      "agendaLines": [
+        {
+          "type": "Info",
+          "date": "2027-02-22"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "issues": {
+          "resolved": true,
+          "log": [
+            "2026-04-05 missing_agendalines auto-detected during import",
+            "2026-04-06 cleared_missing_agendalines auto-resolved on re-import",
+            "2026-04-06 missing_start_time auto-detected during import",
+            "2026-04-06 missing_end_time auto-detected during import",
+            "2026-04-06 fixed: date_start→2027-02-23 18:00 per user instruction (schedule: DI 18:00-19:30); locked"
+          ]
+        },
+        "updated": "2026-04-06",
+        "locked": true
+      }
+    },
+    {
+      "key": "ta_67",
+      "shortcode": "ta",
+      "heading": "Profilprojekt 1: Animative Regie **Der Animationstag**",
+      "date_start": "2027-05-06 16:00:00",
+      "date_end": "2027-05-09 15:00:00",
+      "hasOnlineSessions": false,
+      "homedomain": "dasei",
+      "instructor": "Cornelia Jung",
+      "venue": "Nbg: freie Szene",
+      "teasertext": "Vorbereitung und Durchführung eines Animationstags in der Grundschule. Entwicklung eines weiterführenden Konzepts. Im Fokus des Kurses steht die Einfühlung in die zu animierende Zielgruppe. Es gilt, die Begegnung mit den Kindern so zu gestalten, dass auch in kurzer Zeit ein Erlebnis mit dem Thema des Theaterprojektes ermöglicht werden kann. Im weiteren Verlauf wird das Konzept des Vier-Tage-Modells theoretisch eingeführt. Darauf aufbauend und mit Blick für die Zielgruppe konzipierst und erprobst du Einstiegseinheiten für die Theaterprojektwoche TB.",
+      "teachingUnits": 36,
+      "venueFormatted": "Gibitzenhofstr. 62, Hinterhaus, 2.OG, Nürnberg",
+      "venueStreet": "Gibitzenhofstr. 62, Hinterhaus, 2.OG",
+      "venueZip": "",
+      "venueCity": "Nürnberg",
+      "schedule": "DO 16:00-19:00\r\nFR 08:00-18:00\r\nSA 09:00-18:00\r\nSO 09:00-15:00",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "THU",
+          "date": "2027-05-06",
+          "startTime": "16:00",
+          "endTime": "19:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "FRI",
+          "date": "2027-05-07",
+          "startTime": "08:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2027-05-08",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2027-05-09",
+          "startTime": "09:00",
+          "endTime": "15:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "tb_68",
+      "shortcode": "tb",
+      "heading": "Profilprojekt 1: Animative Regie **TSEE - Das 4-Tage-Modell**",
+      "date_start": "2027-06-28 08:00:00",
+      "date_end": "2027-07-02 16:00:00",
+      "hasOnlineSessions": false,
+      "homedomain": "dasei",
+      "instructor": "Cornelia Jung",
+      "venue": "",
+      "teasertext": "Das im Rahmen von TA etablierte Modell wird nun umgesetzt. Du erhältst die Gelegenheit einzelne Phasen des Projektes selbst anzuleiten und dadurch in dynamischen Austausch mit der Zielgruppe zu gelangen. Rollende Planung sowie die Umsetzbarkeit methodisch-didaktischer Entscheidungen stehen im Vordergrund der Reflexionsarbeit.",
+      "teachingUnits": 62,
+      "venueFormatted": "",
+      "venueStreet": "",
+      "venueZip": "",
+      "venueCity": "",
+      "schedule": "Anreise am SOnntag abends / Zeiten auf AnFRage\r\nMO 08:00-14:00 + 16:00-19:00\r\nDI 08:00-14:00  + 16:00-19:00\r\nMI 08:00-14:00  + 16:00-19:00\r\nDO 08:00-14:00  + 16:00-19:00\r\nFR 08:00-16:00",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "MON",
+          "date": "2027-06-28",
+          "startTime": "08:00",
+          "endTime": "14:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "TUE",
+          "date": "2027-06-29",
+          "startTime": "08:00",
+          "endTime": "14:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "WED",
+          "date": "2027-06-30",
+          "startTime": "08:00",
+          "endTime": "14:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "THU",
+          "date": "2027-07-01",
+          "startTime": "08:00",
+          "endTime": "14:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "FRI",
+          "date": "2027-07-02",
+          "startTime": "08:00",
+          "endTime": "16:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    },
+    {
+      "key": "x1_45",
+      "shortcode": "x1",
+      "heading": "digitale Vernetzung Theaterpädagogik Bayern **Theaterpedia-Konferenz**",
+      "date_start": "2026-11-13 14:00:00",
+      "date_end": "2026-11-15 15:00:00",
+      "hasOnlineSessions": false,
+      "homedomain": "dasei",
+      "instructor": "Hans Dönitz",
+      "venue": "Mue: Viva la Danza",
+      "teasertext": "Eine Open-Space-Konferenz:\r\n- Jahrestreffen der Internet-Plattform ‚theaterpedia.org‘ zur Regional-Vernetzung Theaterpädagogik in Bayern\r\n- Gründung von Themengruppen zu theaterpedia\r\n- Hackathon (Du startest Deine Website)\r\nausgerichtet von\r\nTheaterpedia e.V. (unterstützt von: DAS Ei - Theaterpädagogisches Institut Bayern e.V.)",
+      "teachingUnits": 0,
+      "venueFormatted": "Verdi-Str. 83, München",
+      "venueStreet": "Verdi-Str. 83",
+      "venueZip": "",
+      "venueCity": "München",
+      "schedule": "FR 14:00-21:30\r\nSA 09:00-18:00\r\nSO 09:00-15:00\r\nCVJM-Hotel",
+      "agendaLines": [
+        {
+          "type": "Session",
+          "weekday": "FRI",
+          "date": "2026-11-13",
+          "startTime": "14:00",
+          "endTime": "21:30"
+        },
+        {
+          "type": "Session",
+          "weekday": "SAT",
+          "date": "2026-11-14",
+          "startTime": "09:00",
+          "endTime": "18:00"
+        },
+        {
+          "type": "Session",
+          "weekday": "SUN",
+          "date": "2026-11-15",
+          "startTime": "09:00",
+          "endTime": "15:00"
+        }
+      ],
+      "meta": {
+        "created": "2026-04-05",
+        "updated": "2026-04-06"
+      }
+    }
+  ],
+  "unresolved_issues": []
+}
