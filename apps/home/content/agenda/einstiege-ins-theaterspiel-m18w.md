@@ -26,13 +26,6 @@ details:
     - **5 Einheiten A1-A5** _110 UE_
     - **SUMME** mind. 120 UE
     *UEs (Unterrichtseinheiten) sind voll anrechenbar auf die Zertifikate Theaterpädagogik (BuT), eine UE entspricht 45 Min
-   beratung: |
-    #### individuelle Fachberatung vereinbaren
-    - Ausbildung oder Weiterbildung? 
-    - Unterschiede zwischen Blockprogramm oder Tageskursverlauf
-    - Fördermöglichkeiten
-    - im Sept 2026 Beratung zur Fortsetzung Grundlagenbildung Kurse M18 oder N18 mit Ziel Grundlagen Theaterpädagogik (BuT)
-    - Fortsetzung Aufbaustufe möglich mit Abschluss Theaterpädagog:in (BuT) bis Juli 2030
  konditionen:
   title: Kosten & Konditionen
   header: |
@@ -41,7 +34,6 @@ details:
    kosten: |
     ### Kosten
     - **A0 Anmeldegebühr (inkl. Basistag)** € 80,00 
-    - Frist: 28.2.2026
     - **5 Kursraten A1-A5** 5 Raten x € 220,00
     - Zahlung: 5 Monatsraten (jeweils zum 1. des Monats) auf Rechnung
    storno: |
@@ -104,7 +96,30 @@ product:
  footer: |
   ## JUN - DEZ 2026 // München **Einstiege ins Theaterspiel**
 items: 
+ course_summary:
+  meta:
+   locked: true
+  summary:
+   events: [aa_56, a0_33, a4_29, a5_30, a1_40, a2_36, a3_31]
+   duration: "9 Monate"
+   ue: 120
+  ctype: slide_2cols
+  title: "**Programmbestandteile**"
+  body: |
+    - **AA** Online-Teaser Einstiege ins Theaterspiel
+    - **A0** Basistag Theaterpädagogik
+    - **A4** Szenische Lesung
+    - **A5** Figurenkarussell
+
+    ---
+
+    - individuelle Fachberatung
+    - **A1** Am Anfang war der Kreis
+    - **A2** Die Bühne kommt von selbst
+    - **A3** Wege entstehen beim Gehen
  aa_56:
+  meta:
+   updated: 2026-04-06
   ctype: event
   shortcode: aa
   tag: Do., 9.4. 18:00-20:00 online
@@ -121,6 +136,8 @@ items:
   schedule: "DO 18:00-20:00 _online_"
   instructors: Hans Dönitz
  a0_33:
+  meta:
+   updated: 2026-04-06
   ctype: event
   shortcode: a0
   tag: So., 19.4. ganztags + 1 Abend online
@@ -141,6 +158,8 @@ items:
    SO 09:30-18:30
   instructors: Hans Dönitz
  a4_29:
+  meta:
+   updated: 2026-04-06
   ctype: event
   shortcode: a4
   tag: So., 28.6. ganztags + 2 Abende online
@@ -159,6 +178,8 @@ items:
    DI 18:00-21:00 online
   instructors: Cornelia Jung
  a5_30:
+  meta:
+   updated: 2026-04-06
   ctype: event
   shortcode: a5
   tag: So., 26.7. ganztags + 2 Abende online
@@ -177,6 +198,8 @@ items:
    DI 18:00-21:00 online
   instructors: Cornelia Jung
  a1_40:
+  meta:
+   updated: 2026-04-06
   ctype: event
   shortcode: a1
   tag: So., 11.10. ganztags + 2 Abende online
@@ -195,6 +218,8 @@ items:
    DI 18:00-21:00 online
   instructors: Hans Dönitz
  a2_36:
+  meta:
+   updated: 2026-04-06
   ctype: event
   shortcode: a2
   tag: So., 25.10. ganztags + 2 Abende online
@@ -213,6 +238,8 @@ items:
    DI 18:00-21:00 online
   instructors: Hans Dönitz
  a3_31:
+  meta:
+   updated: 2026-04-06
   ctype: event
   shortcode: a3
   tag: Sa., 28.11. bis So., 29.11 + 2 Abende online

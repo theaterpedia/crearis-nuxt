@@ -145,7 +145,26 @@ product:
   footer: |
     ## September 2026 – Februar 2027 **Vertiefung Theaterpädagogik**
 items:
+  course_summary:
+    meta:
+      locked: true
+    summary:
+      events: [e1_1, e2_69]
+      duration: "5 Monate"
+      ue: 160
+    ctype: slide_2cols
+    title: "**Programmbestandteile**"
+    body: |
+      - **E1** Seminarwoche — Dicht an der Grenze · 6 Tage, Burgstallmühle
+      - **K1** Didaktik & Theorie — Online-Programm, z.B. Reflexion „Labor-Box" & TZI · Tiefendimensionen des Lernens
+
+      ---
+
+      - **E2** Workshop & Kursformat + Soziometrie — Offene Themen, Transfer & Methodik · 5 Tage, München
+      - **OP** Offenes Programm (freie Wahl), z.B. Eine Rolle – viele Gesichter · Forumtheater
   e1_blind:
+    meta:
+      source: e1_1
     ctype: event
     shortcode: E1
     title: "Das Format Seminarwoche **Dicht an der Grenze**"
@@ -170,6 +189,8 @@ items:
       MO 05.10. Ende ca. 14:00 nach Mittagessen
     instructors: Hans Dönitz, Rosalin Hertrich
   k1_didaktik_und_theorie_teil1:
+    meta:
+      locked: true
     ctype: schedule
     shortcode: K1
     title: Planung & Reflexion von Lernprozessen  **Didaktik & Theorie**
@@ -192,6 +213,8 @@ items:
       7 Online-Einheiten
     instructors: Hans Dönitz, Rosalin Hertrich  
   offenes_programm:
+    meta:
+      locked: true
     ctype: event
     shortcode: 
     title: "Wähle flexibel 2 Seminare **Offenes Programm**"
@@ -211,6 +234,8 @@ items:
       auf Anfrage
     instructors: Hans Dönitz, Rosalin Hertrich
   e2_bewegung:
+    meta:
+      source: e2_69
     ctype: event
     shortcode: E2
     title: "Workshop- & Kursformat **Offene Themen – offene Gruppen?**"
@@ -228,6 +253,8 @@ items:
       MI-SO 09:00-17:00 (5 Tage)
     instructors: Hans Dönitz, Rosalin Hertrich
   k1_didaktik_und_theorie_teil2:
+    meta:
+      locked: true
     ctype: event
     shortcode: K1
     title: Planung & Reflexion von Lernprozessen (Teil 2)  **Didaktik & Theorie**
@@ -247,6 +274,8 @@ items:
       7 Online-Einheiten
     instructors: Hans Dönitz, Rosalin Hertrich 
   e2_soziometrie:
+    inherits: e2_bewegung
+    timeline: false
     ctype: event
     shortcode: E2
     title: "Soziometrische Verfahren **Transfer & Methodik**"
@@ -264,6 +293,8 @@ items:
       Workshop- und Kursformate
     instructors: Hans Dönitz, Rosalin Hertrich
   erweiterung:
+    meta:
+      locked: true
     ctype: pricing
     shortcode: Z15
     title: "Das Glas voll machen **Profiljahr und Berufsabschluss**"

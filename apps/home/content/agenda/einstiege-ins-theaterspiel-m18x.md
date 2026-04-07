@@ -27,13 +27,6 @@ details:
     - **SEMINARBLOCK 2** (3-4 Tage im Seminarhaus)
     - **Abschluss-Wochenende** (2 Tage)
     - **SUMME** mind. 120 UE
-   beratung: |
-    #### individuelle Fachberatung vereinbaren
-    - Ausbildung oder Weiterbildung? 
-    - Unterschiede zwischen Blockprogramm oder Tageskursverlauf
-    - Fördermöglichkeiten
-    - im Sept 2026 Beratung zur Fortsetzung Grundlagenbildung Kurse M18 oder N18 mit Ziel Grundlagen Theaterpädagogik (BuT)
-    - Fortsetzung Aufbaustufe möglich mit Abschluss Theaterpädagog:in (BuT) bis Juli 2030
  konditionen:
   title: Kosten & Konditionen
   header: |
@@ -105,7 +98,28 @@ product:
  footer: |
   ## MÄR - DEZ 2026 // Burgstallmühle **Einstiege ins Theaterspiel**
 items: 
+ course_summary:
+  meta:
+   locked: true
+  summary:
+   events: [aa_56, a0_33, a1_21, a2_158, a4_28, a5_164, a3_31]
+   duration: "9 Monate"
+   ue: 120
+  ctype: slide_2cols
+  title: "**Programmbestandteile**"
+  body: |
+    - **AA** Online-Teaser Einstiege ins Theaterspiel
+    - **A0** Basistag Theaterpädagogik
+    - **A4 + A5** Szenische Lesung & Figurenkarussell — Geschichten präsentieren, Publikum aktivieren
+
+    ---
+
+    - individuelle Fachberatung
+    - **A1 + A2** Am Anfang war der Kreis & Die Bühne kommt von selbst — Elementare Animation vom Kreisspiel zur Bühne
+    - **A3** Wege entstehen beim Gehen
  aa_56:
+  meta:
+   updated: 2026-04-06
   ctype: event
   shortcode: aa
   tag: Do., 9.4. 18:00-20:00 online
@@ -122,6 +136,8 @@ items:
   schedule: "DO 18:00-20:00 _online_"
   instructors: Hans Dönitz
  a0_33:
+  meta:
+   updated: 2026-04-06
   ctype: event
   shortcode: a0
   tag: So., 19.4. ganztags + 1 Abend online
@@ -142,6 +158,8 @@ items:
    SO 09:30-18:30
   instructors: Hans Dönitz
  a1_21:
+  meta:
+   updated: 2026-04-06
   ctype: event
   shortcode: a1
   tag: Do., 14.5. bis So., 17.5 (Seminarhaus)
@@ -162,6 +180,8 @@ items:
    Di. 18:00-21:00 ONLINE
   instructors: Hans Dönitz
  a2_158:
+  inherits: a1_21
+  timeline: false
   ctype: event
   shortcode: a2
   tag: Fortsetzung Do., 14.5. bis So., 17.5
@@ -182,6 +202,8 @@ items:
    Di. 18:00-21:00 online
   instructors: Hans Dönitz
  a4_28:
+  meta:
+   updated: 2026-04-06
   ctype: event
   shortcode: a4
   tag: Do., 24.9. bis So., 27.9 (Seminarhaus)
@@ -202,6 +224,8 @@ items:
    Di. 18:00-21:00 ONLINE
   instructors: Kathrin Jung
  a5_164:
+  inherits: a4_28
+  timeline: false
   ctype: event
   shortcode: a5
   tag: Fortsetzung Do., 24.9. bis So., 27.9
@@ -222,6 +246,8 @@ items:
    Di. 18:00-21:00 online
   instructors: Kathrin Jung
  a3_31:
+  meta:
+   updated: 2026-04-06
   ctype: event
   shortcode: a3
   tag: Sa., 28.11. bis So., 29.11 + 2 Abende online
