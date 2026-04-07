@@ -322,7 +322,7 @@ items:
     title: "4 Einheiten offenes Programm inklusive **Methodisch-Didaktische Vertiefung**"
     tag: 4 Wahlseminare · Nürnberg/Fürth, München
     image:
-      url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_400,h_400,g_auto,q_auto,f_auto/dasei/thematische_warmups_wfwtzh.jpg
+      url: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_400,h_400,g_auto,q_auto,f_auto/dasei/305_dasei2022_grundlagen.jpg
       caption: Zielgruppenorientierte Didaktik
     body: |
       #### Empfehlungen 2026
