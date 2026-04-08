@@ -1,56 +1,38 @@
 <template>
   <ContentRenderer :value="data">
-    <!-- Product slider -->
-    <Heading
-      v-if="data.heading"
-      :content="heading ? heading : data.heading ? data.heading.toString() : default_heading"
-      is="h3"
-    ></Heading>
-    <br />
-    <MdBlock v-if="data.product?.header" :content="data.product?.header" htag="h2" />
-    <Slider>
-      <Slide v-for="(item, index) in data.items">
-        <Columns gap="small">
-          <Column v-if="item.image" width="1/5">
-            <img :src="item.image.url" />
-            <p>{{ item.tag }}</p>
-          </Column>
-          <Column>
-            <Heading v-if="item.title" :content="shortcodeTitle(item.shortcode, item.title)" is="h3" />
-            <Prose>
-              <div v-html="renderMdProp(item.body, 'h3')" />
-            </Prose>
-          </Column>
-        </Columns>
-      </Slide>
-    </Slider>
+    <!-- Delegate slider + heading to DataViewProduct in checkout mode -->
+    <DataViewProduct :data="data" :heading="heading" :src="src" mode="checkout" theme="dasei" />
 
-    <!-- Checkout box below slider -->
-    <div class="checkout-box">
-      <!-- Left column: pricing -->
-      <Section v-if="pricing" background="accent">
-        <Container>
-          <h4 class="section-label">Kosten & Konditionen</h4>
-          <Catalog>
-            <Prose>
-              <div v-html="pricing" />
-            </Prose>
-          </Catalog>
-        </Container>
-      </Section>
+    <!-- Pricing + CTA in muted section (matches CheckoutSection layout) -->
+    <Section background="muted">
+      <Container>
+        <div class="checkout-box">
+          <!-- Left column: pricing -->
+          <div class="checkout-left">
+            <div v-if="pricing" class="pricing-section">
+              <h4 class="section-label">Kosten & Konditionen</h4>
+              <Catalog>
+                <Prose>
+                  <div v-html="pricing" />
+                </Prose>
+              </Catalog>
+            </div>
+          </div>
 
-      <!-- Right column: CTA button -->
-      <div class="checkout-right">
-        <Button
-          variant="primary"
-          size="medium"
-          class="checkout-cta"
-          @click="handleCheckout"
-        >
-          Details & Buchung
-        </Button>
-      </div>
-    </div>
+          <!-- Right column: CTA button -->
+          <div class="checkout-right">
+            <Button
+              variant="primary"
+              size="medium"
+              class="checkout-cta"
+              @click="handleCheckout"
+            >
+              Details & Buchung
+            </Button>
+          </div>
+        </div>
+      </Container>
+    </Section>
   </ContentRenderer>
 </template>
 
@@ -58,11 +40,15 @@
 import { computed, type PropType } from 'vue'
 import { useRouter } from 'vue-router'
 import { Container, Section, Catalog, Prose, Button } from '@crearis/ui'
+import DataViewProduct from './DataViewProduct.vue'
 
 /**
  * DataViewCheckout - Single product checkout view
  *
- * Renders slider + pricing box + CTA for a single product (no variants).
+ * Delegates slider rendering to DataViewProduct (mode="checkout") for consistent
+ * heading, slide_2cols, first/last slide handling, and product.header display.
+ * Adds its own pricing + CTA box below (same layout as CheckoutSection).
+ *
  * Used via embed syntax: ![[path|view="checkout"]]
  */
 
@@ -90,13 +76,6 @@ const props = defineProps({
 })
 
 const router = useRouter()
-
-const shortcodeTitle = (shortcode: string | undefined, title: string) => {
-  if (!shortcode) return title
-  return `_${shortcode.toUpperCase()}_ ${title}`
-}
-
-const default_heading = '## Default Heading'
 
 // Extract pricing markdown from data.details.konditionen.info.kosten
 const pricing = computed(() => {
@@ -129,6 +108,12 @@ const handleCheckout = () => {
   padding: 1.5rem 0;
 }
 
+.checkout-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
 .checkout-right {
   display: flex;
   align-items: center;
@@ -139,6 +124,7 @@ const handleCheckout = () => {
   font-size: 0.875rem;
   font-weight: 600;
   margin-bottom: 0.75rem;
+  color: var(--color-contrast);
   text-transform: uppercase;
   letter-spacing: 0.025em;
 }

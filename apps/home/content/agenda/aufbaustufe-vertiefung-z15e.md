@@ -2,7 +2,7 @@
 navigation: false
 navigation_highlight: /ausbildung-theaterpaedagogik/vertiefung
 shortcode: z15e
-heading: "VERTIEFUNG Theaterpädagogik"
+heading: "Modul E — September 2026 bis Februar 2027 **VERTIEFUNG Theaterpädagogik**"
 date_start: 2026-09-30
 end: 2027-02-28
 ctype: course
