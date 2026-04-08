@@ -302,14 +302,12 @@ const getSlide2ColsFooter = (body: string) => {
 
 /* Checkout mode: heading wrapper with padding matching Container */
 .checkout-heading-wrapper {
-  padding: 0 2.75rem; /* matches Container padding-left/right: 44px */
-  padding-bottom: 1rem; /* ~16px spacing below subline */
+  padding: 1.25rem 2.75rem 1rem; /* top: 20px, left/right: 44px (Container), bottom: 16px */
 }
 
 @media (max-width: 767px) {
   .checkout-heading-wrapper {
-    padding: 0 1rem; /* matches Container mobile padding */
-    padding-bottom: 1rem;
+    padding: 1rem 1rem 1rem; /* matches Container mobile padding */
   }
 }
 

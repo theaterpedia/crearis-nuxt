@@ -1,6 +1,6 @@
 ---
 title: 'Pädagogische Regie'
-description: "Modul C Einzelbuchung — Drei Produktionszyklen, drei öffentliche Aufführungen. JUN - DEZ 2026."
+description: "Modul C Einzelbuchung — Zwei Produktionszyklen, zwei öffentliche Aufführungen. JUN - DEZ 2026."
 heading: 'JUN - DEZ 2026 **PÄDAGOGISCHE REGIE** Das 7-Tage-Modell'
 teaser: |
   **Mit Theater Grenzen bewegen.**
@@ -14,6 +14,7 @@ hero:
   content_width: short
   cta:
     title: Modul C buchen
+    link: '#buchen'
   link:
     title: Curriculum herunterladen
     to: 'grundlagenbildung#modul-c'
@@ -29,6 +30,9 @@ pageBottom:
   image_gravity: south
   gradient_type: bottom
   gradient_depth: 0.7
+  claim:
+    text: Mit Theater Grenzen bewegen
+    orientation: left
   consulting:
     productRef: m17c
     title: "FRAGEN und ANTWORTEN"
@@ -41,6 +45,16 @@ pageBottom:
       email: "✨ abgeschickt! Wir melden uns bei dir."
       call: "Bis bald! Wir rufen dich an."
     categories:
+      - key: prerequisites
+        overline: Voraussetzungen
+        label: Quereinstieg
+        teaser: "Modul A + B abgeschlossen, oder vergleichbare Vorerfahrung. Quereinstieg möglich nach Vorgespräch — 10 Jahre Kulturmanagement zählen ebenso wie pädagogische Ausbildung. Wir fangen dort an, wo du bist."
+        options:
+          - Quereinstieg — bin ich geeignet?
+          - Vorgespräch vereinbaren
+          - Kriterien A-B-C-D (BuT-Zulassung)
+          - Modul A + B nachholen
+          - Grundlagenbildung extern anerkennen
       - key: terms_and_options
         overline: Kosten & Optionen
         label: Finanzierung
@@ -54,24 +68,15 @@ pageBottom:
             url: /blog/aktuelles/dasei-unterstuetzt-kompass-foerderung-27
           - label: Fördermöglichkeiten Überblick
             url: /blog/aktuelles/foerdermoeglichkeiten-29
-      - key: prerequisites
-        overline: Voraussetzungen
-        label: Quereinstieg
-        teaser: "Modul A + B abgeschlossen, oder vergleichbare Vorerfahrung. Quereinstieg möglich nach Vorgespräch — 10 Jahre Kulturmanagement zählen ebenso wie pädagogische Ausbildung. Wir fangen dort an, wo du bist."
-        options:
-          - Quereinstieg — bin ich geeignet?
-          - Vorgespräch vereinbaren
-          - Kriterien A-B-C-D (BuT-Zulassung)
-          - Modul A + B nachholen
-          - Grundlagenbildung extern anerkennen
       - key: schedules
         overline: Termine & Zeitplanung
         label: Ablauf
-        teaser: "Drei 7-Tage-Produktionszyklen (JUN, SEP, NOV) mit je einer öffentlichen Aufführung in der Kofferfabrik Fürth. Intensive Arbeitsphasen im Seminarhaus Burgstallmühle. Ca. 200 UE in 6 Monaten."
+        teaser: "Zwei Produktionszyklen über 7 Monate (JUN–DEZ 2026). Episch-dramatisches Modell (C1–C4) mit Aufführung in der Kofferfabrik Fürth. Performativ-postdramatisches Modell (C5–C8) mit szenischer Collage. Ca. 200 UE."
         options:
-          - 7-Tage-Modell erklärt
+          - Produktionszyklus 1 (C1–C4)
+          - Produktionszyklus 2 (C5–C8)
           - Aufführungstermine
-          - Übernachtung Burgstallmühle
+          - Übernachtung & Anreise
           - Nachholung bei Verhinderung
       - key: continuation
         overline: Fortsetzung
@@ -90,43 +95,22 @@ pageBottom:
 
 ## **WORUM GEHT'S?** Regie lernen heißt: Prozesse leiten, nicht kontrollieren.
 
-Die Pädagogische Regie ist das Herzstück der Theaterpädagogik — hier lernst du, wie du Theaterprozesse mit Gruppen gestaltest. Nicht als Regisseur:in, die alles vorgibt. Sondern als Begleitung, die den Prozess hält, während die Gruppe ihn füllt.
+Die Pädagogische Regie ist das Herzstück der Theaterpädagogik — hier lernst du, Theaterprozesse mit Gruppen zu gestalten. Nicht als Regisseur:in, die alles vorgibt. Sondern als Begleitung, die den Prozess hält, während die Gruppe ihn füllt.
 
-In drei Produktionszyklen durchläufst du das "7-Tage-Modell": Sieben Tage intensive Arbeit, von der ersten Idee bis zur öffentlichen Aufführung. Keine Simulation. Kein "So-tun-als-ob." Sondern echtes Theater vor echtem Publikum — in der Kofferfabrik Fürth, vor 50-80 Zuschauer:innen.
+Du lernst zwei konzeptionelle Ansätze kennen: Im episch-dramatischen Modell (C1–C4) erzählst du eine Geschichte auf der Bühne — von der Initiierung über die Theaterfabrik bis zur Aufführung. Im performativ-postdramatischen Modell (C5–C8) erarbeitest du mit der Gruppe eine szenische Collage, die Fragen aufwirft statt Antworten zu geben.
 
-Unsere Arbeitsweise ist prozessorientiert: Wir wissen am Anfang noch nicht, was am Ende herauskommen wird. Das ist kein Fehler. Das ist die Methode.
+In beiden Zyklen durchläufst du den vollständigen Theaterprozess: Von der ersten Idee bis zur öffentlichen Aufführung. Keine Simulation. Kein "So-tun-als-ob." Sondern echtes Theater vor echtem Publikum — in der Kofferfabrik Fürth, vor 50–80 Zuschauer:innen. Unsere Arbeitsweise ist prozessorientiert: Wir wissen am Anfang noch nicht, was am Ende herauskommen wird. Das ist kein Fehler. Das ist die Methode.
 
 > [!section-container|background=muted]
-> ## **DEIN EINSTIEG** Quereinstieg mit Vorbildung? Das geht.
+> ## **DEIN EINSTIEG** und wenn du auf den Geschmack kommst? Finden wir sicher eine Lösung :)
 > 
-> Du hast Erfahrung in Organisation, Kulturarbeit, Sozialem — aber keine klassische Theaterpädagogik-Ausbildung? Modul C ist buchbar als Einzelmodul. Mit Vorgespräch prüfen wir, ob dein Hintergrund zu unserem Curriculum passt.
+> Du hast Erfahrung in Organisation, Kulturarbeit, Pädagogik — aber keine klassische Theaterpädagogik-Ausbildung? Modul C ist als Einzelmodul buchbar. Mit einem Vorgespräch prüfen wir gemeinsam, ob dein Hintergrund zu unserem Curriculum passt.
 > 
-> Die Voraussetzung: Modul A + B abgeschlossen, oder vergleichbare Vorerfahrung. Wenn du 10 Jahre Veranstaltungsmanagement mitbringst, aber noch nie eine Theaterprobe geleitet hast — genau da setzt Modul C an.
-> 
-> **Erfüllst du eines der Kriterien A-B-C-D?** 
-> - A: abgeschlossene pädagogische oder therapeutische Berufsausbildung
-> - B: Staatlich anerkannte künstlerische Ausbildung in Schauspiel, Musik oder Tanz
-> - C: du studierst in einem dieser Bereiche oder bist in Ausbildung
-> - D: nachweisbare mindestens dreijährige Vollzeittätigkeit in einem der Bereiche
->
-> Persönliche Beratung ist Teil des Angebots: Drei Coaching-Sessions à 45-60 Minuten, flexibel terminierbar. **Wir fangen dort an, wo du bist. Nicht wo du sein "solltest."**
+> Voraussetzung: Du solltest entweder Vorerfahrung im Bereich Theater/Theaterpädagogik haben oder Du hast zumindest Modul A oder MOdul B bei DASEi abgeschlossen. Wenn du bald 10 Jahre ehrenemtliches Veranstaltungsmanagement mitbringst, aber noch nie eine Theaterprobe geleitet hast — genau da setzt Modul C an.
+
+> [!anchor-line|variant=accent anchor=buchen]
 
 <br>
-
-> [!section-container|background=accent]
-> ## **MODUL C BUCHEN** Pädagogische Regie — JUN bis DEZ 2026
+<br>
 
 ![[../agenda/paedagogische-regie-m17c|view="checkout"]]
-
-> [!section-container|background=muted]
-> ## **DANACH?** Modul D, Aufbaustufe, oder Grundlagenbildung vervollständigen.
-> 
-> Mit Modul C hast du den Kern der Pädagogischen Regie erlebt. Du kannst nun:
-> - **Modul D** (Szenisches Projekt) direkt anschließen
-> - in die **Aufbaustufe** einsteigen (Weg zum Theaterpädagog:in BuT)
-> - oder **Modul A+B** nachholen für die vollständige Grundlagenbildung
->
-> **Dein Weg entsteht beim Gehen.**
->
->> [!button-tmp|variant=primary to=grundlagenbildung]
->> Grundlagenbildung anschauen

@@ -217,20 +217,23 @@ function parseDataview(text: string, tab: boolean = false, tabtitle: string = ''
           .join(tab ? ', ' : ' ')
       : ''
 
-    console.log(
-      'MOO',
-      'src',
-      src,
-      'options',
-      options,
-      'result',
-      `${prefix}[!data-view | src=${src}${parsedOptions}]`,
-      'original',
-      _,
-    )
-    return tab
-      ? `{"title": "${tabtitle}", "src": "${src}"${parsedOptions.length ? ', ' : ''}${parsedOptions}}`
-      : `${prefix}[!data-view | src=${src}${parsedOptions}]`
+    if (tab) {
+      return `{"title": "${tabtitle}", "src": "${src}"${parsedOptions.length ? ', ' : ''}${parsedOptions}}`
+    }
+
+    // Top-level embed (no > prefix): emit MDC directly
+    // This bypasses section-container auto-wrapping in createMDC,
+    // matching how parseTabs emits ::data-view-tabs{} directly
+    if (!gt) {
+      const mdcProps = [`src="${src}"`, ...Object.entries(options).map(([k, v]) => `${k}="${v}"`)].join(' ')
+      const newlines = '\n'.repeat(countNewlines(spaces))
+      if (logVerbose) console.log('parseDataview [MDC]', 'src', src, 'options', options)
+      return `${newlines}::data-view{${mdcProps}}\n::`
+    }
+
+    // Nested embed (inside a callout): keep callout format
+    if (logVerbose) console.log('parseDataview [callout]', 'src', src, 'options', options)
+    return `${prefix}[!data-view | src=${src}${parsedOptions}]`
   })
 }
 

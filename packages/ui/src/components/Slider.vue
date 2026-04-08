@@ -263,6 +263,7 @@ onUnmounted(() => {
   justify-content: center;
   gap: 0.875rem;
   margin-top: 1.125rem; /* 18px */
+  padding-bottom: 1.25rem; /* 20px spacing after dots */
 }
 
 .slider-pagination:deep() .swiper-pagination-bullet {
