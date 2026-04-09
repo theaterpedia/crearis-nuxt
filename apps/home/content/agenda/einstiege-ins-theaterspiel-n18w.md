@@ -2,12 +2,12 @@
 navigation: false
 navigation_highlight: /ausbildung-theaterpaedagogik/einstiege
 shortcode: n18w
-heading: "**Einstiege ins Theaterspiel** Nürnberg 18.4 - 6.12.2026 // Tageskursverlauf"
-date_start: 2026-04-18
+heading: "**Einstiege ins Theaterspiel** Nürnberg 27.6 - 6.12.2026 // Tageskursverlauf"
+date_start: 2026-06-27
 end: 2026-12-06
 ctype: course
 tag: course
-description: Weiterbildung Theaterpädagogik - Kurs N18W Nürnberg 18.4 - 6.12.2026 // Tageskursverlauf Nürnberg
+description: Weiterbildung Theaterpädagogik - Kurs N18W Nürnberg 27.6 - 6.12.2026 // Tageskursverlauf Nürnberg
 title: Einstiege ins Theaterspiel
 cssclasses:
   - course

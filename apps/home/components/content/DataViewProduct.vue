@@ -375,4 +375,8 @@ const getSlide2ColsFooter = (body: string) => {
   margin-left: 0;
   padding-left: 0;
 }
+
+.slide-2cols :deep(li)::before {
+  display: none;
+}
 </style>

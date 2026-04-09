@@ -67,7 +67,7 @@
         <NuxtLink
           v-for="course in resolvedCourses"
           :key="course._path"
-          :to="course._path"
+          :to="getCourseLink(course)"
           class="related-content__card"
         >
           <div v-if="course.image?.src" class="related-content__image">
@@ -203,6 +203,12 @@ const resolvedCourses = computed(() => {
     .map(sc => allCourses.value?.find((c: ContentItem) => c.shortcode === sc))
     .filter(Boolean) as ContentItem[]
 })
+
+function getCourseLink(course: ContentItem) {
+  const src = course._path?.replace(/^\//, '') || ''
+  const product = course.shortcode || ''
+  return `/details?src=${src}${product ? '&product=' + product : ''}`
+}
 </script>
 
 <style scoped>

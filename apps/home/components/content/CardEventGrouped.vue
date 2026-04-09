@@ -174,9 +174,13 @@ function getTagExtract(event: EventContent): string {
   border-left: 3px solid var(--color-card-bg);
 }
 
-/* Gap on left of first chip when chips don't fill full width */
-.date-chip:first-child {
-  border-left: 3px solid var(--color-card-bg);
+/* Muted fill for empty space on the left; inset shadow = gap that collapses to 0 when no space */
+.date-chips::before {
+  content: '';
+  flex: 1 1 0;
+  min-width: 0;
+  background-color: var(--color-muted-bg);
+  box-shadow: inset -3px 0 0 var(--color-card-bg);
 }
 
 /* Card hover: first chip → primary, others → accent */
