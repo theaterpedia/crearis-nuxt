@@ -457,31 +457,28 @@ const getRootPath = (root: string | undefined) => {
   return `/ausbildung-theaterpaedagogik/${root}`
 }
 
-// Back-navigation: remember the route that brought us to details
+// Back-navigation: use referrer route captured by page middleware
 const router = useRouter()
-const referrerRoute = ref<string | null>(null)
-
-onMounted(() => {
-  // Capture the referrer from browser history on initial load
-  if (typeof document !== 'undefined' && document.referrer) {
-    try {
-      const url = new URL(document.referrer)
-      // Only store same-origin referrers
-      if (url.origin === window.location.origin) {
-        referrerRoute.value = url.pathname + url.search + url.hash
-      }
-    } catch {
-      // ignore invalid referrer
-    }
-  }
-})
+const referrerRoute = useState<string | null>('detailsReferrer', () => null)
 
 const isCourse = computed(() => props.product.ctype === 'course')
 
 const handleBackToSource = () => {
   const target = referrerRoute.value || '/'
+  // Strip any existing hash before appending #buchen
+  const cleanTarget = target.replace(/#.*$/, '')
   const hash = isCourse.value ? '#buchen' : ''
-  router.push(target + hash)
+  router.push(cleanTarget + hash).then(() => {
+    if (hash) {
+      // Wait for content to render, then scroll to anchor
+      setTimeout(() => {
+        const anchor = document.getElementById('buchen')
+        if (anchor) {
+          anchor.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+      }, 150)
+    }
+  })
 }
 </script>
 

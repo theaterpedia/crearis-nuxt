@@ -9,6 +9,12 @@
 <script lang="ts" setup>
 definePageMeta({
   layout: 'details',
+  middleware(to, from) {
+    // Capture the route that brought us here (SPA-safe)
+    if (from.name && from.fullPath !== to.fullPath) {
+      useState<string | null>('detailsReferrer', () => null).value = from.fullPath
+    }
+  },
 })
 
 const route = useRoute()

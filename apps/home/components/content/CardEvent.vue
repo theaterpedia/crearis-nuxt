@@ -9,6 +9,13 @@
           target="card"
           class="c-hero"
         ></CardHero>
+      </NuxtLink>
+      <!-- Date + location tagline between image and text -->
+      <NuxtLink v-if="dateTimeStr || cityStr" :to="data.productlink || data._path" class="card-tagline">
+        <span>{{ dateTimeStr }}</span>
+        <span v-if="cityStr">{{ cityStr }}</span>
+      </NuxtLink>
+      <NuxtLink :to="data.productlink || data._path">
         <Heading
           v-if="heading || data.heading || data.title"
           card
@@ -16,11 +23,6 @@
           is="h4"
           class="heading"
         />
-      </NuxtLink>
-      <!-- Date + location tagline at bottom -->
-      <NuxtLink v-if="dateTimeStr || cityStr" :to="data.productlink || data._path" class="card-tagline">
-        <span>{{ dateTimeStr }}</span>
-        <span v-if="cityStr">{{ cityStr }}</span>
       </NuxtLink>
     </div>
   </ContentRenderer>
@@ -86,16 +88,7 @@ const default_heading = '## Default Heading'
 }
 
 .c-hero::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: 0.5rem;
-  background-color: var(--color-muted-bg);
-}
-.c-hero:hover::after {
-  background-color: var(--color-primary-bg);
+  display: none;
 }
 
 .heading {
@@ -110,7 +103,8 @@ const default_heading = '## Default Heading'
 .card-tagline {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-end;
+  gap: 1em;
   padding-inline: 1rem;
   background-color: var(--color-muted-bg);
   text-decoration: none;
@@ -121,7 +115,7 @@ const default_heading = '## Default Heading'
   font-size: 0.9em;
 }
 
-.card-tagline:hover {
+.card:hover .card-tagline {
   background-color: var(--color-primary-bg);
 }
 

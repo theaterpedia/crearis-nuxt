@@ -10,7 +10,7 @@ import { Button } from '@crearis/ui'
 import { inject, computed } from 'vue'
 import type { ComputedRef } from 'vue'
 
-const detailsLink = inject<ComputedRef<string>>('detailsLink')
+const detailsLink = inject<ComputedRef<string>>('detailsLink', undefined)
 
 const props = defineProps({
   /**

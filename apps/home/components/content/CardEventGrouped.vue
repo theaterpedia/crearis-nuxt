@@ -10,16 +10,9 @@
           target="card"
           class="c-hero"
         />
-        <Heading
-          v-if="heading || primaryEvent.heading || primaryEvent.title"
-          card
-          :content="heading ?? primaryEvent.heading ?? primaryEvent.title ?? ''"
-          is="h4"
-          class="heading"
-        />
       </NuxtLink>
       
-      <!-- Date chips row for repeating events -->
+      <!-- Date chips row between image and text -->
       <div v-if="hasMultipleDates" class="date-chips" :class="{ 'date-chips-condensed': isCondensed }">
         <NuxtLink
           v-for="(event, index) in visibleEvents"
@@ -33,6 +26,15 @@
           +{{ overflowCount }}
         </span>
       </div>
+      <NuxtLink :to="primaryEvent._path">
+        <Heading
+          v-if="heading || primaryEvent.heading || primaryEvent.title"
+          card
+          :content="heading ?? primaryEvent.heading ?? primaryEvent.title ?? ''"
+          is="h4"
+          class="heading"
+        />
+      </NuxtLink>
     </div>
   </ContentRenderer>
 </template>
@@ -128,17 +130,7 @@ function getTagExtract(event: EventContent): string {
 }
 
 .c-hero::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: 0.5rem;
-  background-color: var(--color-muted-bg);
-}
-
-.c-hero:hover::after {
-  background-color: var(--color-primary-bg);
+  display: none;
 }
 
 .heading {
@@ -152,6 +144,7 @@ function getTagExtract(event: EventContent): string {
 /* Date chips row — tagline style matching CardPost */
 .date-chips {
   display: flex;
+  justify-content: flex-end;
   gap: 0;
   padding: 0;
   margin: 0;
@@ -175,11 +168,35 @@ function getTagExtract(event: EventContent): string {
   line-height: 1rem;
   padding-top: 0.1em;
   padding-bottom: 0.1em;
-  border-right: 3px solid var(--color-card-bg);
 }
 
-.date-chip:hover {
+.date-chip + .date-chip {
+  border-left: 3px solid var(--color-card-bg);
+}
+
+/* Gap on left of first chip when chips don't fill full width */
+.date-chip:first-child {
+  border-left: 3px solid var(--color-card-bg);
+}
+
+/* Card hover: first chip → primary, others → accent */
+.card:hover .date-chip {
+  background-color: var(--color-accent-bg);
+  color: var(--color-accent-contrast);
+}
+.card:hover .date-chip:first-child {
   background-color: var(--color-primary-bg);
+  color: inherit;
+}
+
+/* Any chip hovered: that chip → primary, others → accent */
+.card:hover .date-chips:hover .date-chip {
+  background-color: var(--color-accent-bg);
+  color: var(--color-accent-contrast);
+}
+.card:hover .date-chips:hover .date-chip:hover {
+  background-color: var(--color-primary-bg);
+  color: inherit;
 }
 
 /* Condensed: 4+ chips with location — reduce font 10% + condensed */
