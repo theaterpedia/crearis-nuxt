@@ -20,17 +20,16 @@
       </NuxtLink>
       
       <!-- Date chips row for repeating events -->
-      <div v-if="hasMultipleDates" class="date-chips">
+      <div v-if="hasMultipleDates" class="date-chips" :class="{ 'date-chips-condensed': isCondensed }">
         <NuxtLink
           v-for="(event, index) in visibleEvents"
           :key="event._path"
           :to="event._path"
           class="date-chip"
-          :class="{ 'date-chip-active': event._path === primaryEvent._path }"
         >
           {{ getTagExtract(event) }}
         </NuxtLink>
-        <span v-if="overflowCount > 0" class="date-chip-overflow">
+        <span v-if="overflowCount > 0 && showOverflow" class="date-chip-overflow">
           +{{ overflowCount }}
         </span>
       </div>
@@ -42,6 +41,7 @@
 import { NuxtLink } from '#components'
 import { computed } from 'vue'
 import {
+  extractCity,
   generateTagExtract,
   getFirstUpcoming,
   isValidEvent,
@@ -97,6 +97,20 @@ const hasMultipleDates = computed(() => sortedEvents.value.length > 1)
 const visibleEvents = computed(() => sortedEvents.value.slice(0, MAX_VISIBLE_CHIPS))
 const overflowCount = computed(() => Math.max(0, sortedEvents.value.length - MAX_VISIBLE_CHIPS))
 
+// Only show overflow count for online-only groups (in-presence would overflow/break the UI)
+const showOverflow = computed(() => {
+  if (overflowCount.value <= 0) return false
+  const primary = primaryEvent.value
+  const city = extractCity(primary.location, primary.tag)
+  return !city // empty city = online
+})
+
+// Condensed mode: 4+ visible chips that have a location (city abbreviation)
+const isCondensed = computed(() => {
+  if (visibleEvents.value.length < 4) return false
+  return visibleEvents.value.some(e => !!extractCity(e.location, e.tag))
+})
+
 function getTagExtract(event: EventContent): string {
   return generateTagExtract(event) || event.title || ''
 }
@@ -135,43 +149,56 @@ function getTagExtract(event: EventContent): string {
   font-size: 0.825rem;
 }
 
-/* Date chips row */
+/* Date chips row — tagline style matching CardPost */
 .date-chips {
   display: flex;
-  gap: 0.25rem;
+  gap: 0;
   padding: 0;
   margin: 0;
   flex-wrap: nowrap;
   overflow: hidden;
+  background-color: var(--color-muted-bg);
 }
 
 .date-chip {
   display: inline-flex;
   align-items: center;
-  padding: 0.25rem 0.5rem;
+  padding-inline: 0.5rem;
   background-color: var(--color-muted-bg);
-  color: var(--color-text);
-  font-size: 0.75rem;
-  font-weight: 500;
+  color: inherit;
+  font-size: 0.9em;
+  font-weight: 400;
   white-space: nowrap;
   border-radius: 0;
   transition: background-color 0.15s ease;
   text-decoration: none;
+  line-height: 1rem;
+  padding-top: 0.1em;
+  padding-bottom: 0.1em;
+  border-right: 3px solid var(--color-card-bg);
 }
 
-.date-chip:hover,
-.date-chip-active {
+.date-chip:hover {
   background-color: var(--color-primary-bg);
-  color: var(--color-primary-text, inherit);
+}
+
+/* Condensed: 4+ chips with location — reduce font 10% + condensed */
+.date-chips-condensed .date-chip {
+  font-size: 0.81em;
+  font-stretch: condensed;
+  padding-inline: 0.35rem;
 }
 
 .date-chip-overflow {
   display: inline-flex;
   align-items: center;
-  padding: 0.25rem 0.25rem;
-  font-size: 0.75rem;
+  padding-inline: 0.25rem;
+  font-size: 0.9em;
   font-weight: 700;
   color: var(--color-muted-text);
   white-space: nowrap;
+  line-height: 1rem;
+  padding-top: 0.1em;
+  padding-bottom: 0.1em;
 }
 </style>

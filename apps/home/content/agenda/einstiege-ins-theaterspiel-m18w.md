@@ -2,12 +2,12 @@
 navigation: false
 navigation_highlight: /ausbildung-theaterpaedagogik/einstiege
 shortcode: m18w
-heading: "**Einstiege ins Theaterspiel** München 19.4 - 1.12.2026 // Tageskursverlauf"
-date_start: 2026-04-19
+heading: "**Einstiege ins Theaterspiel** München 28.6 - 1.12.2026 // Tageskursverlauf"
+date_start: 2026-06-28
 end: 2026-12-01
 ctype: course
 tag: course
-description: Weiterbildung Theaterpädagogik - Kurs M18W München 19.4 - 1.12.2026 // Tageskursverlauf München
+description: Weiterbildung Theaterpädagogik - Kurs M18W München 28.6 - 1.12.2026 // Tageskursverlauf München
 title: Einstiege ins Theaterspiel
 cssclasses:
   - course
@@ -100,7 +100,7 @@ items:
   meta:
    locked: true
   summary:
-   events: [aa_56, a0_33, a4_29, a5_30, a1_40, a2_36, a3_31]
+   events: [aa_57, a0_48, a4_29, a5_30, a1_40, a2_36, a3_31]
    duration: "9 Monate"
    ue: 120
   ctype: slide_2cols
@@ -117,30 +117,30 @@ items:
     - **A1** Am Anfang war der Kreis
     - **A2** Die Bühne kommt von selbst
     - **A3** Wege entstehen beim Gehen
- aa_56:
+ aa_57:
   meta:
-   updated: 2026-04-06
+   updated: 2026-04-09
   ctype: event
   shortcode: aa
-  tag: Do., 9.4. 18:00-20:00 online
+  tag: Do., 30.4. 18:00-20:00 online
   title: Kursinfo **Online-Teaser Einstiege ins Theaterspiel**
   image: 
-   url: https://res.cloudinary.com/little-papillon/image/upload/c_crop,h_850,w_1200,x_310,y_130/v1594701917/dasei/einstiege_lampe_nora.jpg
-   caption: Theaterpädagogik E. Allerdings als Lampe
+   url: https://res.cloudinary.com/little-papillon/image/upload/c_crop,g_north,h_1200,w_1200,x_50,y_140/v1775638865/dasei/hans_kontakt.jpg
+   caption: Portrait Hans Dönitz
   body: |
    Du erwägst schon länger in die Theaterpädagogik einzusteigen? Du suchst nach qualifizierter Ausbildung in diesem Bereich? Vielleicht bist du bereits fest entschlossen, bei DAS Ei zu starten? 
    Dann melde dich an zum unverbindlichen Online-Teaser!
-  date_start: "2026-04-09T18:00"
-  date_end: "2026-04-09T20:00"
+  date_start: "2026-04-30T18:00"
+  date_end: "2026-04-30T20:00"
   location: online (MS Teams, Link wird rechtzeitig zugeschickt)
   schedule: "DO 18:00-20:00 _online_"
   instructors: Hans Dönitz
- a0_33:
+ a0_48:
   meta:
-   updated: 2026-04-06
+   updated: 2026-04-09
   ctype: event
   shortcode: a0
-  tag: So., 19.4. ganztags + 1 Abend online
+  tag: So., 14.6. ganztags + 1 Abend online
   title: Praxis, Theorie & Ausbildung bei DAS Ei **Basistag Theaterpädagogik**
   image: 
    url: https://res.cloudinary.com/little-papillon/image/upload/v1676101506/dasei/700_dasei2022_I8A7903_cvtigl.jpg
@@ -150,13 +150,13 @@ items:
    - Einstiege ins Theaterspiel (Modul A)
    - Szenische Themenarbeit (Modul B)
    - Pädagogische Regie (Modul C)
-  date_start: "2026-04-19T09:30"
-  date_end: "2026-04-19T18:30"
+  date_start: "2026-06-14T09:00"
+  date_end: "2026-06-14T18:00"
   location: "Schwanthalerstraße 91, 80336 München"
   schedule: |
    FR 18:00-20:00 _online_
-   SO 09:30-18:30
-  instructors: Hans Dönitz
+   SO 09:00-18:00
+  instructors: Cornelia Jung
  a4_29:
   meta:
    updated: 2026-04-06

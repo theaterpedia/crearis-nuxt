@@ -2,12 +2,12 @@
 navigation: false
 navigation_highlight: /ausbildung-theaterpaedagogik/einstiege
 shortcode: n18w
-heading: "**Einstiege ins Theaterspiel** Nürnberg 18.4 - 8.12 // Tageskurs"
-date_start: 2026-03-07
-end: 2026-12-08
+heading: "**Einstiege ins Theaterspiel** Nürnberg 18.4 - 6.12.2026 // Tageskursverlauf"
+date_start: 2026-04-18
+end: 2026-12-06
 ctype: course
 tag: course
-description: Weiterbildung Theaterpädagogik - Kurs N18W Nürnberg 7.3 - 8.12.2026 // Tageskursverlauf Nürnberg
+description: Weiterbildung Theaterpädagogik - Kurs N18W Nürnberg 18.4 - 6.12.2026 // Tageskursverlauf Nürnberg
 title: Einstiege ins Theaterspiel
 cssclasses:
   - course
@@ -26,13 +26,6 @@ details:
     - **5 Einheiten A1-A5** _110 UE_
     - **SUMME** mind. 120 UE
     *UEs (Unterrichtseinheiten) sind voll anrechenbar auf die Zertifikate Theaterpädagogik (BuT), eine UE entspricht 45 Min
-   beratung: |
-    #### individuelle Fachberatung vereinbaren
-    - Ausbildung oder Weiterbildung? 
-    - Unterschiede zwischen Blockprogramm oder Tageskursverlauf
-    - Fördermöglichkeiten
-    - im Sept 2026 Beratung zur Fortsetzung Grundlagenbildung Kurse M18 oder N18 mit Ziel Grundlagen Theaterpädagogik (BuT)
-    - Fortsetzung Aufbaustufe möglich mit Abschluss Theaterpädagog:in (BuT) bis Juli 2030
  konditionen:
   title: Kosten & Konditionen
   header: |
@@ -41,7 +34,6 @@ details:
    kosten: |
     ### Kosten
     - **A0 Anmeldegebühr (inkl. Basistag)** € 80,00 
-    - Frist: 28.2.2026
     - **5 Kursraten A1-A5** 5 Raten x € 220,00
     - Zahlung: 5 Monatsraten (jeweils zum 1. des Monats) auf Rechnung
    storno: |
@@ -102,25 +94,50 @@ product:
   ## 6 Kurseinheiten
   In prägnanten Einheiten erlebst Du beide Wege, verstehst die Zusammenhänge und leitest selber an: Du lernst die Methoden, die Leitungshaltung und typische Abläufe.
  footer: |
-  ## MÄR - DEZ 2026 // München **Einstiege ins Theaterspiel**
+  ## APR - DEZ 2026 // Nürnberg **Einstiege ins Theaterspiel**
 items: 
- aa_56:
+ course_summary:
+  meta:
+   locked: true
+  summary:
+   events: [aa_57, a0_66, a4_24, a5_47, a1_88, a2_26, a3_22]
+   duration: "9 Monate"
+   ue: 120
+  ctype: slide_2cols
+  title: "**Programmbestandteile**"
+  body: |
+    - **AA** Online-Teaser Einstiege ins Theaterspiel
+    - **A0** Basistag Theaterpädagogik
+    - **A4** Szenische Lesung
+    - **A5** Figurenkarussell
+
+    ---
+
+    - individuelle Fachberatung
+    - **A1** Am Anfang war der Kreis
+    - **A2** Die Bühne kommt von selbst
+    - **A3** Wege entstehen beim Gehen
+ aa_57:
+  meta:
+   updated: 2026-04-09
   ctype: event
   shortcode: aa
-  tag: Do., 9.4. 18:00-20:00 online
+  tag: Do., 30.4. 18:00-20:00 online
   title: Kursinfo **Online-Teaser Einstiege ins Theaterspiel**
   image: 
-   url: https://res.cloudinary.com/little-papillon/image/upload/c_crop,h_850,w_1200,x_310,y_130/v1594701917/dasei/einstiege_lampe_nora.jpg
-   caption: Theaterpädagogik E. Allerdings als Lampe
+   url: https://res.cloudinary.com/little-papillon/image/upload/c_crop,g_north,h_1200,w_1200,x_50,y_140/v1775638865/dasei/hans_kontakt.jpg
+   caption: Portrait Hans Dönitz
   body: |
    Du erwägst schon länger in die Theaterpädagogik einzusteigen? Du suchst nach qualifizierter Ausbildung in diesem Bereich? Vielleicht bist du bereits fest entschlossen, bei DAS Ei zu starten? 
    Dann melde dich an zum unverbindlichen Online-Teaser!
-  date_start: "2026-04-09T18:00"
-  date_end: "2026-04-09T20:00"
+  date_start: "2026-04-30T18:00"
+  date_end: "2026-04-30T20:00"
   location: online (MS Teams, Link wird rechtzeitig zugeschickt)
   schedule: "DO 18:00-20:00 _online_"
   instructors: Hans Dönitz
  a0_66:
+  meta:
+   updated: 2026-04-09
   ctype: event
   shortcode: a0
   tag: Sa., 18.4. ganztags + 1 Abend online
@@ -140,43 +157,49 @@ items:
    Durchführung ist optional bei ausreichendd Teilnehmer:innen // FR 18:00-20:00 _online_
    SA 09:00-18:00
   instructors: Hans Dönitz
- a4_29:
+ a4_24:
+  meta:
+   updated: 2026-04-09
   ctype: event
   shortcode: a4
-  tag: Sa., 27.6. ganztags + 2 Abende online
+  tag: So., 28.6. ganztags + 2 Abende online
   title: Präsentation einer Geschichte **Szenische Lesung**
   image: 
    url: https://res.cloudinary.com/little-papillon/image/upload/w_400//v1676102664/dasei/einstiege.jpg
    caption: Theaterpädagogik A4
   body: |
    Du erarbeitest dir spezifische Techniken, die es dir ermöglichen, unmittelbar in verschiedene Rollen zu schlüpfen. Für das teilnehmende Publikum bringst du auf diese Weise die Magie einer Geschichte zum Vorschein und interagierst als Animationsfigur. Die durch sie vermittelten Erlebnissen, können zum Auftakt eines Theaterstücks werden.
-  date_start: "2026-06-28T09:30"
-  date_end: "2026-06-28T18:30"
-  location: "Schwanthalerstr. 80, 80336 München"
+  date_start: "2026-06-28T09:00"
+  date_end: "2026-06-28T18:00"
+  location: "Kaiserstr. 177, 90763 Nürnberg/Fürth"
   schedule: |
    FR 18:00-20:00 online
-   SO 09:30-18:30
+   SO 09:00-18:00
    DI 18:00-21:00 online
   instructors: Cornelia Jung
- a5_30:
+ a5_47:
+  meta:
+   updated: 2026-04-09
   ctype: event
   shortcode: a5
-  tag: Sa., 25.7. ganztags + 2 Abende online
+  tag: So., 26.7. ganztags + 2 Abende online
   title: Stückentwicklung basierend auf Mitspieltheater **Figurenkarussell**
   image: 
    url: https://res.cloudinary.com/little-papillon/image/upload/w_400//v1676100144/dasei/figurenkarussell.jpg
    caption: Theaterpädagogik A5
   body: |
    Mithilfe des Figurenkarussells animierst du das teilnehmende Publikum aktiv in das Bühnengeschehen einzusteigen. Mühelos und ohne Umschweife gelingt es so, Zuschauende zu Mitspielenden zu machen. Wurde eine Rolle von einem oder mehreren Teilnehmenden übernommen, dreht sich das Figurenkarussell zur nächsten Figur.
-  date_start: "2026-07-26T09:30"
-  date_end: "2026-07-26T18:30"
-  location: "Schwanthalerstraße 91, 80336 München"
+  date_start: "2026-07-26T09:00"
+  date_end: "2026-07-26T18:00"
+  location: "Kaiserstr. 177, 90763 Nürnberg/Fürth"
   schedule: |
    FR 18:00-20:00 online
-   SO 09:30-18:30
+   SO 09:00-18:00
    DI 18:00-21:00 online
   instructors: Cornelia Jung
  a1_88:
+  meta:
+   updated: 2026-04-09
   ctype: event
   shortcode: a1
   tag: Sa., 10.10. ganztags + 2 Abende online
@@ -194,25 +217,29 @@ items:
    SA 09:00-18:00
    DI 18:00-21:00 online
   instructors: Hans Dönitz
- a2_36:
+ a2_26:
+  meta:
+   updated: 2026-04-09
   ctype: event
   shortcode: a2
-  tag: Sa., 24.10. ganztags + 2 Abende online
+  tag: So., 25.10. ganztags + 2 Abende online
   title: Arbeiten mit dem Zwei-Kreise-Modell **Die Bühne kommt von selbst**
   image: 
    url: https://res.cloudinary.com/little-papillon/image/upload/w_400/v1676100503/dasei/377_dasei2022_I8A6515_p6aee7.jpg
    caption: Foto die Bühne kommt von selbst
   body: |
    Wenn Du gelernt hast, die Interaktion der Gruppe im Kreis freizusetzen, entstehen fast von selbst Bühnenmomente. Mit dem Zwei-Kreise-Modell lernst Du diese Momente gezielt zu gestalten und verbindest das Theaterpotential einfacher Animationen zu einem bühnenreifen Setting. Der Kreis öffnet sich zum Halbkreis und gibt in der Mitte eine Spielfläche frei.
-  date_start: "2026-10-25T09:30"
-  date_end: "2026-10-25T18:30"
-  location: "Schwanthalerstraße 91, 80336 München"
+  date_start: "2026-10-25T09:00"
+  date_end: "2026-10-25T18:00"
+  location: "Kaiserstr. 177, 90763 Nürnberg/Fürth"
   schedule: |
    FR 18:00-20:00 online
-   SO 09:30-18:30
+   SO 09:00-18:00
    DI 18:00-21:00 online
   instructors: Hans Dönitz
  a3_22:
+  meta:
+   updated: 2026-04-09
   ctype: event
   shortcode: a3
   tag: Sa., 5.12. bis So., 6.12. + 2 Abende online

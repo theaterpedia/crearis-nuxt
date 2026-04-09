@@ -2,7 +2,7 @@
 navigation: false
 navigation_highlight: /ausbildung-theaterpaedagogik/einstiege
 shortcode: n18x
-heading: "**Einstiege ins Theaterspiel** Burgstallmühle 14.5 - 6.12 // Blockseminar"
+heading: "**Einstiege ins Theaterspiel** Burgstallmühle 14.5 - 6.12 // Blockseminarverlauf"
 date_start: 2026-05-14
 end: 2026-12-06
 ctype: course
@@ -27,13 +27,6 @@ details:
     - **SEMINARBLOCK 2** (3-4 Tage im Seminarhaus)
     - **Abschluss-Wochenende** (2 Tage)
     - **SUMME** mind. 120 UE
-   beratung: |
-    #### individuelle Fachberatung vereinbaren
-    - Ausbildung oder Weiterbildung? 
-    - Unterschiede zwischen Blockprogramm oder Tageskursverlauf
-    - Fördermöglichkeiten
-    - im Sept 2026 Beratung zur Fortsetzung Grundlagenbildung Kurse M18 oder N18 mit Ziel Grundlagen Theaterpädagogik (BuT)
-    - Fortsetzung Aufbaustufe möglich mit Abschluss Theaterpädagog:in (BuT) bis Juli 2030
  konditionen:
   title: Kosten & Konditionen
   header: |
@@ -42,7 +35,7 @@ details:
    kosten: |
     ### Kosten
     - **A0 Anmeldegebühr (inkl. Basistag)** € 80,00 
-    - Frist: 28.2.2026
+    - Frist: 1.3.2026
     - **5 Kursraten A1-A5** 5 Raten x € 220,00
     - Zahlung: 2 Raten 1. Mai, 2 Raten 1. Sept, 1 Rate 1. Nov 2026
    storno: |
@@ -103,25 +96,49 @@ product:
   ## 6 Kurseinheiten in 3 Blocks
   In prägnanten Einheiten erlebst Du beide Wege, verstehst die Zusammenhänge und leitest selber an: Du lernst die Methoden, die Leitungshaltung und typische Abläufe. Egal, welche Vorerfahrungen Du mitbringst sind wir sicher, dass Du dabei viel mitnehmen wirst.
  footer: |
-  ## MÄR - DEZ 2026 // Burgstallmühle & Nürnberg **Einstiege ins Theaterspiel**
+  ## MAI - DEZ 2026 // Burgstallmühle & Nürnberg **Einstiege ins Theaterspiel**
 items: 
- aa_56:
+ course_summary:
+  meta:
+   locked: true
+  summary:
+   events: [aa_57, a0_66, a1_21, a2_159, a4_28, a5_165, a3_22]
+   duration: "9 Monate"
+   ue: 120
+  ctype: slide_2cols
+  title: "**Programmbestandteile**"
+  body: |
+    - **AA** Online-Teaser Einstiege ins Theaterspiel
+    - **A0** Basistag Theaterpädagogik
+    - **A4 + A5** Szenische Lesung & Figurenkarussell — Geschichten präsentieren, Publikum aktivieren
+
+    ---
+
+    - individuelle Fachberatung
+    - **A1 + A2** Am Anfang war der Kreis & Die Bühne kommt von selbst — Elementare Animation vom Kreisspiel zur Bühne
+    - **A3** Wege entstehen beim Gehen
+ aa_57:
+  meta:
+   updated: 2026-04-09
   ctype: event
+  timeline: false
   shortcode: aa
-  tag: Do., 9.4. 18:00-20:00 online
+  tag: Do., 30.4. 18:00-20:00 online
   title: Kursinfo **Online-Teaser Einstiege ins Theaterspiel**
   image: 
-   url: https://res.cloudinary.com/little-papillon/image/upload/c_crop,h_850,w_1200,x_310,y_130/v1594701917/dasei/einstiege_lampe_nora.jpg
-   caption: Theaterpädagogik E. Allerdings als Lampe
+   url: https://res.cloudinary.com/little-papillon/image/upload/c_crop,g_north,h_1200,w_1200,x_50,y_140/v1775638865/dasei/hans_kontakt.jpg
+   caption: Portrait Hans Dönitz
   body: |
    Du erwägst schon länger in die Theaterpädagogik einzusteigen? Du suchst nach qualifizierter Ausbildung in diesem Bereich? Vielleicht bist du bereits fest entschlossen, bei DAS Ei zu starten? 
    Dann melde dich an zum unverbindlichen Online-Teaser!
-  date_start: "2026-04-09T18:00"
-  date_end: "2026-04-09T20:00"
+  date_start: "2026-04-30T18:00"
+  date_end: "2026-04-30T20:00"
   location: online (MS Teams, Link wird rechtzeitig zugeschickt)
   schedule: "DO 18:00-20:00 _online_"
   instructors: Hans Dönitz
  a0_66:
+  meta:
+   updated: 2026-04-09
   ctype: event
   shortcode: a0
   tag: Sa., 18.4. ganztags + 1 Abend online
@@ -142,6 +159,8 @@ items:
    SA 09:00-18:00
   instructors: Hans Dönitz
  a1_21:
+  meta:
+   updated: 2026-04-06
   ctype: event
   shortcode: a1
   tag: Do., 14.5. bis So., 17.5 (Seminarhaus)
@@ -162,6 +181,8 @@ items:
    Di. 18:00-21:00 ONLINE
   instructors: Hans Dönitz
  a2_159:
+  inherits: a1_21
+  timeline: false
   ctype: event
   shortcode: a2
   tag: Fortsetzung Do., 14.5. bis So., 17.5
@@ -182,6 +203,8 @@ items:
    Di. 18:00-21:00 online
   instructors: Hans Dönitz
  a4_28:
+  meta:
+   updated: 2026-04-06
   ctype: event
   shortcode: a4
   tag: Do., 24.9. bis So., 27.9 (Seminarhaus)
@@ -202,6 +225,8 @@ items:
    Di. 18:00-21:00 ONLINE
   instructors: Kathrin Jung
  a5_165:
+  inherits: a4_28
+  timeline: false
   ctype: event
   shortcode: a5
   tag: Fortsetzung Do., 24.9. bis So., 27.9
@@ -222,13 +247,15 @@ items:
    Di. 18:00-21:00 online
   instructors: Kathrin Jung
  a3_22:
+  meta:
+   updated: 2026-04-09
   ctype: event
   shortcode: a3
-  tag: Sa., 5.12. bis So., 6.12 + 2 Abende online
+  tag: Sa., 5.12. bis So., 6.12. + 2 Abende online
   title: Raumlauf-Animation und Impro-Training **Wege entstehen beim Gehen**
   image: 
    url: https://res.cloudinary.com/little-papillon/image/upload/w_400//v1676101054/dasei/wege_entstehen_beim_gehen.jpg
-   caption: Theaterpädagogik den Fuß setzen
+   caption: Theaterpädagogik A3
   body: |
    Nichts kann das Ganz-Auf-Sicht-Gestellt-Sein der Bühnensituation besser vorwegnehmen, als ein einfacher Raumlauf - Jene Übung, in der sich Teilnehmer mit einem konkreten Geh-Auftrag kreuz und quer durch den Raum bewegen. Ein gründliches Verstehen des Geschehens ist nicht nur hilfreich, um den Raumlauf ordentlich anleiten zu können, sondern eröffnet immer neue Einblicke auf das Agieren im Bühnenraum.
   date_start: "2026-12-05T09:30"

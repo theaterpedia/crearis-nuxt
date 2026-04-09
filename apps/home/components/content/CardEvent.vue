@@ -17,12 +17,23 @@
           class="heading"
         />
       </NuxtLink>
+      <!-- Date + location tagline at bottom -->
+      <NuxtLink v-if="dateTimeStr || cityStr" :to="data.productlink || data._path" class="card-tagline">
+        <span>{{ dateTimeStr }}</span>
+        <span v-if="cityStr">{{ cityStr }}</span>
+      </NuxtLink>
     </div>
   </ContentRenderer>
 </template>
 
 <script lang="ts" setup>
 import { NuxtLink } from '#components'
+import { computed } from 'vue'
+import {
+  extractCity,
+  formatDateCompact,
+  formatTime,
+} from '~/composables/useRepeatingEvents'
 
 const props = defineProps({
   /**
@@ -38,6 +49,22 @@ const props = defineProps({
     type: Object as PropType<Record<string, unknown>>,
     required: true,
   },
+})
+
+const dateTimeStr = computed(() => {
+  const dateStart = props.data.date_start as string | undefined
+  const dateEnd = (props.data.date_end || props.data.end) as string | undefined
+  if (!dateStart) return ''
+  const dateStr = formatDateCompact(dateStart, dateEnd)
+  const start = new Date(dateStart)
+  const end = dateEnd ? new Date(dateEnd) : null
+  const isSingleDay = !end || (start.getFullYear() === end.getFullYear() && start.getMonth() === end.getMonth() && start.getDate() === end.getDate())
+  const timeStr = isSingleDay ? formatTime(start) : ''
+  return [dateStr, timeStr].filter(Boolean).join(' ')
+})
+
+const cityStr = computed(() => {
+  return extractCity(props.data.location as string | undefined, props.data.tag as string | undefined)
 })
 
 const shortcodeTitle = (shortcode: string | undefined, title: string) => {
@@ -77,6 +104,25 @@ const default_heading = '## Default Heading'
 
 .heading :deep() > h4.heading > .overline {
   font-size: 0.825rem;
+}
+
+/* Date + location tagline at card bottom */
+.card-tagline {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-inline: 1rem;
+  background-color: var(--color-muted-bg);
+  text-decoration: none;
+  color: inherit;
+  line-height: 1rem;
+  padding-top: 0.1em;
+  padding-bottom: 0.1em;
+  font-size: 0.9em;
+}
+
+.card-tagline:hover {
+  background-color: var(--color-primary-bg);
 }
 
 .column-auto {

@@ -354,11 +354,11 @@ const oneLineTitle = (shortcode: String | undefined, title: String, maxLength: n
   return fullText
 }
 
-// Filter out items with ctype starting with 'slide_' from left panel
+// Filter out items with ctype starting with 'slide_' or timeline:false from left panel
 const filteredItems = computed(() => {
   if (!props.product.items) return []
   return Object.values(props.product.items).filter(
-    (item: any) => !item.ctype || !item.ctype.startsWith('slide_')
+    (item: any) => (!item.ctype || !item.ctype.startsWith('slide_')) && item.timeline !== false
   )
 })
 
@@ -455,6 +455,33 @@ const getRootPath = (root: string | undefined) => {
   if (!root) return ''
   if (root.startsWith('/')) return root
   return `/ausbildung-theaterpaedagogik/${root}`
+}
+
+// Back-navigation: remember the route that brought us to details
+const router = useRouter()
+const referrerRoute = ref<string | null>(null)
+
+onMounted(() => {
+  // Capture the referrer from browser history on initial load
+  if (typeof document !== 'undefined' && document.referrer) {
+    try {
+      const url = new URL(document.referrer)
+      // Only store same-origin referrers
+      if (url.origin === window.location.origin) {
+        referrerRoute.value = url.pathname + url.search + url.hash
+      }
+    } catch {
+      // ignore invalid referrer
+    }
+  }
+})
+
+const isCourse = computed(() => props.product.ctype === 'course')
+
+const handleBackToSource = () => {
+  const target = referrerRoute.value || '/'
+  const hash = isCourse.value ? '#buchen' : ''
+  router.push(target + hash)
 }
 </script>
 
@@ -658,9 +685,12 @@ const getRootPath = (root: string | undefined) => {
           <ButtonTmp class="cursor-pointer" @click="handle_completestep" id="button_completestep">
             Weiter
           </ButtonTmp>  
-          <ButtonTmp is="a" v-if="activestep > 1" class="cursor-pointer" @click="handle_backwards" id="button_completestep">
+          <ButtonTmp is="a" v-if="activestep > 1" class="cursor-pointer" @click="handle_backwards" id="button_backstep">
             <SfIconArrowBack size="lg" />
-          </ButtonTmp>            
+          </ButtonTmp>
+          <ButtonTmp is="a" v-else class="cursor-pointer" @click="handleBackToSource" id="button_backtosource">
+            <SfIconArrowBack size="lg" />
+          </ButtonTmp>
         </div> 
       </Column>
     </Columns>

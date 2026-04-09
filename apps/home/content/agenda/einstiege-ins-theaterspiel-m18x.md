@@ -102,7 +102,7 @@ items:
   meta:
    locked: true
   summary:
-   events: [aa_56, a0_33, a1_21, a2_158, a4_28, a5_164, a3_31]
+   events: [aa_57, a0_33, a1_21, a2_158, a4_28, a5_164, a3_31]
    duration: "9 Monate"
    ue: 120
   ctype: slide_2cols
@@ -117,21 +117,22 @@ items:
     - individuelle Fachberatung
     - **A1 + A2** Am Anfang war der Kreis & Die Bühne kommt von selbst — Elementare Animation vom Kreisspiel zur Bühne
     - **A3** Wege entstehen beim Gehen
- aa_56:
+ aa_57:
   meta:
-   updated: 2026-04-06
+   updated: 2026-04-09
   ctype: event
   shortcode: aa
-  tag: Do., 9.4. 18:00-20:00 online
+  timeline: false
+  tag: Do., 30.4. 18:00-20:00 online
   title: Kursinfo **Online-Teaser Einstiege ins Theaterspiel**
   image: 
-   url: https://res.cloudinary.com/little-papillon/image/upload/c_crop,h_850,w_1200,x_310,y_130/v1594701917/dasei/einstiege_lampe_nora.jpg
-   caption: Theaterpädagogik E. Allerdings als Lampe
+   url: https://res.cloudinary.com/little-papillon/image/upload/c_crop,g_north,h_1200,w_1200,x_50,y_140/v1775638865/dasei/hans_kontakt.jpg
+   caption: Portrait Hans Dönitz
   body: |
    Du erwägst schon länger in die Theaterpädagogik einzusteigen? Du suchst nach qualifizierter Ausbildung in diesem Bereich? Vielleicht bist du bereits fest entschlossen, bei DAS Ei zu starten? 
    Dann melde dich an zum unverbindlichen Online-Teaser!
-  date_start: "2026-04-09T18:00"
-  date_end: "2026-04-09T20:00"
+  date_start: "2026-04-30T18:00"
+  date_end: "2026-04-30T20:00"
   location: online (MS Teams, Link wird rechtzeitig zugeschickt)
   schedule: "DO 18:00-20:00 _online_"
   instructors: Hans Dönitz

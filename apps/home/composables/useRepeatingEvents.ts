@@ -25,8 +25,8 @@ export function getShortcode(id: string | undefined): string | undefined {
  * City abbreviation mapping
  */
 const CITY_ABBREV: Record<string, string> = {
-  'münchen': 'M',
-  'munich': 'M',
+  'münchen': 'MÜ',
+  'munich': 'MÜ',
   'nürnberg': 'NÜ',
   'nuremberg': 'NÜ',
   'fürth': 'NÜ', // Treat Fürth as Nürnberg region
@@ -56,7 +56,7 @@ export function extractCity(location: string | undefined, tag: string | undefine
     }
     // Check postal codes (90xxx = Nürnberg/Fürth region, 80xxx = München)
     if (/\b90\d{3}\b/.test(location)) return 'NÜ'
-    if (/\b80\d{3}\b|\b81\d{3}\b/.test(location)) return 'M'
+    if (/\b80\d{3}\b|\b81\d{3}\b/.test(location)) return 'MÜ'
   }
   
   return ''
