@@ -138,8 +138,9 @@ function getTagExtract(event: EventContent): string {
 /* Date chips row */
 .date-chips {
   display: flex;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem 0.75rem;
+  gap: 0.25rem;
+  padding: 0;
+  margin: 0;
   flex-wrap: nowrap;
   overflow: hidden;
 }
@@ -153,7 +154,7 @@ function getTagExtract(event: EventContent): string {
   font-size: 0.75rem;
   font-weight: 500;
   white-space: nowrap;
-  border-radius: 0.25rem;
+  border-radius: 0;
   transition: background-color 0.15s ease;
   text-decoration: none;
 }
@@ -167,8 +168,10 @@ function getTagExtract(event: EventContent): string {
 .date-chip-overflow {
   display: inline-flex;
   align-items: center;
-  padding: 0.25rem 0.5rem;
+  padding: 0.25rem 0.25rem;
   font-size: 0.75rem;
+  font-weight: 700;
   color: var(--color-muted-text);
+  white-space: nowrap;
 }
 </style>

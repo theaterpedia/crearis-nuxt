@@ -1,7 +1,7 @@
 <template>
   <ContentRenderer :value="data">
     <div class="card">
-      <NuxtLink :to="data._path">
+      <NuxtLink :to="data.productlink || data._path">
         <CardHero
           :imgTmp="data.image?.src"
           :imgTmpAlignX="data.hero?.image_focus_x"

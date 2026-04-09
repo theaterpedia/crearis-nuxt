@@ -62,7 +62,7 @@
     
     <!-- Related Courses -->
     <div v-if="showCourses && resolvedCourses.length > 0" class="related-content__section">
-      <div class="related-content__section-label">Ausbildungen</div>
+      <div class="related-content__section-label">Kurse</div>
       <div class="related-content__items">
         <NuxtLink
           v-for="course in resolvedCourses"

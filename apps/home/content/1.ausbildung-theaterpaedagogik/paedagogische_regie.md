@@ -5,7 +5,7 @@ heading: 'JUN - DEZ 2026 **PÄDAGOGISCHE REGIE** Das 7-Tage-Modell'
 teaser: |
   **Mit Theater Grenzen bewegen.**
 hero:
-  height: full
+  height: prominent
   gradientType: left-top
   gradientDepth: 0.70
   image_focus_y: top
@@ -15,14 +15,11 @@ hero:
   cta:
     title: Modul C buchen
     link: '#buchen'
-  link:
-    title: Curriculum herunterladen
-    to: 'grundlagenbildung#modul-c'
 cssclasses:
   - product
 image:
   alt: Pädagogische Regie — Modul C
-  src: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_1920,h_1080,g_auto,q_auto,f_auto/dasei/paedagogische_regie.jpg
+  src: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_1200,h_1080,g_auto,q_auto,f_auto/dasei/paedagogische_regie.jpg
 pageBottom:
   anchorline: true
   inherit_hero_image: false

@@ -127,7 +127,7 @@ interface EventGroup {
  * Filters to future events within 20 months
  */
 function getGroupedEvents(list: EventContent[]): EventGroup[] {
-  // Filter to relevant date range first
+  // Filter to relevant date range first (isValidEvent handles ctype/listAsEvent/draft)
   const filtered = filterEventsByDateRange(list)
   const grouped = groupEventsByShortcode(filtered)
   const result: EventGroup[] = []
@@ -144,15 +144,16 @@ function getGroupedEvents(list: EventContent[]): EventGroup[] {
     const dateB = firstB?.date_start ? new Date(firstB.date_start).getTime() : 0
     return dateA - dateB
   })
-  
-  return result
+
+  // Cap to max_items
+  return result.slice(0, props.max_items)
 }
 
 import type { QueryBuilderParams } from '@nuxt/content'
 //const where = props.preset === 'agenda' ? [{ start: { $gt: 2024-10-17 }, eventtype: { $eq: 'course' } }] : [{ layout: 'article' }]
 const where =
   props.preset === 'agenda'
-    ? [{ _path: { $ne: '/agenda/_dir' }, ctype: { $ne: 'course' } }]
+    ? [{ _path: { $ne: '/agenda/_dir' } }]
     : props.preset === 'blog'
       ? [{ _path: { $ne: '/blog/_dir' } }]
       : []

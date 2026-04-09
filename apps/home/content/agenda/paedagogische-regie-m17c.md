@@ -1,14 +1,18 @@
 ---
 navigation: false
-navigation_highlight: /ausbildung-theaterpaedagogik/paedagogische_regie
+productlink: /ausbildung-theaterpaedagogik/paedagogische_regie
 shortcode: m17c
+listAsEvent: true
 heading: "**Pädagogische Regie** JUN - DEZ 2026 // Modul C Einzelbuchung"
 date_start: 2026-06-05
-end: 2026-12-04
+date_end: 2026-12-04
 ctype: course
 tag: course
 description: "Pädagogische Regie — Modul C Einzelbuchung. Zwei Produktionszyklen, zwei öffentliche Aufführungen. JUN - DEZ 2026, ca. 200 UE."
 title: Pädagogische Regie
+image:
+  alt: Pädagogische Regie — Modul C
+  src: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_480,h_270,g_auto,q_auto,f_auto/dasei/paedagogische_regie.jpg
 cssclasses:
   - course
 views:

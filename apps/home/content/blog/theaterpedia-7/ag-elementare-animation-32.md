@@ -12,7 +12,7 @@ related:
   events:
     - ld_43
     - lb_44
-date: 2024-04-20
+date: 2026-04-09
 blog: Theaterpedia
 toc: h2
 image:

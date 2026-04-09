@@ -29,7 +29,7 @@ image:
 <!-- PUBLISH-FROM-HERE -->
 
 > [!cards-gallery|sectionstyle=muted is=h2]
-> ## **Workshops & Projekte**
+> ## **Aktuelle Seminare & Termine**
 
-> [!cards-gallery|preset=blog is=h2]
+> [!cards-gallery|preset=blog max_items=12 is=h2]
 > ## **Forschung & Vernetzung**

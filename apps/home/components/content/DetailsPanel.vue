@@ -1,8 +1,8 @@
 <template>
   <SectionContainer :background="background" :flush="hasSidebarContent">
-    <!-- Fallback: MissingComponent if info is missing or empty -->
+    <!-- Fallback: MissingComponent if info is missing or empty (skip when mode=body with sidebar) -->
     <MissingComponent 
-      v-if="!hasInfo" 
+      v-if="!hasInfo && !(mode === 'body' && hasSidebarContent)" 
       compName="DetailsPanel" 
       :title="`details.${step || 'first'}.info is missing or empty`" 
     />
@@ -13,16 +13,16 @@
       
       <Columns v-if="infoKeys.length > 1" gap="medium">
         <Column width="1/2">
-          <CatBlock :content="info[infoKeys[0]]" htag="h4" />
+          <CatBlock :content="infoObj[infoKeys[0]]" htag="h4" />
         </Column>
         <Column width="1/2">
-          <CatBlock :content="info[infoKeys[1]]" htag="h4" />
+          <CatBlock :content="infoObj[infoKeys[1]]" htag="h4" />
         </Column>
       </Columns>
       
       <!-- Single column if only one info key -->
       <div v-else>
-        <CatBlock :content="info[infoKeys[0]]" htag="h4" />
+        <CatBlock :content="infoObj[infoKeys[0]]" htag="h4" />
       </div>
       
       <!-- Button (only for default mode, not slide) -->
@@ -33,11 +33,11 @@
       </div>
     </template>
     
-    <!-- mode=body: all info keys left, ContentSlot right -->
-    <template v-else-if="mode === 'body'">
+    <!-- mode=body: all info keys left, ContentSlot right (without sidebar) -->
+    <template v-else-if="mode === 'body' && !hasSidebarContent">
       <Columns gap="medium">
         <Column width="1/2">
-          <template v-for="(value, key) in info" :key="key">
+          <template v-for="(value, key) in infoObj" :key="key">
             <CatBlock :content="value" htag="h4" style="padding-bottom: 1rem" />
           </template>
         </Column>
@@ -57,7 +57,7 @@
     <template v-else-if="mode === 'choices'">
       <Columns gap="medium">
         <Column width="1/2">
-          <template v-for="(value, key) in info" :key="key">
+          <template v-for="(value, key) in infoObj" :key="key">
             <CatBlock :content="value" htag="h4" style="padding-bottom: 1rem" />
           </template>
         </Column>
@@ -76,15 +76,29 @@
       </div>
     </template>
     
-    <!-- Sidebar mode: info left, related content right (events/courses/posts flags) -->
+    <!-- Sidebar mode: body or info left, related content right (events/courses/posts flags) -->
     <template v-else-if="hasSidebarContent">
       <Columns gap="medium" class="details-panel__sidebar-columns">
         <Column width="1/2">
-          <template v-for="(value, key) in info" :key="key">
-            <CatBlock :content="value" htag="h4" style="padding-bottom: 1rem" />
+          <!-- mode=body: render slot/body content instead of YAML info -->
+          <template v-if="mode === 'body'">
+            <ContentSlot unwrap="p" />
+          </template>
+          <!-- default: render YAML info keys -->
+          <template v-else>
+            <template v-for="(value, key) in infoObj" :key="key">
+              <CatBlock :content="value" htag="h4" style="padding-bottom: 1rem" />
+            </template>
           </template>
         </Column>
         <Column width="1/2">
+          <!-- YAML info keys in sidebar (when info flag is set) -->
+          <template v-if="props.info && hasInfo">
+            <template v-for="(value, key) in infoObj" :key="key">
+              <CatBlock :content="value" htag="h4" style="padding-bottom: 1rem" />
+            </template>
+          </template>
+
           <!-- Event siblings (dates) - only for event pages with siblings -->
           <EventSiblings v-if="events" class="details-panel__sidebar-section" />
           
@@ -209,11 +223,21 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+
+  /**
+   * Show YAML info keys in the right sidebar column (above related content).
+   * Use with mode=body to get: body left, info + sidebar right.
+   * @default false
+   */
+  info: {
+    type: Boolean,
+    default: false,
+  },
 })
 
 // Check if any sidebar content is requested
 const hasSidebarContent = computed(() => {
-  return props.events || props.courses || props.posts
+  return props.events || props.courses || props.posts || props.info
 })
 
 // Get the step info object
@@ -232,19 +256,19 @@ const stepData = computed(() => {
 })
 
 // Get the info object from the step
-const info = computed(() => {
+const infoObj = computed(() => {
   return stepData.value?.info || null
 })
 
 // Get keys of the info object
 const infoKeys = computed(() => {
-  if (!info.value) return []
-  return Object.keys(info.value)
+  if (!infoObj.value) return []
+  return Object.keys(infoObj.value)
 })
 
 // Check if we have valid info content
 const hasInfo = computed(() => {
-  return info.value !== null && infoKeys.value.length > 0
+  return infoObj.value !== null && infoKeys.value.length > 0
 })
 </script>
 

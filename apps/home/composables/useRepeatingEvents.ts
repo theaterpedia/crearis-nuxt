@@ -180,7 +180,7 @@ export function isPublished(event: EventContent): boolean {
  * - Must not be draft (publish: draft)
  */
 export function isValidEvent(event: EventContent): boolean {
-  return event.ctype === 'event' && isPublished(event)
+  return (event.ctype === 'event' || (event as any).listAsEvent === true) && isPublished(event)
 }
 
 /**
