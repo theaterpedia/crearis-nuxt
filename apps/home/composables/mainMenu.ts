@@ -19,7 +19,7 @@ export function refreshMainMenu(activeRoute: RouteLocation | string) {
 
   // if item has children, it cannot have a direct link (folder-logic)
   mainMenu.items = navigation.map((item) => ({
-    label: item.title,
+    label: (item as any).navtitle || item.title,
     children: item.children ? navigationToMenuItems(item.children, activeRoute) : [],
     link: item.children ? undefined : item._path,
     expanded: path === item._path || path.startsWith(`${item._path}/`),
@@ -40,12 +40,12 @@ function navigationToMenuItems(
   return navigation.map((item) =>
     item.children?.length
       ? {
-          label: item.title,
+          label: (item as any).navtitle || item.title,
           children: item.children ? navigationToMenuItems(item.children, activeRoute) : [],
           expanded: path === item._path || path.startsWith(`${item._path}/`),
         }
       : {
-          label: item.title,
+          label: (item as any).navtitle || item.title,
           link: item._path,
           active: item._path === path,
         },

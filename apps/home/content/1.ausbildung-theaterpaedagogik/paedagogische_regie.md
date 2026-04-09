@@ -1,4 +1,5 @@
 ---
+navigation: false
 title: 'Pädagogische Regie'
 description: "Modul C Einzelbuchung — Zwei Produktionszyklen, zwei öffentliche Aufführungen. JUN - DEZ 2026."
 heading: 'JUN - DEZ 2026 **PÄDAGOGISCHE REGIE** Das 7-Tage-Modell'

@@ -160,7 +160,7 @@ const where =
 const query: QueryBuilderParams = {
   path: getPath(folder),
   where: where,
-  limit: props.groupRepeating ? 100 : props.max_items, // Need more items when grouping
+  limit: (props.preset === 'agenda' && props.groupRepeating) ? 100 : props.max_items, // Need more items when grouping
   sort: props.preset === 'agenda' ? [{ start: 1 }] : props.preset === 'blog' ? [{ date: -1 }] : [],
 }
 </script>

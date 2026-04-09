@@ -11,7 +11,7 @@ date: 2024-12-30
 blog: Aktuelles
 image:
   alt: Weihnachtsgrüße vom Sprech-Chor Demokratie
-  src: https://res.cloudinary.com/little-papillon/image/upload/ar_16:9,c_fill,g_auto,h_718,w_1200/v1735575650/dasei/weihnachtsgruss_ujvznp.png
+  src: https://res.cloudinary.com/little-papillon/image/upload/ar_16:9,c_fill,g_auto,h_718,w_1200/v1735575650/weihnachtsgruss_2024.png
 hero:
   height: prominent  
   img_tmp_align_y: center
