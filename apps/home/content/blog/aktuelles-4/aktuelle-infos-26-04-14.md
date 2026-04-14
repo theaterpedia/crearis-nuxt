@@ -36,7 +36,7 @@ _Kursstart-INFOS April 2026_
 Einstiege ins Theaterspiel in München und Nürnberg **AUSPROBIEREN + KURSSTART GRUNDLAGEN**
 
 > [!columns]
->> [!column | width=2/3]
+>> [!column | width=3/5]
 >>> [!button-tmp]
 >>> [Basistag München SA 19.4 - kostenfrei!)](https://www.dasei.eu/details?src=/agenda/basistag-theaterpaedagogik-a0_33)
 >>
@@ -53,17 +53,16 @@ Einstiege ins Theaterspiel in München und Nürnberg **AUSPROBIEREN + KURSSTART 
 >> - Fragen und Antworten
 >>
 >
->> [!column | width=1/3]
->> ### ⭐ Kursstart Blockseminar DO 14.-SO 17. Mai
->> Burgstallmühle → dann München oder Nürnberg
+>> [!column | width=2/5]
+>> ### ⭐ Kursstart DO 14.-SO 17. Mai
+>> **Burgstallmühle** → dann München oder Nürnberg
+>> <br>
 >> **Frühstarter-Aktion bis 28.4:** Die ersten 4 Buchungen erhalten nur 4 statt 5 Raten!
 >> [>> Jetzt buchen](https://www.dasei.eu/ausbildung-theaterpaedagogik/einstiege)
 >>
->> ### Kurs M18X → dann München
->> [>> Infos](https://www.dasei.eu/details?src=/agenda/einstiege-ins-theaterspiel-m18x)
+>> ### Kurs M18X → München [>> Infos](https://www.dasei.eu/details?src=/agenda/einstiege-ins-theaterspiel-m18x)
 >>
->> ### Kurs N18X → dann Nürnberg
->> [>> Infos](https://www.dasei.eu/details?src=/agenda/einstiege-ins-theaterspiel-n18x)
+>> ### Kurs N18X → Nürnberg [>> Infos](https://www.dasei.eu/details?src=/agenda/einstiege-ins-theaterspiel-n18x)
 
 
 > [!section-container | background=muted]
