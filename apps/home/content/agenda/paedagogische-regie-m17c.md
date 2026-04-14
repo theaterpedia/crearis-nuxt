@@ -44,7 +44,7 @@ details:
       ## Kosten & Konditionen
     info:
       kosten: |
-        ### Frühbucher (bis 20. April 2026)
+        ### Frühbucher (bis 20.4)
         - **6 Kursraten × € 220,00** € 1.320,00
         - Ersparnis: € 440 gegenüber Normalpreis
         

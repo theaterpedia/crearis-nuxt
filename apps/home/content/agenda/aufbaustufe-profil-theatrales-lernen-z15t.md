@@ -64,15 +64,22 @@ details:
         Ratenzahlung: SEP 2026 – AUG 2028 (monatlich)
       storno: |
         ### Frühbuchung & Storno
-        - **Frühbuchung bis 10.04.26:** 2 Raten geschenkt → nur 22 Raten = **€ 4.920**
+        - **bis 28.4:** 2 Raten geschenkt → nur 22 Raten = **€ 4.920**
         - **Storno Vertiefung:** bis 10 Tage nach E1 ohne Kosten
-        - **Storno Profil:** bis 10 Tage nach T1 ohne Kosten
-        - **Kündigung danach:** € 220 Stornogebühr
+        - **Storno Profil:** bis 10 Tage nach T1 € 220 Stornogebühr
+        - **Kündigung danach:** € 440 Stornogebühr
+        - Bereits besuchte Veranstaltungen werden nicht erstattet
       foerderung: |
         ### Förderung
         - **Bildungsurlaub:** die Programmbestandteile können anerkannt werden
         - **Arbeitgeberzuschuss:** Empfehlungsschreiben möglich
         - **Härtefall-Regelung:** Bei finanziellen Engpässen
+      uebernachtung: |
+        ### Übernachtung (Burgstallmühle)
+        Übernachtung + Verpflegung direkt vor Ort bezahlen (Preise 2026):
+        - Saalübernachtung: € 18/Nacht
+        - Mehrbettzimmer: € 33/Nacht
+        - Einzelzimmer: € 48/Nacht (begrenzt)
 consulting:
   intro: Schreib uns — wir melden uns innerhalb von 2 Werktagen.
   domainCode: dasei3
@@ -81,7 +88,7 @@ consulting:
     - key: terms_and_options
       overline: Kosten & Optionen
       label: Finanzierung
-      teaser: "EUR 5.360 in 24 Raten (€ 80 Anmeldegebühr + 24 × € 220 = ca. € 220/Monat). Bei Frühbuchung bis 10.04.26 sparst du € 440 — das sind nur 22 Raten = € 4.920. Zwei-Phasen-Storno: Nach Vertiefung und nach Profilstart jeweils 10 Tage kostenfreies Storno. Für Lehrer:innen: Arbeitgeberzuschuss oder Bildungsurlaub möglich."
+      teaser: "EUR 5.360 in 24 Raten (€ 80 Anmeldegebühr + 24 × € 220 = ca. € 220/Monat). Bei Frühbuchung bis 28.04.26 sparst du € 440 — das sind nur 22 Raten = € 4.920. Zwei-Phasen-Storno: Nach Vertiefungsstart 10 Tage kostenfreies Storno, nach Profilstart 10 Tage Storno mit € 220 Gebühr — danach € 440. Für Lehrer:innen: Arbeitgeberzuschuss oder Bildungsurlaub möglich."
       options:
         - Frühbucherrabatt
         - Stornierung & Kündigung

@@ -68,10 +68,10 @@ details:
         Ratenzahlung: SEP 2026 – APR 2027 (monatlich)
       storno: |
         ### Frühbuchung & Storno
-        - **Frühbuchung bis 10.04.26:** 1 zusätzl. Seminar Offenes Programm frei
+        - **bis 20.4:** 1 zusätzl. Seminar Offenes Programm frei
         - **Storno bis 10 Tage nach E1:** Kündigung ohne zusätzliche Kosten
         - **Kündigung nach E1:** € 220 Stornogebühr
-        - Bereits gebuchte Seminare → Erstattung
+        - Bereits besuchte Veranstaltungen werden nicht erstattet
       erweiterung: |
         ### Erweiterungsoptionen (später buchbar)
         - **Profiljahr** (Profil + K2-K3) 12 Raten × € 220,00 = € 2.640,00
@@ -79,10 +79,10 @@ details:
         - **Frühbucher Aufbaustufe** bis 31.10.26: € 440 Ersparnis
       uebernachtung: |
         ### Übernachtung E1 (Burgstallmühle)
-        Übernachtung + Verpflegung direkt vor Ort bezahlen:
-        - Saalübernachtung: € 15/Nacht
-        - Mehrbettzimmer: € 25–35/Nacht
-        - Einzelzimmer: € 50/Nacht (begrenzt)
+        Übernachtung + Verpflegung direkt vor Ort bezahlen (Preise 2026):
+        - Saalübernachtung: € 18/Nacht
+        - Mehrbettzimmer: € 33/Nacht
+        - Einzelzimmer: € 48/Nacht (begrenzt)
 consulting:
   intro: Schreib uns — wir melden uns innerhalb von 2 Werktagen.
   domainCode: dasei3

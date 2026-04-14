@@ -10,19 +10,19 @@ author: Hans Dönitz
 date: 2026-04-14
 blog: Aktuelles
 image:
-  alt: Vier Oster-Eier für deinen Einstieg in die Theaterpädagogik
-  src: https://res.cloudinary.com/little-papillon/image/upload/ar_16:9,c_fill,g_auto,h_718,w_1200/v1735575650/dasei/kreisanimation-basistag_lywxns.jpg
+  alt: Angebote zu Ostern bei DASEi - dein Einstieg in die Theaterpädagogik
+  src: https://res.cloudinary.com/little-papillon/image/upload/ar_16:9,c_fill,g_auto,h_900,w_1200/v1676099533/dasei/305_dasei2022_grundlagen.jpg
 hero:
   height: prominent
   img_tmp_align_y: center
-  content_y: top
+  content_y: bottom
   content: banner
   image_focus_y: top
   image_focus_x: cover
 ---
 > [!data-hero] ## **aktuelle Infos 14.04.2026** der monatliche Newsletter DAS Ei
 > 
-> ![Kreisanimation beim Basistag](https://res.cloudinary.com/little-papillon/image/upload/ar_16:9,c_fill,g_auto,h_718,w_1200/v1735575650/dasei/kreisanimation-basistag_lywxns.jpg)
+> ![Angebote zu Ostern](https://res.cloudinary.com/little-papillon/image/upload/ar_16:9,c_fill,g_auto,h_900,w_1200/v1676099533/dasei/305_dasei2022_grundlagen.jpg)
 
 <!-- PUBLISH-FROM-HERE -->
 

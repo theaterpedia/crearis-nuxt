@@ -39,7 +39,7 @@ details:
    storno: |
     ### Widerruf & Storno
     - 14 Tage Widerruf
-    - Bis 10 Tage nach der ersten Teilnahme an A1-A5 kann die weitere Teilnahme ohne Storno gekündigt werden.
+    - Bis 10 Tage nach der Teilnahme an A4 kann die weitere Teilnahme ohne Storno gekündigt werden (Anmeldegebühr + 1 Kursrate für Teilnahme A4 werden einbehalten).
 consulting:
   intro: Schreib uns — wir melden uns innerhalb von 2 Werktagen.
   domainCode: dasei1

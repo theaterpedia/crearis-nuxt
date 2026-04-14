@@ -3,7 +3,7 @@ navigation: false
 navigation_highlight: /ausbildung-theaterpaedagogik/einstiege
 shortcode: m18x
 listAsEvent: true
-productlink: /ausbildung-theaterpaedagogik/einstiege
+productlink: /ausbildung-theaterpaedagogik/einstiege?product=m18x
 heading: "⭐ Nur 4 statt 5 Raten — Aktion bis 28.4 **Einstiege ins Theaterspiel** Blockseminar Burgstallmühle → dann München"
 date_start: 2026-05-14
 date_end: 2026-05-17
@@ -39,7 +39,7 @@ details:
    ## Kosten & Konditionen
   info:
    rabatt: |
-    ### ⭐ Frühstarter-Aktion (bis 28. April 2026)
+    ### ⭐ Frühstarter-Aktion (bis 28.4)
     Die **ersten 4 Anmeldungen** erhalten den Kurs zum Vorzugspreis:
     - **4 statt 5 Kursraten** 4 × € 220,00 = € 880,00
     - **+ A0 Anmeldegebühr** € 80,00
@@ -56,7 +56,13 @@ details:
    storno: |
     ### Widerruf & Storno
     - 14 Tage Widerruf
-    - Bis 10 Tage nach der ersten Teilnahme an A1-A5 kann die weitere Teilnahme ohne Storno gekündigt werden.
+    - Bis 10 Tage nach der ersten Teilnahme an A1/A2 kann die weitere Teilnahme ohne Storno gekündigt werden (Anmeldegebühr + 2 Kursraten für Teilnahme A1/A2 werden einbehalten).
+   uebernachtung: |
+    ### Übernachtung (Burgstallmühle)
+    Übernachtung + Verpflegung direkt vor Ort bezahlen (Preise 2026):
+    - Saalübernachtung: € 18/Nacht
+    - Mehrbettzimmer: € 33/Nacht
+    - Einzelzimmer: € 48/Nacht (begrenzt)
 consulting:
   intro: Schreib uns — wir melden uns innerhalb von 2 Werktagen.
   domainCode: dasei1
