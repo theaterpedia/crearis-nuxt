@@ -85,6 +85,7 @@ details:
         - Einzelzimmer: € 50/Nacht (begrenzt)
 consulting:
   intro: Schreib uns — wir melden uns innerhalb von 2 Werktagen.
+  domainCode: dasei3
   extension_note: |
     💡 Nach der Vertiefung entscheidest du, ob du ein Profil (Theatrales Lernen oder Performance) buchst.
   fancy: true

@@ -78,6 +78,7 @@ details:
         - **Härtefall-Regelung:** Bei finanziellen Engpässen
 consulting:
   intro: Schreib uns — wir melden uns innerhalb von 2 Werktagen.
+  domainCode: dasei3
   fancy: true
   categories:
     - key: terms_and_options

@@ -2,13 +2,19 @@
 navigation: false
 navigation_highlight: /ausbildung-theaterpaedagogik/einstiege
 shortcode: m18x
-heading: "**Einstiege ins Theaterspiel** Burgstallmühle 14.5 - 1.12 // Blockseminarverlauf"
+listAsEvent: true
+productlink: /ausbildung-theaterpaedagogik/einstiege
+heading: "⭐ Nur 4 statt 5 Raten — Aktion bis 28.4 **Einstiege ins Theaterspiel** Blockseminar Burgstallmühle → dann München"
 date_start: 2026-05-14
+date_end: 2026-05-17
 end: 2026-12-01
 ctype: course
 tag: course
-description: Weiterbildung Theaterpädagogik - Kurs M18X Burgstallmühle 14.5 - 1.12.2026 // Blockseminarverlauf
+description: "⭐ Frühstarter-Aktion: Die ersten 4 Anmeldungen zahlen nur 4 statt 5 Raten. Einstiege ins Theaterspiel — Blockseminar Burgstallmühle ab 14. Mai 2026, weiterer Verlauf in München."
 title: Einstiege ins Theaterspiel
+image:
+  alt: Einstiege ins Theaterspiel — Blockseminar Burgstallmühle
+  src: https://res.cloudinary.com/little-papillon/image/upload/c_fill,w_480,h_270,g_auto,q_auto,f_auto/dasei/am_anfang_war_der_kreis_s9qh5y.jpg
 cssclasses:
   - course
 views:
@@ -32,10 +38,19 @@ details:
   header: |
    ## Kosten & Konditionen
   info:
+   rabatt: |
+    ### ⭐ Frühstarter-Aktion (bis 28. April 2026)
+    Die **ersten 4 Anmeldungen** erhalten den Kurs zum Vorzugspreis:
+    - **4 statt 5 Kursraten** 4 × € 220,00 = € 880,00
+    - **+ A0 Anmeldegebühr** € 80,00
+    - **GESAMT** € 960,00 (statt € 1.180,00 — Ersparnis € 220)
+    
+    Nach deiner Buchung bestätigt DAS Ei innerhalb von einem Werktag, ob der Vorzugspreis noch verfügbar ist. Falls nicht: kostenfreie Stornierung.
+    
+    **Risikofreier Einstieg:** Nach A1/A2 (14.-17. Mai) hast du 10 Tage Zeit zu entscheiden. Bei Kündigung zahlst du nur 1 Kursrate + Anmeldegebühr (€ 300).
    kosten: |
-    ### Kosten
-    - **A0 Anmeldegebühr (inkl. Basistag)** € 80,00 
-    - Frist: 1.3.2026
+    ### Kosten (Normalpreis)
+    - **A0 Anmeldegebühr (inkl. Basistag)** € 80,00
     - **5 Kursraten A1-A5** 5 Raten x € 220,00
     - Zahlung: 2 Raten 1. Mai, 2 Raten 1. Sept, 1 Rate 1. Nov 2026
    storno: |
