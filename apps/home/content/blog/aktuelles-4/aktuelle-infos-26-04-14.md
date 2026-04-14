@@ -41,8 +41,10 @@ Einstiege ins Theaterspiel in München und Nürnberg **AUSPROBIEREN + KURSSTART 
 >> [!column | width=2/3]
 >>> [!button-tmp]
 >>> [Basistag München SA 19.4 - kostenfrei!)](https://www.dasei.eu/details?src=/agenda/basistag-theaterpaedagogik-a0_33)
+>>
 >>> [!button-tmp]
 >>> [Basistag Nürnberg/Fürth FR 9.5  - kostenfrei!](https://www.dasei.eu/details?src=/agenda/basistag-theaterpaedagogik-a0_66)
+>>
 >>> [!button-tmp]
 >>> [INFO-Teaser MI 30.4 18:00 (online)](https://www.dasei.eu/details?src=/agenda/info-teaser-aa_57)
 >> Video-Call mit:
