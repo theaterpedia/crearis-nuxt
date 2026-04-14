@@ -26,11 +26,9 @@ hero:
 
 <!-- PUBLISH-FROM-HERE -->
 
-_Kursstart-Mailing April 2026_
+_Kursstart-INFOS April 2026_
 
-**Zu Ostern geht DAS Ei in die Vollen! Basistage, Sofortbucher-Aktion Burgstallmühle, Aufbaustufe Vertiefung und Gründung AG Elementare Animation.**
-
-<br>
+**Zu Ostern geht DAS Ei in die Vollen!**<br>Basistage, Sofortbucher-Aktion Burgstallmühle, Aufbaustufe Vertiefung und Gründung AG Elementare Animation.
 
 <br>
 
@@ -42,8 +40,10 @@ Einstiege ins Theaterspiel in München und Nürnberg **AUSPROBIEREN + KURSSTART 
 >>> [!button-tmp]
 >>> [Basistag München SA 19.4 - kostenfrei!)](https://www.dasei.eu/details?src=/agenda/basistag-theaterpaedagogik-a0_33)
 >>
+>>
 >>> [!button-tmp]
->>> [Basistag Nürnberg/Fürth FR 9.5  - kostenfrei!](https://www.dasei.eu/details?src=/agenda/basistag-theaterpaedagogik-a0_66)
+>>> [Basistag Nürnberg FR 9.5  - kostenfrei!](https://www.dasei.eu/details?src=/agenda/basistag-theaterpaedagogik-a0_66)
+>>
 >>
 >>> [!button-tmp]
 >>> [INFO-Teaser MI 30.4 18:00 (online)](https://www.dasei.eu/details?src=/agenda/info-teaser-aa_57)
@@ -115,4 +115,4 @@ Einstiege ins Theaterspiel in München und Nürnberg **AUSPROBIEREN + KURSSTART 
 >
 > Eine einfache Beratung dauert 15 Minuten, danach hast du einen maßgeschneiderten Seminarplan.
 >
-> [>> Beratung buchen](https://www.dasei.eu/ausbildung-theaterpaedagogik/aufbaustufe)
+> [>> Beratung buchen](https://dasei.eu/beratung?selections=%255B%257B%2522category%2522%253A%2522schedules%2522%252C%2522label%2522%253A%2522Verl%25C3%25A4ufe%2522%252C%2522overline%2522%253A%2522Termine%2520%2526%2520Zeitplanung%2522%257D%255D&domain=dasei3)
