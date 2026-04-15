@@ -44,11 +44,11 @@ details:
       ## Kosten & Konditionen
     info:
       kosten: |
-        ### Frühbucher (bis 20.4)
+        ### Frühbucher (bis 28.4)
         - **6 Kursraten × € 220,00** € 1.320,00
         - Ersparnis: € 440 gegenüber Normalpreis
         
-        **Normalpreis** (ab 21. April 2026)
+        **Normalpreis** (ab 29. April 2026)
         - **8 Kursraten × € 220,00** € 1.760,00
         - kompatibel zur KOMPASS-Förderung (für Berechtigte: bis 90%)
       kompass: |
@@ -76,7 +76,7 @@ consulting:
         - Grundlagenbildung extern anerkennen
     - key: terms_and_options
       label: Kosten & Förderung
-      teaser: "Frühbucher bis 9. April: 6 Raten = € 1.320 (Ersparnis € 440). Normalpreis: 8 Raten = € 1.760 — mit KOMPASS-Förderung für Solo-Selbständige bis zu 90% Übernahme (Eigenanteil ca. € 176). Storno bis 10 Tage nach C1 ohne Zusatzkosten."
+      teaser: "Frühbucher bis 28. April: 6 Raten = € 1.320 (Ersparnis € 440). Normalpreis: 8 Raten = € 1.760 — mit KOMPASS-Förderung für Solo-Selbständige bis zu 90% Übernahme (Eigenanteil ca. € 176). Storno bis 10 Tage nach C1 ohne Zusatzkosten."
       options:
         - Frühbucherrabatt vs. Normalpreis
         - Zahlungsplan & Raten

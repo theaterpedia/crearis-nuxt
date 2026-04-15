@@ -64,9 +64,11 @@ const checksAndSummary = ref<FormChecksAndSummaryProps>({
 })
 
 // Derive productRef for Odoo GraphQL checkout
-// Priority: sku > meta_product > shortcode > id
+// Priority: id wins for single-event patterns (aa_55), else sku > meta_product > shortcode > id
 const productRef = computed(() => {
-  return props.product.sku || props.product.meta_product || props.product.shortcode || props.product.id || ''
+  const id = props.product.id || ''
+  if (/^[a-z0-9]{2}_\d+$/.test(id)) return id
+  return props.product.sku || props.product.meta_product || props.product.shortcode || id || ''
 })
 
 // Derive domainCode for SaaS config lookup
