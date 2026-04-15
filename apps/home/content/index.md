@@ -17,9 +17,12 @@ hero:
   image_focus_x: center
   content_y: top
   content_width: full
-  cta:
+  link:
     title: Kurse im Überblick anschauen
-    link: /ausbildung-theaterpaedagogik  
+    link: /ausbildung-theaterpaedagogik 
+  cta:
+    title: einmalige Oster-Angebote!!
+    link: /blog/aktuelles-4/aktuelle-infos-26-04-14
 image:
   alt: Katz und Maus
   src: https://res.cloudinary.com/little-papillon/image/upload/c_crop,h_1750,w_2450/c_scale,h_1000,w_1400/v1676759847/dasei/aus0_home1.jpg
@@ -28,7 +31,7 @@ image:
 
 <!-- PUBLISH-FROM-HERE -->
 
-> [!cards-gallery| is=h2]
+> [!cards-gallery| max_items=12 is=h2]
 > ## **Aktuelle Seminare & Termine**
 
 > [!cards-gallery|preset=blog sectionstyle=muted max_items=12 is=h2]

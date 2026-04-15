@@ -20,7 +20,7 @@ hero:
   image_focus_y: top
   image_focus_x: cover
 ---
-> [!data-hero] ## **aktuelle Infos 14.04.2026** der monatliche Newsletter DAS Ei
+> [!data-hero] ## **aktuelle Infos 15.04.2026** der monatliche Newsletter DAS Ei
 > 
 > ![Angebote zu Ostern](https://res.cloudinary.com/little-papillon/image/upload/ar_16:9,c_fill,g_auto,h_900,w_1200/v1676099533/dasei/305_dasei2022_grundlagen.jpg)
 
@@ -28,7 +28,10 @@ hero:
 
 _Kursstart-INFOS April 2026_
 
-**Zu Ostern geht DAS Ei in die Vollen!**<br>Basistage, Sofortbucher-Aktion Burgstallmühle, Aufbaustufe Vertiefung und Gründung AG Elementare Animation.
+### Zu Ostern geht DAS Ei in die Vollen!
+
+<br>
+Basistage, Sofortbucher-Aktion Burgstallmühle, Aufbaustufe Vertiefung und Gründung AG Elementare Animation.
 
 <br>
 
@@ -55,14 +58,12 @@ Einstiege ins Theaterspiel in München und Nürnberg **AUSPROBIEREN + KURSSTART 
 >
 >> [!column | width=1/3]
 >> ### ⭐ Kursstart DO 14.-SO 17. Mai
->> **Burgstallmühle** → dann München oder Nürnberg
->> <br>
+>> Theaterpädagogik im Mai **auf der Burgstallmühle!** <br> → dann in München oder Nürnberg fortsetzen 
+>>
+>> ### Frühstart M18X [>> Infos - München](https://www.dasei.eu/details?src=/agenda/einstiege-ins-theaterspiel-m18x)
+>>
+>> ### Frühstart N18X [>> Infos - Nürnberg](https://www.dasei.eu/details?src=/agenda/einstiege-ins-theaterspiel-n18x)
 >> **Frühstarter-Aktion bis 28.4:** Die ersten 4 Buchungen erhalten nur 4 statt 5 Raten!
->> [>> Jetzt buchen](https://www.dasei.eu/ausbildung-theaterpaedagogik/einstiege)
->>
->> ### Kurs M18X → München [>> Infos](https://www.dasei.eu/details?src=/agenda/einstiege-ins-theaterspiel-m18x)
->>
->> ### Kurs N18X → Nürnberg [>> Infos](https://www.dasei.eu/details?src=/agenda/einstiege-ins-theaterspiel-n18x)
 
 
 > [!section-container | background=muted]

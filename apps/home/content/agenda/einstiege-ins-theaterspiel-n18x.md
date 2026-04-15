@@ -4,7 +4,7 @@ navigation_highlight: /ausbildung-theaterpaedagogik/einstiege
 shortcode: n18x
 listAsEvent: true
 productlink: /ausbildung-theaterpaedagogik/kurs_einstiege_ins_theaterspiel?product=n18x
-heading: "⭐ Nur 4 statt 5 Raten — Aktion bis 28.4 **Einstiege ins Theaterspiel** Blockseminar Burgstallmühle → dann Nürnberg"
+heading: "⭐ Nur 4 statt 5 Raten — Aktion bis 28.4 (NÜ) **KURS: Einstiege ins Theaterspiel** Blockseminar Burgstallmühle → dann Nürnberg"
 date_start: 2026-05-14
 date_end: 2026-05-17
 end: 2026-12-06
