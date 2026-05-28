@@ -57,7 +57,7 @@
       "date_end": "2026-09-12 18:00:00",
       "hasOnlineSessions": true,
       "homedomain": "dasei",
-      "instructor": "Kathrin Jung",
+      "instructor": "Cornelia Jung",
       "venue": "Tanzerei",
       "teasertext": "Am Basistag erlebst Du die grundsätzlichen Zusammenhänge der Theaterpädagogik von DAS Ei konzentriert und ganz praktisch am eigenen Leib. Du erarbeitest Dir ausgehend von drei Zwischenreflexionen ein Grundverständnis der Module\r\n- Einstiege in’s Theaterspiel (Modul A)\r\n- Szenische Themenarbeit (Modul B)\r\n- Pädagogische Regie (Modul C)",
       "teachingUnits": 13,
@@ -95,7 +95,7 @@
             "2026-04-06 cleared_missing_start_time auto-resolved on re-import"
           ]
         },
-        "updated": "2026-04-06"
+        "updated": "2026-05-28"
       }
     },
     {
@@ -145,7 +145,7 @@
       "date_end": "2026-07-19 18:30:00",
       "hasOnlineSessions": true,
       "homedomain": "dasei",
-      "instructor": "Hans Dönitz",
+      "instructor": "Cornelia Jung",
       "venue": "Institut Kineo",
       "teasertext": "Am Basistag erlebst Du die grundsätzlichen Zusammenhänge der Theaterpädagogik von DAS Ei konzentriert und ganz praktisch am eigenen Leib. Du erarbeitest Dir ausgehend von drei Zwischenreflexionen ein Grundverständnis der Module\r\n- Einstiege in’s Theaterspiel (Modul A)\r\n- Szenische Themenarbeit (Modul B)\r\n- Pädagogische Regie (Modul C)",
       "teachingUnits": 13,
@@ -173,7 +173,7 @@
       ],
       "meta": {
         "created": "2026-04-05",
-        "updated": "2026-04-06"
+        "updated": "2026-05-28"
       }
     },
     {
@@ -185,13 +185,13 @@
       "hasOnlineSessions": true,
       "homedomain": "dasei",
       "instructor": "Cornelia Jung",
-      "venue": "",
+      "venue": "Institut Kineo",
       "teasertext": "Am Basistag erlebst Du die grundsätzlichen Zusammenhänge der Theaterpädagogik von DAS Ei konzentriert und ganz praktisch am eigenen Leib. Du erarbeitest Dir ausgehend von drei Zwischenreflexionen ein Grundverständnis der Module\r\n- Einstiege in’s Theaterspiel (Modul A)\r\n- Szenische Themenarbeit (Modul B)\r\n- Pädagogische Regie (Modul C)",
       "teachingUnits": 13,
-      "venueFormatted": "",
-      "venueStreet": "",
-      "venueZip": "",
-      "venueCity": "",
+      "venueFormatted": "Kaiserstr. 177, 90763 Nürnberg/Fürth",
+      "venueStreet": "Kaiserstr. 177",
+      "venueZip": "90763",
+      "venueCity": "Nürnberg/Fürth",
       "schedule": "FR 18:00-20:00 _online_\r\nSA 09:00-18:00",
       "agendaLines": [
         {
@@ -207,12 +207,13 @@
           "weekday": "FRI",
           "startTime": "18:00",
           "endTime": "20:00",
-          "locationHint": "Online"
+          "locationHint": "Online",
+          "date": "2026-06-12"
         }
       ],
       "meta": {
         "created": "2026-04-05",
-        "updated": "2026-04-06"
+        "updated": "2026-05-28"
       }
     },
     {
@@ -261,7 +262,7 @@
             "2026-04-06 cleared_missing_start_time auto-resolved on re-import"
           ]
         },
-        "updated": "2026-04-06"
+        "updated": "2026-05-28"
       }
     },
     {
@@ -397,7 +398,7 @@
       ],
       "meta": {
         "created": "2026-04-05",
-        "updated": "2026-04-06"
+        "updated": "2026-05-28"
       }
     },
     {
@@ -503,14 +504,14 @@
             "2026-04-06 cleared_missing_start_time auto-resolved on re-import"
           ]
         },
-        "updated": "2026-04-06"
+        "updated": "2026-05-28"
       }
     },
     {
       "key": "a2_26",
       "shortcode": "a2",
       "heading": "Arbeiten mit dem Zwei-Kreise-Modell **Die Bühne kommt von selbst**",
-      "date_start": "2026-10-23 18:00:00",
+      "date_start": "2026-10-24 09:00:00",
       "date_end": "2026-10-27 21:00:00",
       "hasOnlineSessions": true,
       "homedomain": "dasei",
@@ -522,7 +523,7 @@
       "venueStreet": "Kaiserstr. 177",
       "venueZip": "90763",
       "venueCity": "Nürnberg/Fürth",
-      "schedule": "FR 18:00-20:00 online\r\nSO 09:00-18:00\r\nDI 18:00-21:00 online",
+      "schedule": "FR 18:00-20:00 online\r\nSA 09:00-18:00\r\nDI 18:00-21:00 online",
       "agendaLines": [
         {
           "type": "Session",
@@ -534,8 +535,8 @@
         },
         {
           "type": "Session",
-          "weekday": "SUN",
-          "date": "2026-10-25",
+          "weekday": "SAT",
+          "date": "2026-10-24",
           "startTime": "09:00",
           "endTime": "18:00"
         },
@@ -558,7 +559,7 @@
             "2026-04-06 fixed: date_start→first session (FRI online), date_end→last session (TUE online); locked"
           ]
         },
-        "updated": "2026-04-06",
+        "updated": "2026-05-28",
         "locked": true
       }
     },
@@ -604,7 +605,7 @@
       ],
       "meta": {
         "created": "2026-04-05",
-        "updated": "2026-04-06"
+        "updated": "2026-05-28"
       }
     },
     {
@@ -718,7 +719,7 @@
       "key": "a4_24",
       "shortcode": "a4",
       "heading": "Präsentation einer Geschichte **Szenische Lesung**",
-      "date_start": "2026-06-26 18:00:00",
+      "date_start": "2026-06-27 09:00:00",
       "date_end": "2026-06-30 21:00:00",
       "hasOnlineSessions": true,
       "homedomain": "dasei",
@@ -730,7 +731,7 @@
       "venueStreet": "Kaiserstr. 177",
       "venueZip": "90763",
       "venueCity": "Nürnberg/Fürth",
-      "schedule": "FR 18:00-20:00 online\r\nSO 09:00-18:00\r\nDI 18:00-21:00 online",
+      "schedule": "FR 18:00-20:00 online\r\nSA 09:00-18:00\r\nDI 18:00-21:00 online",
       "agendaLines": [
         {
           "type": "Session",
@@ -742,8 +743,8 @@
         },
         {
           "type": "Session",
-          "weekday": "SUN",
-          "date": "2026-06-28",
+          "weekday": "SAT",
+          "date": "2026-06-27",
           "startTime": "09:00",
           "endTime": "18:00"
         },
@@ -766,7 +767,7 @@
             "2026-04-06 fixed: date_start→first session (FRI online), date_end→last session (TUE online); locked"
           ]
         },
-        "updated": "2026-04-06",
+        "updated": "2026-05-28",
         "locked": true
       }
     },
@@ -864,7 +865,7 @@
       ],
       "meta": {
         "created": "2026-04-05",
-        "updated": "2026-04-06"
+        "updated": "2026-05-28"
       }
     },
     {
@@ -963,14 +964,14 @@
       ],
       "meta": {
         "created": "2026-04-05",
-        "updated": "2026-04-06"
+        "updated": "2026-05-28"
       }
     },
     {
       "key": "a5_47",
       "shortcode": "a5",
       "heading": "Stückentwicklung basierend auf Mitspieltheater **Figurenkarussell**",
-      "date_start": "2026-07-24 18:00:00",
+      "date_start": "2026-07-25 09:00:00",
       "date_end": "2026-07-28 21:00:00",
       "hasOnlineSessions": true,
       "homedomain": "dasei",
@@ -982,7 +983,7 @@
       "venueStreet": "Kaiserstr. 177",
       "venueZip": "90763",
       "venueCity": "Nürnberg/Fürth",
-      "schedule": "FR 18:00-20:00 online\r\nSO 09:00-18:00\r\nDI 18:00-21:00 online",
+      "schedule": "FR 18:00-20:00 online\r\nSA 09:00-18:00\r\nDI 18:00-21:00 online",
       "agendaLines": [
         {
           "type": "Session",
@@ -994,8 +995,8 @@
         },
         {
           "type": "Session",
-          "weekday": "SUN",
-          "date": "2026-07-26",
+          "weekday": "SAT",
+          "date": "2026-07-25",
           "startTime": "09:00",
           "endTime": "18:00"
         },
@@ -1018,7 +1019,7 @@
             "2026-04-06 fixed: date_start→first session (FRI online), date_end→last session (TUE online); locked"
           ]
         },
-        "updated": "2026-04-06",
+        "updated": "2026-05-28",
         "locked": true
       }
     },
