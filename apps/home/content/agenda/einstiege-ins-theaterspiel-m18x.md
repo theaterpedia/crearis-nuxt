@@ -4,13 +4,12 @@ navigation_highlight: /ausbildung-theaterpaedagogik/einstiege
 shortcode: m18x
 listAsEvent: true
 productlink: /ausbildung-theaterpaedagogik/kurs_einstiege_ins_theaterspiel?product=m18x
-heading: "⭐ Nur 4 statt 5 Raten — Aktion bis 28.4 (MÜ) **KURS: Einstiege ins Theaterspiel** Blockseminar Burgstallmühle → dann München"
-date_start: 2026-05-14
-date_end: 2026-05-17
+heading: "**Einstiege ins Theaterspiel** München + Burgstallmühle 14.6 - 1.12.2026 // Tageskurs mit Seminarhaus-Block"
+date_start: 2026-06-14
 end: 2026-12-01
 ctype: course
 tag: course
-description: "⭐ Frühstarter-Aktion: Die ersten 4 Anmeldungen zahlen nur 4 statt 5 Raten. Einstiege ins Theaterspiel — Blockseminar Burgstallmühle ab 14. Mai 2026, weiterer Verlauf in München."
+description: "Weiterbildung Theaterpädagogik - Kurs M18X München & Burgstallmühle: Tageskurs A0/A1/A2 in München, A4/A5 als Seminarhaus-Block auf der Burgstallmühle."
 title: Einstiege ins Theaterspiel
 image:
   alt: Einstiege ins Theaterspiel — Blockseminar Burgstallmühle
@@ -38,25 +37,15 @@ details:
   header: |
    ## Kosten & Konditionen
   info:
-   rabatt: |
-    ### ⭐ Frühstarter-Aktion (bis 28.4)
-    Die **ersten 4 Anmeldungen** erhalten den Kurs zum Vorzugspreis:
-    - **4 statt 5 Kursraten** 4 × € 220,00 = € 880,00
-    - **+ A0 Anmeldegebühr** € 80,00
-    - **GESAMT** € 960,00 (statt € 1.180,00 — Ersparnis € 220)
-    
-    Nach deiner Buchung bestätigt DAS Ei innerhalb von einem Werktag, ob der Vorzugspreis noch verfügbar ist. Falls nicht: kostenfreie Stornierung.
-    
-    **Risikofreier Einstieg:** Nach A1/A2 (14.-17. Mai) hast du 10 Tage Zeit zu entscheiden. Bei Kündigung zahlst du nur 1 Kursrate + Anmeldegebühr (€ 300).
    kosten: |
-    ### Kosten (Normalpreis)
+    ### Kosten
     - **A0 Anmeldegebühr (inkl. Basistag)** € 80,00
     - **5 Kursraten A1-A5** 5 Raten x € 220,00
-    - Zahlung: 2 Raten 1. Mai, 2 Raten 1. Sept, 1 Rate 1. Nov 2026
+    - Zahlung: 5 Monatsraten (jeweils zum 1. des Monats) auf Rechnung
    storno: |
     ### Widerruf & Storno
     - 14 Tage Widerruf
-    - Bis 10 Tage nach der ersten Teilnahme an A1/A2 kann die weitere Teilnahme ohne Storno gekündigt werden (Anmeldegebühr + 2 Kursraten für Teilnahme A1/A2 werden einbehalten).
+    - Bis 10 Tage nach der Teilnahme an A4 kann die weitere Teilnahme ohne Storno gekündigt werden (Anmeldegebühr + 1 Kursrate für Teilnahme A4 werden einbehalten).
    uebernachtung: |
     ### Übernachtung (Burgstallmühle)
     Übernachtung + Verpflegung direkt vor Ort bezahlen (Preise 2026):
@@ -117,13 +106,13 @@ product:
   ## 6 Kurseinheiten in 3 Blocks
   In prägnanten Einheiten erlebst Du beide Wege, verstehst die Zusammenhänge und leitest selber an: Du lernst die Methoden, die Leitungshaltung und typische Abläufe. Egal, welche Vorerfahrungen Du mitbringst sind wir sicher, dass Du dabei viel mitnehmen wirst.
  footer: |
-  ## MÄR - DEZ 2026 // Burgstallmühle **Einstiege ins Theaterspiel**
+  ## JUN - DEZ 2026 // München + Burgstallmühle **Einstiege ins Theaterspiel**
 items: 
  course_summary:
   meta:
    locked: true
   summary:
-   events: [aa_57, a0_33, a1_21, a2_158, a4_28, a5_164, a3_31]
+   events: [aa_59, a0_48, a4_28, a5_164, a1_40, a2_36, a3_31]
    duration: "9 Monate"
    ue: 120
   ctype: slide_2cols
@@ -138,13 +127,13 @@ items:
     - individuelle Fachberatung
     - **A1 + A2** Am Anfang war der Kreis & Die Bühne kommt von selbst — Elementare Animation vom Kreisspiel zur Bühne
     - **A3** Wege entstehen beim Gehen
- aa_57:
+ aa_59:
   meta:
-   updated: 2026-04-09
+   updated: 2026-05-28
   ctype: event
   shortcode: aa
   timeline: false
-  tag: Do., 30.4. 18:00-20:00 online
+  tag: Do., 18.6. 18:00-20:00 online
   title: Kursinfo **Online-Teaser Einstiege ins Theaterspiel**
   image: 
    url: https://res.cloudinary.com/little-papillon/image/upload/c_crop,g_north,h_1200,w_1200,x_50,y_140/v1775638865/dasei/hans_kontakt.jpg
@@ -152,17 +141,17 @@ items:
   body: |
    Du erwägst schon länger in die Theaterpädagogik einzusteigen? Du suchst nach qualifizierter Ausbildung in diesem Bereich? Vielleicht bist du bereits fest entschlossen, bei DAS Ei zu starten? 
    Dann melde dich an zum unverbindlichen Online-Teaser!
-  date_start: "2026-04-30T18:00"
-  date_end: "2026-04-30T20:00"
+  date_start: "2026-06-18T18:00"
+  date_end: "2026-06-18T20:00"
   location: online (MS Teams, Link wird rechtzeitig zugeschickt)
   schedule: "DO 18:00-20:00 _online_"
   instructors: Hans Dönitz
- a0_33:
+ a0_48:
   meta:
-   updated: 2026-04-06
+   updated: 2026-05-28
   ctype: event
   shortcode: a0
-  tag: So., 19.4. ganztags + 1 Abend online
+  tag: So., 14.6. ganztags + 1 Abend online
   title: Praxis, Theorie & Ausbildung bei DAS Ei **Basistag Theaterpädagogik**
   image: 
    url: https://res.cloudinary.com/little-papillon/image/upload/v1676101506/dasei/700_dasei2022_I8A7903_cvtigl.jpg
@@ -172,57 +161,13 @@ items:
    - Einstiege ins Theaterspiel (Modul A)
    - Szenische Themenarbeit (Modul B)
    - Pädagogische Regie (Modul C)
-  date_start: "2026-04-19T09:30"
-  date_end: "2026-04-19T18:30"
+  date_start: "2026-06-14T09:00"
+  date_end: "2026-06-14T18:00"
   location: "Schwanthalerstraße 91, 80336 München"
   schedule: |
    FR 18:00-20:00 _online_
-   SO 09:30-18:30
-  instructors: Hans Dönitz
- a1_21:
-  meta:
-   updated: 2026-04-06
-  ctype: event
-  shortcode: a1
-  tag: Do., 14.5. bis So., 17.5 (Seminarhaus)
-  title: Einführung in die Kreisanimation **Am Anfang war der Kreis**
-  image: 
-   url: https://res.cloudinary.com/little-papillon/image/upload/w_400/v1594788813/dasei/am_anfang_war_der_kreis_s9qh5y.jpg
-   caption: Theaterpädagogik Kreisanimation
-  body: |
-   Den Einstieg in die elementare Animation bilden die Kreisspiele. Hier kommen Grundregeln und -phänomene von interaktivem Spiel sehr deutlich zum Vorschein. Zunächst beschäftigen wir uns mit den einfachen und offensichtlichen Impulsen entlang der Kreisbahn und quer durch die Kreismitte und lernen dann, zahlreiche Grundanforderungen des Theaterspiels im Kreisspiel zu trainieren.
-  date_start: "2026-05-14T19:00"
-  date_end: "2026-05-17T15:00"
-  location: "Burgstallmühle 1, Voggendorf (bei Bechhofen), 91572 Burgstallmühle / Voggendorf"
-  schedule: |
-   DO 19:00-21:00
-   FR 09:00-18:00
-   SA 09:00-18:00
-   SO 09:00-15:00
-   Di. 18:00-21:00 ONLINE
-  instructors: Hans Dönitz
- a2_158:
-  inherits: a1_21
-  timeline: false
-  ctype: event
-  shortcode: a2
-  tag: Fortsetzung Do., 14.5. bis So., 17.5
-  title: Arbeiten mit dem Zwei-Kreise-Modell **Die Bühne kommt von selbst**
-  image: 
-   url: https://res.cloudinary.com/little-papillon/image/upload/w_400/v1676100503/dasei/377_dasei2022_I8A6515_p6aee7.jpg
-   caption: Foto die Bühne kommt von selbst
-  body: |
-   Wenn Du gelernt hast, die Interaktion der Gruppe im Kreis freizusetzen, entstehen fast von selbst Bühnenmomente. Mit dem Zwei-Kreise-Modell lernst Du diese Momente gezielt zu gestalten und verbindest das Theaterpotential einfacher Animationen zu einem bühnenreifen Setting. Der Kreis öffnet sich zum Halbkreis und gibt in der Mitte eine Spielfläche frei.
-  date_start: 2026-05-16T09:00
-  date_end: 2026-05-17T15:00
-  location: |
-   Burgstallmühle 1
-   91572 Bechhofen
-  schedule: |
-   Sa. 09:00-18:00
-   So. 09:00-15:00
-   Di. 18:00-21:00 online
-  instructors: Hans Dönitz
+   SO 09:00-18:00
+  instructors: Cornelia Jung
  a4_28:
   meta:
    updated: 2026-04-06
@@ -267,6 +212,46 @@ items:
    So. 09:00-15:00
    Di. 18:00-21:00 online
   instructors: Kathrin Jung
+ a1_40:
+  meta:
+   updated: 2026-05-28
+  ctype: event
+  shortcode: a1
+  tag: So., 11.10. ganztags + 2 Abende online
+  title: Einführung in die Kreisanimation **Am Anfang war der Kreis**
+  image: 
+   url: https://res.cloudinary.com/little-papillon/image/upload/w_400/v1594788813/dasei/am_anfang_war_der_kreis_s9qh5y.jpg
+   caption: Theaterpädagogik Kreisanimation
+  body: |
+   Den Einstieg in die elementare Animation bilden die Kreisspiele. Hier kommen Grundregeln und -phänomene von interaktivem Spiel sehr deutlich zum Vorschein. Zunächst beschäftigen wir uns mit den einfachen und offensichtlichen Impulsen entlang der Kreisbahn und quer durch die Kreismitte und lernen dann, zahlreiche Grundanforderungen des Theaterspiels im Kreisspiel zu trainieren.
+  date_start: "2026-10-11T09:30"
+  date_end: "2026-10-11T18:30"
+  location: "Schwanthalerstraße 91, 80336 München"
+  schedule: |
+   FR 18:00-20:00 online
+   SO 09:30-18:30
+   DI 18:00-21:00 online
+  instructors: Hans Dönitz
+ a2_36:
+  meta:
+   updated: 2026-05-28
+  ctype: event
+  shortcode: a2
+  tag: So., 25.10. ganztags + 2 Abende online
+  title: Arbeiten mit dem Zwei-Kreise-Modell **Die Bühne kommt von selbst**
+  image: 
+   url: https://res.cloudinary.com/little-papillon/image/upload/w_400/v1676100503/dasei/377_dasei2022_I8A6515_p6aee7.jpg
+   caption: Foto die Bühne kommt von selbst
+  body: |
+   Wenn Du gelernt hast, die Interaktion der Gruppe im Kreis freizusetzen, entstehen fast von selbst Bühnenmomente. Mit dem Zwei-Kreise-Modell lernst Du diese Momente gezielt zu gestalten und verbindest das Theaterpotential einfacher Animationen zu einem bühnenreifen Setting. Der Kreis öffnet sich zum Halbkreis und gibt in der Mitte eine Spielfläche frei.
+  date_start: "2026-10-25T09:30"
+  date_end: "2026-10-25T18:30"
+  location: "Schwanthalerstraße 91, 80336 München"
+  schedule: |
+   FR 18:00-20:00 online
+   SO 09:30-18:30
+   DI 18:00-21:00 online
+  instructors: Hans Dönitz
  a3_31:
   meta:
    updated: 2026-04-06

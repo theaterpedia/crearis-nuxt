@@ -100,7 +100,7 @@ items:
   meta:
    locked: true
   summary:
-   events: [aa_57, a0_48, a4_29, a5_30, a1_40, a2_36, a3_31]
+   events: [aa_59, a0_48, a4_29, a5_30, a1_40, a2_36, a3_31]
    duration: "9 Monate"
    ue: 120
   ctype: slide_2cols
@@ -117,12 +117,12 @@ items:
     - **A1** Am Anfang war der Kreis
     - **A2** Die Bühne kommt von selbst
     - **A3** Wege entstehen beim Gehen
- aa_57:
+ aa_59:
   meta:
-   updated: 2026-04-09
+   updated: 2026-05-28
   ctype: event
   shortcode: aa
-  tag: Do., 30.4. 18:00-20:00 online
+  tag: Do., 18.6. 18:00-20:00 online
   title: Kursinfo **Online-Teaser Einstiege ins Theaterspiel**
   image: 
    url: https://res.cloudinary.com/little-papillon/image/upload/c_crop,g_north,h_1200,w_1200,x_50,y_140/v1775638865/dasei/hans_kontakt.jpg
@@ -130,8 +130,8 @@ items:
   body: |
    Du erwägst schon länger in die Theaterpädagogik einzusteigen? Du suchst nach qualifizierter Ausbildung in diesem Bereich? Vielleicht bist du bereits fest entschlossen, bei DAS Ei zu starten? 
    Dann melde dich an zum unverbindlichen Online-Teaser!
-  date_start: "2026-04-30T18:00"
-  date_end: "2026-04-30T20:00"
+  date_start: "2026-06-18T18:00"
+  date_end: "2026-06-18T20:00"
   location: online (MS Teams, Link wird rechtzeitig zugeschickt)
   schedule: "DO 18:00-20:00 _online_"
   instructors: Hans Dönitz
