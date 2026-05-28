@@ -21,8 +21,8 @@ hero:
     title: Kurse im Überblick anschauen
     link: /ausbildung-theaterpaedagogik 
   cta:
-    title: einmalige Oster-Angebote!!
-    link: /blog/aktuelles-4/aktuelle-infos-26-04-14
+    title: Jetzt Einstiege ins Theaterspiel
+    link: /ausbildung-theaterpaedagogik/kurs_einstiege_ins_theaterspiel
 image:
   alt: Katz und Maus
   src: https://res.cloudinary.com/little-papillon/image/upload/c_crop,h_1750,w_2450/c_scale,h_1000,w_1400/v1676759847/dasei/aus0_home1.jpg
